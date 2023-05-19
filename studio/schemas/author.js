@@ -17,4 +17,4 @@ export const author = {
       validation: (Rule) => Rule.required(),
     },
   ],
-}
+};

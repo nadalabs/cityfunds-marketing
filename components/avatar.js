@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import { urlForImage } from '../lib/sanity'
+import Image from 'next/image';
+import { urlForImage } from '../lib/sanity';
 
 export default function Avatar({ name, picture }) {
   return (
@@ -19,5 +19,5 @@ export default function Avatar({ name, picture }) {
       </div>
       <div className="text-xl font-bold">{name}</div>
     </div>
-  )
+  );
 }
