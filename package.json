@@ -7,7 +7,7 @@
     "studio:dev": "npm --prefix studio run start",
     "studio:deploy": "npx vercel env pull && npm --prefix studio run deploy",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
-    "format": "prettier --write \"**/*.+(ts|tsx|js|jsx|json)\""
+    "format": "prettier --write \"src/**/*.+(ts|tsx|js|jsx|json)\""
   },
   "dependencies": {
     "@portabletext/react": "^2.0.1",
@@ -19,10 +19,13 @@
     "next-sanity": "^4.1.2",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.43.9",
+    "react-input-mask": "^2.0.4",
     "styled-components": "^6.0.0-rc.1"
   },
   "devDependencies": {
     "@types/node": "20.2.1",
+    "@types/react-input-mask": "^3.0.2",
     "@types/styled-components": "^5.1.26",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.40.0",
