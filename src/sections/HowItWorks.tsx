@@ -1,6 +1,12 @@
 import styled from 'styled-components';
-import { Heading, PrimaryText, Text } from '../elements/Typography';
-import { SecondaryButton } from '../elements/Buttons';
+import {
+  GreenSquare,
+  Heading,
+  Overline,
+  PrimaryText,
+  Text,
+} from '../elements/Typography';
+import { PrimaryButton } from '../elements/Buttons';
 
 export default function HowItWorks({}) {
   const STEPS = [
@@ -29,7 +35,7 @@ export default function HowItWorks({}) {
       <div
         style={{
           height: '534px',
-          width: '534px',
+          minWidth: '534px',
           backgroundColor: '#48DC95',
           borderRadius: '120px',
           marginRight: '98px',
@@ -37,23 +43,19 @@ export default function HowItWorks({}) {
       />
 
       <div>
+        <Overline>Real Estate Investing Simplified</Overline>
         <Heading>How it Works</Heading>
         <Text>Join our community of thousands.</Text>
 
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', marginTop: '120px' }}>
           {STEPS.map(({ title, description, link }) => (
             <div key={title} style={{ marginRight: '32px' }}>
-              <div
-                style={{
-                  height: '15px',
-                  width: '15px',
-                  backgroundColor: '#48DC95',
-                  borderRadius: '3px',
-                }}
-              />
-              <PrimaryText>{title}</PrimaryText>
+              <GreenSquare style={{ marginBottom: '24px' }} />
+              <PrimaryText style={{ color: 'black', fontWeight: 600 }}>
+                {title}
+              </PrimaryText>
               <Text>{description}</Text>
-              <SecondaryButton>Learn More</SecondaryButton>
+              <PrimaryButton>Get Started</PrimaryButton>
             </div>
           ))}
         </div>

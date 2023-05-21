@@ -1,4 +1,4 @@
-import { Heading, PrimaryText } from '../elements/Typography';
+import { Heading, Overline, PrimaryText } from '../elements/Typography';
 import { useState } from 'react';
 
 export default function FaqsSection({}) {
@@ -15,17 +15,29 @@ export default function FaqsSection({}) {
   ];
 
   return (
-    <div style={{ display: 'flex', padding: '92px 0' }}>
-      <div style={{ width: '60%' }}>
-        {STATS.map(({ question }, idx) => (
-          <Heading key={idx} onClick={() => setActive(idx)}>
-            {question}
-          </Heading>
-        ))}
-      </div>
+    <div style={{ padding: '92px 0' }}>
+      <Overline>You may be wondering...</Overline>
 
-      <div style={{ width: '40%' }}>
-        <PrimaryText>{STATS[active].answer}</PrimaryText>
+      <div style={{ display: 'flex' }}>
+        <div style={{ width: '60%', marginRight: '40px' }}>
+          {STATS.map(({ question }, idx) => (
+            <Heading
+              key={idx}
+              onClick={() => setActive(idx)}
+              style={{
+                color: idx === active && '#48DC95',
+                fontSize: idx === active && '64px',
+                marginBottom: '28px',
+                cursor: 'pointer',
+              }}
+            >
+              {question}
+            </Heading>
+          ))}
+        </div>
+        <div style={{ width: '40%' }}>
+          <PrimaryText>{STATS[active].answer}</PrimaryText>
+        </div>
       </div>
     </div>
   );

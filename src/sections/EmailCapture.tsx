@@ -24,13 +24,36 @@ export default function EmailCapture({}) {
   };
 
   return (
-    <CtaWrapper>
+    <SectionWrapper>
+      <div style={{ marginBottom: '48px' }}>
+        <Image
+          width={125}
+          height={30}
+          alt={'Cityfunds'}
+          src={'/images/cityfunds.png'}
+        />
+        <hr
+          style={{
+            width: '1px',
+            height: '30px',
+            display: 'inline-block',
+            margin: '0 24px',
+          }}
+        />
+        <Image
+          width={125}
+          height={30}
+          alt={'Altsco'}
+          src={'/images/altsco.png'}
+        />
+      </div>
+      <Heading>Limited Time Offer for Alts.co Readers</Heading>
+      <Text style={{ marginBottom: '8px' }}>
+        Homeowner or not, call yourself a real estate investor today. As an
+        added bonus get a free $100* when you invest $1000 in any city.
+      </Text>
+      <Text style={{ color: '#989898' }}>*valid until 5/31/23</Text>
       <FormProvider {...methods}>
-        <Heading>Limited Time Offer for Alts.co Readers</Heading>
-        <PrimaryText>
-          Homeowner or not, call yourself a real estate investor today. As an
-          added bonus get a free $100* when you invest $1000 in any city.
-        </PrimaryText>
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
           {/* <FormInput
             name="email"
@@ -45,15 +68,12 @@ export default function EmailCapture({}) {
             placeholder="Email Address"
           /> */}
         </StyledForm>
-        <Text>
-          By subscribing you agree with our Privacy Policy and provide consent
-          to receiving updates from our company.
-        </Text>
       </FormProvider>
-    </CtaWrapper>
+    </SectionWrapper>
   );
 }
 
-export const CtaWrapper = styled.div`
+export const SectionWrapper = styled.div`
+  width: 800px;
   padding: 180px 0;
 `;
