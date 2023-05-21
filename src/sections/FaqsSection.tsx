@@ -1,4 +1,4 @@
-import { Heading1, Heading2 } from '../elements/Typography';
+import { Heading, PrimaryText } from '../elements/Typography';
 import { useState } from 'react';
 
 export default function FaqsSection({}) {
@@ -18,14 +18,14 @@ export default function FaqsSection({}) {
     <div style={{ display: 'flex', padding: '92px 0' }}>
       <div style={{ width: '60%' }}>
         {STATS.map(({ question }, idx) => (
-          <Heading1 key={idx} onClick={() => setActive(idx)}>
+          <Heading key={idx} onClick={() => setActive(idx)}>
             {question}
-          </Heading1>
+          </Heading>
         ))}
       </div>
 
       <div style={{ width: '40%' }}>
-        <Heading2>{STATS[active].answer}</Heading2>
+        <PrimaryText>{STATS[active].answer}</PrimaryText>
       </div>
     </div>
   );

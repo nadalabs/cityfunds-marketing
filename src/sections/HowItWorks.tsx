@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Heading1, Heading2, Text } from '../elements/Typography';
+import { Heading, PrimaryText, Text } from '../elements/Typography';
 import { SecondaryButton } from '../elements/Buttons';
 
 export default function HowItWorks({}) {
@@ -37,7 +37,7 @@ export default function HowItWorks({}) {
       />
 
       <div>
-        <Heading1>How it Works</Heading1>
+        <Heading>How it Works</Heading>
         <Text>Join our community of thousands.</Text>
 
         <div style={{ display: 'flex' }}>
@@ -51,7 +51,7 @@ export default function HowItWorks({}) {
                   borderRadius: '3px',
                 }}
               />
-              <Heading2>{title}</Heading2>
+              <PrimaryText>{title}</PrimaryText>
               <Text>{description}</Text>
               <SecondaryButton>Learn More</SecondaryButton>
             </div>

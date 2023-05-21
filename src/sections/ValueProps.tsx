@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Heading1, Heading2, Text } from '../elements/Typography';
+import { GreenSquare, Heading, PrimaryText, Text } from '../elements/Typography';
 import { SecondaryButton } from '../elements/Buttons';
 
 export default function ValueProps({}) {
@@ -32,13 +32,14 @@ export default function ValueProps({}) {
 
   return (
     <>
-      <Heading1>Why Cityfunds?</Heading1>
+      <Heading>Why Cityfunds?</Heading>
       <Text>Join our community of thousands.</Text>
 
       <div style={{ display: 'flex', overflowX: 'scroll' }}>
         {VALUE_PROPS.map(({ title, description, link }) => (
           <CardWrapper key={title}>
-            <Heading2>{title}</Heading2>
+            <GreenSquare style={{height: '30px', width: '30px', borderRadius: '7px'}} />
+            <PrimaryText>{title}</PrimaryText>
             <Text>{description}</Text>
             <SecondaryButton>Learn More</SecondaryButton>
           </CardWrapper>

@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 
-export const Heading1 = styled.h1`
+export const Heading = styled.h1`
+  color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 600;
   font-size: 75px;
-  line-height: 100%;
-  display: flex;
-  align-items: center;
-  color: #000000;
-  margin: 0;
+  line-height: 75px;
+  margin: 0 0 8px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-weight: 600;
@@ -19,14 +17,14 @@ export const Heading1 = styled.h1`
   }
 `;
 
-export const Heading2 = styled.h2`
+export const PrimaryText = styled.p`
   color: ${({ theme }) => theme.colors.gray};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;
   font-size: 28px;
   line-height: 42px;
-  margin: 0;
+  margin: 0 0 24px 0;
 `;
 
 export const Text = styled.p`
@@ -36,6 +34,7 @@ export const Text = styled.p`
   font-weight: 300;
   font-size: 20px;
   line-height: 30px;
+  margin: 0;
 `;
 
 export const Overline = styled.p`
@@ -45,6 +44,7 @@ export const Overline = styled.p`
   font-weight: 500;
   font-size: 18px;
   line-height: 28px;
+  margin: 0 0 24px 0;
 `;
 
 export const Caption = styled.div`
@@ -91,3 +91,10 @@ export const ErrorText = styled.p`
   position: relative;
   top: -8px;
 `;
+
+export const GreenSquare = styled.div`
+  height: 16px;
+  width: 16px;
+  background-color: #48DC95;
+  border-radius: 4px;
+`

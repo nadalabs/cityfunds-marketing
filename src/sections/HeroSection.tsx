@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { FormInput, FormWrapper, StyledForm } from '../elements/FormInput';
-import { Heading1, Heading2, Text } from '../elements/Typography';
+import { Heading, PrimaryText, Text } from '../elements/Typography';
 
 export default function HeroSection({}) {
   const methods = useForm<FieldValues>({
@@ -34,11 +34,11 @@ export default function HeroSection({}) {
       <HeroImage>
         <ContentWrapper>
           <FormProvider {...methods}>
-            <Heading1 style={{color: 'white'}}>Own a Piece of Your Favorite City</Heading1>
-            <Heading2>
+            <Heading style={{color: 'white'}}>Own a Piece of Your Favorite City</Heading>
+            <PrimaryText>
               Diversified real estate portfolios with passive income in the
               nation's top cities.
-            </Heading2>
+            </PrimaryText>
             <StyledForm onSubmit={handleSubmit(onSubmit)}>
               {/* <FormInput
             name="email"

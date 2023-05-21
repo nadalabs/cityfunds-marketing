@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Heading1, Heading2 } from '../elements/Typography';
+import { Heading, PrimaryText } from '../elements/Typography';
 import { PrimaryButton } from '../elements/Buttons';
 import { useState } from 'react';
 
@@ -16,12 +16,12 @@ export default function Testimonials({}) {
   return (
     <div style={{ display: 'flex', padding: '92px 0' }}>
       <div style={{ width: '788px' }}>
-        <Heading1>{REVIEWS[active].text}</Heading1>
+        <Heading>{REVIEWS[active].text}</Heading>
       </div>
 
       <div style={{}}>
-        <Heading2>{REVIEWS[active].name}</Heading2>
-        <Heading2>{REVIEWS[active].location}</Heading2>
+        <PrimaryText>{REVIEWS[active].name}</PrimaryText>
+        <PrimaryText>{REVIEWS[active].location}</PrimaryText>
       </div>
     </div>
   );

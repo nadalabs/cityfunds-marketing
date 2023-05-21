@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { FormInput, FormWrapper, StyledForm } from '../elements/FormInput';
-import { Heading1, Heading2, Text } from '../elements/Typography';
+import { Heading, PrimaryText, Text } from '../elements/Typography';
 
 export default function EmailCapture({}) {
   const methods = useForm<FieldValues>({
@@ -26,11 +26,11 @@ export default function EmailCapture({}) {
   return (
     <CtaWrapper>
       <FormProvider {...methods}>
-        <Heading1>Limited Time Offer for Alts.co Readers</Heading1>
-        <Heading2>
+        <Heading>Limited Time Offer for Alts.co Readers</Heading>
+        <PrimaryText>
           Homeowner or not, call yourself a real estate investor today. As an
           added bonus get a free $100* when you invest $1000 in any city.
-        </Heading2>
+        </PrimaryText>
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
           {/* <FormInput
             name="email"
