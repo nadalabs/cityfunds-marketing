@@ -35,7 +35,7 @@ export default function ValueProps({}) {
       <Heading1>Why Cityfunds?</Heading1>
       <Text>Join our community of thousands.</Text>
 
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', overflowX: 'scroll' }}>
         {VALUE_PROPS.map(({ title, description, link }) => (
           <CardWrapper key={title}>
             <Heading2>{title}</Heading2>
@@ -49,10 +49,11 @@ export default function ValueProps({}) {
 }
 
 export const CardWrapper = styled.div`
-  width: 450px;
+  min-width: 450px;
   height: 450px;
   background: #ffffff;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   border-radius: 52px;
   padding: 52px;
+  margin-right: 28px;
 `;
