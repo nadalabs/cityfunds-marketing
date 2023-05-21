@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
-import { FormInput, FormWrapper, StyledForm } from '../elements/FormInput';
+import { FormInput, StyledForm } from '../elements/FormInput';
 import {
   GreenSquare,
   Heading,
@@ -57,18 +57,18 @@ export default function HeroSection({}) {
               nation's top cities.
             </PrimaryText>
             <StyledForm onSubmit={handleSubmit(onSubmit)}>
-              {/* <FormInput
-            name="email"
-            rules={{
-              required: 'Email address is required',
-              pattern: {
-                value: /^\S+@\S+$/i,
-                message: 'Invalid email address',
-              },
-            }}
-            type="email"
-            placeholder="Email Address"
-          /> */}
+              <FormInput
+                name="email"
+                rules={{
+                  required: 'Email address is required',
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: 'Invalid email address',
+                  },
+                }}
+                type="email"
+                placeholder="Enter Your Email"
+              />
             </StyledForm>
             <Text>
               By subscribing you agree with our Privacy Policy and provide

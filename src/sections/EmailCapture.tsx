@@ -55,7 +55,7 @@ export default function EmailCapture({}) {
       <Text style={{ color: '#989898' }}>*valid until 5/31/23</Text>
       <FormProvider {...methods}>
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
-          {/* <FormInput
+          <FormInput
             name="email"
             rules={{
               required: 'Email address is required',
@@ -65,8 +65,8 @@ export default function EmailCapture({}) {
               },
             }}
             type="email"
-            placeholder="Email Address"
-          /> */}
+            placeholder="Enter Your Email"
+          />
         </StyledForm>
       </FormProvider>
     </SectionWrapper>
