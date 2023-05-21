@@ -8,10 +8,10 @@ import {
 
 export default function CitySection({}) {
   const CITIES = [
-    { name: 'Dallas', imageUrl: '/location.png', numProperties: 10 },
-    { name: 'Austin', imageUrl: '/location.png', numProperties: 10 },
-    { name: 'Miami', imageUrl: '/location.png', numProperties: 10 },
-    { name: 'Tampa', imageUrl: '/location.png', numProperties: 10 },
+    { name: 'Dallas', imageUrl: '/images/location.png', numProperties: 10 },
+    { name: 'Austin', imageUrl: '/images/location.png', numProperties: 10 },
+    { name: 'Miami', imageUrl: '/images/location.png', numProperties: 10 },
+    { name: 'Tampa', imageUrl: '/images/location.png', numProperties: 10 },
   ];
 
   return (

@@ -10,6 +10,7 @@ const theme = {
     dark: '#303030',
     white: '#ffffff',
     gray: '#989898',
+    lightGray: '#B0B0B0',
   },
   fonts: {
     main: '"Poppins", sans-serif',

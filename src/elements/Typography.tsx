@@ -48,14 +48,14 @@ export const Overline = styled.p`
 `;
 
 export const Caption = styled.div`
+  color: ${({ theme }) => theme.colors.lightGray};
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
   text-align: center;
-  color: #1a1a1a;
-  margin: 0;
+  margin: 0 0 36px 0;
 `;
 
 export const SmallLabel = styled.p`

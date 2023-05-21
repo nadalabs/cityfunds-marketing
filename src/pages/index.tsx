@@ -24,7 +24,7 @@ export default function Home() {
           rel="stylesheet"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#48DC95" />
         <meta
           name="description"
           content="Gain access to professionally-managed, diversified real estate portfolios in the world’s best cities - start with as little as $100."
@@ -33,7 +33,6 @@ export default function Home() {
       </Head>
 
       <HeroSection />
-
       <div style={{ margin: '0 156px' }}>
         <FeaturedPublicity />
         <CitySection />
