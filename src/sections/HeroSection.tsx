@@ -1,9 +1,24 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { FormInput, FormWrapper, StyledForm } from '../elements/FormInput';
-import { Heading, PrimaryText, Text } from '../elements/Typography';
+import {
+  GreenSquare,
+  Heading,
+  PrimaryText,
+  Text,
+} from '../elements/Typography';
+import { useState } from 'react';
 
 export default function HeroSection({}) {
+  const [active, setActive] = useState(0);
+  const CITIES = [
+    { name: 'Dallas', imageUrl: '/location.png', numProperties: 10 },
+    { name: 'Austin', imageUrl: '/location.png', numProperties: 10 },
+    { name: 'Miami', imageUrl: '/location.png', numProperties: 10 },
+    { name: 'Tampa', imageUrl: '/location.png', numProperties: 10 },
+  ];
+
   const methods = useForm<FieldValues>({
     defaultValues: {
       email: '',
@@ -34,7 +49,9 @@ export default function HeroSection({}) {
       <HeroImage>
         <ContentWrapper>
           <FormProvider {...methods}>
-            <Heading style={{color: 'white'}}>Own a Piece of Your Favorite City</Heading>
+            <Heading style={{ color: 'white' }}>
+              Own a Piece of Your Favorite City
+            </Heading>
             <PrimaryText>
               Diversified real estate portfolios with passive income in the
               nation's top cities.
@@ -57,8 +74,48 @@ export default function HeroSection({}) {
               By subscribing you agree with our Privacy Policy and provide
               consent to receiving updates from our company.
             </Text>
+
+            <Text style={{ color: 'white', marginBottom: 0 }}>
+              {CITIES[active].name}
+            </Text>
+            <Text style={{ color: 'grey', marginBottom: '8px' }}>
+              {CITIES[active].numProperties} Properties
+            </Text>
+            <div style={{ display: 'flex' }}>
+              {CITIES.map((_, idx) => (
+                <GreenSquare
+                  style={{
+                    backgroundColor: idx !== active && 'rgba(2, 1, 1, 0.05)',
+                    marginRight: '8px',
+                  }}
+                />
+              ))}
+            </div>
           </FormProvider>
         </ContentWrapper>
+
+        <div>
+          <Image
+            width={125}
+            height={30}
+            alt={'Cityfunds'}
+            src={'/images/cityfunds.png'}
+          />
+          <hr
+            style={{
+              width: '1px',
+              height: '30px',
+              display: 'inline-block',
+              margin: '0 24px',
+            }}
+          />
+          <Image
+            width={125}
+            height={30}
+            alt={'Altsco'}
+            src={'/images/altsco.png'}
+          />
+        </div>
       </HeroImage>
     </div>
   );
@@ -71,6 +128,7 @@ export const HeroImage = styled.div`
   height: 100vh;
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
   padding: 100px;
 `;
 

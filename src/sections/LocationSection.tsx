@@ -1,6 +1,12 @@
 import Image from 'next/image';
-import { GreenSquare, Heading, PrimaryText, Overline } from '../elements/Typography';
+import {
+  GreenSquare,
+  Heading,
+  PrimaryText,
+  Overline,
+} from '../elements/Typography';
 import { PrimaryButton } from '../elements/Buttons';
+import { EXTERNAL_ROUTES } from '../utils/constants';
 
 export default function LocationSection({}) {
   const STATS = [
@@ -27,16 +33,20 @@ export default function LocationSection({}) {
             everyone can own real estate in their favorite city in less than 5
             minutes
           </PrimaryText>
-          <PrimaryButton>Get Started</PrimaryButton>
+          <PrimaryButton
+            onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+          >
+            Get Started
+          </PrimaryButton>
         </div>
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         {STATS.map(({ label, value }) => (
           <div key={label}>
-            <div style={{display: 'flex', alignItems: 'flex-end'}}>
-            <Heading style={{fontSize: '115px'}}>{value}+</Heading>
-            <GreenSquare />
+            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+              <Heading style={{ fontSize: '115px' }}>{value}+</Heading>
+              <GreenSquare />
             </div>
             <PrimaryText>{label}</PrimaryText>
           </div>

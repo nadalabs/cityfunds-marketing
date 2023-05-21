@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { GreenSquare, Heading, PrimaryText, Text } from '../elements/Typography';
+import {
+  GreenSquare,
+  Heading,
+  PrimaryText,
+  Text,
+} from '../elements/Typography';
 
 export default function CitySection({}) {
   const CITIES = [
@@ -11,8 +16,10 @@ export default function CitySection({}) {
 
   return (
     <div style={{ padding: '140px 0' }}>
-      <Heading style={{width: '766px'}}>Pick your favorite, or invest in all four.</Heading>
-      <PrimaryText style={{width: '1130px'}}>
+      <Heading style={{ width: '766px' }}>
+        Pick your favorite, or invest in all four.
+      </Heading>
+      <PrimaryText style={{ width: '1130px' }}>
         Cityfunds is the only investment platform which provides direct access
         to diversified portfolios of owner-occupied homes in the nation’s top
         cities.
@@ -20,13 +27,18 @@ export default function CitySection({}) {
 
       <div style={{ display: 'flex', overflowX: 'scroll', width: '100%' }}>
         {CITIES.map(({ name, imageUrl, numProperties }) => (
-          <CardWrapper key={name} style={{ backgroundImage: `url(${imageUrl})` }}>
+          <CardWrapper
+            key={name}
+            style={{ backgroundImage: `url(${imageUrl})` }}
+          >
             <div>
-              <div style={{display: 'flex', alignItems: 'flex-end'}}>
-              <Heading style={{color: 'white'}}>{name}</Heading>
-              <GreenSquare style={{  marginLeft: '4px', marginBottom: '10px'}} />
+              <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+                <Heading style={{ color: 'white' }}>{name}</Heading>
+                <GreenSquare
+                  style={{ marginLeft: '4px', marginBottom: '18px' }}
+                />
               </div>
-              <Text  style={{color: 'white'}}>{numProperties} Properties</Text>
+              <Text style={{ color: 'white' }}>{numProperties} Properties</Text>
             </div>
           </CardWrapper>
         ))}
