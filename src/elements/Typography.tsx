@@ -31,10 +31,10 @@ export const Text = styled.p`
   color: ${({ theme }) => theme.colors.dark};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 20px;
   line-height: 30px;
-  margin: 0;
+  margin: 0 0 24px 0;
 `;
 
 export const Overline = styled.p`
@@ -95,6 +95,6 @@ export const ErrorText = styled.p`
 export const GreenSquare = styled.div`
   height: 16px;
   width: 16px;
-  background-color: #48DC95;
+  background-color: #48dc95;
   border-radius: 4px;
-`
+`;

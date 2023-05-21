@@ -11,7 +11,7 @@ export default function FeaturedPublicity({}) {
 
   return (
     <div style={{ padding: '76px 196px' }}>
-      <Overline>Featured In</Overline>
+      <Overline style={{ textAlign: 'center' }}>Featured In</Overline>
       <div
         style={{
           display: 'flex',
@@ -20,15 +20,7 @@ export default function FeaturedPublicity({}) {
         }}
       >
         {FEATURED.map(({ name, imageUrl, link }) => (
-          <Image
-            key={name}
-            width={145}
-            height={40}
-            alt={name}
-            src={imageUrl}
-            sizes="100vw"
-            // priority={priority}
-          />
+          <Image key={name} width={145} height={40} alt={name} src={imageUrl} />
         ))}
       </div>
     </div>

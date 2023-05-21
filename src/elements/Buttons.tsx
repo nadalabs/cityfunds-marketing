@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PrimaryButton = styled.button`
   color: ${({ theme }) => theme.colors.white};
-  background: ${({ theme }) => theme.colors.seccondary};
+  background: ${({ theme }) => theme.colors.secondary};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 600;
@@ -23,7 +23,7 @@ export const PrimaryButton = styled.button`
 `;
 
 export const SecondaryButton = styled.button`
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.gray};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;
@@ -34,4 +34,5 @@ export const SecondaryButton = styled.button`
   border-radius: 3px;
   height: 40px;
   cursor: pointer;
+  padding: 20px 0;
 `;
