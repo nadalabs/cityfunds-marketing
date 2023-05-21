@@ -10,7 +10,6 @@ export const Heading1 = styled.h1`
   align-items: center;
   color: #000000;
   margin: 0;
-  margin-bottom: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-weight: 600;
@@ -27,13 +26,11 @@ export const Heading2 = styled.h2`
   font-weight: 400;
   font-size: 28px;
   line-height: 42px;
-  color: #1a1a1a;
   margin: 0;
-  margin-bottom: 40px;
 `;
 
 export const Text = styled.p`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.dark};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 300;

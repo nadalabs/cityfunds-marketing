@@ -2,8 +2,12 @@ import Head from 'next/head';
 import HeroSection from '../sections/HeroSection';
 import LocationSection from '../sections/LocationSection';
 import CitySection from '../sections/CitySection';
-import FeaturedSection from '../sections/FeaturedSection';
+import FeaturedPublicity from '../sections/FeaturedPublicity';
 import ValueProps from '../sections/ValueProps';
+import FaqsSection from '../sections/FaqsSection';
+import HowItWorks from '../sections/HowItWorks';
+import Testimonials from '../sections/Testimonials';
+import EmailCapture from '../sections/EmailCapture';
 
 export default function Home() {
   return (
@@ -31,10 +35,14 @@ export default function Home() {
       <HeroSection />
 
       <div style={{ margin: '0 156px' }}>
-        <FeaturedSection />
+        <FeaturedPublicity />
         <CitySection />
         <LocationSection />
         <ValueProps />
+        <FaqsSection />
+        <HowItWorks />
+        <Testimonials />
+        <EmailCapture />
       </div>
     </>
   );
