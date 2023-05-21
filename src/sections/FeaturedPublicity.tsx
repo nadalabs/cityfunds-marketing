@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Overline } from '../elements/Typography';
 
-export default function FeaturedSection({}) {
+export default function FeaturedPublicity({}) {
   const FEATURED = [
     { name: 'Forbes', imageUrl: '/icons/forbes.svg', link: '' },
     { name: 'The Motley Fool', imageUrl: '/icons/motley-fool.svg', link: '' },
@@ -10,9 +10,15 @@ export default function FeaturedSection({}) {
   ];
 
   return (
-    <div style={{padding: '76px 196px'}}>
+    <div style={{ padding: '76px 196px' }}>
       <Overline>Featured In</Overline>
-      <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          width: '100%',
+        }}
+      >
         {FEATURED.map(({ name, imageUrl, link }) => (
           <Image
             key={name}
