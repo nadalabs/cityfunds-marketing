@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import { FormInput, StyledForm } from '@elements/FormInput';
+import { Heading, Overline, Text } from '@elements/Typography';
 import Image from 'next/image';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
-import { FormInput, FormWrapper, StyledForm } from '../elements/FormInput';
-import { Heading, PrimaryText, Text } from '../elements/Typography';
+import styled from 'styled-components';
 
 export default function EmailCapture({}) {
   const methods = useForm<FieldValues>({
@@ -25,30 +25,10 @@ export default function EmailCapture({}) {
 
   return (
     <SectionWrapper>
-      <div style={{ marginBottom: '48px' }}>
-        <Image
-          width={125}
-          height={30}
-          alt={'Cityfunds'}
-          src={'/images/cityfunds.png'}
-        />
-        <hr
-          style={{
-            width: '1px',
-            height: '30px',
-            display: 'inline-block',
-            margin: '0 24px',
-          }}
-        />
-        <Image
-          width={125}
-          height={30}
-          alt={'Altsco'}
-          src={'/images/altsco.png'}
-        />
-      </div>
-      <Heading>Limited Time Offer for Alts.co Readers</Heading>
-      <Text style={{ marginBottom: '8px' }}>
+      <Overline>Exclusive Perk for Alts.co Readers </Overline>
+      <Heading>Invest $1,000</Heading>
+      <Heading style={{ color: '#48DC95' }}>Get $100</Heading>
+      <Text style={{ width: '660px', marginBottom: '8px' }}>
         Homeowner or not, call yourself a real estate investor today. As an
         added bonus get a free $100* when you invest $1000 in any city.
       </Text>
@@ -69,6 +49,13 @@ export default function EmailCapture({}) {
           />
         </StyledForm>
       </FormProvider>
+
+      <Image
+        width={125}
+        height={30}
+        alt={'Altsco'}
+        src={'/images/altsco.png'}
+      />
     </SectionWrapper>
   );
 }

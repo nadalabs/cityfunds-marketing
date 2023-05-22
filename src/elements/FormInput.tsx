@@ -1,8 +1,8 @@
-import { Controller, useFormContext } from 'react-hook-form';
-import styled from 'styled-components';
-import { ErrorText } from './Typography';
-import InputMask from 'react-input-mask';
+import { ErrorText } from '@elements/Typography';
 import { useEffect, useRef } from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
+import InputMask from 'react-input-mask';
+import styled from 'styled-components';
 
 interface FormInputProps {
   name: string;

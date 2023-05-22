@@ -10,10 +10,8 @@ export const Heading = styled.h1`
   margin: 0 0 8px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 36px;
-    text-align: center;
+    font-size: 48px;
+    line-height: 48px;
   }
 `;
 
@@ -25,6 +23,11 @@ export const PrimaryText = styled.p`
   font-size: 28px;
   line-height: 42px;
   margin: 0 0 24px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
 export const Text = styled.p`
@@ -35,6 +38,11 @@ export const Text = styled.p`
   font-size: 20px;
   line-height: 30px;
   margin: 0 0 24px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 10px;
+    line-height: 14px;
+  }
 `;
 
 export const Overline = styled.p`
@@ -54,8 +62,7 @@ export const Caption = styled.div`
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  text-align: center;
-  margin: 0 0 36px 0;
+  margin: 0;
 `;
 
 export const SmallLabel = styled.p`
