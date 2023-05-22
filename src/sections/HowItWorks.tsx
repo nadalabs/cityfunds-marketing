@@ -1,32 +1,40 @@
-import styled from 'styled-components';
+import { PrimaryButton } from '@elements/Buttons';
 import {
   GreenSquare,
   Heading,
   Overline,
   PrimaryText,
   Text,
-} from '../elements/Typography';
-import { PrimaryButton } from '../elements/Buttons';
+} from '@elements/Typography';
+import { EXTERNAL_ROUTES } from '@utils/constants';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 export default function HowItWorks({}) {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((active + 1) % STEPS.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  });
+
   const STEPS = [
     {
       title: 'Select a City',
-      description:
-        'Cityfunds is the only investment platform which provides direct access to diversified portfolios of owner occupied homes in the nation’s top cities.',
-      link: '',
+      description: 'Choose from our 4 cityfunds with more coming soon',
     },
     {
       title: 'Invest Money',
-      description:
-        'Cityfunds is the only investment platform which provides direct access to diversified portfolios of owner occupied homes in the nation’s top cities.',
-      link: '',
+      description: 'Connect your bank account and invest in homeshares',
     },
     {
       title: 'Build Wealth',
       description:
-        'Cityfunds is the only investment platform which provides direct access to diversified portfolios of owner occupied homes in the nation’s top cities.',
-      link: '',
+        'Grow your portfolio  while unlocking liquid equity for home owners',
     },
   ];
 
@@ -38,24 +46,48 @@ export default function HowItWorks({}) {
           minWidth: '534px',
           backgroundColor: '#48DC95',
           borderRadius: '120px',
-          marginRight: '98px',
+          position: 'relative',
+          top: '230px',
+          zIndex: -1,
         }}
       />
+      <Image
+        width={350}
+        height={700}
+        alt={'Phone Screen'}
+        src={'/images/phone-screen.png'}
+        style={{ position: 'relative', right: '434px' }}
+      />
 
-      <div>
+      <div style={{ position: 'relative', right: '234px' }}>
         <Overline>Real Estate Investing Simplified</Overline>
         <Heading>How it Works</Heading>
         <Text>Join our community of thousands.</Text>
 
-        <div style={{ display: 'flex', marginTop: '120px' }}>
-          {STEPS.map(({ title, description, link }) => (
-            <div key={title} style={{ marginRight: '32px' }}>
-              <GreenSquare style={{ marginBottom: '24px' }} />
-              <PrimaryText style={{ color: 'black', fontWeight: 600 }}>
+        <div style={{ display: 'flex', marginTop: '120px', width: '244px' }}>
+          {STEPS.map(({ title, description }, idx) => (
+            <div key={idx} style={{ marginRight: '32px' }}>
+              <GreenSquare
+                style={{
+                  backgroundColor: idx !== active && '#979797',
+                  marginBottom: '24px',
+                }}
+              />
+              <PrimaryText
+                style={{ color: idx === active && '#48DC95', fontWeight: 600 }}
+              >
                 {title}
               </PrimaryText>
               <Text>{description}</Text>
-              <PrimaryButton>Get Started</PrimaryButton>
+              {idx === active && (
+                <PrimaryButton
+                  onClick={() =>
+                    window.location.replace(EXTERNAL_ROUTES.WEB_APP)
+                  }
+                >
+                  Get Started
+                </PrimaryButton>
+              )}
             </div>
           ))}
         </div>

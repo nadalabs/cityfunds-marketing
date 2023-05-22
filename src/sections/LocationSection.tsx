@@ -1,12 +1,12 @@
-import Image from 'next/image';
+import { PrimaryButton } from '@elements/Buttons';
 import {
   GreenSquare,
   Heading,
-  PrimaryText,
   Overline,
-} from '../elements/Typography';
-import { PrimaryButton } from '../elements/Buttons';
-import { EXTERNAL_ROUTES } from '../utils/constants';
+  PrimaryText,
+} from '@elements/Typography';
+import { EXTERNAL_ROUTES } from '@utils/constants';
+import Image from 'next/image';
 
 export default function LocationSection({}) {
   const STATS = [
@@ -22,16 +22,15 @@ export default function LocationSection({}) {
           width={596}
           height={596}
           alt={`Cover Image`}
-          src={'/location.png'}
+          src={'/images/location.png'}
         />
         <div style={{ marginLeft: '80px' }}>
           <Overline>Why Cityfunds?</Overline>
           <Heading>Location, Location, Location</Heading>
           <PrimaryText>
-            Everyone knows real estate investing is about location - yet
-            traditional real estate investing isn’t set up this way. Now
-            everyone can own real estate in their favorite city in less than 5
-            minutes
+            Investing in real estate is all about location, yet the increased
+            cost of living have made desirable places unaffordable. Now, owning
+            real estate in your favorite city takes less than 5 minutes.
           </PrimaryText>
           <PrimaryButton
             onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
@@ -45,7 +44,15 @@ export default function LocationSection({}) {
         {STATS.map(({ label, value }) => (
           <div key={label}>
             <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-              <Heading style={{ fontSize: '115px' }}>{value}+</Heading>
+              {/* <CountUp end={value}> */}
+              {/* <Heading style={{ fontSize: '115px' }}>{value}+</Heading> */}
+              {/* {({ countUpRef, start }) => ( */}
+              {/* <div> */}
+              {/* <span ref={countUpRef} /> */}
+              {/* <button onClick={start}>Start</button> */}
+              {/* </div> */}
+              {/* )} */}
+              {/* </CountUp> */}
               <GreenSquare />
             </div>
             <PrimaryText>{label}</PrimaryText>

@@ -1,5 +1,5 @@
+import { Overline } from '@elements/Typography';
 import Image from 'next/image';
-import { Overline } from '../elements/Typography';
 
 export default function FeaturedPublicity({}) {
   const FEATURED = [
@@ -11,7 +11,9 @@ export default function FeaturedPublicity({}) {
 
   return (
     <div style={{ padding: '76px 196px' }}>
-      <Overline style={{ textAlign: 'center' }}>Featured In</Overline>
+      <Overline style={{ color: '#989898', textAlign: 'center' }}>
+        Featured In
+      </Overline>
       <div
         style={{
           display: 'flex',

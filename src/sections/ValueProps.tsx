@@ -1,12 +1,11 @@
-import styled from 'styled-components';
 import {
   GreenSquare,
   Heading,
   Overline,
   PrimaryText,
   Text,
-} from '../elements/Typography';
-import { SecondaryButton } from '../elements/Buttons';
+} from '@elements/Typography';
+import styled from 'styled-components';
 
 export default function ValueProps({}) {
   const VALUE_PROPS = [
@@ -38,9 +37,9 @@ export default function ValueProps({}) {
 
   return (
     <>
-      <Overline>Why Cityfunds?</Overline>
+      <Overline>You may be wondering...</Overline>
       <Heading>Why Cityfunds?</Heading>
-      <Text>Join our community of thousands.</Text>
+      <Text>We have plenty of reasons.</Text>
 
       <div style={{ display: 'flex', overflowX: 'scroll', padding: '75px 0' }}>
         {VALUE_PROPS.map(({ title, description, link }) => (
@@ -57,7 +56,6 @@ export default function ValueProps({}) {
               {title}
             </PrimaryText>
             <Text>{description}</Text>
-            <SecondaryButton>Learn More</SecondaryButton>
           </CardWrapper>
         ))}
       </div>
@@ -73,4 +71,11 @@ export const CardWrapper = styled.div`
   border-radius: 52px;
   padding: 52px;
   margin-right: 28px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    min-width: 210px;
+    height: 210px;
+    padding: 24px;
+    margin-right: 12px;
+  }
 `;
