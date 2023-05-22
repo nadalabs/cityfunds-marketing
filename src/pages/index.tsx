@@ -1,14 +1,14 @@
+import CitySection from '@sections/CitySection';
+import EmailCapture from '@sections/EmailCapture';
+import FaqsSection from '@sections/FaqsSection';
+import FeaturedPublicity from '@sections/FeaturedPublicity';
+import HeroSection from '@sections/HeroSection';
+import HowItWorks from '@sections/HowItWorks';
+import LocationSection from '@sections/LocationSection';
+import Testimonials from '@sections/Testimonials';
+import ValueProps from '@sections/ValueProps';
 import Head from 'next/head';
 import styled from 'styled-components';
-import HeroSection from '@sections/HeroSection';
-import LocationSection from '@sections/LocationSection';
-import CitySection from '@sections/CitySection';
-import FeaturedPublicity from '@sections/FeaturedPublicity';
-import ValueProps from '@sections/ValueProps';
-import FaqsSection from '@sections/FaqsSection';
-import HowItWorks from '@sections/HowItWorks';
-import Testimonials from '@sections/Testimonials';
-import EmailCapture from '@sections/EmailCapture';
 
 export default function Home() {
   return (
