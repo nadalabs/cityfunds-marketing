@@ -12,7 +12,7 @@ export default function Testimonials({}) {
     dots: false,
     fade: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     speed: 2000,
@@ -58,33 +58,33 @@ export default function Testimonials({}) {
       <Overline>Hear it from our users...</Overline>
       <Slider {...settings}>
         {REVIEWS.map(({ name, text, location }, idx) => (
-          <div>
-          <ContentWrapper key={idx}>
-            <div style={{ maxWidth: '788px', marginRight: '24px' }}>
-              <Heading>"{text}"</Heading>
-              <div style={{ display: 'flex' }}>
-                {REVIEWS.map((_, jdx) => (
-                  <GreenSquare
-                    key={idx}
-                    style={{
-                      backgroundColor: idx !== jdx && 'rgba(2, 1, 1, 0.05)',
-                      marginRight: '8px',
-                    }}
-                  />
-                ))}
+          <div key={idx}>
+            <ContentWrapper>
+              <div style={{ maxWidth: '788px', marginRight: '24px' }}>
+                <Heading>"{text}"</Heading>
+                <div style={{ display: 'flex' }}>
+                  {REVIEWS.map((_, jdx) => (
+                    <GreenSquare
+                      key={jdx}
+                      style={{
+                        backgroundColor: idx !== jdx && 'rgba(2, 1, 1, 0.05)',
+                        marginRight: '8px',
+                      }}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div>
-              <PrimaryText
-                style={{ color: '#48DC95', fontWeight: 600, marginBottom: 0 }}
-              >
-                {name}
-              </PrimaryText>
-              <PrimaryText style={{ color: 'black' }}>{location}</PrimaryText>
-            </div>
-          </ContentWrapper>
-        </div>
+              <div>
+                <PrimaryText
+                  style={{ color: '#48DC95', fontWeight: 600, marginBottom: 0 }}
+                >
+                  {name}
+                </PrimaryText>
+                <PrimaryText style={{ color: 'black' }}>{location}</PrimaryText>
+              </div>
+            </ContentWrapper>
+          </div>
         ))}
       </Slider>
     </SectionWrapper>

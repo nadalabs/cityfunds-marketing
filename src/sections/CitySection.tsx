@@ -1,7 +1,15 @@
 import { GreenSquare, Heading, PrimaryText, Text } from '@elements/Typography';
+import Slider from 'react-slick';
 import styled from 'styled-components';
 
 export default function CitySection({}) {
+  const settings = {
+    dots: false,
+    slidesToShow: 2.5,
+    swipeToSlide: true,
+    infinite: false,
+  };
+
   const CITIES = [
     { name: 'Dallas', imageUrl: '/images/dallas.png', numProperties: 102 },
     { name: 'Austin', imageUrl: '/images/austin.png', numProperties: 102 },
@@ -30,28 +38,27 @@ export default function CitySection({}) {
         cities.
       </PrimaryText>
 
-      <div style={{ display: 'flex', overflowX: 'scroll', width: '100%' }}>
+      <Slider {...settings}>
         {CITIES.map(({ name, imageUrl, numProperties }, idx) => (
-          <CardWrapper
-            key={idx}
-            style={{ backgroundImage: `url(${imageUrl})` }}
-          >
-            <div>
-              <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                <Heading style={{ color: 'white' }}>{name}</Heading>
-                <GreenSquare
-                  style={{ marginLeft: '4px', marginBottom: '18px' }}
-                />
+          <div key={idx}>
+            <CardWrapper style={{ backgroundImage: `url(${imageUrl})` }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+                  <Heading style={{ color: 'white' }}>{name}</Heading>
+                  <GreenSquare
+                    style={{ marginLeft: '4px', marginBottom: '18px' }}
+                  />
+                </div>
+                {numProperties && (
+                  <Text style={{ color: 'white' }}>
+                    {numProperties} Properties
+                  </Text>
+                )}
               </div>
-              {numProperties && (
-                <Text style={{ color: 'white' }}>
-                  {numProperties} Properties
-                </Text>
-              )}
-            </div>
-          </CardWrapper>
+            </CardWrapper>
+          </div>
         ))}
-      </div>
+      </Slider>
     </SectionWrapper>
   );
 }

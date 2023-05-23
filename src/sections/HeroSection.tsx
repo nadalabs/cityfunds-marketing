@@ -25,7 +25,7 @@ export default function HeroSection({}) {
     dots: false,
     fade: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     speed: 2000,
@@ -155,7 +155,7 @@ export default function HeroSection({}) {
                 <div style={{ display: 'flex' }}>
                   {CITIES.map((_, jdx) => (
                     <GreenSquare
-                      key={idx}
+                      key={jdx}
                       style={{
                         backgroundColor: idx !== jdx && '#B0B0B0',
                         marginRight: '8px',

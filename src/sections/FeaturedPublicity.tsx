@@ -25,19 +25,20 @@ export default function FeaturedPublicity({}) {
 }
 
 const SectionWrapper = styled.div`
-  padding: 76px 296px;
+  padding: 76px 156px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 24px;
+    padding: 24px;
   }
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: space-evenly;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
+    align-items: center;
+    height: 400px;
   }
 `;

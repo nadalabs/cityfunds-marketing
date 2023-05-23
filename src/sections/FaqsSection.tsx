@@ -1,13 +1,29 @@
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import { isMobileDevice } from '@utils/helpers';
-import { useState } from 'react';
+import { useRef } from 'react';
+import Slider from 'react-slick';
 import styled from 'styled-components';
 
 export default function FaqsSection({}) {
-  const [active, setActive] = useState(0);
   const isMobile = isMobileDevice();
+  const sliderRef = useRef();
 
-  const STATS = [
+  const handleOnClick = (index) => {
+    // ts-ignore-next-line
+    sliderRef?.current.slickGoTo(index);
+  };
+
+  const settings = {
+    dots: false,
+    fade: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    speed: 1000,
+    cssEase: 'linear',
+  };
+
+  const FAQS = [
     {
       question: 'What is a Cityfund?',
       answer:
@@ -39,34 +55,34 @@ export default function FaqsSection({}) {
     <SectionWrapper>
       <Overline>You may also be wondering...</Overline>
 
-      <div style={{ display: 'flex' }}>
-        <div>
-          {STATS.map(({ question }, idx) => (
-            <>
-              <Heading
-                key={idx}
-                onClick={() => setActive(idx)}
-                style={{
-                  color: idx === active && '#48DC95',
-                  marginBottom: '28px',
-                  cursor: 'pointer',
-                }}
-              >
-                {question}
-              </Heading>
-              {isMobile && active === idx && (
-                <PrimaryText>{STATS[active].answer}</PrimaryText>
-              )}
-            </>
-          ))}
-        </div>
+      <Slider {...settings} ref={sliderRef}>
+        {FAQS.map(({answer}, idx) => (
+          <div key={idx}>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <div>
+                {FAQS.map(({ question, answer }, jdx) => (
+                  <div key={jdx}>
+                    <Heading
+                      onClick={() => handleOnClick(jdx)}
+                      style={{
+                        color: idx === jdx && '#48DC95',
+                        marginBottom: '28px',
+                        cursor: 'pointer',
+                        width: '700px'
+                      }}
+                    >
+                      {question}
+                    </Heading>
+                    {isMobile && idx === jdx && <PrimaryText>{answer}</PrimaryText>}
+                  </div>
+                ))}
+              </div>
 
-        {!isMobile && (
-          <PrimaryText style={{ maxWidth: '500px', marginLeft: '40px' }}>
-            {STATS[active].answer}
-          </PrimaryText>
-        )}
-      </div>
+              {!isMobile && <PrimaryText>{answer}</PrimaryText>}
+            </div>
+          </div>
+        ))}
+      </Slider>
     </SectionWrapper>
   );
 }

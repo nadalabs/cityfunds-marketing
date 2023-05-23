@@ -42,15 +42,13 @@ export default function LocationSection({}) {
         {STATS.map(({ label, value }) => (
           <div key={label}>
             <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-              {/* <CountUp end={value}> */}
-              {/* <Heading style={{ fontSize: '115px' }}>{value}+</Heading> */}
-              {/* {({ countUpRef, start }) => ( */}
-              {/* <div> */}
-              {/* <span ref={countUpRef} /> */}
-              {/* <button onClick={start}>Start</button> */}
-              {/* </div> */}
-              {/* )} */}
-              {/* </CountUp> */}
+              {/* <CountUp end={value}>
+                {({ countUpRef }) => (
+                    <Heading style={{ fontSize: '115px' }}>
+                      <span ref={countUpRef} />+
+                    </Heading>
+                )}
+              </CountUp> */}
               <GreenSquare />
             </div>
             <PrimaryText>{label}</PrimaryText>
@@ -65,7 +63,7 @@ export const SectionWrapper = styled.div`
   padding: 92px 156px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 24px;
+    padding: 24px;
   }
 `;
 

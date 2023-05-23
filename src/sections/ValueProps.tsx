@@ -5,9 +5,17 @@ import {
   PrimaryText,
   Text,
 } from '@elements/Typography';
+import Slider from 'react-slick';
 import styled from 'styled-components';
 
 export default function ValueProps({}) {
+  const settings = {
+    dots: false,
+    slidesToShow: 2.5,
+    swipeToSlide: true,
+    infinite: false,
+  };
+
   const VALUE_PROPS = [
     {
       title: 'Unlocking liquid equity for home owners',
@@ -77,24 +85,26 @@ export default function ValueProps({}) {
       <Heading>Why Cityfunds?</Heading>
       <Text>We have plenty of reasons.</Text>
 
-      <div style={{ display: 'flex', overflowX: 'scroll', padding: '75px 0' }}>
-        {VALUE_PROPS.map(({ title, description }) => (
-          <CardWrapper key={title}>
-            <GreenSquare
-              style={{
-                height: '30px',
-                width: '30px',
-                borderRadius: '7px',
-                marginBottom: '20px',
-              }}
-            />
-            <PrimaryText style={{ color: 'black', fontWeight: 600 }}>
-              {title}
-            </PrimaryText>
-            <Text>{description}</Text>
-          </CardWrapper>
+      <Slider {...settings}>
+        {VALUE_PROPS.map(({ title, description }, idx) => (
+          <div key={idx}>
+            <CardWrapper>
+              <GreenSquare
+                style={{
+                  height: '30px',
+                  width: '30px',
+                  borderRadius: '7px',
+                  marginBottom: '20px',
+                }}
+              />
+              <PrimaryText style={{ color: 'black', fontWeight: 600 }}>
+                {title}
+              </PrimaryText>
+              <Text>{description}</Text>
+            </CardWrapper>
+          </div>
         ))}
-      </div>
+      </Slider>
     </SectionWrapper>
   );
 }
