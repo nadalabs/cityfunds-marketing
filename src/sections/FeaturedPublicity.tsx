@@ -1,5 +1,6 @@
 import { Overline } from '@elements/Typography';
 import Image from 'next/image';
+import styled from 'styled-components';
 
 export default function FeaturedPublicity({}) {
   const FEATURED = [
@@ -10,21 +11,33 @@ export default function FeaturedPublicity({}) {
   ];
 
   return (
-    <div style={{ padding: '76px 196px' }}>
+    <SectionWrapper>
       <Overline style={{ color: '#989898', textAlign: 'center' }}>
         Featured In
       </Overline>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          width: '100%',
-        }}
-      >
+      <ContentWrapper>
         {FEATURED.map(({ name, imageUrl, link }) => (
           <Image key={name} width={145} height={40} alt={name} src={imageUrl} />
         ))}
-      </div>
-    </div>
+      </ContentWrapper>
+    </SectionWrapper>
   );
 }
+
+const SectionWrapper = styled.div`
+  padding: 76px 296px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 24px;
+  }
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+  }
+`;

@@ -20,11 +20,11 @@ export default function CitySection({}) {
   ];
 
   return (
-    <div style={{ padding: '140px 0' }}>
-      <Heading style={{ width: '1100px' }}>
+    <SectionWrapper>
+      <Heading style={{ maxWidth: '1100px' }}>
         Pick your favorite Cityfund, or invest in all of them
       </Heading>
-      <PrimaryText style={{ width: '1130px' }}>
+      <PrimaryText style={{ maxWidth: '1130px' }}>
         Cityfunds is the only investment platform that provides direct access to
         diversified portfolios of owner-occupied homes in the nation’s top
         cities.
@@ -52,9 +52,17 @@ export default function CitySection({}) {
           </CardWrapper>
         ))}
       </div>
-    </div>
+    </SectionWrapper>
   );
 }
+
+export const SectionWrapper = styled.div`
+  padding: 140px 0 0 156px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 24px;
+  }
+`;
 
 export const CardWrapper = styled.div`
   background-size: cover;

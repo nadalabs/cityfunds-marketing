@@ -39,8 +39,8 @@ export default function HowItWorks({}) {
   ];
 
   return (
-    <div style={{ display: 'flex', padding: '204px 0' }}>
-      <div
+    <SectionWrapper>
+      {/* <div
         style={{
           height: '534px',
           minWidth: '534px',
@@ -50,21 +50,19 @@ export default function HowItWorks({}) {
           top: '230px',
           zIndex: -1,
         }}
-      />
+      /> */}
       <Image
         width={350}
         height={700}
         alt={'Phone Screen'}
         src={'/images/phone-screen.png'}
-        style={{ position: 'relative', right: '434px' }}
       />
 
-      <div style={{ position: 'relative', right: '234px' }}>
+      <div style={{ marginLeft: '98px' }}>
         <Overline>Real Estate Investing Simplified</Overline>
         <Heading>How it Works</Heading>
-        <Text>Join our community of thousands.</Text>
 
-        <div style={{ display: 'flex', marginTop: '120px', width: '244px' }}>
+        <div style={{ display: 'flex', marginTop: '80px' }}>
           {STEPS.map(({ title, description }, idx) => (
             <div key={idx} style={{ marginRight: '32px' }}>
               <GreenSquare
@@ -92,8 +90,16 @@ export default function HowItWorks({}) {
           ))}
         </div>
       </div>
-    </div>
+    </SectionWrapper>
   );
 }
 
-export const CardWrapper = styled.div``;
+export const SectionWrapper = styled.div`
+  padding: 204px 156px;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 24px;
+  }
+`;

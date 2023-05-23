@@ -1,4 +1,3 @@
-import { PrimaryButton } from '@elements/Buttons';
 import { FormInput, StyledForm } from '@elements/FormInput';
 import {
   Caption,
@@ -92,13 +91,13 @@ export default function HeroSection({}) {
             src={'/images/altsco.png'}
           />
         </div>
-        {!isMobile && (
+        {/* {!isMobile && (
           <PrimaryButton
             onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
           >
             Get Started
           </PrimaryButton>
-        )}
+        )} */}
       </div>
 
       <div
@@ -170,12 +169,14 @@ export default function HeroSection({}) {
 
 export const HeroImage = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 110vh;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
   display: flex;
   flex-direction: column;
   align-items: space-between;
   justify-content: space-between;
-  padding: 50px 100px;
+  padding: 50px 100px 15vh 100px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 50px 30px;

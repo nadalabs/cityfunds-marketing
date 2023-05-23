@@ -7,6 +7,7 @@ import {
 } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import Image from 'next/image';
+import styled from 'styled-components';
 
 export default function LocationSection({}) {
   const STATS = [
@@ -16,8 +17,8 @@ export default function LocationSection({}) {
   ];
 
   return (
-    <div style={{ padding: '100px 0' }}>
-      <div style={{ display: 'flex', marginBottom: '120px' }}>
+    <SectionWrapper>
+      <ContentWrapper>
         <Image
           width={596}
           height={596}
@@ -38,7 +39,7 @@ export default function LocationSection({}) {
             Get Started
           </PrimaryButton>
         </div>
-      </div>
+      </ContentWrapper>
 
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         {STATS.map(({ label, value }) => (
@@ -59,6 +60,23 @@ export default function LocationSection({}) {
           </div>
         ))}
       </div>
-    </div>
+    </SectionWrapper>
   );
 }
+
+export const SectionWrapper = styled.div`
+  padding: 92px 156px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 24px;
+  }
+`;
+
+export const ContentWrapper = styled.div`
+  display: flex;
+  margin-bottom: 120px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+  }
+`;

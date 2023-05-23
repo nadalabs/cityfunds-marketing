@@ -1,5 +1,6 @@
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import { useState } from 'react';
+import styled from 'styled-components';
 
 export default function FaqsSection({}) {
   const [active, setActive] = useState(0);
@@ -32,7 +33,7 @@ export default function FaqsSection({}) {
   ];
 
   return (
-    <div style={{ padding: '92px 0' }}>
+    <SectionWrapper>
       <Overline>You may also be wondering...</Overline>
 
       <div style={{ display: 'flex' }}>
@@ -55,6 +56,14 @@ export default function FaqsSection({}) {
           <PrimaryText>{STATS[active].answer}</PrimaryText>
         </div>
       </div>
-    </div>
+    </SectionWrapper>
   );
 }
+
+export const SectionWrapper = styled.div`
+  padding: 92px 156px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 24px;
+  }
+`;

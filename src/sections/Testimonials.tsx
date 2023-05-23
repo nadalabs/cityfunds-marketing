@@ -5,6 +5,7 @@ import {
   PrimaryText,
 } from '@elements/Typography';
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 export default function Testimonials({}) {
   const [active, setActive] = useState(0);
@@ -51,10 +52,10 @@ export default function Testimonials({}) {
   ];
 
   return (
-    <div style={{ padding: '92px 0' }}>
+    <SectionWrapper>
       <Overline>Hear it from our users...</Overline>
-      <div style={{ display: 'flex' }}>
-        <div style={{ width: '788px', marginRight: '24px' }}>
+      <ContentWrapper>
+        <div style={{ maxWidth: '788px', marginRight: '24px' }}>
           <Heading>"{REVIEWS[active].text}"</Heading>
           <div style={{ display: 'flex' }}>
             {REVIEWS.map((_, idx) => (
@@ -79,7 +80,23 @@ export default function Testimonials({}) {
             {REVIEWS[active].location}
           </PrimaryText>
         </div>
-      </div>
-    </div>
+      </ContentWrapper>
+    </SectionWrapper>
   );
 }
+
+export const SectionWrapper = styled.div`
+  padding: 92px 156px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 24px;
+  }
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+  }
+`;
