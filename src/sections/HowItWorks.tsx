@@ -7,12 +7,14 @@ import {
   Text,
 } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
+import { isMobileDevice } from '@utils/helpers';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 export default function HowItWorks({}) {
   const [active, setActive] = useState(0);
+  const isMobile = isMobileDevice();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -51,12 +53,14 @@ export default function HowItWorks({}) {
           zIndex: -1,
         }}
       /> */}
-      <Image
-        width={350}
-        height={700}
-        alt={'Phone Screen'}
-        src={'/images/phone-screen.png'}
-      />
+      {!isMobile && (
+        <Image
+          width={350}
+          height={700}
+          alt={'Phone Screen'}
+          src={'/images/phone-screen.png'}
+        />
+      )}
 
       <div style={{ marginLeft: '98px' }}>
         <Overline>Real Estate Investing Simplified</Overline>

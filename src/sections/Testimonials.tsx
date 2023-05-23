@@ -4,19 +4,21 @@ import {
   Overline,
   PrimaryText,
 } from '@elements/Typography';
-import { useEffect, useState } from 'react';
+import Slider from 'react-slick';
 import styled from 'styled-components';
 
 export default function Testimonials({}) {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActive((active + 1) % REVIEWS.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  });
+  const settings = {
+    dots: false,
+    fade: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 5000,
+    cssEase: 'linear',
+  };
 
   const REVIEWS = [
     {
@@ -54,33 +56,37 @@ export default function Testimonials({}) {
   return (
     <SectionWrapper>
       <Overline>Hear it from our users...</Overline>
-      <ContentWrapper>
-        <div style={{ maxWidth: '788px', marginRight: '24px' }}>
-          <Heading>"{REVIEWS[active].text}"</Heading>
-          <div style={{ display: 'flex' }}>
-            {REVIEWS.map((_, idx) => (
-              <GreenSquare
-                key={idx}
-                style={{
-                  backgroundColor: idx !== active && 'rgba(2, 1, 1, 0.05)',
-                  marginRight: '8px',
-                }}
-              />
-            ))}
-          </div>
-        </div>
+      <Slider {...settings}>
+        {REVIEWS.map(({ name, text, location }, idx) => (
+          <div>
+          <ContentWrapper key={idx}>
+            <div style={{ maxWidth: '788px', marginRight: '24px' }}>
+              <Heading>"{text}"</Heading>
+              <div style={{ display: 'flex' }}>
+                {REVIEWS.map((_, jdx) => (
+                  <GreenSquare
+                    key={idx}
+                    style={{
+                      backgroundColor: idx !== jdx && 'rgba(2, 1, 1, 0.05)',
+                      marginRight: '8px',
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
 
-        <div>
-          <PrimaryText
-            style={{ color: '#48DC95', fontWeight: 600, marginBottom: 0 }}
-          >
-            {REVIEWS[active].name}
-          </PrimaryText>
-          <PrimaryText style={{ color: 'black' }}>
-            {REVIEWS[active].location}
-          </PrimaryText>
+            <div>
+              <PrimaryText
+                style={{ color: '#48DC95', fontWeight: 600, marginBottom: 0 }}
+              >
+                {name}
+              </PrimaryText>
+              <PrimaryText style={{ color: 'black' }}>{location}</PrimaryText>
+            </div>
+          </ContentWrapper>
         </div>
-      </ContentWrapper>
+        ))}
+      </Slider>
     </SectionWrapper>
   );
 }

@@ -8,6 +8,8 @@ import LocationSection from '@sections/LocationSection';
 import Testimonials from '@sections/Testimonials';
 import ValueProps from '@sections/ValueProps';
 import Head from 'next/head';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 import styled from 'styled-components';
 
 export default function Home() {

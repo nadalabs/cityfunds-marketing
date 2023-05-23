@@ -1,10 +1,12 @@
 import { FormInput, StyledForm } from '@elements/FormInput';
 import { Heading, Overline, Text } from '@elements/Typography';
+import { isMobileDevice } from '@utils/helpers';
 import Image from 'next/image';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
 export default function EmailCapture({}) {
+  const isMobile = isMobileDevice();
   const methods = useForm<FieldValues>({
     defaultValues: {
       email: '',
@@ -52,12 +54,14 @@ export default function EmailCapture({}) {
         </FormProvider>
       </div>
 
-      <Image
-        width={350}
-        height={700}
-        alt={'Phone Screen'}
-        src={'/images/phone-screen.png'}
-      />
+      {!isMobile && (
+        <Image
+          width={350}
+          height={700}
+          alt={'Phone Screen'}
+          src={'/images/phone-screen.png'}
+        />
+      )}
     </SectionWrapper>
   );
 }

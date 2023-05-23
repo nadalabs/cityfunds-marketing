@@ -1,9 +1,12 @@
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import { isMobileDevice } from '@utils/helpers';
 import { useState } from 'react';
 import styled from 'styled-components';
 
 export default function FaqsSection({}) {
   const [active, setActive] = useState(0);
+  const isMobile = isMobileDevice();
+
   const STATS = [
     {
       question: 'What is a Cityfund?',
@@ -37,24 +40,32 @@ export default function FaqsSection({}) {
       <Overline>You may also be wondering...</Overline>
 
       <div style={{ display: 'flex' }}>
-        <div style={{ width: '60%', marginRight: '40px' }}>
+        <div>
           {STATS.map(({ question }, idx) => (
-            <Heading
-              key={idx}
-              onClick={() => setActive(idx)}
-              style={{
-                color: idx === active && '#48DC95',
-                marginBottom: '28px',
-                cursor: 'pointer',
-              }}
-            >
-              {question}
-            </Heading>
+            <>
+              <Heading
+                key={idx}
+                onClick={() => setActive(idx)}
+                style={{
+                  color: idx === active && '#48DC95',
+                  marginBottom: '28px',
+                  cursor: 'pointer',
+                }}
+              >
+                {question}
+              </Heading>
+              {isMobile && active === idx && (
+                <PrimaryText>{STATS[active].answer}</PrimaryText>
+              )}
+            </>
           ))}
         </div>
-        <div style={{ width: '40%' }}>
-          <PrimaryText>{STATS[active].answer}</PrimaryText>
-        </div>
+
+        {!isMobile && (
+          <PrimaryText style={{ maxWidth: '500px', marginLeft: '40px' }}>
+            {STATS[active].answer}
+          </PrimaryText>
+        )}
       </div>
     </SectionWrapper>
   );

@@ -19,12 +19,9 @@ export default function LocationSection({}) {
   return (
     <SectionWrapper>
       <ContentWrapper>
-        <Image
-          width={596}
-          height={596}
-          alt={`Cover Image`}
-          src={'/images/location.png'}
-        />
+        <div style={{ position: 'relative', width: '100vw' }}>
+          <Image alt={`Cover Image`} src={'/images/location.png'} fill={true} />
+        </div>
         <div style={{ marginLeft: '80px' }}>
           <Overline>Why Cityfunds?</Overline>
           <Heading>Location, Location, Location</Heading>
