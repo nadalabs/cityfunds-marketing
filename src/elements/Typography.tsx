@@ -5,8 +5,8 @@ export const Heading = styled.h1`
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 600;
-  font-size: 75px;
-  line-height: 75px;
+  font-size: 64px;
+  line-height: 64px;
   margin: 0 0 8px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

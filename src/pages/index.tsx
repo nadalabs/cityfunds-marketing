@@ -34,16 +34,14 @@ export default function Home() {
       </Head>
 
       <HeroSection />
-      <PageLayout>
-        <FeaturedPublicity />
-        <CitySection />
-        <LocationSection />
-        <ValueProps />
-        <FaqsSection />
-        <HowItWorks />
-        <Testimonials />
-        <EmailCapture />
-      </PageLayout>
+      <FeaturedPublicity />
+      <CitySection />
+      <LocationSection />
+      <ValueProps />
+      <FaqsSection />
+      <HowItWorks />
+      <Testimonials />
+      <EmailCapture />
     </>
   );
 }
