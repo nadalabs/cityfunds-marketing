@@ -14,3 +14,89 @@ You should speak with your financial advisor, accountant and/or attorney when ev
 Cityfunds is conducting public offerings pursuant to Regulation A, as amended, through the Site and App. The offering circular for Cityfunds is available. Past performance is no guarantee of future results. Investments such as those on the Nada platform are speculative and involve substantial risks to consider before investing, outlined in the respective offering materials and including, but not limited to, illiquidity, lack of diversification and complete loss of capital. Key risks include, but are not limited to, limited operating history, limited diversification, risk of asset damage or theft and lack of voting rights. Also, the adverse economic effects of the COVID-19 pandemic remain unknown and could materially impact this investment. An investment in an offering constitutes only an investment in a particular series and not in Cityfunds or the underlying asset(s). Investors should carefully review the risks located in the respective offering materials for a more comprehensive discussion of risk.
 
 From time to time, Cityfunds will seek to qualify additional series offerings of securities under Regulation A. For offerings that have not yet been qualified, no money or other consideration is being solicited and, if sent in response, will not be accepted. No offer to buy securities of a particular offering can be accepted, and no part of the purchase price can be received until an offering statement filed with the Securities and Exchange Commission (the "SEC") relating to that series has been qualified by the SEC. Any such offer may be withdrawn or revoked, without obligation or commitment of any kind, at any time before notice of acceptance given after the date of qualification by the SEC. An indication of interest involves no obligation or commitment of any kind.`;
+
+export const VALUE_PROPS = [
+  {
+    title: 'Unlocking liquid equity for home owners',
+    description:
+      'Not leveraged against 1 property. Immediate exposure to multiple properties spread across a top city keeping you safe from market movement on a specific home.',
+  },
+  {
+    title: 'Accessibility',
+    description:
+      'No more heavy restrictions. Own homes in costly high demand cities regardless of where you live or your mortgage qualifications.',
+  },
+  {
+    title: 'Diversification',
+    description:
+      'Not leveraged against 1 property. Immediate exposure to multiple properties spread across a top city keeping you safe from market movement on a specific home.',
+  },
+  {
+    title: 'Passive Income',
+    description:
+      'Build a future where your money works for you. You as the savvy investor earn dividends quarterly from earned rental income and home sales.',
+  },
+  {
+    title: 'Liquidity',
+    description:
+      'Don’t give up years of access to your money. Liquidate your funds by trading your shares.',
+  },
+  {
+    title: 'In the Money',
+    description:
+      'No more waiting for growth. Your investments are immediately in the money. All homes are',
+  },
+  {
+    title: 'Low Volatility',
+    description:
+      'No instantaneous spikes or drops like stocks. Real estate is the most stable asset class with the',
+  },
+  {
+    title: 'Aligned',
+    description:
+      'No solo work. We’re a team with vested interest in these same properties as you. We acquire ',
+  },
+  {
+    title: 'Professionally Managed',
+    description:
+      'Your investments are managed for you by a team of veterans with 20+ years of experience.',
+  },
+  {
+    title: 'Hassle Free',
+    description:
+      'No heavy lifting. You invest and Nada handles the rest…from market research, property',
+  },
+  {
+    title: '‍Inflation Protection',
+    description:
+      'Don’t lose the value of your dollar. Build an iron wall of protection by investing in real',
+  },
+  {
+    title: 'No Personal Liability Risk',
+    description:
+      'No added debt. Our series LLC business structure protects you from being directly related to ',
+  },
+];
+
+export const OUR_VALUES = [
+  {
+    title: 'Passionate',
+    description:
+      'We find meaning in what we do by understanding why we are doing it. We fully embrace change and strive to inspire internally and externally with our insights and initiative.',
+  },
+  {
+    title: 'Bold',
+    description:
+      'We think without the restrictions of how things have always been done. We embrace big problems in a big industry and we are not afraid to create solutions that may change the world.',
+  },
+  {
+    title: 'Customer Obsessed',
+    description:
+      'We create experiences, not transactions. We are deeply focused on solving our customers’ problems and we constantly seek customer feedback.',
+  },
+  {
+    title: 'Authentic',
+    description:
+      'We embrace who we are. We break down artificial barriers and build trust-based relationships. We strive to be transparent in delivering the good, the bad, and the ugly.',
+  },
+];

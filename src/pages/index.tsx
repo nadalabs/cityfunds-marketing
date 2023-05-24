@@ -1,5 +1,5 @@
 import Footer from '@components/Footer';
-import CitySection from '@sections/CardSlider';
+import CardSlider from '@sections/CardSlider';
 import FaqsSection from '@sections/FaqsSection';
 import FeaturedPublicity from '@sections/FeaturedPublicity';
 import HowItWorks from '@sections/HowItWorks';
@@ -8,6 +8,7 @@ import PageHero from '@sections/PageHero';
 import PublisherCTA from '@sections/PublisherCTA';
 import Testimonials from '@sections/Testimonials';
 import ValueProps from '@sections/ValueProps';
+import { VALUE_PROPS } from '@utils/constants';
 
 export default function HomePage() {
   return (
@@ -39,13 +40,41 @@ export default function HomePage() {
         ]}
       />
       <FeaturedPublicity />
-      <CitySection />
+      <CardSlider
+        heading="Pick your favorite Cityfund, or invest in all of them"
+        primaryText={
+          'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
+        }
+        cards={[
+          {
+            title: 'Dallas',
+            description: '',
+            imageUrl: '/images/dallas.png',
+          },
+          {
+            title: 'Austin',
+            description: '',
+            imageUrl: '/images/austin.png',
+          },
+          { title: 'Miami', description: '', imageUrl: '/images/miami.png' },
+          { title: 'Tampa', description: '', imageUrl: '/images/tampa.png' },
+          {
+            title: 'Coming Soon',
+            imageUrl: '/images/coming-soon-1.png',
+          },
+          {
+            title: 'Coming Soon',
+            imageUrl: '/images/coming-soon-2.png',
+          },
+        ]}
+      />
       <KeyMetrics
         overline="Why Cityfunds?"
         heading="Location, Location, Location"
         primaryText="Investing in real estate is all about location, yet the increased
             cost of living have made desirable places unaffordable. Now, owning
             real estate in your favorite city takes less than 5 minutes."
+        imageUrl="/images/location.png"
         metrics={[
           {
             label: 'Total Investors',
@@ -65,7 +94,12 @@ export default function HomePage() {
           },
         ]}
       />
-      <ValueProps />
+      <ValueProps
+        overline="Our Values"
+        heading="How We Think"
+        primaryText="We have plenty of reasons."
+        valueProps={VALUE_PROPS}
+      />
       <FaqsSection />
       <HowItWorks />
       <Testimonials />

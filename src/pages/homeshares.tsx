@@ -12,16 +12,17 @@ export default function HomeSharesPage() {
         heading="Unlock Home Equity with No Debt or Monthly Payments"
         primaryText="Trade in fractions of your home equity for cash and spend it on everyday items. Apply below and one of our home equity specialists will reach out."
         heroImages={[
-            {
-              name: 'Homeshares',
-              imageUrl: '/images/homeshares-hero.png',
-            },
-          ]}
+          {
+            name: 'Homeshares',
+            imageUrl: '/images/homeshares-hero.png',
+          },
+        ]}
       />
       <KeyMetrics
         overline="Build Your Real Estate Wealth"
         heading="Making homeownership accessible."
         primaryText="Investing in real estate is all about location, yet the increased cost of living have made desirable places unaffordable. Now, owning real estate in your favorite city takes less than 5 minutes."
+        imageUrl="/images/homeshares.png"
         metrics={[
           {
             label: 'Average amount unlocked',
