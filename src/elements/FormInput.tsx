@@ -96,7 +96,6 @@ const StyledInput = styled.input`
   box-sizing: border-box;
   margin-bottom: 1rem;
   color: #989898;
-  width: 666px;
   height: 56px;
 
   &:focus {
@@ -119,7 +118,7 @@ export const FormWrapper = styled.div`
   border: 1px solid #e7e7e7;
   box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  max-width: 400px;
+  /* max-width: 400px; */
   width: 100%;
   text-align: center;
   padding: 60px;

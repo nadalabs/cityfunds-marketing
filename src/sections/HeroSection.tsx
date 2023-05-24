@@ -97,7 +97,7 @@ export default function HeroSection({}) {
                 <EmailCapture />
               </ContentWrapper>
 
-              <div>
+              {!isMobile && (<div>
                 <Text style={{ color: 'white', marginBottom: 0 }}>{name}</Text>
                 <Text style={{ color: '#B0B0B0', marginBottom: '8px' }}>
                   {numProperties} Properties
@@ -113,7 +113,7 @@ export default function HeroSection({}) {
                     />
                   ))}
                 </div>
-              </div>
+              </div>)}
             </div>
           </HeroImage>
         </div>
