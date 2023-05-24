@@ -1,14 +1,12 @@
-import { PrimaryButton } from '@elements/Buttons';
+import Header from '@components/Header';
 import { GreenSquare, Heading, PrimaryText, Text } from '@elements/Typography';
-import { EXTERNAL_ROUTES } from '@utils/constants';
 import { isMobileDevice } from '@utils/helpers';
-import Image from 'next/image';
 import Slider from 'react-slick';
 import EmailCapture from 'src/components/EmailCapture';
 import styled from 'styled-components';
 
 export default function HeroSection({}) {
-  const isMobile = isMobileDevice()
+  const isMobile = isMobileDevice();
   const CITIES = [
     { name: 'Dallas', imageUrl: '/images/dallas-hero.png', numProperties: 10 },
     { name: 'Austin', imageUrl: '/images/austin-hero.png', numProperties: 10 },
@@ -43,42 +41,7 @@ export default function HeroSection({}) {
               url(${imageUrl})`,
             }}
           >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
-            >
-              <div style={{ display: 'flex' }}>
-                <Image
-                  width={125}
-                  height={30}
-                  alt={'Cityfunds'}
-                  src={'/images/cityfunds.png'}
-                />
-                <hr
-                  style={{
-                    width: '1px',
-                    height: '30px',
-                    display: 'inline-block',
-                    margin: '0 24px',
-                  }}
-                />
-                <Image
-                  width={125}
-                  height={30}
-                  alt={'Altsco'}
-                  src={'/images/altsco.png'}
-                />
-              </div>
-              {!isMobile && (<PrimaryButton
-                onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
-              >
-                Get Started
-              </PrimaryButton>)}
-            </div>
-
+            <Header partnerImage="/images/altsco.png" />
             <div
               style={{
                 display: 'flex',
@@ -97,23 +60,27 @@ export default function HeroSection({}) {
                 <EmailCapture />
               </ContentWrapper>
 
-              {!isMobile && (<div>
-                <Text style={{ color: 'white', marginBottom: 0 }}>{name}</Text>
-                <Text style={{ color: '#B0B0B0', marginBottom: '8px' }}>
-                  {numProperties} Properties
-                </Text>
-                <div style={{ display: 'flex' }}>
-                  {CITIES.map((_, jdx) => (
-                    <GreenSquare
-                      key={jdx}
-                      style={{
-                        backgroundColor: idx !== jdx && '#B0B0B0',
-                        marginRight: '8px',
-                      }}
-                    />
-                  ))}
+              {!isMobile && (
+                <div>
+                  <Text style={{ color: 'white', marginBottom: 0 }}>
+                    {name}
+                  </Text>
+                  <Text style={{ color: '#B0B0B0', marginBottom: '8px' }}>
+                    {numProperties} Properties
+                  </Text>
+                  <div style={{ display: 'flex' }}>
+                    {CITIES.map((_, jdx) => (
+                      <GreenSquare
+                        key={jdx}
+                        style={{
+                          backgroundColor: idx !== jdx && '#B0B0B0',
+                          marginRight: '8px',
+                        }}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>)}
+              )}
             </div>
           </HeroImage>
         </div>

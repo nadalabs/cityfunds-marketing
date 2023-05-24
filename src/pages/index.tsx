@@ -1,3 +1,4 @@
+import Footer from '@components/Footer';
 import CitySection from '@sections/CitySection';
 import FaqsSection from '@sections/FaqsSection';
 import FeaturedPublicity from '@sections/FeaturedPublicity';
@@ -10,7 +11,6 @@ import ValueProps from '@sections/ValueProps';
 import Head from 'next/head';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import styled from 'styled-components';
 
 export default function Home() {
   return (
@@ -44,14 +44,7 @@ export default function Home() {
       <HowItWorks />
       <Testimonials />
       <PublisherCTA />
+      <Footer />
     </>
   );
 }
-
-export const PageLayout = styled.div`
-  margin: 0 156px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin: 0 24px;
-  }
-`;
