@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import { urlForImage } from '../lib/sanity';
 import ErrorPage from 'next/error';
-import Layout from './layout';
 import Container from './container';
 import Header from './header';
 import PostTitle from './post-title';
@@ -23,7 +22,6 @@ export default function Post({ data = {}, preview = false }) {
   }
 
   return (
-    <Layout preview={preview}>
       <Container>
         <Header />
         {router.isFallback ? (
@@ -60,6 +58,5 @@ export default function Post({ data = {}, preview = false }) {
           </>
         )}
       </Container>
-    </Layout>
   );
 }

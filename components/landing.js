@@ -1,23 +1,19 @@
-import Layout from './layout';
 import Head from 'next/head';
 import { CMS_NAME } from '../lib/constants';
 import Container from './container';
-import Intro from './intro';
-import HeroPost from './hero-post';
+import BlogHero from '../src/sections/BlogHero';
 import MoreStories from './more-stories';
 
 export default function Landing({ allPosts, preview }) {
   const [heroPost, ...morePosts] = allPosts || [];
   return (
     <>
-      <Layout preview={preview}>
         <Head>
           <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
         </Head>
         <Container>
-          <Intro />
           {heroPost && (
-            <HeroPost
+            <BlogHero
               title={heroPost.title}
               coverImage={heroPost.coverImage}
               date={heroPost.date}
@@ -28,7 +24,6 @@ export default function Landing({ allPosts, preview }) {
           )}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </Container>
-      </Layout>
     </>
   );
 }
