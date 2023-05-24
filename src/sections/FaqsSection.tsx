@@ -9,7 +9,7 @@ export default function FaqsSection({}) {
   const sliderRef = useRef();
 
   const handleOnClick = (index) => {
-    // ts-ignore-next-line
+    // @ts-ignore-next-line
     sliderRef?.current.slickGoTo(index);
   };
 

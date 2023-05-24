@@ -51,8 +51,8 @@ export default function HowItWorks({}) {
         <Overline>Real Estate Investing Simplified</Overline>
         <Heading>How it Works</Heading>
 
-          <Slider {...settings}>
-            <div>
+        <Slider {...settings}>
+          <div>
             {STEPS.map((_, idx) => (
               <div key={idx}>
                 <div style={{ display: 'flex' }}>
@@ -88,8 +88,8 @@ export default function HowItWorks({}) {
                 </div>
               </div>
             ))}
-            </div>
-          </Slider>
+          </div>
+        </Slider>
       </ContentWrapper>
     </SectionWrapper>
   );

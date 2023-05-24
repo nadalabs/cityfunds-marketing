@@ -13,7 +13,7 @@ export default function PublisherCTA({}) {
         <Overline>Exclusive Perk for Alts.co Readers </Overline>
         <Heading>Invest $1,000</Heading>
         <Heading style={{ color: '#48DC95' }}>Get $100</Heading>
-        <Text style={{  marginBottom: '8px' }}>
+        <Text style={{ marginBottom: '8px' }}>
           Homeowner or not, call yourself a real estate investor today. As an
           added bonus get a free $100* when you invest $1000 in any city.
         </Text>
@@ -27,7 +27,7 @@ export default function PublisherCTA({}) {
 }
 
 export const SectionWrapper = styled.div`
-  padding: 76px 156px;
+  padding: 76px 156px 147px 156px;
   display: flex;
   align-items: center;
 

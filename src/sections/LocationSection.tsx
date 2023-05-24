@@ -14,14 +14,14 @@ const CountUp = dynamic(() => import('react-countup'), { ssr: false });
 
 export default function LocationSection({}) {
   const STATS = [
-    { label: 'Total Investors', value: 7000,  formattingFn: (val) => `${val}+`, },
+    { label: 'Total Investors', value: 7000, formattingFn: (val) => `${val}+` },
     {
       label: 'Total Invested',
       value: 1.8,
       decimals: 1,
       formattingFn: (val) => `$${val}M`,
     },
-    { label: 'Properties Funded', value: 60 , formattingFn: (val) => `${val}+`,},
+    { label: 'Properties Funded', value: 60, formattingFn: (val) => `${val}+` },
   ];
 
   return (
@@ -57,7 +57,10 @@ export default function LocationSection({}) {
                 formattingFn={formattingFn}
                 decimals={decimals}
               >
-                {({ countUpRef }) => <Heading style={{marginBottom: 0}} ref={countUpRef} />}
+                {({ countUpRef }) => (
+                  // @ts-ignore-next-line
+                  <Heading style={{ marginBottom: 0 }} ref={countUpRef} />
+                )}
               </CountUp>
               <GreenSquare />
             </div>
