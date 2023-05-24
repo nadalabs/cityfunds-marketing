@@ -56,7 +56,7 @@ export default function FaqsSection({}) {
       <Overline>You may also be wondering...</Overline>
 
       <Slider {...settings} ref={sliderRef}>
-        {FAQS.map(({answer}, idx) => (
+        {FAQS.map(({ answer }, idx) => (
           <div key={idx}>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div>
@@ -68,12 +68,14 @@ export default function FaqsSection({}) {
                         color: idx === jdx && '#48DC95',
                         marginBottom: '28px',
                         cursor: 'pointer',
-                        width: '700px'
+                        width: '700px',
                       }}
                     >
                       {question}
                     </Heading>
-                    {isMobile && idx === jdx && <PrimaryText>{answer}</PrimaryText>}
+                    {isMobile && idx === jdx && (
+                      <PrimaryText>{answer}</PrimaryText>
+                    )}
                   </div>
                 ))}
               </div>

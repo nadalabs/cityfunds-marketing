@@ -118,7 +118,7 @@ export const SectionWrapper = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-  min-width: 450px;
+  width: 450px;
   height: 450px;
   background: #ffffff;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);

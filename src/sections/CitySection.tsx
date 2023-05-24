@@ -73,10 +73,9 @@ export const SectionWrapper = styled.div`
 
 export const CardWrapper = styled.div`
   background-size: cover;
-  min-width: 450px;
+  width: 450px;
   height: 450px;
   padding: 40px;
-  margin-right: 28px;
   display: flex;
   align-items: flex-end;
 

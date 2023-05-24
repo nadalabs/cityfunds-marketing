@@ -8,8 +8,8 @@ import {
 } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { isMobileDevice } from '@utils/helpers';
-import Image from 'next/image';
 import Slider from 'react-slick';
+import PhoneScreen from 'src/components/PhoneScreen';
 import styled from 'styled-components';
 
 export default function HowItWorks({}) {
@@ -45,28 +45,7 @@ export default function HowItWorks({}) {
 
   return (
     <SectionWrapper>
-      {!isMobile && (
-        <div style={{ display: 'flex', flexDirection: 'column', width: '35%' }}>
-          <div
-            style={{
-              height: '534px',
-              minWidth: '534px',
-              backgroundColor: '#48DC95',
-              borderRadius: '120px',
-              zIndex: -1,
-            }}
-          />
-
-          <div style={{ position: 'relative', left: '100px', bottom: '770px' }}>
-            <Image
-              width={350}
-              height={700}
-              alt={'Phone Screen'}
-              src={'/images/phone-screen.png'}
-            />
-          </div>
-        </div>
-      )}
+      {!isMobile && <PhoneScreen />}
 
       <ContentWrapper>
         <Overline>Real Estate Investing Simplified</Overline>
@@ -118,9 +97,8 @@ export default function HowItWorks({}) {
 
 export const SectionWrapper = styled.div`
   padding: 204px 156px;
-  /* display: flex;
-  align-items: center; */
   width: 100%;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0 24px;
   }
