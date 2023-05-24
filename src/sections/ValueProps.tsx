@@ -8,7 +8,19 @@ import {
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-export default function ValueProps({}) {
+interface ValuePropsProps {
+  overline: string;
+  heading: string;
+  primaryText: string;
+  valueProps: { title; description }[];
+}
+
+export default function ValueProps({
+  overline,
+  heading,
+  primaryText,
+  valueProps,
+}: ValuePropsProps) {
   const settings = {
     dots: false,
     slidesToShow: 2.5,
@@ -16,77 +28,14 @@ export default function ValueProps({}) {
     infinite: false,
   };
 
-  const VALUE_PROPS = [
-    {
-      title: 'Unlocking liquid equity for home owners',
-      description:
-        'Not leveraged against 1 property. Immediate exposure to multiple properties spread across a top city keeping you safe from market movement on a specific home.',
-    },
-    {
-      title: 'Accessibility',
-      description:
-        'No more heavy restrictions. Own homes in costly high demand cities regardless of where you live or your mortgage qualifications.',
-    },
-    {
-      title: 'Diversification',
-      description:
-        'Not leveraged against 1 property. Immediate exposure to multiple properties spread across a top city keeping you safe from market movement on a specific home.',
-    },
-    {
-      title: 'Passive Income',
-      description:
-        'Build a future where your money works for you. You as the savvy investor earn dividends quarterly from earned rental income and home sales.',
-    },
-    {
-      title: 'Liquidity',
-      description:
-        'Don’t give up years of access to your money. Liquidate your funds by trading your shares.',
-    },
-    {
-      title: 'In the Money',
-      description:
-        'No more waiting for growth. Your investments are immediately in the money. All homes are',
-    },
-    {
-      title: 'Low Volatility',
-      description:
-        'No instantaneous spikes or drops like stocks. Real estate is the most stable asset class with the',
-    },
-    {
-      title: 'Aligned',
-      description:
-        'No solo work. We’re a team with vested interest in these same properties as you. We acquire ',
-    },
-    {
-      title: 'Professionally Managed',
-      description:
-        'Your investments are managed for you by a team of veterans with 20+ years of experience.',
-    },
-    {
-      title: 'Hassle Free',
-      description:
-        'No heavy lifting. You invest and Nada handles the rest…from market research, property',
-    },
-    {
-      title: '‍Inflation Protection',
-      description:
-        'Don’t lose the value of your dollar. Build an iron wall of protection by investing in real',
-    },
-    {
-      title: 'No Personal Liability Risk',
-      description:
-        'No added debt. Our series LLC business structure protects you from being directly related to ',
-    },
-  ];
-
   return (
     <SectionWrapper>
-      <Overline>You may be wondering...</Overline>
-      <Heading>Why Cityfunds?</Heading>
-      <Text>We have plenty of reasons.</Text>
+      <Overline>{overline}</Overline>
+      <Heading>{heading}</Heading>
+      <Text>{primaryText}</Text>
 
       <Slider {...settings}>
-        {VALUE_PROPS.map(({ title, description }, idx) => (
+        {valueProps.map(({ title, description }, idx) => (
           <div key={idx}>
             <CardWrapper>
               <GreenSquare

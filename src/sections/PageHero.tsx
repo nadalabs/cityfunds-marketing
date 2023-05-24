@@ -8,7 +8,7 @@ import styled from 'styled-components';
 interface PageHeroProps {
   heading: string;
   primaryText: string;
-  heroImages: [{name: string, imageUrl: string, numProperties?: number }];
+  heroImages: { name: string; imageUrl: string; numProperties?: number }[];
   partnerImage?: string;
 }
 

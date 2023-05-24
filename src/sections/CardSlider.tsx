@@ -2,7 +2,17 @@ import { GreenSquare, Heading, PrimaryText, Text } from '@elements/Typography';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-export default function CardSlider({}) {
+interface CardSliderProps {
+  heading: string;
+  primaryText: string;
+  cards: { title: string; description?: string; imageUrl: string }[];
+}
+
+export default function CardSlider({
+  heading,
+  primaryText,
+  cards,
+}: CardSliderProps) {
   const settings = {
     dots: false,
     slidesToShow: 2.5,
@@ -10,49 +20,24 @@ export default function CardSlider({}) {
     infinite: false,
   };
 
-  const CITIES = [
-    { name: 'Dallas', imageUrl: '/images/dallas.png', numProperties: 102 },
-    { name: 'Austin', imageUrl: '/images/austin.png', numProperties: 102 },
-    { name: 'Miami', imageUrl: '/images/miami.png', numProperties: 102 },
-    { name: 'Tampa', imageUrl: '/images/tampa.png', numProperties: 102 },
-    {
-      name: 'Coming Soon',
-      imageUrl: '/images/coming-soon-1.png',
-      numProperties: 0,
-    },
-    {
-      name: 'Coming Soon',
-      imageUrl: '/images/coming-soon-2.png',
-      numProperties: 0,
-    },
-  ];
-
   return (
     <SectionWrapper>
-      <Heading style={{ maxWidth: '1100px' }}>
-        Pick your favorite Cityfund, or invest in all of them
-      </Heading>
-      <PrimaryText style={{ maxWidth: '1130px' }}>
-        Cityfunds is the only investment platform that provides direct access to
-        diversified portfolios of owner-occupied homes in the nation’s top
-        cities.
-      </PrimaryText>
+      <Heading style={{ maxWidth: '1100px' }}>{heading}</Heading>
+      <PrimaryText style={{ maxWidth: '1130px' }}>{primaryText}</PrimaryText>
 
       <Slider {...settings}>
-        {CITIES.map(({ name, imageUrl, numProperties }, idx) => (
+        {cards.map(({ title, description, imageUrl }, idx) => (
           <div key={idx}>
             <CardWrapper style={{ backgroundImage: `url(${imageUrl})` }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                  <Heading style={{ color: 'white' }}>{name}</Heading>
+                  <Heading style={{ color: 'white' }}>{title}</Heading>
                   <GreenSquare
                     style={{ marginLeft: '4px', marginBottom: '18px' }}
                   />
                 </div>
-                {numProperties && (
-                  <Text style={{ color: 'white' }}>
-                    {numProperties} Properties
-                  </Text>
+                {description && (
+                  <Text style={{ color: 'white' }}>{description}</Text>
                 )}
               </div>
             </CardWrapper>

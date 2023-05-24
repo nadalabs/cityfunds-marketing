@@ -16,6 +16,7 @@ interface KeyMetricsProps {
   overline: string;
   heading: string;
   primaryText: string;
+  imageUrl: string;
   metrics: any[];
 }
 
@@ -23,14 +24,13 @@ export default function KeyMetrics({
   overline,
   heading,
   primaryText,
+  imageUrl,
   metrics,
 }: KeyMetricsProps) {
   return (
     <SectionWrapper>
       <ContentWrapper>
-        <div style={{ position: 'relative', width: '100vw' }}>
-          <Image alt={`Cover Image`} src={'/images/location.png'} fill={true} />
-        </div>
+        <Image src={imageUrl} alt={heading} height={596} width={596} />
         <div style={{ marginLeft: '80px' }}>
           <Overline>{overline}</Overline>
           <Heading>{heading}</Heading>
