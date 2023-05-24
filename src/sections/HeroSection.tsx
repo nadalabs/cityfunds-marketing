@@ -5,7 +5,11 @@ import Slider from 'react-slick';
 import EmailCapture from 'src/components/EmailCapture';
 import styled from 'styled-components';
 
-export default function HeroSection({}) {
+interface HeroProps {
+  partnerImage?: string;
+}
+
+export default function HeroSection({partnerImage}: HeroProps) {
   const isMobile = isMobileDevice();
   const CITIES = [
     { name: 'Dallas', imageUrl: '/images/dallas-hero.png', numProperties: 10 },
@@ -41,7 +45,7 @@ export default function HeroSection({}) {
               url(${imageUrl})`,
             }}
           >
-            <Header partnerImage="/images/altsco.png" />
+            <Header partnerImage={partnerImage} />
             <div
               style={{
                 display: 'flex',

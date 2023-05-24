@@ -16,11 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "@elements/*": ["src/elements/*"],
+      "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@sections/*": ["src/sections/*"],
       "@utils/*": ["src/utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js", "src/pages/partners/[slug].js"],
   "exclude": ["node_modules"]
 }
