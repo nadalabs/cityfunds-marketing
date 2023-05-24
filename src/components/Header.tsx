@@ -3,6 +3,7 @@ import { Text } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { isMobileDevice } from '@utils/helpers';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface HeaderProps {
   partnerImage?: string;
@@ -44,12 +45,14 @@ export default function Header({ partnerImage }: HeaderProps) {
           <Image width={125} height={30} alt={'Altsco'} src={partnerImage} />
         </div>
       ) : (
-        <Image
-          width={222}
-          height={64}
-          alt={'Nada'}
-          src={'/icons/nada-light.svg'}
-        />
+        <Link href={`/`}>
+          <Image
+            width={222}
+            height={64}
+            alt={'Nada'}
+            src={'/icons/nada-light.svg'}
+          />
+        </Link>
       )}
 
       <div>
@@ -64,9 +67,11 @@ export default function Header({ partnerImage }: HeaderProps) {
           : !isMobile && (
               <div style={{ display: 'flex' }}>
                 {NAV_LINKS.map(({ name, link }, idx) => (
-                  <Text style={{ color: 'white', marginRight: '24px' }}>
-                    {name.toUpperCase()}
-                  </Text>
+                  <Link href={`/${name.toLowerCase()}`}>
+                    <Text style={{ color: 'white', marginRight: '24px' }}>
+                      {name.toUpperCase()}
+                    </Text>
+                  </Link>
                 ))}
 
                 <PrimaryButton
