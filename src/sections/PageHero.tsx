@@ -5,19 +5,20 @@ import Slider from 'react-slick';
 import EmailCapture from 'src/components/EmailCapture';
 import styled from 'styled-components';
 
-interface HeroProps {
+interface PageHeroProps {
+  heading: string;
+  primaryText: string;
+  heroImages: [{name: string, imageUrl: string, numProperties?: number }];
   partnerImage?: string;
 }
 
-export default function HeroSection({partnerImage}: HeroProps) {
+export default function PageHero({
+  heading,
+  primaryText,
+  heroImages,
+  partnerImage,
+}: PageHeroProps) {
   const isMobile = isMobileDevice();
-  const CITIES = [
-    { name: 'Dallas', imageUrl: '/images/dallas-hero.png', numProperties: 10 },
-    { name: 'Austin', imageUrl: '/images/austin-hero.png', numProperties: 10 },
-    { name: 'Miami', imageUrl: '/images/miami-hero.png', numProperties: 10 },
-    { name: 'Tampa', imageUrl: '/images/tampa-hero.png', numProperties: 10 },
-  ];
-
   const settings = {
     dots: false,
     fade: true,
@@ -32,7 +33,7 @@ export default function HeroSection({partnerImage}: HeroProps) {
 
   return (
     <Slider {...settings}>
-      {CITIES.map(({ name, numProperties, imageUrl }, idx) => (
+      {heroImages.map(({ name, numProperties, imageUrl }, idx) => (
         <div key={idx}>
           <HeroImage
             style={{
@@ -54,17 +55,14 @@ export default function HeroSection({partnerImage}: HeroProps) {
               }}
             >
               <ContentWrapper>
-                <Heading style={{ color: 'white' }}>
-                  Own a Piece of Your Favorite City
-                </Heading>
+                <Heading style={{ color: 'white' }}>{heading}</Heading>
                 <PrimaryText style={{ color: '#B0B0B0' }}>
-                  Diversified real estate portfolios with passive income in the
-                  nation's top cities.
+                  {primaryText}
                 </PrimaryText>
                 <EmailCapture />
               </ContentWrapper>
 
-              {!isMobile && (
+              {!isMobile && heroImages.length > 1 && (
                 <div>
                   <Text style={{ color: 'white', marginBottom: 0 }}>
                     {name}
@@ -73,7 +71,7 @@ export default function HeroSection({partnerImage}: HeroProps) {
                     {numProperties} Properties
                   </Text>
                   <div style={{ display: 'flex' }}>
-                    {CITIES.map((_, jdx) => (
+                    {heroImages.map((_, jdx) => (
                       <GreenSquare
                         key={jdx}
                         style={{
