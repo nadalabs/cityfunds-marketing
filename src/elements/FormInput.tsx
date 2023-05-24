@@ -97,6 +97,7 @@ const StyledInput = styled.input`
   margin-bottom: 1rem;
   color: #989898;
   width: 666px;
+  height: 56px;
 
   &:focus {
     border-color: ${({ theme }) => theme.colors.secondary};

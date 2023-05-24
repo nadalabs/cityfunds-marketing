@@ -1,12 +1,14 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { GreenSquare, Heading, PrimaryText, Text } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
+import { isMobileDevice } from '@utils/helpers';
 import Image from 'next/image';
 import Slider from 'react-slick';
 import EmailCapture from 'src/components/EmailCapture';
 import styled from 'styled-components';
 
 export default function HeroSection({}) {
+  const isMobile = isMobileDevice()
   const CITIES = [
     { name: 'Dallas', imageUrl: '/images/dallas-hero.png', numProperties: 10 },
     { name: 'Austin', imageUrl: '/images/austin-hero.png', numProperties: 10 },
@@ -70,11 +72,11 @@ export default function HeroSection({}) {
                   src={'/images/altsco.png'}
                 />
               </div>
-              <PrimaryButton
+              {!isMobile && (<PrimaryButton
                 onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
               >
                 Get Started
-              </PrimaryButton>
+              </PrimaryButton>)}
             </div>
 
             <div

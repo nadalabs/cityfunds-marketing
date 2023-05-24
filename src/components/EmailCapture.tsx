@@ -27,7 +27,7 @@ export default function EmailCapture({}) {
   return (
     <FormProvider {...methods}>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           <FormInput
             name="email"
             rules={{

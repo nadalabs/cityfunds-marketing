@@ -51,8 +51,8 @@ export default function HowItWorks({}) {
         <Overline>Real Estate Investing Simplified</Overline>
         <Heading>How it Works</Heading>
 
-        <div style={{ width: '100%' }}>
           <Slider {...settings}>
+            <div>
             {STEPS.map((_, idx) => (
               <div key={idx}>
                 <div style={{ display: 'flex' }}>
@@ -88,8 +88,8 @@ export default function HowItWorks({}) {
                 </div>
               </div>
             ))}
+            </div>
           </Slider>
-        </div>
       </ContentWrapper>
     </SectionWrapper>
   );
@@ -97,7 +97,7 @@ export default function HowItWorks({}) {
 
 export const SectionWrapper = styled.div`
   padding: 204px 156px;
-  width: 100%;
+  display: flex;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0 24px;

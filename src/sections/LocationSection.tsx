@@ -6,14 +6,22 @@ import {
   PrimaryText,
 } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import styled from 'styled-components';
 
+const CountUp = dynamic(() => import('react-countup'), { ssr: false });
+
 export default function LocationSection({}) {
   const STATS = [
-    { label: 'Total Investors', value: 7000 },
-    { label: 'Total Invested', value: 1.8 },
-    { label: 'Properties Funded', value: 60 },
+    { label: 'Total Investors', value: 7000,  formattingFn: (val) => `${val}+`, },
+    {
+      label: 'Total Invested',
+      value: 1.8,
+      decimals: 1,
+      formattingFn: (val) => `$${val}M`,
+    },
+    { label: 'Properties Funded', value: 60 , formattingFn: (val) => `${val}+`,},
   ];
 
   return (
@@ -38,23 +46,25 @@ export default function LocationSection({}) {
         </div>
       </ContentWrapper>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        {STATS.map(({ label, value }) => (
+      <CounterWrapper>
+        {STATS.map(({ label, value, formattingFn, decimals }) => (
           <div key={label}>
             <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-              {/* <CountUp end={value}>
-                {({ countUpRef }) => (
-                    <Heading style={{ fontSize: '115px' }}>
-                      <span ref={countUpRef} />+
-                    </Heading>
-                )}
-              </CountUp> */}
+              <CountUp
+                end={value}
+                enableScrollSpy
+                scrollSpyDelay={100}
+                formattingFn={formattingFn}
+                decimals={decimals}
+              >
+                {({ countUpRef }) => <Heading style={{marginBottom: 0}} ref={countUpRef} />}
+              </CountUp>
               <GreenSquare />
             </div>
             <PrimaryText>{label}</PrimaryText>
           </div>
         ))}
-      </div>
+      </CounterWrapper>
     </SectionWrapper>
   );
 }
@@ -70,6 +80,15 @@ export const SectionWrapper = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
   margin-bottom: 120px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+  }
+`;
+
+export const CounterWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;

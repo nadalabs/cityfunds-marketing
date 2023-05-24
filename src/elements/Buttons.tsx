@@ -13,7 +13,7 @@ export const PrimaryButton = styled.button`
   text-align: center;
   border-radius: 8px;
   height: 44px;
-  padding: 0 20px;
+  width: 158px;
   cursor: pointer;
   border: none;
 

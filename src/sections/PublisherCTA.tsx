@@ -27,7 +27,7 @@ export default function PublisherCTA({}) {
 }
 
 export const SectionWrapper = styled.div`
-  padding: 180px 156px;
+  padding: 76px 156px;
   display: flex;
   align-items: center;
 
