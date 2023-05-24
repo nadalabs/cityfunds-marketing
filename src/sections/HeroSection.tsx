@@ -1,16 +1,9 @@
 import { PrimaryButton } from '@elements/Buttons';
-import { FormInput, StyledForm } from '@elements/FormInput';
-import {
-  Caption,
-  GreenSquare,
-  Heading,
-  PrimaryText,
-  Text,
-} from '@elements/Typography';
+import { GreenSquare, Heading, PrimaryText, Text } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import Image from 'next/image';
-import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import Slider from 'react-slick';
+import EmailCapture from 'src/components/EmailCapture';
 import styled from 'styled-components';
 
 export default function HeroSection({}) {
@@ -31,24 +24,6 @@ export default function HeroSection({}) {
     speed: 2000,
     autoplaySpeed: 5000,
     cssEase: 'linear',
-  };
-
-  const methods = useForm<FieldValues>({
-    defaultValues: {
-      email: '',
-    },
-    mode: 'onBlur',
-  });
-  const { handleSubmit, formState, setError } = methods;
-
-  const onSubmit = async (inputs: FieldValues) => {
-    try {
-      // await window.analytics.track('Signup Started');
-    } catch (err: any) {
-      setError('email', {
-        message: err.response.data.errors.message,
-      });
-    }
   };
 
   return (
@@ -110,41 +85,14 @@ export default function HeroSection({}) {
               }}
             >
               <ContentWrapper>
-                <FormProvider {...methods}>
-                  <Heading style={{ color: 'white' }}>
-                    Own a Piece of Your Favorite City
-                  </Heading>
-                  <PrimaryText style={{ color: '#B0B0B0' }}>
-                    Diversified real estate portfolios with passive income in
-                    the nation's top cities.
-                  </PrimaryText>
-                  <StyledForm onSubmit={handleSubmit(onSubmit)}>
-                    <FormInput
-                      name="email"
-                      rules={{
-                        required: 'Email address is required',
-                        pattern: {
-                          value: /^\S+@\S+$/i,
-                          message: 'Invalid email address',
-                        },
-                      }}
-                      type="email"
-                      placeholder="Enter Your Email"
-                    />
-                  </StyledForm>
-                  <Caption>
-                    By subscribing you agree with our{' '}
-                    <a
-                      onClick={() =>
-                        window.location.replace(EXTERNAL_ROUTES.PRIVACY)
-                      }
-                      style={{ color: '#48DC95', cursor: 'pointer' }}
-                    >
-                      Privacy Policy
-                    </a>{' '}
-                    and provide consent to receiving updates from our company.
-                  </Caption>
-                </FormProvider>
+                <Heading style={{ color: 'white' }}>
+                  Own a Piece of Your Favorite City
+                </Heading>
+                <PrimaryText style={{ color: '#B0B0B0' }}>
+                  Diversified real estate portfolios with passive income in the
+                  nation's top cities.
+                </PrimaryText>
+                <EmailCapture />
               </ContentWrapper>
 
               <div>
