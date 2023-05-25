@@ -111,7 +111,12 @@ export default function Footer({}) {
         ))}
       </div>
 
-      <Caption>{LEGALESE}</Caption>
+      {LEGALESE.split('\n').map((line, i) => (
+        <>
+          <Caption key={i}>{line}</Caption>
+          <br />
+        </>
+      ))}
     </SectionWrapper>
   );
 }

@@ -1,6 +1,7 @@
 import Footer from '@components/Footer';
 import CardSlider from '@sections/CardSlider';
 import CareersCTA from '@sections/CareersCTA';
+import FeaturedLogos from '@sections/FeaturedLogos';
 import OurStory from '@sections/OurStory';
 import PageHero from '@sections/PageHero';
 import ValueProps from '@sections/ValueProps';
@@ -14,12 +15,46 @@ export default function AboutPage() {
         primaryText="Unlock diversified real estate portfolios with passive income in the nations top cities."
         heroImages={[
           {
-            title: 'About',
+            name: 'About',
             imageUrl: '/images/about-hero.png',
           },
         ]}
       />
       <OurStory />
+      <FeaturedLogos overline="World Class Backing" logos={[
+          { name: 'Live Oak', imageUrl: '/icons/live-oak.svg', link: '' },
+          {
+            name: 'Revolution',
+            imageUrl: '/icons/revolution.svg',
+            link: '',
+          },
+          { name: 'Capital Factory', imageUrl: '/icons/capital-factory.svg', link: '' },
+          {
+            name: 'Sweater Ventures',
+            imageUrl: '/icons/sweater.svg',
+            link: '',
+          },
+          {
+            name: '7BC Venture Capital',
+            imageUrl: '/icons/7bc-ventures.svg',
+            link: '',
+          },
+          {
+            name: 'LFG Ventures',
+            imageUrl: '/icons/lfg-ventures.svg',
+            link: '',
+          },
+          {
+            name: 'Texas Venture Labs',
+            imageUrl: '/icons/texas-ventures.svg',
+            link: '',
+          },
+          {
+            name: 'Stonks Fund',
+            imageUrl: '/icons/stonks.svg',
+            link: '',
+          },
+        ]} />
       <CardSlider
         heading="Our Team"
         primaryText={

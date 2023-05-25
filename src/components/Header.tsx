@@ -65,10 +65,10 @@ export default function Header({ partnerImage }: HeaderProps) {
               </PrimaryButton>
             )
           : !isMobile && (
-              <div style={{ display: 'flex' }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
                 {NAV_LINKS.map(({ name, link }, idx) => (
                   <Link href={`/${name.toLowerCase()}`}>
-                    <Text style={{ color: 'white', marginRight: '24px' }}>
+                    <Text style={{ color: 'white', margin: '0 24px 0 0' }}>
                       {name.toUpperCase()}
                     </Text>
                   </Link>
