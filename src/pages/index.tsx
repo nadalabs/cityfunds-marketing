@@ -48,7 +48,11 @@ export default function HomePage() {
             imageUrl: '/icons/motley-fool.svg',
             link: '',
           },
-          { name: 'TechCrunch', imageUrl: '/icons/techcrunch.svg', link: '' },
+          {
+            name: 'TechCrunch',
+            imageUrl: '/icons/techcrunch.svg',
+            link: 'https://techcrunch.com/2022/07/27/you-cant-afford-a-house-but-you-can-probably-afford-nada',
+          },
           {
             name: 'Yahoo Finance',
             imageUrl: '/icons/yahoo-finance.svg',
@@ -64,16 +68,24 @@ export default function HomePage() {
         cards={[
           {
             title: 'Dallas',
-            description: '',
+            description: '102 Properties',
             imageUrl: '/images/dallas.png',
           },
           {
             title: 'Austin',
-            description: '',
+            description: '102 Properties',
             imageUrl: '/images/austin.png',
           },
-          { title: 'Miami', description: '', imageUrl: '/images/miami.png' },
-          { title: 'Tampa', description: '', imageUrl: '/images/tampa.png' },
+          {
+            title: 'Miami',
+            description: '102 Properties',
+            imageUrl: '/images/miami.png',
+          },
+          {
+            title: 'Tampa',
+            description: '102 Properties',
+            imageUrl: '/images/tampa.png',
+          },
           {
             title: 'Coming Soon',
             imageUrl: '/images/coming-soon-1.png',

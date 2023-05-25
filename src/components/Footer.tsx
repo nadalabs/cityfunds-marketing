@@ -42,12 +42,12 @@ export default function Footer({}) {
   ];
 
   const SOCIAL_LINKS = [
-    { name: 'Facebook', link: '/' },
-    { name: 'Twitter', link: '/' },
-    { name: 'Instagram', link: '/' },
-    { name: 'LinkedIn', link: '/' },
-    { name: 'Discord', link: '/' },
-    { name: 'TikTok', link: '/' },
+    { name: 'Facebook', link: 'https://www.facebook.com/HelloNadaHomes' },
+    { name: 'Twitter', link: 'https://twitter.com/nada_finance' },
+    { name: 'Instagram', link: 'https://www.instagram.com/nadafinance' },
+    { name: 'LinkedIn', link: 'https://www.linkedin.com/company/hellonada' },
+    { name: 'Discord', link: 'https://discord.com/invite/AGhPSkQjYX' },
+    { name: 'TikTok', link: 'https://www.tiktok.com/@nadafinance' },
   ];
 
   return (
@@ -138,5 +138,6 @@ export const ContentWrapper = styled.div`
   margin-bottom: 195px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
   }
 `;

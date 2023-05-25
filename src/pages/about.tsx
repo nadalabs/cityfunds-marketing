@@ -2,7 +2,7 @@ import Footer from '@components/Footer';
 import CardSlider from '@sections/CardSlider';
 import CareersCTA from '@sections/CareersCTA';
 import FeaturedLogos from '@sections/FeaturedLogos';
-import OurStory from '@sections/OurStory';
+import LongFormText from '@sections/LongFormText';
 import PageHero from '@sections/PageHero';
 import ValueProps from '@sections/ValueProps';
 import { OUR_VALUES } from '@utils/constants';
@@ -20,7 +20,11 @@ export default function AboutPage() {
           },
         ]}
       />
-      <OurStory />
+      <LongFormText
+        overline="We are on a Mission"
+        title="Our Story"
+        content={OUR_VALUES}
+      />
       <FeaturedLogos
         overline="World Class Backing"
         logos={[

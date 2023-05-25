@@ -5,8 +5,8 @@ export const Heading = styled.h1`
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 600;
-  font-size: 64px;
-  line-height: 64px;
+  font-size: 46px;
+  line-height: 46px;
   margin: 0 0 8px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -20,8 +20,8 @@ export const PrimaryText = styled.p`
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;
-  font-size: 28px;
-  line-height: 42px;
+  font-size: 24px;
+  line-height: 24px;
   margin: 0 0 24px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

@@ -50,7 +50,7 @@ export default function HowItWorks({}) {
     <SectionWrapper>
       <Slider {...settings}>
         {STEPS.map(({ imageUrl }, idx) => (
-          <>
+          <div key={idx}>
             <div
               key={idx}
               style={{ display: 'flex', justifyContent: 'space-between' }}
@@ -64,7 +64,7 @@ export default function HowItWorks({}) {
                 </div>
                 <div style={{ display: 'flex' }}>
                   {STEPS.map(({ title, description }, jdx) => (
-                    <div>
+                    <div key={jdx}>
                       <GreenSquare
                         style={{
                           backgroundColor: idx !== jdx && '#979797',
@@ -94,7 +94,7 @@ export default function HowItWorks({}) {
                 </div>
               </div>
             </div>
-          </>
+          </div>
         ))}
       </Slider>
     </SectionWrapper>
