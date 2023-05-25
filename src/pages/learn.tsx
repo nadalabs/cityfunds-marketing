@@ -8,7 +8,7 @@ import { getClient, overlayDrafts } from '../../lib/sanity.server';
 // const LandingPreview = lazy(() => import('../../components/landing-preview'));
 
 export default function LearnPage({ allPosts, preview }) {
-  const topics = ['Webinars', 'Investing', 'Home Equity']
+  const topics = ['Webinars', 'Investing', 'Home Equity'];
 
   if (preview) {
     return (
@@ -21,7 +21,12 @@ export default function LearnPage({ allPosts, preview }) {
   return (
     <>
       <BlogHero blogPosts={[...allPosts, ...allPosts, ...allPosts]} />
-      {topics.map((topic) => (<BlogSlider topic={topic} blogPosts={[...allPosts, ...allPosts, ...allPosts]} />))}
+      {topics.map((topic) => (
+        <BlogSlider
+          topic={topic}
+          blogPosts={[...allPosts, ...allPosts, ...allPosts]}
+        />
+      ))}
       <Footer />
     </>
   );
