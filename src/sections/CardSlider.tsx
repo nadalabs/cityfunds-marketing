@@ -63,6 +63,14 @@ export const CardWrapper = styled.div`
   padding: 40px;
   display: flex;
   align-items: flex-end;
+  position: relative;
+  transition: ${({ theme }) => theme.transitions.ease};
+
+  &:hover {
+    box-shadow: 0px 16px 30px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    width: 500px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     min-width: 195px;

@@ -1,21 +1,30 @@
+import Footer from '@components/Footer';
+import BlogHero from '@sections/BlogHero';
+import BlogSlider from '@sections/BlogSlider';
 import { PreviewSuspense } from 'next-sanity/preview';
-import { lazy } from 'react';
-import Landing from '../../components/landing';
 import { indexQuery } from '../../lib/queries';
 import { getClient, overlayDrafts } from '../../lib/sanity.server';
 
-const LandingPreview = lazy(() => import('../../components/landing-preview'));
+// const LandingPreview = lazy(() => import('../../components/landing-preview'));
 
 export default function LearnPage({ allPosts, preview }) {
+  const topics = ['Webinars', 'Investing', 'Home Equity']
+
   if (preview) {
     return (
       <PreviewSuspense fallback="Loading...">
-        <LandingPreview allPosts={allPosts} />
+        {/* <LandingPreview allPosts={allPosts} /> */}
       </PreviewSuspense>
     );
   }
 
-  return <Landing allPosts={allPosts} />;
+  return (
+    <>
+      <BlogHero blogPosts={[...allPosts, ...allPosts, ...allPosts]} />
+      {topics.map((topic) => (<BlogSlider topic={topic} blogPosts={[...allPosts, ...allPosts, ...allPosts]} />))}
+      <Footer />
+    </>
+  );
 }
 
 export async function getStaticProps({ preview = false }) {
