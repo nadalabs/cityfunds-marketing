@@ -1,7 +1,7 @@
 import Footer from '@components/Footer';
-import CitySection from '@sections/CardSlider';
+import CardSlider from '@sections/CardSlider';
 import FaqsSection from '@sections/FaqsSection';
-import FeaturedPublicity from '@sections/FeaturedPublicity';
+import FeaturedLogos from '@sections/FeaturedLogos';
 import HowItWorks from '@sections/HowItWorks';
 import LocationSection from '@sections/KeyMetrics';
 import HeroSection from '@sections/PageHero';
@@ -19,8 +19,8 @@ export default function PartnerPage({ preview, data }) {
   return (
     <>
       <HeroSection partnerImage="/images/altsco.png" />
-      <FeaturedPublicity />
-      <CitySection />
+      <FeaturedLogos />
+      <CardSlider />
       <LocationSection />
       <ValueProps />
       <FaqsSection />

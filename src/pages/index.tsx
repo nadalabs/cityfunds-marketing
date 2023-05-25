@@ -1,7 +1,7 @@
 import Footer from '@components/Footer';
 import CardSlider from '@sections/CardSlider';
 import FaqsSection from '@sections/FaqsSection';
-import FeaturedPublicity from '@sections/FeaturedPublicity';
+import FeaturedLogos from '@sections/FeaturedLogos';
 import HowItWorks from '@sections/HowItWorks';
 import KeyMetrics from '@sections/KeyMetrics';
 import PageHero from '@sections/PageHero';
@@ -39,7 +39,23 @@ export default function HomePage() {
           },
         ]}
       />
-      <FeaturedPublicity />
+      <FeaturedLogos
+        overline='Featured In'
+        logos={[
+          { name: 'Forbes', imageUrl: '/icons/forbes.svg', link: '' },
+          {
+            name: 'The Motley Fool',
+            imageUrl: '/icons/motley-fool.svg',
+            link: '',
+          },
+          { name: 'TechCrunch', imageUrl: '/icons/techcrunch.svg', link: '' },
+          {
+            name: 'Yahoo Finance',
+            imageUrl: '/icons/yahoo-finance.svg',
+            link: '',
+          },
+        ]}
+      />
       <CardSlider
         heading="Pick your favorite Cityfund, or invest in all of them"
         primaryText={

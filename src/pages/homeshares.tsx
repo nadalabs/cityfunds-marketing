@@ -1,5 +1,5 @@
 import Footer from '@components/Footer';
-import Application from '@sections/Application';
+import ApplyCTA from '@sections/ApplyCTA';
 import HowItWorks from '@sections/HowItWorks';
 import KeyMetrics from '@sections/KeyMetrics';
 import PageHero from '@sections/PageHero';
@@ -42,7 +42,7 @@ export default function HomeSharesPage() {
       />
       <HowItWorks />
       <Testimonials />
-      <Application />
+      <ApplyCTA />
       <Footer />
     </>
   );
