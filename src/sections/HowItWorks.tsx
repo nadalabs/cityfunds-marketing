@@ -1,3 +1,4 @@
+import PhoneScreen from '@components/PhoneScreen';
 import { PrimaryButton } from '@elements/Buttons';
 import {
   GreenSquare,
@@ -9,7 +10,6 @@ import {
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { isMobileDevice } from '@utils/helpers';
 import Slider from 'react-slick';
-import PhoneScreen from 'src/components/PhoneScreen';
 import styled from 'styled-components';
 
 export default function HowItWorks({}) {
@@ -31,40 +31,46 @@ export default function HowItWorks({}) {
     {
       title: 'Select a City',
       description: 'Choose from our 4 cityfunds with more coming soon',
+      imageUrl: '/images/screen-1.png',
     },
     {
       title: 'Invest Money',
       description: 'Connect your bank account and invest in homeshares',
+      imageUrl: '/images/screen-2.png',
     },
     {
       title: 'Build Wealth',
       description:
         'Grow your portfolio  while unlocking liquid equity for home owners',
+      imageUrl: '/images/screen-3.png',
     },
   ];
 
   return (
     <SectionWrapper>
-      {!isMobile && <PhoneScreen />}
+      <Slider {...settings}>
+        {STEPS.map(({ imageUrl }, idx) => (
+          <>
+            <div
+              key={idx}
+              style={{ display: 'flex', justifyContent: 'space-between' }}
+            >
+              <PhoneScreen imageUrl={imageUrl} />
 
-      <ContentWrapper>
-        <Overline>Real Estate Investing Simplified</Overline>
-        <Heading>How it Works</Heading>
-
-        <Slider {...settings}>
-          <div>
-            {STEPS.map((_, idx) => (
-              <div key={idx}>
+              <div style={{ width: '60%' }}>
+                <div>
+                  <Overline>Real Estate Investing Simplified</Overline>
+                  <Heading>How it Works</Heading>
+                </div>
                 <div style={{ display: 'flex' }}>
                   {STEPS.map(({ title, description }, jdx) => (
-                    <div key={jdx}>
+                    <div>
                       <GreenSquare
                         style={{
                           backgroundColor: idx !== jdx && '#979797',
                           marginBottom: '24px',
                         }}
                       />
-
                       <PrimaryText
                         style={{
                           color: idx === jdx && '#48DC95',
@@ -87,17 +93,16 @@ export default function HowItWorks({}) {
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </Slider>
-      </ContentWrapper>
+            </div>
+          </>
+        ))}
+      </Slider>
     </SectionWrapper>
   );
 }
 
 export const SectionWrapper = styled.div`
   padding: 204px 156px;
-  display: flex;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0 24px;

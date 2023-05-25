@@ -40,7 +40,7 @@ export default function HomePage() {
         ]}
       />
       <FeaturedLogos
-        overline='Featured In'
+        overline="Featured In"
         logos={[
           { name: 'Forbes', imageUrl: '/icons/forbes.svg', link: '' },
           {

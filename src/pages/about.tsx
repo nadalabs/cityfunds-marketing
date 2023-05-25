@@ -21,14 +21,20 @@ export default function AboutPage() {
         ]}
       />
       <OurStory />
-      <FeaturedLogos overline="World Class Backing" logos={[
+      <FeaturedLogos
+        overline="World Class Backing"
+        logos={[
           { name: 'Live Oak', imageUrl: '/icons/live-oak.svg', link: '' },
           {
             name: 'Revolution',
             imageUrl: '/icons/revolution.svg',
             link: '',
           },
-          { name: 'Capital Factory', imageUrl: '/icons/capital-factory.svg', link: '' },
+          {
+            name: 'Capital Factory',
+            imageUrl: '/icons/capital-factory.svg',
+            link: '',
+          },
           {
             name: 'Sweater Ventures',
             imageUrl: '/icons/sweater.svg',
@@ -54,7 +60,8 @@ export default function AboutPage() {
             imageUrl: '/icons/stonks.svg',
             link: '',
           },
-        ]} />
+        ]}
+      />
       <CardSlider
         heading="Our Team"
         primaryText={

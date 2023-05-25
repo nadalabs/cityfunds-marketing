@@ -21,7 +21,7 @@ export default function PublisherCTA({}) {
         <EmailCapture />
       </div>
 
-      {!isMobile && <PhoneScreen />}
+      {!isMobile && <PhoneScreen imageUrl="/images/screen-1.png" />}
     </SectionWrapper>
   );
 }

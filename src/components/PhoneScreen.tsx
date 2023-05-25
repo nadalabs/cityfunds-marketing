@@ -1,6 +1,10 @@
 import Image from 'next/image';
 
-export default function PhoneScreen({}) {
+interface PhoneScreenProps {
+  imageUrl: string;
+}
+
+export default function PhoneScreen({ imageUrl }: PhoneScreenProps) {
   return (
     <div
       style={{
@@ -13,25 +17,18 @@ export default function PhoneScreen({}) {
     >
       <div
         style={{
-          height: '534px',
-          minWidth: '534px',
+          height: '400px',
+          minWidth: '400px',
           backgroundColor: '#48DC95',
           borderRadius: '120px',
           zIndex: -1,
           position: 'absolute',
-          top: '250px',
-          left: '-100px',
+          top: '150px',
+          left: '-80px',
         }}
       />
 
-      <div style={{}}>
-        <Image
-          width={350}
-          height={700}
-          alt={'Phone Screen'}
-          src={'/images/phone-screen.png'}
-        />
-      </div>
+      <Image width={250} height={500} alt={'Phone Screen'} src={imageUrl} />
     </div>
   );
 }
