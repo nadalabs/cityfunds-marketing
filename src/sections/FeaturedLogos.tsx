@@ -2,21 +2,19 @@ import { Overline } from '@elements/Typography';
 import Image from 'next/image';
 import styled from 'styled-components';
 
-export default function FeaturedPublicity({}) {
-  const FEATURED = [
-    { name: 'Forbes', imageUrl: '/icons/forbes.svg', link: '' },
-    { name: 'The Motley Fool', imageUrl: '/icons/motley-fool.svg', link: '' },
-    { name: 'TechCrunch', imageUrl: '/icons/techcrunch.svg', link: '' },
-    { name: 'Yahoo Finance', imageUrl: '/icons/yahoo-finance.svg', link: '' },
-  ];
+interface FeaturedLogosProps {
+  overline: string;
+  logos: any[];
+}
 
+export default function FeaturedLogos({ overline, logos }: FeaturedLogosProps) {
   return (
     <SectionWrapper>
       <Overline style={{ color: '#989898', textAlign: 'center' }}>
-        Featured In
+        {overline}
       </Overline>
       <ContentWrapper>
-        {FEATURED.map(({ name, imageUrl, link }) => (
+        {logos.map(({ name, imageUrl, link }) => (
           <Image key={name} width={145} height={40} alt={name} src={imageUrl} />
         ))}
       </ContentWrapper>
