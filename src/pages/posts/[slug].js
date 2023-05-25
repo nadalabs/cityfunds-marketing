@@ -1,6 +1,5 @@
-import { PreviewSuspense } from 'next-sanity/preview';
-import { lazy } from 'react';
-import Post from '../../components/post';
+import BlogHero from '@sections/BlogHero';
+import LongFormText from '@sections/LongFormText';
 import { postQuery, postSlugsQuery } from '../../lib/queries';
 import {
   getClient,
@@ -8,18 +7,27 @@ import {
   sanityClient,
 } from '../../lib/sanity.server';
 
-const PostPreview = lazy(() => import('../../components/post-preview'));
+// const PostPreview = lazy(() => import('../../components/post-preview'));
 
 export default function PostPage({ preview, data }) {
-  if (preview) {
-    return (
-      <PreviewSuspense fallback="Loading...">
-        <PostPreview data={data} />
-      </PreviewSuspense>
-    );
-  }
+  // if (preview) {
+  //   return (
+  //     <PreviewSuspense fallback="Loading...">
+  //       <PostPreview data={data} />
+  //     </PreviewSuspense>
+  //   );
+  // }
 
-  return <Post data={data} />;
+  return (
+    <>
+      <BlogHero blogPosts={[data]} />
+      <LongFormText
+        overline="We are on a Mission"
+        title="Our Story"
+        body={OUR_VALUES}
+      />
+    </>
+  );
 }
 
 export async function getStaticProps({ params, preview = false }) {
