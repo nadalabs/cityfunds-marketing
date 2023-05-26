@@ -48,6 +48,7 @@ export default function PageHero({
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'flex-end',
+                width: '100%',
               }}
             >
               <ContentWrapper>

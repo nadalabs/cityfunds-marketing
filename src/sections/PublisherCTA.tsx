@@ -14,7 +14,9 @@ export default function PublisherCTA({ name }: PublisherCTAProps) {
   return (
     <SectionWrapper>
       <div style={{ maxWidth: '542px', marginRight: '84px' }}>
-        <Overline>{name ? `Exclusive Perk for ${name} Readers` : 'Limited Time Offer'}</Overline>
+        <Overline>
+          {name ? `Exclusive Perk for ${name} Readers` : 'Limited Time Offer'}
+        </Overline>
         <Heading>Invest $1,000</Heading>
         <Heading style={{ color: '#48DC95' }}>Get $100</Heading>
         <Text style={{ marginBottom: '8px' }}>

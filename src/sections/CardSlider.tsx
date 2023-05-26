@@ -1,4 +1,5 @@
 import { GreenSquare, Heading, PrimaryText, Text } from '@elements/Typography';
+import { isMobileDevice } from '@utils/helpers';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -13,9 +14,10 @@ export default function CardSlider({
   primaryText,
   cards,
 }: CardSliderProps) {
+  const isMobile = isMobileDevice();
   const settings = {
     dots: false,
-    slidesToShow: 2.5,
+    slidesToShow: isMobile ? 1.25 : 2.5,
     swipeToSlide: true,
     infinite: false,
   };

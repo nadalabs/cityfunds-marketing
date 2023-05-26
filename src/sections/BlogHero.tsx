@@ -7,11 +7,11 @@ import {
 } from '@elements/Typography';
 import { isMobileDevice } from '@utils/helpers';
 import { format, parseISO } from 'date-fns';
+import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 import Slider from 'react-slick';
 import styled from 'styled-components';
-import { urlForImage } from 'lib/sanity';
 
 interface BlogHeroProps {
   blogPosts: {

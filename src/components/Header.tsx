@@ -84,7 +84,12 @@ export default function Header({
           : !isMobile && (
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 {NAV_LINKS.map(({ name, link }, idx) => (
-                  <LinkText key={idx} href={link} isDarkMode={isDarkMode} style={{marginBottom: 0}}>
+                  <LinkText
+                    key={idx}
+                    href={link}
+                    isDarkMode={isDarkMode}
+                    style={{ marginBottom: 0 }}
+                  >
                     {name.toUpperCase()}
                   </LinkText>
                 ))}
