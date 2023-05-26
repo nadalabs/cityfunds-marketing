@@ -7,9 +7,10 @@ import Link from 'next/link';
 
 interface HeaderProps {
   partnerImage?: string;
+  isDarkMode?: boolean;
 }
 
-export default function Header({ partnerImage }: HeaderProps) {
+export default function Header({ partnerImage, isDarkMode }: HeaderProps) {
   const isMobile = isMobileDevice();
 
   const NAV_LINKS = [
@@ -50,7 +51,7 @@ export default function Header({ partnerImage }: HeaderProps) {
             width={222}
             height={64}
             alt={'Nada'}
-            src={'/icons/nada-light.svg'}
+            src={isDarkMode ? '/icons/nada-dark.svg' : '/icons/nada-light.svg'}
           />
         </Link>
       )}
@@ -68,7 +69,12 @@ export default function Header({ partnerImage }: HeaderProps) {
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 {NAV_LINKS.map(({ name, link }, idx) => (
                   <Link href={`/${name.toLowerCase()}`} key={idx}>
-                    <Text style={{ color: 'white', margin: '0 24px 0 0' }}>
+                    <Text
+                      style={{
+                        color: isDarkMode ? '#303030' : 'white',
+                        margin: '0 24px 0 0',
+                      }}
+                    >
                       {name.toUpperCase()}
                     </Text>
                   </Link>
