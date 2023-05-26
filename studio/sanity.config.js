@@ -7,6 +7,7 @@ import { resolveProductionUrl } from './resolveProductionUrl';
 import { author } from './schemas/author';
 import { post } from './schemas/post';
 import { partner } from './schemas/partner';
+import { legal } from './schemas/legal';
 
 const title = import.meta.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Nada Finance';
 const projectId = import.meta.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -19,7 +20,7 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [author, post, partner],
+    types: [author, post, partner, legal],
   },
   document: {
     productionUrl: resolveProductionUrl,
