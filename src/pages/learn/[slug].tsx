@@ -2,12 +2,8 @@ import Footer from '@components/Footer';
 import Header from '@components/Header';
 import BlogHero from '@sections/BlogHero';
 import LongFormText from '@sections/LongFormText';
-import { postQuery, postSlugsQuery } from '../../lib/queries';
-import {
-  getClient,
-  overlayDrafts,
-  sanityClient,
-} from '../../lib/sanity.server';
+import { postQuery, postSlugsQuery } from 'lib/queries';
+import { getClient, overlayDrafts, sanityClient } from 'lib/sanity.server';
 
 // const PostPreview = lazy(() => import('../../components/post-preview'));
 
@@ -23,11 +19,11 @@ export default function PostPage({ preview, data }) {
   return (
     <>
       <Header />
-      <BlogHero blogPosts={[data]} />
+      <BlogHero blogPosts={[data.post]} />
       <LongFormText
-        overline="We are on a Mission"
-        title="Our Story"
-        body={OUR_VALUES}
+        overline={data.post.tag}
+        title={data.post.title}
+        content={data.post.content}
       />
       <Footer />
     </>
