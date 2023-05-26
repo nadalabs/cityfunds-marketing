@@ -1,6 +1,6 @@
 import Footer from '@components/Footer';
 import Header from '@components/Header';
-import { PrimaryText } from '@elements/Typography';
+import { Heading, LinkText } from '@elements/Typography';
 import LongFormText from '@sections/LongFormText';
 import Slider from 'react-slick';
 import { indexQuery } from '../../lib/queries';
@@ -12,6 +12,10 @@ export default function LearnPage({ allPosts, preview }) {
     'Terms & Conditions',
     'Privacy policy',
     'Cookie policy',
+    'Consumer Complaint Policy',
+    'Nada SEC Filings',
+    'Cityfunds SEC Filings',
+    'Electronic Funds Transfer Disclosure',
   ];
   const settings = {
     dots: false,
@@ -28,17 +32,20 @@ export default function LearnPage({ allPosts, preview }) {
   return (
     <>
       <Header />
-      <Slider {...settings}>
-        {allPosts.map(() => (
-          <div>
-            {topics.map((topic) => (
-              <PrimaryText>{topic}</PrimaryText>
-            ))}
-            <LongFormText title="" overline="" content="" />
-          </div>
-        ))}
-      </Slider>
-      <Footer />
+      <div style={{ padding: '300px 225px 0px 225px' }}>
+        <Slider {...settings}>
+          {allPosts.map(() => (
+            <div>
+              <Heading>Transparency</Heading>
+              {topics.map((topic) => (
+                <LinkText href={`/${topic}`}>{topic}</LinkText>
+              ))}
+              <LongFormText title="" overline="" content="" />
+            </div>
+          ))}
+        </Slider>
+      </div>
+        <Footer />
     </>
   );
 }

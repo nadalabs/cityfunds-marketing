@@ -1,5 +1,5 @@
-import { postBySlugQuery } from '../../lib/queries';
-import { previewClient } from '../../lib/sanity.server';
+import { postBySlugQuery } from 'lib/queries';
+import { previewClient } from 'lib/sanity.server';
 
 function redirectToPreview(res, Location) {
   // Enable Draft Mode by setting the cookie
