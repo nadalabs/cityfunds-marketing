@@ -7,11 +7,17 @@ import { getClient, sanityClient } from 'lib/sanity.server';
 
 export default function LegalPage({ preview, data }) {
   const LEGAL_LINKS = [
-    {title: 'Terms of Use', link: '/transparency/terms-of-use'},
-    {title: 'Privacy Policy', link: '/transparency/privacy-policy'},
-    {title: 'Cookie Policy', link: '/transparency/cookie-policy'},
-    {title: 'Consumer Complaint Policy', link: '/transparency/consumer-complaints-policy'},
-    {title: 'Electronic Funds Trasnfer', link: '/transparency/electronic-funds-transfer'},
+    { title: 'Terms of Use', link: '/transparency/terms-of-use' },
+    { title: 'Privacy Policy', link: '/transparency/privacy-policy' },
+    { title: 'Cookie Policy', link: '/transparency/cookie-policy' },
+    {
+      title: 'Consumer Complaint Policy',
+      link: '/transparency/consumer-complaints-policy',
+    },
+    {
+      title: 'Electronic Funds Transfer',
+      link: '/transparency/electronic-funds-transfer',
+    },
     {
       title: 'Nada SEC Filings',
       link: 'https://www.sec.gov/edgar/browse/?CIK=0001801613',
@@ -25,17 +31,17 @@ export default function LegalPage({ preview, data }) {
   return (
     <>
       <Header />
-      <div style={{ padding: '300px 225px 0px 225px' }}>
+      <div style={{ padding: '200px 150px 0px 150px' }}>
         <Heading>Transparency</Heading>
-        {LEGAL_LINKS.map(({title, link}) => (
+        {LEGAL_LINKS.map(({ title, link }) => (
           <LinkText href={link}>{title}</LinkText>
         ))}
-        <LongFormText
-          overline={`Last updated `}
-          title={data.legal.title}
-          content={data.legal.content}
-        />
       </div>
+      <LongFormText
+        overline={`Last updated `}
+        title={data.legal.title}
+        content={data.legal.content}
+      />
       <Footer />
     </>
   );

@@ -14,7 +14,6 @@ import { partnerQuery, partnerSlugsQuery } from 'lib/queries';
 import { getClient, sanityClient } from 'lib/sanity.server';
 
 export default function PartnerPage({ preview, data }) {
-  console.log(data);
   return (
     <>
       <Header isDarkMode partnerImage={data.partner.coverImage} />

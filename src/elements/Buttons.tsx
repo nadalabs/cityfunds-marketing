@@ -1,8 +1,11 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
-export const PrimaryButton = styled.button`
-  color: ${({ theme }) => theme.colors.white};
-  background: ${({ theme }) => theme.colors.secondary};
+export const PrimaryButton = styled.button<{ isDarkMode?: boolean }>`
+  color: ${({ theme, isDarkMode }) =>
+    isDarkMode ? theme.colors.secondary : theme.colors.white};
+  background: ${({ theme, isDarkMode }) =>
+    isDarkMode ? theme.colors.white : theme.colors.secondary};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 600;
@@ -13,7 +16,7 @@ export const PrimaryButton = styled.button`
   text-align: center;
   border-radius: 8px;
   height: 44px;
-  width: 158px;
+  padding: 10px 20px;
   cursor: pointer;
   border: none;
 
@@ -35,4 +38,14 @@ export const SecondaryButton = styled.button`
   height: 40px;
   cursor: pointer;
   padding: 20px 0;
+`;
+
+export const LinkButton = styled(Link)`
+  transition: ${({ theme }) => theme.transitions.ease};
+  cursor: pointer;
+  margin-right: 32px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+  }
 `;

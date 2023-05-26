@@ -22,7 +22,7 @@ export const PrimaryText = styled.p`
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  line-height: 24px;
+  line-height: 36px;
   margin: 0 0 24px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -102,8 +102,8 @@ export const ErrorText = styled.p`
 `;
 
 export const GreenSquare = styled.div`
+  color: ${({ theme }) => theme.colors.secondary};
   height: 16px;
   width: 16px;
-  background-color: #48dc95;
   border-radius: 4px;
 `;

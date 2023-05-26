@@ -1,3 +1,4 @@
+import { LinkButton } from '@elements/Buttons';
 import { Caption, LinkText, Text } from '@elements/Typography';
 import { LEGALESE } from '@utils/constants';
 import Image from 'next/image';
@@ -98,14 +99,15 @@ export default function Footer({}) {
         }}
       >
         {SOCIAL_LINKS.map(({ name, link }, idx) => (
-          <Image
-            key={idx}
-            width={28}
-            height={28}
-            alt={name}
-            src={`/icons/${name.toLowerCase()}.svg`}
-            style={{ marginRight: '32px', cursor: 'pointer' }}
-          />
+          <LinkButton href={link} target="blank">
+            <Image
+              key={idx}
+              width={28}
+              height={28}
+              alt={name}
+              src={`/icons/${name.toLowerCase()}.svg`}
+            />
+          </LinkButton>
         ))}
       </div>
 
