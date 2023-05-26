@@ -1,4 +1,6 @@
-import { Overline, PrimaryText, Text } from '@elements/Typography';
+import { Heading, Overline, PrimaryText, Text } from '@elements/Typography';
+import { isMobileDevice } from '@utils/helpers';
+import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,35 +20,36 @@ interface BlogSliderProps {
 }
 
 export default function BlogSlider({ topic, blogPosts }: BlogSliderProps) {
+  const isMobile = isMobileDevice();
   const settings = {
     dots: false,
-    slidesToShow: 2.5,
+    slidesToShow: isMobile ? 1.25 : 2.5,
     swipeToSlide: true,
     infinite: false,
   };
 
   return (
     <SectionWrapper>
-      <PrimaryText>{topic}</PrimaryText>
+      <Heading>{topic}</Heading>
 
       <Slider {...settings}>
         {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
-          <div key={idx}>
-            <Link
-              href={`/learn/${slug}`}
-            >
-              <Image
-                width={420}
-                height={340}
-                alt={title}
-                src={urlForImage(coverImage).height(480).width(690).url()}
-                style={{ borderRadius: '50px' }}
-              />
-              <Overline>{date}</Overline>
-              <PrimaryText>{title}</PrimaryText>
-              <Text>{excerpt}</Text>
-            </Link>
-          </div>
+          <Link key={idx} href={`/learn/${slug}`}>
+            <Image
+              width={420}
+              height={340}
+              alt={title}
+              src={urlForImage(coverImage).height(480).width(690).url()}
+              style={{ borderRadius: '50px' }}
+            />
+            <Overline>
+              <time dateTime={date}>
+                {format(parseISO(date), 'LLLL	d, yyyy')}
+              </time>
+            </Overline>
+            <PrimaryText>{title}</PrimaryText>
+            <Text>{excerpt}</Text>
+          </Link>
         ))}
       </Slider>
     </SectionWrapper>

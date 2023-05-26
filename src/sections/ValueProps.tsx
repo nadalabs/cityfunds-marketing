@@ -75,6 +75,10 @@ export const CardWrapper = styled.div`
   padding: 52px;
   margin-right: 28px;
 
+  &:hover {
+    box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     min-width: 210px;
     height: 210px;

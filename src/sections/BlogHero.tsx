@@ -1,4 +1,3 @@
-import Header from '@components/Header';
 import {
   GreenSquare,
   Heading,
@@ -7,11 +6,12 @@ import {
   Text,
 } from '@elements/Typography';
 import { isMobileDevice } from '@utils/helpers';
+import { format, parseISO } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 import Slider from 'react-slick';
 import styled from 'styled-components';
-import { urlForImage } from '../../lib/sanity';
+import { urlForImage } from 'lib/sanity';
 
 interface BlogHeroProps {
   blogPosts: {
@@ -40,10 +40,9 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
 
   return (
     <SectionWrapper>
-      <Header isDarkMode />
       <Slider {...settings}>
         {blogPosts.map(
-          ({ title, coverImage: source, date, excerpt, tag, slug }, idx) => (
+          ({ title, coverImage, date, excerpt, tag, slug }, idx) => (
             <div key={idx}>
               <div>
                 <Link
@@ -54,7 +53,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                     <Image
                       fill
                       alt={title}
-                      src={urlForImage(source).height(480).width(690).url()}
+                      src={urlForImage(coverImage).height(480).width(690).url()}
                       style={{
                         borderRadius: '50px',
                         maxWidth: '50%',
@@ -64,9 +63,25 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                   </div>
                   <CardWrapper>
                     <Overline>{tag}</Overline>
-                    <Heading>{title}</Heading>
-                    <PrimaryText>{excerpt}</PrimaryText>
-                    <Text>{date}</Text>
+                    <Heading
+                      style={{
+                        fontSize: '32px',
+                        lineHeight: '36px',
+                        marginBottom: '16px',
+                      }}
+                    >
+                      {title}
+                    </Heading>
+                    <PrimaryText
+                      style={{ fontSize: '18px', lineHeight: '24px' }}
+                    >
+                      {excerpt}
+                    </PrimaryText>
+                    <Text style={{ fontSize: '14px', lineHeight: '18px' }}>
+                      <time dateTime={date}>
+                        {format(parseISO(date), 'LLLL	d, yyyy')}
+                      </time>
+                    </Text>
                   </CardWrapper>
                 </Link>
               </div>
@@ -91,7 +106,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
 }
 
 const SectionWrapper = styled.div`
-  padding: 76px 156px;
+  padding: 150px 156px 76px 156px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 24px;

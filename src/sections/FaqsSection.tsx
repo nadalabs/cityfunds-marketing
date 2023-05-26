@@ -62,7 +62,7 @@ export default function FaqsSection({}) {
               <div>
                 {FAQS.map(({ question, answer }, jdx) => (
                   <div key={jdx}>
-                    <Heading
+                    <HoverHeading
                       onClick={() => handleOnClick(jdx)}
                       style={{
                         color: idx === jdx && '#48DC95',
@@ -72,7 +72,7 @@ export default function FaqsSection({}) {
                       }}
                     >
                       {question}
-                    </Heading>
+                    </HoverHeading>
                     {isMobile && idx === jdx && (
                       <PrimaryText>{answer}</PrimaryText>
                     )}
@@ -94,5 +94,11 @@ export const SectionWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0 24px;
+  }
+`;
+
+export const HoverHeading = styled(Heading)`
+  &:hover {
+    color: '#B0B0B0';
   }
 `;
