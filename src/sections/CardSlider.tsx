@@ -28,7 +28,12 @@ export default function CardSlider({
       <Slider {...settings}>
         {cards.map(({ title, description, imageUrl }, idx) => (
           <div key={idx}>
-            <CardWrapper style={{ backgroundImage: `url(${imageUrl})` }}>
+            <CardWrapper
+              style={{
+                backgroundImage: `url(${imageUrl})`,
+                borderRadius: '52px',
+              }}
+            >
               <div>
                 <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                   <Heading style={{ color: 'white' }}>{title}</Heading>

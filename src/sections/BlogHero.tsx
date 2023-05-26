@@ -1,5 +1,11 @@
 import Header from '@components/Header';
-import { Heading, Overline, PrimaryText, Text } from '@elements/Typography';
+import {
+  GreenSquare,
+  Heading,
+  Overline,
+  PrimaryText,
+  Text,
+} from '@elements/Typography';
 import { isMobileDevice } from '@utils/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -34,20 +40,28 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
 
   return (
     <SectionWrapper>
-      <Header />
+      <Header isDarkMode />
       <Slider {...settings}>
         {blogPosts.map(
           ({ title, coverImage: source, date, excerpt, tag, slug }, idx) => (
             <div key={idx}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Image
-                  width={690}
-                  height={480}
-                  alt={`Cover Image for ${title}`}
-                  src={urlForImage(source).height(480).width(690).url()}
-                  sizes="100vw"
-                />
-                <Link href={`/posts/${slug}`}>
+              <div>
+                <Link
+                  href={`/learn/${slug}`}
+                  style={{ display: 'flex', justifyContent: 'space-between' }}
+                >
+                  <div>
+                    <Image
+                      fill
+                      alt={title}
+                      src={urlForImage(source).height(480).width(690).url()}
+                      style={{
+                        borderRadius: '50px',
+                        maxWidth: '50%',
+                        marginRight: '48px',
+                      }}
+                    />
+                  </div>
                   <CardWrapper>
                     <Overline>{tag}</Overline>
                     <Heading>{title}</Heading>
@@ -55,6 +69,18 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                     <Text>{date}</Text>
                   </CardWrapper>
                 </Link>
+              </div>
+
+              <div style={{ display: 'flex' }}>
+                {blogPosts.map((_, jdx) => (
+                  <GreenSquare
+                    key={jdx}
+                    style={{
+                      backgroundColor: idx !== jdx && '#B0B0B0',
+                      marginRight: '8px',
+                    }}
+                  />
+                ))}
               </div>
             </div>
           )
@@ -73,7 +99,7 @@ const SectionWrapper = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-  width: 690px;
+  width: 50%;
   height: 480px;
   background: #ffffff;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);

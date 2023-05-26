@@ -1,6 +1,7 @@
 import { Overline, PrimaryText, Text } from '@elements/Typography';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
+import Link from 'next/link';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -29,18 +30,22 @@ export default function BlogSlider({ topic, blogPosts }: BlogSliderProps) {
       <PrimaryText>{topic}</PrimaryText>
 
       <Slider {...settings}>
-        {blogPosts.map(({ title, date, excerpt, coverImage }, idx) => (
+        {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
           <div key={idx}>
-            <Image
-              width={420}
-              height={340}
-              alt={`Cover Image for ${title}`}
-              src={urlForImage(coverImage).height(480).width(690).url()}
-              sizes="100vw"
-            />
-            <Overline>{date}</Overline>
-            <PrimaryText>{title}</PrimaryText>
-            <Text>{excerpt}</Text>
+            <Link
+              href={`/learn/${slug}`}
+            >
+              <Image
+                width={420}
+                height={340}
+                alt={title}
+                src={urlForImage(coverImage).height(480).width(690).url()}
+                style={{ borderRadius: '50px' }}
+              />
+              <Overline>{date}</Overline>
+              <PrimaryText>{title}</PrimaryText>
+              <Text>{excerpt}</Text>
+            </Link>
           </div>
         ))}
       </Slider>

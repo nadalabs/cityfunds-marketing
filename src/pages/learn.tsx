@@ -20,12 +20,9 @@ export default function LearnPage({ allPosts, preview }) {
 
   return (
     <>
-      <BlogHero blogPosts={[...allPosts, ...allPosts, ...allPosts]} />
+      <BlogHero blogPosts={allPosts} />
       {topics.map((topic) => (
-        <BlogSlider
-          topic={topic}
-          blogPosts={[...allPosts, ...allPosts, ...allPosts]}
-        />
+        <BlogSlider topic={topic} blogPosts={allPosts} />
       ))}
       <Footer />
     </>
