@@ -2,15 +2,21 @@ import { PrimaryButton } from '@elements/Buttons';
 import { LinkText } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { isMobileDevice } from '@utils/helpers';
+import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 
 interface HeaderProps {
   partnerImage?: string;
+  partnerName?: string;
   isDarkMode?: boolean;
 }
 
-export default function Header({ partnerImage, isDarkMode }: HeaderProps) {
+export default function Header({
+  partnerImage,
+  partnerName,
+  isDarkMode,
+}: HeaderProps) {
   const isMobile = isMobileDevice();
 
   const NAV_LINKS = [
@@ -48,7 +54,12 @@ export default function Header({ partnerImage, isDarkMode }: HeaderProps) {
               margin: '0 24px',
             }}
           />
-          <Image width={125} height={30} alt={'Altsco'} src={partnerImage} />
+          <Image
+            width={125}
+            height={30}
+            alt={partnerName}
+            src={urlForImage(partnerImage).height(30).width(125).url()}
+          />
         </div>
       ) : (
         <Link href={`/`}>

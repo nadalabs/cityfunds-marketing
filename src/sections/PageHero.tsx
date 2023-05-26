@@ -1,4 +1,3 @@
-import Header from '@components/Header';
 import { GreenSquare, Heading, PrimaryText, Text } from '@elements/Typography';
 import { isMobileDevice } from '@utils/helpers';
 import Slider from 'react-slick';
@@ -9,14 +8,12 @@ interface PageHeroProps {
   heading: string;
   primaryText: string;
   heroImages: { name: string; imageUrl: string; numProperties?: number }[];
-  partnerImage?: string;
 }
 
 export default function PageHero({
   heading,
   primaryText,
   heroImages,
-  partnerImage,
 }: PageHeroProps) {
   const isMobile = isMobileDevice();
   const settings = {
@@ -46,7 +43,6 @@ export default function PageHero({
               url(${imageUrl})`,
             }}
           >
-            <Header partnerImage={partnerImage} />
             <div
               style={{
                 display: 'flex',
@@ -92,14 +88,11 @@ export default function PageHero({
 }
 
 export const HeroImage = styled.div`
+  display: flex;
   width: 100vw;
   height: 110vh;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
-  justify-content: space-between;
   padding: 50px 100px 15vh 100px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

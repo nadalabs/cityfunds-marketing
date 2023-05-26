@@ -10,13 +10,14 @@ import PublisherCTA from '@sections/PublisherCTA';
 import Testimonials from '@sections/Testimonials';
 import ValueProps from '@sections/ValueProps';
 import { VALUE_PROPS } from '@utils/constants';
-import { postQuery, postSlugsQuery } from 'lib/queries';
-import { getClient, overlayDrafts, sanityClient } from 'lib/sanity.server';
+import { partnerQuery, partnerSlugsQuery } from 'lib/queries';
+import { getClient, sanityClient } from 'lib/sanity.server';
 
 export default function PartnerPage({ preview, data }) {
+  console.log(data);
   return (
     <>
-      <Header isDarkMode partnerImage="/images/altsco.png" />
+      <Header isDarkMode partnerImage={data.partner.coverImage} />
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios with passive income in the nations top cities."
@@ -135,24 +136,21 @@ export default function PartnerPage({ preview, data }) {
       <FaqsSection />
       <HowItWorks />
       <Testimonials />
-      <PublisherCTA />
+      <PublisherCTA name={data.partner.name} />
       <Footer />
     </>
   );
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const { post, morePosts } = await getClient(preview).fetch(postQuery, {
+  const { partner } = await getClient(preview).fetch(partnerQuery, {
     slug: params.slug,
   });
 
   return {
     props: {
       preview,
-      data: {
-        post,
-        morePosts: overlayDrafts(morePosts),
-      },
+      data: { partner },
     },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
@@ -160,7 +158,7 @@ export async function getStaticProps({ params, preview = false }) {
 }
 
 export async function getStaticPaths() {
-  const paths = await sanityClient.fetch(postSlugsQuery);
+  const paths = await sanityClient.fetch(partnerSlugsQuery);
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
     fallback: true,

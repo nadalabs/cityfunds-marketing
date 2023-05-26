@@ -6,6 +6,7 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 import { resolveProductionUrl } from './resolveProductionUrl';
 import { author } from './schemas/author';
 import { post } from './schemas/post';
+import { partner } from './schemas/partner';
 
 const title = import.meta.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Nada Finance';
 const projectId = import.meta.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -18,7 +19,7 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [author, post],
+    types: [author, post, partner],
   },
   document: {
     productionUrl: resolveProductionUrl,

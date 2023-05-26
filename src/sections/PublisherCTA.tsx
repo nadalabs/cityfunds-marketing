@@ -4,13 +4,17 @@ import EmailCapture from 'src/components/EmailCapture';
 import PhoneScreen from 'src/components/PhoneScreen';
 import styled from 'styled-components';
 
-export default function PublisherCTA({}) {
+interface PublisherCTAProps {
+  name: string;
+}
+
+export default function PublisherCTA({ name }: PublisherCTAProps) {
   const isMobile = isMobileDevice();
 
   return (
     <SectionWrapper>
       <div style={{ maxWidth: '542px', marginRight: '84px' }}>
-        <Overline>Exclusive Perk for Alts.co Readers </Overline>
+        <Overline>Exclusive Perk for {name} Readers </Overline>
         <Heading>Invest $1,000</Heading>
         <Heading style={{ color: '#48DC95' }}>Get $100</Heading>
         <Text style={{ marginBottom: '8px' }}>
