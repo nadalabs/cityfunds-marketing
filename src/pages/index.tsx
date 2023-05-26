@@ -1,4 +1,5 @@
 import Footer from '@components/Footer';
+import Header from '@components/Header';
 import CardSlider from '@sections/CardSlider';
 import FaqsSection from '@sections/FaqsSection';
 import FeaturedLogos from '@sections/FeaturedLogos';
@@ -13,6 +14,7 @@ import { VALUE_PROPS } from '@utils/constants';
 export default function HomePage() {
   return (
     <>
+      <Header />
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios with passive income in the nations top cities."

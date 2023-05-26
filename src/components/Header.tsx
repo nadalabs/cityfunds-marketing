@@ -1,5 +1,5 @@
 import { PrimaryButton } from '@elements/Buttons';
-import { Text } from '@elements/Typography';
+import { LinkText } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { isMobileDevice } from '@utils/helpers';
 import Image from 'next/image';
@@ -25,6 +25,11 @@ export default function Header({ partnerImage, isDarkMode }: HeaderProps) {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        padding: '24px 48px',
+        background: 'none',
+        position: 'fixed',
+        zIndex: 99,
+        width: '100%',
       }}
     >
       {partnerImage ? (
@@ -68,16 +73,16 @@ export default function Header({ partnerImage, isDarkMode }: HeaderProps) {
           : !isMobile && (
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 {NAV_LINKS.map(({ name, link }, idx) => (
-                  <Link href={`/${name.toLowerCase()}`} key={idx}>
-                    <Text
-                      style={{
-                        color: isDarkMode ? '#303030' : 'white',
-                        margin: '0 24px 0 0',
-                      }}
-                    >
-                      {name.toUpperCase()}
-                    </Text>
-                  </Link>
+                  <LinkText
+                    key={idx}
+                    href={link}
+                    style={{
+                      // color: isDarkMode ? '#303030' : 'white',
+                      margin: '0 24px 0 0',
+                    }}
+                  >
+                    {name.toUpperCase()}
+                  </LinkText>
                 ))}
 
                 <PrimaryButton

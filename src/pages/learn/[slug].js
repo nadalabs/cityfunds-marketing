@@ -1,3 +1,5 @@
+import Footer from '@components/Footer';
+import Header from '@components/Header';
 import BlogHero from '@sections/BlogHero';
 import LongFormText from '@sections/LongFormText';
 import { postQuery, postSlugsQuery } from '../../lib/queries';
@@ -20,12 +22,14 @@ export default function PostPage({ preview, data }) {
 
   return (
     <>
+      <Header isDarkMode />
       <BlogHero blogPosts={[data]} />
       <LongFormText
         overline="We are on a Mission"
         title="Our Story"
         body={OUR_VALUES}
       />
+      <Footer />
     </>
   );
 }

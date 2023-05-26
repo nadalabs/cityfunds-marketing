@@ -1,4 +1,5 @@
 import Footer from '@components/Footer';
+import Header from '@components/Header';
 import BlogHero from '@sections/BlogHero';
 import BlogSlider from '@sections/BlogSlider';
 import { PreviewSuspense } from 'next-sanity/preview';
@@ -20,6 +21,7 @@ export default function LearnPage({ allPosts, preview }) {
 
   return (
     <>
+      <Header isDarkMode />
       <BlogHero blogPosts={allPosts} />
       {topics.map((topic) => (
         <BlogSlider topic={topic} blogPosts={allPosts} />

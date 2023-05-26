@@ -1,4 +1,4 @@
-import { Caption, Text } from '@elements/Typography';
+import { Caption, LinkText, Text } from '@elements/Typography';
 import { LEGALESE } from '@utils/constants';
 import Image from 'next/image';
 import styled from 'styled-components';
@@ -63,15 +63,13 @@ export default function Footer({}) {
         {NAV_LINKS.map(({ title, links }, idx) => (
           <div key={idx}>
             <Text>{title}</Text>
-            {links.map(({ name, link }, jdx) => (
-              <Text
-                key={jdx}
-                onClick={() => console.log(link)}
-                style={{ color: '#989898', cursor: 'pointer' }}
-              >
-                {name}
-              </Text>
-            ))}
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              {links.map(({ name, link }, jdx) => (
+                <LinkText key={jdx} href={link}>
+                  {name}
+                </LinkText>
+              ))}
+            </div>
           </div>
         ))}
 

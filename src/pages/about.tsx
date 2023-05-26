@@ -1,4 +1,5 @@
 import Footer from '@components/Footer';
+import Header from '@components/Header';
 import CardSlider from '@sections/CardSlider';
 import CareersCTA from '@sections/CareersCTA';
 import FeaturedLogos from '@sections/FeaturedLogos';
@@ -10,6 +11,7 @@ import { OUR_VALUES } from '@utils/constants';
 export default function AboutPage() {
   return (
     <>
+      <Header />
       <PageHero
         heading="Create products that unlock wealth & financial freedom."
         primaryText="Unlock diversified real estate portfolios with passive income in the nations top cities."

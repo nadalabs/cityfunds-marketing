@@ -1,4 +1,5 @@
 import Footer from '@components/Footer';
+import Header from '@components/Header';
 import { PrimaryText } from '@elements/Typography';
 import LongFormText from '@sections/LongFormText';
 import Slider from 'react-slick';
@@ -26,6 +27,7 @@ export default function LearnPage({ allPosts, preview }) {
 
   return (
     <>
+      <Header isDarkMode />
       <Slider {...settings}>
         {allPosts.map(() => (
           <div>

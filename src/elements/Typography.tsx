@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const Heading = styled.h1`
@@ -65,25 +66,25 @@ export const Caption = styled.div`
   margin: 0;
 `;
 
-export const SmallLabel = styled.p`
-  color: ${({ theme }) => theme.colors.gray};
+export const LinkText = styled(Link)`
+  transition: ${({ theme }) => theme.transitions.ease};
+  color: ${({ theme }) => true ?  theme.colors.white : theme.colors.darkGrey};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  text-align: left;
-  margin: 0;
-`;
-
-export const Link = styled.a`
-  color: ${({ theme }) => theme.colors.secondary};
-  font-family: ${({ theme }) => theme.fonts.main};
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 24px 0;
   cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondary};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
 export const ErrorText = styled.p`
