@@ -106,7 +106,7 @@ export default function PartnerPage({ preview, data }) {
         primaryText="Investing in real estate is all about location, yet the increased
             cost of living have made desirable places unaffordable. Now, owning
             real estate in your favorite city takes less than 5 minutes."
-        imageUrl="/images/location.png"
+        imageUrl="/images/location-tiles.png"
         metrics={[
           {
             label: 'Total Investors',

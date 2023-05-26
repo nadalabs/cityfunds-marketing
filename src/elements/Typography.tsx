@@ -102,7 +102,7 @@ export const ErrorText = styled.p`
 `;
 
 export const GreenSquare = styled.div`
-  color: ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.secondary};
   height: 16px;
   width: 16px;
   border-radius: 4px;

@@ -11,7 +11,6 @@ export default function Footer({}) {
       links: [
         { name: 'Cityfunds', link: '/cityfunds' },
         { name: 'Homeshares', link: '/homeshares' },
-        { name: 'Nada Card', link: '/nada-card' },
         { name: 'Mortgage', link: '/mortgage' },
       ],
     },
@@ -21,7 +20,6 @@ export default function Footer({}) {
         { name: 'FAQs', link: '/faqs' },
         { name: 'Careers', link: '/careers' },
         { name: 'Press', link: '/press' },
-        { name: 'Contact', link: '/contact' },
         { name: 'Learn', link: '/learn' },
       ],
     },
@@ -54,12 +52,34 @@ export default function Footer({}) {
   return (
     <SectionWrapper>
       <ContentWrapper>
-        <Image
-          width={322}
-          height={92}
-          alt={'Nada'}
-          src={'/icons/nada-dark.svg'}
-        />
+        <div>
+          <Image
+            width={322}
+            height={92}
+            alt={'Nada'}
+            src={'/icons/nada-dark.svg'}
+          />
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '100px',
+              alignSelf: 'flex-end',
+              marginTop: '2rem',
+            }}
+          >
+            {SOCIAL_LINKS.map(({ name, link }, idx) => (
+              <LinkButton href={link} target="blank">
+                <Image
+                  key={idx}
+                  width={28}
+                  height={28}
+                  alt={name}
+                  src={`/icons/${name.toLowerCase()}.svg`}
+                />
+              </LinkButton>
+            ))}
+          </div>
+        </div>
 
         {NAV_LINKS.map(({ title, links }, idx) => (
           <div key={idx}>
@@ -90,26 +110,6 @@ export default function Footer({}) {
           />
         </div>
       </ContentWrapper>
-
-      <div
-        style={{
-          display: 'flex',
-          marginBottom: '100px',
-          alignSelf: 'flex-end',
-        }}
-      >
-        {SOCIAL_LINKS.map(({ name, link }, idx) => (
-          <LinkButton href={link} target="blank">
-            <Image
-              key={idx}
-              width={28}
-              height={28}
-              alt={name}
-              src={`/icons/${name.toLowerCase()}.svg`}
-            />
-          </LinkButton>
-        ))}
-      </div>
 
       {LEGALESE.split('\n').map((line, i) => (
         <>

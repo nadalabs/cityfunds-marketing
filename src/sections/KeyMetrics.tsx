@@ -30,8 +30,10 @@ export default function KeyMetrics({
   return (
     <SectionWrapper>
       <ContentWrapper>
-        <Image src={imageUrl} alt={heading} height={596} width={596} />
-        <div style={{ marginLeft: '80px' }}>
+        <div style={{ position: 'relative', width: '50%', marginRight: '80px' }}>
+          <Image src={imageUrl} alt={heading} fill />
+        </div>
+        <div style={{ width: '50%' }}>
           <Overline>{overline}</Overline>
           <Heading>{heading}</Heading>
           <PrimaryText>{primaryText}</PrimaryText>

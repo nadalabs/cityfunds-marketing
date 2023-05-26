@@ -35,20 +35,22 @@ export default function BlogSlider({ topic, blogPosts }: BlogSliderProps) {
       <Slider {...settings}>
         {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
           <Link key={idx} href={`/learn/${slug}`}>
-            <Image
-              width={420}
-              height={340}
-              alt={title}
-              src={urlForImage(coverImage).height(480).width(690).url()}
-              style={{ borderRadius: '50px' }}
-            />
-            <Overline>
-              <time dateTime={date}>
-                {format(parseISO(date), 'LLLL	d, yyyy')}
-              </time>
-            </Overline>
-            <PrimaryText>{title}</PrimaryText>
-            <Text>{excerpt}</Text>
+            <CardWrapper>
+              <Image
+                width={420}
+                height={340}
+                alt={title}
+                src={urlForImage(coverImage).height(480).width(690).url()}
+                style={{ borderRadius: '50px', overflow: 'hidden' }}
+              />
+              <Overline>
+                <time dateTime={date}>
+                  {format(parseISO(date), 'LLLL	d, yyyy')}
+                </time>
+              </Overline>
+              <PrimaryText>{title}</PrimaryText>
+              <Text>{excerpt}</Text>
+            </CardWrapper>
           </Link>
         ))}
       </Slider>
@@ -65,19 +67,10 @@ export const SectionWrapper = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-  background-size: cover;
-  width: 450px;
-  height: 450px;
-  padding: 40px;
-  display: flex;
-  align-items: flex-end;
-  position: relative;
   transition: ${({ theme }) => theme.transitions.ease};
 
   &:hover {
     box-shadow: 0px 16px 30px rgba(0, 0, 0, 0.1);
-    height: 500px;
-    width: 500px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
