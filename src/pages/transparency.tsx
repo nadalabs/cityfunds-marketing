@@ -27,7 +27,7 @@ export default function LearnPage({ allPosts, preview }) {
 
   return (
     <>
-      <Header isDarkMode />
+      <Header />
       <Slider {...settings}>
         {allPosts.map(() => (
           <div>

@@ -66,15 +66,16 @@ export const Caption = styled.div`
   margin: 0;
 `;
 
-export const LinkText = styled(Link)`
+export const LinkText = styled(Link)<{ isDarkMode?: boolean }>`
   transition: ${({ theme }) => theme.transitions.ease};
-  color: ${({ theme }) => true ?  theme.colors.white : theme.colors.darkGrey};
+  color: ${({ theme, isDarkMode }) =>
+    isDarkMode ? theme.colors.white : theme.colors.darkGrey};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
-  margin: 0 0 24px 0;
+  margin: 0 24px 24px 0;
   cursor: pointer;
 
   &:hover {

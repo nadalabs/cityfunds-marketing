@@ -1,4 +1,5 @@
 import Footer from '@components/Footer';
+import Header from '@components/Header';
 import CardSlider from '@sections/CardSlider';
 import FaqsSection from '@sections/FaqsSection';
 import FeaturedLogos from '@sections/FeaturedLogos';
@@ -18,6 +19,7 @@ import {
 export default function PartnerPage({ preview, data }) {
   return (
     <>
+       <Header isDarkMode />
       <HeroSection partnerImage="/images/altsco.png" />
       <FeaturedLogos />
       <CardSlider />

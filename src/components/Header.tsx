@@ -56,7 +56,7 @@ export default function Header({ partnerImage, isDarkMode }: HeaderProps) {
             width={222}
             height={64}
             alt={'Nada'}
-            src={isDarkMode ? '/icons/nada-dark.svg' : '/icons/nada-light.svg'}
+            src={isDarkMode ? '/icons/nada-light.svg' : '/icons/nada-dark.svg'}
           />
         </Link>
       )}
@@ -73,14 +73,7 @@ export default function Header({ partnerImage, isDarkMode }: HeaderProps) {
           : !isMobile && (
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 {NAV_LINKS.map(({ name, link }, idx) => (
-                  <LinkText
-                    key={idx}
-                    href={link}
-                    style={{
-                      // color: isDarkMode ? '#303030' : 'white',
-                      margin: '0 24px 0 0',
-                    }}
-                  >
+                  <LinkText key={idx} href={link} isDarkMode={isDarkMode}>
                     {name.toUpperCase()}
                   </LinkText>
                 ))}

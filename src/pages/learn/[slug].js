@@ -22,7 +22,7 @@ export default function PostPage({ preview, data }) {
 
   return (
     <>
-      <Header isDarkMode />
+      <Header />
       <BlogHero blogPosts={[data]} />
       <LongFormText
         overline="We are on a Mission"

@@ -11,7 +11,7 @@ import { OUR_VALUES } from '@utils/constants';
 export default function AboutPage() {
   return (
     <>
-      <Header />
+      <Header isDarkMode />
       <PageHero
         heading="Create products that unlock wealth & financial freedom."
         primaryText="Unlock diversified real estate portfolios with passive income in the nations top cities."
