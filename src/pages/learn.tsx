@@ -2,9 +2,9 @@ import Footer from '@components/Footer';
 import Header from '@components/Header';
 import BlogHero from '@sections/BlogHero';
 import BlogSlider from '@sections/BlogSlider';
+import { indexQuery } from 'lib/queries';
+import { getClient, overlayDrafts } from 'lib/sanity.server';
 import { PreviewSuspense } from 'next-sanity/preview';
-import { indexQuery } from '../../lib/queries';
-import { getClient, overlayDrafts } from '../../lib/sanity.server';
 
 // const LandingPreview = lazy(() => import('../../components/landing-preview'));
 
