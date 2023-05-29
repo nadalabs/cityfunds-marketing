@@ -21,7 +21,6 @@ export default function ApplyCTA() {
 
   const onSubmit = async (inputs: FieldValues) => {
     try {
-      console.log(inputs);
       // await window.analytics.track('Signup Started');
     } catch (err: any) {
       setError('email', {

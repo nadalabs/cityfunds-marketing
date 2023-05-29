@@ -15,7 +15,6 @@ export default function EmailCapture({}) {
 
   const onSubmit = async (inputs: FieldValues) => {
     try {
-      console.log(inputs.email);
       // await window.analytics.track('Lead Capture');
     } catch (err: any) {
       setError('email', {

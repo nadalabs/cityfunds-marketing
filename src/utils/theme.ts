@@ -9,8 +9,8 @@ const theme = {
     light: '#f8f9fa',
     dark: '#303030',
     white: '#ffffff',
-    gray: '#989898',
-    lightGray: '#B0B0B0',
+    grey: '#989898',
+    lightGrey: '#B0B0B0',
   },
   fonts: {
     main: '"Poppins", sans-serif',

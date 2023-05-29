@@ -5,6 +5,9 @@ import { isMobileDevice } from '@utils/helpers';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 interface HeaderProps {
   partnerImage?: string;
@@ -17,27 +20,32 @@ export default function Header({
   partnerName,
   isDarkMode,
 }: HeaderProps) {
+  const [scrollPosition, setScrollPosition] = useState(0);
   const isMobile = isMobileDevice();
+  const router = useRouter();
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const NAV_LINKS = [
+    { name: 'Cityfunds', link: '/' },
     { name: 'Homeshares', link: '/homeshares' },
     { name: 'About', link: '/about' },
     { name: 'Learn', link: '/learn' },
   ];
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '24px 48px',
-        background: 'none',
-        position: 'fixed',
-        zIndex: 99,
-        width: '100%',
-      }}
-    >
+    <SectionWrapper scrollPosition={scrollPosition}>
       {partnerImage ? (
         <div style={{ display: 'flex' }}>
           <Image
@@ -104,6 +112,23 @@ export default function Header({
               </div>
             )}
       </div>
-    </div>
+    </SectionWrapper>
   );
 }
+
+export const SectionWrapper = styled.div<{ scrollPosition: number }>`
+  background-color: ${({ theme, scrollPosition }) =>
+    scrollPosition > 50 ? theme.colors.lightGrey : 'transparent'};
+  transition: ${({ theme }) => theme.transitions.ease};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 48px;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 24px;
+  }
+`;
