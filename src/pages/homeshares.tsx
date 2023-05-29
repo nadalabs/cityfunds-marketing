@@ -42,8 +42,45 @@ export default function HomeSharesPage() {
           },
         ]}
       />
-      <HowItWorks />
-      <Testimonials />
+      <HowItWorks
+        steps={[
+          {
+            title: 'Apply for a Homeshare',
+            description: 'Fill out an application in under 90 seconds',
+            imageUrl: '/images/screen-1.png',
+          },
+          {
+            title: 'Schedule  Inspection',
+            description: "Once approved, we'll schedule your home inspection",
+            imageUrl: '/images/screen-2.png',
+          },
+          {
+            title: 'Get Funded',
+            description:
+              'We will finalize the paperwork & deposit funds in a few days',
+            imageUrl: '/images/screen-3.png',
+          },
+          {
+            title: 'Enjoy Your Home',
+            description: 'Nada becomes a co-investor while you enjoy your home',
+            imageUrl: '/images/screen-2.png',
+          },
+        ]}
+      />
+      <Testimonials
+        reviews={[
+          {
+            name: 'Veronica S.',
+            location: 'Austin, TX',
+            text: 'Homeshares helped me invest in myself and open my own business',
+          },
+          {
+            name: 'Veronica S.',
+            location: 'Austin, TX',
+            text: 'Homeshares helped me invest in myself and open my own business',
+          },
+        ]}
+      />
       <ApplyCTA />
       <Footer />
     </>

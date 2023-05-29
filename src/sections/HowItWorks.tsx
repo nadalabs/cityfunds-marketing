@@ -12,7 +12,11 @@ import { isMobileDevice } from '@utils/helpers';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-export default function HowItWorks({}) {
+interface HowItWorksProps {
+  steps: { title: string; description: string; imageUrl: string }[];
+}
+
+export default function HowItWorks({ steps }: HowItWorksProps) {
   const isMobile = isMobileDevice();
 
   const settings = {
@@ -27,29 +31,10 @@ export default function HowItWorks({}) {
     cssEase: 'linear',
   };
 
-  const STEPS = [
-    {
-      title: 'Select a City',
-      description: 'Choose from our 4 cityfunds with more coming soon',
-      imageUrl: '/images/screen-1.png',
-    },
-    {
-      title: 'Invest Money',
-      description: 'Connect your bank account and invest in homeshares',
-      imageUrl: '/images/screen-2.png',
-    },
-    {
-      title: 'Build Wealth',
-      description:
-        'Grow your portfolio  while unlocking liquid equity for home owners',
-      imageUrl: '/images/screen-3.png',
-    },
-  ];
-
   return (
     <SectionWrapper>
       <Slider {...settings}>
-        {STEPS.map(({ imageUrl }, idx) => (
+        {steps.map(({ imageUrl }, idx) => (
           <div key={idx}>
             <div
               key={idx}
@@ -63,7 +48,7 @@ export default function HowItWorks({}) {
                   <Heading>How it Works</Heading>
                 </div>
                 <div style={{ display: 'flex' }}>
-                  {STEPS.map(({ title, description }, jdx) => (
+                  {steps.map(({ title, description }, jdx) => (
                     <div key={jdx}>
                       <GreenSquare
                         style={{

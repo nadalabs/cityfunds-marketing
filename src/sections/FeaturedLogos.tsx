@@ -1,5 +1,6 @@
 import { Overline } from '@elements/Typography';
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 interface FeaturedLogosProps {
@@ -15,7 +16,14 @@ export default function FeaturedLogos({ overline, logos }: FeaturedLogosProps) {
       </Overline>
       <ContentWrapper>
         {logos.map(({ name, imageUrl, link }) => (
-          <Image key={name} width={145} height={40} alt={name} src={imageUrl} />
+          <Link key={name} href={link} target="_blank">
+            <Image
+              width={145}
+              height={40}
+              alt={name}
+              src={imageUrl}
+            />
+          </Link>
         ))}
       </ContentWrapper>
     </SectionWrapper>

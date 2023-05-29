@@ -7,7 +7,11 @@ import {
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-export default function Testimonials({}) {
+interface TestimonialsProps {
+  reviews: { name: string; text: string; location: string }[];
+}
+
+export default function Testimonials({ reviews }: TestimonialsProps) {
   const settings = {
     dots: false,
     fade: true,
@@ -20,50 +24,17 @@ export default function Testimonials({}) {
     cssEase: 'linear',
   };
 
-  const REVIEWS = [
-    {
-      name: 'Veronica S.',
-      location: 'Austin, TX',
-      text: 'Invested with Nada originally and have been waiting for Cityfund to release! Excited to see the how the company will grow in the next few years- love the vision!',
-    },
-    {
-      name: 'Ryan A.',
-      location: 'Dallas, TX',
-      text: 'To be part of a collective of investors in a steady growth market like Miami is definitely an advantage.',
-    },
-    {
-      name: 'William B.',
-      location: 'Miami, FL',
-      text: 'I’ve always wanted to try and dip my toes in real estate investing! This looks like a good way to get started and from cities around the county. Super excited',
-    },
-    {
-      name: 'Hansen N.',
-      location: 'Miami, FL',
-      text: 'Love the city, and love the process of investing in real estate.',
-    },
-    {
-      name: 'Mylie A.',
-      location: 'Austin, TX',
-      text: 'I like that it makes real estate investment possible to everyday people.',
-    },
-    {
-      name: 'Mark P.',
-      location: 'Dallas, TX',
-      text: 'Excited to easily invest in a diversified pool of RE. Looking for income & cap gains as a hedge to public markets.',
-    },
-  ];
-
   return (
     <SectionWrapper>
       <Overline>Hear it from our users...</Overline>
       <Slider {...settings}>
-        {REVIEWS.map(({ name, text, location }, idx) => (
+        {reviews.map(({ name, text, location }, idx) => (
           <div key={idx}>
             <ContentWrapper>
               <div style={{ maxWidth: '788px', marginRight: '24px' }}>
                 <Heading>"{text}"</Heading>
                 <div style={{ display: 'flex' }}>
-                  {REVIEWS.map((_, jdx) => (
+                  {reviews.map((_, jdx) => (
                     <GreenSquare
                       key={jdx}
                       style={{
