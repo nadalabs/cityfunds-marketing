@@ -6,7 +6,7 @@ import FeaturedLogos from '@sections/FeaturedLogos';
 import LongFormText from '@sections/LongFormText';
 import PageHero from '@sections/PageHero';
 import ValueProps from '@sections/ValueProps';
-import { OUR_VALUES } from '@utils/constants';
+import { OUR_STORY, OUR_VALUES } from '@utils/constants';
 
 export default function AboutPage() {
   return (
@@ -25,21 +25,25 @@ export default function AboutPage() {
       <LongFormText
         overline="We are on a Mission"
         title="Our Story"
-        content={OUR_VALUES}
+        content={OUR_STORY}
       />
       <FeaturedLogos
         overline="World Class Backing"
         logos={[
-          { name: 'Live Oak', imageUrl: '/icons/live-oak.svg', link: '' },
+          {
+            name: 'Live Oak',
+            imageUrl: '/icons/live-oak.svg',
+            link: 'https://liveoakvp.com/',
+          },
           {
             name: 'Revolution',
             imageUrl: '/icons/revolution.svg',
-            link: '',
+            link: 'https://revolution.com/',
           },
           {
             name: 'Capital Factory',
             imageUrl: '/icons/capital-factory.svg',
-            link: '',
+            link: 'https://www.capitalfactory.com/',
           },
           {
             name: 'Sweater Ventures',
@@ -49,12 +53,12 @@ export default function AboutPage() {
           {
             name: '7BC Venture Capital',
             imageUrl: '/icons/7bc-ventures.svg',
-            link: '',
+            link: 'https://www.7bc.vc/',
           },
           {
             name: 'LFG Ventures',
             imageUrl: '/icons/lfg-ventures.svg',
-            link: '',
+            link: 'https://www.letsfg.com/',
           },
           {
             name: 'Texas Venture Labs',
@@ -64,7 +68,7 @@ export default function AboutPage() {
           {
             name: 'Stonks Fund',
             imageUrl: '/icons/stonks.svg',
-            link: '',
+            link: 'https://stonks.com/',
           },
         ]}
       />

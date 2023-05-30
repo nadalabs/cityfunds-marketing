@@ -27,12 +27,12 @@ export default function HomeSharesPage() {
         imageUrl="/images/homeshares.png"
         metrics={[
           {
-            label: 'Average amount unlocked',
-            value: 33045,
-            formattingFn: (val) => `$${val}`,
+            label: 'Average Amount Unlocked',
+            value: 47045,
+            prefix: '$',
           },
           {
-            label: 'Average days to close',
+            label: 'Average Days to Close',
             value: 13.8,
             decimals: 1,
           },

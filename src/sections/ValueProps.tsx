@@ -36,26 +36,28 @@ export default function ValueProps({
       <Heading>{heading}</Heading>
       <Text>{primaryText}</Text>
 
-      <Slider {...settings}>
-        {valueProps.map(({ title, description }, idx) => (
-          <div key={idx}>
-            <CardWrapper>
-              <GreenSquare
-                style={{
-                  height: '30px',
-                  width: '30px',
-                  borderRadius: '7px',
-                  marginBottom: '20px',
-                }}
-              />
-              <PrimaryText style={{ color: 'black', fontWeight: 600 }}>
-                {title}
-              </PrimaryText>
-              <Text>{description}</Text>
-            </CardWrapper>
-          </div>
-        ))}
-      </Slider>
+      <div style={{ position: 'relative', right: '1rem' }}>
+        <Slider {...settings}>
+          {valueProps.map(({ title, description }, idx) => (
+            <div key={idx}>
+              <CardWrapper>
+                <GreenSquare
+                  style={{
+                    height: '30px',
+                    width: '30px',
+                    borderRadius: '7px',
+                    marginBottom: '20px',
+                  }}
+                />
+                <PrimaryText style={{ color: 'black', fontWeight: 600 }}>
+                  {title}
+                </PrimaryText>
+                <Text>{description}</Text>
+              </CardWrapper>
+            </div>
+          ))}
+        </Slider>
+      </div>
     </SectionWrapper>
   );
 }
@@ -75,9 +77,12 @@ export const CardWrapper = styled.div`
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   border-radius: 52px;
   padding: 52px;
-  margin-right: 28px;
+  margin: 1rem;
+  transition: ${({ theme }) => theme.transitions.ease};
+  top: 0;
 
   &:hover {
+    top: 50px;
     box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   }
 
