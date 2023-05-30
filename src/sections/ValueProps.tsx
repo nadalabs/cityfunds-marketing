@@ -5,7 +5,7 @@ import {
   PrimaryText,
   Text,
 } from '@elements/Typography';
-import { isMobileDevice } from '@utils/helpers';
+import useIsMobile from '@hooks/useIsMobile';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -22,7 +22,7 @@ export default function ValueProps({
   primaryText,
   valueProps,
 }: ValuePropsProps) {
-  const isMobile = isMobileDevice();
+  const isMobile = useIsMobile();
   const settings = {
     dots: false,
     slidesToShow: isMobile ? 1.25 : 2.5,

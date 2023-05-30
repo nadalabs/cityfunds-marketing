@@ -1,5 +1,5 @@
 import { GreenSquare, Heading, PrimaryText, Text } from '@elements/Typography';
-import { isMobileDevice } from '@utils/helpers';
+import useIsMobile from '@hooks/useIsMobile';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -14,7 +14,7 @@ export default function CardSlider({
   primaryText,
   cards,
 }: CardSliderProps) {
-  const isMobile = isMobileDevice();
+  const isMobile = useIsMobile();
   const settings = {
     dots: false,
     slidesToShow: isMobile ? 1.25 : 2.5,
@@ -24,8 +24,8 @@ export default function CardSlider({
 
   return (
     <SectionWrapper>
-      <Heading style={{ maxWidth: '1100px' }}>{heading}</Heading>
-      <PrimaryText style={{ maxWidth: '1130px' }}>{primaryText}</PrimaryText>
+      <Heading style={{ maxWidth: '800px' }}>{heading}</Heading>
+      <PrimaryText style={{ maxWidth: '800px' }}>{primaryText}</PrimaryText>
 
       <Slider {...settings}>
         {cards.map(({ title, description, imageUrl }, idx) => (
@@ -65,18 +65,20 @@ export const SectionWrapper = styled.div`
 
 export const CardWrapper = styled.div`
   background-size: cover;
-  width: 450px;
-  height: 450px;
+  width: 400px;
+  height: 400px;
   padding: 40px;
   display: flex;
   align-items: flex-end;
   position: relative;
   transition: ${({ theme }) => theme.transitions.ease};
+  bottom: 0;
 
   &:hover {
     box-shadow: 0px 16px 30px rgba(0, 0, 0, 0.1);
-    height: 500px;
-    width: 500px;
+    height: 450px;
+    width: 450px;
+    bottom: 50px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

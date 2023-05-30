@@ -1,5 +1,10 @@
-import { GreenSquare, Heading, PrimaryText, Text } from '@elements/Typography';
-import { isMobileDevice } from '@utils/helpers';
+import {
+  GreenSquare,
+  HeadingLarge,
+  PrimaryText,
+  Text,
+} from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import Slider from 'react-slick';
 import EmailCapture from 'src/components/EmailCapture';
 import styled from 'styled-components';
@@ -15,7 +20,7 @@ export default function PageHero({
   primaryText,
   heroImages,
 }: PageHeroProps) {
-  const isMobile = isMobileDevice();
+  const isMobile = useIsMobile();
   const settings = {
     dots: false,
     fade: true,
@@ -52,8 +57,10 @@ export default function PageHero({
               }}
             >
               <ContentWrapper>
-                <Heading style={{ color: 'white' }}>{heading}</Heading>
-                <PrimaryText style={{ color: '#B0B0B0' }}>
+                <HeadingLarge style={{ color: 'white', maxWidth: '600px' }}>
+                  {heading}
+                </HeadingLarge>
+                <PrimaryText style={{ color: '#B0B0B0', maxWidth: '600px' }}>
                   {primaryText}
                 </PrimaryText>
                 <EmailCapture />
@@ -72,7 +79,7 @@ export default function PageHero({
                       <GreenSquare
                         key={jdx}
                         style={{
-                          backgroundColor: idx !== jdx && '#B0B0B0',
+                          backgroundColor: idx !== jdx ? '#B0B0B0' : '#48DC95',
                           marginRight: '8px',
                         }}
                       />

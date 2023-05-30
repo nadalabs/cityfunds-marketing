@@ -8,7 +8,7 @@ import {
   Text,
 } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
-import { isMobileDevice } from '@utils/helpers';
+import useIsMobile from '@hooks/useIsMobile';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -17,7 +17,7 @@ interface HowItWorksProps {
 }
 
 export default function HowItWorks({ steps }: HowItWorksProps) {
-  const isMobile = isMobileDevice();
+  const isMobile = useIsMobile();
 
   const settings = {
     dots: false,

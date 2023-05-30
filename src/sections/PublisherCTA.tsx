@@ -1,5 +1,5 @@
 import { Heading, Overline, Text } from '@elements/Typography';
-import { isMobileDevice } from '@utils/helpers';
+import useIsMobile from '@hooks/useIsMobile';
 import EmailCapture from 'src/components/EmailCapture';
 import PhoneScreen from 'src/components/PhoneScreen';
 import styled from 'styled-components';
@@ -9,7 +9,7 @@ interface PublisherCTAProps {
 }
 
 export default function PublisherCTA({ name }: PublisherCTAProps) {
-  const isMobile = isMobileDevice();
+  const isMobile = useIsMobile();
 
   return (
     <SectionWrapper>

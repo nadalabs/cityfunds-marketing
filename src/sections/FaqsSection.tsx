@@ -1,11 +1,11 @@
-import { Heading, Overline, PrimaryText } from '@elements/Typography';
-import { isMobileDevice } from '@utils/helpers';
+import { HeadingLarge, Overline, PrimaryText } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
 export default function FaqsSection({}) {
-  const isMobile = isMobileDevice();
+  const isMobile = useIsMobile();
   const sliderRef = useRef();
 
   const handleOnClick = (index) => {
@@ -64,12 +64,7 @@ export default function FaqsSection({}) {
                   <div key={jdx}>
                     <HoverHeading
                       onClick={() => handleOnClick(jdx)}
-                      style={{
-                        color: idx === jdx && '#48DC95',
-                        marginBottom: '28px',
-                        cursor: 'pointer',
-                        width: '700px',
-                      }}
+                      style={{ color: idx === jdx ? '#48DC95' : 'black' }}
                     >
                       {question}
                     </HoverHeading>
@@ -97,8 +92,14 @@ export const SectionWrapper = styled.div`
   }
 `;
 
-export const HoverHeading = styled(Heading)`
+export const HoverHeading = styled(HeadingLarge)`
+  transition: ${({ theme }) => theme.transitions.ease};
+  color: ${({ theme }) => theme.colors.black};
+  margin-bottom: 28px;
+  cursor: pointer;
+  width: 700px;
+
   &:hover {
-    color: '#B0B0B0';
+    color: ${({ theme }) => theme.colors.lightGrey};
   }
 `;

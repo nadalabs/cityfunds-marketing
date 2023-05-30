@@ -1,5 +1,5 @@
-import { Heading, Overline, PrimaryText, Text } from '@elements/Typography';
-import { isMobileDevice } from '@utils/helpers';
+import { Heading, HeadingSmall, Overline, Text } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -20,7 +20,7 @@ interface BlogSliderProps {
 }
 
 export default function BlogSlider({ topic, blogPosts }: BlogSliderProps) {
-  const isMobile = isMobileDevice();
+  const isMobile = useIsMobile();
   const settings = {
     dots: false,
     slidesToShow: isMobile ? 1.25 : 2.5,
@@ -41,15 +41,19 @@ export default function BlogSlider({ topic, blogPosts }: BlogSliderProps) {
                 height={340}
                 alt={title}
                 src={urlForImage(coverImage).height(480).width(690).url()}
-                style={{ borderRadius: '50px', overflow: 'hidden' }}
+                style={{
+                  borderRadius: '50px',
+                  overflow: 'hidden',
+                  marginBottom: '20px',
+                }}
               />
               <Overline>
                 <time dateTime={date}>
                   {format(parseISO(date), 'LLLL	d, yyyy')}
                 </time>
               </Overline>
-              <PrimaryText>{title}</PrimaryText>
-              <Text>{excerpt}</Text>
+              <HeadingSmall>{title}</HeadingSmall>
+              <Text style={{ color: '#989898' }}>{excerpt}</Text>
             </CardWrapper>
           </Link>
         ))}
@@ -68,6 +72,7 @@ export const SectionWrapper = styled.div`
 
 export const CardWrapper = styled.div`
   transition: ${({ theme }) => theme.transitions.ease};
+  max-width: 420px;
 
   &:hover {
     box-shadow: 0px 16px 30px rgba(0, 0, 0, 0.1);

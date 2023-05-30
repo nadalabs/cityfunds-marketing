@@ -17,12 +17,7 @@ export default function FeaturedLogos({ overline, logos }: FeaturedLogosProps) {
       <ContentWrapper>
         {logos.map(({ name, imageUrl, link }) => (
           <Link key={name} href={link} target="_blank">
-            <Image
-              width={145}
-              height={40}
-              alt={name}
-              src={imageUrl}
-            />
+            <Image width={145} height={40} alt={name} src={imageUrl} />
           </Link>
         ))}
       </ContentWrapper>
