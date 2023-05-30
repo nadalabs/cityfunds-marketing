@@ -1,8 +1,9 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { FormInput, StyledForm } from '@elements/FormInput';
-import { Caption } from '@elements/Typography';
+import { Caption, ErrorText } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
+import { styled } from 'styled-components';
 
 export default function EmailCapture({}) {
   const methods = useForm<FieldValues>({
@@ -26,7 +27,7 @@ export default function EmailCapture({}) {
   return (
     <FormProvider {...methods}>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+        <FormWrapper>
           <FormInput
             name="email"
             rules={{
@@ -42,9 +43,12 @@ export default function EmailCapture({}) {
           <div style={{ width: '300px' }}>
             <PrimaryButton>Get Started</PrimaryButton>
           </div>
-        </div>
+        </FormWrapper>
       </StyledForm>
 
+      {formState?.errors?.root?.message && (
+        <ErrorText>{formState?.errors?.root?.message}</ErrorText>
+      )}
       <Caption>
         By subscribing you agree with our{' '}
         <a
@@ -58,3 +62,14 @@ export default function EmailCapture({}) {
     </FormProvider>
   );
 }
+
+const FormWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-items: space-between;
+  width: content;
+  background-color: rgba(152, 152, 152, 0.15);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 1rem;
+`;

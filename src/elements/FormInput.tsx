@@ -1,4 +1,3 @@
-import { ErrorText } from '@elements/Typography';
 import { useEffect, useRef } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import InputMask from 'react-input-mask';
@@ -53,31 +52,28 @@ export const FormInput: React.FC<FormInputProps> = ({
       rules={rules}
       defaultValue={''}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <>
-          <InputMask
+        <InputMask
+          id={name}
+          value={value}
+          onChange={(e: any) => {
+            const currentValue = e.target.value;
+            const unmask = unmaskValue(currentValue);
+            onChange(unmask);
+          }}
+          type={type}
+          placeholder={placeholder}
+          onBlur={() => handleBlur()}
+          mask={mask}
+          style={{ width: '100%' }}
+        >
+          <StyledInput
+            ref={inputRef}
             id={name}
             value={value}
-            onChange={(e: any) => {
-              const currentValue = e.target.value;
-              const unmask = unmaskValue(currentValue);
-              onChange(unmask);
-            }}
             type={type}
             placeholder={placeholder}
-            onBlur={() => handleBlur()}
-            mask={mask}
-            style={{ width: '100%' }}
-          >
-            <StyledInput
-              ref={inputRef}
-              id={name}
-              value={value}
-              type={type}
-              placeholder={placeholder}
-            />
-          </InputMask>
-          {error && <ErrorText>{error.message}</ErrorText>}
-        </>
+          />
+        </InputMask>
       )}
     />
   );
@@ -85,17 +81,17 @@ export const FormInput: React.FC<FormInputProps> = ({
 
 const StyledInput = styled.input`
   font-family: ${({ theme }) => theme.fonts.main};
+  background-color: transparent;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
   line-height: 24px;
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
   border-radius: 10px;
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 1rem;
+  border: none;
   color: #989898;
   height: 56px;
 

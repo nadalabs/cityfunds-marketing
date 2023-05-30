@@ -1,7 +1,7 @@
+import useIsMobile from '@hooks/useIsMobile';
 import { PrimaryButton } from '@elements/Buttons';
 import { LinkText } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
-import { isMobileDevice } from '@utils/helpers';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -21,8 +21,8 @@ export default function Header({
   isDarkMode,
 }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const isMobile = isMobileDevice();
   const router = useRouter();
+  const isMobile = useIsMobile();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -45,7 +45,13 @@ export default function Header({
   ];
 
   return (
-    <SectionWrapper scrollPosition={scrollPosition}>
+    <SectionWrapper
+      style={{
+        backgroundColor:
+          scrollPosition > 50 ? 'rgba(152, 152, 152, 0.8)' : 'transparent',
+        backdropFilter: scrollPosition > 50 ? 'blur(10px)' : 'none',
+      }}
+    >
       {partnerImage ? (
         <div style={{ display: 'flex' }}>
           <Image
@@ -116,9 +122,7 @@ export default function Header({
   );
 }
 
-export const SectionWrapper = styled.div<{ scrollPosition: number }>`
-  background-color: ${({ theme, scrollPosition }) =>
-    scrollPosition > 50 ? theme.colors.lightGrey : 'transparent'};
+export const SectionWrapper = styled.div`
   transition: ${({ theme }) => theme.transitions.ease};
   display: flex;
   justify-content: space-between;

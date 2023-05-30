@@ -27,10 +27,17 @@ export default function KeyMetrics({
   imageUrl,
   metrics,
 }: KeyMetricsProps) {
+  const easingFn = function (t) {
+    // Example: easeInOutCubic
+    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+  };
+
   return (
     <SectionWrapper>
       <ContentWrapper>
-        <div style={{ position: 'relative', width: '50%', marginRight: '80px' }}>
+        <div
+          style={{ position: 'relative', width: '50%', marginRight: '80px' }}
+        >
           <Image src={imageUrl} alt={heading} fill />
         </div>
         <div style={{ width: '50%' }}>
@@ -46,7 +53,7 @@ export default function KeyMetrics({
       </ContentWrapper>
 
       <CounterWrapper>
-        {metrics.map(({ label, value, formattingFn, decimals }) => (
+        {metrics.map(({ label, value, formattingFn, decimals, prefix }) => (
           <div key={label}>
             <div style={{ display: 'flex', alignItems: 'flex-end' }}>
               <CountUp
@@ -55,10 +62,16 @@ export default function KeyMetrics({
                 scrollSpyDelay={100}
                 formattingFn={formattingFn}
                 decimals={decimals}
+                prefix={prefix}
+                // easingFn={easingFn}
+                // duration={3}
               >
                 {({ countUpRef }) => (
-                  // @ts-ignore-next-line
-                  <Heading style={{ marginBottom: 0 }} ref={countUpRef} />
+                  <Heading
+                    style={{ fontSize: '64px', margin: '0 8px 0 0' }}
+                    // @ts-ignore-next-line
+                    ref={countUpRef}
+                  />
                 )}
               </CountUp>
               <GreenSquare />

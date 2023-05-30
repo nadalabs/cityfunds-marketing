@@ -6,8 +6,8 @@ export const Heading = styled.h1`
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 600;
-  font-size: 46px;
-  line-height: 46px;
+  font-size: 42px;
+  line-height: 42px;
   margin: 0 0 8px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -16,8 +16,23 @@ export const Heading = styled.h1`
   }
 `;
 
+export const HeadingLarge = styled(Heading)`
+  font-size: 64px;
+  line-height: 72px;
+`;
+
+export const HeadingSmall = styled(Heading)`
+  font-size: 32px;
+  line-height: 36px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 24px;
+    line-height: 24px;
+  }
+`;
+
 export const PrimaryText = styled.p`
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.grey};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;
@@ -41,7 +56,7 @@ export const Text = styled.p`
   margin: 0 0 24px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 10px;
+    font-size: 14px;
     line-height: 14px;
   }
 `;
@@ -57,7 +72,7 @@ export const Overline = styled.p`
 `;
 
 export const Caption = styled.div`
-  color: ${({ theme }) => theme.colors.lightGray};
+  color: ${({ theme }) => theme.colors.lightGrey};
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-style: normal;
   font-weight: 400;
@@ -79,7 +94,7 @@ export const LinkText = styled(Link)<{ isDarkMode?: boolean }>`
   cursor: pointer;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.lightGrey};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -97,8 +112,6 @@ export const ErrorText = styled.p`
   color: #ff554f;
   text-align: left;
   margin: 0;
-  position: relative;
-  top: -8px;
 `;
 
 export const GreenSquare = styled.div`

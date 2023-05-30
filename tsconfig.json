@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@elements/*": ["src/elements/*"],
+      "@hooks/*": ["src/hooks/*"],
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@sections/*": ["src/sections/*"],

@@ -1,6 +1,5 @@
 import { LinkButton } from '@elements/Buttons';
-import { Caption, LinkText, Text } from '@elements/Typography';
-import { LEGALESE } from '@utils/constants';
+import { LinkText, Text } from '@elements/Typography';
 import Image from 'next/image';
 import styled from 'styled-components';
 
@@ -68,14 +67,14 @@ export default function Footer({}) {
             }}
           >
             {SOCIAL_LINKS.map(({ name, link }, idx) => (
-              <LinkButton href={link} target="blank">
+              <LinkButton key={idx} href={link} target="blank">
                 <Image
-                  key={idx}
                   width={28}
                   height={28}
                   alt={name}
                   src={`/icons/${name.toLowerCase()}.svg`}
                 />
+                {/* <FacebookIcon style={{ color: 'red' }} /> */}
               </LinkButton>
             ))}
           </div>
@@ -111,12 +110,11 @@ export default function Footer({}) {
         </div>
       </ContentWrapper>
 
-      {LEGALESE.split('\n').map((line, i) => (
-        <>
-          <Caption key={i}>{line}</Caption>
-          <br />
-        </>
-      ))}
+      {/* <LongFormText
+        overline={data.post.tag}
+        title={data.post.title}
+        content={data.post.content}
+      /> */}
     </SectionWrapper>
   );
 }
