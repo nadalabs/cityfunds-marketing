@@ -1,5 +1,4 @@
 import { GreenSquare, Heading, PrimaryText, Text } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -14,12 +13,12 @@ export default function CardSlider({
   primaryText,
   cards,
 }: CardSliderProps) {
-  const isMobile = useIsMobile();
   const settings = {
     dots: false,
-    slidesToShow: isMobile ? 1.25 : 2.5,
+    slidesToShow: 1,
     swipeToSlide: true,
     infinite: false,
+    variableWidth: true,
   };
 
   return (
@@ -70,21 +69,15 @@ export const CardWrapper = styled.div`
   padding: 40px;
   display: flex;
   align-items: flex-end;
-  position: relative;
+  /* position: relative; */
   transition: ${({ theme }) => theme.transitions.ease};
   bottom: 0;
+  /* margin-right: 2rem; */
 
   &:hover {
     box-shadow: 0px 16px 30px rgba(0, 0, 0, 0.1);
     height: 450px;
     width: 450px;
     bottom: 50px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    min-width: 195px;
-    height: 195px;
-    padding: 16px;
-    margin-right: 12px;
   }
 `;

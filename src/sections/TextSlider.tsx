@@ -5,7 +5,6 @@ import {
   PrimaryText,
   Text,
 } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -16,18 +15,18 @@ interface ValuePropsProps {
   valueProps: { title; description }[];
 }
 
-export default function ValueProps({
+export default function TextSlider({
   overline,
   heading,
   primaryText,
   valueProps,
 }: ValuePropsProps) {
-  const isMobile = useIsMobile();
   const settings = {
     dots: false,
-    slidesToShow: isMobile ? 1.25 : 2.5,
+    slidesToShow: 1,
     swipeToSlide: true,
     infinite: false,
+    variableWidth: true,
   };
 
   return (
@@ -84,12 +83,5 @@ export const CardWrapper = styled.div`
   &:hover {
     top: 50px;
     box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    min-width: 210px;
-    height: 210px;
-    padding: 24px;
-    margin-right: 12px;
   }
 `;

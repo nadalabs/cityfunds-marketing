@@ -8,7 +8,7 @@ import KeyMetrics from '@sections/KeyMetrics';
 import PageHero from '@sections/PageHero';
 import PublisherCTA from '@sections/PublisherCTA';
 import Testimonials from '@sections/Testimonials';
-import ValueProps from '@sections/ValueProps';
+import ValueProps from '@sections/TextSlider';
 import { VALUE_PROPS } from '@utils/constants';
 import { partnerQuery, partnerSlugsQuery } from 'lib/queries';
 import { getClient, sanityClient } from 'lib/sanity.server';

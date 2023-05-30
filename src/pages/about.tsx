@@ -5,7 +5,7 @@ import CareersCTA from '@sections/CareersCTA';
 import FeaturedLogos from '@sections/FeaturedLogos';
 import LongFormText from '@sections/LongFormText';
 import PageHero from '@sections/PageHero';
-import ValueProps from '@sections/ValueProps';
+import TextSlider from '@sections/TextSlider';
 import { OUR_STORY, OUR_VALUES } from '@utils/constants';
 
 export default function AboutPage() {
@@ -100,7 +100,7 @@ export default function AboutPage() {
           },
         ]}
       />
-      <ValueProps
+      <TextSlider
         overline="Our Values"
         heading="How We Think"
         primaryText="We have plenty of reasons."
