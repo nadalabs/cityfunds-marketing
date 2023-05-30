@@ -9,7 +9,7 @@ import { PreviewSuspense } from 'next-sanity/preview';
 // const LandingPreview = lazy(() => import('../../components/landing-preview'));
 
 export default function LearnPage({ allPosts, preview }) {
-  const topics = ['Webinars', 'Investing', 'Home Equity'];
+  const tags = ['Webinars', 'Investing', 'Home Equity'];
 
   if (preview) {
     return (
@@ -23,8 +23,8 @@ export default function LearnPage({ allPosts, preview }) {
     <>
       <Header />
       <BlogHero blogPosts={allPosts} />
-      {topics.map((topic) => (
-        <BlogSlider topic={topic} blogPosts={allPosts} />
+      {tags.map((tag, idx) => (
+        <BlogSlider key={idx} tag={tag} blogPosts={allPosts} />
       ))}
       <Footer />
     </>

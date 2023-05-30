@@ -17,7 +17,7 @@ export default function LongFormText({
     <SectionWrapper>
       <Overline>{overline}</Overline>
       <Heading>{title}</Heading>
-      <PortableText value={content} />
+      <PortableText value={content || []} />
     </SectionWrapper>
   );
 }

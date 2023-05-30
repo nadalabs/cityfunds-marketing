@@ -33,14 +33,16 @@ export default function LegalPage({ preview, data }) {
       <Header />
       <div style={{ padding: '200px 150px 0px 150px' }}>
         <Heading>Transparency</Heading>
-        {LEGAL_LINKS.map(({ title, link }) => (
-          <LinkText href={link}>{title}</LinkText>
+        {LEGAL_LINKS.map(({ title, link }, idx) => (
+          <LinkText key={idx} href={link}>
+            {title}
+          </LinkText>
         ))}
       </div>
       <LongFormText
         overline={`Last updated `}
-        title={data.legal.title}
-        content={data.legal.content}
+        title={data?.legal?.title}
+        content={data?.legal?.content}
       />
       <Footer />
     </>
@@ -48,9 +50,10 @@ export default function LegalPage({ preview, data }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const { legal } = await getClient(preview).fetch(legalQuery, {
+  const data = await getClient(preview).fetch(legalQuery, {
     slug: params.slug,
   });
+  const legal = data?.legal ?? null;
 
   return {
     props: {

@@ -8,7 +8,7 @@ import Slider from 'react-slick';
 import styled from 'styled-components';
 
 interface BlogSliderProps {
-  topic: string;
+  tag: string;
   blogPosts: {
     title: string;
     coverImage: string;
@@ -19,7 +19,7 @@ interface BlogSliderProps {
   }[];
 }
 
-export default function BlogSlider({ topic, blogPosts }: BlogSliderProps) {
+export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
   const isMobile = useIsMobile();
   const settings = {
     dots: false,
@@ -30,7 +30,7 @@ export default function BlogSlider({ topic, blogPosts }: BlogSliderProps) {
 
   return (
     <SectionWrapper>
-      <Heading>{topic}</Heading>
+      <Heading>{tag}</Heading>
 
       <Slider {...settings}>
         {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (

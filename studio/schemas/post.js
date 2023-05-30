@@ -39,6 +39,19 @@ export const post = {
       },
     },
     {
+      name: "tag",
+      title: "Tag",
+      type: "string",
+      options: {
+        list: [
+          { title: "Webinars", value: "webinars" },
+          { title: "Investing", value: "investing" },
+          { title: "Home Equity", value: "homeEquity" }
+        ],
+        layout: 'dropdown'
+      }
+    },
+    {
       name: 'date',
       title: 'Date',
       type: 'datetime',

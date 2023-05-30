@@ -1,6 +1,6 @@
-import useIsMobile from '@hooks/useIsMobile';
 import { PrimaryButton } from '@elements/Buttons';
 import { LinkText } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';

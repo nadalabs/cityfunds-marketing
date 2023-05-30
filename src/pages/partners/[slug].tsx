@@ -187,16 +187,17 @@ export default function PartnerPage({ preview, data }) {
           },
         ]}
       />
-      <PublisherCTA name={data.partner.name} />
+      <PublisherCTA name={data?.partner?.name} />
       <Footer />
     </>
   );
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const { partner } = await getClient(preview).fetch(partnerQuery, {
+  const data = await getClient(preview).fetch(partnerQuery, {
     slug: params.slug,
   });
+  const partner = data?.partner ?? null;
 
   return {
     props: {
@@ -210,7 +211,6 @@ export async function getStaticProps({ params, preview = false }) {
 
 export async function getStaticPaths() {
   const paths = await sanityClient.fetch(partnerSlugsQuery);
-  console.log(paths);
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
     fallback: true,

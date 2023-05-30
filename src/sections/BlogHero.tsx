@@ -17,7 +17,7 @@ interface BlogHeroProps {
   blogPosts: {
     title: string;
     coverImage: string;
-    date;
+    date: any;
     excerpt: string;
     tag: string;
     slug: string;

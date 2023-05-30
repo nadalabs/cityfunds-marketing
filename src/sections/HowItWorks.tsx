@@ -7,8 +7,8 @@ import {
   PrimaryText,
   Text,
 } from '@elements/Typography';
-import { EXTERNAL_ROUTES } from '@utils/constants';
 import useIsMobile from '@hooks/useIsMobile';
+import { EXTERNAL_ROUTES } from '@utils/constants';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
