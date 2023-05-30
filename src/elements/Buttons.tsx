@@ -26,7 +26,7 @@ export const PrimaryButton = styled.button<{ isDarkMode?: boolean }>`
 `;
 
 export const SecondaryButton = styled.button`
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.grey};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;
