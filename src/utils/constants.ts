@@ -10,12 +10,12 @@ export const LEGAL_LINKS = [
   { name: 'Privacy Policy', link: '/transparency/privacy-policy' },
   { name: 'Cookie Policy', link: '/transparency/cookie-policy' },
   {
-    name: 'Consumer Complaint Policy',
-    link: '/transparency/consumer-complaints-policy',
-  },
-  {
     name: 'Electronic Funds Transfer',
     link: '/transparency/electronic-funds-transfer',
+  },
+  {
+    name: 'Consumer Complaint Policy',
+    link: 'https://global-uploads.webflow.com/625f180b9d03ad4177055610/6272adeb375b786809b98989_Nada_Consumer_Complaint_Policy.pdf',
   },
   {
     name: 'Nada SEC Filings',
@@ -33,15 +33,16 @@ export const FOOTER_LINKS = [
     links: [
       { name: 'Cityfunds', link: '/cityfunds' },
       { name: 'Homeshares', link: '/homeshares' },
+      { name: 'Learn', link: '/learn' },
     ],
   },
   {
     title: 'About',
     links: [
+      { name: 'About', link: '/about' },
+      { name: 'Press', link: '/press' },
       { name: 'FAQs', link: '/faqs' },
       { name: 'Careers', link: '/careers' },
-      { name: 'Press', link: '/press' },
-      { name: 'Learn', link: '/learn' },
     ],
   },
   {
@@ -63,6 +64,8 @@ export enum EXTERNAL_ROUTES {
   WEB_APP = 'https://www.invest.nada.co',
   DOWNLOAD = 'https://nada.onelink.me/wNEn/ksbeffng',
   TYPEFORM = 'https://form.typeform.com/to/fv2eTpuT',
+  APPLE_STORE = 'https://apps.apple.com/us/app/nada-finance/id1615840472',
+  GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
 }
 
 export const VALUE_PROPS = [

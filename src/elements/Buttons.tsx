@@ -44,8 +44,4 @@ export const LinkButton = styled(Link)`
   transition: ${({ theme }) => theme.transitions.ease};
   cursor: pointer;
   margin-right: 32px;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary};
-  }
 `;

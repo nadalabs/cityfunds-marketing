@@ -1,7 +1,8 @@
 import { LinkButton } from '@elements/Buttons';
 import { LinkText, TertiaryHeading } from '@elements/Typography';
-import { FOOTER_LINKS, SOCIAL_LINKS } from '@utils/constants';
+import { EXTERNAL_ROUTES, FOOTER_LINKS, SOCIAL_LINKS } from '@utils/constants';
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export default function Footer({}) {
@@ -31,7 +32,6 @@ export default function Footer({}) {
                   alt={name}
                   src={`/icons/${name.toLowerCase()}.svg`}
                 />
-                {/* <FacebookIcon style={{ color: 'red' }} /> */}
               </LinkButton>
             ))}
           </div>
@@ -51,19 +51,23 @@ export default function Footer({}) {
         ))}
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Image
-            width={135}
-            height={40}
-            alt={'Nada'}
-            src={'/images/apple-store.png'}
-            style={{ marginBottom: '16px' }}
-          />
-          <Image
-            width={135}
-            height={40}
-            alt={'Nada'}
-            src={'/images/google-store.png'}
-          />
+          <Link href={EXTERNAL_ROUTES.APPLE_STORE} target="blank">
+            <Image
+              width={135}
+              height={40}
+              alt={'Nada'}
+              src={'/images/apple-store.png'}
+              style={{ marginBottom: '16px' }}
+            />
+          </Link>
+          <Link href={EXTERNAL_ROUTES.GOOGLE_STORE} target="blank">
+            <Image
+              width={135}
+              height={40}
+              alt={'Nada'}
+              src={'/images/google-store.png'}
+            />
+          </Link>
         </div>
       </ContentWrapper>
 

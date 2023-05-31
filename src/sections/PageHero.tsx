@@ -113,6 +113,7 @@ export const HeroImage = styled.div`
 
 export const ContentWrapper = styled.div`
   max-width: 726px;
+  z-index: 999;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     text-align: center;
