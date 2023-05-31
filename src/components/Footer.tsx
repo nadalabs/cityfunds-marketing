@@ -1,5 +1,5 @@
 import { LinkButton } from '@elements/Buttons';
-import { LinkText, Text } from '@elements/Typography';
+import { LinkText, TertiaryHeading } from '@elements/Typography';
 import Image from 'next/image';
 import styled from 'styled-components';
 
@@ -82,7 +82,7 @@ export default function Footer({}) {
 
         {NAV_LINKS.map(({ title, links }, idx) => (
           <div key={idx}>
-            <Text>{title}</Text>
+            <TertiaryHeading>{title}</TertiaryHeading>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               {links.map(({ name, link }, jdx) => (
                 <LinkText key={jdx} href={link}>
@@ -119,7 +119,7 @@ export default function Footer({}) {
   );
 }
 
-export const SectionWrapper = styled.div`
+const SectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 100px 156px;
@@ -130,7 +130,7 @@ export const SectionWrapper = styled.div`
   }
 `;
 
-export const ContentWrapper = styled.div`
+const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 195px;

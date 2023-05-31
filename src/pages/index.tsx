@@ -1,5 +1,7 @@
+import FeaturedImage from '@components/FeaturedImage';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
+import { SectionWrapper } from '@elements/Containers';
 import CardSlider from '@sections/CardSlider';
 import FaqsSection from '@sections/FaqsSection';
 import FeaturedLogos from '@sections/FeaturedLogos';
@@ -124,6 +126,14 @@ export default function HomePage() {
           },
         ]}
       />
+      <SectionWrapper>
+        <FeaturedImage
+          overline="What am I investing in?"
+          heading="Diversified Portfolios of Homes"
+          primaryText="Own fractional shares of peoples homes across the nations top cities on day one."
+          imageUrl="/images/location-map.png"
+        />
+      </SectionWrapper>
       <TextSlider
         overline="You may be wondering..."
         heading="Why Cityfunds?"
@@ -150,6 +160,7 @@ export default function HomePage() {
             imageUrl: '/images/screen-3.png',
           },
         ]}
+        isPhoneFrame
       />
       <Testimonials
         reviews={[

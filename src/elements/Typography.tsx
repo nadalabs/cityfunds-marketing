@@ -6,9 +6,9 @@ export const Heading = styled.h1`
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 600;
-  font-size: 42px;
-  line-height: 42px;
-  margin: 0 0 8px 0;
+  font-size: 64px;
+  line-height: 70px;
+  margin: 0 0 16px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 48px;
@@ -16,18 +16,23 @@ export const Heading = styled.h1`
   }
 `;
 
-export const HeadingLarge = styled(Heading)`
-  font-size: 64px;
-  line-height: 72px;
-`;
-
-export const HeadingSmall = styled(Heading)`
-  font-size: 32px;
+export const SecondaryHeading = styled(Heading)`
+  font-size: 40px;
   line-height: 36px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 24px;
     line-height: 24px;
+  }
+`;
+
+export const TertiaryHeading = styled(Heading)`
+  font-size: 28px;
+  line-height: 36px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 14px;
+    line-height: 14px;
   }
 `;
 
@@ -43,11 +48,12 @@ export const PrimaryText = styled.p`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 16px;
     line-height: 24px;
+    margin-bottom: 14px;
   }
 `;
 
-export const Text = styled.p`
-  color: ${({ theme }) => theme.colors.dark};
+export const SecondaryText = styled.p`
+  color: ${({ theme }) => theme.colors.grey};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;
@@ -56,7 +62,7 @@ export const Text = styled.p`
   margin: 0 0 24px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 14px;
+    font-size: 10px;
     line-height: 14px;
   }
 `;

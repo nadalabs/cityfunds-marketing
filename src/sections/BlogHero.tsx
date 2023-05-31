@@ -1,11 +1,11 @@
+import { SectionWrapper } from '@elements/Containers';
 import {
   GreenSquare,
   Heading,
   Overline,
   PrimaryText,
-  Text,
+  SecondaryText,
 } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
 import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -25,7 +25,6 @@ interface BlogHeroProps {
 }
 
 export default function BlogHero({ blogPosts }: BlogHeroProps) {
-  const isMobile = useIsMobile();
   const settings = {
     dots: false,
     fade: true,
@@ -39,32 +38,21 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
   };
 
   return (
-    <SectionWrapper>
+    <SectionWrapper style={{ backgroundColor: '#FBFBFB' }}>
       <Slider {...settings}>
         {blogPosts.map(
           ({ title, coverImage, date, excerpt, tag, slug }, idx) => (
             <div key={idx}>
               <div>
-                <Link
-                  href={`/learn/${slug}`}
-                  style={{ display: 'flex', justifyContent: 'space-between' }}
-                >
+                <Link href={`/learn/${slug}`}>
                   <FlexWrapper>
-                    <div>
+                    <ImageWrapper>
                       <Image
                         fill
                         alt={title}
-                        src={urlForImage(coverImage)
-                          .height(480)
-                          .width(690)
-                          .url()}
-                        style={{
-                          borderRadius: '50px',
-                          maxWidth: '50%',
-                          marginRight: '48px',
-                        }}
+                        src={urlForImage(coverImage).url()}
                       />
-                    </div>
+                    </ImageWrapper>
                     <CardWrapper>
                       <Overline>{tag}</Overline>
                       <Heading
@@ -81,19 +69,19 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                       >
                         {excerpt}
                       </PrimaryText>
-                      <Text style={{ fontSize: '14px', lineHeight: '18px' }}>
+                      <SecondaryText
+                        style={{ fontSize: '14px', lineHeight: '18px' }}
+                      >
                         <time dateTime={date}>
                           {format(parseISO(date), 'LLLL	d, yyyy')}
                         </time>
-                      </Text>
+                      </SecondaryText>
                     </CardWrapper>
                   </FlexWrapper>
                 </Link>
               </div>
 
-              <div
-                style={{ display: 'flex', position: 'relative', top: '2rem' }}
-              >
+              <div style={{ display: 'flex' }}>
                 {blogPosts.map((_, jdx) => (
                   <GreenSquare
                     key={jdx}
@@ -112,14 +100,6 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
   );
 }
 
-const SectionWrapper = styled.div`
-  padding: 150px 156px 76px 156px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 24px;
-  }
-`;
-
 export const CardWrapper = styled.div`
   width: 50%;
   height: 480px;
@@ -127,6 +107,7 @@ export const CardWrapper = styled.div`
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   border-radius: 60px;
   padding: 50px 82px;
+  margin: 1rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 50px 30px;
@@ -134,7 +115,11 @@ export const CardWrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  max-width: 726px;
+  width: 50%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+  }
 `;
 
 const FlexWrapper = styled.div`
@@ -144,5 +129,17 @@ const FlexWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  border-radius: 50px;
+  position: relative;
+  width: 50%;
+  margin-right: 48px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+    margin-right: 0;
   }
 `;

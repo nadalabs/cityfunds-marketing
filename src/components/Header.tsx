@@ -48,7 +48,7 @@ export default function Header({
     <SectionWrapper
       style={{
         backgroundColor:
-          scrollPosition > 50 ? 'rgba(152, 152, 152, 0.8)' : 'transparent',
+          scrollPosition > 50 ? 'rgba(255, 255, 255, 0.8)' : 'transparent',
         backdropFilter: scrollPosition > 50 ? 'blur(10px)' : 'none',
       }}
     >
@@ -81,7 +81,11 @@ export default function Header({
             width={222}
             height={64}
             alt={'Nada'}
-            src={isDarkMode ? '/icons/nada-light.svg' : '/icons/nada-dark.svg'}
+            src={
+               scrollPosition > 50
+                ? '/icons/nada-dark.svg'
+                : '/icons/nada-light.svg'
+            }
           />
         </Link>
       )}
@@ -102,7 +106,10 @@ export default function Header({
                     key={idx}
                     href={link}
                     isDarkMode={isDarkMode}
-                    style={{ marginBottom: 0 }}
+                    style={{
+                      marginBottom: 0,
+                      color: scrollPosition > 50 ? 'black' : 'white',
+                    }}
                   >
                     {name.toUpperCase()}
                   </LinkText>
@@ -122,7 +129,7 @@ export default function Header({
   );
 }
 
-export const SectionWrapper = styled.div`
+const SectionWrapper = styled.div`
   transition: ${({ theme }) => theme.transitions.ease};
   display: flex;
   justify-content: space-between;

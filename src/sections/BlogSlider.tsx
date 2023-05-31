@@ -1,4 +1,9 @@
-import { Heading, HeadingSmall, Overline, Text } from '@elements/Typography';
+import {
+  Overline,
+  SecondaryHeading,
+  SecondaryText,
+  TertiaryHeading,
+} from '@elements/Typography';
 import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -29,7 +34,9 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
 
   return (
     <SectionWrapper>
-      <Heading>{tag}</Heading>
+      <SecondaryHeading style={{ marginBottom: '48px' }}>
+        {tag}
+      </SecondaryHeading>
 
       <Slider {...settings}>
         {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
@@ -51,8 +58,8 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
                   {format(parseISO(date), 'LLLL	d, yyyy')}
                 </time>
               </Overline>
-              <HeadingSmall>{title}</HeadingSmall>
-              <Text style={{ color: '#989898' }}>{excerpt}</Text>
+              <TertiaryHeading>{title}</TertiaryHeading>
+              <SecondaryText>{excerpt}</SecondaryText>
             </CardWrapper>
           </Link>
         ))}
@@ -73,9 +80,4 @@ export const CardWrapper = styled.div`
   transition: ${({ theme }) => theme.transitions.ease};
   max-width: 420px;
   margin-right: 2rem;
-  border-radius: 50px;
-
-  &:hover {
-    box-shadow: 0px 16px 30px rgba(0, 0, 0, 0.1);
-  }
 `;
