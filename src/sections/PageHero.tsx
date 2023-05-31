@@ -48,50 +48,42 @@ export default function PageHero({
               ),
               url(${imageUrl})`,
             }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'flex-end',
-                width: '100%',
-              }}
-            >
-              <ContentWrapper>
-                <Heading style={{ color: 'white', maxWidth: '600px' }}>
-                  {heading}
-                </Heading>
-                <PrimaryText style={{ color: '#B0B0B0', maxWidth: '600px' }}>
-                  {primaryText}
-                </PrimaryText>
-                <EmailCapture />
-              </ContentWrapper>
-
-              {!isMobile && heroImages.length > 1 && (
-                <div>
-                  <SecondaryText style={{ color: 'white', marginBottom: 0 }}>
-                    {name}
-                  </SecondaryText>
-                  <SecondaryText
-                    style={{ color: '#B0B0B0', marginBottom: '8px' }}
-                  >
-                    {numProperties} Properties
-                  </SecondaryText>
-                  <div style={{ display: 'flex' }}>
-                    {heroImages.map((_, jdx) => (
-                      <GreenSquare
-                        key={jdx}
-                        style={{
-                          backgroundColor: idx !== jdx ? '#B0B0B0' : '#48DC95',
-                          marginRight: '8px',
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
+          />
+          <ContentWrapper>
+            <div>
+              <Heading style={{ color: 'white', maxWidth: '600px' }}>
+                {heading}
+              </Heading>
+              <PrimaryText style={{ color: '#B0B0B0', maxWidth: '600px' }}>
+                {primaryText}
+              </PrimaryText>
+              <EmailCapture />
             </div>
-          </HeroImage>
+
+            {!isMobile && heroImages.length > 1 && (
+              <div>
+                <SecondaryText style={{ color: 'white', marginBottom: 0 }}>
+                  {name}
+                </SecondaryText>
+                <SecondaryText
+                  style={{ color: '#B0B0B0', marginBottom: '8px' }}
+                >
+                  {numProperties} Properties
+                </SecondaryText>
+                <div style={{ display: 'flex' }}>
+                  {heroImages.map((_, jdx) => (
+                    <GreenSquare
+                      key={jdx}
+                      style={{
+                        backgroundColor: idx !== jdx ? '#B0B0B0' : '#48DC95',
+                        marginRight: '8px',
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          </ContentWrapper>
         </div>
       ))}
     </Slider>
@@ -99,23 +91,26 @@ export default function PageHero({
 }
 
 export const HeroImage = styled.div`
-  display: flex;
   width: 100vw;
   height: 110vh;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
-  padding: 50px 100px 15vh 100px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 50px 30px;
-  }
 `;
 
 export const ContentWrapper = styled.div`
-  max-width: 726px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100vw;
+  height: 100vh;
   z-index: 999;
+  padding: 16px 48px 10vh 48px;
+  position: absolute;
+  top: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     text-align: center;
+    padding: 30px;
+    padding-bottom: 15vh;
   }
 `;

@@ -23,7 +23,7 @@ export default function HomeSharesPage() {
       <SectionWrapper>
         <FeaturedImage
           overline="Build Your Real Estate Wealth"
-          heading="Making homeownership accessible."
+          heading="Making home ownership accessible."
           primaryText="Investing in real estate is all about location, yet the increased cost of living have made desirable places unaffordable. Now, owning real estate in your favorite city takes less than 5 minutes."
           imageUrl="/images/homeshares.png"
           btnText="Apply Now"
@@ -74,7 +74,7 @@ export default function HomeSharesPage() {
       <SectionWrapper>
         <FeaturedImage
           overline="Build Your Real Estate Wealth"
-          heading="Making homeownership accessible."
+          heading="Making home ownership accessible."
           primaryText="Investing in real estate is all about location, yet the increased cost of living have made desirable places unaffordable. Now, owning real estate in your favorite city takes less than 5 minutes."
           imageUrl="/images/nada-card.png"
           btnText="Apply Now"

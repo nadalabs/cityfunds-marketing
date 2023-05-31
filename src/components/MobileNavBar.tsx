@@ -97,7 +97,7 @@ const SectionWrapper = styled.div`
   transition: ${({ theme }) => theme.transitions.ease};
   position: fixed;
   z-index: 999;
-  width: 100%;
+  width: 100vw;
   padding: 30px;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;

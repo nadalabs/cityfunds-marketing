@@ -18,9 +18,7 @@ export default function CareersCTA({}) {
           come help us?
         </PrimaryText>
         <div>
-          <PrimaryButton isDarkMode>
-            Check out our Open Opportunities
-          </PrimaryButton>
+          <PrimaryButton isDarkMode>Check Out Opportunities</PrimaryButton>
         </div>
       </ContentWrapper>
     </SectionWrapper>

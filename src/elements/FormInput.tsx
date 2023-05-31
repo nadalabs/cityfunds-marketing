@@ -64,7 +64,7 @@ export const FormInput: React.FC<FormInputProps> = ({
           placeholder={placeholder}
           onBlur={() => handleBlur()}
           mask={mask}
-          style={{ width: '100%' }}
+          style={{ flexGrow: 1, width: '100%' }}
         >
           <StyledInput
             ref={inputRef}
@@ -115,7 +115,6 @@ export const FormWrapper = styled.div`
   border: 1px solid #e7e7e7;
   box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  width: 100%;
   text-align: center;
   padding: 60px;
 

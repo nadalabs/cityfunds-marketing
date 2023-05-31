@@ -13,7 +13,7 @@ export default function PublisherCTA({ name }: PublisherCTAProps) {
 
   return (
     <SectionWrapper>
-      <div style={{ maxWidth: '542px', marginRight: '84px' }}>
+      <ContentWrapper>
         <Overline>
           {name ? `Exclusive Perk for ${name} Readers` : 'Limited Time Offer'}
         </Overline>
@@ -27,7 +27,7 @@ export default function PublisherCTA({ name }: PublisherCTAProps) {
           *valid until 5/31/23
         </SecondaryText>
         <EmailCapture />
-      </div>
+      </ContentWrapper>
 
       {!isMobile && <PhoneScreen imageUrl="/images/screen-1.png" />}
     </SectionWrapper>
@@ -42,5 +42,14 @@ export const SectionWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0 24px;
+  }
+`;
+
+export const ContentWrapper = styled.div`
+  max-width: 542px;
+  margin-right: 84px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-right: 0;
   }
 `;

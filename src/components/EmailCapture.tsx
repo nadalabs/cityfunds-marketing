@@ -2,6 +2,7 @@ import { PrimaryButton } from '@elements/Buttons';
 import { FormInput, StyledForm } from '@elements/FormInput';
 import { Caption, ErrorText } from '@elements/Typography';
 import { LEGAL_LINKS } from '@utils/constants';
+import { setCookie } from '@utils/helpers';
 import Link from 'next/link';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { styled } from 'styled-components';
@@ -21,6 +22,7 @@ export default function EmailCapture({}) {
         formName: 'Cityfunds',
         email: inputs.email,
       });
+      setCookie('email', inputs.email);
     } catch (err: any) {
       setError('email', {
         message: err.response.data.errors.message,
@@ -44,9 +46,9 @@ export default function EmailCapture({}) {
             type="email"
             placeholder="Enter Your Email"
           />
-          <div style={{ width: '350px' }}>
+          <BtnWrapper>
             <PrimaryButton>Get Started</PrimaryButton>
-          </div>
+          </BtnWrapper>
         </FormWrapper>
       </StyledForm>
 
@@ -76,4 +78,12 @@ const FormWrapper = styled.div`
   border-radius: 10px;
   backdrop-filter: blur(10px);
   margin-bottom: 1rem;
+`;
+
+const BtnWrapper = styled.div`
+  width: 250px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+  }
 `;
