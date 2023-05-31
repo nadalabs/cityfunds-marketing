@@ -1,6 +1,7 @@
 import { SectionWrapper } from '@elements/Containers';
 import {
   GreenSquare,
+  LinkText,
   Overline,
   SecondaryText,
   TertiaryHeading,
@@ -38,6 +39,8 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
 
   return (
     <SectionWrapper style={{ backgroundColor: '#FBFBFB' }}>
+      {blogPosts.length === 1 && (<LinkText href='/learn' style={{marginTop: '200px'}}>Back to Blog</LinkText>)}
+
       <Slider {...settings}>
         {blogPosts.map((post, idx) => (
           <div key={idx}>

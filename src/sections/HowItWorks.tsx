@@ -66,12 +66,7 @@ export default function HowItWorks({
                           marginBottom: '24px',
                         }}
                       />
-                      <SecondaryHeading
-                        style={{
-                          color: idx === jdx && '#48DC95',
-                          fontWeight: 600,
-                        }}
-                      >
+                      <SecondaryHeading style={{  color: idx === jdx && '#48DC95'}}>
                         {title}
                       </SecondaryHeading>
                       <SecondaryText>{description}</SecondaryText>
@@ -106,6 +101,7 @@ export const ContentWrapper = styled.div`
   margin-left: 4rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
     margin-left: 0;
   }
 `;

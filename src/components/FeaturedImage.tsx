@@ -52,7 +52,8 @@ const ImageWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    margin-right: 0;
+    height: 350px;
+    margin: 0 0 40px 0;
   }
 `;
 
