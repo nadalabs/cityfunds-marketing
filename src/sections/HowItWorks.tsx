@@ -66,7 +66,9 @@ export default function HowItWorks({
                           marginBottom: '24px',
                         }}
                       />
-                      <SecondaryHeading style={{  color: idx === jdx && '#48DC95'}}>
+                      <SecondaryHeading
+                        style={{ color: idx === jdx && '#48DC95' }}
+                      >
                         {title}
                       </SecondaryHeading>
                       <SecondaryText>{description}</SecondaryText>

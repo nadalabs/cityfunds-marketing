@@ -1,5 +1,4 @@
-import Footer from '@components/Footer';
-import Header from '@components/Header';
+import PageLayout from '@components/PageLayout';
 import BlogHero from '@sections/BlogHero';
 import LongFormText from '@sections/LongFormText';
 import { postQuery, postSlugsQuery } from 'lib/queries';
@@ -17,16 +16,14 @@ export default function PostPage({ preview, data }) {
   // }
 
   return (
-    <>
-      <Header isDarkMode />
+    <PageLayout isDarkMode>
       <BlogHero blogPosts={[data?.post]} />
       <LongFormText
         overline={data?.post?.tag}
         title={data?.post?.title}
         content={data?.post?.content}
       />
-      <Footer />
-    </>
+    </PageLayout>
   );
 }
 

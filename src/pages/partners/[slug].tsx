@@ -1,7 +1,6 @@
 import FeaturedImage from '@components/FeaturedImage';
-import Footer from '@components/Footer';
-import Header from '@components/Header';
 import KeyMetrics from '@components/KeyMetrics';
+import PageLayout from '@components/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import CardSlider from '@sections/CardSlider';
 import FaqsSection from '@sections/FaqsSection';
@@ -17,8 +16,7 @@ import { getClient, sanityClient } from 'lib/sanity.server';
 
 export default function PartnerPage({ preview, data }) {
   return (
-    <>
-      <Header partnerImage={data?.partner?.coverImage} />
+    <PageLayout partnerImage={data?.partner?.coverImage}>
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios with passive income in the nations top cities."
@@ -199,8 +197,7 @@ export default function PartnerPage({ preview, data }) {
         ]}
       />
       <PublisherCTA name={data?.partner?.name} />
-      <Footer />
-    </>
+    </PageLayout>
   );
 }
 

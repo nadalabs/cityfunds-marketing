@@ -1,5 +1,4 @@
-import Footer from '@components/Footer';
-import Header from '@components/Header';
+import PageLayout from '@components/PageLayout';
 import BlogHero from '@sections/BlogHero';
 import BlogSlider from '@sections/BlogSlider';
 import { indexQuery } from 'lib/queries';
@@ -20,14 +19,12 @@ export default function LearnPage({ allPosts, preview }) {
   }
 
   return (
-    <>
-      <Header isDarkMode />
+    <PageLayout isDarkMode>
       <BlogHero blogPosts={allPosts} />
       {tags.map((tag, idx) => (
         <BlogSlider key={idx} tag={tag} blogPosts={allPosts} />
       ))}
-      <Footer />
-    </>
+    </PageLayout>
   );
 }
 

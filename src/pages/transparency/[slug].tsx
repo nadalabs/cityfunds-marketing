@@ -1,5 +1,4 @@
-import Footer from '@components/Footer';
-import Header from '@components/Header';
+import PageLayout from '@components/PageLayout';
 import { Heading, LinkText } from '@elements/Typography';
 import LongFormText from '@sections/LongFormText';
 import { legalQuery, legalSlugsQuery } from 'lib/queries';
@@ -29,8 +28,7 @@ export default function LegalPage({ preview, data }) {
   ];
 
   return (
-    <>
-      <Header />
+    <PageLayout>
       <div style={{ padding: '200px 150px 0px 150px' }}>
         <Heading>Transparency</Heading>
         {LEGAL_LINKS.map(({ title, link }, idx) => (
@@ -44,8 +42,7 @@ export default function LegalPage({ preview, data }) {
         title={data?.legal?.title}
         content={data?.legal?.content}
       />
-      <Footer />
-    </>
+    </PageLayout>
   );
 }
 

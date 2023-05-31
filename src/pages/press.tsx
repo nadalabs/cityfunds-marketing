@@ -1,5 +1,4 @@
-import Footer from '@components/Footer';
-import Header from '@components/Header';
+import PageLayout from '@components/PageLayout';
 import PageHero from '@sections/PageHero';
 import PressArticles from '@sections/PressArticles';
 import { pressIndexQuery } from 'lib/queries';
@@ -7,16 +6,14 @@ import { getClient, overlayDrafts } from 'lib/sanity.server';
 
 export default function PressPage({ allPress }) {
   return (
-    <>
-      <Header />
+    <PageLayout>
       <PageHero
         heading="Nada in the News"
         primaryText="For media inquiries reach out to us at media@nada.co"
         heroImages={[{ name: '', imageUrl: '/images/press-hero.png' }]}
       />
       <PressArticles articles={allPress} />
-      <Footer />
-    </>
+    </PageLayout>
   );
 }
 

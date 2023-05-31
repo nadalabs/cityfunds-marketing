@@ -1,7 +1,6 @@
 import FeaturedImage from '@components/FeaturedImage';
-import Footer from '@components/Footer';
-import Header from '@components/Header';
 import KeyMetrics from '@components/KeyMetrics';
+import PageLayout from '@components/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import HowItWorks from '@sections/HowItWorks';
 import PageHero from '@sections/PageHero';
@@ -10,8 +9,7 @@ import { EXTERNAL_ROUTES } from '@utils/constants';
 
 export default function HomeSharesPage() {
   return (
-    <>
-      <Header />
+    <PageLayout>
       <PageHero
         heading="Unlock Home Equity with No Debt or Monthly Payments"
         primaryText="Trade in fractions of your home equity for cash and spend it on everyday items. Apply below and one of our home equity specialists will reach out."
@@ -74,7 +72,7 @@ export default function HomeSharesPage() {
         onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
       />
       <SectionWrapper>
-       <FeaturedImage
+        <FeaturedImage
           overline="Build Your Real Estate Wealth"
           heading="Making homeownership accessible."
           primaryText="Investing in real estate is all about location, yet the increased cost of living have made desirable places unaffordable. Now, owning real estate in your favorite city takes less than 5 minutes."
@@ -97,7 +95,6 @@ export default function HomeSharesPage() {
           },
         ]}
       />
-      <Footer />
-    </>
+    </PageLayout>
   );
 }
