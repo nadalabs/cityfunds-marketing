@@ -17,7 +17,7 @@ export default function LegalPage({ preview, data }) {
         ))}
       </div>
       <LongFormText
-        overline={`Last updated `}
+        overline={`Last updated ${data?.legal?.date}`}
         title={data?.legal?.title}
         content={data?.legal?.content}
       />

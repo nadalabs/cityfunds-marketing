@@ -1,7 +1,8 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { FormInput, StyledForm } from '@elements/FormInput';
 import { Caption, ErrorText } from '@elements/Typography';
-import { EXTERNAL_ROUTES } from '@utils/constants';
+import { LEGAL_LINKS } from '@utils/constants';
+import Link from 'next/link';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { styled } from 'styled-components';
 
@@ -16,7 +17,10 @@ export default function EmailCapture({}) {
 
   const onSubmit = async (inputs: FieldValues) => {
     try {
-      // await window.analytics.track('Lead Capture');
+      // await window.analytics.track('Lead Capture', {
+      //   formName: 'Cityfunds',
+      //   email: inputs.email,
+      // });
     } catch (err: any) {
       setError('email', {
         message: err.response.data.errors.message,
@@ -40,7 +44,7 @@ export default function EmailCapture({}) {
             type="email"
             placeholder="Enter Your Email"
           />
-          <div style={{ width: '300px' }}>
+          <div style={{ width: '350px' }}>
             <PrimaryButton>Get Started</PrimaryButton>
           </div>
         </FormWrapper>
@@ -51,12 +55,12 @@ export default function EmailCapture({}) {
       )}
       <Caption>
         By subscribing you agree with our{' '}
-        <a
-          onClick={() => window.location.replace(EXTERNAL_ROUTES.PRIVACY)}
+        <Link
+          href={LEGAL_LINKS[1].link}
           style={{ color: '#48DC95', cursor: 'pointer' }}
         >
           Privacy Policy
-        </a>{' '}
+        </Link>{' '}
         and provide consent to receiving updates from our company.
       </Caption>
     </FormProvider>
@@ -64,10 +68,10 @@ export default function EmailCapture({}) {
 }
 
 const FormWrapper = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-items: space-between;
-  width: content;
   background-color: rgba(152, 152, 152, 0.15);
   border-radius: 10px;
   backdrop-filter: blur(10px);
