@@ -1,8 +1,8 @@
 import {
   GreenSquare,
-  HeadingLarge,
+  Heading,
   PrimaryText,
-  Text,
+  SecondaryText,
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import Slider from 'react-slick';
@@ -57,9 +57,9 @@ export default function PageHero({
               }}
             >
               <ContentWrapper>
-                <HeadingLarge style={{ color: 'white', maxWidth: '600px' }}>
+                <Heading style={{ color: 'white', maxWidth: '600px' }}>
                   {heading}
-                </HeadingLarge>
+                </Heading>
                 <PrimaryText style={{ color: '#B0B0B0', maxWidth: '600px' }}>
                   {primaryText}
                 </PrimaryText>
@@ -68,12 +68,14 @@ export default function PageHero({
 
               {!isMobile && heroImages.length > 1 && (
                 <div>
-                  <Text style={{ color: 'white', marginBottom: 0 }}>
+                  <SecondaryText style={{ color: 'white', marginBottom: 0 }}>
                     {name}
-                  </Text>
-                  <Text style={{ color: '#B0B0B0', marginBottom: '8px' }}>
+                  </SecondaryText>
+                  <SecondaryText
+                    style={{ color: '#B0B0B0', marginBottom: '8px' }}
+                  >
                     {numProperties} Properties
-                  </Text>
+                  </SecondaryText>
                   <div style={{ display: 'flex' }}>
                     {heroImages.map((_, jdx) => (
                       <GreenSquare
@@ -110,4 +112,8 @@ export const HeroImage = styled.div`
 
 export const ContentWrapper = styled.div`
   max-width: 726px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    text-align: center;
+  }
 `;

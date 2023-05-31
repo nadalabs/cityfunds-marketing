@@ -1,3 +1,4 @@
+import { SectionWrapper } from '@elements/Containers';
 import {
   GreenSquare,
   Heading,
@@ -61,14 +62,6 @@ export default function Testimonials({ reviews }: TestimonialsProps) {
     </SectionWrapper>
   );
 }
-
-export const SectionWrapper = styled.div`
-  padding: 92px 156px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 24px;
-  }
-`;
 
 const ContentWrapper = styled.div`
   display: flex;

@@ -3,6 +3,7 @@ export enum EXTERNAL_ROUTES {
   TERMS = 'https://www.nada.co/terms-conditions',
   PRIVACY = 'https://www.nada.co/privacy-policy',
   DOWNLOAD = 'https://nada.onelink.me/wNEn/ksbeffng',
+  TYPEFORM = 'https://form.typeform.com/to/fv2eTpuT',
 }
 
 export const LEGALESE = `© 2023 Nada Holdings, Inc. and/or its affiliates. All rights reserved. Nada is a registered service mark of Nada Holdings, Inc.
@@ -20,7 +21,7 @@ Today, Nada is powered by a diverse group of talented and purpose-driven people 
 
 export const VALUE_PROPS = [
   {
-    title: 'Unlocking liquid equity for home owners',
+    title: 'Unlocking equity for home owners',
     description:
       'Not leveraged against 1 property. Immediate exposure to multiple properties spread across a top city keeping you safe from market movement on a specific home.',
   },

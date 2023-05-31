@@ -1,4 +1,4 @@
-import { Heading, Overline, Text } from '@elements/Typography';
+import { Heading, Overline, SecondaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import EmailCapture from 'src/components/EmailCapture';
 import PhoneScreen from 'src/components/PhoneScreen';
@@ -19,11 +19,13 @@ export default function PublisherCTA({ name }: PublisherCTAProps) {
         </Overline>
         <Heading>Invest $1,000</Heading>
         <Heading style={{ color: '#48DC95' }}>Get $100</Heading>
-        <Text style={{ marginBottom: '8px' }}>
+        <SecondaryText style={{ marginBottom: '8px' }}>
           Homeowner or not, call yourself a real estate investor today. As an
           added bonus get a free $100* when you invest $1000 in any city.
-        </Text>
-        <Text style={{ color: '#989898' }}>*valid until 5/31/23</Text>
+        </SecondaryText>
+        <SecondaryText style={{ color: '#989898' }}>
+          *valid until 5/31/23
+        </SecondaryText>
         <EmailCapture />
       </div>
 

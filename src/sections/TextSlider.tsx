@@ -1,14 +1,14 @@
+import { CardWrapper, SliderWrapper } from '@elements/Containers';
 import {
-  GreenSquare,
   Heading,
   Overline,
-  PrimaryText,
-  Text,
+  SecondaryText,
+  TertiaryHeading,
 } from '@elements/Typography';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-interface ValuePropsProps {
+interface TextSliderProps {
   overline: string;
   heading: string;
   primaryText: string;
@@ -20,7 +20,7 @@ export default function TextSlider({
   heading,
   primaryText,
   valueProps,
-}: ValuePropsProps) {
+}: TextSliderProps) {
   const settings = {
     dots: false,
     slidesToShow: 1,
@@ -30,58 +30,44 @@ export default function TextSlider({
   };
 
   return (
-    <SectionWrapper>
+    <SliderWrapper>
       <Overline>{overline}</Overline>
       <Heading>{heading}</Heading>
-      <Text>{primaryText}</Text>
+      <SecondaryText>{primaryText}</SecondaryText>
 
       <div style={{ position: 'relative', right: '1rem' }}>
         <Slider {...settings}>
           {valueProps.map(({ title, description }, idx) => (
             <div key={idx}>
-              <CardWrapper>
-                <GreenSquare
-                  style={{
-                    height: '30px',
-                    width: '30px',
-                    borderRadius: '7px',
-                    marginBottom: '20px',
-                  }}
-                />
-                <PrimaryText style={{ color: 'black', fontWeight: 600 }}>
-                  {title}
-                </PrimaryText>
-                <Text>{description}</Text>
+              <CardWrapper
+                style={{
+                  boxShadow: '2px 4px 25px rgba(0, 0, 0, 0.1)',
+                  margin: '1rem',
+                }}
+              >
+                <GreenSquare />
+                <TertiaryHeading>{title}</TertiaryHeading>
+                <SecondaryText>{description}</SecondaryText>
               </CardWrapper>
             </div>
           ))}
         </Slider>
       </div>
-    </SectionWrapper>
+    </SliderWrapper>
   );
 }
 
-export const SectionWrapper = styled.div`
-  padding: 140px 0 140px 156px;
+export const GreenSquare = styled.div`
+  background-color: ${({ theme }) => theme.colors.secondary};
+  height: 30px;
+  width: 30px;
+  border-radius: 7px;
+  margin-bottom: 20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 0 50px 30px;
-  }
-`;
-
-export const CardWrapper = styled.div`
-  width: 450px;
-  height: 450px;
-  background: #ffffff;
-  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
-  border-radius: 52px;
-  padding: 52px;
-  margin: 1rem;
-  transition: ${({ theme }) => theme.transitions.ease};
-  top: 0;
-
-  &:hover {
-    top: 50px;
-    box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
+    height: 14px;
+    width: 14px;
+    border-radius: 3px;
+    margin-bottom: 14px;
   }
 `;

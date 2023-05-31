@@ -21,7 +21,7 @@ export default function LearnPage({ allPosts, preview }) {
 
   return (
     <>
-      <Header />
+      <Header isDarkMode />
       <BlogHero blogPosts={allPosts} />
       {tags.map((tag, idx) => (
         <BlogSlider key={idx} tag={tag} blogPosts={allPosts} />
