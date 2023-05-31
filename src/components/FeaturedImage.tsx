@@ -38,7 +38,6 @@ export default function FeaturedImage({
 const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 120px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;

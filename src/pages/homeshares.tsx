@@ -73,6 +73,16 @@ export default function HomeSharesPage() {
         btnText="Apply Now"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
       />
+      <SectionWrapper>
+       <FeaturedImage
+          overline="Build Your Real Estate Wealth"
+          heading="Making homeownership accessible."
+          primaryText="Investing in real estate is all about location, yet the increased cost of living have made desirable places unaffordable. Now, owning real estate in your favorite city takes less than 5 minutes."
+          imageUrl="/images/nada-card.png"
+          btnText="Apply Now"
+          onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
+        />
+      </SectionWrapper>
       <Testimonials
         reviews={[
           {

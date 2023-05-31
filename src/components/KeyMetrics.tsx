@@ -49,6 +49,7 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
 const FlexWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 120px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
