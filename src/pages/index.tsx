@@ -1,17 +1,17 @@
 import FeaturedImage from '@components/FeaturedImage';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
+import KeyMetrics from '@components/KeyMetrics';
 import { SectionWrapper } from '@elements/Containers';
 import CardSlider from '@sections/CardSlider';
 import FaqsSection from '@sections/FaqsSection';
 import FeaturedLogos from '@sections/FeaturedLogos';
 import HowItWorks from '@sections/HowItWorks';
-import KeyMetrics from '@sections/KeyMetrics';
 import PageHero from '@sections/PageHero';
 import PublisherCTA from '@sections/PublisherCTA';
 import Testimonials from '@sections/Testimonials';
 import TextSlider from '@sections/TextSlider';
-import { VALUE_PROPS } from '@utils/constants';
+import { EXTERNAL_ROUTES, VALUE_PROPS } from '@utils/constants';
 
 export default function HomePage() {
   return (
@@ -100,38 +100,46 @@ export default function HomePage() {
           },
         ]}
       />
-      <KeyMetrics
-        overline="Why Cityfunds?"
-        heading="Location, Location, Location"
-        primaryText="Investing in real estate is all about location, yet the increased
+      <SectionWrapper>
+        <FeaturedImage
+          overline="Why Cityfunds?"
+          heading="Location, Location, Location"
+          primaryText="Investing in real estate is all about location, yet the increased
             cost of living have made desirable places unaffordable. Now, owning
             real estate in your favorite city takes less than 5 minutes."
-        imageUrl="/images/location-tiles.png"
-        metrics={[
-          {
-            label: 'Total Investors',
-            value: 7000,
-            formattingFn: (val) => `${val}+`,
-          },
-          {
-            label: 'Properties Funded',
-            value: 60,
-            formattingFn: (val) => `${val}+`,
-          },
-          {
-            label: 'Avg. Portfolio Appreciation',
-            value: 11.7,
-            formattingFn: (val) => `${val}%`,
-            decimals: 1,
-          },
-        ]}
-      />
+          imageUrl="/images/location-tiles.png"
+          btnText="Get Started"
+          onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+        />
+        <KeyMetrics
+          metrics={[
+            {
+              label: 'Total Investors',
+              value: 7000,
+              formattingFn: (val) => `${val}+`,
+            },
+            {
+              label: 'Properties Funded',
+              value: 60,
+              formattingFn: (val) => `${val}+`,
+            },
+            {
+              label: 'Avg. Portfolio Appreciation',
+              value: 11.7,
+              formattingFn: (val) => `${val}%`,
+              decimals: 1,
+            },
+          ]}
+        />
+      </SectionWrapper>
       <SectionWrapper>
         <FeaturedImage
           overline="What am I investing in?"
           heading="Diversified Portfolios of Homes"
           primaryText="Own fractional shares of peoples homes across the nations top cities on day one."
           imageUrl="/images/location-map.png"
+          btnText="Get Started"
+          onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         />
       </SectionWrapper>
       <TextSlider
@@ -142,6 +150,7 @@ export default function HomePage() {
       />
       <FaqsSection />
       <HowItWorks
+        overline="Real Estate Investing Simplified"
         steps={[
           {
             title: 'Select a City',
@@ -160,6 +169,8 @@ export default function HomePage() {
             imageUrl: '/images/screen-3.png',
           },
         ]}
+        btnText="Get Started"
+        onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         isPhoneFrame
       />
       <Testimonials

@@ -48,8 +48,12 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                     <Image
                       fill
                       alt={post?.title}
-                      src={post?.coverImage ? urlForImage(post?.coverImage).url() : '/images/nada-press.png'}
-                      />
+                      src={
+                        post?.coverImage
+                          ? urlForImage(post?.coverImage).url()
+                          : '/images/nada-press.png'
+                      }
+                    />
                   </ImageWrapper>
                   <CardWrapper>
                     <Overline>{post?.tag}</Overline>
@@ -67,17 +71,19 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
               </Link>
             </div>
 
-           {blogPosts.length > 1 && ( <div style={{ display: 'flex' }}>
-              {blogPosts.map((_, jdx) => (
-                <GreenSquare
-                  key={jdx}
-                  style={{
-                    backgroundColor: idx !== jdx ? '#B0B0B0' : '#48DC95',
-                    marginRight: '8px',
-                  }}
-                />
-              ))}
-            </div>)}
+            {blogPosts.length > 1 && (
+              <div style={{ display: 'flex' }}>
+                {blogPosts.map((_, jdx) => (
+                  <GreenSquare
+                    key={jdx}
+                    style={{
+                      backgroundColor: idx !== jdx ? '#B0B0B0' : '#48DC95',
+                      marginRight: '8px',
+                    }}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </Slider>

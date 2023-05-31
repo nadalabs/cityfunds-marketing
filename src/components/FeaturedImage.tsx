@@ -1,6 +1,5 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
-import { EXTERNAL_ROUTES } from '@utils/constants';
 import Image from 'next/image';
 import { styled } from 'styled-components';
 
@@ -9,6 +8,8 @@ interface FeaturedImageProps {
   heading: string;
   primaryText: string;
   imageUrl: string;
+  btnText: string;
+  onClick: () => void;
 }
 
 export default function FeaturedImage({
@@ -16,6 +17,8 @@ export default function FeaturedImage({
   heading,
   primaryText,
   imageUrl,
+  btnText,
+  onClick,
 }: FeaturedImageProps) {
   return (
     <ContentWrapper>
@@ -26,11 +29,7 @@ export default function FeaturedImage({
         <Overline>{overline}</Overline>
         <Heading>{heading}</Heading>
         <PrimaryText>{primaryText}</PrimaryText>
-        <PrimaryButton
-          onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
-        >
-          Get Started
-        </PrimaryButton>
+        <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
       </TextWrapper>
     </ContentWrapper>
   );

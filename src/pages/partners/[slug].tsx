@@ -1,15 +1,17 @@
+import FeaturedImage from '@components/FeaturedImage';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
+import KeyMetrics from '@components/KeyMetrics';
+import { SectionWrapper } from '@elements/Containers';
 import CardSlider from '@sections/CardSlider';
 import FaqsSection from '@sections/FaqsSection';
 import FeaturedLogos from '@sections/FeaturedLogos';
 import HowItWorks from '@sections/HowItWorks';
-import KeyMetrics from '@sections/KeyMetrics';
 import PageHero from '@sections/PageHero';
 import PublisherCTA from '@sections/PublisherCTA';
 import Testimonials from '@sections/Testimonials';
 import TextSlider from '@sections/TextSlider';
-import { VALUE_PROPS } from '@utils/constants';
+import { EXTERNAL_ROUTES, VALUE_PROPS } from '@utils/constants';
 import { partnerQuery, partnerSlugsQuery } from 'lib/queries';
 import { getClient, sanityClient } from 'lib/sanity.server';
 
@@ -100,32 +102,38 @@ export default function PartnerPage({ preview, data }) {
           },
         ]}
       />
-      <KeyMetrics
-        overline="Why Cityfunds?"
-        heading="Location, Location, Location"
-        primaryText="Investing in real estate is all about location, yet the increased
+      <SectionWrapper>
+        <FeaturedImage
+          overline="Why Cityfunds?"
+          heading="Location, Location, Location"
+          primaryText="Investing in real estate is all about location, yet the increased
             cost of living have made desirable places unaffordable. Now, owning
             real estate in your favorite city takes less than 5 minutes."
-        imageUrl="/images/location-tiles.png"
-        metrics={[
-          {
-            label: 'Total Investors',
-            value: 7000,
-            formattingFn: (val) => `${val}+`,
-          },
-          {
-            label: 'Total Invested',
-            value: 1.8,
-            decimals: 1,
-            formattingFn: (val) => `$${val}M`,
-          },
-          {
-            label: 'Properties Funded',
-            value: 60,
-            formattingFn: (val) => `${val}+`,
-          },
-        ]}
-      />
+          imageUrl="/images/location-tiles.png"
+          btnText="Get Started"
+          onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+        />
+        <KeyMetrics
+          metrics={[
+            {
+              label: 'Total Investors',
+              value: 7000,
+              formattingFn: (val) => `${val}+`,
+            },
+            {
+              label: 'Total Invested',
+              value: 1.8,
+              decimals: 1,
+              formattingFn: (val) => `$${val}M`,
+            },
+            {
+              label: 'Properties Funded',
+              value: 60,
+              formattingFn: (val) => `${val}+`,
+            },
+          ]}
+        />
+      </SectionWrapper>
       <TextSlider
         overline="You may be wondering..."
         heading="Why Cityfunds?"
@@ -134,6 +142,7 @@ export default function PartnerPage({ preview, data }) {
       />
       <FaqsSection />
       <HowItWorks
+        overline="Real Estate Investing Simplified"
         steps={[
           {
             title: 'Select a City',
@@ -152,6 +161,8 @@ export default function PartnerPage({ preview, data }) {
             imageUrl: '/images/screen-3.png',
           },
         ]}
+        btnText="Get Started"
+        onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
       />
       <Testimonials
         reviews={[

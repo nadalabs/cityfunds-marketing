@@ -9,17 +9,25 @@ import {
   SecondaryText,
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { EXTERNAL_ROUTES } from '@utils/constants';
 import Image from 'next/image';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
 interface HowItWorksProps {
+  overline: string;
   steps: { title: string; description: string; imageUrl: string }[];
+  btnText: string;
+  onClick: () => void;
   isPhoneFrame?: boolean;
 }
 
-export default function HowItWorks({ steps, isPhoneFrame }: HowItWorksProps) {
+export default function HowItWorks({
+  overline,
+  steps,
+  btnText,
+  onClick,
+  isPhoneFrame,
+}: HowItWorksProps) {
   const isMobile = useIsMobile();
 
   const settings = {
@@ -44,7 +52,7 @@ export default function HowItWorks({ steps, isPhoneFrame }: HowItWorksProps) {
 
               <ContentWrapper>
                 <div>
-                  <Overline>Real Estate Investing Simplified</Overline>
+                  <Overline>{overline}</Overline>
                   <Heading style={{ marginBottom: '80px' }}>
                     How it Works
                   </Heading>
@@ -68,12 +76,8 @@ export default function HowItWorks({ steps, isPhoneFrame }: HowItWorksProps) {
                       </SecondaryHeading>
                       <SecondaryText>{description}</SecondaryText>
                       {idx === jdx && (
-                        <PrimaryButton
-                          onClick={() =>
-                            window.location.replace(EXTERNAL_ROUTES.WEB_APP)
-                          }
-                        >
-                          Get Started
+                        <PrimaryButton onClick={onClick}>
+                          {btnText}
                         </PrimaryButton>
                       )}
                     </StepWrapper>

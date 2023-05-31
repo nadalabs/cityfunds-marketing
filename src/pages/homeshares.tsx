@@ -1,9 +1,12 @@
+import FeaturedImage from '@components/FeaturedImage';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
+import KeyMetrics from '@components/KeyMetrics';
+import { SectionWrapper } from '@elements/Containers';
 import HowItWorks from '@sections/HowItWorks';
-import KeyMetrics from '@sections/KeyMetrics';
 import PageHero from '@sections/PageHero';
 import Testimonials from '@sections/Testimonials';
+import { EXTERNAL_ROUTES } from '@utils/constants';
 
 export default function HomeSharesPage() {
   return (
@@ -19,29 +22,36 @@ export default function HomeSharesPage() {
           },
         ]}
       />
-      <KeyMetrics
-        overline="Build Your Real Estate Wealth"
-        heading="Making homeownership accessible."
-        primaryText="Investing in real estate is all about location, yet the increased cost of living have made desirable places unaffordable. Now, owning real estate in your favorite city takes less than 5 minutes."
-        imageUrl="/images/homeshares.png"
-        metrics={[
-          {
-            label: 'Average Amount Unlocked',
-            value: 47045,
-            prefix: '$',
-          },
-          {
-            label: 'Average Days to Close',
-            value: 13.8,
-            decimals: 1,
-          },
-          {
-            label: 'Monthly Payments',
-            value: 0,
-          },
-        ]}
-      />
+      <SectionWrapper>
+        <FeaturedImage
+          overline="Build Your Real Estate Wealth"
+          heading="Making homeownership accessible."
+          primaryText="Investing in real estate is all about location, yet the increased cost of living have made desirable places unaffordable. Now, owning real estate in your favorite city takes less than 5 minutes."
+          imageUrl="/images/homeshares.png"
+          btnText="Apply Now"
+          onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
+        />
+        <KeyMetrics
+          metrics={[
+            {
+              label: 'Average Amount Unlocked',
+              value: 47045,
+              prefix: '$',
+            },
+            {
+              label: 'Average Days to Close',
+              value: 13.8,
+              decimals: 1,
+            },
+            {
+              label: 'Monthly Payments',
+              value: 0,
+            },
+          ]}
+        />
+      </SectionWrapper>
       <HowItWorks
+        overline="Three easy steps to unlock your home equity"
         steps={[
           {
             title: 'Apply for a Homeshare',
@@ -60,6 +70,8 @@ export default function HomeSharesPage() {
             imageUrl: '/images/homeshares-3.png',
           },
         ]}
+        btnText="Apply Now"
+        onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
       />
       <Testimonials
         reviews={[
