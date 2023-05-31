@@ -43,17 +43,10 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
         {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
           <Link key={idx} href={`/learn/${slug}`}>
             <CardWrapper>
-              <Image
-                width={420}
-                height={340}
-                alt={title}
-                src={urlForImage(coverImage).height(480).width(690).url()}
-                style={{
-                  borderRadius: '50px',
-                  overflow: 'hidden',
-                  marginBottom: '20px',
-                }}
-              />
+              <ImageWrapper>
+                <Image fill alt={title} src={urlForImage(coverImage).url()} />
+              </ImageWrapper>
+
               <Overline>
                 <time dateTime={date}>
                   {format(parseISO(date), 'LLLL	d, yyyy')}
@@ -81,4 +74,22 @@ export const CardWrapper = styled.div`
   transition: ${({ theme }) => theme.transitions.ease};
   max-width: 420px;
   margin-right: 2rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 200px;
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  position: relative;
+  width: 420px;
+  height: 340px;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 20px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 200px;
+    height: 200px;
+  }
 `;

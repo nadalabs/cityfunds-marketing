@@ -20,7 +20,7 @@ export default function PageLayout({
   return (
     <div>
       {isMobile ? (
-        <MobileNavBar />
+        <MobileNavBar isDarkMode={isDarkMode} />
       ) : (
         <DesktopNavBar isDarkMode={isDarkMode} partnerImage={partnerImage} />
       )}

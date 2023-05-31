@@ -39,11 +39,9 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
   };
 
   return (
-    <SectionWrapper style={{ backgroundColor: '#FBFBFB' }}>
+    <SectionWrapper style={{ paddingTop: '100px', backgroundColor: '#FBFBFB' }}>
       {blogPosts.length === 1 && (
-        <LinkText href="/learn" style={{ marginTop: '200px' }}>
-          Back to Blog
-        </LinkText>
+        <LinkText href="/learn">Back to Blog</LinkText>
       )}
 
       <Slider {...settings}>
@@ -63,6 +61,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                       }
                     />
                   </ImageWrapper>
+
                   <CardWrapper>
                     <Overline>{post?.tag}</Overline>
                     <TertiaryHeading>{post?.title}</TertiaryHeading>
@@ -109,7 +108,11 @@ export const CardWrapper = styled.div`
   margin: 1rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+    height: 350px;
     padding: 50px 30px;
+    box-shadow: none;
+    background: #FBFBFB;
   }
 `;
 
@@ -140,6 +143,7 @@ export const ImageWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
+    height: 350px;
     margin-right: 0;
   }
 `;
