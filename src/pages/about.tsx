@@ -5,7 +5,7 @@ import FeaturedLogos from '@sections/FeaturedLogos';
 import LongFormText from '@sections/LongFormText';
 import PageHero from '@sections/PageHero';
 import TextSlider from '@sections/TextSlider';
-import { OUR_STORY, OUR_VALUES } from '@utils/constants';
+import { OUR_VALUES } from '@utils/constants';
 
 export default function AboutPage() {
   return (
@@ -23,7 +23,7 @@ export default function AboutPage() {
       <LongFormText
         overline="We are on a Mission"
         title="Our Story"
-        content={OUR_STORY}
+        content={[]}
       />
       <FeaturedLogos
         overline="World Class Backing"
@@ -46,7 +46,7 @@ export default function AboutPage() {
           {
             name: 'Sweater Ventures',
             imageUrl: '/icons/sweater.svg',
-            link: '',
+            link: 'https://www.sweaterventures.com/',
           },
           {
             name: '7BC Venture Capital',
@@ -61,7 +61,7 @@ export default function AboutPage() {
           {
             name: 'Texas Venture Labs',
             imageUrl: '/icons/texas-ventures.svg',
-            link: '',
+            link: 'https://www.mccombs.utexas.edu/centers-and-initiatives/jon-brumley-texas-venture-labs/',
           },
           {
             name: 'Stonks Fund',

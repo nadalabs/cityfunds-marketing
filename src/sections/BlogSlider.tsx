@@ -30,6 +30,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
     swipeToSlide: true,
     infinite: false,
     variableWidth: true,
+    arrows: false,
   };
 
   return (

@@ -27,6 +27,7 @@ export default function TextSlider({
     swipeToSlide: true,
     infinite: false,
     variableWidth: true,
+    arrows: false,
   };
 
   return (

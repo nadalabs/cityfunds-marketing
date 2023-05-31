@@ -17,10 +17,10 @@ export default function EmailCapture({}) {
 
   const onSubmit = async (inputs: FieldValues) => {
     try {
-      // await window.analytics.track('Lead Capture', {
-      //   formName: 'Cityfunds',
-      //   email: inputs.email,
-      // });
+      await window.analytics.track('Lead Capture', {
+        formName: 'Cityfunds',
+        email: inputs.email,
+      });
     } catch (err: any) {
       setError('email', {
         message: err.response.data.errors.message,

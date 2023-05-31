@@ -97,7 +97,12 @@ export default function DesktopNavBar({
                 isDarkMode={isDarkMode}
                 style={{
                   marginBottom: 0,
-                  color: link === router.pathname ? '#48DC95' : isDarkMode || scrollPosition > 50 ? 'black' : 'white',
+                  color:
+                    link === router.pathname
+                      ? '#48DC95'
+                      : isDarkMode || scrollPosition > 50
+                      ? 'black'
+                      : 'white',
                 }}
               >
                 {name.toUpperCase()}

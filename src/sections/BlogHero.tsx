@@ -35,6 +35,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
     speed: 2000,
     autoplaySpeed: 5000,
     cssEase: 'linear',
+    arrows: false,
   };
 
   return (
