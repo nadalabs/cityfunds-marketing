@@ -15,7 +15,7 @@ interface HeaderProps {
   isDarkMode?: boolean;
 }
 
-export default function Header({
+export default function DesktopNavBar({
   partnerImage,
   partnerName,
   isDarkMode,
@@ -139,8 +139,4 @@ const SectionWrapper = styled.div`
   position: fixed;
   z-index: 999;
   width: 100%;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 24px;
-  }
 `;

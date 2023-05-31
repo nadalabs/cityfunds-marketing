@@ -10,7 +10,6 @@ export default function Footer({}) {
       links: [
         { name: 'Cityfunds', link: '/cityfunds' },
         { name: 'Homeshares', link: '/homeshares' },
-        { name: 'Mortgage', link: '/mortgage' },
       ],
     },
     {
