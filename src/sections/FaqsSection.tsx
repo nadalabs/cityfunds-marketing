@@ -1,4 +1,5 @@
-import { HeadingLarge, Overline, PrimaryText } from '@elements/Typography';
+import { SectionWrapper } from '@elements/Containers';
+import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { useRef } from 'react';
 import Slider from 'react-slick';
@@ -40,11 +41,6 @@ export default function FaqsSection({}) {
         'Investing in owner occupied homes gives better home values, faster appreciation, and low overhead since the owner is caring for their primary residence.',
     },
     {
-      question: 'What am I investing in?',
-      answer:
-        'Fractional home equity investments across a top city. Earn equity in multiple homes on day one.',
-    },
-    {
       question: 'Will my money be tied up?',
       answer:
         "No! We have redemption programs in place for you. You're either thrilled about your portfolio growth or sell your shares to get your money back.",
@@ -61,7 +57,7 @@ export default function FaqsSection({}) {
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div>
                 {FAQS.map(({ question, answer }, jdx) => (
-                  <div key={jdx}>
+                  <ContentWrapper key={jdx}>
                     <HoverHeading
                       onClick={() => handleOnClick(jdx)}
                       style={{ color: idx === jdx ? '#48DC95' : 'black' }}
@@ -71,7 +67,7 @@ export default function FaqsSection({}) {
                     {isMobile && idx === jdx && (
                       <PrimaryText>{answer}</PrimaryText>
                     )}
-                  </div>
+                  </ContentWrapper>
                 ))}
               </div>
 
@@ -84,22 +80,24 @@ export default function FaqsSection({}) {
   );
 }
 
-export const SectionWrapper = styled.div`
-  padding: 92px 156px;
-
+export const ContentWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 24px;
+    margin-bottom: 2rem;
   }
 `;
 
-export const HoverHeading = styled(HeadingLarge)`
+export const HoverHeading = styled(Heading)`
   transition: ${({ theme }) => theme.transitions.ease};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: 28px;
+  margin-bottom: 50px;
   cursor: pointer;
   width: 700px;
 
   &:hover {
     color: ${({ theme }) => theme.colors.lightGrey};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
   }
 `;

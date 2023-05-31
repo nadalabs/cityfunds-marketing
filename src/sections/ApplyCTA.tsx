@@ -1,8 +1,8 @@
 import { PrimaryButton } from '@elements/Buttons';
+import { SectionWrapper } from '@elements/Containers';
 import { FormInput, FormWrapper, StyledForm } from '@elements/FormInput';
 import { Heading, Overline } from '@elements/Typography';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
-import styled from 'styled-components';
 
 export default function ApplyCTA() {
   const methods = useForm<FieldValues>({
@@ -95,11 +95,3 @@ export default function ApplyCTA() {
     </SectionWrapper>
   );
 }
-
-export const SectionWrapper = styled.div`
-  padding: 100px 150px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 24px;
-  }
-`;

@@ -1,6 +1,6 @@
+import { SectionWrapper } from '@elements/Containers';
 import { Heading, Overline } from '@elements/Typography';
 import { PortableText } from '@portabletext/react';
-import styled from 'styled-components';
 
 interface LongFormTextProps {
   title: string;
@@ -21,12 +21,3 @@ export default function LongFormText({
     </SectionWrapper>
   );
 }
-
-export const SectionWrapper = styled.div`
-  padding: 100px 150px;
-  max-width: 1070px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 24px;
-  }
-`;

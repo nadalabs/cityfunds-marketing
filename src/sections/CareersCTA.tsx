@@ -1,4 +1,5 @@
 import { PrimaryButton } from '@elements/Buttons';
+import { SectionWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import styled from 'styled-components';
 
@@ -26,10 +27,6 @@ export default function CareersCTA({}) {
   );
 }
 
-const SectionWrapper = styled.section`
-  padding: 100px 150px;
-`;
-
 const ContentWrapper = styled.section`
   display: flex;
   flex-direction: column;
@@ -37,4 +34,9 @@ const ContentWrapper = styled.section`
   padding: 100px;
   background: #48dc95;
   border-radius: 80px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 48px 24px;
+    border-radius: 40px;
+  }
 `;

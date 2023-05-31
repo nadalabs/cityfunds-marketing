@@ -8,7 +8,7 @@ import KeyMetrics from '@sections/KeyMetrics';
 import PageHero from '@sections/PageHero';
 import PublisherCTA from '@sections/PublisherCTA';
 import Testimonials from '@sections/Testimonials';
-import ValueProps from '@sections/TextSlider';
+import TextSlider from '@sections/TextSlider';
 import { VALUE_PROPS } from '@utils/constants';
 import { partnerQuery, partnerSlugsQuery } from 'lib/queries';
 import { getClient, sanityClient } from 'lib/sanity.server';
@@ -126,7 +126,7 @@ export default function PartnerPage({ preview, data }) {
           },
         ]}
       />
-      <ValueProps
+      <TextSlider
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         primaryText="We have plenty of reasons."

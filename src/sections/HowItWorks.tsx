@@ -1,22 +1,25 @@
 import PhoneScreen from '@components/PhoneScreen';
 import { PrimaryButton } from '@elements/Buttons';
+import { SectionWrapper } from '@elements/Containers';
 import {
   GreenSquare,
   Heading,
   Overline,
-  PrimaryText,
-  Text,
+  SecondaryHeading,
+  SecondaryText,
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
+import Image from 'next/image';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
 interface HowItWorksProps {
   steps: { title: string; description: string; imageUrl: string }[];
+  isPhoneFrame?: boolean;
 }
 
-export default function HowItWorks({ steps }: HowItWorksProps) {
+export default function HowItWorks({ steps, isPhoneFrame }: HowItWorksProps) {
   const isMobile = useIsMobile();
 
   const settings = {
@@ -36,35 +39,34 @@ export default function HowItWorks({ steps }: HowItWorksProps) {
       <Slider {...settings}>
         {steps.map(({ imageUrl }, idx) => (
           <div key={idx}>
-            <div
-              key={idx}
-              style={{ display: 'flex', justifyContent: 'space-between' }}
-            >
-              <PhoneScreen imageUrl={imageUrl} />
+            <FlewWrapper key={idx}>
+              {!isMobile && isPhoneFrame && <PhoneScreen imageUrl={imageUrl} />}
 
-              <div style={{ width: '60%' }}>
+              <ContentWrapper>
                 <div>
                   <Overline>Real Estate Investing Simplified</Overline>
-                  <Heading>How it Works</Heading>
+                  <Heading style={{ marginBottom: '80px' }}>
+                    How it Works
+                  </Heading>
                 </div>
                 <div style={{ display: 'flex' }}>
                   {steps.map(({ title, description }, jdx) => (
-                    <div key={jdx}>
+                    <StepWrapper key={jdx}>
                       <GreenSquare
                         style={{
                           backgroundColor: idx !== jdx && '#979797',
                           marginBottom: '24px',
                         }}
                       />
-                      <PrimaryText
+                      <SecondaryHeading
                         style={{
                           color: idx === jdx && '#48DC95',
                           fontWeight: 600,
                         }}
                       >
                         {title}
-                      </PrimaryText>
-                      <Text>{description}</Text>
+                      </SecondaryHeading>
+                      <SecondaryText>{description}</SecondaryText>
                       {idx === jdx && (
                         <PrimaryButton
                           onClick={() =>
@@ -74,11 +76,20 @@ export default function HowItWorks({ steps }: HowItWorksProps) {
                           Get Started
                         </PrimaryButton>
                       )}
-                    </div>
+                    </StepWrapper>
                   ))}
                 </div>
-              </div>
-            </div>
+              </ContentWrapper>
+
+              {!isMobile && !isPhoneFrame && (
+                <Image
+                  width={500}
+                  height={500}
+                  alt={'Phone Screen'}
+                  src={imageUrl}
+                />
+              )}
+            </FlewWrapper>
           </div>
         ))}
       </Slider>
@@ -86,18 +97,20 @@ export default function HowItWorks({ steps }: HowItWorksProps) {
   );
 }
 
-export const SectionWrapper = styled.div`
-  padding: 204px 156px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 24px;
-  }
-`;
-
 export const ContentWrapper = styled.div`
-  margin-left: 98px;
+  width: 60%;
+  margin-left: 4rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-left: 0;
   }
+`;
+
+export const FlewWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const StepWrapper = styled.div`
+  margin-right: 2rem;
 `;

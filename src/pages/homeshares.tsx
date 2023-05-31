@@ -1,6 +1,5 @@
 import Footer from '@components/Footer';
 import Header from '@components/Header';
-import ApplyCTA from '@sections/ApplyCTA';
 import HowItWorks from '@sections/HowItWorks';
 import KeyMetrics from '@sections/KeyMetrics';
 import PageHero from '@sections/PageHero';
@@ -47,23 +46,18 @@ export default function HomeSharesPage() {
           {
             title: 'Apply for a Homeshare',
             description: 'Fill out an application in under 90 seconds',
-            imageUrl: '/images/screen-1.png',
+            imageUrl: '/images/homeshares-1.png',
           },
           {
             title: 'Schedule  Inspection',
             description: "Once approved, we'll schedule your home inspection",
-            imageUrl: '/images/screen-2.png',
+            imageUrl: '/images/homeshares-2.png',
           },
           {
             title: 'Get Funded',
             description:
               'We will finalize the paperwork & deposit funds in a few days',
-            imageUrl: '/images/screen-3.png',
-          },
-          {
-            title: 'Enjoy Your Home',
-            description: 'Nada becomes a co-investor while you enjoy your home',
-            imageUrl: '/images/screen-2.png',
+            imageUrl: '/images/homeshares-3.png',
           },
         ]}
       />
@@ -81,7 +75,6 @@ export default function HomeSharesPage() {
           },
         ]}
       />
-      <ApplyCTA />
       <Footer />
     </>
   );
