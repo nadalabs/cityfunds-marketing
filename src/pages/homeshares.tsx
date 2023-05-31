@@ -8,7 +8,7 @@ import Testimonials from '@sections/Testimonials';
 export default function HomeSharesPage() {
   return (
     <>
-      <Header isDarkMode />
+      <Header />
       <PageHero
         heading="Unlock Home Equity with No Debt or Monthly Payments"
         primaryText="Trade in fractions of your home equity for cash and spend it on everyday items. Apply below and one of our home equity specialists will reach out."

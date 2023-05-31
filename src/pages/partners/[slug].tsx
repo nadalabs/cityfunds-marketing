@@ -16,7 +16,7 @@ import { getClient, sanityClient } from 'lib/sanity.server';
 export default function PartnerPage({ preview, data }) {
   return (
     <>
-      <Header isDarkMode partnerImage={data.partner.coverImage} />
+      <Header partnerImage={data?.partner?.coverImage} />
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios with passive income in the nations top cities."

@@ -82,7 +82,7 @@ export default function Header({
             height={64}
             alt={'Nada'}
             src={
-               scrollPosition > 50
+              isDarkMode || scrollPosition > 50
                 ? '/icons/nada-dark.svg'
                 : '/icons/nada-light.svg'
             }
@@ -108,7 +108,8 @@ export default function Header({
                     isDarkMode={isDarkMode}
                     style={{
                       marginBottom: 0,
-                      color: scrollPosition > 50 ? 'black' : 'white',
+                      color:
+                        isDarkMode || scrollPosition > 50 ? 'black' : 'white',
                     }}
                   >
                     {name.toUpperCase()}

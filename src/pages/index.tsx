@@ -16,7 +16,7 @@ import { VALUE_PROPS } from '@utils/constants';
 export default function HomePage() {
   return (
     <>
-      <Header isDarkMode />
+      <Header />
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios with passive income in the nations top cities."

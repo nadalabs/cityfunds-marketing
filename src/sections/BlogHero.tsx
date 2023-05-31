@@ -1,12 +1,11 @@
 import { SectionWrapper } from '@elements/Containers';
 import {
   GreenSquare,
-  Heading,
   Overline,
-  PrimaryText,
   SecondaryText,
+  TertiaryHeading,
 } from '@elements/Typography';
-import { format, parseISO } from 'date-fns';
+import { format, isValid, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -40,61 +39,47 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
   return (
     <SectionWrapper style={{ backgroundColor: '#FBFBFB' }}>
       <Slider {...settings}>
-        {blogPosts.map(
-          ({ title, coverImage, date, excerpt, tag, slug }, idx) => (
-            <div key={idx}>
-              <div>
-                <Link href={`/learn/${slug}`}>
-                  <FlexWrapper>
-                    <ImageWrapper>
-                      <Image
-                        fill
-                        alt={title}
-                        src={urlForImage(coverImage).url()}
+        {blogPosts.map((post, idx) => (
+          <div key={idx}>
+            <div>
+              <Link href={`/learn/${post?.slug}`}>
+                <FlexWrapper>
+                  <ImageWrapper>
+                    <Image
+                      fill
+                      alt={post?.title}
+                      src={post?.coverImage ? urlForImage(post?.coverImage).url() : '/images/nada-press.png'}
                       />
-                    </ImageWrapper>
-                    <CardWrapper>
-                      <Overline>{tag}</Overline>
-                      <Heading
-                        style={{
-                          fontSize: '32px',
-                          lineHeight: '36px',
-                          marginBottom: '16px',
-                        }}
-                      >
-                        {title}
-                      </Heading>
-                      <PrimaryText
-                        style={{ fontSize: '18px', lineHeight: '24px' }}
-                      >
-                        {excerpt}
-                      </PrimaryText>
-                      <SecondaryText
-                        style={{ fontSize: '14px', lineHeight: '18px' }}
-                      >
-                        <time dateTime={date}>
-                          {format(parseISO(date), 'LLLL	d, yyyy')}
-                        </time>
-                      </SecondaryText>
-                    </CardWrapper>
-                  </FlexWrapper>
-                </Link>
-              </div>
-
-              <div style={{ display: 'flex' }}>
-                {blogPosts.map((_, jdx) => (
-                  <GreenSquare
-                    key={jdx}
-                    style={{
-                      backgroundColor: idx !== jdx ? '#B0B0B0' : '#48DC95',
-                      marginRight: '8px',
-                    }}
-                  />
-                ))}
-              </div>
+                  </ImageWrapper>
+                  <CardWrapper>
+                    <Overline>{post?.tag}</Overline>
+                    <TertiaryHeading>{post?.title}</TertiaryHeading>
+                    <SecondaryText>{post?.excerpt}</SecondaryText>
+                    <SecondaryText>
+                      <time dateTime={post?.date}>
+                        {isValid(post?.date)
+                          ? format(parseISO(post?.date), 'LLLL	d, yyyy')
+                          : 'Invalid date'}
+                      </time>
+                    </SecondaryText>
+                  </CardWrapper>
+                </FlexWrapper>
+              </Link>
             </div>
-          )
-        )}
+
+           {blogPosts.length > 1 && ( <div style={{ display: 'flex' }}>
+              {blogPosts.map((_, jdx) => (
+                <GreenSquare
+                  key={jdx}
+                  style={{
+                    backgroundColor: idx !== jdx ? '#B0B0B0' : '#48DC95',
+                    marginRight: '8px',
+                  }}
+                />
+              ))}
+            </div>)}
+          </div>
+        ))}
       </Slider>
     </SectionWrapper>
   );
@@ -136,6 +121,7 @@ export const ImageWrapper = styled.div`
   border-radius: 50px;
   position: relative;
   width: 50%;
+  height: 480px;
   margin-right: 48px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
