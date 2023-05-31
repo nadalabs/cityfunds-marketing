@@ -1,52 +1,10 @@
 import { LinkButton } from '@elements/Buttons';
 import { LinkText, TertiaryHeading } from '@elements/Typography';
+import { FOOTER_LINKS, SOCIAL_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import styled from 'styled-components';
 
 export default function Footer({}) {
-  const NAV_LINKS = [
-    {
-      title: 'Home',
-      links: [
-        { name: 'Cityfunds', link: '/cityfunds' },
-        { name: 'Homeshares', link: '/homeshares' },
-      ],
-    },
-    {
-      title: 'About',
-      links: [
-        { name: 'FAQs', link: '/faqs' },
-        { name: 'Careers', link: '/careers' },
-        { name: 'Press', link: '/press' },
-        { name: 'Learn', link: '/learn' },
-      ],
-    },
-    {
-      title: 'Transparency',
-      links: [
-        { name: 'Terms of Use', link: '/terms-of-use' },
-        { name: 'Privacy Policy', link: '/privacy-policy' },
-        { name: 'Cookie Policy', link: '/cookie-policy' },
-        { name: 'Consumer Complaints', link: '/consumer-complaints' },
-        { name: 'Nada SEC Filings', link: '/nada-sec-filings' },
-        { name: 'Cityfunds SEC Filings', link: '/cityfunds-sec-filings' },
-        {
-          name: 'Electronic Transfer Disclosure',
-          link: '/electronic-transfer-disclosure',
-        },
-      ],
-    },
-  ];
-
-  const SOCIAL_LINKS = [
-    { name: 'Facebook', link: 'https://www.facebook.com/HelloNadaHomes' },
-    { name: 'Twitter', link: 'https://twitter.com/nada_finance' },
-    { name: 'Instagram', link: 'https://www.instagram.com/nadafinance' },
-    { name: 'LinkedIn', link: 'https://www.linkedin.com/company/hellonada' },
-    { name: 'Discord', link: 'https://discord.com/invite/AGhPSkQjYX' },
-    { name: 'TikTok', link: 'https://www.tiktok.com/@nadafinance' },
-  ];
-
   return (
     <SectionWrapper>
       <ContentWrapper>
@@ -79,7 +37,7 @@ export default function Footer({}) {
           </div>
         </div>
 
-        {NAV_LINKS.map(({ title, links }, idx) => (
+        {FOOTER_LINKS.map(({ title, links }, idx) => (
           <div key={idx}>
             <TertiaryHeading>{title}</TertiaryHeading>
             <div style={{ display: 'flex', flexDirection: 'column' }}>

@@ -1,3 +1,64 @@
+export const HEADER_LINKS = [
+  { name: 'Cityfunds', link: '/' },
+  { name: 'Homeshares', link: '/homeshares' },
+  { name: 'About', link: '/about' },
+  { name: 'Learn', link: '/learn' },
+];
+
+export const LEGAL_LINKS = [
+  { name: 'Terms of Use', link: '/transparency/terms-of-use' },
+  { name: 'Privacy Policy', link: '/transparency/privacy-policy' },
+  { name: 'Cookie Policy', link: '/transparency/cookie-policy' },
+  {
+    name: 'Consumer Complaint Policy',
+    link: '/transparency/consumer-complaints-policy',
+  },
+  {
+    name: 'Electronic Funds Transfer',
+    link: '/transparency/electronic-funds-transfer',
+  },
+  {
+    name: 'Nada SEC Filings',
+    link: 'https://www.sec.gov/edgar/browse/?CIK=0001801613',
+  },
+  {
+    name: 'Cityfunds SEC Filings',
+    link: 'https://www.sec.gov/edgar/search/#/ciks=0001874979&entityName=Cityfunds%2520I%252C%2520LLC%2520(CIK%25200001874979)',
+  },
+];
+
+export const FOOTER_LINKS = [
+  {
+    title: 'Home',
+    links: [
+      { name: 'Cityfunds', link: '/cityfunds' },
+      { name: 'Homeshares', link: '/homeshares' },
+    ],
+  },
+  {
+    title: 'About',
+    links: [
+      { name: 'FAQs', link: '/faqs' },
+      { name: 'Careers', link: '/careers' },
+      { name: 'Press', link: '/press' },
+      { name: 'Learn', link: '/learn' },
+    ],
+  },
+  {
+    title: 'Transparency',
+    links: LEGAL_LINKS,
+  },
+];
+
+export const SOCIAL_LINKS = [
+  { name: 'Facebook', link: 'https://www.facebook.com/HelloNadaHomes' },
+  { name: 'Twitter', link: 'https://twitter.com/nada_finance' },
+  { name: 'Instagram', link: 'https://www.instagram.com/nadafinance' },
+  { name: 'LinkedIn', link: 'https://www.linkedin.com/company/hellonada' },
+  { name: 'Discord', link: 'https://discord.com/invite/AGhPSkQjYX' },
+  { name: 'TikTok', link: 'https://www.tiktok.com/@nadafinance' },
+];
+
 export enum EXTERNAL_ROUTES {
   WEB_APP = 'https://www.invest.nada.co',
   TERMS = 'https://www.nada.co/terms-conditions',

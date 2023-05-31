@@ -1,7 +1,6 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { LinkText } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
-import { EXTERNAL_ROUTES } from '@utils/constants';
+import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,7 +21,6 @@ export default function DesktopNavBar({
 }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const router = useRouter();
-  const isMobile = useIsMobile();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -36,13 +34,6 @@ export default function DesktopNavBar({
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  const NAV_LINKS = [
-    { name: 'Cityfunds', link: '/' },
-    { name: 'Homeshares', link: '/homeshares' },
-    { name: 'About', link: '/about' },
-    { name: 'Learn', link: '/learn' },
-  ];
 
   return (
     <SectionWrapper
@@ -91,40 +82,35 @@ export default function DesktopNavBar({
       )}
 
       <div>
-        {partnerImage
-          ? !isMobile && (
-              <PrimaryButton
-                onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+        {partnerImage ? (
+          <PrimaryButton
+            onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+          >
+            Get Started
+          </PrimaryButton>
+        ) : (
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            {HEADER_LINKS.map(({ name, link }, idx) => (
+              <LinkText
+                key={idx}
+                href={link}
+                isDarkMode={isDarkMode}
+                style={{
+                  marginBottom: 0,
+                  color: isDarkMode || scrollPosition > 50 ? 'black' : 'white',
+                }}
               >
-                Get Started
-              </PrimaryButton>
-            )
-          : !isMobile && (
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                {NAV_LINKS.map(({ name, link }, idx) => (
-                  <LinkText
-                    key={idx}
-                    href={link}
-                    isDarkMode={isDarkMode}
-                    style={{
-                      marginBottom: 0,
-                      color:
-                        isDarkMode || scrollPosition > 50 ? 'black' : 'white',
-                    }}
-                  >
-                    {name.toUpperCase()}
-                  </LinkText>
-                ))}
+                {name.toUpperCase()}
+              </LinkText>
+            ))}
 
-                <PrimaryButton
-                  onClick={() =>
-                    window.location.replace(EXTERNAL_ROUTES.WEB_APP)
-                  }
-                >
-                  Get Started
-                </PrimaryButton>
-              </div>
-            )}
+            <PrimaryButton
+              onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+            >
+              Get Started
+            </PrimaryButton>
+          </div>
+        )}
       </div>
     </SectionWrapper>
   );

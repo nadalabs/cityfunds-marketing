@@ -1,7 +1,6 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { LinkText } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
-import { EXTERNAL_ROUTES } from '@utils/constants';
+import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -22,7 +21,6 @@ export default function MobileNavBar({
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
-  const isMobile = useIsMobile();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -36,13 +34,6 @@ export default function MobileNavBar({
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  const NAV_LINKS = [
-    { name: 'Cityfunds', link: '/' },
-    { name: 'Homeshares', link: '/homeshares' },
-    { name: 'About', link: '/about' },
-    { name: 'Learn', link: '/learn' },
-  ];
 
   return (
     <SectionWrapper
@@ -62,7 +53,7 @@ export default function MobileNavBar({
             height={40}
             alt={'Nada'}
             src={
-              isDarkMode || scrollPosition > 50
+              !showMenu && (isDarkMode || scrollPosition > 50)
                 ? '/icons/nada-dark.svg'
                 : '/icons/nada-light.svg'
             }
@@ -74,13 +65,13 @@ export default function MobileNavBar({
           height={30}
           alt={'Cityfunds'}
           src={'/icons/mobile-menu.svg'}
-          onClick={() => setShowMenu(true)}
+          onClick={() => setShowMenu(!showMenu)}
         />
       </FlexWrapper>
 
       {showMenu && (
         <MenuWrapper>
-          {NAV_LINKS.map(({ name, link }, idx) => (
+          {HEADER_LINKS.map(({ name, link }, idx) => (
             <LinkText
               key={idx}
               href={link}
