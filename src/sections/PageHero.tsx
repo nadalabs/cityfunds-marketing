@@ -5,6 +5,7 @@ import {
   SecondaryText,
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { useRef } from 'react';
 import Slider from 'react-slick';
 import EmailCapture from 'src/components/EmailCapture';
 import styled from 'styled-components';
@@ -12,15 +13,26 @@ import styled from 'styled-components';
 interface PageHeroProps {
   heading: string;
   primaryText: string;
+  btnText?: string;
+  onClick?: () => void;
   heroImages: { name: string; imageUrl: string; numProperties?: number }[];
 }
 
 export default function PageHero({
   heading,
   primaryText,
+  btnText,
+  onClick,
   heroImages,
 }: PageHeroProps) {
   const isMobile = useIsMobile();
+  const sliderRef = useRef(null);
+
+  const handleOnClick = (index) => {
+    // @ts-ignore-next-line
+    sliderRef &&  sliderRef?.slickGoTo(index);
+  };
+
   const settings = {
     dots: false,
     fade: true,
@@ -35,7 +47,7 @@ export default function PageHero({
   };
 
   return (
-    <Slider {...settings}>
+    <Slider {...settings} sliderRef={sliderRef}>
       {heroImages.map(({ name, numProperties, imageUrl }, idx) => (
         <div key={idx}>
           <HeroImage
@@ -57,7 +69,7 @@ export default function PageHero({
               <PrimaryText style={{ color: '#B0B0B0', maxWidth: '600px' }}>
                 {primaryText}
               </PrimaryText>
-              <EmailCapture />
+              <EmailCapture btnText={btnText} onClick={onClick} />
             </div>
 
             {!isMobile && heroImages.length > 1 && (
@@ -74,9 +86,11 @@ export default function PageHero({
                   {heroImages.map((_, jdx) => (
                     <GreenSquare
                       key={jdx}
+                      onClick={() => console.log(jdx)}
                       style={{
                         backgroundColor: idx !== jdx ? '#B0B0B0' : '#48DC95',
                         marginRight: '8px',
+                        cursor: 'pointer'
                       }}
                     />
                   ))}

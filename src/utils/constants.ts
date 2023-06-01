@@ -1,6 +1,5 @@
 export const HEADER_LINKS = [
   { name: 'Cityfunds', link: '/' },
-  { name: 'Homeshares', link: '/homeshares' },
   { name: 'About', link: '/about' },
   { name: 'Learn', link: '/learn' },
 ];
@@ -67,6 +66,68 @@ export enum EXTERNAL_ROUTES {
   APPLE_STORE = 'https://apps.apple.com/us/app/nada-finance/id1615840472',
   GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
 }
+
+export const FEATURED_ARTICLES = [
+  { name: 'Forbes', imageUrl: '/icons/forbes.svg', link: '' },
+  {
+    name: 'The Motley Fool',
+    imageUrl: '/icons/motley-fool.svg',
+    link: '',
+  },
+  {
+    name: 'TechCrunch',
+    imageUrl: '/icons/techcrunch.svg',
+    link: 'https://techcrunch.com/2022/07/27/you-cant-afford-a-house-but-you-can-probably-afford-nada',
+  },
+  {
+    name: 'Yahoo Finance',
+    imageUrl: '/icons/yahoo-finance.svg',
+    link: '',
+  },
+];
+
+export const FEATURED_BACKERS = [
+  {
+    name: 'Live Oak',
+    imageUrl: '/icons/live-oak.svg',
+    link: 'https://liveoakvp.com/',
+  },
+  {
+    name: 'Revolution',
+    imageUrl: '/icons/revolution.svg',
+    link: 'https://revolution.com/',
+  },
+  {
+    name: 'Capital Factory',
+    imageUrl: '/icons/capital-factory.svg',
+    link: 'https://www.capitalfactory.com/',
+  },
+  {
+    name: 'Sweater Ventures',
+    imageUrl: '/icons/sweater.svg',
+    link: 'https://www.sweaterventures.com/',
+  },
+  {
+    name: '7BC Venture Capital',
+    imageUrl: '/icons/7bc-ventures.svg',
+    link: 'https://www.7bc.vc/',
+  },
+  {
+    name: 'LFG Ventures',
+    imageUrl: '/icons/lfg-ventures.svg',
+    link: 'https://www.letsfg.com/',
+  },
+  {
+    name: 'Texas Venture Labs',
+    imageUrl: '/icons/texas-ventures.svg',
+    link: 'https://www.mccombs.utexas.edu/centers-and-initiatives/jon-brumley-texas-venture-labs/',
+  },
+  {
+    name: 'Stonks Fund',
+    imageUrl: '/icons/stonks.svg',
+    link: 'https://stonks.com/',
+  },
+];
 
 export const VALUE_PROPS = [
   {

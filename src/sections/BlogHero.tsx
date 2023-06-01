@@ -110,9 +110,9 @@ export const CardWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
     height: 350px;
-    padding: 50px 30px;
+    padding: 0;
     box-shadow: none;
-    background: #FBFBFB;
+    background: #fbfbfb;
   }
 `;
 

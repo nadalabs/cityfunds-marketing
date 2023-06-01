@@ -1,5 +1,6 @@
 import { Heading, Overline, SecondaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { EXTERNAL_ROUTES } from '@utils/constants';
 import EmailCapture from 'src/components/EmailCapture';
 import PhoneScreen from 'src/components/PhoneScreen';
 import styled from 'styled-components';
@@ -26,7 +27,10 @@ export default function PublisherCTA({ name }: PublisherCTAProps) {
         <SecondaryText style={{ color: '#989898' }}>
           *valid until 5/31/23
         </SecondaryText>
-        <EmailCapture />
+        <EmailCapture
+          btnText="Get Started"
+          onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+        />
       </ContentWrapper>
 
       {!isMobile && <PhoneScreen imageUrl="/images/screen-1.png" />}

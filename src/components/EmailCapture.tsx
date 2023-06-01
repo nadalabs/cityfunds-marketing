@@ -1,13 +1,18 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { FormInput, StyledForm } from '@elements/FormInput';
 import { Caption, ErrorText } from '@elements/Typography';
-import { LEGAL_LINKS } from '@utils/constants';
+import { EXTERNAL_ROUTES, LEGAL_LINKS } from '@utils/constants';
 import { setCookie } from '@utils/helpers';
 import Link from 'next/link';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { styled } from 'styled-components';
 
-export default function EmailCapture({}) {
+interface EmailCaptureProps {
+  btnText: string;
+  onClick: () => void;
+}
+
+export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
   const methods = useForm<FieldValues>({
     defaultValues: {
       email: '',
@@ -19,10 +24,11 @@ export default function EmailCapture({}) {
   const onSubmit = async (inputs: FieldValues) => {
     try {
       await window.analytics.track('Lead Capture', {
-        formName: 'Cityfunds',
+        formName: btnText,
         email: inputs.email,
       });
       setCookie('email', inputs.email);
+      onClick();
     } catch (err: any) {
       setError('email', {
         message: err.response.data.errors.message,
@@ -47,7 +53,7 @@ export default function EmailCapture({}) {
             placeholder="Enter Your Email"
           />
           <BtnWrapper>
-            <PrimaryButton>Get Started</PrimaryButton>
+            <PrimaryButton>{btnText}</PrimaryButton>
           </BtnWrapper>
         </FormWrapper>
       </StyledForm>

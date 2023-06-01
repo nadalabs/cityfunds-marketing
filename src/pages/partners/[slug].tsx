@@ -10,7 +10,11 @@ import PageHero from '@sections/PageHero';
 import PublisherCTA from '@sections/PublisherCTA';
 import Testimonials from '@sections/Testimonials';
 import TextSlider from '@sections/TextSlider';
-import { EXTERNAL_ROUTES, VALUE_PROPS } from '@utils/constants';
+import {
+  EXTERNAL_ROUTES,
+  FEATURED_ARTICLES,
+  VALUE_PROPS,
+} from '@utils/constants';
 import { partnerQuery, partnerSlugsQuery } from 'lib/queries';
 import { getClient, sanityClient } from 'lib/sanity.server';
 
@@ -20,6 +24,8 @@ export default function PartnerPage({ preview, data }) {
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios with passive income in the nations top cities."
+        btnText="Get Started"
+        onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         heroImages={[
           {
             name: 'Dallas',
@@ -43,27 +49,7 @@ export default function PartnerPage({ preview, data }) {
           },
         ]}
       />
-      <FeaturedLogos
-        overline="Featured In"
-        logos={[
-          { name: 'Forbes', imageUrl: '/icons/forbes.svg', link: '' },
-          {
-            name: 'The Motley Fool',
-            imageUrl: '/icons/motley-fool.svg',
-            link: '',
-          },
-          {
-            name: 'TechCrunch',
-            imageUrl: '/icons/techcrunch.svg',
-            link: 'https://techcrunch.com/2022/07/27/you-cant-afford-a-house-but-you-can-probably-afford-nada',
-          },
-          {
-            name: 'Yahoo Finance',
-            imageUrl: '/icons/yahoo-finance.svg',
-            link: '',
-          },
-        ]}
-      />
+      <FeaturedLogos overline="Featured In" logos={FEATURED_ARTICLES} />
       <CardSlider
         heading="Pick your favorite Cityfund, or invest in all of them"
         primaryText={

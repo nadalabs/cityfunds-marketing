@@ -5,7 +5,7 @@ import FeaturedLogos from '@sections/FeaturedLogos';
 import LongFormText from '@sections/LongFormText';
 import PageHero from '@sections/PageHero';
 import TextSlider from '@sections/TextSlider';
-import { OUR_VALUES } from '@utils/constants';
+import { FEATURED_BACKERS, OUR_VALUES } from '@utils/constants';
 
 export default function AboutPage() {
   return (
@@ -25,51 +25,7 @@ export default function AboutPage() {
         title="Our Story"
         content={[]}
       />
-      <FeaturedLogos
-        overline="World Class Backing"
-        logos={[
-          {
-            name: 'Live Oak',
-            imageUrl: '/icons/live-oak.svg',
-            link: 'https://liveoakvp.com/',
-          },
-          {
-            name: 'Revolution',
-            imageUrl: '/icons/revolution.svg',
-            link: 'https://revolution.com/',
-          },
-          {
-            name: 'Capital Factory',
-            imageUrl: '/icons/capital-factory.svg',
-            link: 'https://www.capitalfactory.com/',
-          },
-          {
-            name: 'Sweater Ventures',
-            imageUrl: '/icons/sweater.svg',
-            link: 'https://www.sweaterventures.com/',
-          },
-          {
-            name: '7BC Venture Capital',
-            imageUrl: '/icons/7bc-ventures.svg',
-            link: 'https://www.7bc.vc/',
-          },
-          {
-            name: 'LFG Ventures',
-            imageUrl: '/icons/lfg-ventures.svg',
-            link: 'https://www.letsfg.com/',
-          },
-          {
-            name: 'Texas Venture Labs',
-            imageUrl: '/icons/texas-ventures.svg',
-            link: 'https://www.mccombs.utexas.edu/centers-and-initiatives/jon-brumley-texas-venture-labs/',
-          },
-          {
-            name: 'Stonks Fund',
-            imageUrl: '/icons/stonks.svg',
-            link: 'https://stonks.com/',
-          },
-        ]}
-      />
+      <FeaturedLogos overline="World Class Backing" logos={FEATURED_BACKERS} />
       <CardSlider
         heading="Our Team"
         primaryText={

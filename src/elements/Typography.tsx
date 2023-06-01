@@ -31,8 +31,8 @@ export const TertiaryHeading = styled(Heading)`
   line-height: 36px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 14px;
-    line-height: 14px;
+    font-size: 24px;
+    line-height: 28px;
   }
 `;
 
@@ -62,8 +62,8 @@ export const SecondaryText = styled.p`
   margin: 0 0 24px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 10px;
-    line-height: 14px;
+    font-size: 14px;
+    line-height: 18px;
   }
 `;
 
