@@ -30,7 +30,7 @@ export default function PageHero({
 
   const handleOnClick = (index) => {
     // @ts-ignore-next-line
-    sliderRef &&  sliderRef?.slickGoTo(index);
+    sliderRef && sliderRef?.slickGoTo(index);
   };
 
   const settings = {
@@ -63,13 +63,23 @@ export default function PageHero({
           />
           <ContentWrapper>
             <div>
-              <Heading style={{ color: 'white', maxWidth: '600px' }}>
+              <Heading
+                style={{
+                  color: 'white',
+                  maxWidth: btnText ? '700px' : '1100px',
+                }}
+              >
                 {heading}
               </Heading>
-              <PrimaryText style={{ color: '#B0B0B0', maxWidth: '600px' }}>
+              <PrimaryText
+                style={{
+                  color: '#B0B0B0',
+                  maxWidth: btnText ? '700px' : '1100px',
+                }}
+              >
                 {primaryText}
               </PrimaryText>
-              <EmailCapture btnText={btnText} onClick={onClick} />
+              {btnText && <EmailCapture btnText={btnText} onClick={onClick} />}
             </div>
 
             {!isMobile && heroImages.length > 1 && (
@@ -90,7 +100,7 @@ export default function PageHero({
                       style={{
                         backgroundColor: idx !== jdx ? '#B0B0B0' : '#48DC95',
                         marginRight: '8px',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
                       }}
                     />
                   ))}

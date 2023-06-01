@@ -1,7 +1,7 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { FormInput, StyledForm } from '@elements/FormInput';
 import { Caption, ErrorText } from '@elements/Typography';
-import { EXTERNAL_ROUTES, LEGAL_LINKS } from '@utils/constants';
+import { LEGAL_LINKS } from '@utils/constants';
 import { setCookie } from '@utils/helpers';
 import Link from 'next/link';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
