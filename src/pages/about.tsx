@@ -7,10 +7,8 @@ import FeaturedLogos from '@sections/FeaturedLogos';
 import PageHero from '@sections/PageHero';
 import TextSlider from '@sections/TextSlider';
 import { FEATURED_BACKERS, OUR_VALUES } from '@utils/constants';
-import { contentByLabelQuery, teammateIndexQuery } from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
 
-export default function AboutPage({ data }) {
+export default function AboutPage() {
   return (
     <PageLayout>
       <PageHero
@@ -96,20 +94,20 @@ export default function AboutPage({ data }) {
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const data = await getClient(preview).fetch(contentByLabelQuery, {
-    label: 'footer',
-  });
-  const teammates = await getClient(preview).fetch(teammateIndexQuery);
-  const content = data?.content ?? null;
-  const teammate = teammates?.content ?? null;
+// export async function getStaticProps({ params, preview = false }) {
+//   const data = await getClient(preview).fetch(contentByLabelQuery, {
+//     label: 'footer',
+//   });
+//   const teammates = await getClient(preview).fetch(teammateIndexQuery);
+//   const content = data?.content ?? null;
+//   const teammate = teammates?.content ?? null;
 
-  return {
-    props: {
-      preview,
-      data: { content, teammate },
-    },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
-    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
-  };
-}
+//   return {
+//     props: {
+//       preview,
+//       data: { content, teammate },
+//     },
+//     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
+//     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
+//   };
+// }

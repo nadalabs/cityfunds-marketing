@@ -1,5 +1,5 @@
 import { LinkButton } from '@elements/Buttons';
-import { Caption, LinkText, PrimaryText, TertiaryHeading } from '@elements/Typography';
+import { Caption, LinkText, TertiaryHeading } from '@elements/Typography';
 import { EXTERNAL_ROUTES, FOOTER_LINKS, SOCIAL_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -91,7 +91,7 @@ export default function Footer({}) {
         located at 525 Green Place, Woodmere, NY 11598. You can review the
         brokercheck for Dalmore.
       </Caption>
-      
+
       <Caption>
         You should speak with your financial advisor, accountant and/or attorney
         when evaluating any offering. Neither Nada, Cityfunds, nor Dalmore makes
