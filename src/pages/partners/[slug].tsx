@@ -15,12 +15,16 @@ import {
   FEATURED_ARTICLES,
   VALUE_PROPS,
 } from '@utils/constants';
-import { partnerQuery, partnerSlugsQuery } from 'lib/queries';
+import {
+  partnerQuery,
+  partnerSlugsQuery,
+  testimonialIndexQuery,
+} from 'lib/queries';
 import { getClient, sanityClient } from 'lib/sanity.server';
 
-export default function PartnerPage({ preview, data }) {
+export default function PartnerPage({partner, testimonials }) {
   return (
-    <PageLayout partnerImage={data?.partner?.coverImage}>
+    <PageLayout partnerImage={partner?.coverImage}>
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios with passive income in the nations top cities."
@@ -148,56 +152,21 @@ export default function PartnerPage({ preview, data }) {
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
       />
-      <Testimonials
-        reviews={[
-          {
-            name: 'Veronica S.',
-            location: 'Austin, TX',
-            text: 'Invested with Nada originally and have been waiting for Cityfund to release! Excited to see the how the company will grow in the next few years- love the vision!',
-          },
-          {
-            name: 'Ryan A.',
-            location: 'Dallas, TX',
-            text: 'To be part of a collective of investors in a steady growth market like Miami is definitely an advantage.',
-          },
-          {
-            name: 'William B.',
-            location: 'Miami, FL',
-            text: 'I’ve always wanted to try and dip my toes in real estate investing! This looks like a good way to get started and from cities around the county. Super excited',
-          },
-          {
-            name: 'Hansen N.',
-            location: 'Miami, FL',
-            text: 'Love the city, and love the process of investing in real estate.',
-          },
-          {
-            name: 'Mylie A.',
-            location: 'Austin, TX',
-            text: 'I like that it makes real estate investment possible to everyday people.',
-          },
-          {
-            name: 'Mark P.',
-            location: 'Dallas, TX',
-            text: 'Excited to easily invest in a diversified pool of RE. Looking for income & cap gains as a hedge to public markets.',
-          },
-        ]}
-      />
-      <PublisherCTA name={data?.partner?.name} />
+      <Testimonials reviews={testimonials} />
+      <PublisherCTA name={partner?.name} />
     </PageLayout>
   );
 }
 
 export async function getStaticProps({ params, preview = false }) {
+  const testimonials = await getClient(preview).fetch(testimonialIndexQuery);
   const data = await getClient(preview).fetch(partnerQuery, {
     slug: params.slug,
   });
   const partner = data?.partner ?? null;
 
   return {
-    props: {
-      preview,
-      data: { partner },
-    },
+    props: { partner, testimonials },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };

@@ -7,8 +7,11 @@ import FeaturedLogos from '@sections/FeaturedLogos';
 import PageHero from '@sections/PageHero';
 import TextSlider from '@sections/TextSlider';
 import { FEATURED_BACKERS, OUR_VALUES } from '@utils/constants';
+import { contentByLabelQuery, teammateIndexQuery } from 'lib/queries';
+import { urlForImage } from 'lib/sanity';
+import { getClient } from 'lib/sanity.server';
 
-export default function AboutPage() {
+export default function AboutPage({ teammates }) {
   return (
     <PageLayout>
       <PageHero
@@ -65,23 +68,12 @@ export default function AboutPage() {
         primaryText={
           'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
         }
-        cards={[
-          {
-            title: 'John Green',
-            description: 'Founder & CEO',
-            imageUrl: '/images/john.png',
-          },
-          {
-            title: 'Mauricio Delgado',
-            description: 'Co-Founder & CFO',
-            imageUrl: '/images/mauricio.png',
-          },
-          {
-            title: 'Sundance Brennan',
-            description: 'VP Revenue',
-            imageUrl: '/images/sundance.png',
-          },
-        ]}
+        cards={teammates.map(({ name, role, image }) => ({
+          title: name,
+          description: role,
+          imageUrl: urlForImage(image).url(),
+        }))}
+        isSmallText
       />
       <TextSlider
         overline="Our Values"
@@ -94,20 +86,19 @@ export default function AboutPage() {
   );
 }
 
-// export async function getStaticProps({ params, preview = false }) {
-//   const data = await getClient(preview).fetch(contentByLabelQuery, {
-//     label: 'footer',
-//   });
-//   const teammates = await getClient(preview).fetch(teammateIndexQuery);
-//   const content = data?.content ?? null;
-//   const teammate = teammates?.content ?? null;
+export async function getStaticProps({ params, preview = false }) {
+  const data = await getClient(preview).fetch(contentByLabelQuery, {
+    label: 'our-story',
+  });
+  const teammates = await getClient(preview).fetch(teammateIndexQuery);
+  // const content = data?.content ?? null;
+  const teammate = teammates?.content ?? null;
 
-//   return {
-//     props: {
-//       preview,
-//       data: { content, teammate },
-//     },
-//     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
-//     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
-//   };
-// }
+  return {
+    props: {
+      teammates,
+    },
+    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
+    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
+  };
+}

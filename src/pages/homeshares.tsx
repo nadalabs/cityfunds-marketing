@@ -6,8 +6,10 @@ import HowItWorks from '@sections/HowItWorks';
 import PageHero from '@sections/PageHero';
 import Testimonials from '@sections/Testimonials';
 import { EXTERNAL_ROUTES } from '@utils/constants';
+import { testimonialIndexQuery } from 'lib/queries';
+import { getClient } from 'lib/sanity.server';
 
-export default function HomeSharesPage() {
+export default function HomeSharesPage({ testimonials }) {
   return (
     <PageLayout>
       <PageHero
@@ -83,20 +85,17 @@ export default function HomeSharesPage() {
           onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
         />
       </SectionWrapper>
-      <Testimonials
-        reviews={[
-          {
-            name: 'Veronica S.',
-            location: 'Austin, TX',
-            text: 'Homeshares helped me invest in myself and open my own business',
-          },
-          {
-            name: 'Veronica S.',
-            location: 'Austin, TX',
-            text: 'Homeshares helped me invest in myself and open my own business',
-          },
-        ]}
-      />
+      <Testimonials reviews={testimonials} />
     </PageLayout>
   );
+}
+
+export async function getStaticProps({ params, preview = false }) {
+  const testimonials = await getClient(preview).fetch(testimonialIndexQuery);
+
+  return {
+    props: { testimonials },
+    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
+    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
+  };
 }

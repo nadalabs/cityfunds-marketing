@@ -9,7 +9,7 @@ import Slider from 'react-slick';
 import styled from 'styled-components';
 
 interface TestimonialsProps {
-  reviews: { name: string; text: string; location: string }[];
+  reviews: { name: string; review: string; city: string }[];
 }
 
 export default function Testimonials({ reviews }: TestimonialsProps) {
@@ -29,11 +29,11 @@ export default function Testimonials({ reviews }: TestimonialsProps) {
     <SectionWrapper>
       <Overline>Hear it from our users...</Overline>
       <Slider {...settings}>
-        {reviews.map(({ name, text, location }, idx) => (
+        {reviews.map(({ name, review, city }, idx) => (
           <div key={idx}>
             <ContentWrapper>
               <div style={{ maxWidth: '788px', marginRight: '24px' }}>
-                <Heading>"{text}"</Heading>
+                <Heading>"{review}"</Heading>
                 <div style={{ display: 'flex' }}>
                   {reviews.map((_, jdx) => (
                     <GreenSquare
@@ -53,7 +53,7 @@ export default function Testimonials({ reviews }: TestimonialsProps) {
                 >
                   {name}
                 </PrimaryText>
-                <PrimaryText style={{ color: 'black' }}>{location}</PrimaryText>
+                <PrimaryText style={{ color: 'black' }}>{city}</PrimaryText>
               </div>
             </ContentWrapper>
           </div>

@@ -39,31 +39,34 @@ export default function DesktopNavBar({
     <SectionWrapper
       style={{
         backgroundColor:
-          scrollPosition > 50 ? 'rgba(255, 255, 255, 0.8)' : 'transparent',
-        backdropFilter: scrollPosition > 50 ? 'blur(10px)' : 'none',
+          partnerImage || scrollPosition > 50
+            ? 'rgba(255, 255, 255, 0.8)'
+            : 'transparent',
+        backdropFilter:
+          partnerImage || scrollPosition > 50 ? 'blur(10px)' : 'none',
       }}
     >
       {partnerImage ? (
         <div style={{ display: 'flex' }}>
           <Image
-            width={125}
-            height={30}
+            width={222}
+            height={64}
             alt={'Cityfunds'}
             src={'/images/cityfunds.png'}
           />
           <hr
             style={{
               width: '1px',
-              height: '30px',
+              height: '100%',
               display: 'inline-block',
               margin: '0 24px',
             }}
           />
           <Image
-            width={125}
-            height={30}
+            width={222}
+            height={64}
             alt={partnerName}
-            src={urlForImage(partnerImage).height(30).width(125).url()}
+            src={urlForImage(partnerImage).url()}
           />
         </div>
       ) : (

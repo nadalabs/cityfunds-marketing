@@ -12,12 +12,14 @@ interface CardSliderProps {
   heading: string;
   primaryText: string;
   cards: { title: string; description?: string; imageUrl: string }[];
+  isSmallText?: boolean;
 }
 
 export default function CardSlider({
   heading,
   primaryText,
   cards,
+  isSmallText,
 }: CardSliderProps) {
   const settings = {
     dots: false,
@@ -47,7 +49,14 @@ export default function CardSlider({
             >
               <div>
                 <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                  <Heading style={{ color: 'white', marginBottom: '8px' }}>
+                  <Heading
+                    style={{
+                      color: 'white',
+                      marginBottom: '8px',
+                      fontSize: isSmallText ? '42px' : '64px',
+                      lineHeight: isSmallText ? '42px' : '64px',
+                    }}
+                  >
                     {title}
                   </Heading>
                   <GreenSquare
