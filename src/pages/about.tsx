@@ -68,7 +68,7 @@ export default function AboutPage({ teammates }) {
         primaryText={
           'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
         }
-        cards={teammates.map(({ name, role, image }) => ({
+        cards={teammates?.map(({ name, role, image }) => ({
           title: name,
           description: role,
           imageUrl: urlForImage(image).url(),
@@ -87,17 +87,14 @@ export default function AboutPage({ teammates }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const data = await getClient(preview).fetch(contentByLabelQuery, {
-    label: 'our-story',
-  });
+  // const data = await getClient(preview).fetch(contentByLabelQuery, {
+  //   label: 'our-story',
+  // });
   const teammates = await getClient(preview).fetch(teammateIndexQuery);
   // const content = data?.content ?? null;
-  const teammate = teammates?.content ?? null;
 
   return {
-    props: {
-      teammates,
-    },
+    props: { teammates },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };

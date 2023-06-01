@@ -38,7 +38,7 @@ export default function CardSlider({
       </HeadingWrapper>
 
       <Slider {...settings}>
-        {cards.map(({ title, description, imageUrl }, idx) => (
+        {cards?.map(({ title, description, imageUrl }, idx) => (
           <div key={idx}>
             <CardWrapper
               style={{

@@ -29,13 +29,13 @@ export default function Testimonials({ reviews }: TestimonialsProps) {
     <SectionWrapper>
       <Overline>Hear it from our users...</Overline>
       <Slider {...settings}>
-        {reviews.map(({ name, review, city }, idx) => (
+        {reviews?.map(({ name, review, city }, idx) => (
           <div key={idx}>
             <ContentWrapper>
               <div style={{ maxWidth: '788px', marginRight: '24px' }}>
                 <Heading>"{review}"</Heading>
                 <div style={{ display: 'flex' }}>
-                  {reviews.map((_, jdx) => (
+                  {reviews?.map((_, jdx) => (
                     <GreenSquare
                       key={jdx}
                       style={{
