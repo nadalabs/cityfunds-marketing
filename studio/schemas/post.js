@@ -66,12 +66,8 @@ export const post = {
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      subtitle: 'tag',
       media: 'coverImage',
-    },
-    prepare(selection) {
-      const { author } = selection;
-      return { ...selection, subtitle: author && `by ${author}` };
     },
   },
 };

@@ -1,6 +1,6 @@
-export const legal = {
-    name: 'legal',
-    title: 'Legal',
+export const content = {
+    name: 'content',
+    title: 'Content',
     type: 'document',
     fields: [
       {
@@ -9,26 +9,23 @@ export const legal = {
         type: 'string',
         validation: (Rule) => Rule.required(),
       },
-      {
-        name: 'slug',
-        title: 'Slug',
-        type: 'slug',
-        options: {
-          source: 'title',
-          maxLength: 96,
-        },
-        validation: (Rule) => Rule.required(),
-      },
-      {
+        {
         name: 'content',
         title: 'Content',
         type: 'array',
         of: [{ type: 'block' }],
+        validation: (Rule) => Rule.required(),
+        },
+      {
+        name: 'label',
+        title: 'Label',
+        type: 'string',
+        validation: (Rule) => Rule.required(),
       },
       {
-        name: 'link',
-        title: 'Link',
-        type: 'string',
+        name: 'date',
+        title: 'Date',
+        type: 'datetime',
       },
     ],
     preview: {

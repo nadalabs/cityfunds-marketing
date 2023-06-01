@@ -30,7 +30,7 @@ export const partner = {
     ],
     preview: {
       select: {
-        name: 'name',
+        title: 'name',
         media: 'coverImage',
       },
     },

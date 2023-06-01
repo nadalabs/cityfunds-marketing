@@ -27,5 +27,11 @@ export const press = {
         type: 'datetime',
       },
     ],
+    preview: {
+      select: {
+        title: 'title',
+        subtitle: 'publisher',
+      },
+    },
   };
   
