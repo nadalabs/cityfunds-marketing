@@ -30,7 +30,7 @@ export const FOOTER_LINKS = [
   {
     title: 'Home',
     links: [
-      { name: 'Cityfunds', link: '/cityfunds' },
+      { name: 'Cityfunds', link: '/' },
       { name: 'Homeshares', link: '/homeshares' },
       { name: 'Learn', link: '/learn' },
     ],

@@ -30,22 +30,22 @@ export default function PartnerPage({ preview, data }) {
           {
             name: 'Dallas',
             imageUrl: '/images/dallas-hero.png',
-            numProperties: 10,
+            numProperties: 19,
           },
           {
             name: 'Austin',
             imageUrl: '/images/austin-hero.png',
-            numProperties: 10,
+            numProperties: 30,
           },
           {
             name: 'Miami',
             imageUrl: '/images/miami-hero.png',
-            numProperties: 10,
+            numProperties: 9,
           },
           {
             name: 'Tampa',
             imageUrl: '/images/tampa-hero.png',
-            numProperties: 10,
+            numProperties: 3,
           },
         ]}
       />
@@ -58,22 +58,22 @@ export default function PartnerPage({ preview, data }) {
         cards={[
           {
             title: 'Dallas',
-            description: '102 Properties',
+            description: '19 Properties',
             imageUrl: '/images/dallas.png',
           },
           {
             title: 'Austin',
-            description: '102 Properties',
+            description: '30 Properties',
             imageUrl: '/images/austin.png',
           },
           {
             title: 'Miami',
-            description: '102 Properties',
+            description: '9 Properties',
             imageUrl: '/images/miami.png',
           },
           {
             title: 'Tampa',
-            description: '102 Properties',
+            description: '3 Properties',
             imageUrl: '/images/tampa.png',
           },
           {
