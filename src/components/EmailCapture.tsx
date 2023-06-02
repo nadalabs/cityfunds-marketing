@@ -53,7 +53,7 @@ export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
             placeholder="Enter Your Email"
           />
 
-<BtnWrapper>
+          <BtnWrapper>
             <PrimaryButton>{btnText}</PrimaryButton>
           </BtnWrapper>
         </FormWrapper>

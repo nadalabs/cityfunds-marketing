@@ -22,7 +22,7 @@ import {
 } from 'lib/queries';
 import { getClient, sanityClient } from 'lib/sanity.server';
 
-export default function PartnerPage({partner, testimonials }) {
+export default function PartnerPage({ partner, testimonials }) {
   return (
     <PageLayout partnerImage={partner?.coverImage}>
       <PageHero

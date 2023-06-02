@@ -1,8 +1,8 @@
+import { GreenSquare } from '@components/CarouselStepper';
 import PhoneScreen from '@components/PhoneScreen';
 import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import {
-  GreenSquare,
   Heading,
   Overline,
   SecondaryHeading,

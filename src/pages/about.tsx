@@ -7,7 +7,7 @@ import FeaturedLogos from '@sections/FeaturedLogos';
 import PageHero from '@sections/PageHero';
 import TextSlider from '@sections/TextSlider';
 import { FEATURED_BACKERS, OUR_VALUES } from '@utils/constants';
-import { contentByLabelQuery, teammateIndexQuery } from 'lib/queries';
+import { teammateIndexQuery } from 'lib/queries';
 import { urlForImage } from 'lib/sanity';
 import { getClient } from 'lib/sanity.server';
 

@@ -1,10 +1,7 @@
+import CarouselStepper from '@components/CarouselStepper';
 import { SectionWrapper } from '@elements/Containers';
-import {
-  GreenSquare,
-  Heading,
-  Overline,
-  PrimaryText,
-} from '@elements/Typography';
+import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -13,6 +10,7 @@ interface TestimonialsProps {
 }
 
 export default function Testimonials({ reviews }: TestimonialsProps) {
+  const sliderRef = useRef();
   const settings = {
     dots: false,
     fade: true,
@@ -28,23 +26,17 @@ export default function Testimonials({ reviews }: TestimonialsProps) {
   return (
     <SectionWrapper>
       <Overline>Hear it from our users...</Overline>
-      <Slider {...settings}>
+      <Slider {...settings} ref={sliderRef}>
         {reviews?.map(({ name, review, city }, idx) => (
           <div key={idx}>
             <ContentWrapper>
               <div style={{ maxWidth: '788px', marginRight: '24px' }}>
                 <Heading>"{review}"</Heading>
-                <div style={{ display: 'flex' }}>
-                  {reviews?.map((_, jdx) => (
-                    <GreenSquare
-                      key={jdx}
-                      style={{
-                        backgroundColor: idx !== jdx && 'rgba(2, 1, 1, 0.05)',
-                        marginRight: '8px',
-                      }}
-                    />
-                  ))}
-                </div>
+                <CarouselStepper
+                  activeStep={idx}
+                  totalSteps={reviews.length}
+                  sliderRef={sliderRef}
+                />
               </div>
 
               <div>

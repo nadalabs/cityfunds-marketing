@@ -1,6 +1,6 @@
+import CarouselStepper from '@components/CarouselStepper';
 import { SectionWrapper } from '@elements/Containers';
 import {
-  GreenSquare,
   LinkText,
   Overline,
   SecondaryText,
@@ -10,6 +10,7 @@ import { format, isValid, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -25,6 +26,7 @@ interface BlogHeroProps {
 }
 
 export default function BlogHero({ blogPosts }: BlogHeroProps) {
+  const sliderRef = useRef();
   const settings = {
     dots: false,
     fade: true,
@@ -37,6 +39,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
     cssEase: 'linear',
     arrows: false,
   };
+  console.log(blogPosts);
 
   return (
     <SectionWrapper style={{ paddingTop: '100px', backgroundColor: '#FBFBFB' }}>
@@ -44,7 +47,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
         <LinkText href="/learn">Back to Blog</LinkText>
       )}
 
-      <Slider {...settings}>
+      <Slider {...settings} ref={sliderRef}>
         {blogPosts.map((post, idx) => (
           <div key={idx}>
             <div>
@@ -78,19 +81,11 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
               </Link>
             </div>
 
-            {blogPosts.length > 1 && (
-              <div style={{ display: 'flex' }}>
-                {blogPosts.map((_, jdx) => (
-                  <GreenSquare
-                    key={jdx}
-                    style={{
-                      backgroundColor: idx !== jdx ? '#B0B0B0' : '#48DC95',
-                      marginRight: '8px',
-                    }}
-                  />
-                ))}
-              </div>
-            )}
+            <CarouselStepper
+              activeStep={idx}
+              totalSteps={blogPosts.length}
+              sliderRef={sliderRef}
+            />
           </div>
         ))}
       </Slider>

@@ -119,10 +119,3 @@ export const ErrorText = styled.p`
   text-align: left;
   margin: 0;
 `;
-
-export const GreenSquare = styled.div`
-  background-color: ${({ theme }) => theme.colors.secondary};
-  height: 16px;
-  width: 16px;
-  border-radius: 4px;
-`;

@@ -1,9 +1,5 @@
-import {
-  GreenSquare,
-  Heading,
-  PrimaryText,
-  SecondaryText,
-} from '@elements/Typography';
+import CarouselStepper from '@components/CarouselStepper';
+import { Heading, PrimaryText, SecondaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { useRef } from 'react';
 import Slider from 'react-slick';
@@ -26,12 +22,7 @@ export default function PageHero({
   heroImages,
 }: PageHeroProps) {
   const isMobile = useIsMobile();
-  const sliderRef = useRef(null);
-
-  const handleOnClick = (index) => {
-    // @ts-ignore-next-line
-    sliderRef && sliderRef?.slickGoTo(index);
-  };
+  const sliderRef = useRef();
 
   const settings = {
     dots: false,
@@ -47,7 +38,7 @@ export default function PageHero({
   };
 
   return (
-    <Slider {...settings} sliderRef={sliderRef}>
+    <Slider {...settings} ref={sliderRef}>
       {heroImages.map(({ name, numProperties, imageUrl }, idx) => (
         <div key={idx}>
           <HeroImage
@@ -92,19 +83,11 @@ export default function PageHero({
                 >
                   {numProperties} Properties
                 </SecondaryText>
-                <div style={{ display: 'flex' }}>
-                  {heroImages.map((_, jdx) => (
-                    <GreenSquare
-                      key={jdx}
-                      onClick={() => console.log(jdx)}
-                      style={{
-                        backgroundColor: idx !== jdx ? '#B0B0B0' : '#48DC95',
-                        marginRight: '8px',
-                        cursor: 'pointer',
-                      }}
-                    />
-                  ))}
-                </div>
+                <CarouselStepper
+                  activeStep={idx}
+                  totalSteps={heroImages.length}
+                  sliderRef={sliderRef}
+                />
               </div>
             )}
           </ContentWrapper>

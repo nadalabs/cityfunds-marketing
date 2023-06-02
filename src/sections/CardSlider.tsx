@@ -1,10 +1,6 @@
+import { GreenSquare } from '@components/CarouselStepper';
 import { CardWrapper, SliderWrapper } from '@elements/Containers';
-import {
-  GreenSquare,
-  Heading,
-  PrimaryText,
-  SecondaryText,
-} from '@elements/Typography';
+import { Heading, PrimaryText, SecondaryText } from '@elements/Typography';
 import Slider from 'react-slick';
 import { styled } from 'styled-components';
 
