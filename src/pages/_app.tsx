@@ -17,17 +17,16 @@ declare global {
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const {
+    gclid,
+    utm_source,
+    utm_medium,
+    utm_campaign,
+    utm_content,
+    utm_term,
+  } = router.query;
 
   useEffect(() => {
-    const {
-      gclid,
-      utm_source,
-      utm_medium,
-      utm_campaign,
-      utm_content,
-      utm_term,
-    } = router.query;
-
     setCookie('gclid', gclid as string);
     setCookie('utm_source', utm_source as string);
     setCookie('utm_medium', utm_medium as string);
