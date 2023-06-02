@@ -52,7 +52,8 @@ export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
             type="email"
             placeholder="Enter Your Email"
           />
-          <BtnWrapper>
+
+<BtnWrapper>
             <PrimaryButton>{btnText}</PrimaryButton>
           </BtnWrapper>
         </FormWrapper>
@@ -84,6 +85,10 @@ const FormWrapper = styled.div`
   border-radius: 10px;
   backdrop-filter: blur(10px);
   margin-bottom: 1rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+  }
 `;
 
 const BtnWrapper = styled.div`

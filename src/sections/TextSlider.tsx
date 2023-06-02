@@ -40,16 +40,11 @@ export default function TextSlider({
         <Slider {...settings}>
           {valueProps.map(({ title, description }, idx) => (
             <div key={idx}>
-              <CardWrapper
-                style={{
-                  boxShadow: '2px 4px 25px rgba(0, 0, 0, 0.1)',
-                  margin: '1rem',
-                }}
-              >
+              <TextWrapper>
                 <GreenSquare />
                 <TertiaryHeading>{title}</TertiaryHeading>
                 <SecondaryText>{description}</SecondaryText>
-              </CardWrapper>
+              </TextWrapper>
             </div>
           ))}
         </Slider>
@@ -72,3 +67,12 @@ export const GreenSquare = styled.div`
     margin-bottom: 14px;
   }
 `;
+
+const TextWrapper = styled(CardWrapper)`
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
+  margin: 1rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    height: 300px;
+  }
+`
