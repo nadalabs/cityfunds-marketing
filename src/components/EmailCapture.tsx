@@ -39,11 +39,10 @@ export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
         utm_content,
         utm_term,
       };
-      console.log(payload);
 
       await window.analytics.track('Lead Capture', payload);
       setCookie('email', inputs.email);
-      // onClick();
+      onClick();
     } catch (err: any) {
       setError('email', {
         message: err.response.data.errors.message,
