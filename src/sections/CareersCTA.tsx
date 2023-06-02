@@ -1,6 +1,8 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
+import { EXTERNAL_ROUTES } from '@utils/constants';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export default function CareersCTA({}) {
@@ -18,7 +20,9 @@ export default function CareersCTA({}) {
           come help us?
         </PrimaryText>
         <div>
-          <PrimaryButton isDarkMode>Check Out Opportunities</PrimaryButton>
+          <Link href={EXTERNAL_ROUTES.CAREERS} target="_blank">
+            <PrimaryButton isDarkMode>Check Out Opportunities</PrimaryButton>
+          </Link>
         </div>
       </ContentWrapper>
     </SectionWrapper>

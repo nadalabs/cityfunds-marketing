@@ -1,3 +1,12 @@
+export enum EXTERNAL_ROUTES {
+  WEB_APP = 'https://www.invest.nada.co',
+  DOWNLOAD = 'https://nada.onelink.me/wNEn/ksbeffng',
+  TYPEFORM = 'https://form.typeform.com/to/fv2eTpuT',
+  CAREERS = 'https://www.linkedin.com/company/hellonada/jobs/',
+  APPLE_STORE = 'https://apps.apple.com/us/app/nada-finance/id1615840472',
+  GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
+}
+
 export const HEADER_LINKS = [
   { name: 'Cityfunds', link: '/' },
   { name: 'About', link: '/about' },
@@ -41,7 +50,7 @@ export const FOOTER_LINKS = [
       { name: 'About', link: '/about' },
       { name: 'Press', link: '/press' },
       { name: 'FAQs', link: '/faqs' },
-      { name: 'Careers', link: '/careers' },
+      { name: 'Careers', link: EXTERNAL_ROUTES.CAREERS },
     ],
   },
   {
@@ -58,14 +67,6 @@ export const SOCIAL_LINKS = [
   { name: 'Discord', link: 'https://discord.com/invite/AGhPSkQjYX' },
   { name: 'TikTok', link: 'https://www.tiktok.com/@nadafinance' },
 ];
-
-export enum EXTERNAL_ROUTES {
-  WEB_APP = 'https://www.invest.nada.co',
-  DOWNLOAD = 'https://nada.onelink.me/wNEn/ksbeffng',
-  TYPEFORM = 'https://form.typeform.com/to/fv2eTpuT',
-  APPLE_STORE = 'https://apps.apple.com/us/app/nada-finance/id1615840472',
-  GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
-}
 
 export const FEATURED_ARTICLES = [
   { name: 'Forbes', imageUrl: '/icons/forbes.svg', link: '' },
