@@ -78,7 +78,7 @@ export const FEATURED_CITIES = [
   },
   {
     name: 'Austin',
-    heroImage: '/images/austi-hero.png',
+    heroImage: '/images/austin-hero.png',
     cardImage: '/images/austin.png',
     totalAssets: 30,
     appreciation: 13.65,
