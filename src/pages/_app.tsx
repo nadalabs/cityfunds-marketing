@@ -17,23 +17,24 @@ declare global {
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const {
-    gclid,
-    utm_source,
-    utm_medium,
-    utm_campaign,
-    utm_content,
-    utm_term,
-  } = router.query;
 
   useEffect(() => {
-    setCookie('gclid', gclid as string);
-    setCookie('utm_source', utm_source as string);
-    setCookie('utm_medium', utm_medium as string);
-    setCookie('utm_campaign', utm_campaign as string);
-    setCookie('utm_content', utm_content as string);
-    setCookie('utm_term', utm_term as string);
-  }, []);
+    const {
+      gclid,
+      utm_source,
+      utm_medium,
+      utm_campaign,
+      utm_content,
+      utm_term,
+    } = router.query;
+
+    if (gclid) setCookie('gclid', gclid as string);
+    if (utm_source) setCookie('utm_source', utm_source as string);
+    if (utm_medium) setCookie('utm_medium', utm_medium as string);
+    if (utm_campaign) setCookie('utm_campaign', utm_campaign as string);
+    if (utm_content) setCookie('utm_content', utm_content as string);
+    if (utm_term) setCookie('utm_term', utm_term as string);
+  }, [router.query]);
 
   if (process.env.NEXT_PUBLIC_APP_ENV !== 'localhost') {
     Sentry.init({

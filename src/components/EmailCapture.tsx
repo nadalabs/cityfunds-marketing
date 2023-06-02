@@ -2,7 +2,7 @@ import { PrimaryButton } from '@elements/Buttons';
 import { FormInput, StyledForm } from '@elements/FormInput';
 import { Caption, ErrorText } from '@elements/Typography';
 import { LEGAL_LINKS } from '@utils/constants';
-import { setCookie } from '@utils/helpers';
+import { getCookie, setCookie } from '@utils/helpers';
 import Link from 'next/link';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { styled } from 'styled-components';
@@ -23,9 +23,22 @@ export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
 
   const onSubmit = async (inputs: FieldValues) => {
     try {
+      const gclid = getCookie('gclid');
+      const utm_source = getCookie('utm_source');
+      const utm_medium = getCookie('utm_medium');
+      const utm_campaign = getCookie('utm_campaign');
+      const utm_content = getCookie('utm_content');
+      const utm_term = getCookie('utm_term');
+
       await window.analytics.track('Lead Capture', {
         formName: btnText,
         email: inputs.email,
+        gclid,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        utm_content,
+        utm_term
       });
       setCookie('email', inputs.email);
       onClick();
