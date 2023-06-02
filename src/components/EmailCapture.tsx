@@ -29,17 +29,21 @@ export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
       const utm_campaign = getCookie('utm_campaign');
       const utm_content = getCookie('utm_content');
       const utm_term = getCookie('utm_term');
-
-      await window.analytics.track('Lead Capture', {
+      const payload = {
         formName: btnText,
         email: inputs.email,
-        gclid,
-        utm_source,
-        utm_medium,
-        utm_campaign,
-        utm_content,
-        utm_term
-      });
+        properties: {
+          gclid,
+          utm_source,
+          utm_medium,
+          utm_campaign,
+          utm_content,
+          utm_term,
+        }
+      }
+      console.log(payload)
+
+      await window.analytics.track('Lead Capture', payload);
       setCookie('email', inputs.email);
       onClick();
     } catch (err: any) {
