@@ -19,15 +19,17 @@ export default function CarouselStepper({
 
   return (
     <div style={{ display: 'flex' }}>
-      {Array(totalSteps).fill(0).map((_, jdx) => (
-        <GreenSquare
-          key={jdx}
-          onClick={() => handleOnClick(jdx)}
-          style={{
-            backgroundColor: activeStep !== jdx ? '#B0B0B0' : '#48DC95',
-          }}
-        />
-      ))}
+      {Array(totalSteps)
+        .fill(0)
+        .map((_, jdx) => (
+          <GreenSquare
+            key={jdx}
+            onClick={() => handleOnClick(jdx)}
+            style={{
+              backgroundColor: activeStep !== jdx ? '#B0B0B0' : '#48DC95',
+            }}
+          />
+        ))}
     </div>
   );
 }

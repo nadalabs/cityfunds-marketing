@@ -1,4 +1,5 @@
-import { GreenSquare, Heading, PrimaryText } from '@elements/Typography';
+import { GreenSquare } from '@components/CarouselStepper';
+import { Heading, PrimaryText } from '@elements/Typography';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
@@ -33,11 +34,11 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
                 <Heading
                   // @ts-ignore-next-line
                   ref={countUpRef}
-                  style={{ fontSize: '75px' }}
+                  style={{ fontSize: '75px', marginBottom: 0 }}
                 />
               )}
             </CountUp>
-            <GreenSquare />
+            <GreenSquare style={{ position: 'relative', left: '10px' }} />
           </div>
           <PrimaryText>{label}</PrimaryText>
         </CounterWrapper>
@@ -58,6 +59,6 @@ const FlexWrapper = styled.div`
 
 const CounterWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 48px;
+    margin-bottom: 48px;/
   }
 `;

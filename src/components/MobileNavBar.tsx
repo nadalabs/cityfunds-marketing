@@ -64,7 +64,7 @@ export default function MobileNavBar({
           width={25}
           height={30}
           alt={'Cityfunds'}
-          src={'/icons/mobile-menu.svg'}
+          src={!showMenu && (isDarkMode || scrollPosition > 50) ? '/icons/mobile-dark.svg' : '/icons/mobile-light.svg'}
           onClick={() => setShowMenu(!showMenu)}
         />
       </FlexWrapper>
