@@ -81,17 +81,27 @@ export default function PartnerPage({ partner, testimonials }) {
               formattingFn: (val) => `${val}+`,
             },
             {
-              label: 'Total Invested',
-              value: 1.8,
-              decimals: 1,
-              formattingFn: (val) => `$${val}M`,
-            },
-            {
               label: 'Properties Funded',
               value: 60,
               formattingFn: (val) => `${val}+`,
             },
+            {
+              label: 'Avg. Portfolio Appreciation',
+              value: 11.7,
+              formattingFn: (val) => `${val}%`,
+              decimals: 1,
+            },
           ]}
+        />
+      </SectionWrapper>
+      <SectionWrapper>
+        <FeaturedImage
+          overline="What am I investing in?"
+          heading="Diversified Portfolios of Homes"
+          primaryText="Own fractional shares of peoples homes across the nations top cities on day one."
+          imageUrl="/images/location-map.png"
+          btnText="Get Started"
+          onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         />
       </SectionWrapper>
       <TextSlider
@@ -123,6 +133,7 @@ export default function PartnerPage({ partner, testimonials }) {
         ]}
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+        isPhoneFrame
       />
       <Testimonials reviews={testimonials} />
       <PublisherCTA name={partner?.name} />

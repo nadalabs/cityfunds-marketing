@@ -1,6 +1,11 @@
 import PageLayout from '@components/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { Heading, Overline, PrimaryText, SecondaryText } from '@elements/Typography';
+import {
+  Heading,
+  Overline,
+  PrimaryText,
+  SecondaryText,
+} from '@elements/Typography';
 import CardSlider from '@sections/CardSlider';
 import CareersCTA from '@sections/CareersCTA';
 import FeaturedLogos from '@sections/FeaturedLogos';
@@ -70,7 +75,9 @@ export default function AboutPage({ teammates }) {
         }
         cards={teammates?.map(({ name, role, image }) => ({
           name,
-          description: <SecondaryText style={{color:'white'}}>{role}</SecondaryText>,
+          description: (
+            <SecondaryText style={{ color: 'white' }}>{role}</SecondaryText>
+          ),
           cardImage: urlForImage(image).url(),
         }))}
         isSmallText
