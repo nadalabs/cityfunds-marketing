@@ -47,24 +47,25 @@ export default function DesktopNavBar({
       }}
     >
       {partnerImage ? (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           <Image
             width={222}
             height={64}
             alt={'Cityfunds'}
-            src={'/images/cityfunds.png'}
+            src={'/icons/cityfunds-dark.svg'}
           />
           <hr
             style={{
               width: '1px',
-              height: '100%',
+              height: '64px',
               display: 'inline-block',
+              border: '1px solid black',
               margin: '0 24px',
             }}
           />
           <Image
             width={222}
-            height={64}
+            height={44}
             alt={partnerName}
             src={urlForImage(partnerImage).url()}
           />
