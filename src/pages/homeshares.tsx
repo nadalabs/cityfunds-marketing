@@ -20,7 +20,7 @@ export default function HomeSharesPage({ testimonials }) {
         heroImages={[
           {
             name: 'Homeshares',
-            imageUrl: '/images/homeshares-hero.png',
+            heroImage: '/images/homeshares-hero.png',
           },
         ]}
       />
