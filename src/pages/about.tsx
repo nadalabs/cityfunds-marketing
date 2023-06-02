@@ -1,6 +1,6 @@
 import PageLayout from '@components/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import { Heading, Overline, PrimaryText, SecondaryText } from '@elements/Typography';
 import CardSlider from '@sections/CardSlider';
 import CareersCTA from '@sections/CareersCTA';
 import FeaturedLogos from '@sections/FeaturedLogos';
@@ -20,7 +20,7 @@ export default function AboutPage({ teammates }) {
         heroImages={[
           {
             name: 'About',
-            imageUrl: '/images/about-hero.png',
+            heroImage: '/images/about-hero.png',
           },
         ]}
       />
@@ -69,9 +69,9 @@ export default function AboutPage({ teammates }) {
           'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
         }
         cards={teammates?.map(({ name, role, image }) => ({
-          title: name,
-          description: role,
-          imageUrl: urlForImage(image).url(),
+          name,
+          description: <SecondaryText style={{color:'white'}}>{role}</SecondaryText>,
+          cardImage: urlForImage(image).url(),
         }))}
         isSmallText
       />

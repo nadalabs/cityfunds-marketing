@@ -1,3 +1,4 @@
+import AssetTicker from '@components/AssetTicker';
 import FeaturedImage from '@components/FeaturedImage';
 import KeyMetrics from '@components/KeyMetrics';
 import PageLayout from '@components/PageLayout';
@@ -13,12 +14,23 @@ import TextSlider from '@sections/TextSlider';
 import {
   EXTERNAL_ROUTES,
   FEATURED_ARTICLES,
+  FEATURED_CITIES,
   VALUE_PROPS,
 } from '@utils/constants';
 import { testimonialIndexQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
 export default function HomePage({ testimonials }) {
+  const cityCards = FEATURED_CITIES.map(
+    ({ name, cardImage, totalAssets, appreciation }) => ({
+      name,
+      cardImage,
+      description: (
+        <AssetTicker totalAssets={totalAssets} appreciation={appreciation} />
+      ),
+    })
+  );
+
   return (
     <PageLayout>
       <PageHero
@@ -26,28 +38,7 @@ export default function HomePage({ testimonials }) {
         primaryText="Diversified real estate portfolios with passive income in the nations top cities."
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
-        heroImages={[
-          {
-            name: 'Dallas',
-            imageUrl: '/images/dallas-hero.png',
-            numProperties: 19,
-          },
-          {
-            name: 'Austin',
-            imageUrl: '/images/austin-hero.png',
-            numProperties: 30,
-          },
-          {
-            name: 'Miami',
-            imageUrl: '/images/miami-hero.png',
-            numProperties: 9,
-          },
-          {
-            name: 'Tampa',
-            imageUrl: '/images/tampa-hero.png',
-            numProperties: 3,
-          },
-        ]}
+        heroImages={FEATURED_CITIES}
       />
       <FeaturedLogos overline="Featured In" logos={FEATURED_ARTICLES} />
       <CardSlider
@@ -56,33 +47,14 @@ export default function HomePage({ testimonials }) {
           'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
         }
         cards={[
+          ...cityCards,
           {
-            title: 'Dallas',
-            description: '19 Properties',
-            imageUrl: '/images/dallas.png',
+            name: 'Coming Soon',
+            cardImage: '/images/coming-soon-1.png',
           },
           {
-            title: 'Austin',
-            description: '30 Properties',
-            imageUrl: '/images/austin.png',
-          },
-          {
-            title: 'Miami',
-            description: '9 Properties',
-            imageUrl: '/images/miami.png',
-          },
-          {
-            title: 'Tampa',
-            description: '3 Properties',
-            imageUrl: '/images/tampa.png',
-          },
-          {
-            title: 'Coming Soon',
-            imageUrl: '/images/coming-soon-1.png',
-          },
-          {
-            title: 'Coming Soon',
-            imageUrl: '/images/coming-soon-2.png',
+            name: 'Coming Soon',
+            cardImage: '/images/coming-soon-2.png',
           },
         ]}
       />

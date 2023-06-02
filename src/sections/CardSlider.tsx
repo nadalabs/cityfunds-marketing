@@ -1,20 +1,14 @@
 import { GreenSquare } from '@components/CarouselStepper';
 import { CardWrapper, SliderWrapper } from '@elements/Containers';
-import {
-  Caption,
-  Heading,
-  PrimaryText,
-  SecondaryText,
-} from '@elements/Typography';
-import Image from 'next/image';
-import { useRef } from 'react';
+import { Heading, PrimaryText } from '@elements/Typography';
+import { ReactNode, useRef } from 'react';
 import Slider from 'react-slick';
 import { styled } from 'styled-components';
 
 interface CardSliderProps {
   heading: string;
   primaryText: string;
-  cards: { title: string; description?: string; imageUrl: string }[];
+  cards: { name: string; cardImage: string; description?: ReactNode }[];
   isSmallText?: boolean;
 }
 
@@ -54,13 +48,13 @@ export default function CardSlider({
 
       <div onScroll={(e) => handleWheel(e)}>
         <Slider {...settings}>
-          {cards?.map(({ title, description, imageUrl }, idx) => (
+          {cards?.map(({ name, description, cardImage }, idx) => (
             <div key={idx}>
               <CardWrapper
                 style={{
                   display: 'flex',
                   alignItems: 'flex-end',
-                  backgroundImage: `url(${imageUrl})`,
+                  backgroundImage: `url(${cardImage})`,
                 }}
               >
                 <div>
@@ -73,43 +67,13 @@ export default function CardSlider({
                         lineHeight: isSmallText ? '42px' : '64px',
                       }}
                     >
-                      {title}
+                      {name}
                     </Heading>
                     <GreenSquare
                       style={{ marginLeft: '4px', marginBottom: '18px' }}
                     />
                   </div>
-                  {description && (
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          backgroundColor: 'rgba(152, 152, 152, 0.35)',
-                          borderRadius: '10px',
-                          padding: '4px 8px',
-                          marginRight: '8px',
-                        }}
-                      >
-                        <SecondaryText
-                          style={{
-                            color: 'white',
-                            fontWeight: 600,
-                            margin: '0 4px 0 0',
-                          }}
-                        >
-                          10.03%
-                        </SecondaryText>
-                        <Image
-                          width={18}
-                          height={18}
-                          alt={'Arrow Up'}
-                          src={'/icons/arrow.svg'}
-                        />
-                      </div>
-                      <Caption style={{ color: 'white' }}>102 Assets</Caption>
-                    </div>
-                  )}
+                  {description && description}
                 </div>
               </CardWrapper>
             </div>

@@ -60,7 +60,13 @@ export default class MyDocument extends Document {
             `,
             }}
           />
-          <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8291437.js"></script>
+          <script
+            type="text/javascript"
+            id="hs-script-loader"
+            async
+            defer
+            src="//js.hs-scripts.com/8291437.js"
+          ></script>
         </Head>
         <body>
           <Main />

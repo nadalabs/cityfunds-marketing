@@ -68,6 +68,37 @@ export const SOCIAL_LINKS = [
   { name: 'TikTok', link: 'https://www.tiktok.com/@nadafinance' },
 ];
 
+export const FEATURED_CITIES = [
+  {
+    name: 'Dallas',
+    heroImage: '/images/dallas-hero.png',
+    cardImage: '/images/dallas.png',
+    totalAssets: 19,
+    appreciation: 10.03,
+  },
+  {
+    name: 'Austin',
+    heroImage: '/images/austi-hero.png',
+    cardImage: '/images/austin.png',
+    totalAssets: 30,
+    appreciation: 13.65,
+  },
+  {
+    name: 'Miami',
+    heroImage: '/images/miami-hero.png',
+    cardImage: '/images/miami.png',
+    totalAssets: 9,
+    appreciation: 11.42,
+  },
+  {
+    name: 'Tampa',
+    heroImage: '/images/tampa-hero.png',
+    cardImage: '/images/tampa.png',
+    totalAssets: 3,
+    appreciation: 7.85,
+  },
+];
+
 export const FEATURED_ARTICLES = [
   { name: 'Forbes', imageUrl: '/icons/forbes.svg', link: '' },
   {

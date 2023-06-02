@@ -11,7 +11,7 @@ interface PageHeroProps {
   primaryText: string;
   btnText?: string;
   onClick?: () => void;
-  heroImages: { name: string; imageUrl: string; numProperties?: number }[];
+  heroImages: { name: string; heroImage: string; totalAssets?: number }[];
 }
 
 export default function PageHero({
@@ -39,7 +39,7 @@ export default function PageHero({
 
   return (
     <Slider {...settings} ref={sliderRef}>
-      {heroImages.map(({ name, numProperties, imageUrl }, idx) => (
+      {heroImages.map(({ name, totalAssets, heroImage }, idx) => (
         <div key={idx}>
           <HeroImage
             style={{
@@ -49,7 +49,7 @@ export default function PageHero({
                 rgba(0, 0, 0, 0.32) 44.79%,
                 rgba(0, 0, 0, 0.87) 73.73%
               ),
-              url(${imageUrl})`,
+              url(${heroImage})`,
             }}
           />
           <ContentWrapper>
@@ -81,7 +81,7 @@ export default function PageHero({
                 <SecondaryText
                   style={{ color: '#B0B0B0', marginBottom: '8px' }}
                 >
-                  {numProperties} Properties
+                  {totalAssets} Properties
                 </SecondaryText>
                 <CarouselStepper
                   activeStep={idx}
