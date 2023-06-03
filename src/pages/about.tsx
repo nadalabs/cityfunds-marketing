@@ -76,11 +76,13 @@ export default function AboutPage({ teammates }) {
         cards={teammates?.map(({ name, role, image }) => ({
           name,
           description: (
-            <SecondaryText style={{ color: 'white', margin: 0 }}>{role}</SecondaryText>
+            <SecondaryText style={{ color: 'white', margin: 0 }}>
+              {role}
+            </SecondaryText>
           ),
           cardImage: urlForImage(image).url(),
           isSmallText: true,
-        }))}  
+        }))}
       />
       <TextSlider
         overline="Our Values"

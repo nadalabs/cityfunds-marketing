@@ -36,7 +36,7 @@ export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
         utm_medium: utm_medium,
         utm_content: utm_content,
         utm_term: utm_term,
-      }
+      };
 
       await window.analytics.identify(anonymousId, payload);
       await window.analytics.track('Lead Capture', payload);

@@ -56,7 +56,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                     <Image
                       fill
                       alt={post?.title}
-                      style={{  borderRadius: '60px'                      }}
+                      style={{ borderRadius: '60px' }}
                       src={
                         post?.coverImage
                           ? urlForImage(post?.coverImage).url()
@@ -81,11 +81,13 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
               </Link>
             </div>
 
-            {blogPosts.length > 1 &&(<CarouselStepper
-              activeStep={idx}
-              totalSteps={blogPosts.length}
-              sliderRef={sliderRef}
-            />)}
+            {blogPosts.length > 1 && (
+              <CarouselStepper
+                activeStep={idx}
+                totalSteps={blogPosts.length}
+                sliderRef={sliderRef}
+              />
+            )}
           </div>
         ))}
       </Slider>
@@ -113,7 +115,7 @@ export const CardWrapper = styled.div`
 
 const BackgroundWrapper = styled(SectionWrapper)`
   padding-top: 20vh;
-  background-color: #FBFBFB;
+  background-color: #fbfbfb;
   height: 110vh;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
@@ -121,7 +123,7 @@ const BackgroundWrapper = styled(SectionWrapper)`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding-top: 125px;
   }
-`
+`;
 
 const FlexWrapper = styled.div`
   display: flex;

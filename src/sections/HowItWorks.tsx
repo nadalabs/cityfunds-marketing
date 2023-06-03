@@ -51,13 +51,11 @@ export default function HowItWorks({
               {!isMobile && isPhoneFrame && <PhoneScreen imageUrl={imageUrl} />}
 
               <ContentWrapper>
-                <div>
+                <HeaderWrapper>
                   <Overline>{overline}</Overline>
-                  <Heading style={{ marginBottom: '80px' }}>
-                    How it Works
-                  </Heading>
-                </div>
-                <div style={{ display: 'flex' }}>
+                  <Heading>How it Works</Heading>
+                </HeaderWrapper>
+                <TextWrapper>
                   {steps.map(({ title, description }, jdx) => (
                     <StepWrapper key={jdx}>
                       <GreenSquare
@@ -79,7 +77,7 @@ export default function HowItWorks({
                       )}
                     </StepWrapper>
                   ))}
-                </div>
+                </TextWrapper>
               </ContentWrapper>
 
               {!isMobile && !isPhoneFrame && (
@@ -115,4 +113,24 @@ export const FlewWrapper = styled.div`
 
 export const StepWrapper = styled.div`
   margin-right: 2rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-bottom: 2rem;
+  }
+`;
+
+export const TextWrapper = styled.div`
+  display: flex;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+  }
+`;
+
+export const HeaderWrapper = styled.div`
+  margin-bottom: 80px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-bottom: 0;
+  }
 `;

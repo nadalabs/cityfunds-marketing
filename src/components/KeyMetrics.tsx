@@ -38,7 +38,9 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
                 />
               )}
             </CountUp>
-            <GreenSquare style={{ position: 'relative', bottom: '8px', left: '8px' }} />
+            <GreenSquare
+              style={{ position: 'relative', bottom: '8px', left: '8px' }}
+            />
           </div>
           <PrimaryText>{label}</PrimaryText>
         </CounterWrapper>

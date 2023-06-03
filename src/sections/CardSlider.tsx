@@ -8,7 +8,12 @@ import { styled } from 'styled-components';
 interface CardSliderProps {
   heading: string;
   primaryText: string;
-  cards: { name: string; cardImage: string; description?: ReactNode, isSmallText?: boolean }[];
+  cards: {
+    name: string;
+    cardImage: string;
+    description?: ReactNode;
+    isSmallText?: boolean;
+  }[];
 }
 
 export default function CardSlider({
@@ -68,7 +73,10 @@ export default function CardSlider({
                       {name}
                     </Heading>
                     <GreenSquare
-                      style={{ marginLeft: isSmallText ? '4px' : '8px', marginBottom: isSmallText ? '4px' : '8px',}}
+                      style={{
+                        marginLeft: isSmallText ? '4px' : '8px',
+                        marginBottom: isSmallText ? '4px' : '8px',
+                      }}
                     />
                   </div>
                   {description && description}

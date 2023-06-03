@@ -3,14 +3,14 @@ import BlogHero from '@sections/BlogHero';
 import BlogSlider from '@sections/BlogSlider';
 import { indexQuery } from 'lib/queries';
 import { getClient, overlayDrafts } from 'lib/sanity.server';
-import { PreviewSuspense } from 'next-sanity/preview';
 import _ from 'lodash';
+import { PreviewSuspense } from 'next-sanity/preview';
 
 // const LandingPreview = lazy(() => import('../../components/landing-preview'));
 
 export default function LearnPage({ allPosts, preview }) {
   const postsByTag = _.groupBy(allPosts, 'tag');
-  console.log(postsByTag)
+  console.log(postsByTag);
 
   if (preview) {
     return (
