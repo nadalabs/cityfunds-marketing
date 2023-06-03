@@ -35,7 +35,7 @@ export default function HomePage({ testimonials }) {
     <PageLayout>
       <PageHero
         heading="Own a Piece of Your Favorite City"
-        primaryText="Diversified real estate portfolios with passive income in the nations top cities."
+        primaryText="Diversified real estate portfolios with passive income in the nation's top cities."
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         heroImages={FEATURED_CITIES}

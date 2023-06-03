@@ -114,7 +114,7 @@ export const FEATURED_ARTICLES = [
   {
     name: 'Yahoo Finance',
     imageUrl: '/icons/yahoo-finance.svg',
-    link: '',
+    link: 'https://finance.yahoo.com/news/nada-raises-8-1m-funding-123300648.html',
   },
 ];
 

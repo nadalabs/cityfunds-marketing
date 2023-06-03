@@ -39,10 +39,9 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
     cssEase: 'linear',
     arrows: false,
   };
-  console.log(blogPosts);
 
   return (
-    <SectionWrapper style={{ paddingTop: '100px', backgroundColor: '#FBFBFB' }}>
+    <BackgroundWrapper>
       {blogPosts.length === 1 && (
         <LinkText href="/learn">Back to Blog</LinkText>
       )}
@@ -57,6 +56,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                     <Image
                       fill
                       alt={post?.title}
+                      style={{  borderRadius: '60px'                      }}
                       src={
                         post?.coverImage
                           ? urlForImage(post?.coverImage).url()
@@ -81,15 +81,15 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
               </Link>
             </div>
 
-            <CarouselStepper
+            {blogPosts.length > 1 &&(<CarouselStepper
               activeStep={idx}
               totalSteps={blogPosts.length}
               sliderRef={sliderRef}
-            />
+            />)}
           </div>
         ))}
       </Slider>
-    </SectionWrapper>
+    </BackgroundWrapper>
   );
 }
 
@@ -104,20 +104,24 @@ export const CardWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    height: 350px;
+    height: inherit;
     padding: 0;
     box-shadow: none;
     background: #fbfbfb;
   }
 `;
 
-export const ContentWrapper = styled.div`
-  width: 50%;
+const BackgroundWrapper = styled(SectionWrapper)`
+  padding-top: 20vh;
+  background-color: #FBFBFB;
+  height: 110vh;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
+    padding-top: 100px;
   }
-`;
+`
 
 const FlexWrapper = styled.div`
   display: flex;

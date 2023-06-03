@@ -77,9 +77,9 @@ export default function HomeSharesPage({ testimonials }) {
       />
       <SectionWrapper>
         <FeaturedImage
-          overline="Build Your Real Estate Wealth"
-          heading="Making home ownership accessible."
-          primaryText="Investing in real estate is all about location, yet the increased cost of living have made desirable places unaffordable. Now, owning real estate in your favorite city takes less than 5 minutes."
+          overline="Coming Soon"
+          heading="Build Real Estate Wealth on the Nada Card"
+          primaryText="Earn cashback on everyday purchases and receive dividends from Cityfund, which are deposited on the card. By referring friends and family, you can enjoy extra perks."
           imageUrl="/images/nada-card.png"
           btnText="Apply Now"
           onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}

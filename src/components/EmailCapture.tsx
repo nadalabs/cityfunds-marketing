@@ -32,13 +32,16 @@ export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
       const payload = {
         formName: btnText,
         email: inputs.email,
-        gclid,
-        utm_source,
-        utm_medium,
-        utm_campaign,
-        utm_content,
-        utm_term,
-      };
+        context: {
+          campaign: {
+            name: utm_campaign,
+            source: utm_source,
+            medium: utm_medium,
+            content: utm_content,
+            term: utm_term,
+          }
+        }
+      }
 
       await window.analytics.track('Lead Capture', payload);
       setCookie('email', inputs.email);

@@ -146,7 +146,7 @@ const SectionWrapper = styled.div`
   background-color: #fbfbfb;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 24px;
+    padding: 48px 24px;
   }
 `;
 
