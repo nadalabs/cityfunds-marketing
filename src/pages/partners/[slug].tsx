@@ -55,10 +55,12 @@ export default function PartnerPage({ partner, testimonials }) {
           {
             name: 'Coming Soon',
             cardImage: '/images/coming-soon-1.png',
+            isSmallText: true,
           },
           {
             name: 'Coming Soon',
             cardImage: '/images/coming-soon-2.png',
+            isSmallText: true,
           },
         ]}
       />

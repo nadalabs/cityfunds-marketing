@@ -61,8 +61,8 @@ export const GreenSquare = styled.div`
   margin-bottom: 20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    height: 14px;
-    width: 14px;
+    height: 20px;
+    width: 20px;
     border-radius: 3px;
     margin-bottom: 14px;
   }
@@ -71,8 +71,4 @@ export const GreenSquare = styled.div`
 const TextWrapper = styled(CardWrapper)`
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   margin: 1rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    height: 300px;
-  }
 `;

@@ -21,13 +21,13 @@ export const CardWrapper = styled.div`
   width: 400px;
   height: 400px;
   padding: 40px;
-  margin-right: 2rem;
+  margin-right: 1.5rem;
   border-radius: 52px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 200px;
-    height: 200px;
-    padding: 1rem;
+    width: 300px;
+    height: 300px;
+    padding: 2rem;
     margin-right: 1rem;
     border-radius: 22px;
   }

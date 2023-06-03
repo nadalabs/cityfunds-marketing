@@ -59,6 +59,6 @@ const FlexWrapper = styled.div`
 
 const CounterWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 48px;/
+    margin-bottom: 48px;
   }
 `;
