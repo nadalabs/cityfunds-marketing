@@ -44,9 +44,9 @@ export const post = {
       type: "string",
       options: {
         list: [
-          { title: "Webinars", value: "webinars" },
-          { title: "Investing", value: "investing" },
-          { title: "Home Equity", value: "homeEquity" }
+          { title: "Webinars", value: "Webinars" },
+          { title: "Investing", value: "Investing" },
+          { title: "Home Equity", value: "Home Equity" }
         ],
         layout: 'dropdown'
       }

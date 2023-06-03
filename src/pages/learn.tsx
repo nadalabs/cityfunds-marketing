@@ -4,11 +4,13 @@ import BlogSlider from '@sections/BlogSlider';
 import { indexQuery } from 'lib/queries';
 import { getClient, overlayDrafts } from 'lib/sanity.server';
 import { PreviewSuspense } from 'next-sanity/preview';
+import _ from 'lodash';
 
 // const LandingPreview = lazy(() => import('../../components/landing-preview'));
 
 export default function LearnPage({ allPosts, preview }) {
-  const tags = ['Webinars', 'Investing', 'Home Equity'];
+  const postsByTag = _.groupBy(allPosts, 'tag');
+  console.log(postsByTag)
 
   if (preview) {
     return (
@@ -18,12 +20,20 @@ export default function LearnPage({ allPosts, preview }) {
     );
   }
 
+  function renderBlogSliders() {
+    const sliders = [];
+    for (let tag in postsByTag) {
+      sliders.push(
+        <BlogSlider key={tag} tag={tag} blogPosts={postsByTag[tag]} />
+      );
+    }
+    return sliders;
+  }
+
   return (
     <PageLayout isDarkMode>
-      <BlogHero blogPosts={allPosts} />
-      {tags.map((tag, idx) => (
-        <BlogSlider key={idx} tag={tag} blogPosts={allPosts} />
-      ))}
+      <BlogHero blogPosts={allPosts.slice(0, 4)} />
+      {renderBlogSliders()}
     </PageLayout>
   );
 }

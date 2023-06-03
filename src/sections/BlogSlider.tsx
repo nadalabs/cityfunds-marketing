@@ -76,7 +76,7 @@ export const CardWrapper = styled.div`
   margin-right: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 200px;
+    width: 300px;
   }
 `;
 
@@ -89,7 +89,7 @@ export const ImageWrapper = styled.div`
   margin-bottom: 20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
   }
 `;

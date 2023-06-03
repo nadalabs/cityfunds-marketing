@@ -73,7 +73,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                       <time dateTime={post?.date}>
                         {isValid(post?.date)
                           ? format(parseISO(post?.date), 'LLLL	d, yyyy')
-                          : 'Invalid date'}
+                          : ''}
                       </time>
                     </SecondaryText>
                   </CardWrapper>
@@ -119,7 +119,7 @@ const BackgroundWrapper = styled(SectionWrapper)`
   border-bottom-right-radius: 50px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding-top: 100px;
+    padding-top: 125px;
   }
 `
 
