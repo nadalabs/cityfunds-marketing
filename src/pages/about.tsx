@@ -79,8 +79,8 @@ export default function AboutPage({ teammates }) {
             <SecondaryText style={{ color: 'white' }}>{role}</SecondaryText>
           ),
           cardImage: urlForImage(image).url(),
-        }))}
-        isSmallText
+          isSmallText: true,
+        }))}  
       />
       <TextSlider
         overline="Our Values"

@@ -35,6 +35,7 @@ export default function CarouselStepper({
 }
 
 export const GreenSquare = styled.div`
+  background-color: ${({ theme }) => theme.colors.secondary};
   height: 16px;
   width: 16px;
   border-radius: 4px;

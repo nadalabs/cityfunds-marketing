@@ -8,15 +8,13 @@ import { styled } from 'styled-components';
 interface CardSliderProps {
   heading: string;
   primaryText: string;
-  cards: { name: string; cardImage: string; description?: ReactNode }[];
-  isSmallText?: boolean;
+  cards: { name: string; cardImage: string; description?: ReactNode, isSmallText?: boolean }[];
 }
 
 export default function CardSlider({
   heading,
   primaryText,
   cards,
-  isSmallText,
 }: CardSliderProps) {
   const sliderRef = useRef();
 
@@ -48,7 +46,7 @@ export default function CardSlider({
 
       <div onScroll={(e) => handleWheel(e)}>
         <Slider {...settings}>
-          {cards?.map(({ name, description, cardImage }, idx) => (
+          {cards?.map(({ name, description, cardImage, isSmallText }, idx) => (
             <div key={idx}>
               <CardWrapper
                 style={{
@@ -62,15 +60,15 @@ export default function CardSlider({
                     <Heading
                       style={{
                         color: 'white',
-                        marginBottom: '8px',
-                        fontSize: isSmallText ? '42px' : '64px',
-                        lineHeight: isSmallText ? '42px' : '64px',
+                        marginBottom: '0px',
+                        fontSize: isSmallText ? '32px' : '64px',
+                        lineHeight: isSmallText ? '32px' : '64px',
                       }}
                     >
                       {name}
                     </Heading>
                     <GreenSquare
-                      style={{ marginLeft: '4px', marginBottom: '18px' }}
+                      style={{ marginLeft: isSmallText ? '4px' : '8px', marginBottom: isSmallText ? '4px' : '8px',}}
                     />
                   </div>
                   {description && description}
