@@ -10,7 +10,6 @@ import { PreviewSuspense } from 'next-sanity/preview';
 
 export default function LearnPage({ allPosts, preview }) {
   const postsByTag = _.groupBy(allPosts, 'tag');
-  console.log(postsByTag);
 
   if (preview) {
     return (
