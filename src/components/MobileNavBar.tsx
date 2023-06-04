@@ -79,7 +79,6 @@ export default function MobileNavBar({
             <LinkText
               key={idx}
               href={link}
-              isDarkMode={isDarkMode}
               style={{ color: link === router.pathname ? '#48DC95' : 'white' }}
             >
               {name.toUpperCase()}

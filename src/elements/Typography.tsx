@@ -87,10 +87,9 @@ export const Caption = styled.div`
   margin: 0;
 `;
 
-export const LinkText = styled(Link)<{ isDarkMode?: boolean }>`
+export const LinkText = styled(Link)`
   transition: ${({ theme }) => theme.transitions.ease};
-  color: ${({ theme, isDarkMode }) =>
-    isDarkMode ? theme.colors.white : theme.colors.darkGrey};
+  color: ${({ theme }) => theme.colors.darkGrey};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;

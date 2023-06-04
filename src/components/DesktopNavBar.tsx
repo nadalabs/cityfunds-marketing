@@ -98,7 +98,6 @@ export default function DesktopNavBar({
               <LinkText
                 key={idx}
                 href={link}
-                isDarkMode={isDarkMode}
                 style={{
                   marginBottom: 0,
                   color:

@@ -1,11 +1,9 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export const PrimaryButton = styled.button<{ isDarkMode?: boolean }>`
-  color: ${({ theme, isDarkMode }) =>
-    isDarkMode ? theme.colors.secondary : theme.colors.white};
-  background: ${({ theme, isDarkMode }) =>
-    isDarkMode ? theme.colors.white : theme.colors.secondary};
+export const PrimaryButton = styled.button`
+  color: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.secondary};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 600;

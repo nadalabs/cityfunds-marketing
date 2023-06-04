@@ -21,7 +21,11 @@ export default function CareersCTA({}) {
         </PrimaryText>
         <div>
           <Link href={EXTERNAL_ROUTES.CAREERS} target="_blank">
-            <PrimaryButton isDarkMode>Check Out Opportunities</PrimaryButton>
+            <PrimaryButton
+              style={{ color: '#48dc95', backgroundColor: 'white' }}
+            >
+              Check Out Opportunities
+            </PrimaryButton>
           </Link>
         </div>
       </ContentWrapper>
