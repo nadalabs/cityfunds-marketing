@@ -73,7 +73,7 @@ export default function AboutPage({ teammates }) {
         primaryText={
           'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
         }
-        cards={teammates?.map(({ name, role, image }) => ({
+        cards={teammates?.map(({ name, role, linkedIn, image }) => ({
           name,
           description: (
             <SecondaryText style={{ color: 'white', margin: 0 }}>
@@ -81,6 +81,7 @@ export default function AboutPage({ teammates }) {
             </SecondaryText>
           ),
           cardImage: urlForImage(image).url(),
+          link: linkedIn,
           isSmallText: true,
         }))}
       />

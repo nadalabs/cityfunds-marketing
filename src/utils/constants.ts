@@ -14,12 +14,12 @@ export const HEADER_LINKS = [
 ];
 
 export const LEGAL_LINKS = [
-  { name: 'Terms of Use', link: '/transparency/terms-of-use' },
-  { name: 'Privacy Policy', link: '/transparency/privacy-policy' },
-  { name: 'Cookie Policy', link: '/transparency/cookie-policy' },
+  { name: 'Terms of Use', link: '/terms-of-use' },
+  { name: 'Privacy Policy', link: '/privacy-policy' },
+  { name: 'Cookie Policy', link: '/cookie-policy' },
   {
     name: 'Electronic Funds Transfer',
-    link: '/transparency/electronic-funds-transfer',
+    link: '/electronic-funds-transfer',
   },
   {
     name: 'Consumer Complaint Policy',

@@ -20,7 +20,7 @@ import {
 import { testimonialIndexQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
-export default function HomePage({ testimonials }) {
+export default function HomePage({ testimonials, partner }) {
   const cityCards = FEATURED_CITIES.map(
     ({ name, cardImage, totalAssets, appreciation }) => ({
       name,
@@ -32,7 +32,7 @@ export default function HomePage({ testimonials }) {
   );
 
   return (
-    <PageLayout>
+    <PageLayout partnerImage={partner?.coverImage}>
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios with passive income in the nation's top cities."
@@ -134,7 +134,7 @@ export default function HomePage({ testimonials }) {
         isPhoneFrame
       />
       <Testimonials reviews={testimonials} />
-      <PublisherCTA />
+      <PublisherCTA name={partner?.name} />
     </PageLayout>
   );
 }
