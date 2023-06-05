@@ -14,7 +14,7 @@ export const HEADER_LINKS = [
 ];
 
 export const LEGAL_LINKS = [
-  { name: 'Terms of Use', link: '/terms-of-use' },
+  { name: 'Terms of Use', link: '/terms-conditions' },
   { name: 'Privacy Policy', link: '/privacy-policy' },
   { name: 'Cookie Policy', link: '/cookie-policy' },
   {
