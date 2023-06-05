@@ -25,9 +25,9 @@ export default function FeaturedImage({
       <ImageWrapper>
         <Image src={imageUrl} alt={heading} fill />
       </ImageWrapper>
-      <TextWrapper>
+      <TextWrapper >
         <Overline>{overline}</Overline>
-        <Heading>{heading}</Heading>
+        <Heading style={{maxWidth: '400px'}}>{heading}</Heading>
         <PrimaryText>{primaryText}</PrimaryText>
         <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
       </TextWrapper>

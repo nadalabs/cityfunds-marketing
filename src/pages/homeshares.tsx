@@ -26,9 +26,9 @@ export default function HomeSharesPage({ testimonials }) {
       />
       <SectionWrapper>
         <FeaturedImage
-          overline="Build Your Real Estate Wealth"
-          heading="Making home ownership accessible."
-          primaryText="Investing in real estate is all about location, yet the increased cost of living have made desirable places unaffordable. Now, owning real estate in your favorite city takes less than 5 minutes."
+          overline="Why did we create HomeShares?"
+          heading="Your Equity, Your Way"
+          primaryText="Your home is your biggest asset. It continuously grows with your hard earned time and money. It should be usable like any other savings account. Now you can unlock your equity in 14 days with no monthly payments."
           imageUrl="/images/homeshares.png"
           btnText="Apply Now"
           onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
