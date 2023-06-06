@@ -23,7 +23,7 @@ export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
 
   const onSubmit = async (inputs: FieldValues) => {
     try {
-      await window.analytics.identify({ email: inputs.email });
+      await window.analytics.identify({ email: inputs.email }).track('Lead Capture');
       setCookie('email', inputs.email);
       onClick();
     } catch (err: any) {
