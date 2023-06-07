@@ -66,7 +66,7 @@ export default function CardSlider({
                     style={{
                       display: 'flex',
                       alignItems: 'flex-end',
-                      backgroundImage: `url(${cardImage})`,
+                      backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 39.06%, rgba(0, 0, 0, 0.44) 67.71%, rgba(0, 0, 0, 0.79) 95.83%), url(${cardImage})`,
                     }}
                   >
                     <div>
@@ -74,7 +74,7 @@ export default function CardSlider({
                         <Heading
                           style={{
                             color: 'white',
-                            marginBottom: '0px',
+                            marginBottom: '8px',
                             fontSize: isSmallText ? '32px' : '64px',
                             lineHeight: isSmallText ? '32px' : '64px',
                           }}
@@ -84,7 +84,7 @@ export default function CardSlider({
                         <GreenSquare
                           style={{
                             marginLeft: isSmallText ? '4px' : '8px',
-                            marginBottom: isSmallText ? '4px' : '8px',
+                            marginBottom: isSmallText ? '4px' : '1rem',
                           }}
                         />
                       </div>

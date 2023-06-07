@@ -38,12 +38,8 @@ export default function DesktopNavBar({
   return (
     <SectionWrapper
       style={{
-        backgroundColor:
-          partnerImage || scrollPosition > 50
-            ? 'rgba(255, 255, 255, 0.8)'
-            : 'transparent',
-        backdropFilter:
-          partnerImage || scrollPosition > 50 ? 'blur(10px)' : 'none',
+        background:
+          'linear-gradient(180deg, #FFFFFF 61.77%, rgba(255, 255, 255, 0.74) 78.05%, rgba(255, 255, 255, 0) 100%)',
       }}
     >
       {partnerImage ? (
@@ -75,12 +71,8 @@ export default function DesktopNavBar({
           <Image
             width={222}
             height={64}
-            alt={'Nada'}
-            src={
-              isDarkMode || scrollPosition > 50
-                ? '/icons/nada-dark.svg'
-                : '/icons/nada-light.svg'
-            }
+            alt="Nada"
+            src="/icons/nada-dark.svg"
           />
         </Link>
       )}
@@ -103,9 +95,7 @@ export default function DesktopNavBar({
                   color:
                     link === router.pathname
                       ? '#48DC95'
-                      : isDarkMode || scrollPosition > 50
-                      ? 'black'
-                      : 'white',
+                      : 'black'
                 }}
               >
                 {name.toUpperCase()}
@@ -129,7 +119,7 @@ const SectionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 48px;
+  padding: 40px 100px 70px 100px;
   position: fixed;
   z-index: 999;
   width: 100%;

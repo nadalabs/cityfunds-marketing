@@ -57,7 +57,7 @@ export default function PageHero({
               <Heading
                 style={{
                   color: 'white',
-                  maxWidth: btnText ? '700px' : '1100px',
+                  maxWidth: btnText ? '600px' : '1100px',
                 }}
               >
                 {heading}
@@ -102,6 +102,8 @@ export const HeroImage = styled.div`
   height: 110vh;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export const ContentWrapper = styled.div`
@@ -111,7 +113,7 @@ export const ContentWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 999;
-  padding: 16px 48px 10vh 48px;
+  padding: 16px 100px 10vh 100px;
   position: absolute;
   top: 0;
 
