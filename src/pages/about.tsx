@@ -38,8 +38,8 @@ export default function AboutPage({ teammates }) {
         <Overline>We are on a Mission</Overline>
         <Heading>Our Story</Heading>
         <PrimaryText>
-          Nada is an investment, finance, and banking platform that has
-          redefined how everyone accesses real estate assets.‍
+          Nada is an investment & finance platform that’s redefined how anyone
+          can access real estate.‍
         </PrimaryText>
         <PrimaryText>
           Nada was founded on the belief that the financial system built around
@@ -70,9 +70,6 @@ export default function AboutPage({ teammates }) {
       <FeaturedLogos overline="World Class Backing" logos={FEATURED_BACKERS} />
       <CardSlider
         heading="Our Team"
-        primaryText={
-          'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
-        }
         cards={teammates?.map(({ name, role, linkedIn, image }) => ({
           name,
           description: (
@@ -86,9 +83,8 @@ export default function AboutPage({ teammates }) {
         }))}
       />
       <TextSlider
-        overline="Our Values"
-        heading="How We Think"
-        primaryText="We have plenty of reasons."
+        overline="How We Think"
+        heading="Our Values"
         valueProps={OUR_VALUES}
       />
       <CareersCTA />

@@ -70,6 +70,13 @@ export const SOCIAL_LINKS = [
 
 export const FEATURED_CITIES = [
   {
+    name: 'Miami',
+    heroImage: '/images/miami-hero.png',
+    cardImage: '/images/miami.png',
+    totalAssets: 9,
+    appreciation: 11.42,
+  },
+  {
     name: 'Dallas',
     heroImage: '/images/dallas-hero.png',
     cardImage: '/images/dallas.png',
@@ -82,13 +89,6 @@ export const FEATURED_CITIES = [
     cardImage: '/images/austin.png',
     totalAssets: 30,
     appreciation: 13.65,
-  },
-  {
-    name: 'Miami',
-    heroImage: '/images/miami-hero.png',
-    cardImage: '/images/miami.png',
-    totalAssets: 9,
-    appreciation: 11.42,
   },
   {
     name: 'Tampa',
@@ -163,11 +163,6 @@ export const FEATURED_BACKERS = [
 
 export const VALUE_PROPS = [
   {
-    title: 'Unlocking equity for home owners',
-    description:
-      'Not leveraged against 1 property. Immediate exposure to multiple properties spread across a top city keeping you safe from market movement on a specific home.',
-  },
-  {
     title: 'Accessibility',
     description:
       'No more heavy restrictions. Own homes in costly high demand cities regardless of where you live or your mortgage qualifications.',
@@ -190,17 +185,17 @@ export const VALUE_PROPS = [
   {
     title: 'In the Money',
     description:
-      'No more waiting for growth. Your investments are immediately in the money. All homes are',
+      'No more waiting for growth. Your investments are immediately in the money with our 10-15% acquisition discount.',
   },
   {
     title: 'Low Volatility',
     description:
-      'No instantaneous spikes or drops like stocks. Real estate is the most stable asset class with the',
+      'No instantaneous spikes or drops like stocks. Real estate is one of the most stable asset classes.',
   },
   {
     title: 'Aligned',
     description:
-      'No solo work. We’re a team with vested interest in these same properties as you. We acquire ',
+      'No solo work. We’re a team with vested interest in these same properties as you.',
   },
   {
     title: 'Professionally Managed',
@@ -215,7 +210,7 @@ export const VALUE_PROPS = [
   {
     title: '‍Inflation Protection',
     description:
-      'Don’t lose the value of your dollar. Build an iron wall of protection by investing in real',
+      'Don’t lose the value of your dollar. Build an iron wall of protection by investing in real estate.',
   },
   {
     title: 'No Personal Liability Risk',

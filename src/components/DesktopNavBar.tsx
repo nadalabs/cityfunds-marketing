@@ -65,7 +65,7 @@ export default function DesktopNavBar({
           />
           <Image
             width={222}
-            height={44}
+            height={64}
             alt={partnerName}
             src={urlForImage(partnerImage).url()}
           />

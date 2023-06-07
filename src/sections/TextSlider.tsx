@@ -11,7 +11,7 @@ import styled from 'styled-components';
 interface TextSliderProps {
   overline: string;
   heading: string;
-  primaryText: string;
+  primaryText?: string;
   valueProps: { title; description }[];
 }
 
@@ -34,7 +34,7 @@ export default function TextSlider({
     <SliderWrapper>
       <Overline>{overline}</Overline>
       <Heading>{heading}</Heading>
-      <SecondaryText>{primaryText}</SecondaryText>
+      {primaryText && <SecondaryText>{primaryText}</SecondaryText>}
 
       <div style={{ position: 'relative', right: '1rem' }}>
         <Slider {...settings}>

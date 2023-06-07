@@ -9,7 +9,7 @@ import { styled } from 'styled-components';
 
 interface CardSliderProps {
   heading: string;
-  primaryText: string;
+  primaryText?: string;
   cards: {
     name: string;
     cardImage: string;
@@ -50,7 +50,7 @@ export default function CardSlider({
     <SliderWrapper>
       <HeadingWrapper>
         <Heading>{heading}</Heading>
-        <PrimaryText>{primaryText}</PrimaryText>
+        {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
       </HeadingWrapper>
 
       <div onWheel={handleWheel} style={{ width: '100%' }}>

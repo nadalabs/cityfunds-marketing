@@ -15,9 +15,7 @@ export default function PublisherCTA({ name }: PublisherCTAProps) {
   return (
     <SectionWrapper>
       <ContentWrapper>
-        <Heading>
-        Own a Piece of Your Favorite City
-        </Heading>
+        <Heading>Own a Piece of Your Favorite City</Heading>
         <SecondaryText style={{ marginBottom: '8px' }}>
           Unlock diversified real estate portfolios with passive income in the
           nation's top cities.

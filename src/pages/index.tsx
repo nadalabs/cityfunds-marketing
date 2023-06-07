@@ -35,7 +35,7 @@ export default function HomePage({ testimonials, partner }) {
     <PageLayout partnerImage={partner?.coverImage}>
       <PageHero
         heading="Own a Piece of Your Favorite City"
-        primaryText="Diversified real estate portfolios with passive income in the nation's top cities."
+        primaryText="Diversified real estate portfolios in the nation’s top cities."
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         heroImages={FEATURED_CITIES}
@@ -65,7 +65,7 @@ export default function HomePage({ testimonials, partner }) {
           overline="Why Cityfunds?"
           heading="Location, Location, Location"
           primaryText="Investing in real estate is all about location, yet the increased
-            cost of living have made desirable places unaffordable. Now, owning
+            cost of living has made desirable places unaffordable. Now, owning
             real estate in your favorite city takes less than 5 minutes."
           imageUrl="/images/location-tiles.png"
           btnText="Get Started"
@@ -114,18 +114,17 @@ export default function HomePage({ testimonials, partner }) {
         steps={[
           {
             title: 'Select a City',
-            description: 'Choose from our 4 cityfunds with more coming soon',
+            description: 'Choose from our 4 Cityfunds with more coming soon',
             imageUrl: '/images/screen-1.png',
           },
           {
             title: 'Invest Money',
-            description: 'Connect your bank account and invest in homeshares',
+            description: 'Connect your bank account and invest',
             imageUrl: '/images/screen-2.png',
           },
           {
             title: 'Build Wealth',
-            description:
-              'Grow your portfolio  while unlocking liquid equity for home owners',
+            description: 'Grow your portfolio passively"',
             imageUrl: '/images/screen-3.png',
           },
         ]}
