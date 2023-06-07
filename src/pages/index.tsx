@@ -76,7 +76,7 @@ export default function HomePage({ testimonials, partner }) {
             {
               label: 'Total Investors',
               value: 7000,
-              formattingFn: (val) => `${val}+`,
+              formattingFn: (val) => `${val.toLocaleString('us-en')}+`,
             },
             {
               label: 'Properties Funded',
@@ -100,6 +100,7 @@ export default function HomePage({ testimonials, partner }) {
           imageUrl="/images/location-map.png"
           btnText="Get Started"
           onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+          isReversed
         />
       </SectionWrapper>
       <TextSlider
@@ -124,7 +125,7 @@ export default function HomePage({ testimonials, partner }) {
           },
           {
             title: 'Build Wealth',
-            description: 'Grow your portfolio passively"',
+            description: 'Grow your portfolio passively',
             imageUrl: '/images/screen-3.png',
           },
         ]}

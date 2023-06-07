@@ -2,6 +2,7 @@ import { PrimaryButton } from '@elements/Buttons';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import Image from 'next/image';
 import { styled } from 'styled-components';
+import { GreenSquare } from './CarouselStepper';
 
 interface FeaturedImageProps {
   overline: string;
@@ -10,6 +11,7 @@ interface FeaturedImageProps {
   imageUrl: string;
   btnText: string;
   onClick: () => void;
+  isReversed?: boolean;
 }
 
 export default function FeaturedImage({
@@ -19,18 +21,31 @@ export default function FeaturedImage({
   imageUrl,
   btnText,
   onClick,
+  isReversed,
 }: FeaturedImageProps) {
   return (
     <ContentWrapper>
-      <ImageWrapper>
-        <Image src={imageUrl} alt={heading} fill />
-      </ImageWrapper>
+      {!isReversed && (
+        <ImageWrapper style={{ marginRight: '80px' }}>
+          <Image src={imageUrl} alt={heading} fill />
+        </ImageWrapper>
+      )}
+
       <TextWrapper>
         <Overline>{overline}</Overline>
         <Heading style={{ maxWidth: '400px' }}>{heading}</Heading>
         <PrimaryText>{primaryText}</PrimaryText>
         <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
       </TextWrapper>
+
+      {isReversed && (
+        <FlexWrapper>
+          <ImageWrapper>
+            <Image src={imageUrl} alt={heading} fill />
+          </ImageWrapper>
+          <ImageSquare />
+        </FlexWrapper>
+      )}
     </ContentWrapper>
   );
 }
@@ -46,14 +61,12 @@ const ContentWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   position: relative;
-  width: 50%;
+  width: 500px;
   height: 500px;
-  margin-right: 80px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
     height: 350px;
-    margin: 0 0 40px 0;
   }
 `;
 
@@ -62,5 +75,25 @@ const TextWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
+  }
+`;
+
+const ImageSquare = styled(GreenSquare)`
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  margin: 0;
+`;
+
+const FlexWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 80px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+    height: 350px;
+    margin: 0;
   }
 `;

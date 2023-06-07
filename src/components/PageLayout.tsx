@@ -1,4 +1,3 @@
-import Banner from '@components/Banner';
 import DesktopNavBar from '@components/DesktopNavBar';
 import Footer from '@components/Footer';
 import MobileNavBar from '@components/MobileNavBar';

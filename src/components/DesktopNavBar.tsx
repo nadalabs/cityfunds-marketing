@@ -92,10 +92,7 @@ export default function DesktopNavBar({
                 href={link}
                 style={{
                   marginBottom: 0,
-                  color:
-                    link === router.pathname
-                      ? '#48DC95'
-                      : 'black'
+                  color: link === router.pathname ? '#48DC95' : 'black',
                 }}
               >
                 {name.toUpperCase()}

@@ -31,10 +31,9 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
               // duration={3}
             >
               {({ countUpRef }) => (
-                <Heading
+                <LargeHeading
                   // @ts-ignore-next-line
                   ref={countUpRef}
-                  style={{ fontSize: '75px', marginBottom: 0 }}
                 />
               )}
             </CountUp>
@@ -62,5 +61,14 @@ const FlexWrapper = styled.div`
 const CounterWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-bottom: 48px;
+  }
+`;
+
+const LargeHeading = styled(Heading)`
+  font-size: 75px;
+  margin-bottom: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-bottom: 1rem;
   }
 `;

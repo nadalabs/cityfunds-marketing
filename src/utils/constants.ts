@@ -204,8 +204,7 @@ export const VALUE_PROPS = [
   },
   {
     title: 'Hassle Free',
-    description:
-      'No heavy lifting. You invest and Nada handles the rest…from market research, property',
+    description: 'No heavy lifting. You invest and Nada handles the rest.',
   },
   {
     title: '‍Inflation Protection',
@@ -215,7 +214,7 @@ export const VALUE_PROPS = [
   {
     title: 'No Personal Liability Risk',
     description:
-      'No added debt. Our series LLC business structure protects you from being directly related to ',
+      'No added debt. Our series LLC business structure protects you from being directly correlated.',
   },
 ];
 

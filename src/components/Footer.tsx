@@ -1,5 +1,5 @@
 import { LinkButton } from '@elements/Buttons';
-import { Caption, LinkText, TertiaryHeading } from '@elements/Typography';
+import { Caption, LinkText, SecondaryText } from '@elements/Typography';
 import { EXTERNAL_ROUTES, FOOTER_LINKS, SOCIAL_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,8 +11,8 @@ export default function Footer({}) {
       <ContentWrapper>
         <div>
           <Image
-            width={322}
-            height={92}
+            width={270}
+            height={80}
             alt={'Nada'}
             src={'/icons/nada-dark.svg'}
           />
@@ -27,8 +27,8 @@ export default function Footer({}) {
             {SOCIAL_LINKS.map(({ name, link }, idx) => (
               <LinkButton key={idx} href={link} target="blank">
                 <Image
-                  width={28}
-                  height={28}
+                  width={20}
+                  height={20}
                   alt={name}
                   src={`/icons/${name.toLowerCase()}.svg`}
                 />
@@ -39,10 +39,14 @@ export default function Footer({}) {
 
         {FOOTER_LINKS.map(({ title, links }, idx) => (
           <div key={idx}>
-            <TertiaryHeading>{title}</TertiaryHeading>
+            <SecondaryText style={{ color: 'black' }}>{title}</SecondaryText>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               {links.map(({ name, link }, jdx) => (
-                <LinkText key={jdx} href={link}>
+                <LinkText
+                  key={jdx}
+                  href={link}
+                  style={{ color: '#989898', marginBottom: '1rem' }}
+                >
                   {name}
                 </LinkText>
               ))}
@@ -153,7 +157,7 @@ const SectionWrapper = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 195px;
+  margin-bottom: 100px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;

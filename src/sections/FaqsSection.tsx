@@ -89,7 +89,7 @@ export const ContentWrapper = styled.div`
 export const HoverHeading = styled(Heading)`
   transition: ${({ theme }) => theme.transitions.ease};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: 50px;
+  margin-bottom: 2rem;
   cursor: pointer;
   width: 700px;
 
