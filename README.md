@@ -13,27 +13,6 @@ You'll get:
 
 ### [https://next-blog-sanity.vercel.app](https://next-blog-sanity.vercel.app)
 
-## Related examples
-
-- [WordPress](/examples/cms-wordpress)
-- [DatoCMS](/examples/cms-datocms)
-- [TakeShape](/examples/cms-takeshape)
-- [Prismic](/examples/cms-prismic)
-- [Contentful](/examples/cms-contentful)
-- [Strapi](/examples/cms-strapi)
-- [Agility CMS](/examples/cms-agilitycms)
-- [Cosmic](/examples/cms-cosmic)
-- [ButterCMS](/examples/cms-buttercms)
-- [Storyblok](/examples/cms-storyblok)
-- [GraphCMS](/examples/cms-graphcms)
-- [Kontent](/examples/cms-kontent)
-- [Ghost](/examples/cms-ghost)
-- [Umbraco Heartcore](/examples/cms-umbraco-heartcore)
-- [Blog Starter](/examples/blog-starter)
-- [Builder.io](/examples/cms-builder-io)
-- [DotCMS](/examples/cms-dotcms)
-- [Enterspeed](/examples/cms-enterspeed)
-
 # Configuration
 
 - [Step 1. Set up the environment](#step-1-set-up-the-environment)
