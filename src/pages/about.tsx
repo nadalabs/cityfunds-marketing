@@ -50,19 +50,6 @@ export default function AboutPage({ teammates }) {
           Anyone can now access real estate for as little as $100 and homeowners
           can access their home equity with no monthly payments.
         </PrimaryText>
-        <PrimaryText>
-          Powered by a diverse group of talented and purpose-driven people.
-          We're not just a company; we're a team of people who want to do good
-          in the world.
-        </PrimaryText>
-        <PrimaryText>
-          Today, Nada is powered by a diverse group of talented and
-          purpose-driven people who believe everyone deserves access to real
-          estate wealth. We have created financial products enabling everyone to
-          access home equity by investing as little as $250 in a single city or
-          spending equity on a Visa® debit card. We're not just a company; we're
-          a team of people who want to do good in the world.
-        </PrimaryText>
       </SectionWrapper>
       <FeaturedLogos overline="World Class Backing" logos={FEATURED_BACKERS} />
       <CardSlider

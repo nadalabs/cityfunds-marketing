@@ -5,7 +5,6 @@ import {
   SecondaryText,
   TertiaryHeading,
 } from '@elements/Typography';
-import Slider from 'react-slick';
 import styled from 'styled-components';
 
 interface TextSliderProps {
@@ -21,33 +20,29 @@ export default function TextSlider({
   primaryText,
   valueProps,
 }: TextSliderProps) {
-  const settings = {
-    dots: false,
-    slidesToShow: 1,
-    swipeToSlide: true,
-    infinite: false,
-    variableWidth: true,
-    arrows: false,
-  };
-
   return (
     <SliderWrapper>
       <Overline>{overline}</Overline>
       <Heading>{heading}</Heading>
       {primaryText && <SecondaryText>{primaryText}</SecondaryText>}
 
-      <div style={{ position: 'relative', right: '1rem' }}>
-        <Slider {...settings}>
-          {valueProps.map(({ title, description }, idx) => (
-            <div key={idx}>
-              <TextWrapper>
-                <GreenSquare />
-                <TertiaryHeading>{title}</TertiaryHeading>
-                <SecondaryText>{description}</SecondaryText>
-              </TextWrapper>
-            </div>
-          ))}
-        </Slider>
+      <div
+        style={{
+          display: 'flex',
+          overflowX: 'scroll',
+          position: 'relative',
+          right: '1rem',
+        }}
+      >
+        {valueProps.map(({ title, description }, idx) => (
+          <div key={idx}>
+            <TextWrapper>
+              <GreenSquare />
+              <TertiaryHeading>{title}</TertiaryHeading>
+              <SecondaryText>{description}</SecondaryText>
+            </TextWrapper>
+          </div>
+        ))}
       </div>
     </SliderWrapper>
   );

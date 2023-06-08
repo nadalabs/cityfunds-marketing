@@ -8,7 +8,6 @@ import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
-import Slider from 'react-slick';
 import styled from 'styled-components';
 
 interface BlogSliderProps {
@@ -24,22 +23,13 @@ interface BlogSliderProps {
 }
 
 export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
-  const settings = {
-    dots: false,
-    slidesToShow: 1,
-    swipeToSlide: true,
-    infinite: false,
-    variableWidth: true,
-    arrows: false,
-  };
-
   return (
     <SectionWrapper>
       <SecondaryHeading style={{ marginBottom: '48px' }}>
         {tag}
       </SecondaryHeading>
 
-      <Slider {...settings}>
+      <div style={{ display: 'flex', overflowX: 'scroll' }}>
         {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
           <Link key={idx} href={`/learn/${slug}`}>
             <CardWrapper>
@@ -57,7 +47,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
             </CardWrapper>
           </Link>
         ))}
-      </Slider>
+      </div>
     </SectionWrapper>
   );
 }

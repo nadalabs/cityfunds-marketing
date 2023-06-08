@@ -21,7 +21,10 @@ export default function LegalPage({ legal }: LegalPageProps) {
         ))}
       </HeadingWrapper>
       <LongFormText
-        overline={`Last updated ${format(parseISO(legal?.date), 'LLLL	d, yyyy')}`}
+        overline={`Last updated ${format(
+          parseISO(legal?.date),
+          'LLLL	d, yyyy'
+        )}`}
         title={legal?.title}
         content={legal?.content}
       />

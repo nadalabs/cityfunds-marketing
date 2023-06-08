@@ -6,7 +6,7 @@ import {
   SecondaryText,
   TertiaryHeading,
 } from '@elements/Typography';
-import { format, isValid, parseISO } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -71,9 +71,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                     <SecondaryText>{post?.excerpt}</SecondaryText>
                     <SecondaryText>
                       <time dateTime={post?.date}>
-                        {isValid(post?.date)
-                          ? format(parseISO(post?.date), 'LLLL	d, yyyy')
-                          : ''}
+                        {format(parseISO(post?.date), 'LLLL	d, yyyy')}
                       </time>
                     </SecondaryText>
                   </CardWrapper>
