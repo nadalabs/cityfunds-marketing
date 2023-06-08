@@ -34,5 +34,6 @@ const BannerWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
+    flex-direction: column;
   }
 `;

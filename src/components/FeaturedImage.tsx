@@ -26,9 +26,9 @@ export default function FeaturedImage({
   return (
     <ContentWrapper>
       {!isReversed && (
-        <ImageWrapper style={{ marginRight: '80px' }}>
+        <LeftImageWrapper>
           <Image src={imageUrl} alt={heading} fill />
-        </ImageWrapper>
+        </LeftImageWrapper>
       )}
 
       <TextWrapper>
@@ -70,11 +70,20 @@ const ImageWrapper = styled.div`
   }
 `;
 
+const LeftImageWrapper = styled(ImageWrapper)`
+margin-right: 80px;
+
+@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+   margin-right: 0;
+  }
+`
+
 const TextWrapper = styled.div`
   width: 50%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
+    margin-bottom: 2rem;
   }
 `;
 

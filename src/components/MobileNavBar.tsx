@@ -8,14 +8,10 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 interface HeaderProps {
-  partnerImage?: string;
-  partnerName?: string;
   isDarkMode?: boolean;
 }
 
 export default function MobileNavBar({
-  partnerImage,
-  partnerName,
   isDarkMode,
 }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -44,6 +40,7 @@ export default function MobileNavBar({
           ? 'rgba(255, 255, 255, 0.8)'
           : 'transparent',
         backdropFilter: scrollPosition > 50 ? 'blur(10px)' : 'none',
+        top: scrollPosition === 0 ? 50 : 0,
       }}
     >
       <FlexWrapper>
