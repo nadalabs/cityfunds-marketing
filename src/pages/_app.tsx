@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/react';
 import { setCookie } from '@utils/helpers';
 import theme from '@utils/theme';
+import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -50,6 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Component {...pageProps} />
+        <Analytics />
       </ThemeProvider>
     </>
   );

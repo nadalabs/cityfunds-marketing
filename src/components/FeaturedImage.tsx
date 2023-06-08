@@ -12,6 +12,7 @@ interface FeaturedImageProps {
   btnText: string;
   onClick: () => void;
   isReversed?: boolean;
+  isShortHeader?: boolean;
 }
 
 export default function FeaturedImage({
@@ -22,6 +23,7 @@ export default function FeaturedImage({
   btnText,
   onClick,
   isReversed,
+  isShortHeader,
 }: FeaturedImageProps) {
   return (
     <ContentWrapper>
@@ -33,7 +35,9 @@ export default function FeaturedImage({
 
       <TextWrapper>
         <Overline>{overline}</Overline>
-        <Heading style={{ maxWidth: '400px' }}>{heading}</Heading>
+        <Heading style={{ maxWidth: isShortHeader ? '400px' : '700px' }}>
+          {heading}
+        </Heading>
         <PrimaryText>{primaryText}</PrimaryText>
         <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
       </TextWrapper>
@@ -71,12 +75,12 @@ const ImageWrapper = styled.div`
 `;
 
 const LeftImageWrapper = styled(ImageWrapper)`
-margin-right: 80px;
+  margin-right: 80px;
 
-@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-   margin-right: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-right: 0;
   }
-`
+`;
 
 const TextWrapper = styled.div`
   width: 50%;

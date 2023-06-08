@@ -70,6 +70,7 @@ export default function HomePage({ testimonials, partner }) {
           imageUrl="/images/location-tiles.png"
           btnText="Get Started"
           onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+          isShortHeader
         />
         <KeyMetrics
           metrics={[

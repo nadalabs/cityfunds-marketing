@@ -11,9 +11,7 @@ interface HeaderProps {
   isDarkMode?: boolean;
 }
 
-export default function MobileNavBar({
-  isDarkMode,
-}: HeaderProps) {
+export default function MobileNavBar({ isDarkMode }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();

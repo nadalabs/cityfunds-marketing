@@ -20,7 +20,7 @@ export default function PageLayout({
 
   return (
     <div>
-      <AlertBanner primaryText="Invest $2,500 and gain 10 Free Shares plus a special edition “I Own Dallas” T-Shirt!" />
+      <AlertBanner primaryText="Invest $2,500 & get 10 Free Shares or $5,000 for 50 Free Shares" />
       {isMobile ? (
         <MobileNavBar isDarkMode={isDarkMode} />
       ) : (

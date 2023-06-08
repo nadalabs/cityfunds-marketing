@@ -12,14 +12,33 @@ const AUTHOR_UPDATED_QUERY = /* groq */ `
   *[_type == "author" && _id == $id] {
     "slug": *[_type == "post" && references(^._id)].slug.current
   }["slug"][]`;
+const CONTENT_UPDATED_QUERY = /* groq */ `*[_type == "content" && _id == $id].slug.current`;
+const LEGAL_UPDATED_QUERY = /* groq */ `*[_type == "legal" && _id == $id].slug.current`;
+const PARTNER_UPDATED_QUERY = /* groq */ `*[_type == "partner" && _id == $id].slug.current`;
 const POST_UPDATED_QUERY = /* groq */ `*[_type == "post" && _id == $id].slug.current`;
+const PRESS_UPDATED_QUERY = /* groq */ `*[_type == "press" && _id == $id].slug.current`;
+const TEAMMATE_UPDATED_QUERY = /* groq */ `*[_type == "teammate" && _id == $id].slug.current`;
+const TESTIMONIAL_UPDATED_QUERY = /* groq */ `*[_type == "testimonial" && _id == $id].slug.current`;
 
 const getQueryForType = (type) => {
   switch (type) {
     case 'author':
       return AUTHOR_UPDATED_QUERY;
+    case 'content':
+      return CONTENT_UPDATED_QUERY;
+    case 'legal':
+      return LEGAL_UPDATED_QUERY;
+    case 'partner':
+      return PARTNER_UPDATED_QUERY;
     case 'post':
       return POST_UPDATED_QUERY;
+    case 'press':
+      return PRESS_UPDATED_QUERY;
+    case 'teammate':
+      return TEAMMATE_UPDATED_QUERY;
+    case 'testimonial':
+      return TESTIMONIAL_UPDATED_QUERY;
+
     default:
       throw new TypeError(`Unknown type: ${type}`);
   }
