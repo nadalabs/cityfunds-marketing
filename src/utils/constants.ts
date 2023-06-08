@@ -22,6 +22,10 @@ export const LEGAL_LINKS = [
     link: '/electronic-funds-transfer',
   },
   {
+    name: 'Rewards Program',
+    link: '/rewards-program',
+  },
+  {
     name: 'Consumer Complaint Policy',
     link: 'https://global-uploads.webflow.com/625f180b9d03ad4177055610/6272adeb375b786809b98989_Nada_Consumer_Complaint_Policy.pdf',
   },

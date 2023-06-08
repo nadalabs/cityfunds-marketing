@@ -2,6 +2,7 @@ import PageLayout from '@components/PageLayout';
 import { Heading, LinkText } from '@elements/Typography';
 import LongFormText from '@sections/LongFormText';
 import { LEGAL_LINKS } from '@utils/constants';
+import { format, parseISO } from 'date-fns';
 import { styled } from 'styled-components';
 
 interface LegalPageProps {
@@ -20,7 +21,7 @@ export default function LegalPage({ legal }: LegalPageProps) {
         ))}
       </HeadingWrapper>
       <LongFormText
-        overline={`Last updated ${legal?.date}`}
+        overline={`Last updated ${format(parseISO(legal?.date), 'LLLL	d, yyyy')}`}
         title={legal?.title}
         content={legal?.content}
       />
@@ -37,9 +38,9 @@ const HeadingWrapper = styled.div`
 `;
 
 const StyledLink = styled(LinkText)`
-  font-size: 32px;
-  line-height: 52px;
-  margin-right: 3rem;
+  font-size: 24px;
+  line-height: 40px;
+  margin-right: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 18px;

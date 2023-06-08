@@ -30,6 +30,11 @@ export const legal = {
         title: 'Link',
         type: 'string',
       },
+      {
+        name: 'date',
+        title: 'Date',
+        type: 'datetime',
+      },
     ],
     preview: {
       select: {
