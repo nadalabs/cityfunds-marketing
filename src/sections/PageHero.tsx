@@ -74,7 +74,7 @@ export default function PageHero({
             </div>
 
             {!isMobile && heroImages.length > 1 && (
-              <div>
+              <div style={{width: '200px'}}>
                 <SecondaryText style={{ color: 'white', marginBottom: 0 }}>
                   {name}
                 </SecondaryText>

@@ -64,14 +64,12 @@ export default function FaqsSection({}) {
                     >
                       {question}
                     </HoverHeading>
-                    {isMobile && idx === jdx && (
-                      <PrimaryText>{answer}</PrimaryText>
+                    {idx === jdx && (
+                      <PrimaryText style={{maxWidth: '500px'}}>{answer}</PrimaryText>
                     )}
                   </ContentWrapper>
                 ))}
               </div>
-
-              {!isMobile && <PrimaryText>{answer}</PrimaryText>}
             </div>
           </div>
         ))}
@@ -81,8 +79,13 @@ export default function FaqsSection({}) {
 }
 
 export const ContentWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 2rem;
+    flex-direction: column;
+    margin-bottom: 1rem;
   }
 `;
 

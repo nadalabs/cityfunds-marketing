@@ -92,7 +92,7 @@ export default async function revalidate(req, res) {
   } else if (_type === 'teammate') {
     staleRoutes = [`/about`]
   } else if (_type === 'testimonial') {
-    staleRoutes = [`/testimonials`]
+    staleRoutes = [`/`, '/homeshares']
   }
   console.log(staleRoutes)
 
