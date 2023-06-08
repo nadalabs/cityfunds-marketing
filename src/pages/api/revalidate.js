@@ -8,17 +8,17 @@ export const config = {
   },
 };
 
-const AUTHOR_UPDATED_QUERY = /* groq */ `
+const AUTHOR_UPDATED_QUERY = `
   *[_type == "author" && _id == $id] {
     "slug": *[_type == "post" && references(^._id)].slug.current
   }["slug"][]`;
-const CONTENT_UPDATED_QUERY = /* groq */ `*[_type == "content" && _id == $id].slug.current`;
-const LEGAL_UPDATED_QUERY = /* groq */ `*[_type == "legal" && _id == $id].slug.current`;
-const PARTNER_UPDATED_QUERY = /* groq */ `*[_type == "partner" && _id == $id].slug.current`;
-const POST_UPDATED_QUERY = /* groq */ `*[_type == "post" && _id == $id].slug.current`;
-const PRESS_UPDATED_QUERY = /* groq */ `*[_type == "press" && _id == $id].slug.current`;
-const TEAMMATE_UPDATED_QUERY = /* groq */ `*[_type == "teammate" && _id == $id].slug.current`;
-const TESTIMONIAL_UPDATED_QUERY = /* groq */ `*[_type == "testimonial" && _id == $id].slug.current`;
+const CONTENT_UPDATED_QUERY = `*[_type == "content" && _id == $id].label.current`;
+const LEGAL_UPDATED_QUERY = `*[_type == "legal" && _id == $id].slug.current`;
+const PARTNER_UPDATED_QUERY = `*[_type == "partner" && _id == $id].slug.current`;
+const POST_UPDATED_QUERY = `*[_type == "post" && _id == $id].slug.current`;
+const PRESS_UPDATED_QUERY = `*[_type == "press" && _id == $id].title.current`;
+const TEAMMATE_UPDATED_QUERY = `*[_type == "teammate" && _id == $id].name.current`;
+const TESTIMONIAL_UPDATED_QUERY = `*[_type == "testimonial" && _id == $id].name.current`;
 
 const getQueryForType = (type) => {
   switch (type) {
@@ -82,7 +82,7 @@ export default async function revalidate(req, res) {
   log(`Querying post slug for _id '${id}', type '${_type}' ..`);
   const slug = await sanityClient.fetch(getQueryForType(_type), { id });
   const slugs = (Array.isArray(slug) ? slug : [slug]).map(
-    (_slug) => `/posts/${_slug}`
+    (_slug) => `/learn/${_slug}`
   );
   const staleRoutes = ['/', ...slugs];
 
