@@ -80,11 +80,21 @@ export default async function revalidate(req, res) {
   }
 
   log(`Querying post slug for _id '${id}', type '${_type}' ..`);
-  const slug = await sanityClient.fetch(getQueryForType(_type), { id });
-  const slugs = (Array.isArray(slug) ? slug : [slug]).map(
-    (_slug) => `/learn/${_slug}`
-  );
-  const staleRoutes = ['/', ...slugs];
+  const _slug = await sanityClient.fetch(getQueryForType(_type), { id });
+  let staleRoutes = [];
+
+  if (_type === 'post') {
+    staleRoutes = ['/learn', `/learn/${_slug}`]
+  } else if (_type === 'partner' || _type === 'legal') {
+    staleRoutes = [`/${_slug}`]
+  } else if (_type === 'press') {
+    staleRoutes = [`/press`]
+  } else if (_type === 'teammate') {
+    staleRoutes = [`/about`]
+  } else if (_type === 'testimonial') {
+    staleRoutes = [`/testimonials`]
+  }
+  console.log(staleRoutes)
 
   try {
     await Promise.all(staleRoutes.map((route) => res.revalidate(route)));
