@@ -69,11 +69,13 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                     <Overline>{post?.tag}</Overline>
                     <TertiaryHeading>{post?.title}</TertiaryHeading>
                     <SecondaryText>{post?.excerpt}</SecondaryText>
-                    <SecondaryText>
-                      <time dateTime={post?.date}>
-                        {format(parseISO(post?.date), 'LLLL	d, yyyy')}
-                      </time>
-                    </SecondaryText>
+                    {post?.date && (
+                      <SecondaryText>
+                        <time dateTime={post?.date}>
+                          {format(parseISO(post?.date), 'LLLL	d, yyyy')}
+                        </time>
+                      </SecondaryText>
+                    )}
                   </CardWrapper>
                 </FlexWrapper>
               </Link>
