@@ -59,8 +59,10 @@ export default function CardSlider({
                       </Heading>
                       <GreenSquare
                         style={{
+                          height: isSmallText ? '12px' : '16px',
+                          width: isSmallText ? '12px' : '16px',
                           marginLeft: isSmallText ? '4px' : '8px',
-                          marginBottom: isSmallText ? '4px' : '1rem',
+                          marginBottom: isSmallText ? '12px' : '1rem',
                         }}
                       />
                     </div>

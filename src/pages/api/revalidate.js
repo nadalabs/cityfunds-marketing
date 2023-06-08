@@ -84,17 +84,17 @@ export default async function revalidate(req, res) {
   let staleRoutes = [];
 
   if (_type === 'post') {
-    staleRoutes = ['/learn', `/learn/${_slug}`]
+    staleRoutes = ['/learn', `/learn/${_slug}`];
   } else if (_type === 'partner' || _type === 'legal') {
-    staleRoutes = [`/${_slug}`]
+    staleRoutes = [`/${_slug}`];
   } else if (_type === 'press') {
-    staleRoutes = [`/press`]
+    staleRoutes = [`/press`];
   } else if (_type === 'teammate') {
-    staleRoutes = [`/about`]
+    staleRoutes = [`/about`];
   } else if (_type === 'testimonial') {
-    staleRoutes = [`/`, '/homeshares']
+    staleRoutes = [`/`, '/homeshares'];
   }
-  console.log(staleRoutes)
+  console.log(staleRoutes);
 
   try {
     await Promise.all(staleRoutes.map((route) => res.revalidate(route)));

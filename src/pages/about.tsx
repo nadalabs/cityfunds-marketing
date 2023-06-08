@@ -28,6 +28,7 @@ export default function AboutPage({ teammates }) {
             heroImage: '/images/about-hero.png',
           },
         ]}
+        isTextWide
       />
       {/* <LongFormText
         overline={`We are on a Mission`}

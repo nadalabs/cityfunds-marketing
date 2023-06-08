@@ -65,7 +65,9 @@ export default function FaqsSection({}) {
                       {question}
                     </HoverHeading>
                     {idx === jdx && (
-                      <PrimaryText style={{maxWidth: '500px'}}>{answer}</PrimaryText>
+                      <PrimaryText style={{ maxWidth: '500px' }}>
+                        {answer}
+                      </PrimaryText>
                     )}
                   </ContentWrapper>
                 ))}

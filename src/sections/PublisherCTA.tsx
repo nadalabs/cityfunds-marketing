@@ -15,8 +15,8 @@ export default function PublisherCTA({ name }: PublisherCTAProps) {
   return (
     <SectionWrapper>
       <ContentWrapper>
-        <Heading>Invest &</Heading>
-        <Heading style={{ color: '#48DC95', lineHeight: '32px' }}>
+        <Heading style={{ marginBottom: 0 }}>Invest &</Heading>
+        <Heading style={{ color: '#48DC95', marginBottom: '2rem' }}>
           Earn Free Shares
         </Heading>
         <SecondaryText style={{ marginBottom: '8px' }}>

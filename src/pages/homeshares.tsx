@@ -23,6 +23,7 @@ export default function HomeSharesPage({ testimonials }) {
             heroImage: '/images/homeshares-hero.png',
           },
         ]}
+        isTextWide
       />
       <SectionWrapper>
         <FeaturedImage

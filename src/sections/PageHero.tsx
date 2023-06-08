@@ -12,6 +12,7 @@ interface PageHeroProps {
   btnText?: string;
   onClick?: () => void;
   heroImages: { name: string; heroImage: string; totalAssets?: number }[];
+  isTextWide?: boolean;
 }
 
 export default function PageHero({
@@ -20,6 +21,7 @@ export default function PageHero({
   btnText,
   onClick,
   heroImages,
+  isTextWide,
 }: PageHeroProps) {
   const isMobile = useIsMobile();
   const sliderRef = useRef();
@@ -57,7 +59,7 @@ export default function PageHero({
               <Heading
                 style={{
                   color: 'white',
-                  maxWidth: btnText ? '600px' : '1100px',
+                  maxWidth: isTextWide ? '1100px' : '700px',
                 }}
               >
                 {heading}
@@ -65,7 +67,7 @@ export default function PageHero({
               <PrimaryText
                 style={{
                   color: '#B0B0B0',
-                  maxWidth: btnText ? '700px' : '1100px',
+                  maxWidth: isTextWide ? '1100px' : '700px',
                 }}
               >
                 {primaryText}
@@ -74,7 +76,7 @@ export default function PageHero({
             </div>
 
             {!isMobile && heroImages.length > 1 && (
-              <div style={{width: '200px'}}>
+              <div style={{ width: '200px' }}>
                 <SecondaryText style={{ color: 'white', marginBottom: 0 }}>
                   {name}
                 </SecondaryText>
