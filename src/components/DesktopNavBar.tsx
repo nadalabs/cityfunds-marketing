@@ -38,30 +38,32 @@ export default function DesktopNavBar({
   return (
     <SectionWrapper
       style={{
+        top: scrollPosition === 0 ? 45 : 0,
+        backdropFilter: 'blur(1.5px)',
         background:
-          'linear-gradient(180deg, #FFFFFF 61.77%, rgba(255, 255, 255, 0.74) 78.05%, rgba(255, 255, 255, 0) 100%)',
+          'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 42.74%, rgba(255, 255, 255, 0.7) 65.57%, rgba(255, 255, 255, 0) 100%)',
       }}
     >
       {partnerImage ? (
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Image
-            width={222}
-            height={64}
+            width={188}
+            height={54}
             alt={'Cityfunds'}
             src={'/icons/cityfunds-dark.svg'}
           />
           <hr
             style={{
               width: '1px',
-              height: '64px',
+              height: '54px',
               display: 'inline-block',
               border: '1px solid black',
               margin: '0 24px',
             }}
           />
           <Image
-            width={222}
-            height={64}
+            width={188}
+            height={54}
             alt={partnerName}
             src={urlForImage(partnerImage).url()}
           />
@@ -69,8 +71,8 @@ export default function DesktopNavBar({
       ) : (
         <Link href={`/`}>
           <Image
-            width={222}
-            height={64}
+            width={188}
+            height={54}
             alt="Nada"
             src="/icons/nada-dark.svg"
           />
@@ -92,6 +94,7 @@ export default function DesktopNavBar({
                 href={link}
                 style={{
                   marginBottom: 0,
+                  fontWeight: 600,
                   color: link === router.pathname ? '#48DC95' : 'black',
                 }}
               >

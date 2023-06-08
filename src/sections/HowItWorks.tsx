@@ -38,7 +38,7 @@ export default function HowItWorks({
     slidesToScroll: 1,
     autoplay: true,
     speed: 2000,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 4000,
     cssEase: 'linear',
   };
 

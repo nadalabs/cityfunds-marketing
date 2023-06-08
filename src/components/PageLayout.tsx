@@ -1,3 +1,4 @@
+import AlertBanner from '@components/AlertBanner';
 import DesktopNavBar from '@components/DesktopNavBar';
 import Footer from '@components/Footer';
 import MobileNavBar from '@components/MobileNavBar';
@@ -19,7 +20,7 @@ export default function PageLayout({
 
   return (
     <div>
-      {/* <Banner primaryText="Limited Time Investor Perk: Invest $1,000 & get $100" /> */}
+      <AlertBanner primaryText="Invest $2,500 and gain 10 Free Shares plus a special edition “I Own Dallas” T-Shirt!" />
       {isMobile ? (
         <MobileNavBar isDarkMode={isDarkMode} />
       ) : (

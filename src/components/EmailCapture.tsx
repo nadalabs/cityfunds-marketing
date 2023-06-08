@@ -1,6 +1,7 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { FormInput, StyledForm } from '@elements/FormInput';
 import { Caption, ErrorText } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { LEGAL_LINKS } from '@utils/constants';
 import { getCookie, setCookie } from '@utils/helpers';
 import Link from 'next/link';
@@ -13,6 +14,7 @@ interface EmailCaptureProps {
 }
 
 export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
+  const isMobile = useIsMobile();
   const methods = useForm<FieldValues>({
     defaultValues: {
       email: '',
@@ -50,7 +52,10 @@ export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
 
   return (
     <FormProvider {...methods}>
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+      <StyledForm
+        onSubmit={handleSubmit(onSubmit)}
+        style={{ flexDirection: isMobile ? 'column' : 'row' }}
+      >
         <FormWrapper>
           <FormInput
             name="email"
@@ -65,10 +70,18 @@ export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
             placeholder="Enter Your Email"
           />
 
+          {!isMobile && (
+            <BtnWrapper>
+              <PrimaryButton>{btnText}</PrimaryButton>
+            </BtnWrapper>
+          )}
+        </FormWrapper>
+
+        {isMobile && (
           <BtnWrapper>
             <PrimaryButton>{btnText}</PrimaryButton>
           </BtnWrapper>
-        </FormWrapper>
+        )}
       </StyledForm>
 
       {formState?.errors?.root?.message && (
@@ -104,9 +117,10 @@ const FormWrapper = styled.div`
 `;
 
 const BtnWrapper = styled.div`
-  width: 250px;
+  width: 230px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
+    margin-bottom: 1rem;
   }
 `;

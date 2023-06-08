@@ -14,7 +14,7 @@ export default function Banner({ primaryText }: BannerProps) {
         {primaryText}
       </SecondaryText>
       <LinkText
-        href="/offer-conditions"
+        href="/rewards-program"
         style={{ color: '#48DC95', margin: '0 1rem 0 0' }}
       >
         *Conditions apply
