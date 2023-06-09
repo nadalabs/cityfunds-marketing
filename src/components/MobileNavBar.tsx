@@ -7,11 +7,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-interface HeaderProps {
-  isDarkMode?: boolean;
-}
-
-export default function MobileNavBar({ isDarkMode }: HeaderProps) {
+export default function MobileNavBar() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
@@ -45,11 +41,7 @@ export default function MobileNavBar({ isDarkMode }: HeaderProps) {
             width={150}
             height={40}
             alt={'Nada'}
-            src={
-              showMenu
-              ? '/icons/nada-light.svg'
-                : '/icons/nada-dark.svg'
-            }
+            src={showMenu ? '/icons/nada-light.svg' : '/icons/nada-dark.svg'}
           />
         </Link>
 
@@ -57,11 +49,7 @@ export default function MobileNavBar({ isDarkMode }: HeaderProps) {
           width={25}
           height={30}
           alt={'Cityfunds'}
-          src={
-            showMenu 
-            ? '/icons/mobile-light.svg'
-            : '/icons/mobile-dark.svg'
-          }
+          src={showMenu ? '/icons/mobile-light.svg' : '/icons/mobile-dark.svg'}
           onClick={() => setShowMenu(!showMenu)}
         />
       </FlexWrapper>

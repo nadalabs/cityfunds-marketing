@@ -8,7 +8,7 @@ const NotFoundPage = () => {
     router.replace('/');
   }, []);
 
-  return null;
+  return <></>;
 };
 
 export default NotFoundPage;
