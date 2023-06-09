@@ -20,24 +20,16 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    const {
-      utm_source,
-      utm_medium,
-      utm_campaign,
-      utm_content,
-      utm_term,
-      gclid,
-      facebook_click_id
-    } = router.query;
-
-    if (utm_source) setCookie('utm_source', utm_source as string);
-    if (utm_medium) setCookie('utm_medium', utm_medium as string);
-    if (utm_campaign) setCookie('utm_campaign', utm_campaign as string);
-    if (utm_content) setCookie('utm_content', utm_content as string);
-    if (utm_term) setCookie('utm_term', utm_term as string);
-    if (gclid) setCookie('google_click_id', gclid as string);
-    if (facebook_click_id) setCookie('facebook_click_id', gclid as string);
-  }, [router.query]);
+    setCookie('utm_source', router.query.utm_source as string);
+    setCookie('utm_medium', router.query.utm_medium as string);
+    setCookie('utm_campaign', router.query.utm_campaign as string);
+    setCookie('utm_content', router.query.utm_content as string);
+    setCookie('utm_term', router.query.utm_term as string);
+    setCookie('gclid', router.query.gclid as string);
+    setCookie('fbclid', router.query.fbclid as string);
+    setCookie('msclkid', router.query.msclkid as string);
+    setCookie('referrer_url', router.pathname as string);
+  }, [router.query, router.pathname]);
 
   if (process.env.NEXT_PUBLIC_APP_ENV !== 'localhost') {
     Sentry.init({

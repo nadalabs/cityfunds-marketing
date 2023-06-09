@@ -5,6 +5,7 @@ import useIsMobile from '@hooks/useIsMobile';
 import { LEGAL_LINKS } from '@utils/constants';
 import { getCookie, setCookie } from '@utils/helpers';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { styled } from 'styled-components';
 
@@ -14,7 +15,11 @@ interface EmailCaptureProps {
   formName: string;
 }
 
-export default function EmailCapture({ btnText, onClick, formName }: EmailCaptureProps) {
+export default function EmailCapture({
+  btnText,
+  onClick,
+  formName,
+}: EmailCaptureProps) {
   const isMobile = useIsMobile();
   const methods = useForm<FieldValues>({
     defaultValues: {
@@ -24,15 +29,19 @@ export default function EmailCapture({ btnText, onClick, formName }: EmailCaptur
   });
   const { handleSubmit, formState, setError } = methods;
 
+
   const onSubmit = async (inputs: FieldValues) => {
+    const utm_source = getCookie('utm_source');
+    const utm_medium = getCookie('utm_medium');
+    const utm_campaign = getCookie('utm_campaign');
+    const utm_content = getCookie('utm_content');
+    const utm_term = getCookie('utm_term');
+    const gclid = getCookie('gclid');
+    const fbclid = getCookie('fbclid');
+    const msclkid = getCookie('msclkid');
+    const referrer_url = getCookie('referrer_url');
+
     try {
-      const utm_source = getCookie('utm_source');
-      const utm_medium = getCookie('utm_medium');
-      const utm_campaign = getCookie('utm_campaign');
-      const utm_content = getCookie('utm_content');
-      const utm_term = getCookie('utm_term');
-      const google_click_id = getCookie('google_click_id');
-      const facebook_click_id = getCookie('facebook_click_id');
       const payload = {
         email: inputs.email,
         utm_campaign,
@@ -40,14 +49,16 @@ export default function EmailCapture({ btnText, onClick, formName }: EmailCaptur
         utm_medium,
         utm_content,
         utm_term,
-        google_click_id,
-        facebook_click_id
+        gclid,
+        fbclid,
+        msclkid,
+        referrer_url,
       };
-
+      console.log(payload);
       await window.analytics.identify(payload);
       await window.analytics.track(formName, payload);
       setCookie('email', inputs.email);
-      onClick();
+      // onClick();
     } catch (err: any) {
       setError('email', {
         message: err.response.data.errors.message,

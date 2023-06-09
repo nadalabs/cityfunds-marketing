@@ -23,7 +23,7 @@ export default function PageHero({
   onClick,
   heroImages,
   isTextWide,
-  formName
+  formName,
 }: PageHeroProps) {
   const isMobile = useIsMobile();
   const sliderRef = useRef();
@@ -76,7 +76,11 @@ export default function PageHero({
               </PrimaryText>
               {btnText && (
                 <div style={{ maxWidth: '700px' }}>
-                  <EmailCapture btnText={btnText} onClick={onClick}  formName={formName} />
+                  <EmailCapture
+                    btnText={btnText}
+                    onClick={onClick}
+                    formName={formName}
+                  />
                 </div>
               )}
             </div>

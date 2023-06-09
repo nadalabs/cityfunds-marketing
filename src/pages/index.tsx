@@ -32,13 +32,13 @@ export default function HomePage({ testimonials, partner }) {
   );
 
   return (
-    <PageLayout  partnerImage={partner?.coverImage}>
+    <PageLayout partnerImage={partner?.coverImage}>
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios in the nation’s top cities."
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
-        formName='Cityfunds Lead'
+        formName="Cityfunds Lead"
         heroImages={FEATURED_CITIES}
       />
       <FeaturedLogos overline="Featured In" logos={FEATURED_ARTICLES} />

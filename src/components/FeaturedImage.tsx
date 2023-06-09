@@ -1,9 +1,9 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import Image from 'next/image';
 import { styled } from 'styled-components';
 import { GreenSquare } from './CarouselStepper';
-import useIsMobile from '@hooks/useIsMobile';
 
 interface FeaturedImageProps {
   overline?: string;
@@ -28,14 +28,15 @@ export default function FeaturedImage({
   isShortHeader,
   isBorder,
 }: FeaturedImageProps) {
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
 
   return (
     <ContentWrapper
       style={{
-        boxShadow: (!isMobile && isBorder) ? '2px 4px 25px rgba(0, 0, 0, 0.1)' : 'none',
+        boxShadow:
+          !isMobile && isBorder ? '2px 4px 25px rgba(0, 0, 0, 0.1)' : 'none',
         borderRadius: isBorder ? '100px' : 'none',
-        padding: (!isMobile && isBorder) ? '60px' : 0,
+        padding: !isMobile && isBorder ? '60px' : 0,
       }}
     >
       {!isReversed && (
