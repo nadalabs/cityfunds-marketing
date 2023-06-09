@@ -53,6 +53,7 @@ export default function NadaCardCTA() {
         <EmailCapture
           btnText="Join Waitlist"
           onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
+          formName="Nada Card Lead"
         />
       </ContentWrapper>
     </StyledSection>

@@ -35,6 +35,7 @@ export default function PromoCTA({ overline }: PromoCTAProps) {
         <EmailCapture
           btnText="Get Started"
           onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+          formName="Cityfunds Lead"
         />
       </ContentWrapper>
 

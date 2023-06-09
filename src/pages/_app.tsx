@@ -21,20 +21,22 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const {
-      gclid,
       utm_source,
       utm_medium,
       utm_campaign,
       utm_content,
       utm_term,
+      gclid,
+      facebook_click_id
     } = router.query;
 
-    if (gclid) setCookie('gclid', gclid as string);
     if (utm_source) setCookie('utm_source', utm_source as string);
     if (utm_medium) setCookie('utm_medium', utm_medium as string);
     if (utm_campaign) setCookie('utm_campaign', utm_campaign as string);
     if (utm_content) setCookie('utm_content', utm_content as string);
     if (utm_term) setCookie('utm_term', utm_term as string);
+    if (gclid) setCookie('google_click_id', gclid as string);
+    if (facebook_click_id) setCookie('facebook_click_id', gclid as string);
   }, [router.query]);
 
   if (process.env.NEXT_PUBLIC_APP_ENV !== 'localhost') {

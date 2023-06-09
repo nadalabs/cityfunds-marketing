@@ -11,9 +11,10 @@ import { styled } from 'styled-components';
 interface EmailCaptureProps {
   btnText: string;
   onClick: () => void;
+  formName: string;
 }
 
-export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
+export default function EmailCapture({ btnText, onClick, formName }: EmailCaptureProps) {
   const isMobile = useIsMobile();
   const methods = useForm<FieldValues>({
     defaultValues: {
@@ -30,17 +31,21 @@ export default function EmailCapture({ btnText, onClick }: EmailCaptureProps) {
       const utm_campaign = getCookie('utm_campaign');
       const utm_content = getCookie('utm_content');
       const utm_term = getCookie('utm_term');
+      const google_click_id = getCookie('google_click_id');
+      const facebook_click_id = getCookie('facebook_click_id');
       const payload = {
         email: inputs.email,
-        utm_campaign: utm_campaign,
-        utm_source: utm_source,
-        utm_medium: utm_medium,
-        utm_content: utm_content,
-        utm_term: utm_term,
+        utm_campaign,
+        utm_source,
+        utm_medium,
+        utm_content,
+        utm_term,
+        google_click_id,
+        facebook_click_id
       };
 
       await window.analytics.identify(payload);
-      await window.analytics.track('Lead Capture', payload);
+      await window.analytics.track(formName, payload);
       setCookie('email', inputs.email);
       onClick();
     } catch (err: any) {

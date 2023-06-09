@@ -16,6 +16,7 @@ export default function HomeSharesPage({ testimonials }) {
         primaryText="Trade in fractions of your home equity for cash and spend it on everyday items. Apply below and one of our home equity specialists will reach out."
         btnText="Apply Now"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
+        formName='Homeshares Lead'
         heroImages={[
           {
             name: 'Homeshares',
