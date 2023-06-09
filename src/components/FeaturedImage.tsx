@@ -3,6 +3,7 @@ import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import Image from 'next/image';
 import { styled } from 'styled-components';
 import { GreenSquare } from './CarouselStepper';
+import useIsMobile from '@hooks/useIsMobile';
 
 interface FeaturedImageProps {
   overline?: string;
@@ -27,24 +28,22 @@ export default function FeaturedImage({
   isShortHeader,
   isBorder,
 }: FeaturedImageProps) {
+  const isMobile = useIsMobile()
+
   return (
     <ContentWrapper
       style={{
-        boxShadow: isBorder ? '2px 4px 25px rgba(0, 0, 0, 0.1)' : 'none',
+        boxShadow: (!isMobile && isBorder) ? '2px 4px 25px rgba(0, 0, 0, 0.1)' : 'none',
         borderRadius: isBorder ? '100px' : 'none',
-        padding: isBorder ? '60px' : 0,
+        padding: (!isMobile && isBorder) ? '60px' : 0,
       }}
     >
       {!isReversed && (
         <>
           {isBorder ? (
-            <LeftImageWrapper
+            <BorderImageWrapper
               style={{
-                height: '400px',
                 background: `linear-gradient(180deg, rgba(0, 0, 0, 0) 22.38%, rgba(0, 0, 0, 0.144) 44.79%, rgba(0, 0, 0, 0.3915) 73.73%), url(${imageUrl})`,
-                borderRadius: '50px',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
               }}
             />
           ) : (
@@ -106,6 +105,20 @@ const LeftImageWrapper = styled(ImageWrapper)`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-right: 0;
+  }
+`;
+
+const BorderImageWrapper = styled(ImageWrapper)`
+  height: 400px;
+  border-radius: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 80px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    height: 300px;
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
 `;
 

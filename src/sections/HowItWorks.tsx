@@ -115,6 +115,7 @@ export const ContentWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
     margin-left: 0;
+    height: 100%;
   }
 `;
 

@@ -27,27 +27,25 @@ export default function NadaCardCTA() {
 
   return (
     <StyledSection>
-        <ImageWrapper>
-      <Image
-        src="/images/nada-card.png"
-        alt="Nada Card"
-        fill
-        />
-        </ImageWrapper>
+      <ImageWrapper>
+        <Image src="/images/nada-card.png" alt="Nada Card" fill />
+      </ImageWrapper>
       <ContentWrapper>
         <Overline style={{ marginBottom: '1rem' }}>Coming Soon</Overline>
-        <Heading style={{fontSize: '56px', marginBottom: '3rem'}}>Build Real Estate Wealth on the Nada Card</Heading>
+        <Heading style={{ fontSize: '56px', marginBottom: '3rem' }}>
+          Build Real Estate Wealth on the Nada Card
+        </Heading>
 
         <TextWrapper>
           {steps.map(({ title, description }, jdx) => (
             <StepWrapper key={jdx}>
-              <GreenSquare
-                style={{  marginBottom: '24px' }}
-              />
+              <GreenSquare style={{ marginBottom: '24px' }} />
               <SecondaryHeading style={{ color: '#48DC95', fontSize: '32px' }}>
                 {title}
               </SecondaryHeading>
-              <SecondaryText style={{fontSize: '16px'}}>{description}</SecondaryText>
+              <SecondaryText style={{ fontSize: '16px' }}>
+                {description}
+              </SecondaryText>
             </StepWrapper>
           ))}
         </TextWrapper>
@@ -62,10 +60,9 @@ export default function NadaCardCTA() {
 }
 
 const StyledSection = styled(SectionWrapper)`
-display: flex ;
-justify-content: space-between;
-align-items: center;
-  width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
@@ -82,7 +79,7 @@ const ContentWrapper = styled.div`
 `;
 
 const StepWrapper = styled.div`
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-bottom: 2rem;
@@ -96,7 +93,6 @@ const TextWrapper = styled.div`
     flex-direction: column;
   }
 `;
-
 
 const ImageWrapper = styled.div`
   position: relative;

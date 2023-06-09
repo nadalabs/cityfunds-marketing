@@ -7,8 +7,6 @@ import NadaCardCTA from '@sections/NadaCardCTA';
 import PageHero from '@sections/PageHero';
 import Testimonials from '@sections/Testimonials';
 import { EXTERNAL_ROUTES } from '@utils/constants';
-import { testimonialIndexQuery } from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
 
 export default function HomeSharesPage({ testimonials }) {
   return (
@@ -93,5 +91,3 @@ export default function HomeSharesPage({ testimonials }) {
     </PageLayout>
   );
 }
-
-
