@@ -44,6 +44,7 @@ export const SectionWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0 24px;

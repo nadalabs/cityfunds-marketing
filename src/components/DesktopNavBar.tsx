@@ -11,13 +11,11 @@ import styled from 'styled-components';
 interface HeaderProps {
   partnerImage?: string;
   partnerName?: string;
-  isDarkMode?: boolean;
 }
 
 export default function DesktopNavBar({
   partnerImage,
   partnerName,
-  isDarkMode,
 }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const router = useRouter();

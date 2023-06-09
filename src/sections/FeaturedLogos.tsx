@@ -21,7 +21,7 @@ export default function FeaturedLogos({ overline, logos }: FeaturedLogosProps) {
             key={idx}
             href={link}
             target="_blank"
-            style={{ marginBottom: '1rem' }}
+            style={{ margin: '1rem 1rem' }}
           >
             <Image width={145} height={40} alt={name} src={imageUrl} />
           </Link>
@@ -34,6 +34,8 @@ export default function FeaturedLogos({ overline, logos }: FeaturedLogosProps) {
 const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 0 6rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;

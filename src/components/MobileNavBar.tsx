@@ -32,13 +32,11 @@ export default function MobileNavBar({ isDarkMode }: HeaderProps) {
   return (
     <SectionWrapper
       style={{
-        backgroundColor: showMenu
+        background: showMenu
           ? '#303030'
-          : scrollPosition > 50
-          ? 'rgba(255, 255, 255, 0.8)'
-          : 'transparent',
-        backdropFilter: scrollPosition > 50 ? 'blur(10px)' : 'none',
-        top: scrollPosition === 0 ? 50 : 0,
+          : 'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 42.74%, rgba(255, 255, 255, 0.7) 65.57%, rgba(255, 255, 255, 0) 100%)',
+        backdropFilter: 'blur(1.5px)',
+        top: scrollPosition === 0 ? 75 : 0,
       }}
     >
       <FlexWrapper>
@@ -48,9 +46,9 @@ export default function MobileNavBar({ isDarkMode }: HeaderProps) {
             height={40}
             alt={'Nada'}
             src={
-              !showMenu && (isDarkMode || scrollPosition > 50)
-                ? '/icons/nada-dark.svg'
-                : '/icons/nada-light.svg'
+              showMenu
+              ? '/icons/nada-light.svg'
+                : '/icons/nada-dark.svg'
             }
           />
         </Link>
@@ -60,9 +58,9 @@ export default function MobileNavBar({ isDarkMode }: HeaderProps) {
           height={30}
           alt={'Cityfunds'}
           src={
-            !showMenu && (isDarkMode || scrollPosition > 50)
-              ? '/icons/mobile-dark.svg'
-              : '/icons/mobile-light.svg'
+            showMenu 
+            ? '/icons/mobile-light.svg'
+            : '/icons/mobile-dark.svg'
           }
           onClick={() => setShowMenu(!showMenu)}
         />
