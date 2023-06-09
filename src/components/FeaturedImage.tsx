@@ -32,12 +32,27 @@ export default function FeaturedImage({
       style={{
         boxShadow: isBorder ? '2px 4px 25px rgba(0, 0, 0, 0.1)' : 'none',
         borderRadius: isBorder ? '100px' : 'none',
+        padding: isBorder ? '60px' : 0,
       }}
     >
       {!isReversed && (
-        <LeftImageWrapper>
-          <Image src={imageUrl} alt={heading} fill />
-        </LeftImageWrapper>
+        <>
+          {isBorder ? (
+            <LeftImageWrapper
+              style={{
+                height: '400px',
+                background: `linear-gradient(180deg, rgba(0, 0, 0, 0) 22.38%, rgba(0, 0, 0, 0.144) 44.79%, rgba(0, 0, 0, 0.3915) 73.73%), url(${imageUrl})`,
+                borderRadius: '50px',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+              }}
+            />
+          ) : (
+            <LeftImageWrapper>
+              <Image src={imageUrl} alt={heading} fill />
+            </LeftImageWrapper>
+          )}
+        </>
       )}
 
       <TextWrapper>

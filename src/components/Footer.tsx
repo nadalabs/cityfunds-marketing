@@ -285,9 +285,12 @@ export default function Footer({}) {
       )}
 
       <div>
-      <SecondaryButton onClick={() => setShowMore(!showMore)} style={{color: '#48DC95', textDecoration: 'underline'}}>
-        {showMore ? 'See Less' : 'See More'}
-      </SecondaryButton>
+        <SecondaryButton
+          onClick={() => setShowMore(!showMore)}
+          style={{ color: '#48DC95', textDecoration: 'underline' }}
+        >
+          {showMore ? 'See Less' : 'See More'}
+        </SecondaryButton>
       </div>
     </SectionWrapper>
   );

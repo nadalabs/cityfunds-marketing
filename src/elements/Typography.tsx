@@ -74,7 +74,7 @@ export const Overline = styled.p`
   font-weight: 500;
   font-size: 18px;
   line-height: 28px;
-  margin: 0 0 24px 0;
+  margin: 0 0 0.5rem 0;
 `;
 
 export const Caption = styled.div`

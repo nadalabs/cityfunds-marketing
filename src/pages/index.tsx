@@ -7,8 +7,8 @@ import CardSlider from '@sections/CardSlider';
 import FaqsSection from '@sections/FaqsSection';
 import FeaturedLogos from '@sections/FeaturedLogos';
 import HowItWorks from '@sections/HowItWorks';
-import OfferCTA from '@sections/OfferCTA';
 import PageHero from '@sections/PageHero';
+import PromoCTA from '@sections/PromoCTA';
 import Testimonials from '@sections/Testimonials';
 import TextSlider from '@sections/TextSlider';
 import {
@@ -135,7 +135,7 @@ export default function HomePage({ testimonials, partner }) {
         isPhoneFrame
       />
       <Testimonials reviews={testimonials} />
-      <OfferCTA
+      <PromoCTA
         overline={
           partner?.name ? `Exclusive Perk for ${partner?.name} Readers` : ''
         }

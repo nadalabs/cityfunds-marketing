@@ -67,12 +67,16 @@ export default function PageHero({
               <PrimaryText
                 style={{
                   color: '#B0B0B0',
-                  maxWidth: isTextWide ? '1100px' : '700px',
+                  maxWidth: isTextWide ? '900px' : '700px',
                 }}
               >
                 {primaryText}
               </PrimaryText>
-              {btnText && <EmailCapture btnText={btnText} onClick={onClick} />}
+              {btnText && (
+                <div style={{ maxWidth: '700px' }}>
+                  <EmailCapture btnText={btnText} onClick={onClick} />
+                </div>
+              )}
             </div>
 
             {!isMobile && heroImages.length > 1 && (

@@ -4,19 +4,16 @@ import {
   Overline,
   SecondaryText,
 } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import Image from 'next/image';
 import EmailCapture from 'src/components/EmailCapture';
 import styled from 'styled-components';
 
-interface PublisherCTAProps {
+interface PromoCTAProps {
   overline?: string;
 }
 
-export default function OfferCTA({ overline }: PublisherCTAProps) {
-  const isMobile = useIsMobile();
-
+export default function PromoCTA({ overline }: PromoCTAProps) {
   return (
     <SectionWrapper>
       <ContentWrapper>

@@ -129,6 +129,7 @@ export const StepWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-bottom: 2rem;
+    width: 100%;
   }
 `;
 
