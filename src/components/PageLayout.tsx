@@ -7,14 +7,12 @@ import { ReactNode } from 'react';
 
 interface BannerProps {
   children: ReactNode;
-  footerLegal?: string;
   partnerImage?: string;
 }
 
 export default function PageLayout({
   children,
   partnerImage,
-  footerLegal,
 }: BannerProps) {
   const isMobile = useIsMobile();
 
@@ -27,7 +25,7 @@ export default function PageLayout({
         <DesktopNavBar partnerImage={partnerImage} />
       )}
       {children}
-      <Footer footerLegal={footerLegal} />
+      <Footer />
     </div>
   );
 }
