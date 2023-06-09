@@ -7,14 +7,14 @@ import { ReactNode } from 'react';
 
 interface BannerProps {
   children: ReactNode;
-  isDarkMode?: boolean;
+  footerLegal?: string;
   partnerImage?: string;
 }
 
 export default function PageLayout({
   children,
-  isDarkMode,
   partnerImage,
+  footerLegal,
 }: BannerProps) {
   const isMobile = useIsMobile();
 
@@ -22,12 +22,12 @@ export default function PageLayout({
     <div>
       <AlertBanner primaryText="Invest $2,500 & get 10 Free Shares or $5,000 for 50 Free Shares" />
       {isMobile ? (
-        <MobileNavBar isDarkMode={isDarkMode} />
+        <MobileNavBar />
       ) : (
-        <DesktopNavBar isDarkMode={isDarkMode} partnerImage={partnerImage} />
+        <DesktopNavBar partnerImage={partnerImage} />
       )}
       {children}
-      <Footer />
+      <Footer footerLegal={footerLegal} />
     </div>
   );
 }
