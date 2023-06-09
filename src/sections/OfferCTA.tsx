@@ -1,32 +1,39 @@
-import { Caption, Heading, SecondaryText } from '@elements/Typography';
+import {
+  Caption,
+  Heading,
+  Overline,
+  SecondaryText,
+} from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
+import Image from 'next/image';
 import EmailCapture from 'src/components/EmailCapture';
-import PhoneScreen from 'src/components/PhoneScreen';
 import styled from 'styled-components';
 
 interface PublisherCTAProps {
-  name?: string;
+  overline?: string;
 }
 
-export default function PublisherCTA({ name }: PublisherCTAProps) {
+export default function OfferCTA({ overline }: PublisherCTAProps) {
   const isMobile = useIsMobile();
 
   return (
     <SectionWrapper>
       <ContentWrapper>
+        {overline && (
+          <Overline style={{ marginBottom: '1rem' }}>{overline}</Overline>
+        )}
         <Heading style={{ marginBottom: 0 }}>Invest &</Heading>
         <Heading style={{ color: '#48DC95', marginBottom: '2rem' }}>
-          Earn Free Shares
+          Earn Free Shares in Dallas
         </Heading>
         <SecondaryText style={{ marginBottom: '8px' }}>
-          Invest $2500 and get 10 Free Shares plus a special edition “I Own
-          Dallas” T-Shirt! Or invest $5000 and gain 50 Free Shares plus a
+          Invest $2,500 and get 10 Free Shares in Dallas plus a special edition
+          “I Own Dallas” T-Shirt or $5,000 and get 50 Free Shares plus a
           Cityfunds Gift Bag!
         </SecondaryText>
         <Caption style={{ marginBottom: '2rem' }}>
-          **All Free Shares are Distributed from the Dallas CityfundsFree Shares
-          will be issued 60 days after funds have settled
+          *Terms and conditions apply
         </Caption>
         <EmailCapture
           btnText="Get Started"
@@ -34,7 +41,35 @@ export default function PublisherCTA({ name }: PublisherCTAProps) {
         />
       </ContentWrapper>
 
-      {!isMobile && <PhoneScreen imageUrl="/images/screen-1.png" />}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '35%',
+          position: 'relative',
+          left: '100px',
+        }}
+      >
+        <Image
+          width={400}
+          height={400}
+          alt={'Limited time offer!'}
+          src={'/images/offer-background.png'}
+          style={{
+            borderRadius: '75px',
+            zIndex: -1,
+            position: 'absolute',
+            top: '150px',
+            left: '-80px',
+          }}
+        />
+        <Image
+          width={250}
+          height={500}
+          alt={'Limited time offer!'}
+          src={'/images/offer.png'}
+        />
+      </div>
     </SectionWrapper>
   );
 }

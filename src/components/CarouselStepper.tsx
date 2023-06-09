@@ -1,5 +1,5 @@
 import { Ref } from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 interface CarouselStepperProps {
   activeStep: number;
@@ -12,7 +12,7 @@ export default function CarouselStepper({
   totalSteps,
   sliderRef,
 }: CarouselStepperProps) {
-  const handleOnClick = (index) => {
+  const handleOnClick = (index: number) => {
     // @ts-ignore-next-line
     sliderRef?.current.slickGoTo(index);
   };
