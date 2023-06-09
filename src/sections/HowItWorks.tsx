@@ -10,6 +10,7 @@ import {
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import Image from 'next/image';
+import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -29,6 +30,12 @@ export default function HowItWorks({
   isPhoneFrame,
 }: HowItWorksProps) {
   const isMobile = useIsMobile();
+  const sliderRef = useRef();
+
+  const handleOnClick = (index) => {
+    // @ts-ignore-next-line
+    sliderRef?.current.slickGoTo(index);
+  };
 
   const settings = {
     dots: false,
@@ -44,7 +51,7 @@ export default function HowItWorks({
 
   return (
     <SectionWrapper>
-      <Slider {...settings}>
+      <Slider {...settings} ref={sliderRef}>
         {steps.map(({ imageUrl }, idx) => (
           <div key={idx}>
             <FlewWrapper key={idx}>
@@ -57,7 +64,11 @@ export default function HowItWorks({
                 </HeaderWrapper>
                 <TextWrapper>
                   {steps.map(({ title, description }, jdx) => (
-                    <StepWrapper key={jdx}>
+                    <StepWrapper
+                      key={jdx}
+                      onClick={() => handleOnClick(jdx)}
+                      style={{ cursor: 'pointer' }}
+                    >
                       <GreenSquare
                         style={{
                           backgroundColor: idx !== jdx && '#979797',
@@ -99,6 +110,7 @@ export default function HowItWorks({
 export const ContentWrapper = styled.div`
   width: 60%;
   margin-left: 4rem;
+  height: 550px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
@@ -112,6 +124,7 @@ export const FlewWrapper = styled.div`
 `;
 
 export const StepWrapper = styled.div`
+  width: 33%;
   margin-right: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -128,7 +141,7 @@ export const TextWrapper = styled.div`
 `;
 
 export const HeaderWrapper = styled.div`
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-bottom: 0;

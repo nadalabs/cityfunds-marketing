@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 import { GreenSquare } from './CarouselStepper';
 
 interface FeaturedImageProps {
-  overline: string;
+  overline?: string;
   heading: string;
   primaryText: string;
   imageUrl: string;
@@ -13,6 +13,7 @@ interface FeaturedImageProps {
   onClick: () => void;
   isReversed?: boolean;
   isShortHeader?: boolean;
+  isBorder?: boolean;
 }
 
 export default function FeaturedImage({
@@ -24,9 +25,15 @@ export default function FeaturedImage({
   onClick,
   isReversed,
   isShortHeader,
+  isBorder,
 }: FeaturedImageProps) {
   return (
-    <ContentWrapper>
+    <ContentWrapper
+      style={{
+        boxShadow: isBorder ? '2px 4px 25px rgba(0, 0, 0, 0.1)' : 'none',
+        borderRadius: isBorder ? '100px' : 'none',
+      }}
+    >
       {!isReversed && (
         <LeftImageWrapper>
           <Image src={imageUrl} alt={heading} fill />
@@ -34,8 +41,13 @@ export default function FeaturedImage({
       )}
 
       <TextWrapper>
-        <Overline>{overline}</Overline>
-        <Heading style={{ maxWidth: isShortHeader ? '400px' : '700px' }}>
+        {overline && <Overline>{overline}</Overline>}
+        <Heading
+          style={{
+            maxWidth: isShortHeader ? '400px' : '700px',
+            fontSize: isBorder ? '52px' : '64px',
+          }}
+        >
           {heading}
         </Heading>
         <PrimaryText>{primaryText}</PrimaryText>

@@ -11,7 +11,7 @@ interface LegalPageProps {
 
 export default function LegalPage({ legal }: LegalPageProps) {
   return (
-    <PageLayout isDarkMode>
+    <PageLayout>
       <HeadingWrapper>
         <Heading>Transparency</Heading>
         {LEGAL_LINKS.map(({ name, link }, idx) => (

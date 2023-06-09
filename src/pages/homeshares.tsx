@@ -86,6 +86,16 @@ export default function HomeSharesPage({ testimonials }) {
           onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
         />
       </SectionWrapper>
+      <SectionWrapper>
+        <FeaturedImage
+          heading="Looking to Invest?"
+          primaryText="Unlock diversified real estate portfolios with passive income in the nation's top cities."
+          imageUrl="/images/austin.png"
+          btnText="Learn More"
+          onClick={() => window.location.replace('/')}
+          isBorder
+        />
+      </SectionWrapper>
       <Testimonials reviews={testimonials} />
     </PageLayout>
   );

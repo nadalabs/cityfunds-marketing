@@ -30,7 +30,7 @@ export default function LearnPage({ allPosts, preview }) {
   }
 
   return (
-    <PageLayout isDarkMode>
+    <PageLayout>
       <BlogHero blogPosts={allPosts.slice(0, 4)} />
       {renderBlogSliders()}
     </PageLayout>

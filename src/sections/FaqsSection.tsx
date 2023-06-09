@@ -1,12 +1,10 @@
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
 import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
 export default function FaqsSection({}) {
-  const isMobile = useIsMobile();
   const sliderRef = useRef();
 
   const handleOnClick = (index) => {
@@ -52,7 +50,7 @@ export default function FaqsSection({}) {
       <Overline>You may also be wondering...</Overline>
 
       <Slider {...settings} ref={sliderRef}>
-        {FAQS.map(({ answer }, idx) => (
+        {FAQS.map((_, idx) => (
           <div key={idx}>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div>

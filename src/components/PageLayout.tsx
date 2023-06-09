@@ -10,10 +10,7 @@ interface BannerProps {
   partnerImage?: string;
 }
 
-export default function PageLayout({
-  children,
-  partnerImage,
-}: BannerProps) {
+export default function PageLayout({ children, partnerImage }: BannerProps) {
   const isMobile = useIsMobile();
 
   return (

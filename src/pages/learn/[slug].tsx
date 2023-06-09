@@ -16,7 +16,7 @@ export default function PostPage({ preview, data }) {
   // }
 
   return (
-    <PageLayout isDarkMode>
+    <PageLayout>
       <BlogHero blogPosts={[data?.post]} />
       <LongFormText
         overline={data?.post?.tag}
