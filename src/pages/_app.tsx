@@ -28,8 +28,8 @@ export default function App({ Component, pageProps }: AppProps) {
     setCookie('gclid', router.query.gclid as string);
     setCookie('fbclid', router.query.fbclid as string);
     setCookie('msclkid', router.query.msclkid as string);
-    setCookie('referrer_url', router.pathname as string);
-  }, [router.query, router.pathname]);
+    setCookie('referrer_url', router.asPath as string);
+  }, [router.query, router.asPath]);
 
   if (process.env.NEXT_PUBLIC_APP_ENV !== 'localhost') {
     Sentry.init({
