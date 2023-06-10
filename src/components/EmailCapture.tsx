@@ -29,7 +29,6 @@ export default function EmailCapture({
   });
   const { handleSubmit, formState, setError } = methods;
 
-
   const onSubmit = async (inputs: FieldValues) => {
     const utm_source = getCookie('utm_source');
     const utm_medium = getCookie('utm_medium');
@@ -58,7 +57,7 @@ export default function EmailCapture({
       await window.analytics.identify(payload);
       await window.analytics.track(formName, payload);
       setCookie('email', inputs.email);
-      // onClick();
+      onClick();
     } catch (err: any) {
       setError('email', {
         message: err.response.data.errors.message,
