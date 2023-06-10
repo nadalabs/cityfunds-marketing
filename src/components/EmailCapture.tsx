@@ -5,7 +5,6 @@ import useIsMobile from '@hooks/useIsMobile';
 import { LEGAL_LINKS } from '@utils/constants';
 import { getCookie, setCookie } from '@utils/helpers';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { styled } from 'styled-components';
 
@@ -40,19 +39,23 @@ export default function EmailCapture({
     const msclkid = getCookie('msclkid');
     const referrer_url = getCookie('referrer_url');
 
+    let payload: any = { email: inputs.email };
+    function addIfValue(key: string, value?: string) {
+      if (value !== undefined) {
+        payload[key] = value;
+      }
+    }
+    addIfValue('utm_campaign', utm_campaign);
+    addIfValue('utm_source', utm_source);
+    addIfValue('utm_medium', utm_medium);
+    addIfValue('utm_content', utm_content);
+    addIfValue('utm_term', utm_term);
+    addIfValue('gclid', gclid);
+    addIfValue('fbclid', fbclid);
+    addIfValue('msclkid', msclkid);
+    addIfValue('referrer_url', referrer_url);
+
     try {
-      const payload = {
-        email: inputs.email,
-        utm_campaign,
-        utm_source,
-        utm_medium,
-        utm_content,
-        utm_term,
-        gclid,
-        fbclid,
-        msclkid,
-        referrer_url,
-      };
       console.log(payload);
       await window.analytics.identify(payload);
       await window.analytics.track(formName, payload);

@@ -42,35 +42,37 @@ export default function PromoCTA({ overline }: PromoCTAProps) {
         />
       </ContentWrapper>
 
-     {!isMobile && ( <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '35%',
-          position: 'relative',
-          left: '100px',
-        }}
-      >
-        <Image
-          width={400}
-          height={400}
-          alt={'Limited time offer!'}
-          src={'/images/offer-background.png'}
+      {!isMobile && (
+        <div
           style={{
-            borderRadius: '75px',
-            zIndex: -1,
-            position: 'absolute',
-            top: '150px',
-            left: '-80px',
+            display: 'flex',
+            flexDirection: 'column',
+            width: '35%',
+            position: 'relative',
+            left: '100px',
           }}
-        />
-        <Image
-          width={250}
-          height={500}
-          alt={'Limited time offer!'}
-          src={'/images/offer.png'}
-        />
-      </div>)}
+        >
+          <Image
+            width={400}
+            height={400}
+            alt={'Limited time offer!'}
+            src={'/images/offer-background.png'}
+            style={{
+              borderRadius: '75px',
+              zIndex: -1,
+              position: 'absolute',
+              top: '150px',
+              left: '-80px',
+            }}
+          />
+          <Image
+            width={250}
+            height={500}
+            alt={'Limited time offer!'}
+            src={'/images/offer.png'}
+          />
+        </div>
+      )}
     </SectionWrapper>
   );
 }
