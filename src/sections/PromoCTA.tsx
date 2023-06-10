@@ -4,6 +4,7 @@ import {
   Overline,
   SecondaryText,
 } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import Image from 'next/image';
 import EmailCapture from 'src/components/EmailCapture';
@@ -14,6 +15,8 @@ interface PromoCTAProps {
 }
 
 export default function PromoCTA({ overline }: PromoCTAProps) {
+  const isMobile = useIsMobile();
+
   return (
     <SectionWrapper>
       <ContentWrapper>
@@ -39,7 +42,7 @@ export default function PromoCTA({ overline }: PromoCTAProps) {
         />
       </ContentWrapper>
 
-      <div
+     {!isMobile && ( <div
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -67,7 +70,7 @@ export default function PromoCTA({ overline }: PromoCTAProps) {
           alt={'Limited time offer!'}
           src={'/images/offer.png'}
         />
-      </div>
+      </div>)}
     </SectionWrapper>
   );
 }
