@@ -30,13 +30,11 @@ export default function EmailCapture({
 
   const onSubmit = async (inputs: FieldValues) => {
     try {
-      const payload = {};
+      const payload = { ...inputs };
       for (let param of UTM_PARAMETERS) {
         const value = getCookie(param);
         if (value) payload[param] = value;
       }
-
-      console.log(payload);
       await window.analytics.identify(payload);
       await window.analytics.track(formName, payload);
       setCookie('email', inputs.email);
