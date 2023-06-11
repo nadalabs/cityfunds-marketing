@@ -1,9 +1,14 @@
 export const setCookie = (name: string, value: string) => {
   let expires = '';
-  let date = new Date();
+  const date = new Date();
   date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
   expires = '; expires=' + date.toUTCString();
-  document.cookie = name + '=' + (value || '') + expires + '; path=/';
+  document.cookie =
+    name +
+    '=' +
+    (value || '') +
+    expires +
+    '; path=/; domain=.nada.co; SameSite=None; Secure';
 };
 
 export const getCookie = (name: string) => {

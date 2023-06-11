@@ -7,6 +7,17 @@ export enum EXTERNAL_ROUTES {
   GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
 }
 
+export const UTM_PARAMETERS = [
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+  'gclid',
+  'fbclid',
+  'msclkid',
+];
+
 export const HEADER_LINKS = [
   { name: 'Cityfunds', link: '/' },
   { name: 'About', link: '/about' },

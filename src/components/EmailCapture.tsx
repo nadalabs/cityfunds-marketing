@@ -2,7 +2,7 @@ import { PrimaryButton } from '@elements/Buttons';
 import { FormInput, StyledForm } from '@elements/FormInput';
 import { Caption, ErrorText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { LEGAL_LINKS } from '@utils/constants';
+import { LEGAL_LINKS, UTM_PARAMETERS } from '@utils/constants';
 import { getCookie, setCookie } from '@utils/helpers';
 import Link from 'next/link';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
@@ -29,33 +29,13 @@ export default function EmailCapture({
   const { handleSubmit, formState, setError } = methods;
 
   const onSubmit = async (inputs: FieldValues) => {
-    const utm_source = getCookie('utm_source');
-    const utm_medium = getCookie('utm_medium');
-    const utm_campaign = getCookie('utm_campaign');
-    const utm_content = getCookie('utm_content');
-    const utm_term = getCookie('utm_term');
-    const gclid = getCookie('gclid');
-    const fbclid = getCookie('fbclid');
-    const msclkid = getCookie('msclkid');
-    const referrer_url = getCookie('referrer_url');
-
-    let payload: any = { email: inputs.email };
-    function addIfValue(key: string, value?: string) {
-      if (value !== undefined) {
-        payload[key] = value;
-      }
-    }
-    addIfValue('utm_campaign', utm_campaign);
-    addIfValue('utm_source', utm_source);
-    addIfValue('utm_medium', utm_medium);
-    addIfValue('utm_content', utm_content);
-    addIfValue('utm_term', utm_term);
-    addIfValue('gclid', gclid);
-    addIfValue('fbclid', fbclid);
-    addIfValue('msclkid', msclkid);
-    addIfValue('referrer_url', referrer_url);
-
     try {
+      const payload = {};
+      for (let param of UTM_PARAMETERS) {
+        const value = getCookie(param);
+        if (value) payload[param] = value;
+      }
+
       console.log(payload);
       await window.analytics.identify(payload);
       await window.analytics.track(formName, payload);

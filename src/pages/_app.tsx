@@ -1,9 +1,9 @@
 import * as Sentry from '@sentry/react';
+import { UTM_PARAMETERS } from '@utils/constants';
 import { setCookie } from '@utils/helpers';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
@@ -17,25 +17,15 @@ declare global {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-
   useEffect(() => {
-    if (router.query.utm_source)
-      setCookie('utm_source', router.query.utm_source as string);
-    if (router.query.utm_medium)
-      setCookie('utm_medium', router.query.utm_medium as string);
-    if (router.query.utm_campaign)
-      setCookie('utm_campaign', router.query.utm_campaign as string);
-    if (router.query.utm_content)
-      setCookie('utm_content', router.query.utm_content as string);
-    if (router.query.utm_term)
-      setCookie('utm_term', router.query.utm_term as string);
-    if (router.query.gclid) setCookie('gclid', router.query.gclid as string);
-    if (router.query.fbclid) setCookie('fbclid', router.query.fbclid as string);
-    if (router.query.msclkid)
-      setCookie('msclkid', router.query.msclkid as string);
-    if (router.query.asPath) setCookie('referrer_url', router.asPath as string);
-  }, [router.query, router.asPath]);
+    const urlParams = new URLSearchParams(window.location.search);
+    UTM_PARAMETERS.forEach((param) => {
+      if (urlParams.has(param)) {
+        const value = urlParams.get(param);
+        setCookie(param, value);
+      }
+    });
+  }, []);
 
   if (process.env.NEXT_PUBLIC_APP_ENV !== 'localhost') {
     Sentry.init({
