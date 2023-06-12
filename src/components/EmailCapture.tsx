@@ -30,7 +30,7 @@ export default function EmailCapture({
 
   const onSubmit = async (inputs: FieldValues) => {
     try {
-      const payload = { ...inputs };
+      let payload: any = { ...inputs };
       for (let param of UTM_PARAMETERS) {
         const value = getCookie(param);
         if (value) payload[param] = value;
