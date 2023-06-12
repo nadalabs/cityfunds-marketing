@@ -89,28 +89,28 @@ export const FEATURED_CITIES = [
     heroImage: '/images/miami-hero.png',
     cardImage: '/images/miami.png',
     totalAssets: 9,
-    appreciation: 11.42,
+    appreciation: 17.8,
   },
   {
     name: 'Dallas',
     heroImage: '/images/dallas-hero.png',
     cardImage: '/images/dallas.png',
     totalAssets: 19,
-    appreciation: 10.03,
+    appreciation: 12.9,
   },
   {
     name: 'Austin',
     heroImage: '/images/austin-hero.png',
     cardImage: '/images/austin.png',
     totalAssets: 30,
-    appreciation: 13.65,
+    appreciation: 14.1,
   },
   {
     name: 'Tampa',
     heroImage: '/images/tampa-hero.png',
     cardImage: '/images/tampa.png',
     totalAssets: 3,
-    appreciation: 7.85,
+    appreciation: 17.2,
   },
 ];
 
