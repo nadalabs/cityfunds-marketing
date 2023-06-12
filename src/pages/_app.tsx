@@ -1,9 +1,11 @@
+import * as snippet from '@segment/snippet';
 import * as Sentry from '@sentry/react';
 import { UTM_PARAMETERS } from '@utils/constants';
 import { setCookie } from '@utils/helpers';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app';
+import Script from 'next/script';
 import { useEffect } from 'react';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
@@ -27,6 +29,18 @@ export default function App({ Component, pageProps }: AppProps) {
     });
   }, []);
 
+  function renderSnippet() {
+    const opts = {
+      apiKey: process.env.NEXT_PUBLIC_ANALYTICS_WRITE_KEY || '',
+      page: true,
+    };
+
+    if (process.env.NODE_ENV === 'development') {
+      return snippet.max(opts);
+    }
+    return snippet.min(opts);
+  }
+
   if (process.env.NEXT_PUBLIC_APP_ENV !== 'localhost') {
     Sentry.init({
       environment: process.env.NEXT_PUBLIC_APP_ENV,
@@ -40,6 +54,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
+        <Script
+          id="segment-script"
+          dangerouslySetInnerHTML={{ __html: renderSnippet() }}
+        />
         <Component {...pageProps} />
         <Analytics />
       </ThemeProvider>
