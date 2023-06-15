@@ -23,17 +23,21 @@ export default function PromoCTA({ overline }: PromoCTAProps) {
         {overline && (
           <Overline style={{ marginBottom: '1rem' }}>{overline}</Overline>
         )}
-        <Heading style={{ marginBottom: 0 }}>Invest &</Heading>
+        <Heading style={{ marginBottom: 0 }}>Invest in Dallas and</Heading>
         <Heading style={{ color: '#48DC95', marginBottom: '2rem' }}>
-          Earn Free Shares in Dallas
+          Get Free Shares in Dallas
         </Heading>
+        <SecondaryText style={{ marginBottom: '4px' }}>
+          The first 50 users to invest $250 in Dallas get 2 free shares in
+          Dallas.
+        </SecondaryText>
         <SecondaryText style={{ marginBottom: '8px' }}>
-          Invest $2,500 and get 10 Free Shares in Dallas plus a special edition
-          “I Own Dallas” T-Shirt or $5,000 and get 50 Free Shares plus a
-          Cityfunds Gift Bag!
+          The first 50 users to invest $500 in Dallas get 5 free shares in
+          Dallas.
         </SecondaryText>
         <Caption style={{ marginBottom: '2rem' }}>
-          *Terms and conditions apply
+          Promotion active until 6/30/2023 or until capacity is reached for each
+          promotion. Terms and conditions apply
         </Caption>
         <EmailCapture
           btnText="Get Started"
@@ -90,7 +94,7 @@ export const SectionWrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  max-width: 600px;
+  max-width: 700px;
   margin-right: 84px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

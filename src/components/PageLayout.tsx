@@ -15,7 +15,7 @@ export default function PageLayout({ children, partnerImage }: BannerProps) {
 
   return (
     <div>
-      <AlertBanner primaryText="Invest $2,500 & get 10 Free Shares or $5,000 for 50 Free Shares" />
+      <AlertBanner primaryText="Cityfund of the Month: Dallas! Invest and get free shares" />
       {isMobile ? (
         <MobileNavBar />
       ) : (
