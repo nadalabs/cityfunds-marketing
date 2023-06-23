@@ -1,6 +1,6 @@
 export const testimonial = {
     name: 'testimonial',
-    title: 'Testimonial',
+    title: 'Testimonials',
     type: 'document',
     fields: [
       {

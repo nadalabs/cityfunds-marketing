@@ -1,6 +1,6 @@
 export const partner = {
     name: 'partner',
-    title: 'Partner',
+    title: 'Partners',
     type: 'document',
     fields: [
       {
@@ -26,6 +26,12 @@ export const partner = {
         options: {
           hotspot: true,
         },
+      },
+      {
+        name: 'promo',
+        title: 'Promo',
+        type: 'reference',
+        to: [{ type: 'promo' }],
       },
     ],
     preview: {

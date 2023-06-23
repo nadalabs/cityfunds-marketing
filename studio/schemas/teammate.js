@@ -1,6 +1,6 @@
 export const teammate = {
     name: 'teammate',
-    title: 'Teammate',
+    title: 'Teammates',
     type: 'document',
     fields: [
       {

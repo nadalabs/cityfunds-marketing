@@ -11,7 +11,8 @@ import { legal } from './schemas/legal';
 import { press } from './schemas/press';
 import { teammate } from './schemas/teammate';
 import { testimonial } from './schemas/testimonial';
-import { content } from './schemas/content';
+import { promo } from './schemas/promo';
+import { home } from './schemas/home';
 
 const title = import.meta.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Nada Finance';
 const projectId = import.meta.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -24,7 +25,7 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [author, post, partner, legal, press, teammate, testimonial, content],
+    types: [author, post, partner, legal, press, teammate, testimonial, promo, home],
   },
   document: {
     productionUrl: resolveProductionUrl,

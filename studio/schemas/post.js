@@ -1,6 +1,6 @@
 export const post = {
   name: 'post',
-  title: 'Post',
+  title: 'Posts',
   type: 'document',
   fields: [
     {
