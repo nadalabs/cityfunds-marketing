@@ -54,7 +54,7 @@ export default function HowItWorks({
       <Slider {...settings} ref={sliderRef}>
         {steps.map(({ imageUrl }, idx) => (
           <div key={idx}>
-            <FlewWrapper key={idx}>
+            <FlewWrapper>
               {!isMobile && isPhoneFrame && <PhoneScreen imageUrl={imageUrl} />}
 
               <ContentWrapper>
@@ -67,7 +67,7 @@ export default function HowItWorks({
                     <StepWrapper
                       key={jdx}
                       onClick={() => handleOnClick(jdx)}
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: 'pointer', zIndex: 9 }}
                     >
                       <GreenSquare
                         style={{
@@ -82,7 +82,10 @@ export default function HowItWorks({
                       </SecondaryHeading>
                       <SecondaryText>{description}</SecondaryText>
                       {idx === jdx && (
-                        <PrimaryButton onClick={onClick}>
+                        <PrimaryButton
+                          onClick={onClick}
+                          style={{ zIndex: 999 }}
+                        >
                           {btnText}
                         </PrimaryButton>
                       )}

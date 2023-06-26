@@ -30,11 +30,6 @@ export default function AboutPage({ teammates }) {
         ]}
         isTextWide
       />
-      {/* <LongFormText
-        overline={`We are on a Mission`}
-        title={`Our Story`}
-        content={``}
-      /> */}
       <SectionWrapper>
         <Overline>We are on a Mission</Overline>
         <Heading>Our Story</Heading>
@@ -78,11 +73,7 @@ export default function AboutPage({ teammates }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  // const data = await getClient(preview).fetch(contentByLabelQuery, {
-  //   label: 'our-story',
-  // });
   const teammates = await getClient(preview).fetch(teammateIndexQuery);
-  // const content = data?.content ?? null;
 
   return {
     props: { teammates },
