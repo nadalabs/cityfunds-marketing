@@ -16,6 +16,7 @@ export const UTM_PARAMETERS = [
   'gclid',
   'fbclid',
   'msclkid',
+  'irclickid',
 ];
 
 export const HEADER_LINKS = [
