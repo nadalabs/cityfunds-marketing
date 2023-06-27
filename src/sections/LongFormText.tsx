@@ -63,7 +63,7 @@ export default function LongFormText({
     <>
       {overline && <Overline>{overline}</Overline>}
       {title && <Heading>{title}</Heading>}
-       {/* @ts-ignore-next-line */}
+      {/* @ts-ignore-next-line */}
       <PortableText value={content || []} components={components} />
     </>
   );

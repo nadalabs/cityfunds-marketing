@@ -1,22 +1,21 @@
+import AlertBanner from '@components/AlertBanner';
 import Footer from '@components/Footer';
 import * as snippet from '@segment/snippet';
 import * as Sentry from '@sentry/react';
 import { UTM_PARAMETERS } from '@utils/constants';
 import { setCookie } from '@utils/helpers';
 import theme from '@utils/theme';
-import AlertBanner from '@components/AlertBanner';
 import { Analytics } from '@vercel/analytics/react';
 import { footerQuery, homeIndexQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
-import type { AppProps } from 'next/app';
+import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';
 import Script from 'next/script';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../globalstyles';
-import PageLayout from '@components/PageLayout';
 
 declare global {
   interface Window {
@@ -24,10 +23,26 @@ declare global {
   }
 }
 
-export default function App({ Component, pageProps }: AppProps) {
-  const [banner, setBanner] = useState('');
-  const [footer, setFooter] = useState([]);
+interface AppProps extends NextAppProps {
+  footer?: any[];
+  banner?: string;
+}
 
+App.getInitialProps = async () => {
+  const foooterData = await getClient().fetch(footerQuery);
+  const bannerData = await getClient().fetch(homeIndexQuery);
+  return {
+    footer: foooterData?.legal?.content,
+    banner: bannerData[0]?.promo?.banner,
+  };
+};
+
+export default function App({
+  Component,
+  pageProps,
+  footer,
+  banner,
+}: AppProps) {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     UTM_PARAMETERS.forEach((param) => {
@@ -36,22 +51,6 @@ export default function App({ Component, pageProps }: AppProps) {
         setCookie(param, value);
       }
     });
-  }, []);
-
-  useEffect(() => {
-    const loadFooter = async () => {
-      const data = await getClient().fetch(footerQuery);
-      setFooter(data?.legal?.content);
-    };
-    loadFooter();
-  }, []);
-
-  useEffect(() => {
-    const loadBanner = async () => {
-      const data = await getClient().fetch(homeIndexQuery);
-      setBanner(data[0]?.promo?.banner);
-    };
-    loadBanner();
   }, []);
 
   function renderSnippet() {
