@@ -1,4 +1,3 @@
-import AlertBanner from '@components/AlertBanner';
 import DesktopNavBar from '@components/DesktopNavBar';
 import MobileNavBar from '@components/MobileNavBar';
 import useIsMobile from '@hooks/useIsMobile';
@@ -10,16 +9,11 @@ interface BannerProps {
   bannerText?: string;
 }
 
-export default function PageLayout({
-  children,
-  partnerImage,
-  bannerText,
-}: BannerProps) {
+export default function PageLayout({ children, partnerImage }: BannerProps) {
   const isMobile = useIsMobile();
 
   return (
     <div>
-      {bannerText && <AlertBanner primaryText={bannerText} />}
       {isMobile ? (
         <MobileNavBar />
       ) : (

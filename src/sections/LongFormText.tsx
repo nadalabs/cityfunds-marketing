@@ -1,4 +1,10 @@
-import { Caption, Heading, LinkText, Overline, PrimaryText } from '@elements/Typography';
+import {
+  Caption,
+  Heading,
+  LinkText,
+  Overline,
+  PrimaryText,
+} from '@elements/Typography';
 import { PortableText } from '@portabletext/react';
 
 interface LongFormTextProps {
@@ -12,11 +18,11 @@ export default function LongFormText({
   title,
   overline,
   content,
-  isSmall
+  isSmall,
 }: LongFormTextProps) {
   const components = {
     block: {
-      normal: ({ children, value }) => {
+      normal: ({ children }) => {
         if (isSmall) {
           return <Caption>{children}</Caption>;
         } else {
@@ -25,7 +31,7 @@ export default function LongFormText({
       },
     },
     list: {
-      bullet: ({ children, value }) => {
+      bullet: ({ children }) => {
         if (isSmall) {
           return <Caption>{children}</Caption>;
         } else {
@@ -40,7 +46,11 @@ export default function LongFormText({
             href={value.href}
             target="_blank"
             rel="noreferrer"
-            style={{ fontSize: isSmall ? '14px' : '24px', color: '#48DC95', margin: 0 }}
+            style={{
+              fontSize: isSmall ? '14px' : '24px',
+              color: '#48DC95',
+              margin: 0,
+            }}
           >
             {children}
           </LinkText>
@@ -48,11 +58,12 @@ export default function LongFormText({
       },
     },
   };
-  
+
   return (
     <>
       {overline && <Overline>{overline}</Overline>}
       {title && <Heading>{title}</Heading>}
+       {/* @ts-ignore-next-line */}
       <PortableText value={content || []} components={components} />
     </>
   );
