@@ -31,7 +31,6 @@ export default function HomePage({
   testimonials,
   partner,
 }: HomePageProps) {
-  console.log(homePage)
   const cityCards = FEATURED_CITIES.map(
     ({ name, cardImage, totalAssets, appreciation }) => ({
       name,
