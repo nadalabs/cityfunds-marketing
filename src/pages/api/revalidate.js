@@ -17,6 +17,7 @@ const LEGAL_UPDATED_QUERY = `*[_type == "legal" && _id == $id].slug.current`;
 const PARTNER_UPDATED_QUERY = `*[_type == "partner" && _id == $id].slug.current`;
 const POST_UPDATED_QUERY = `*[_type == "post" && _id == $id].slug.current`;
 const PRESS_UPDATED_QUERY = `*[_type == "press" && _id == $id].title.current`;
+const PROMO_UPDATED_QUERY = `*[_type == "promo" && _id == $id].title.current`;
 const TEAMMATE_UPDATED_QUERY = `*[_type == "teammate" && _id == $id].name.current`;
 const TESTIMONIAL_UPDATED_QUERY = `*[_type == "testimonial" && _id == $id].name.current`;
 
@@ -34,6 +35,8 @@ const getQueryForType = (type) => {
       return POST_UPDATED_QUERY;
     case 'press':
       return PRESS_UPDATED_QUERY;
+    case 'promo':
+      return PROMO_UPDATED_QUERY;
     case 'teammate':
       return TEAMMATE_UPDATED_QUERY;
     case 'testimonial':
@@ -85,7 +88,7 @@ export default async function revalidate(req, res) {
 
   if (_type === 'post') {
     staleRoutes = ['/learn', `/learn/${_slug}`];
-  } else if (_type === 'partner' || _type === 'legal') {
+  } else if (_type === 'partner' || _type === 'legal' || _type === 'promo') {
     staleRoutes = [`/${_slug}`];
   } else if (_type === 'press') {
     staleRoutes = [`/press`];
@@ -94,7 +97,6 @@ export default async function revalidate(req, res) {
   } else if (_type === 'testimonial') {
     staleRoutes = [`/`, '/homeshares'];
   }
-  console.log(staleRoutes);
 
   try {
     await Promise.all(staleRoutes.map((route) => res.revalidate(route)));

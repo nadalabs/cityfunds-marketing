@@ -1,12 +1,16 @@
+import Footer from '@components/Footer';
 import * as snippet from '@segment/snippet';
 import * as Sentry from '@sentry/react';
 import { UTM_PARAMETERS } from '@utils/constants';
 import { setCookie } from '@utils/helpers';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
+import { footerQuery } from 'lib/queries';
+import { getClient } from 'lib/sanity.server';
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import Script from 'next/script';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { ThemeProvider } from 'styled-components';
@@ -19,6 +23,8 @@ declare global {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [footer, setFooter] = useState([]);
+
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     UTM_PARAMETERS.forEach((param) => {
@@ -27,6 +33,14 @@ export default function App({ Component, pageProps }: AppProps) {
         setCookie(param, value);
       }
     });
+  }, []);
+
+  useEffect(() => {
+    const loadFooter = async () => {
+      const data = await getClient().fetch(footerQuery);
+      setFooter(data?.legal?.content);
+    };
+    loadFooter();
   }, []);
 
   function renderSnippet() {
@@ -52,6 +66,17 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#48DC95" />
+        <meta
+          name="description"
+          content="Gain access to professionally-managed, diversified real estate portfolios in the world’s best cities - start with as little as $100."
+        />
+        <title>Nada</title>
+      </Head>
+
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Script
@@ -59,6 +84,7 @@ export default function App({ Component, pageProps }: AppProps) {
           dangerouslySetInnerHTML={{ __html: renderSnippet() }}
         />
         <Component {...pageProps} />
+        <Footer legal={footer} />
         <Analytics />
       </ThemeProvider>
     </>

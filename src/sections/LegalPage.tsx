@@ -1,4 +1,5 @@
 import PageLayout from '@components/PageLayout';
+import { SectionWrapper } from '@elements/Containers';
 import { Heading, LinkText } from '@elements/Typography';
 import LongFormText from '@sections/LongFormText';
 import { LEGAL_LINKS } from '@utils/constants';
@@ -20,14 +21,17 @@ export default function LegalPage({ legal }: LegalPageProps) {
           </StyledLink>
         ))}
       </HeadingWrapper>
-      <LongFormText
-        overline={`Last updated ${format(
-          parseISO(legal?.date),
-          'LLLL	d, yyyy'
-        )}`}
-        title={legal?.title}
-        content={legal?.content}
-      />
+
+      <SectionWrapper>
+        <LongFormText
+          overline={`Last updated ${format(
+            parseISO(legal?.date),
+            'LLLL	d, yyyy'
+          )}`}
+          title={legal?.title}
+          content={legal?.content}
+        />
+      </SectionWrapper>
     </PageLayout>
   );
 }

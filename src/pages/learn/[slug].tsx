@@ -1,28 +1,21 @@
 import PageLayout from '@components/PageLayout';
+import { SectionWrapper } from '@elements/Containers';
 import BlogHero from '@sections/BlogHero';
 import LongFormText from '@sections/LongFormText';
 import { postQuery, postSlugsQuery } from 'lib/queries';
 import { getClient, sanityClient } from 'lib/sanity.server';
 
-// const PostPreview = lazy(() => import('../../components/post-preview'));
-
-export default function PostPage({ preview, data }) {
-  // if (preview) {
-  //   return (
-  //     <PreviewSuspense fallback="Loading...">
-  //       <PostPreview data={data} />
-  //     </PreviewSuspense>
-  //   );
-  // }
-
+export default function PostPage({ post }) {
   return (
     <PageLayout>
-      <BlogHero blogPosts={[data?.post]} />
-      <LongFormText
-        overline={data?.post?.tag}
-        title={data?.post?.title}
-        content={data?.post?.content}
-      />
+      <BlogHero blogPosts={[post]} />
+      <SectionWrapper>
+        <LongFormText
+          overline={post?.tag}
+          title={post?.title}
+          content={post?.content}
+        />
+      </SectionWrapper>
     </PageLayout>
   );
 }
@@ -34,10 +27,7 @@ export async function getStaticProps({ params, preview = false }) {
   const post = data?.post ?? null;
 
   return {
-    props: {
-      preview,
-      data: { post },
-    },
+    props: { post },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };

@@ -10,7 +10,7 @@
     "format": "prettier --write \"src/**/*.+(ts|tsx|js|jsx|json)\""
   },
   "dependencies": {
-    "@portabletext/react": "^2.0.1",
+    "@portabletext/react": "^3.0.4",
     "@sanity/image-url": "^1.0.2",
     "@sanity/webhook": "^2.0.0",
     "@segment/snippet": "^4.16.0",

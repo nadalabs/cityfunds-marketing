@@ -6,15 +6,22 @@ import {
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
+import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import EmailCapture from 'src/components/EmailCapture';
 import styled from 'styled-components';
 
 interface PromoCTAProps {
   overline?: string;
+  promo?: {
+    title: string;
+    description: string;
+    caption: string;
+    image: string;
+  };
 }
 
-export default function PromoCTA({ overline }: PromoCTAProps) {
+export default function PromoCTA({ overline, promo }: PromoCTAProps) {
   const isMobile = useIsMobile();
 
   return (
@@ -23,22 +30,11 @@ export default function PromoCTA({ overline }: PromoCTAProps) {
         {overline && (
           <Overline style={{ marginBottom: '1rem' }}>{overline}</Overline>
         )}
-        <Heading style={{ marginBottom: 0 }}>Invest in Dallas and</Heading>
-        <Heading style={{ color: '#48DC95', marginBottom: '2rem' }}>
-          Get Free Shares in Dallas
-        </Heading>
+        <Heading style={{ marginBottom: 0 }}>{promo?.title}</Heading>
         <SecondaryText style={{ marginBottom: '4px' }}>
-          The first 50 users to invest $250 in Dallas get 2 free shares in
-          Dallas.
+          {promo?.description}
         </SecondaryText>
-        <SecondaryText style={{ marginBottom: '8px' }}>
-          The first 50 users to invest $500 in Dallas get 5 free shares in
-          Dallas.
-        </SecondaryText>
-        <Caption style={{ marginBottom: '2rem' }}>
-          Promotion active until 6/30/2023 or until capacity is reached for each
-          promotion. Terms and conditions apply
-        </Caption>
+        <Caption style={{ marginBottom: '2rem' }}>{promo?.caption}</Caption>
         <EmailCapture
           btnText="Get Started"
           onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
@@ -73,7 +69,7 @@ export default function PromoCTA({ overline }: PromoCTAProps) {
             width={250}
             height={500}
             alt={'Limited time offer!'}
-            src={'/images/offer.png'}
+            src={urlForImage(promo?.image).url()}
           />
         </div>
       )}

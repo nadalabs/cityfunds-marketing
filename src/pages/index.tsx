@@ -17,10 +17,20 @@ import {
   FEATURED_CITIES,
   VALUE_PROPS,
 } from '@utils/constants';
-import { testimonialIndexQuery } from 'lib/queries';
+import { homeIndexQuery, testimonialIndexQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
-export default function HomePage({ testimonials, partner }) {
+interface HomePageProps {
+  homePage?: any;
+  testimonials: any;
+  partner: any;
+}
+
+export default function HomePage({
+  homePage,
+  testimonials,
+  partner,
+}: HomePageProps) {
   const cityCards = FEATURED_CITIES.map(
     ({ name, cardImage, totalAssets, appreciation }) => ({
       name,
@@ -32,7 +42,10 @@ export default function HomePage({ testimonials, partner }) {
   );
 
   return (
-    <PageLayout partnerImage={partner?.coverImage}>
+    <PageLayout
+      partnerImage={partner?.coverImage}
+      bannerText={partner?.promo?.banner || homePage?.promo?.banner}
+    >
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios in the nation’s top cities."
@@ -137,6 +150,7 @@ export default function HomePage({ testimonials, partner }) {
       />
       <Testimonials reviews={testimonials} />
       <PromoCTA
+        promo={partner?.promo || homePage?.promo}
         overline={
           partner?.name ? `Exclusive Perk for ${partner?.name} Readers` : ''
         }
@@ -146,10 +160,11 @@ export default function HomePage({ testimonials, partner }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
+  const homePage = await getClient(preview).fetch(homeIndexQuery);
   const testimonials = await getClient(preview).fetch(testimonialIndexQuery);
 
   return {
-    props: { testimonials },
+    props: { homePage: homePage[0], testimonials },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };

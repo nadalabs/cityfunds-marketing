@@ -40,7 +40,8 @@ export async function getStaticProps({ params, preview = false }) {
 
 export async function getStaticPaths() {
   const partnerPaths = await sanityClient.fetch(partnerSlugsQuery);
-  const legalPaths = await sanityClient.fetch(legalSlugsQuery);
+  const legal = await sanityClient.fetch(legalSlugsQuery);
+  const legalPaths = legal?.filter((legal) => legal !== 'footer') ?? null;
 
   return {
     paths: [...partnerPaths, ...legalPaths].map((slug) => ({
