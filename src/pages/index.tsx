@@ -40,6 +40,7 @@ export default function HomePage({
       ),
     })
   );
+  console.log('partner', partner)
 
   return (
     <PageLayout
