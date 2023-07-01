@@ -40,13 +40,9 @@ export default function HomePage({
       ),
     })
   );
-  console.log('partner', partner)
 
   return (
-    <PageLayout
-      partnerImage={partner?.coverImage}
-      bannerText={partner?.promo?.banner || homePage?.promo?.banner}
-    >
+    <PageLayout partnerImage={partner?.coverImage}>
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios in the nation’s top cities."

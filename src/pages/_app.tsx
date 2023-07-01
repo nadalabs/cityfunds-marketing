@@ -1,4 +1,3 @@
-import AlertBanner from '@components/AlertBanner';
 import Footer from '@components/Footer';
 import * as snippet from '@segment/snippet';
 import * as Sentry from '@sentry/react';
@@ -93,7 +92,7 @@ export default function App({
           id="segment-script"
           dangerouslySetInnerHTML={{ __html: renderSnippet() }}
         />
-        {banner && <AlertBanner primaryText={banner} />}
+        {/* {banner && <AlertBanner primaryText={banner} />} */}
         <Component {...pageProps} />
         <Footer legal={footer} />
         <Analytics />

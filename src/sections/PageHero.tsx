@@ -1,9 +1,9 @@
 import CarouselStepper from '@components/CarouselStepper';
+import EmailCapture from '@components/EmailCapture';
 import { Heading, PrimaryText, SecondaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { useRef } from 'react';
 import Slider from 'react-slick';
-import EmailCapture from 'src/components/EmailCapture';
 import styled from 'styled-components';
 
 interface PageHeroProps {
