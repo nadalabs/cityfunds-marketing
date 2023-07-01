@@ -36,7 +36,7 @@ export default function DesktopNavBar({
   return (
     <SectionWrapper
       style={{
-        top: scrollPosition === 0 ? 45 : 0,
+        top: scrollPosition === 0 ? 0 : 0,
         backdropFilter: 'blur(1.5px)',
         background:
           'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 42.74%, rgba(255, 255, 255, 0.7) 65.57%, rgba(255, 255, 255, 0) 100%)',
