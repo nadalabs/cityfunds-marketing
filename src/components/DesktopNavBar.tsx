@@ -1,5 +1,5 @@
 import { PrimaryButton } from '@elements/Buttons';
-import { HEADER_LINKS } from '@utils/constants';
+import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -79,7 +79,7 @@ export default function DesktopNavBar({
       <div>
         {partnerImage ? (
           <PrimaryButton
-            onClick={() => window.location.replace(`https/www.invest.nada.co`)}
+            onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
           >
             Get Started
           </PrimaryButton>
@@ -101,7 +101,7 @@ export default function DesktopNavBar({
 
             <PrimaryButton
               onClick={() =>
-                window.location.replace(`https/www.invest.nada.co`)
+                window.location.replace(EXTERNAL_ROUTES.WEB_APP)
               }
             >
               Get Started
