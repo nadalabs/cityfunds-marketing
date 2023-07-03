@@ -1,5 +1,5 @@
 export enum EXTERNAL_ROUTES {
-  WEB_APP = 'https//www.invest.nada.co',
+  WEB_APP = 'https://invest.nada.co/',
   DOWNLOAD = 'https//nada.onelink.me/wNEn/ksbeffng',
   TYPEFORM = 'https//form.typeform.com/to/fv2eTpuT',
   CAREERS = 'https//www.linkedin.com/company/hellonada/jobs/',
