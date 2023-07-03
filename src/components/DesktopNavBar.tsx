@@ -79,9 +79,7 @@ export default function DesktopNavBar({
       <div>
         {partnerImage ? (
           <PrimaryButton
-            onClick={() =>
-              window.location.replace(`http://localhost:3001/signup`)
-            }
+            onClick={() => window.location.replace(`https/www.invest.nada.co`)}
           >
             Get Started
           </PrimaryButton>
@@ -103,9 +101,7 @@ export default function DesktopNavBar({
 
             <PrimaryButton
               onClick={() =>
-                window.location.replace(
-                  `http://localhost:3001/signup`
-                )
+                window.location.replace(`https/www.invest.nada.co`)
               }
             >
               Get Started
