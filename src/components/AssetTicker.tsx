@@ -1,34 +1,58 @@
 import { Caption, SecondaryText } from '@elements/Typography';
+import { formatPercent, formatPrice } from '@utils/helpers';
 import Image from 'next/image';
+import { ReactNode } from 'react';
 import { styled } from 'styled-components';
 
 interface BannerProps {
-  totalAssets: number;
+  sharePrice: number;
   appreciation: number;
+  totalAssets: number;
 }
 
 export default function AssetTicker({
-  totalAssets,
+  sharePrice,
   appreciation,
+  totalAssets,
 }: BannerProps) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <BackgroundWrapper>
-        <BoldText>{appreciation}%</BoldText>
+  const PILLS = [
+    {
+      number: formatPrice(sharePrice),
+      description: <Caption style={{ color: 'white' }}>/ Share</Caption>,
+    },
+    {
+      number: formatPercent(appreciation),
+      description: (
         <Image
+          src="/icons/arrow-up.svg"
+          alt="Appreciation"
           width={18}
           height={18}
-          alt={'Arrow Up'}
-          src={'/icons/arrow.svg'}
         />
-      </BackgroundWrapper>
+      ),
+    },
+    {
+      number: totalAssets,
+      description: <Caption style={{ color: 'white' }}> Assets</Caption>,
+    },
+  ];
 
-      <BackgroundWrapper style={{ display: 'flex', alignItems: 'flex-end' }}>
-        <BoldText>{totalAssets}</BoldText>
-        <Caption style={{ color: 'white', marginBottom: '2px' }}>
-          Assets
-        </Caption>
-      </BackgroundWrapper>
+  function renderPill(number: number, description: ReactNode, idx: number) {
+    return (
+      <div key={idx} style={{ display: 'flex', alignItems: 'center' }}>
+        <BackgroundWrapper style={{ display: 'flex' }}>
+          <BoldText>{number}</BoldText>
+          {description}
+        </BackgroundWrapper>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ display: 'flex' }}>
+      {PILLS.map(({ number, description }: any, idx) =>
+        renderPill(number, description, idx)
+      )}
     </div>
   );
 }
@@ -42,9 +66,9 @@ export const BoldText = styled(SecondaryText)`
 export const BackgroundWrapper = styled.div`
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(2.5px);
-  border-radius: 10px;
+  border-radius: 0.61038rem;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(2.4415206909179688px);
   padding: 4px 8px;
   margin-right: 8px;
 `;

@@ -2,13 +2,14 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 export const Heading = styled.h1`
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.dark};
   font-family: ${({ theme }) => theme.fonts.main};
+  font-size: 4.6875rem;
   font-style: normal;
   font-weight: 600;
-  font-size: 64px;
-  line-height: 70px;
-  margin: 0 0 16px 0;
+  line-height: 100%;
+  letter-spacing: -0.03513rem;
+  margin: 0 0 1rem 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 48px;

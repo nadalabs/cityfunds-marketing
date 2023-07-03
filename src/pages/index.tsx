@@ -1,4 +1,3 @@
-import AssetTicker from '@components/AssetTicker';
 import FeaturedImage from '@components/FeaturedImage';
 import KeyMetrics from '@components/KeyMetrics';
 import PageLayout from '@components/PageLayout';
@@ -31,16 +30,6 @@ export default function HomePage({
   testimonials,
   partner,
 }: HomePageProps) {
-  const cityCards = FEATURED_CITIES.map(
-    ({ name, cardImage, totalAssets, appreciation }) => ({
-      name,
-      cardImage,
-      description: (
-        <AssetTicker totalAssets={totalAssets} appreciation={appreciation} />
-      ),
-    })
-  );
-
   return (
     <PageLayout partnerImage={partner?.coverImage}>
       <PageHero
@@ -58,7 +47,7 @@ export default function HomePage({
           'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
         }
         cards={[
-          ...cityCards,
+          ...FEATURED_CITIES,
           {
             name: 'Coming Soon',
             cardImage: '/images/coming-soon-1.png',

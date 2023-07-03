@@ -32,7 +32,7 @@ export default function MobileNavBar() {
           ? '#303030'
           : 'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 42.74%, rgba(255, 255, 255, 0.7) 65.57%, rgba(255, 255, 255, 0) 100%)',
         backdropFilter: 'blur(1.5px)',
-        top: scrollPosition === 0 ? 75 : 0,
+        top: scrollPosition === 0 ? 0 : 0,
       }}
     >
       <FlexWrapper>

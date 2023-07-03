@@ -1,6 +1,5 @@
 import { PrimaryButton } from '@elements/Buttons';
-import { LinkText } from '@elements/Typography';
-import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
+import { HEADER_LINKS } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -45,8 +44,8 @@ export default function DesktopNavBar({
       {partnerImage ? (
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Image
-            width={188}
-            height={54}
+            width={184}
+            height={52}
             alt={'Cityfunds'}
             src={'/icons/cityfunds-dark.svg'}
           />
@@ -69,8 +68,8 @@ export default function DesktopNavBar({
       ) : (
         <Link href={`/`}>
           <Image
-            width={188}
-            height={54}
+            width={184}
+            height={52}
             alt="Nada"
             src="/icons/nada-dark.svg"
           />
@@ -80,14 +79,16 @@ export default function DesktopNavBar({
       <div>
         {partnerImage ? (
           <PrimaryButton
-            onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+            onClick={() =>
+              window.location.replace(`http://localhost:3001/signup`)
+            }
           >
             Get Started
           </PrimaryButton>
         ) : (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
             {HEADER_LINKS.map(({ name, link }, idx) => (
-              <LinkText
+              <NavBarLink
                 key={idx}
                 href={link}
                 style={{
@@ -97,11 +98,15 @@ export default function DesktopNavBar({
                 }}
               >
                 {name.toUpperCase()}
-              </LinkText>
+              </NavBarLink>
             ))}
 
             <PrimaryButton
-              onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+              onClick={() =>
+                window.location.replace(
+                  `http://localhost:3001/signup`
+                )
+              }
             >
               Get Started
             </PrimaryButton>
@@ -117,8 +122,19 @@ const SectionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 100px 70px 100px;
+  backdrop-filter: blur(1.5px);
+  padding: 20px 100px 40px 100px;
   position: fixed;
   z-index: 999;
   width: 100%;
+`;
+
+const NavBarLink = styled.a`
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin: 0;
 `;

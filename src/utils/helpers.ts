@@ -16,3 +16,11 @@ export const getCookie = (name: string) => {
   let parts = value.split('; ' + name + '=') || [''];
   if (parts.length > 1) return parts.pop()?.split(';').shift();
 };
+
+export const formatPrice = (price: number) => {
+  return `$${price}`;
+};
+
+export const formatPercent = (percent: number) => {
+  return `${percent}%`;
+};

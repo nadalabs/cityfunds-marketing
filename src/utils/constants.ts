@@ -1,10 +1,10 @@
 export enum EXTERNAL_ROUTES {
-  WEB_APP = 'https://www.invest.nada.co',
-  DOWNLOAD = 'https://nada.onelink.me/wNEn/ksbeffng',
-  TYPEFORM = 'https://form.typeform.com/to/fv2eTpuT',
-  CAREERS = 'https://www.linkedin.com/company/hellonada/jobs/',
-  APPLE_STORE = 'https://apps.apple.com/us/app/nada-finance/id1615840472',
-  GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
+  DOWNLOAD = 'https//nada.onelink.me/wNEn/ksbeffng',
+  TYPEFORM = 'https//form.typeform.com/to/fv2eTpuT',
+  CAREERS = 'https//www.linkedin.com/company/hellonada/jobs/',
+  APPLE_STORE = 'https//apps.apple.com/us/app/nada-finance/id1615840472',
+  GOOGLE_STORE = 'https//play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
+  HUBSPOT_MEETING = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
 }
 
 export const UTM_PARAMETERS = [
@@ -90,33 +90,41 @@ export const FEATURED_CITIES = [
     heroImage: '/images/miami-hero.png',
     cardImage: '/images/miami.png',
     totalAssets: 9,
-    appreciation: 18.67,
+    sharePrice: 10.0,
+    appreciation: 18.7,
   },
   {
     name: 'Dallas',
     heroImage: '/images/dallas-hero.png',
     cardImage: '/images/dallas.png',
     totalAssets: 15,
-    appreciation: 14.04,
+    sharePrice: 10.0,
+    appreciation: 14.0,
   },
   {
     name: 'Austin',
     heroImage: '/images/austin-hero.png',
     cardImage: '/images/austin.png',
     totalAssets: 19,
-    appreciation: 14.29,
+    sharePrice: 10.0,
+    appreciation: 14.3,
   },
   {
     name: 'Tampa',
     heroImage: '/images/tampa-hero.png',
     cardImage: '/images/tampa.png',
     totalAssets: 3,
-    appreciation: 7.44,
+    sharePrice: 10.0,
+    appreciation: 7.4,
   },
 ];
 
 export const FEATURED_ARTICLES = [
-  { name: 'Forbes', imageUrl: '/icons/forbes.svg', link: '' },
+  {
+    name: 'Forbes',
+    imageUrl: '/icons/forbes.svg',
+    link: 'https://www.forbes.com/sites/rebeccaszkutak/2021/10/14/startups-can-raise-from-crowdfunding-sites-and-get-their-venture-capital-too/?sh=268c80684f2b',
+  },
   {
     name: 'The Motley Fool',
     imageUrl: '/icons/motley-fool.svg',

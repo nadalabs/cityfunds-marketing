@@ -1,9 +1,8 @@
+import AssetTicker from '@components/AssetTicker';
 import { GreenSquare } from '@components/CarouselStepper';
 import { CardWrapper, SliderWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
-import Link from 'next/link';
-import { ReactNode } from 'react';
 import { styled } from 'styled-components';
 
 interface CardSliderProps {
@@ -12,8 +11,9 @@ interface CardSliderProps {
   cards: {
     name: string;
     cardImage: string;
-    link?: string;
-    description?: ReactNode;
+    sharePrice?: number;
+    appreciation?: number;
+    totalAssets?: number;
     isSmallText?: boolean;
   }[];
 }
@@ -29,47 +29,48 @@ export default function CardSlider({
         <Heading>{heading}</Heading>
         {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
       </HeadingWrapper>
-
       <div style={{ display: 'flex', overflowX: 'scroll' }}>
         {cards?.map(
-          ({ name, description, link, cardImage, isSmallText }, idx) => (
+          ({ name, cardImage, sharePrice, appreciation, totalAssets }, idx) => (
             <div key={idx}>
-              <Link
-                href={link ? link : EXTERNAL_ROUTES.WEB_APP}
-                target={link ? '_blank' : '_self'}
+              <CardWrapper
+                onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+                style={{
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${cardImage}), lightgray 50% / cover no-repeat`,
+                }}
               >
-                <CardWrapper
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 39.06%, rgba(0, 0, 0, 0.44) 67.71%, rgba(0, 0, 0, 0.79) 95.83%), url(${cardImage})`,
-                  }}
-                >
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                      <Heading
-                        style={{
-                          color: 'white',
-                          marginBottom: '8px',
-                          fontSize: isSmallText ? '32px' : '64px',
-                          lineHeight: isSmallText ? '32px' : '64px',
-                        }}
-                      >
-                        {name.toLocaleLowerCase()}
-                      </Heading>
-                      <GreenSquare
-                        style={{
-                          height: isSmallText ? '12px' : '16px',
-                          width: isSmallText ? '12px' : '16px',
-                          marginLeft: isSmallText ? '4px' : '8px',
-                          marginBottom: isSmallText ? '12px' : '1rem',
-                        }}
-                      />
-                    </div>
-                    {description && description}
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+                    <Heading
+                      style={{
+                        color: 'white',
+                        marginBottom: '8px',
+                      }}
+                    >
+                      {name}
+                    </Heading>
+                    <GreenSquare
+                      style={{
+                        height: '16px',
+                        width: '16px',
+                        marginLeft: '8px',
+                        marginBottom: '1rem',
+                      }}
+                    />
                   </div>
-                </CardWrapper>
-              </Link>
+
+                  {sharePrice && (
+                    <AssetTicker
+                      sharePrice={sharePrice}
+                      appreciation={appreciation}
+                      totalAssets={totalAssets}
+                    />
+                  )}
+                </div>
+              </CardWrapper>
             </div>
           )
         )}
