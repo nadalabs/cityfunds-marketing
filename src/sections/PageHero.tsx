@@ -63,7 +63,7 @@ export default function PageHero({
                 <Heading
                   style={{
                     color: 'white',
-                    maxWidth: '700px',
+                    maxWidth: isTextWide ? '1100px' : '700px',
                   }}
                 >
                   {heading}
@@ -71,26 +71,26 @@ export default function PageHero({
                 <PrimaryText
                   style={{
                     color: '#B0B0B0',
-                    maxWidth: '700px',
+                    maxWidth: isTextWide ? '1100px' : '700px',
                     marginBottom: '1.5rem',
                   }}
                 >
                   {primaryText}
                 </PrimaryText>
 
-                <EmailCapture
+               {!isTextWide && ( <EmailCapture
                   btnText={btnText}
                   onClick={onClick}
                   formName={formName}
-                />
+                />)}
               </div>
             </div>
 
-            <CarouselStepper
+            {heroImages.length > 1 && (<CarouselStepper
               activeStep={idx}
               totalSteps={FEATURED_CITIES.length}
               sliderRef={sliderRef}
-            />
+            />)}
           </ContentWrapper>
         </div>
       ))}
@@ -109,8 +109,8 @@ export const HeroImage = styled.div`
 
 
 const ContentWrapper = styled.div`
-  position: relative;
-  bottom: 2rem;
+  position: absolute;
+  bottom: 8rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
