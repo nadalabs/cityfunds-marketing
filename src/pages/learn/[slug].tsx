@@ -1,3 +1,4 @@
+import BlogCapture from '@components/BlogCapture';
 import PageLayout from '@components/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import BlogHero from '@sections/BlogHero';
@@ -16,6 +17,7 @@ export default function PostPage({ post }) {
           content={post?.content}
         />
       </SectionWrapper>
+      <BlogCapture />
     </PageLayout>
   );
 }

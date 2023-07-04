@@ -1,3 +1,4 @@
+import BlogCapture from '@components/BlogCapture';
 import PageLayout from '@components/PageLayout';
 import BlogHero from '@sections/BlogHero';
 import BlogSlider from '@sections/BlogSlider';
@@ -25,6 +26,7 @@ export default function LearnPage({ allPosts }) {
     <PageLayout>
       <BlogHero blogPosts={heroPosts} />
       {renderBlogSliders()}
+      <BlogCapture />
     </PageLayout>
   );
 }
