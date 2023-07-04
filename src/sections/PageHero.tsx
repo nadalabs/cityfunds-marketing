@@ -2,6 +2,7 @@ import CarouselStepper from '@components/CarouselStepper';
 import EmailCapture from '@components/EmailCapture';
 import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { FEATURED_CITIES } from '@utils/constants';
 import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
@@ -43,7 +44,7 @@ export default function PageHero({
 
   return (
     <Slider {...settings} ref={sliderRef}>
-      {heroImages.map(({ name, totalAssets, heroImage }, idx) => (
+      {heroImages.map(({ heroImage }, idx) => (
         <div key={idx}>
           <HeroImage
             style={{
@@ -57,46 +58,39 @@ export default function PageHero({
             }}
           />
           <ContentWrapper>
-            <div>
-              <Heading
-                style={{
-                  color: 'white',
-                  maxWidth: isTextWide ? '1100px' : '700px',
-                }}
-              >
-                {heading}
-              </Heading>
-              <PrimaryText
-                style={{
-                  color: '#B0B0B0',
-                  maxWidth: isTextWide ? '900px' : '700px',
-                }}
-              >
-                {primaryText}
-              </PrimaryText>
-              {btnText && (
-                <div style={{ maxWidth: '700px' }}>
-                  <EmailCapture
-                    btnText={btnText}
-                    onClick={onClick}
-                    formName={formName}
-                  />
-                </div>
-              )}
+            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+              <div>
+                <Heading
+                  style={{
+                    color: 'white',
+                    maxWidth: '700px',
+                  }}
+                >
+                  {heading}
+                </Heading>
+                <PrimaryText
+                  style={{
+                    color: '#B0B0B0',
+                    maxWidth: '700px',
+                    marginBottom: '1.5rem',
+                  }}
+                >
+                  {primaryText}
+                </PrimaryText>
 
-              {!isMobile && heroImages.length > 1 && (
-                <div style={{ marginTop: '1rem' }}>
-                  {/* <SecondaryText style={{ color: 'white', marginBottom: 0 }}>
-                  {name}
-                </SecondaryText> */}
-                  <CarouselStepper
-                    activeStep={idx}
-                    totalSteps={heroImages.length}
-                    sliderRef={sliderRef}
-                  />
-                </div>
-              )}
+                <EmailCapture
+                  btnText={btnText}
+                  onClick={onClick}
+                  formName={formName}
+                />
+              </div>
             </div>
+
+            <CarouselStepper
+              activeStep={idx}
+              totalSteps={FEATURED_CITIES.length}
+              sliderRef={sliderRef}
+            />
           </ContentWrapper>
         </div>
       ))}
@@ -113,16 +107,16 @@ export const HeroImage = styled.div`
   background-size: cover;
 `;
 
-export const ContentWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  width: 100vw;
+
+const ContentWrapper = styled.div`
+  position: relative;
+  bottom: 2rem;
   height: 100vh;
-  z-index: 999;
-  padding: 16px 100px 10vh 100px;
-  position: absolute;
-  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  margin-left: 100px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     text-align: center;

@@ -98,7 +98,7 @@ export default function EmailCapture({
 }
 
 const FormWrapper = styled.div`
-  width: 100%;
+  width: 700px;
   display: flex;
   align-items: center;
   justify-items: space-between;
