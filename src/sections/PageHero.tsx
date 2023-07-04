@@ -1,6 +1,6 @@
 import CarouselStepper from '@components/CarouselStepper';
 import EmailCapture from '@components/EmailCapture';
-import { Heading, PrimaryText, SecondaryText } from '@elements/Typography';
+import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { useRef } from 'react';
 import Slider from 'react-slick';
@@ -83,25 +83,20 @@ export default function PageHero({
                   />
                 </div>
               )}
-            </div>
 
-            {!isMobile && heroImages.length > 1 && (
-              <div style={{ width: '200px' }}>
-                <SecondaryText style={{ color: 'white', marginBottom: 0 }}>
+              {!isMobile && heroImages.length > 1 && (
+                <div style={{ marginTop: '1rem' }}>
+                  {/* <SecondaryText style={{ color: 'white', marginBottom: 0 }}>
                   {name}
-                </SecondaryText>
-                <SecondaryText
-                  style={{ color: '#B0B0B0', marginBottom: '8px' }}
-                >
-                  {totalAssets} Properties
-                </SecondaryText>
-                <CarouselStepper
-                  activeStep={idx}
-                  totalSteps={heroImages.length}
-                  sliderRef={sliderRef}
-                />
-              </div>
-            )}
+                </SecondaryText> */}
+                  <CarouselStepper
+                    activeStep={idx}
+                    totalSteps={heroImages.length}
+                    sliderRef={sliderRef}
+                  />
+                </div>
+              )}
+            </div>
           </ContentWrapper>
         </div>
       ))}

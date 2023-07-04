@@ -34,7 +34,17 @@ export default function CardSlider({
       </HeadingWrapper>
       <div style={{ display: 'flex', overflowX: 'scroll' }}>
         {cards?.map(
-          ({ name, cardImage, sharePrice, appreciation, totalAssets }, idx) => (
+          (
+            {
+              name,
+              cardImage,
+              sharePrice,
+              appreciation,
+              totalAssets,
+              isSmallText,
+            },
+            idx
+          ) => (
             <div key={idx}>
               <CardWrapper
                 onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
@@ -49,6 +59,7 @@ export default function CardSlider({
                   <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                     <Heading
                       style={{
+                        fontSize: isSmallText ? '1.5rem' : '4.6875rem',
                         color: 'white',
                         marginBottom: '8px',
                       }}
@@ -57,10 +68,10 @@ export default function CardSlider({
                     </Heading>
                     <GreenSquare
                       style={{
-                        height: '16px',
-                        width: '16px',
+                        height: isSmallText ? '0.5rem' : '1rem',
+                        width: isSmallText ? '0.5rem' : '1rem',
                         marginLeft: '8px',
-                        marginBottom: '1rem',
+                        marginBottom: isSmallText ? '0.75rem' : '1rem',
                       }}
                     />
                   </div>

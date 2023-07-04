@@ -1,5 +1,5 @@
 import { SectionWrapper } from '@elements/Containers';
-import { Overline } from '@elements/Typography';
+import { LinkText, Overline } from '@elements/Typography';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -7,11 +7,16 @@ import styled from 'styled-components';
 interface FeaturedLogosProps {
   overline: string;
   logos: any[];
+  seeMore?: boolean;
 }
 
-export default function FeaturedLogos({ overline, logos }: FeaturedLogosProps) {
+export default function FeaturedLogos({
+  overline,
+  logos,
+  seeMore,
+}: FeaturedLogosProps) {
   return (
-    <SectionWrapper>
+    <SectionWrapper style={{ textAlign: 'center' }}>
       <Overline style={{ color: '#989898', textAlign: 'center' }}>
         {overline}
       </Overline>
@@ -27,6 +32,12 @@ export default function FeaturedLogos({ overline, logos }: FeaturedLogosProps) {
           </Link>
         ))}
       </ContentWrapper>
+
+      {seeMore && (
+        <div style={{ paddingLeft: '1.25rem' }}>
+          <LinkText href="/press">See More</LinkText>
+        </div>
+      )}
     </SectionWrapper>
   );
 }
@@ -35,7 +46,7 @@ const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding: 0 6rem;
+  padding: 0 6rem 2rem 6rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;

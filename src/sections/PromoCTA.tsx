@@ -30,7 +30,7 @@ export default function PromoCTA({ overline, promo }: PromoCTAProps) {
         {overline && (
           <Overline style={{ marginBottom: '1rem' }}>{overline}</Overline>
         )}
-        <Heading style={{ marginBottom: 0 }}>{promo?.title}</Heading>
+        <Heading>{promo?.title}</Heading>
         <SecondaryText style={{ marginBottom: '4px' }}>
           {promo?.description}
         </SecondaryText>

@@ -95,6 +95,7 @@ export const HoverHeading = styled(Heading)`
   margin-bottom: 2rem;
   cursor: pointer;
   width: 700px;
+  font-size: 4rem;
 
   &:hover {
     color: ${({ theme }) => theme.colors.lightGrey};

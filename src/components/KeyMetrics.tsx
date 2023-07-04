@@ -38,7 +38,7 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
               )}
             </CountUp>
             <GreenSquare
-              style={{ position: 'relative', bottom: '8px', left: '8px' }}
+              style={{ position: 'relative', bottom: '1rem', left: '8px' }}
             />
           </div>
           <PrimaryText>{label}</PrimaryText>
@@ -65,7 +65,7 @@ const CounterWrapper = styled.div`
 `;
 
 const LargeHeading = styled(Heading)`
-  font-size: 75px;
+  font-size: 7rem;
   margin-bottom: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

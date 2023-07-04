@@ -40,7 +40,7 @@ export default function HomePage({
         formName="Cityfunds Lead"
         heroImages={FEATURED_CITIES}
       />
-      <FeaturedLogos overline="Featured In" logos={FEATURED_ARTICLES} />
+      <FeaturedLogos overline="Featured In" logos={FEATURED_ARTICLES} seeMore />
       <CardSlider
         heading="Pick your favorite Cityfund, or invest in all of them"
         primaryText={
@@ -85,7 +85,7 @@ export default function HomePage({
               formattingFn: (val) => `${val}+`,
             },
             {
-              label: 'Avg. Portfolio Appreciation',
+              label: 'Avgerage Appreciation',
               value: 11.7,
               formattingFn: (val) => `${val}%`,
               decimals: 1,

@@ -8,7 +8,7 @@ export default function BlogCapture() {
   return (
     <SectionWrapper>
       <ContentWrapper>
-        <div style={{width: '55%'}}>
+        <div style={{ width: '55%' }}>
           <Overline>Be the first to know about new Cityfunds</Overline>
           <SecondaryHeading>Sign Up for Updates</SecondaryHeading>
         </div>
