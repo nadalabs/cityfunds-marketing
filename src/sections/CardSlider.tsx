@@ -1,13 +1,14 @@
 import AssetTicker from '@components/AssetTicker';
 import { GreenSquare } from '@components/CarouselStepper';
 import { CardWrapper, SliderWrapper } from '@elements/Containers';
-import { Heading, PrimaryText } from '@elements/Typography';
+import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { styled } from 'styled-components';
 
 interface CardSliderProps {
   heading: string;
   primaryText?: string;
+  overline?: string;
   cards: {
     name: string;
     cardImage: string;
@@ -21,11 +22,13 @@ interface CardSliderProps {
 export default function CardSlider({
   heading,
   primaryText,
+  overline,
   cards,
 }: CardSliderProps) {
   return (
     <SliderWrapper>
       <HeadingWrapper>
+        {overline && <Overline>{overline}</Overline>}
         <Heading>{heading}</Heading>
         {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
       </HeadingWrapper>

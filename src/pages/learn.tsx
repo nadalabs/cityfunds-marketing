@@ -7,6 +7,9 @@ import _ from 'lodash';
 
 export default function LearnPage({ allPosts }) {
   const postsByTag = _.groupBy(allPosts, 'tag');
+  const heroPosts = allPosts
+    .filter(({ tag }) => tag === 'Investing' || tag === 'Home Equity')
+    .slice(0, 4);
 
   function renderBlogSliders() {
     const sliders = [];
@@ -15,12 +18,12 @@ export default function LearnPage({ allPosts }) {
         <BlogSlider key={tag} tag={tag} blogPosts={postsByTag[tag]} />
       );
     }
-    return sliders;
+    return [sliders.slice(2, 4), sliders.slice(0, 2)];
   }
 
   return (
     <PageLayout>
-      <BlogHero blogPosts={allPosts.slice(0, 4)} />
+      <BlogHero blogPosts={heroPosts} />
       {renderBlogSliders()}
     </PageLayout>
   );

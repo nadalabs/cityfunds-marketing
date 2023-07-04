@@ -72,8 +72,8 @@ export const CardWrapper = styled.div`
 
 export const ImageWrapper = styled.div`
   position: relative;
-  width: 420px;
-  height: 340px;
+  width: 360px;
+  height: 280px;
   border-radius: 50px;
   overflow: hidden;
   margin-bottom: 20px;

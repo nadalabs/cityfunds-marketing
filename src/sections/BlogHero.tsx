@@ -48,38 +48,36 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
 
       <Slider {...settings} ref={sliderRef}>
         {blogPosts.map((post, idx) => (
-          <div key={idx}>
-            <div>
-              <Link href={`/learn/${post?.slug}`}>
-                <FlexWrapper>
-                  <ImageWrapper>
-                    <Image
-                      fill
-                      alt={post?.title}
-                      style={{ borderRadius: '60px' }}
-                      src={
-                        post?.coverImage
-                          ? urlForImage(post?.coverImage).url()
-                          : '/images/nada-press.png'
-                      }
-                    />
-                  </ImageWrapper>
+          <div key={idx} onClick={() => console.log(post?.slug, idx)}>
+            <Link href={`/learn/${post?.slug}`}>
+              <FlexWrapper>
+                <ImageWrapper>
+                  <Image
+                    fill
+                    alt={post?.title}
+                    style={{ borderRadius: '60px' }}
+                    src={
+                      post?.coverImage
+                        ? urlForImage(post?.coverImage).url()
+                        : '/images/nada-press.png'
+                    }
+                  />
+                </ImageWrapper>
 
-                  <CardWrapper>
-                    <Overline>{post?.tag}</Overline>
-                    <TertiaryHeading>{post?.title}</TertiaryHeading>
-                    <SecondaryText>{post?.excerpt}</SecondaryText>
-                    {post?.date && (
-                      <SecondaryText>
-                        <time dateTime={post?.date}>
-                          {format(parseISO(post?.date), 'LLLL	d, yyyy')}
-                        </time>
-                      </SecondaryText>
-                    )}
-                  </CardWrapper>
-                </FlexWrapper>
-              </Link>
-            </div>
+                <CardWrapper>
+                  <Overline>{post?.tag}</Overline>
+                  <TertiaryHeading>{post?.title}</TertiaryHeading>
+                  <SecondaryText>{post?.excerpt}</SecondaryText>
+                  {post?.date && (
+                    <SecondaryText>
+                      <time dateTime={post?.date}>
+                        {format(parseISO(post?.date), 'LLLL	d, yyyy')}
+                      </time>
+                    </SecondaryText>
+                  )}
+                </CardWrapper>
+              </FlexWrapper>
+            </Link>
 
             {blogPosts.length > 1 && (
               <CarouselStepper

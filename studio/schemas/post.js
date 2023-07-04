@@ -39,14 +39,20 @@ export const post = {
       },
     },
     {
+      name: 'link',
+      title: 'Link',
+      type: 'string',
+    },
+    {
       name: "tag",
       title: "Tag",
       type: "string",
       options: {
         list: [
-          { title: "Webinars", value: "Webinars" },
           { title: "Investing", value: "Investing" },
-          { title: "Home Equity", value: "Home Equity" }
+          { title: "Home Equity", value: "Home Equity" },
+          { title: "Webinars", value: "Webinars" },
+          { title: "Research", value: "Research" }
         ],
         layout: 'dropdown'
       }

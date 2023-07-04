@@ -50,6 +50,7 @@ export default function AboutPage({ teammates }) {
       <FeaturedLogos overline="World Class Backing" logos={FEATURED_BACKERS} />
       <CardSlider
         heading="Our Team"
+        overline="Who We Are"
         cards={teammates?.map(({ name, role, linkedIn, image }) => ({
           name,
           description: (

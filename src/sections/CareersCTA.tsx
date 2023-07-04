@@ -2,7 +2,6 @@ import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
-import Link from 'next/link';
 import styled from 'styled-components';
 
 export default function CareersCTA({}) {
@@ -20,13 +19,12 @@ export default function CareersCTA({}) {
           come help us?
         </PrimaryText>
         <div>
-          <Link href={EXTERNAL_ROUTES.CAREERS} target="_blank">
-            <PrimaryButton
-              style={{ color: '#48dc95', backgroundColor: 'white' }}
-            >
-              Check Out Opportunities
-            </PrimaryButton>
-          </Link>
+          <PrimaryButton
+            style={{ color: '#48dc95', backgroundColor: 'white' }}
+            onClick={() => window.open(EXTERNAL_ROUTES.CAREERS, '_blank')}
+          >
+            Check Out Opportunities
+          </PrimaryButton>
         </div>
       </ContentWrapper>
     </SectionWrapper>

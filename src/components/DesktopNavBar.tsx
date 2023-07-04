@@ -100,9 +100,7 @@ export default function DesktopNavBar({
             ))}
 
             <PrimaryButton
-              onClick={() =>
-                window.location.replace(EXTERNAL_ROUTES.WEB_APP)
-              }
+              onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
             >
               Get Started
             </PrimaryButton>
