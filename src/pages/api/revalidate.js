@@ -96,6 +96,8 @@ export default async function revalidate(req, res) {
     staleRoutes = [`/about`];
   } else if (_type === 'testimonial') {
     staleRoutes = [`/`, '/homeshares'];
+  } else if (_type === 'home') {
+    staleRoutes = [`/`,];
   }
 
   try {
