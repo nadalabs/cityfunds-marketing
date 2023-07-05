@@ -1,11 +1,12 @@
 export enum EXTERNAL_ROUTES {
   WEB_APP = 'https://invest.nada.co/',
-  DOWNLOAD = 'https//nada.onelink.me/wNEn/ksbeffng',
-  TYPEFORM = 'https//form.typeform.com/to/fv2eTpuT',
-  CAREERS = 'https//www.linkedin.com/company/hellonada/jobs/',
-  APPLE_STORE = 'https//apps.apple.com/us/app/nada-finance/id1615840472',
-  GOOGLE_STORE = 'https//play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
+  DOWNLOAD = 'https://nada.onelink.me/wNEn/ksbeffng',
+  TYPEFORM = 'https://form.typeform.com/to/fv2eTpuT',
+  CAREERS = 'https://www.linkedin.com/company/hellonada/jobs/',
+  APPLE_STORE = 'https://apps.apple.com/us/app/nada-finance/id1615840472',
+  GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
   HUBSPOT_MEETING = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
+  HUBSPOT_FAQS = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
 }
 
 export const UTM_PARAMETERS = [
@@ -31,12 +32,12 @@ export const LEGAL_LINKS = [
   { name: 'Privacy Policy', link: '/privacy-policy' },
   { name: 'Cookie Policy', link: '/cookie-policy' },
   {
-    name: 'Electronic Funds Transfer',
-    link: '/electronic-funds-transfer',
-  },
-  {
     name: 'Rewards Program',
     link: '/rewards-program',
+  },
+  {
+    name: 'Electronic Funds Transfer',
+    link: '/electronic-funds-transfer',
   },
   {
     name: 'Consumer Complaint Policy',
@@ -65,9 +66,9 @@ export const FOOTER_LINKS = [
     title: 'About',
     links: [
       { name: 'About', link: '/about' },
-      { name: 'Press', link: '/press' },
-      { name: 'FAQs', link: '/faqs' },
       { name: 'Careers', link: EXTERNAL_ROUTES.CAREERS },
+      { name: 'Press', link: '/press' },
+      { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
     ],
   },
   {

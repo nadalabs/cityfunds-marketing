@@ -78,19 +78,23 @@ export default function PageHero({
                   {primaryText}
                 </PrimaryText>
 
-               {!isTextWide && ( <EmailCapture
-                  btnText={btnText}
-                  onClick={onClick}
-                  formName={formName}
-                />)}
+                {!isTextWide && (
+                  <EmailCapture
+                    btnText={btnText}
+                    onClick={onClick}
+                    formName={formName}
+                  />
+                )}
               </div>
             </div>
 
-            {heroImages.length > 1 && (<CarouselStepper
-              activeStep={idx}
-              totalSteps={FEATURED_CITIES.length}
-              sliderRef={sliderRef}
-            />)}
+            {heroImages.length > 1 && (
+              <CarouselStepper
+                activeStep={idx}
+                totalSteps={FEATURED_CITIES.length}
+                sliderRef={sliderRef}
+              />
+            )}
           </ContentWrapper>
         </div>
       ))}
@@ -107,7 +111,6 @@ export const HeroImage = styled.div`
   background-size: cover;
 `;
 
-
 const ContentWrapper = styled.div`
   position: absolute;
   bottom: 8rem;
@@ -123,9 +126,11 @@ const ContentWrapper = styled.div`
     padding: 30px;
     position: absolute;
     height: inherit;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
+    margin-left: 0;
+    width: 100%;
   }
 `;

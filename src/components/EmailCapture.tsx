@@ -109,6 +109,7 @@ const FormWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
+    width: 100%;
   }
 `;
 

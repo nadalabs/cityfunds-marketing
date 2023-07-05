@@ -18,6 +18,10 @@ export const PrimaryButton = styled.button`
   cursor: pointer;
   border: none;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+  }
+
   &:disabled {
     background-color: #989b9f;
   }
