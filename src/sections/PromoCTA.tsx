@@ -16,7 +16,7 @@ interface PromoCTAProps {
   promo?: {
     title: string;
     description: string;
-    caption: string;
+    disclaimer: string;
     image: string;
   };
 }
@@ -34,7 +34,7 @@ export default function PromoCTA({ overline, promo }: PromoCTAProps) {
         <SecondaryText style={{ marginBottom: '4px' }}>
           {promo?.description}
         </SecondaryText>
-        <Caption style={{ marginBottom: '2rem' }}>{promo?.caption}</Caption>
+        <Caption style={{ marginBottom: '2rem' }}>{promo?.disclaimer}</Caption>
         <EmailCapture
           btnText="Get Started"
           onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}

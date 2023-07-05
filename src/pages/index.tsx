@@ -1,3 +1,4 @@
+import AlertBanner from '@components/AlertBanner';
 import FeaturedImage from '@components/FeaturedImage';
 import KeyMetrics from '@components/KeyMetrics';
 import PageLayout from '@components/PageLayout';
@@ -30,8 +31,11 @@ export default function HomePage({
   testimonials,
   partner,
 }: HomePageProps) {
+  const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
+  
   return (
-    <PageLayout partnerImage={partner?.coverImage}>
+    <PageLayout partnerImage={partner?.coverImage} bannerText={bannerText}>
+      {bannerText && <AlertBanner primaryText={bannerText} />}
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios in the nation’s top cities."

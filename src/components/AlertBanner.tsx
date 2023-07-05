@@ -1,11 +1,11 @@
 import { LinkText, SecondaryText } from '@elements/Typography';
 import { styled } from 'styled-components';
 
-interface BannerProps {
+interface AlertBannerProps {
   primaryText: string;
 }
 
-export default function Banner({ primaryText }: BannerProps) {
+export default function AlertBanner({ primaryText }: AlertBannerProps) {
   return (
     <BannerWrapper>
       <SecondaryText

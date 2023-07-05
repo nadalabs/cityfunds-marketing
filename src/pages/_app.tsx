@@ -5,7 +5,7 @@ import { UTM_PARAMETERS } from '@utils/constants';
 import { setCookie } from '@utils/helpers';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
-import { footerQuery, homeIndexQuery } from 'lib/queries';
+import { footerQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';
@@ -29,19 +29,10 @@ interface AppProps extends NextAppProps {
 
 App.getInitialProps = async () => {
   const foooterData = await getClient().fetch(footerQuery);
-  const bannerData = await getClient().fetch(homeIndexQuery);
-  return {
-    footer: foooterData?.legal?.content,
-    banner: bannerData[0]?.promo?.banner,
-  };
+  return { footer: foooterData?.legal?.content };
 };
 
-export default function App({
-  Component,
-  pageProps,
-  footer,
-  banner,
-}: AppProps) {
+export default function App({ Component, pageProps, footer }: AppProps) {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     UTM_PARAMETERS.forEach((param) => {
@@ -92,7 +83,6 @@ export default function App({
           id="segment-script"
           dangerouslySetInnerHTML={{ __html: renderSnippet() }}
         />
-        {/* {banner && <AlertBanner primaryText={banner} />} */}
         <Component {...pageProps} />
         <Footer legal={footer} />
         <Analytics />

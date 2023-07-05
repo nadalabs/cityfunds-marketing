@@ -7,7 +7,6 @@ export const promo = {
         name: 'banner',
         title: 'Banner',
         type: 'string',
-        validation: (Rule) => Rule.required(),
       },
       {
         name: 'title',
@@ -22,10 +21,9 @@ export const promo = {
         validation: (Rule) => Rule.required(),
       },
       {
-        name: 'caption',
-        title: 'Caption',
+        name: 'disclaimer',
+        title: 'Disclaimer',
         type: 'string',
-        validation: (Rule) => Rule.required(),
       },
       {
         name: 'image',

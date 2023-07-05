@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-export default function MobileNavBar() {
+export default function MobileNavBar({bannerText}) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
@@ -32,7 +32,7 @@ export default function MobileNavBar() {
           ? '#303030'
           : 'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 42.74%, rgba(255, 255, 255, 0.7) 65.57%, rgba(255, 255, 255, 0) 100%)',
         backdropFilter: 'blur(1.5px)',
-        top: scrollPosition === 0 ? 0 : 0,
+        top: scrollPosition === 0 && bannerText ? '2.5rem' : 0,
       }}
     >
       <FlexWrapper>
