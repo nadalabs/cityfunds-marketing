@@ -5,7 +5,7 @@ import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { styled } from 'styled-components';
 
-interface CardSliderProps {
+interface CityfundsSliderProps {
   heading: string;
   primaryText?: string;
   overline?: string;
@@ -19,12 +19,12 @@ interface CardSliderProps {
   }[];
 }
 
-export default function CardSlider({
+export default function CityfundsSlider({
   heading,
   primaryText,
   overline,
   cards,
-}: CardSliderProps) {
+}: CityfundsSliderProps) {
   return (
     <SliderWrapper>
       <HeadingWrapper>

@@ -1,19 +1,13 @@
 import PageLayout from '@components/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import {
-  Heading,
-  Overline,
-  PrimaryText,
-  SecondaryText,
-} from '@elements/Typography';
-import CardSlider from '@sections/CardSlider';
+import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import CareersCTA from '@sections/CareersCTA';
 import FeaturedLogos from '@sections/FeaturedLogos';
 import PageHero from '@sections/PageHero';
+import TeamSlider from '@sections/TeamSlider';
 import TextSlider from '@sections/TextSlider';
 import { FEATURED_BACKERS, OUR_VALUES } from '@utils/constants';
 import { teammateIndexQuery } from 'lib/queries';
-import { urlForImage } from 'lib/sanity';
 import { getClient } from 'lib/sanity.server';
 
 export default function AboutPage({ teammates }) {
@@ -48,21 +42,7 @@ export default function AboutPage({ teammates }) {
         </PrimaryText>
       </SectionWrapper>
       <FeaturedLogos overline="World Class Backing" logos={FEATURED_BACKERS} />
-      <CardSlider
-        heading="Our Team"
-        overline="Who We Are"
-        cards={teammates?.map(({ name, role, linkedIn, image }) => ({
-          name,
-          description: (
-            <SecondaryText style={{ color: 'white', margin: 0 }}>
-              {role}
-            </SecondaryText>
-          ),
-          cardImage: urlForImage(image).url(),
-          link: linkedIn,
-          isSmallText: true,
-        }))}
-      />
+      <TeamSlider teammates={teammates} />
       <TextSlider
         overline="How We Think"
         heading="Our Values"

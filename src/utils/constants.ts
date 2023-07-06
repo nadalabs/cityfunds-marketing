@@ -116,7 +116,7 @@ export const FEATURED_CITIES = [
     heroImage: '/images/tampa-hero.png',
     cardImage: '/images/tampa.png',
     totalAssets: 3,
-    sharePrice: 10.00,
+    sharePrice: 10.0,
     appreciation: 0.0,
   },
 ];

@@ -3,7 +3,7 @@ import FeaturedImage from '@components/FeaturedImage';
 import KeyMetrics from '@components/KeyMetrics';
 import PageLayout from '@components/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import CardSlider from '@sections/CardSlider';
+import CityfundsSlider from '@sections/CityfundsSlider';
 import FaqsSection from '@sections/FaqsSection';
 import FeaturedLogos from '@sections/FeaturedLogos';
 import HowItWorks from '@sections/HowItWorks';
@@ -32,7 +32,7 @@ export default function HomePage({
   partner,
 }: HomePageProps) {
   const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
-  
+
   return (
     <PageLayout partnerImage={partner?.coverImage} bannerText={bannerText}>
       {bannerText && <AlertBanner primaryText={bannerText} />}
@@ -45,7 +45,7 @@ export default function HomePage({
         heroImages={FEATURED_CITIES}
       />
       <FeaturedLogos overline="Featured In" logos={FEATURED_ARTICLES} seeMore />
-      <CardSlider
+      <CityfundsSlider
         heading="Pick your favorite Cityfund, or invest in all of them"
         primaryText={
           'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'

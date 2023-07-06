@@ -16,7 +16,7 @@ interface HeaderProps {
 export default function DesktopNavBar({
   partnerImage,
   partnerName,
-  bannerText
+  bannerText,
 }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const router = useRouter();
