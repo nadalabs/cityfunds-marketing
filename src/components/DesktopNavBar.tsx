@@ -1,4 +1,4 @@
-import { PrimaryButton } from '@elements/Buttons';
+import { NavbarLink, PrimaryButton } from '@elements/Buttons';
 import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -35,13 +35,8 @@ export default function DesktopNavBar({
   }, []);
 
   return (
-    <SectionWrapper
-      style={{
-        top: scrollPosition === 0 && bannerText ? '2.75rem' : 0,
-        backdropFilter: 'blur(1.5px)',
-        background:
-          'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 42.74%, rgba(255, 255, 255, 0.7) 65.57%, rgba(255, 255, 255, 0) 100%)',
-      }}
+    <NavbarWrapper
+      style={{ top: scrollPosition === 0 && bannerText ? '2.75rem' : 0 }}
     >
       {partnerImage ? (
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -73,7 +68,7 @@ export default function DesktopNavBar({
             width={184}
             height={52}
             alt="Nada"
-            src="/icons/nada-dark.svg"
+            src="/icons/nada-light.svg"
           />
         </Link>
       )}
@@ -86,19 +81,17 @@ export default function DesktopNavBar({
             Get Started
           </PrimaryButton>
         ) : (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             {HEADER_LINKS.map(({ name, link }, idx) => (
-              <NavBarLink
+              <NavbarLink
                 key={idx}
-                href={link}
+                // href={link}
                 style={{
-                  marginBottom: 0,
-                  fontWeight: 600,
-                  color: link === router.pathname ? '#48DC95' : 'black',
+                  color: link === router.pathname ? '#48DC95' : 'white',
                 }}
               >
                 {name.toUpperCase()}
-              </NavBarLink>
+              </NavbarLink>
             ))}
 
             <PrimaryButton
@@ -109,28 +102,22 @@ export default function DesktopNavBar({
           </div>
         )}
       </div>
-    </SectionWrapper>
+    </NavbarWrapper>
   );
 }
 
-const SectionWrapper = styled.div`
-  transition: ${({ theme }) => theme.transitions.ease};
+const NavbarWrapper = styled.div`
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.27) 42.74%,
+    rgba(0, 0, 0, 0.21) 65.57%,
+    rgba(0, 0, 0, 0) 100%
+  );
   backdrop-filter: blur(1.5px);
   padding: 20px 100px 40px 100px;
-  position: fixed;
   z-index: 999;
   width: 100%;
-`;
-
-const NavBarLink = styled.a`
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin: 0;
 `;

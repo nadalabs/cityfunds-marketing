@@ -1,4 +1,5 @@
 import { Caption, SecondaryText } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { formatPercent, formatPrice } from '@utils/helpers';
 import Image from 'next/image';
 import { ReactNode } from 'react';
@@ -15,6 +16,8 @@ export default function AssetTicker({
   appreciation,
   totalAssets,
 }: BannerProps) {
+  const isMobile = useIsMobile();
+
   const PILLS = [
     {
       number: formatPrice(sharePrice),
@@ -37,6 +40,8 @@ export default function AssetTicker({
     },
   ];
 
+  const pills = isMobile ? PILLS.slice(0, 2) : PILLS;
+
   function renderPill(number: number, description: ReactNode, idx: number) {
     return (
       <div key={idx} style={{ display: 'flex', alignItems: 'center' }}>
@@ -50,7 +55,7 @@ export default function AssetTicker({
 
   return (
     <div style={{ display: 'flex' }}>
-      {PILLS.map(({ number, description }: any, idx) =>
+      {pills.map(({ number, description }: any, idx) =>
         renderPill(number, description, idx)
       )}
     </div>
