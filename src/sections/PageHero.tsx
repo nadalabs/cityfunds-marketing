@@ -1,7 +1,6 @@
 import CarouselStepper from '@components/CarouselStepper';
 import EmailCapture from '@components/EmailCapture';
 import { Heading, PrimaryText } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
 import { FEATURED_CITIES } from '@utils/constants';
 import { useRef } from 'react';
 import Slider from 'react-slick';
@@ -26,7 +25,6 @@ export default function PageHero({
   isTextWide,
   formName,
 }: PageHeroProps) {
-  const isMobile = useIsMobile();
   const sliderRef = useRef();
 
   const settings = {
@@ -120,6 +118,7 @@ const ContentWrapper = styled.div`
   justify-content: flex-end;
   gap: 1.5rem;
   margin-left: 100px;
+  z-index: 999;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     text-align: center;
