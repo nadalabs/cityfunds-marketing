@@ -74,7 +74,7 @@ export default function CityfundsSlider({
                         height: isSmallText || isMobile ? '0.5rem' : '1rem',
                         width: isSmallText|| isMobile ? '0.5rem' : '1rem',
                         marginLeft: '8px',
-                        marginBottom: isSmallText ? '1.5rem' : '1rem',
+                        marginBottom: isMobile ? isSmallText ? '1.5rem' : '1rem' : '1rem',
                       }}
                     />
                   </div>
