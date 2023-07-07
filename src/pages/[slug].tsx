@@ -9,7 +9,7 @@ import { getClient, sanityClient } from 'lib/sanity.server';
 import dynamic from 'next/dynamic';
 
 const HomePage = dynamic(() => import('@pages/index'));
-const LegalPage = dynamic(() => import('@sections/LegalPage'));
+const LegalPage = dynamic(() => import('@components/LegalPage'));
 
 export default function DynamicPage({ testimonials, partner, legal }) {
   return (

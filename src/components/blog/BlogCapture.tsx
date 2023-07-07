@@ -1,4 +1,4 @@
-import EmailCapture from '@components/EmailCapture';
+import EmailCapture from '@components/common/EmailCapture';
 import { SectionWrapper } from '@elements/Containers';
 import { Overline, SecondaryHeading } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';

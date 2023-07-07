@@ -1,5 +1,5 @@
-import CarouselStepper from '@components/CarouselStepper';
-import EmailCapture from '@components/EmailCapture';
+import CarouselStepper from '@components/common/CarouselStepper';
+import EmailCapture from '@components/common/EmailCapture';
 import { Heading, PrimaryText } from '@elements/Typography';
 import { FEATURED_CITIES } from '@utils/constants';
 import { useRef } from 'react';

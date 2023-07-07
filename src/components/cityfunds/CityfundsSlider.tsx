@@ -1,5 +1,5 @@
-import AssetTicker from '@components/AssetTicker';
-import { GreenSquare } from '@components/CarouselStepper';
+import AssetTicker from '@components/cityfunds/AssetTicker';
+import { GreenSquare } from '@components/common/CarouselStepper';
 import { CardWrapper, SliderWrapper } from '@elements/Containers';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';

@@ -1,7 +1,7 @@
-import PageLayout from '@components/PageLayout';
+import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, LinkText } from '@elements/Typography';
-import LongFormText from '@sections/LongFormText';
+import LongFormText from '@components/common/LongFormText';
 import { LEGAL_LINKS } from '@utils/constants';
 import { format, parseISO } from 'date-fns';
 import { styled } from 'styled-components';

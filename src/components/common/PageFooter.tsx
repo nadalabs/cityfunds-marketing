@@ -1,17 +1,17 @@
 import { LinkButton, SecondaryButton } from '@elements/Buttons';
 import { LinkText, SecondaryText } from '@elements/Typography';
-import LongFormText from '@sections/LongFormText';
+import LongFormText from '@components/common/LongFormText';
 import { EXTERNAL_ROUTES, FOOTER_LINKS, SOCIAL_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-interface FooterProps {
+interface PageFooterProps {
   legal: any[];
 }
 
-export default function Footer({ legal }: FooterProps) {
+export default function PageFooter({ legal }: PageFooterProps) {
   const [showMore, setShowMore] = useState(false);
 
   return (

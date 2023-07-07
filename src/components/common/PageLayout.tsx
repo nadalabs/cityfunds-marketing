@@ -1,5 +1,5 @@
-import DesktopNavBar from '@components/DesktopNavBar';
-import MobileNavBar from '@components/MobileNavBar';
+import DesktopNavBar from '@components/common/DesktopNavBar';
+import MobileNavBar from '@components/common/MobileNavBar';
 import useIsMobile from '@hooks/useIsMobile';
 import { ReactNode } from 'react';
 

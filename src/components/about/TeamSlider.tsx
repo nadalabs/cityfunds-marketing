@@ -1,4 +1,4 @@
-import { GreenSquare } from '@components/CarouselStepper';
+import { GreenSquare } from '@components/common/CarouselStepper';
 import { CardWrapper, SliderWrapper } from '@elements/Containers';
 import { Heading, Overline, SecondaryText } from '@elements/Typography';
 import { urlForImage } from 'lib/sanity';

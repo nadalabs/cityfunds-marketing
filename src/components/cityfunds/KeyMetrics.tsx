@@ -1,4 +1,4 @@
-import { GreenSquare } from '@components/CarouselStepper';
+import { GreenSquare } from '@components/common/CarouselStepper';
 import { Heading, PrimaryText } from '@elements/Typography';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';

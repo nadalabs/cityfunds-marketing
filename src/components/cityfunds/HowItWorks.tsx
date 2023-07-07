@@ -1,4 +1,4 @@
-import { GreenSquare } from '@components/CarouselStepper';
+import { GreenSquare } from '@components/common/CarouselStepper';
 import PhoneScreen from '@components/PhoneScreen';
 import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';

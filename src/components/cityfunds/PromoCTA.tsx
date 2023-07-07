@@ -1,9 +1,14 @@
-import { Caption, Heading, Overline, SecondaryText } from '@elements/Typography';
+import {
+  Caption,
+  Heading,
+  Overline,
+  SecondaryText,
+} from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
-import EmailCapture from 'src/components/EmailCapture';
+import EmailCapture from '@components/common/EmailCapture';
 import styled from 'styled-components';
 
 interface PromoCTAProps {

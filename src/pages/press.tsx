@@ -1,6 +1,6 @@
-import PageLayout from '@components/PageLayout';
-import PageHero from '@sections/PageHero';
-import PressArticles from '@sections/PressArticles';
+import PageLayout from '@components/common/PageLayout';
+import PageHero from '@components/common/PageHero';
+import PressArticles from '@components/PressArticles';
 import { pressIndexQuery } from 'lib/queries';
 import { getClient, overlayDrafts } from 'lib/sanity.server';
 

@@ -1,4 +1,4 @@
-import CarouselStepper from '@components/CarouselStepper';
+import CarouselStepper from '@components/common/CarouselStepper';
 import { SectionWrapper } from '@elements/Containers';
 import {
   LinkText,

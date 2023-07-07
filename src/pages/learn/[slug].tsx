@@ -1,8 +1,8 @@
-import BlogCapture from '@components/BlogCapture';
-import PageLayout from '@components/PageLayout';
+import BlogCapture from '@components/blog/BlogCapture';
+import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import BlogHero from '@sections/BlogHero';
-import LongFormText from '@sections/LongFormText';
+import BlogHero from '@components/blog/BlogHero';
+import LongFormText from '@components/common/LongFormText';
 import { postQuery, postSlugsQuery } from 'lib/queries';
 import { getClient, sanityClient } from 'lib/sanity.server';
 
