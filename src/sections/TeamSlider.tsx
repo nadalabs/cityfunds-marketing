@@ -45,8 +45,9 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                     <Heading
                       style={{
                         fontSize: '1.5rem',
+                        lineHeight: '2rem',
                         color: 'white',
-                        marginBottom: '8px',
+                        marginBottom: 0
                       }}
                     >
                       {name}
@@ -56,7 +57,7 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                         height: '0.5rem',
                         width: '0.5rem',
                         marginLeft: '8px',
-                        marginBottom: '0.75rem',
+                        marginBottom: '0.5rem',
                       }}
                     />
                   </div>
