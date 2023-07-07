@@ -62,9 +62,9 @@ export default function CityfundsSlider({
                   <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                     <Heading
                       style={{
-                        fontSize: isSmallText || isMobile ? '1.5rem' : '4.6875rem',
+                        fontSize: isSmallText ? '1.5rem' : isMobile ? '3rem' : '4.6875rem',
                         color: 'white',
-                        marginBottom: '8px',
+                        marginBottom: '0.5rem',
                       }}
                     >
                       {name}
