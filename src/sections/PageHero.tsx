@@ -124,13 +124,7 @@ const ContentWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     text-align: center;
     padding: 30px;
-    position: absolute;
-    height: inherit;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    margin-left: 0;
+    margin: 0;
     width: 100%;
   }
 `;
