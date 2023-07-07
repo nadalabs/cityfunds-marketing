@@ -139,12 +139,7 @@ export default function HomePage({
         isPhoneFrame
       />
       <Testimonials reviews={testimonials} />
-      <PromoCTA
-        promo={partner?.promo || homePage?.promo}
-        overline={
-          partner?.name ? `Exclusive Perk for ${partner?.name} Readers` : ''
-        }
-      />
+      <PromoCTA promo={partner?.promo || homePage?.promo} />
     </PageLayout>
   );
 }
