@@ -35,10 +35,9 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'flex-end',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
                   background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${image})`,
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
                 }}
               >
                 <div>

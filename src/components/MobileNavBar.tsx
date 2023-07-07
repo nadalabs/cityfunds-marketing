@@ -30,7 +30,7 @@ export default function MobileNavBar({ bannerText }) {
       style={{
         background: showMenu
           ? '#303030'
-          : 'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 42.74%, rgba(255, 255, 255, 0.7) 65.57%, rgba(255, 255, 255, 0) 100%)',
+          : 'linear-gradient(rgba(0, 0, 0, 0.27) 42.74%,rgba(0, 0, 0, 0.21) 65.57%,rgba(0, 0, 0, 0) 100%)',
         backdropFilter: 'blur(1.5px)',
         top: scrollPosition === 0 && bannerText ? '2.75rem' : 0,
       }}
@@ -41,15 +41,15 @@ export default function MobileNavBar({ bannerText }) {
             width={150}
             height={40}
             alt={'Nada'}
-            src={showMenu ? '/icons/nada-light.svg' : '/icons/nada-dark.svg'}
+            src={'/icons/nada-light.svg'}
           />
         </Link>
 
         <Image
-          width={25}
-          height={30}
+          width={40}
+          height={40}
           alt={'Cityfunds'}
-          src={showMenu ? '/icons/mobile-light.svg' : '/icons/mobile-dark.svg'}
+          src={'/icons/mobile-light.svg'}
           onClick={() => setShowMenu(!showMenu)}
         />
       </FlexWrapper>

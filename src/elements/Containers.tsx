@@ -18,15 +18,15 @@ export const SliderWrapper = styled.div`
 
 export const CardWrapper = styled.div`
   background-size: cover;
-  width: 400px;
-  height: 400px;
-  padding: 40px;
+  width: 25rem;
+  height: 25rem;
+  padding: 2rem;
   margin-right: 1.5rem;
   border-radius: 52px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 300px;
-    height: 300px;
+    width: 16rem;
+    height: 16rem;
     padding: 2rem;
     margin-right: 1rem;
     border-radius: 22px;

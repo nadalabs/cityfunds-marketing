@@ -107,6 +107,7 @@ export const HeroImage = styled.div`
   border-bottom-right-radius: 50px;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 `;
 
 const ContentWrapper = styled.div`

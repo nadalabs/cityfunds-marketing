@@ -49,7 +49,6 @@ export default function CityfundsSlider({
               <CardWrapper
                 onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
                 style={{
-                  padding: '2rem',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'flex-end',

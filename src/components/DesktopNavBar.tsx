@@ -85,7 +85,7 @@ export default function DesktopNavBar({
             {HEADER_LINKS.map(({ name, link }, idx) => (
               <NavbarLink
                 key={idx}
-                // href={link}
+                href={link}
                 style={{
                   color: link === router.pathname ? '#48DC95' : 'white',
                 }}
