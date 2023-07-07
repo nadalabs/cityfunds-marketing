@@ -1,3 +1,4 @@
+import EmailCapture from '@components/common/EmailCapture';
 import {
   Caption,
   Heading,
@@ -8,7 +9,6 @@ import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
-import EmailCapture from '@components/common/EmailCapture';
 import styled from 'styled-components';
 
 interface PromoCTAProps {

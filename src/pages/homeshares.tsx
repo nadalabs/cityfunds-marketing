@@ -1,11 +1,11 @@
 import FeaturedImage from '@components/FeaturedImage';
-import KeyMetrics from '@components/cityfunds/KeyMetrics';
-import PageLayout from '@components/common/PageLayout';
-import { SectionWrapper } from '@elements/Containers';
 import HowItWorks from '@components/cityfunds/HowItWorks';
-import NadaCardCTA from '@components/homeshares/NadaCardCTA';
-import PageHero from '@components/common/PageHero';
+import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import Testimonials from '@components/cityfunds/Testimonials';
+import PageHero from '@components/common/PageHero';
+import PageLayout from '@components/common/PageLayout';
+import NadaCardCTA from '@components/homeshares/NadaCardCTA';
+import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 
 export default function HomeSharesPage({ testimonials }) {

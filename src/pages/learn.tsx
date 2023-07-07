@@ -1,7 +1,7 @@
 import BlogCapture from '@components/blog/BlogCapture';
-import PageLayout from '@components/common/PageLayout';
 import BlogHero from '@components/blog/BlogHero';
 import BlogSlider from '@components/blog/BlogSlider';
+import PageLayout from '@components/common/PageLayout';
 import { indexQuery } from 'lib/queries';
 import { getClient, overlayDrafts } from 'lib/sanity.server';
 import _ from 'lodash';

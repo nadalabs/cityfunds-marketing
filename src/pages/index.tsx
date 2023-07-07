@@ -1,16 +1,16 @@
-import AlertBanner from '@components/cityfunds/AlertBanner';
 import FeaturedImage from '@components/FeaturedImage';
-import KeyMetrics from '@components/cityfunds/KeyMetrics';
-import PageLayout from '@components/common/PageLayout';
-import { SectionWrapper } from '@elements/Containers';
+import FeaturedLogos from '@components/FeaturedLogos';
+import AlertBanner from '@components/cityfunds/AlertBanner';
 import CityfundsSlider from '@components/cityfunds/CityfundsSlider';
 import FaqsSection from '@components/cityfunds/FaqsSection';
-import FeaturedLogos from '@components/FeaturedLogos';
 import HowItWorks from '@components/cityfunds/HowItWorks';
-import PageHero from '@components/common/PageHero';
+import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import PromoCTA from '@components/cityfunds/PromoCTA';
 import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
+import PageHero from '@components/common/PageHero';
+import PageLayout from '@components/common/PageLayout';
+import { SectionWrapper } from '@elements/Containers';
 import {
   EXTERNAL_ROUTES,
   FEATURED_ARTICLES,

@@ -1,4 +1,5 @@
 import { GreenSquare } from '@components/common/CarouselStepper';
+import EmailCapture from '@components/common/EmailCapture';
 import { SectionWrapper } from '@elements/Containers';
 import {
   Heading,
@@ -8,7 +9,6 @@ import {
 } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import Image from 'next/image';
-import EmailCapture from '@components/common/EmailCapture';
 import styled from 'styled-components';
 
 export default function NadaCardCTA() {

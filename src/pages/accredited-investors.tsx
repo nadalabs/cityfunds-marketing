@@ -1,15 +1,20 @@
+import FaqsSection from '@components/cityfunds/FaqsSection';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
+import Testimonials from '@components/cityfunds/Testimonials';
+import TextSlider from '@components/cityfunds/TextSlider';
+import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
-import FaqsSection from '@components/cityfunds/FaqsSection';
-import PageHero from '@components/common/PageHero';
-import TextSlider from '@components/cityfunds/TextSlider';
-import { EXTERNAL_ROUTES, FEATURED_CITIES, VALUE_PROPS } from '@utils/constants';
-import { teammateIndexQuery } from 'lib/queries';
+import {
+  EXTERNAL_ROUTES,
+  FEATURED_CITIES,
+  VALUE_PROPS,
+} from '@utils/constants';
+import { testimonialIndexQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
-export default function AccreditedPage({ teammates }) {
+export default function AccreditedInvestorsPage({ testimonials }) {
   return (
     <PageLayout>
       <PageHero
@@ -36,7 +41,9 @@ export default function AccreditedPage({ teammates }) {
           home
         </PrimaryText>
       </SectionWrapper>
-      <KeyMetrics
+
+      <SectionWrapper>
+        <KeyMetrics
           metrics={[
             {
               label: 'Total Investors',
@@ -56,23 +63,43 @@ export default function AccreditedPage({ teammates }) {
             },
           ]}
         />
+        <KeyMetrics
+          metrics={[
+            {
+              label: 'Average Amount Unlocked',
+              value: 47045,
+              prefix: '$',
+            },
+            {
+              label: 'Average Days to Close',
+              value: 13.8,
+              decimals: 1,
+            },
+            {
+              label: 'Monthly Payments',
+              value: 0,
+            },
+          ]}
+        />
+      </SectionWrapper>
+
       <TextSlider
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         primaryText="We have plenty of reasons."
         valueProps={VALUE_PROPS}
       />
-    <FaqsSection />
-
+      <FaqsSection />
+      <Testimonials reviews={testimonials} />
     </PageLayout>
   );
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const teammates = await getClient(preview).fetch(teammateIndexQuery);
+  const testimonials = await getClient(preview).fetch(testimonialIndexQuery);
 
   return {
-    props: { teammates },
+    props: { testimonials },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };

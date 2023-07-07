@@ -1,11 +1,11 @@
+import FeaturedLogos from '@components/FeaturedLogos';
+import CareersCTA from '@components/about/CareersCTA';
+import TeamSlider from '@components/about/TeamSlider';
+import TextSlider from '@components/cityfunds/TextSlider';
+import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
-import CareersCTA from '@components/about/CareersCTA';
-import FeaturedLogos from '@components/FeaturedLogos';
-import PageHero from '@components/common/PageHero';
-import TeamSlider from '@components/about/TeamSlider';
-import TextSlider from '@components/cityfunds/TextSlider';
 import { FEATURED_BACKERS, OUR_VALUES } from '@utils/constants';
 import { teammateIndexQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
