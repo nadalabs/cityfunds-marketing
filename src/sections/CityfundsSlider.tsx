@@ -2,6 +2,7 @@ import AssetTicker from '@components/AssetTicker';
 import { GreenSquare } from '@components/CarouselStepper';
 import { CardWrapper, SliderWrapper } from '@elements/Containers';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { styled } from 'styled-components';
 
@@ -25,6 +26,8 @@ export default function CityfundsSlider({
   overline,
   cards,
 }: CityfundsSliderProps) {
+  const isMobile = useIsMobile();
+
   return (
     <SliderWrapper>
       <HeadingWrapper>
@@ -59,7 +62,7 @@ export default function CityfundsSlider({
                   <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                     <Heading
                       style={{
-                        fontSize: isSmallText ? '1.5rem' : '4.6875rem',
+                        fontSize: isSmallText || isMobile ? '1.5rem' : '4.6875rem',
                         color: 'white',
                         marginBottom: '8px',
                       }}
@@ -68,10 +71,10 @@ export default function CityfundsSlider({
                     </Heading>
                     <GreenSquare
                       style={{
-                        height: isSmallText ? '0.5rem' : '1rem',
-                        width: isSmallText ? '0.5rem' : '1rem',
+                        height: isSmallText || isMobile ? '0.5rem' : '1rem',
+                        width: isSmallText|| isMobile ? '0.5rem' : '1rem',
                         marginLeft: '8px',
-                        marginBottom: isSmallText ? '0.75rem' : '1rem',
+                        marginBottom: isSmallText|| isMobile ? '0.75rem' : '1rem',
                       }}
                     />
                   </div>

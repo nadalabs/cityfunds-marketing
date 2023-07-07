@@ -103,5 +103,6 @@ export const HoverHeading = styled(Heading)`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
+    line-height: 4rem;
   }
 `;
