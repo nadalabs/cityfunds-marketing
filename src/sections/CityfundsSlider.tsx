@@ -62,7 +62,11 @@ export default function CityfundsSlider({
                   <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                     <Heading
                       style={{
-                        fontSize: isSmallText ? '1.5rem' : isMobile ? '3rem' : '4.6875rem',
+                        fontSize: isSmallText
+                          ? '1.5rem'
+                          : isMobile
+                          ? '3rem'
+                          : '4.6875rem',
                         color: 'white',
                         marginBottom: '0.5rem',
                       }}
@@ -72,9 +76,13 @@ export default function CityfundsSlider({
                     <GreenSquare
                       style={{
                         height: isSmallText || isMobile ? '0.5rem' : '1rem',
-                        width: isSmallText|| isMobile ? '0.5rem' : '1rem',
+                        width: isSmallText || isMobile ? '0.5rem' : '1rem',
                         marginLeft: '8px',
-                        marginBottom: isMobile ? isSmallText ? '1.5rem' : '1rem' : '1rem',
+                        marginBottom: isMobile
+                          ? isSmallText
+                            ? '1.5rem'
+                            : '1rem'
+                          : '1rem',
                       }}
                     />
                   </div>

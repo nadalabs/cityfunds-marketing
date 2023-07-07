@@ -47,7 +47,7 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                         fontSize: '1.5rem',
                         lineHeight: '2rem',
                         color: 'white',
-                        marginBottom: 0
+                        marginBottom: 0,
                       }}
                     >
                       {name}
