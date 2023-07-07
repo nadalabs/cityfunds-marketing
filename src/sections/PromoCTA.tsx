@@ -7,6 +7,7 @@ import EmailCapture from 'src/components/EmailCapture';
 import styled from 'styled-components';
 
 interface PromoCTAProps {
+  overline?: string;
   promo?: {
     title: string;
     description: string;
@@ -15,13 +16,15 @@ interface PromoCTAProps {
   };
 }
 
-export default function PromoCTA({ promo }: PromoCTAProps) {
+export default function PromoCTA({ overline, promo }: PromoCTAProps) {
   const isMobile = useIsMobile();
 
   return (
     <SectionWrapper>
       <ContentWrapper>
-        <Overline style={{ marginBottom: '1rem' }}>Limited Time Bonus</Overline>
+        {overline && (
+          <Overline style={{ marginBottom: '1rem' }}>{overline}</Overline>
+        )}
         <Heading>{promo?.title}</Heading>
         <SecondaryText style={{ marginBottom: '4px' }}>
           {promo?.description}
