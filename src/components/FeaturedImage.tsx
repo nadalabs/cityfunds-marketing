@@ -75,7 +75,7 @@ export default function FeaturedImage({
 
       {isReversed && (
         <FlexWrapper>
-          <ImageWrapper style={{ width: isWide ? '900px' : '500px' }}>
+          <ImageWrapper style={{ width: isWide ? '700px' : '500px' }}>
             <Image src={imageUrl} alt={heading} fill />
           </ImageWrapper>
           <ImageSquare />

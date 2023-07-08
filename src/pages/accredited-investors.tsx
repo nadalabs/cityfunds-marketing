@@ -109,7 +109,7 @@ export default function AccreditedInvestorsPage({ testimonials }) {
         <FeaturedImage
           heading="Trusted by 8,000+ Investors"
           primaryText="With $1.8M+ capital invested"
-          imageUrl="/images/america.png"
+          imageUrl="/images/america-states.png"
           btnText="Schedule a Call"
           onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
           isReversed
