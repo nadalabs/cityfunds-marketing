@@ -34,7 +34,7 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
                 <LargeHeading
                   // @ts-ignore-next-line
                   ref={countUpRef}
-                  style={{fontSize: '6rem'}}
+                  style={{ fontSize: '6rem' }}
                 />
               )}
             </CountUp>

@@ -5,7 +5,7 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { Heading, LongText, Overline, PrimaryText } from '@elements/Typography';
+import { Heading, LongText, Overline } from '@elements/Typography';
 import { FEATURED_BACKERS, OUR_VALUES } from '@utils/constants';
 import { teammateIndexQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';

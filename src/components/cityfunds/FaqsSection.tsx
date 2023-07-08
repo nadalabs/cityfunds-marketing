@@ -64,9 +64,7 @@ export default function FaqsSection({}) {
                     </HoverHeading>
                     {idx === jdx && (
                       <TextWrapper>
-                      <PrimaryText>
-                        {answer}
-                      </PrimaryText>
+                        <PrimaryText>{answer}</PrimaryText>
                       </TextWrapper>
                     )}
                   </ContentWrapper>
@@ -96,24 +94,23 @@ export const HoverHeading = styled(Heading)`
   color: ${({ theme }) => theme.colors.black};
   margin-bottom: 2rem;
   cursor: pointer;
-  max-width: 48%;
-  font-size: 4rem;
+  width: 55%;
+  font-size: 3.5rem;
 
   &:hover {
     color: ${({ theme }) => theme.colors.lightGrey};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    max-width: 100%;
+    width: 100%;
     line-height: 4rem;
   }
 `;
 
 export const TextWrapper = styled(Heading)`
-  max-width: 42%;
+  max-width: 45%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     max-width: 100%;
-
   }
 `;

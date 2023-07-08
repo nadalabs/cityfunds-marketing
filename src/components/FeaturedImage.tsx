@@ -1,9 +1,9 @@
+import { GreenSquare } from '@components/common/CarouselStepper';
 import { PrimaryButton } from '@elements/Buttons';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import Image from 'next/image';
 import { styled } from 'styled-components';
-import { GreenSquare } from '@components/common/CarouselStepper';
 
 interface FeaturedImageProps {
   overline?: string;

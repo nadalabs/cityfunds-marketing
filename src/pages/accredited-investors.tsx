@@ -7,7 +7,7 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { Heading, LongText, Overline, PrimaryText } from '@elements/Typography';
+import { Heading, LongText, Overline } from '@elements/Typography';
 import {
   EXTERNAL_ROUTES,
   FEATURED_CITIES,
@@ -29,9 +29,7 @@ export default function AccreditedInvestorsPage({ testimonials }) {
       />
       <CityfundsSlider
         heading="Our Funds"
-        primaryText={
-          'Pick your favorite Cityfund, or invest in all of them!'
-        }
+        primaryText={'Pick your favorite Cityfund, or invest in all of them!'}
         cards={[
           ...FEATURED_CITIES,
           {
