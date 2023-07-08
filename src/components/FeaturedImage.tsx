@@ -15,6 +15,8 @@ interface FeaturedImageProps {
   isReversed?: boolean;
   isShortHeader?: boolean;
   isBorder?: boolean;
+  isWide?: boolean;
+  isShort?: boolean;
 }
 
 export default function FeaturedImage({
@@ -27,6 +29,8 @@ export default function FeaturedImage({
   isReversed,
   isShortHeader,
   isBorder,
+  isWide,
+  isShort,
 }: FeaturedImageProps) {
   const isMobile = useIsMobile();
 
@@ -48,7 +52,7 @@ export default function FeaturedImage({
               }}
             />
           ) : (
-            <LeftImageWrapper>
+            <LeftImageWrapper style={{ height: isShort ? '28rem' : '500px' }}>
               <Image src={imageUrl} alt={heading} fill />
             </LeftImageWrapper>
           )}
@@ -71,7 +75,7 @@ export default function FeaturedImage({
 
       {isReversed && (
         <FlexWrapper>
-          <ImageWrapper>
+          <ImageWrapper style={{ width: isWide ? '900px' : '500px' }}>
             <Image src={imageUrl} alt={heading} fill />
           </ImageWrapper>
           <ImageSquare />
@@ -94,10 +98,11 @@ const ImageWrapper = styled.div`
   position: relative;
   width: 500px;
   height: 500px;
+  margin-bottom: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    height: 350px;
+    height: 350px !important;
   }
 `;
 

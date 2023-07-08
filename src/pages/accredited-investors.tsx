@@ -1,3 +1,5 @@
+import FeaturedImage from '@components/FeaturedImage';
+import CityfundsSlider from '@components/cityfunds/CityfundsSlider';
 import FaqsSection from '@components/cityfunds/FaqsSection';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import Testimonials from '@components/cityfunds/Testimonials';
@@ -24,25 +26,40 @@ export default function AccreditedInvestorsPage({ testimonials }) {
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Accredited Lead"
         heroImages={FEATURED_CITIES}
-        isTextWide
+      />
+      <CityfundsSlider
+        heading="Our Funds"
+        primaryText={
+          'Pick your favorite Cityfund, or invest in all of them!'
+        }
+        cards={[
+          ...FEATURED_CITIES,
+          {
+            name: 'Coming Soon',
+            cardImage: '/images/coming-soon-1.png',
+            isSmallText: true,
+          },
+          {
+            name: 'Coming Soon',
+            cardImage: '/images/coming-soon-2.png',
+            isSmallText: true,
+          },
+        ]}
       />
       <SectionWrapper>
         <Overline>We are on a Mission</Overline>
         <Heading>Our Focus</Heading>
-        <PrimaryText>
+        <PrimaryText style={{maxWidth: '70%'}}>
           We offer a diversified portfolio of home equity investments that
           provide investors with exposure into some of the top Markets around
           the U.S (Austin, Dallas, Miami, and Tampa) for as little as $100.
         </PrimaryText>
-        <PrimaryText>
+        <PrimaryText style={{width: '70%'}}>
           A Home Equity Investment is a financial agreement that allows
           investors to tap into thehomeowner’s equity in exchange for a portion
           of the home's future appreciation. This is secured via a lien on the
           home
         </PrimaryText>
-      </SectionWrapper>
-
-      <SectionWrapper>
         <KeyMetrics
           metrics={[
             {
@@ -90,7 +107,29 @@ export default function AccreditedInvestorsPage({ testimonials }) {
         valueProps={VALUE_PROPS}
       />
       <FaqsSection />
+      <SectionWrapper>
+        <FeaturedImage
+          heading="Trusted by 8,000+ Investors"
+          primaryText="With $1.8M+ capital invested"
+          imageUrl="/images/america.png"
+          btnText="Schedule a Call"
+          onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
+          isReversed
+          isWide
+        />
+      </SectionWrapper>
       <Testimonials reviews={testimonials} />
+      <SectionWrapper>
+        <FeaturedImage
+          overline="Have any questions?"
+          heading="Let’s Talk"
+          primaryText="We offer a diversified portfolio of home equity investments that provide investors with exposure into some of the top Markets around the U.S (Austin, Dallas, Miami, and Tampa) for as little as $100."
+          imageUrl="/images/deyon.png"
+          btnText="Schedule a Call"
+          onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
+          isShort
+        />
+      </SectionWrapper>
     </PageLayout>
   );
 }
