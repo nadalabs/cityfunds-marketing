@@ -5,7 +5,7 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import { Heading, LongText, Overline, PrimaryText } from '@elements/Typography';
 import { FEATURED_BACKERS, OUR_VALUES } from '@utils/constants';
 import { teammateIndexQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
@@ -27,19 +27,19 @@ export default function AboutPage({ teammates }) {
       <SectionWrapper>
         <Overline>We are on a Mission</Overline>
         <Heading>Our Story</Heading>
-        <PrimaryText>
+        <LongText>
           Nada is an investment & finance platform that’s redefined how anyone
           can access real estate.‍ Powered by a diverse group of talented and
           purpose-driven people. We're not just a company; we're a team of
           people who want to do good in the world.
-        </PrimaryText>
-        <PrimaryText>
+        </LongText>
+        <LongText>
           Founded on the belief that the financial system built around real
           estate is unnecessarily complicated, we set out to level the playing
           field with new products focused on transparency and simplicity.‍
           Anyone can now access real estate for as little as $100 and homeowners
           can access their home equity with no monthly payments.
-        </PrimaryText>
+        </LongText>
       </SectionWrapper>
       <FeaturedLogos overline="World Class Backing" logos={FEATURED_BACKERS} />
       <TeamSlider teammates={teammates} />

@@ -7,7 +7,7 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import { Heading, LongText, Overline, PrimaryText } from '@elements/Typography';
 import {
   EXTERNAL_ROUTES,
   FEATURED_CITIES,
@@ -49,17 +49,17 @@ export default function AccreditedInvestorsPage({ testimonials }) {
       <SectionWrapper>
         <Overline>We are on a Mission</Overline>
         <Heading>Our Focus</Heading>
-        <PrimaryText style={{maxWidth: '70%'}}>
+        <LongText>
           We offer a diversified portfolio of home equity investments that
           provide investors with exposure into some of the top Markets around
           the U.S (Austin, Dallas, Miami, and Tampa) for as little as $100.
-        </PrimaryText>
-        <PrimaryText style={{width: '70%'}}>
+        </LongText>
+        <LongText>
           A Home Equity Investment is a financial agreement that allows
           investors to tap into thehomeowner’s equity in exchange for a portion
           of the home's future appreciation. This is secured via a lien on the
           home
-        </PrimaryText>
+        </LongText>
         <KeyMetrics
           metrics={[
             {

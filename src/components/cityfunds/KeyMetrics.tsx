@@ -34,6 +34,7 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
                 <LargeHeading
                   // @ts-ignore-next-line
                   ref={countUpRef}
+                  style={{fontSize: '6rem'}}
                 />
               )}
             </CountUp>
@@ -65,7 +66,6 @@ const CounterWrapper = styled.div`
 `;
 
 const LargeHeading = styled(Heading)`
-  font-size: 6rem;
   margin-bottom: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

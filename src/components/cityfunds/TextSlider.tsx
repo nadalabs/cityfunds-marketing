@@ -67,4 +67,8 @@ const TextWrapper = styled(CardWrapper)`
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   margin: 1rem;
   padding: 3rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 2rem;
+  }
 `;

@@ -13,7 +13,7 @@ export const Heading = styled.h1`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 48px;
-    line-height: 48px;
+    line-height: 64px;
   }
 `;
 
@@ -50,6 +50,14 @@ export const PrimaryText = styled.p`
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 14px;
+  }
+`;
+
+export const LongText = styled(PrimaryText)`
+  width: 70%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
   }
 `;
 

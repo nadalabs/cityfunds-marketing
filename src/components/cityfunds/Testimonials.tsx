@@ -64,8 +64,8 @@ const ContentWrapper = styled.div`
 `;
 
 const QuoteText = styled(Heading)`
-  height: 470px;
-  font-size: 3.5rem;
+  height: 420px;
+  font-size: 3rem;
   line-height: 64px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
