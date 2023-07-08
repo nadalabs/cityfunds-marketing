@@ -95,7 +95,7 @@ export const HoverHeading = styled(Heading)`
   margin-bottom: 2rem;
   cursor: pointer;
   width: 55%;
-  font-size: 3.5rem;
+  font-size: 5rem;
 
   &:hover {
     color: ${({ theme }) => theme.colors.lightGrey};
@@ -103,7 +103,8 @@ export const HoverHeading = styled(Heading)`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    line-height: 4rem;
+    font-size: 3rem;
+    line-height: 3.5rem;
   }
 `;
 
