@@ -4,7 +4,6 @@ import { deskTool } from 'sanity/desk';
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 
 import { resolveProductionUrl } from './resolveProductionUrl';
-import { author } from './schemas/author';
 import { post } from './schemas/post';
 import { partner } from './schemas/partner';
 import { legal } from './schemas/legal';
@@ -13,6 +12,10 @@ import { teammate } from './schemas/teammate';
 import { testimonial } from './schemas/testimonial';
 import { promo } from './schemas/promo';
 import { home } from './schemas/home';
+import { value } from './schemas/value';
+import { logo } from './schemas/logo';
+import { summary } from './schemas/summary';
+import { cityfund } from './schemas/cityfund';
 
 const title = import.meta.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Nada Finance';
 const projectId = import.meta.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -25,7 +28,7 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [author, post, partner, legal, press, teammate, testimonial, promo, home],
+    types: [post, partner, legal, press, teammate, testimonial, promo, home, value, logo, summary, cityfund],
   },
   document: {
     productionUrl: resolveProductionUrl,

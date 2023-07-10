@@ -6,7 +6,7 @@ interface NadaTextProps {
 
 export default function NadaText({ name }: NadaTextProps) {
   return (
-    <div style={{display: 'flex', alignItems: 'flex-end'}}>
+    <div style={{ display: 'flex', alignItems: 'flex-end' }}>
       <HeadingSmall>{name}</HeadingSmall>
       <GreenSquare />
     </div>

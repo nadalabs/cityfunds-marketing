@@ -11,24 +11,28 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
+import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
 import {
-  EXTERNAL_ROUTES,
-  FEATURED_ARTICLES,
-  FEATURED_CITIES,
-  VALUE_PROPS,
-} from '@utils/constants';
-import { homeIndexQuery, testimonialIndexQuery } from 'lib/queries';
+  cityfundsTestimonialsQuery,
+  cityfundsValuesQuery,
+  homeIndexQuery,
+  pressLogosQueryQuery,
+} from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
 interface HomePageProps {
   homePage?: any;
+  logos: any;
   testimonials: any;
+  values: any;
   partner: any;
 }
 
 export default function HomePage({
   homePage,
+  logos,
   testimonials,
+  values,
   partner,
 }: HomePageProps) {
   const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
@@ -44,7 +48,7 @@ export default function HomePage({
         formName="Cityfunds Lead"
         heroImages={FEATURED_CITIES}
       />
-      <FeaturedLogos overline="Featured In" logos={FEATURED_ARTICLES} seeMore />
+      <FeaturedLogos overline="Featured In" logos={logos} seeMore />
       <CityfundsSlider
         heading="Pick your favorite Cityfund, or invest in all of them"
         primaryText={
@@ -112,7 +116,7 @@ export default function HomePage({
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         primaryText="We have plenty of reasons."
-        valueProps={VALUE_PROPS}
+        valueProps={values}
       />
       <FaqsSection />
       <HowItWorks
@@ -149,10 +153,14 @@ export default function HomePage({
 
 export async function getStaticProps({ params, preview = false }) {
   const homePage = await getClient(preview).fetch(homeIndexQuery);
-  const testimonials = await getClient(preview).fetch(testimonialIndexQuery);
+  const testimonials = await getClient(preview).fetch(
+    cityfundsTestimonialsQuery
+  );
+  const logos = await getClient(preview).fetch(pressLogosQueryQuery);
+  const values = await getClient(preview).fetch(cityfundsValuesQuery);
 
   return {
-    props: { homePage: homePage[0], testimonials },
+    props: { homePage: homePage[0], testimonials, logos, values },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };

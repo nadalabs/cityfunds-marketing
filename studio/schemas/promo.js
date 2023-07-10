@@ -1,6 +1,6 @@
 export const promo = {
     name: 'promo',
-    title: 'Promos',
+    title: 'Promotions',
     type: 'document',
     fields: [
       {

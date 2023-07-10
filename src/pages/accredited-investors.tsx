@@ -8,15 +8,11 @@ import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, LongText, Overline } from '@elements/Typography';
-import {
-  EXTERNAL_ROUTES,
-  FEATURED_CITIES,
-  VALUE_PROPS,
-} from '@utils/constants';
-import { testimonialIndexQuery } from 'lib/queries';
+import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
+import { cityfundsTestimonialsQuery, cityfundsValuesQuery } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
-export default function AccreditedInvestorsPage({ testimonials }) {
+export default function AccreditedInvestorsPage({ testimonials, values }) {
   return (
     <PageLayout>
       <PageHero
@@ -92,7 +88,7 @@ export default function AccreditedInvestorsPage({ testimonials }) {
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         primaryText="We have plenty of reasons."
-        valueProps={VALUE_PROPS}
+        valueProps={values}
       />
       <FaqsSection />
       <SectionWrapper>
@@ -123,10 +119,13 @@ export default function AccreditedInvestorsPage({ testimonials }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const testimonials = await getClient(preview).fetch(testimonialIndexQuery);
+  const testimonials = await getClient(preview).fetch(
+    cityfundsTestimonialsQuery
+  );
+  const values = await getClient(preview).fetch(cityfundsValuesQuery);
 
   return {
-    props: { testimonials },
+    props: { testimonials, values },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };

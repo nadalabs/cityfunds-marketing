@@ -1,6 +1,6 @@
 export const legal = {
     name: 'legal',
-    title: 'Legal',
+    title: 'Legal Documents',
     type: 'document',
     fields: [
       {

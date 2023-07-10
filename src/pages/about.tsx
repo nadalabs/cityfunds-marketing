@@ -6,11 +6,14 @@ import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, LongText, Overline } from '@elements/Typography';
-import { FEATURED_BACKERS, OUR_VALUES } from '@utils/constants';
-import { teammateIndexQuery } from 'lib/queries';
+import {
+  backersLogosQuery,
+  nadaValuesQuery,
+  teammateIndexQuery,
+} from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
-export default function AboutPage({ teammates }) {
+export default function AboutPage({ teammates, values, logos }) {
   return (
     <PageLayout>
       <PageHero
@@ -41,12 +44,12 @@ export default function AboutPage({ teammates }) {
           can access their home equity with no monthly payments.
         </LongText>
       </SectionWrapper>
-      <FeaturedLogos overline="World Class Backing" logos={FEATURED_BACKERS} />
+      <FeaturedLogos overline="World Class Backing" logos={logos} />
       <TeamSlider teammates={teammates} />
       <TextSlider
         overline="How We Think"
         heading="Our Values"
-        valueProps={OUR_VALUES}
+        valueProps={values}
       />
       <CareersCTA />
     </PageLayout>
@@ -55,9 +58,11 @@ export default function AboutPage({ teammates }) {
 
 export async function getStaticProps({ params, preview = false }) {
   const teammates = await getClient(preview).fetch(teammateIndexQuery);
+  const values = await getClient(preview).fetch(nadaValuesQuery);
+  const logos = await getClient(preview).fetch(backersLogosQuery);
 
   return {
-    props: { teammates },
+    props: { teammates, values, logos },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
