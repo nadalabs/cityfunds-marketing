@@ -2,7 +2,7 @@ const theme = {
   colors: {
     primary: '#1A1A1A',
     secondary: '#48DC95',
-    success: '#28a745',
+    success: '#2A8356',
     danger: '#FF554F',
     warning: '#ffc107',
     info: '#17a2b8',

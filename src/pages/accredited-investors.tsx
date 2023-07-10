@@ -1,5 +1,5 @@
 import FeaturedImage from '@components/FeaturedImage';
-import CityfundsSlider from '@components/cityfunds/CityfundsSlider';
+import AccreditedSlider from '@components/cityfunds/AccreditedSlider';
 import FaqsSection from '@components/cityfunds/FaqsSection';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import Testimonials from '@components/cityfunds/Testimonials';
@@ -20,29 +20,17 @@ export default function AccreditedInvestorsPage({ testimonials }) {
   return (
     <PageLayout>
       <PageHero
-        heading="Helping Homeowners Reduce Debt"
+        heading="Diversify Beyond Stocks"
         primaryText="Helping 10 Million Homeowners reduce their debt through home equity investments."
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Accredited Lead"
         heroImages={FEATURED_CITIES}
       />
-      <CityfundsSlider
+      <AccreditedSlider
         heading="Our Funds"
-        primaryText={'Pick your favorite Cityfund, or invest in all of them!'}
-        cards={[
-          ...FEATURED_CITIES,
-          {
-            name: 'Coming Soon',
-            cardImage: '/images/coming-soon-1.png',
-            isSmallText: true,
-          },
-          {
-            name: 'Coming Soon',
-            cardImage: '/images/coming-soon-2.png',
-            isSmallText: true,
-          },
-        ]}
+        primaryText="Pick the fund that suits you, or invest in all six."
+        cards={FEATURED_CITIES}
       />
       <SectionWrapper>
         <Overline>We are on a Mission</Overline>
@@ -61,38 +49,40 @@ export default function AccreditedInvestorsPage({ testimonials }) {
         <KeyMetrics
           metrics={[
             {
-              label: 'Total Investors',
-              value: 7000,
-              formattingFn: (val) => `${val.toLocaleString('us-en')}+`,
+              label: 'Total Invested',
+              value: 1976042,
+              prefix: '$',
+            },
+            {
+              label: 'Average NAV',
+              value: 10.68,
+              prefix: '$',
+              decimals: 2,
             },
             {
               label: 'Properties Funded',
               value: 60,
               formattingFn: (val) => `${val}+`,
             },
-            {
-              label: 'Avgerage Appreciation',
-              value: 11.7,
-              formattingFn: (val) => `${val}%`,
-              decimals: 1,
-            },
           ]}
         />
         <KeyMetrics
           metrics={[
             {
-              label: 'Average Amount Unlocked',
-              value: 47045,
+              label: 'Total Appreciation',
+              value: 120471,
               prefix: '$',
             },
             {
-              label: 'Average Days to Close',
-              value: 13.8,
-              decimals: 1,
+              label: '1 Year Return',
+              value: 6.83,
+              formattingFn: (val) => `${val}%`,
+              decimals: 2,
             },
             {
-              label: 'Monthly Payments',
-              value: 0,
+              label: 'Average Appreciation',
+              value: 14,
+              formattingFn: (val) => `${val}%`,
             },
           ]}
         />
@@ -121,7 +111,7 @@ export default function AccreditedInvestorsPage({ testimonials }) {
         <FeaturedImage
           overline="Have any questions?"
           heading="Let’s Talk"
-          primaryText="We offer a diversified portfolio of home equity investments that provide investors with exposure into some of the top Markets around the U.S (Austin, Dallas, Miami, and Tampa) for as little as $100."
+          primaryText="Deyon Robertson is the Investor Relations Lead at Nada. With a background in investment banking at Citygroup, he brings extensive experience in Technology, Media, and Telecommunications. Mr. Robertson is licensed and focused on communicating Nada's shareholder value strategy to Cityfund investors."
           imageUrl="/images/deyon.png"
           btnText="Schedule a Call"
           onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
