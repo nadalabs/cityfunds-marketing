@@ -4,15 +4,23 @@ import FaqsSection from '@components/cityfunds/FaqsSection';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
+import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { Heading, LongText, Overline } from '@elements/Typography';
 import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
-import { cityfundsTestimonialsQuery, cityfundsValuesQuery } from 'lib/queries';
+import {
+  cityfundsTestimonialsQuery,
+  cityfundsValuesQuery,
+  ourFocusQuery,
+} from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
-export default function AccreditedInvestorsPage({ testimonials, values }) {
+export default function AccreditedInvestorsPage({
+  testimonials,
+  values,
+  ourFocus,
+}) {
   return (
     <PageLayout>
       <PageHero
@@ -29,19 +37,11 @@ export default function AccreditedInvestorsPage({ testimonials, values }) {
         cards={FEATURED_CITIES}
       />
       <SectionWrapper>
-        <Overline>We are on a Mission</Overline>
-        <Heading>Our Focus</Heading>
-        <LongText>
-          We offer a diversified portfolio of home equity investments that
-          provide investors with exposure into some of the top Markets around
-          the U.S (Austin, Dallas, Miami, and Tampa) for as little as $100.
-        </LongText>
-        <LongText>
-          A Home Equity Investment is a financial agreement that allows
-          investors to tap into thehomeowner’s equity in exchange for a portion
-          of the home's future appreciation. This is secured via a lien on the
-          home
-        </LongText>
+        <LongFormText
+          title="Our Focus"
+          overline="We are on a Mission"
+          content={ourFocus}
+        />
         <KeyMetrics
           metrics={[
             {
@@ -123,9 +123,10 @@ export async function getStaticProps({ params, preview = false }) {
     cityfundsTestimonialsQuery
   );
   const values = await getClient(preview).fetch(cityfundsValuesQuery);
+  const ourFocus = await getClient(preview).fetch(ourFocusQuery);
 
   return {
-    props: { testimonials, values },
+    props: { testimonials, values, ourFocus },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };

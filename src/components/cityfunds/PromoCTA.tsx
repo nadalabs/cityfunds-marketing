@@ -4,6 +4,7 @@ import {
   Heading,
   Overline,
   SecondaryText,
+  SmallText,
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
@@ -31,9 +32,9 @@ export default function PromoCTA({ overline, promo }: PromoCTAProps) {
           <Overline style={{ marginBottom: '1rem' }}>{overline}</Overline>
         )}
         <Heading>{promo?.title}</Heading>
-        <SecondaryText style={{ marginBottom: '4px' }}>
+        <SmallText style={{ marginBottom: '4px' }}>
           {promo?.description}
-        </SecondaryText>
+        </SmallText>
         <Caption style={{ marginBottom: '2rem' }}>{promo?.disclaimer}</Caption>
         <EmailCapture
           btnText="Get Started"

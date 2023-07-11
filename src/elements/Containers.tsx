@@ -8,6 +8,13 @@ export const SectionWrapper = styled.div`
   }
 `;
 
+export const StackWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: inherit;
+`;
+
 export const SliderWrapper = styled.div`
   padding: 100px 0 100px 150px;
 

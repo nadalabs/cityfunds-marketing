@@ -2,27 +2,27 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 export const PrimaryButton = styled.button`
-  color: ${({ theme }) => theme.colors.white};
-  background: ${({ theme }) => theme.colors.secondary};
+  color: white;
+  background: ${({ theme }) => theme.colors.success};
   font-family: ${({ theme }) => theme.fonts.main};
   font-size: 1rem;
   font-style: normal;
   font-weight: 600;
   line-height: 1.5rem;
-  letter-spacing: 0.075rem;
+  letter-spacing: 0.07813rem;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   padding: 0.625rem 1.25rem;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
+  &:disabled {
+    background-color: rgba(42, 131, 86, 0.4);
   }
 
-  &:disabled {
-    background-color: #989b9f;
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
   }
 `;
 

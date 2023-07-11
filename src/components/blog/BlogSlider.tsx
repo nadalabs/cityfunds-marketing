@@ -1,8 +1,7 @@
 import {
   Overline,
-  SecondaryHeading,
   SecondaryText,
-  TertiaryHeading,
+  SmallHeading,
 } from '@elements/Typography';
 import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
@@ -25,9 +24,7 @@ interface BlogSliderProps {
 export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
   return (
     <SectionWrapper>
-      <SecondaryHeading style={{ marginBottom: '48px' }}>
-        {tag}
-      </SecondaryHeading>
+      <SmallHeading style={{ marginBottom: '48px' }}>{tag}</SmallHeading>
 
       <div style={{ display: 'flex', overflowX: 'scroll' }}>
         {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
@@ -42,7 +39,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
                   {format(parseISO(date), 'LLLL	d, yyyy')}
                 </time>
               </Overline>
-              <TertiaryHeading>{title}</TertiaryHeading>
+              <SmallHeading>{title}</SmallHeading>
               <SecondaryText>{excerpt}</SecondaryText>
             </CardWrapper>
           </Link>

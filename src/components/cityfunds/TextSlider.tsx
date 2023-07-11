@@ -1,9 +1,10 @@
-import { CardWrapper, SliderWrapper } from '@elements/Containers';
+import { CardWrapper, SliderWrapper, StackWrapper } from '@elements/Containers';
 import {
   Heading,
   Overline,
+  PrimaryText,
   SecondaryText,
-  TertiaryHeading,
+  SmallHeading,
 } from '@elements/Typography';
 import styled from 'styled-components';
 
@@ -11,7 +12,7 @@ interface TextSliderProps {
   overline: string;
   heading: string;
   primaryText?: string;
-  valueProps: { title; description }[];
+  valueProps: any[];
 }
 
 export default function TextSlider({
@@ -37,9 +38,11 @@ export default function TextSlider({
         {valueProps.map(({ title, description }, idx) => (
           <div key={idx}>
             <TextWrapper>
+              <StackWrapper style={{gap: '1.75rem'}}>
               <GreenSquare />
-              <TertiaryHeading>{title}</TertiaryHeading>
-              <SecondaryText>{description}</SecondaryText>
+              <SmallHeading>{title}</SmallHeading>
+              <PrimaryText>{description}</PrimaryText>
+              </StackWrapper>
             </TextWrapper>
           </div>
         ))}
@@ -53,7 +56,6 @@ export const GreenSquare = styled.div`
   height: 30px;
   width: 30px;
   border-radius: 7px;
-  margin-bottom: 20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     height: 20px;
@@ -66,7 +68,7 @@ export const GreenSquare = styled.div`
 const TextWrapper = styled(CardWrapper)`
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   margin: 1rem;
-  padding: 3rem;
+  padding: 3.28rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 2rem;

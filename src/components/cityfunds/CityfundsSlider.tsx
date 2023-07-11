@@ -1,14 +1,14 @@
 import AssetTicker from '@components/cityfunds/AssetTicker';
 import { GreenSquare } from '@components/common/CarouselStepper';
 import { CardWrapper, SliderWrapper } from '@elements/Containers';
-import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import { Heading, LargeText, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { styled } from 'styled-components';
 
 interface CityfundsSliderProps {
   heading: string;
-  primaryText?: string;
+  primaryText: string;
   overline?: string;
   cards: {
     name: string;
@@ -31,9 +31,9 @@ export default function CityfundsSlider({
   return (
     <SliderWrapper>
       <HeadingWrapper>
-        {overline && <Overline>{overline}</Overline>}
+        <Overline>{overline}</Overline>
         <Heading>{heading}</Heading>
-        {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
+        <LargeText>{primaryText}</LargeText>
       </HeadingWrapper>
       <div style={{ display: 'flex', overflowX: 'scroll' }}>
         {cards?.map(

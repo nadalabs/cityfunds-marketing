@@ -1,5 +1,5 @@
 import { SliderWrapper } from '@elements/Containers';
-import { Heading, Overline } from '@elements/Typography';
+import { Heading, LargeText, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { formatPercent, formatPrice } from '@utils/helpers';
@@ -57,7 +57,7 @@ export default function AccreditedSlider({
       <HeadingWrapper>
         {overline && <Overline>{overline}</Overline>}
         <Heading>{heading}</Heading>
-        {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
+        {primaryText && <LargeText>{primaryText}</LargeText>}
       </HeadingWrapper>
 
       <div style={{ display: 'flex', gap: '1.5rem', overflowX: 'scroll' }}>

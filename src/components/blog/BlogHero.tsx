@@ -4,7 +4,7 @@ import {
   LinkText,
   Overline,
   SecondaryText,
-  TertiaryHeading,
+  SmallHeading,
 } from '@elements/Typography';
 import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
@@ -66,7 +66,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
 
                 <CardWrapper>
                   <Overline>{post?.tag}</Overline>
-                  <TertiaryHeading>{post?.title}</TertiaryHeading>
+                  <SmallHeading>{post?.title}</SmallHeading>
                   <SecondaryText>{post?.excerpt}</SecondaryText>
                   {post?.date && (
                     <SecondaryText>

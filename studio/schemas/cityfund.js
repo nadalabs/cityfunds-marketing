@@ -10,10 +10,36 @@ export const cityfund = {
         validation: (Rule) => Rule.required(),
       },
       {
-        name: 'promo',
-        title: 'Promo',
-        type: 'reference',
-        to: [{ type: 'promo' }],
+        name: 'heroImage',
+        title: 'Hero Image',
+        type: 'image',
+        options: {
+          hotspot: true,
+        },
+      },
+      {
+        name: 'Card Image',
+        title: 'Card Image',
+        type: 'image',
+        options: {
+          hotspot: true,
+        },
+      },
+      {
+        name: 'mapImage',
+        title: 'Map Image',
+        type: 'image',
+        options: {
+          hotspot: true,
+        },
+      },
+      {
+        name: 'accreditedImage',
+        title: 'Accredited Image',
+        type: 'image',
+        options: {
+          hotspot: true,
+        },
       },
     ],
     preview: {

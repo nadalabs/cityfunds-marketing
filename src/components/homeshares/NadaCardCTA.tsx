@@ -4,8 +4,8 @@ import { SectionWrapper } from '@elements/Containers';
 import {
   Heading,
   Overline,
-  SecondaryHeading,
   SecondaryText,
+  SmallHeading,
 } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import Image from 'next/image';
@@ -40,9 +40,9 @@ export default function NadaCardCTA() {
           {steps.map(({ title, description }, jdx) => (
             <StepWrapper key={jdx}>
               <GreenSquare style={{ marginBottom: '24px' }} />
-              <SecondaryHeading style={{ color: '#48DC95', fontSize: '32px' }}>
+              <SmallHeading style={{ color: '#48DC95', fontSize: '32px' }}>
                 {title}
-              </SecondaryHeading>
+              </SmallHeading>
               <SecondaryText style={{ fontSize: '16px' }}>
                 {description}
               </SecondaryText>
