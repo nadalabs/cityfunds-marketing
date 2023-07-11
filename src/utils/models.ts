@@ -11,11 +11,19 @@ export interface IFundInfo {
   fundSize: number;
 }
 
+export interface IFundImages {
+  heroImage: string;
+  cardImage: string;
+  mapImage: string;
+  accredImage: string;
+  carouselImages: string[];
+}
+
 export interface IFundDocs {
+  executiveSummary: string;
   investorPitchDeck: string;
   offeringMemorandum: string;
   subscriptionAgreement: string;
-  operatingAgreement: string;
   wireInstructions: string;
 }
 
@@ -27,7 +35,7 @@ export interface IFundReturns {
 
 export interface ICityfund {
   name: string;
-  cardImage: string;
+  images: IFundImages;
   information: IFundInfo;
   documents?: IFundDocs;
   returns?: IFundReturns;

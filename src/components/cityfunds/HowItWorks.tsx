@@ -4,7 +4,9 @@ import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import {
   Heading,
+  LargeText,
   Overline,
+  PrimaryText,
   SecondaryText,
   SmallHeading,
 } from '@elements/Typography';
@@ -78,7 +80,7 @@ export default function HowItWorks({
                       <SmallHeading style={{ color: idx === jdx && '#48DC95' }}>
                         {title}
                       </SmallHeading>
-                      <SecondaryText>{description}</SecondaryText>
+                      <PrimaryText>{description}</PrimaryText>
                       {idx === jdx && (
                         <PrimaryButton
                           onClick={onClick}

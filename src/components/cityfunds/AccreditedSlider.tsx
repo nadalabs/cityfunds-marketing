@@ -1,3 +1,4 @@
+import { PrimaryButton } from '@elements/Buttons';
 import { SliderWrapper } from '@elements/Containers';
 import { Heading, LargeText, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
@@ -68,6 +69,7 @@ export default function AccreditedSlider({
                 onMouseEnter={() => setShowCard(idx + 1)}
                 onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
                 style={{
+                  justifyContent: 'flex-end',
                   background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${cardImage}), lightgray 50% / cover no-repeat`,
                 }}
               >
@@ -103,11 +105,25 @@ export default function AccreditedSlider({
                   ))}
                 </div>
 
-                <div>
-                  <PrimaryText>Offering Memorandum</PrimaryText>
-                  <PrimaryText>Executive Summary</PrimaryText>
-                  <PrimaryText>Wire Instructions</PrimaryText>
-                </div>
+                {idx === 0 || idx === 1 ? (
+                  <PrimaryButton
+                    isInverted
+                    onClick={() =>
+                      window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
+                    }
+                  >
+                    Schedule a Call
+                  </PrimaryButton>
+                ) : (
+                  <PrimaryButton
+                    isInverted
+                    onClick={() =>
+                      window.open(EXTERNAL_ROUTES.WEB_APP, '_blank')
+                    }
+                  >
+                    Invest Now
+                  </PrimaryButton>
+                )}
               </CardWrapper>
             )}
           </div>
@@ -122,10 +138,9 @@ export const CardWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.success};
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  gap: 2rem;
+  justify-content: space-between;
   width: 24rem;
-  height: 42rem;
+  height: 38rem;
   padding: 2.5rem;
   border-radius: 3.125rem;
 

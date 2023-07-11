@@ -1,8 +1,4 @@
-import {
-  Overline,
-  SecondaryText,
-  SmallHeading,
-} from '@elements/Typography';
+import { Overline, SecondaryText, SmallHeading } from '@elements/Typography';
 import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';

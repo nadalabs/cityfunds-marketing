@@ -1,5 +1,6 @@
 import FeaturedImage from '@components/FeaturedImage';
 import AccreditedSlider from '@components/cityfunds/AccreditedSlider';
+import DocumentCenter from '@components/cityfunds/DocumentCenter';
 import FaqsSection from '@components/cityfunds/FaqsSection';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import Testimonials from '@components/cityfunds/Testimonials';
@@ -25,7 +26,7 @@ export default function AccreditedInvestorsPage({
     <PageLayout>
       <PageHero
         heading="Diversify Beyond Stocks"
-        primaryText="Helping 10 Million Homeowners reduce their debt through home equity investments."
+        primaryText="While helping 10 Million Homeowners and counting to reduce their debt through home equity investments."
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Accredited Lead"
@@ -103,6 +104,7 @@ export default function AccreditedInvestorsPage({
         />
       </SectionWrapper>
       <Testimonials reviews={testimonials} />
+      <DocumentCenter funds={FEATURED_CITIES} />
       <SectionWrapper>
         <FeaturedImage
           overline="Have any questions?"

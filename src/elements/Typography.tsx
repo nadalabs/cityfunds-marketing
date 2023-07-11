@@ -1,18 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-// PrimaryHeading
-// LargeHeading
-// SmallHeading
-
-// PrimaryText
-// LargeText
-// SmallText
-
-// Overline
-// Caption
-// ErrorText
-
 export const Heading = styled.h1`
   color: ${({ theme }) => theme.colors.darkText};
   font-family: ${({ theme }) => theme.fonts.main};
@@ -21,7 +9,7 @@ export const Heading = styled.h1`
   font-weight: 600;
   line-height: 100%;
   letter-spacing: -0.035rem;
-  margin: 0;
+  margin: 0 0 0.5rem 0%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 48px;
@@ -59,6 +47,7 @@ export const LargeText = styled(PrimaryText)`
   color: ${({ theme }) => theme.colors.lightText};
   font-size: 1.5rem;
   letter-spacing: -0.015rem;
+  margin-bottom: 1.5rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 1rem;

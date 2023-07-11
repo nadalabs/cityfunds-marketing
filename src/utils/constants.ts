@@ -99,8 +99,20 @@ export const SOCIAL_LINKS = [
 export const FEATURED_CITIES = [
   {
     name: 'Miami',
-    heroImage: '/images/miami-hero.png',
-    cardImage: '/images/miami.png',
+    images: {
+      heroImage: '/images/miami-hero.png',
+      cardImage: '/images/miami.png',
+      mapImage: '',
+      accredImage: '',
+      carouselImages: [''],
+    },
+    documents: {
+      executiveSummary: 'https://google.com',
+      investorPitchDeck: 'https://google.com',
+      offeringMemorandum: 'https://google.com',
+      subscriptionAgreement: 'https://google.com',
+      wireInstructions: 'https://google.com',
+    },
     information: {
       fundType: FUND_TYPE.EQUITY,
       strategy: STRATEGY.GROWTH,
@@ -121,8 +133,20 @@ export const FEATURED_CITIES = [
   },
   {
     name: 'Dallas',
-    heroImage: '/images/dallas-hero.png',
-    cardImage: '/images/dallas.png',
+    images: {
+      heroImage: '/images/miami-hero.png',
+      cardImage: '/images/miami.png',
+      mapImage: '',
+      accredImage: '',
+      carouselImages: [''],
+    },
+    documents: {
+      executiveSummary: 'https://google.com',
+      investorPitchDeck: 'https://google.com',
+      offeringMemorandum: 'https://google.com',
+      subscriptionAgreement: 'https://google.com',
+      wireInstructions: 'https://google.com',
+    },
     information: {
       fundType: FUND_TYPE.EQUITY,
       strategy: STRATEGY.GROWTH,
@@ -138,8 +162,20 @@ export const FEATURED_CITIES = [
   },
   {
     name: 'Austin',
-    heroImage: '/images/austin-hero.png',
-    cardImage: '/images/austin.png',
+    images: {
+      heroImage: '/images/miami-hero.png',
+      cardImage: '/images/miami.png',
+      mapImage: '',
+      accredImage: '',
+      carouselImages: [''],
+    },
+    documents: {
+      executiveSummary: 'https://google.com',
+      investorPitchDeck: 'https://google.com',
+      offeringMemorandum: 'https://google.com',
+      subscriptionAgreement: 'https://google.com',
+      wireInstructions: 'https://google.com',
+    },
     information: {
       fundType: FUND_TYPE.EQUITY,
       strategy: STRATEGY.GROWTH,
@@ -155,8 +191,20 @@ export const FEATURED_CITIES = [
   },
   {
     name: 'Tampa',
-    heroImage: '/images/tampa-hero.png',
-    cardImage: '/images/tampa.png',
+    images: {
+      heroImage: '/images/miami-hero.png',
+      cardImage: '/images/miami.png',
+      mapImage: '',
+      accredImage: '',
+      carouselImages: [''],
+    },
+    documents: {
+      executiveSummary: 'https://google.com',
+      investorPitchDeck: 'https://google.com',
+      offeringMemorandum: 'https://google.com',
+      subscriptionAgreement: 'https://google.com',
+      wireInstructions: 'https://google.com',
+    },
     information: {
       fundType: FUND_TYPE.EQUITY,
       strategy: STRATEGY.GROWTH,

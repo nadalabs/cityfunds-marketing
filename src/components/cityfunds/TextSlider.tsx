@@ -1,9 +1,9 @@
 import { CardWrapper, SliderWrapper, StackWrapper } from '@elements/Containers';
 import {
   Heading,
+  LargeText,
   Overline,
   PrimaryText,
-  SecondaryText,
   SmallHeading,
 } from '@elements/Typography';
 import styled from 'styled-components';
@@ -25,7 +25,7 @@ export default function TextSlider({
     <SliderWrapper>
       <Overline>{overline}</Overline>
       <Heading>{heading}</Heading>
-      {primaryText && <SecondaryText>{primaryText}</SecondaryText>}
+      {primaryText && <LargeText>{primaryText}</LargeText>}
 
       <div
         style={{
@@ -36,15 +36,13 @@ export default function TextSlider({
         }}
       >
         {valueProps.map(({ title, description }, idx) => (
-          <div key={idx}>
-            <TextWrapper>
-              <StackWrapper style={{gap: '1.75rem'}}>
+          <TextWrapper key={idx}>
+            <StackWrapper style={{}}>
               <GreenSquare />
               <SmallHeading>{title}</SmallHeading>
               <PrimaryText>{description}</PrimaryText>
-              </StackWrapper>
-            </TextWrapper>
-          </div>
+            </StackWrapper>
+          </TextWrapper>
         ))}
       </div>
     </SliderWrapper>
@@ -68,7 +66,6 @@ export const GreenSquare = styled.div`
 const TextWrapper = styled(CardWrapper)`
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   margin: 1rem;
-  padding: 3.28rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 2rem;

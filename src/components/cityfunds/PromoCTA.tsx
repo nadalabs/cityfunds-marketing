@@ -1,11 +1,5 @@
 import EmailCapture from '@components/common/EmailCapture';
-import {
-  Caption,
-  Heading,
-  Overline,
-  SecondaryText,
-  SmallText,
-} from '@elements/Typography';
+import { Caption, Heading, LargeText, Overline, SmallText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
@@ -32,9 +26,9 @@ export default function PromoCTA({ overline, promo }: PromoCTAProps) {
           <Overline style={{ marginBottom: '1rem' }}>{overline}</Overline>
         )}
         <Heading>{promo?.title}</Heading>
-        <SmallText style={{ marginBottom: '4px' }}>
+        <LargeText style={{ marginBottom: '4px' }}>
           {promo?.description}
-        </SmallText>
+        </LargeText>
         <Caption style={{ marginBottom: '2rem' }}>{promo?.disclaimer}</Caption>
         <EmailCapture
           btnText="Get Started"

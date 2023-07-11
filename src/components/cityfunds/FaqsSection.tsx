@@ -80,6 +80,7 @@ export default function FaqsSection({}) {
 
 export const ContentWrapper = styled.div`
   width: 100%;
+  height: 10rem;
   display: flex;
   justify-content: space-between;
 
@@ -94,8 +95,7 @@ export const HoverHeading = styled(Heading)`
   color: ${({ theme }) => theme.colors.black};
   margin-bottom: 2rem;
   cursor: pointer;
-  width: 55%;
-  font-size: 5rem;
+  width: 60%;
 
   &:hover {
     color: ${({ theme }) => theme.colors.lightGrey};
@@ -109,7 +109,7 @@ export const HoverHeading = styled(Heading)`
 `;
 
 export const TextWrapper = styled(Heading)`
-  max-width: 45%;
+  max-width: 35%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     max-width: 100%;

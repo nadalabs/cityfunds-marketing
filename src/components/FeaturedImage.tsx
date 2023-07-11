@@ -1,7 +1,7 @@
 import { GreenSquare } from '@components/common/CarouselStepper';
 import { PrimaryButton } from '@elements/Buttons';
 import { StackWrapper } from '@elements/Containers';
-import { Heading, LargeText, Overline, PrimaryText } from '@elements/Typography';
+import { Heading, LargeText, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import Image from 'next/image';
 import { styled } from 'styled-components';
@@ -62,7 +62,6 @@ export default function FeaturedImage({
 
       <StackWrapper>
         {overline && <Overline>{overline}</Overline>}
-        <div>
         <Heading
           style={{
             maxWidth: isShortHeader ? '400px' : '700px',
@@ -72,8 +71,10 @@ export default function FeaturedImage({
           {heading}
         </Heading>
         <LargeText>{primaryText}</LargeText>
+
+        <div>
+          <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
         </div>
-        <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
       </StackWrapper>
 
       {isReversed && (

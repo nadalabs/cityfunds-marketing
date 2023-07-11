@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export const PrimaryButton = styled.button`
-  color: white;
-  background: ${({ theme }) => theme.colors.success};
+export const PrimaryButton = styled.button<{ isInverted?: boolean }>`
+  color: ${({ theme, isInverted }) =>
+    isInverted ? theme.colors.primary : 'white'};
+  background: ${({ theme, isInverted }) =>
+    isInverted ? 'white' : theme.colors.primary};
   font-family: ${({ theme }) => theme.fonts.main};
   font-size: 1rem;
   font-style: normal;
