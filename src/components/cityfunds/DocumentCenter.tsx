@@ -43,7 +43,7 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
 
   return (
     <SectionWrapper>
-      <Heading>Document Center</Heading>
+      <Heading>Docs</Heading>
 
       <Slider {...settings} ref={sliderRef}>
         {allDocuments.map((_, idx) => (

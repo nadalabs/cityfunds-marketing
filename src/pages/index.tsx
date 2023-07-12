@@ -46,7 +46,10 @@ export default function HomePage({
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Cityfunds Lead"
-        heroImages={FEATURED_CITIES.map(({ name, images }) => ({name, heroImage: images.heroImage}))}
+        heroImages={FEATURED_CITIES.map(({ name, images }) => ({
+          name,
+          heroImage: images.heroImage,
+        }))}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
       <CityfundsSlider

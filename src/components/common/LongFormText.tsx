@@ -5,6 +5,7 @@ import {
   Overline,
   PrimaryText,
 } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { PortableText } from '@portabletext/react';
 
 interface LongFormTextProps {
@@ -20,6 +21,8 @@ export default function LongFormText({
   content,
   isSmall,
 }: LongFormTextProps) {
+  const isMobile = useIsMobile()
+
   const components = {
     block: {
       normal: ({ children }) => {
@@ -63,7 +66,7 @@ export default function LongFormText({
     <>
       {overline && <Overline>{overline}</Overline>}
       {title && <Heading>{title}</Heading>}
-      <div style={{ width: isSmall ? '100%' : '66%' }}>
+      <div style={{ width: isSmall || isMobile ? '100%' : '66%' }}>
         {/* @ts-ignore-next-line */}
         <PortableText value={content || []} components={components} />
       </div>

@@ -1,4 +1,4 @@
-import { Caption, SecondaryText } from '@elements/Typography';
+import { Caption } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { formatPercent, formatPrice } from '@utils/helpers';
 import Image from 'next/image';

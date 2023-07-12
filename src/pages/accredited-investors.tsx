@@ -30,21 +30,27 @@ export default function AccreditedInvestorsPage({
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Accredited Lead"
-        heroImages={FEATURED_CITIES.map(({ name, images }) => ({name, heroImage: images.heroImage}))}
+        heroImages={FEATURED_CITIES.map(({ name, images }) => ({
+          name,
+          heroImage: images.heroImage,
+        }))}
       />
       <AccreditedSlider
         heading="Our Funds"
         primaryText="Pick the fund that suits you, or invest in all six."
         cards={FEATURED_CITIES}
       />
+      <DocumentCenter funds={FEATURED_CITIES} />
+
       <SectionWrapper>
         <LongFormText title="Our Focus" content={ourFocus} />
         <KeyMetrics
           metrics={[
             {
               label: 'Total Invested',
-              value: 1976042,
-              prefix: '$',
+              value: 1.97,
+              formattingFn: (val) => `$${val}M`,
+              decimals: 2,
             },
             {
               label: 'Average NAV',
@@ -63,8 +69,8 @@ export default function AccreditedInvestorsPage({
           metrics={[
             {
               label: 'Total Appreciation',
-              value: 120471,
-              prefix: '$',
+              value: 120,
+              formattingFn: (val) => `$${val}K`,
             },
             {
               label: '1 Year Return',
@@ -99,7 +105,6 @@ export default function AccreditedInvestorsPage({
         />
       </SectionWrapper>
       <Testimonials reviews={testimonials} />
-      <DocumentCenter funds={FEATURED_CITIES} />
       <SectionWrapper>
         <FeaturedImage
           overline="Have any questions?"
