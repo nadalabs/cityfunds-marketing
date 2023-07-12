@@ -12,6 +12,7 @@ import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
+import { REGULATION } from '@utils/models';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
@@ -36,6 +37,9 @@ export default function HomePage({
   partner,
 }: HomePageProps) {
   const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
+  const retailFunds = FEATURED_CITIES.filter(
+    ({ information }) => information.regulation !== REGULATION.REG_D
+  )
 
   return (
     <PageLayout partnerImage={partner?.coverImage} bannerText={bannerText}>
@@ -46,7 +50,7 @@ export default function HomePage({
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Cityfunds Lead"
-        heroImages={FEATURED_CITIES.map(({ name, images }) => ({
+        heroImages={retailFunds.map(({ name, images }) => ({
           name,
           heroImage: images.heroImage,
         }))}
@@ -58,7 +62,7 @@ export default function HomePage({
           'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
         }
         cards={[
-          ...FEATURED_CITIES,
+          ...retailFunds,
           {
             name: 'Coming Soon',
             cardImage: '/images/coming-soon-1.png',

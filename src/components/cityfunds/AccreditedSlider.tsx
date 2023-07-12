@@ -31,13 +31,13 @@ export default function AccreditedSlider({
     cardFront: [
       { label: 'Type', value: information.fundType },
       { label: 'Strategy', value: information.strategy },
-      { label: 'Appreciation', value: information.strategy },
+      { label: 'Target IRR', value: information.targetIRR },
     ],
     cardBack: [
       { label: 'Type', value: information.fundType },
       { label: 'Strategy', value: information.strategy },
       { label: 'Tax Form', value: information.taxForm },
-      { label: 'Target IRR', value: `${formatPercent(information.targetIRR)}` },
+      { label: 'Target IRR', value: information.targetIRR },
       { label: 'Liquidity', value: information.liquidity },
       { label: 'Term', value: information.fundTerm },
       { label: 'Lock Up', value: information.lockupPeriod },
@@ -112,7 +112,7 @@ export default function AccreditedSlider({
                       window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
                     }
                   >
-                    Schedule a Call
+                    Get Access
                   </PrimaryButton>
                 ) : (
                   <PrimaryButton

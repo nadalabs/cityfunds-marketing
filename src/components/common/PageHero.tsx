@@ -87,7 +87,7 @@ export default function PageHero({
             {heroImages.length > 1 && (
               <CarouselStepper
                 activeStep={idx}
-                totalSteps={FEATURED_CITIES.length}
+                totalSteps={heroImages.length}
                 sliderRef={sliderRef}
               />
             )}

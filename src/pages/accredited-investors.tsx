@@ -10,6 +10,7 @@ import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
+import { REGULATION } from '@utils/models';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
@@ -22,6 +23,10 @@ export default function AccreditedInvestorsPage({
   values,
   ourFocus,
 }) {
+  const retailFunds = FEATURED_CITIES.filter(
+    ({ information }) => information.regulation !== REGULATION.REG_D
+  )
+
   return (
     <PageLayout>
       <PageHero
@@ -30,7 +35,7 @@ export default function AccreditedInvestorsPage({
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Accredited Lead"
-        heroImages={FEATURED_CITIES.map(({ name, images }) => ({
+        heroImages={retailFunds.map(({ name, images }) => ({
           name,
           heroImage: images.heroImage,
         }))}

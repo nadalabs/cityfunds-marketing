@@ -1,8 +1,9 @@
 export interface IFundInfo {
+  regulation: REGULATION;
   fundType: FUND_TYPE;
   strategy: STRATEGY;
   taxForm: TAX_FORM;
-  targetIRR: number;
+  targetIRR: string;
   liquidity: LIQUIDITY;
   fundTerm: FUND_TERM;
   lockupPeriod: LOCKUP_PERIOD;
@@ -39,6 +40,11 @@ export interface ICityfund {
   information: IFundInfo;
   documents?: IFundDocs;
   returns?: IFundReturns;
+}
+
+export enum REGULATION {
+  REG_A = 'Reg A+',
+  REG_D = '506(c)',
 }
 
 export enum FUND_TYPE {

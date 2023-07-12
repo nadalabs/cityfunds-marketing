@@ -4,7 +4,7 @@ import { SectionWrapper } from '@elements/Containers';
 import {
   Heading,
   Overline,
-  SecondaryText,
+  PrimaryText,
   SmallHeading,
 } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
@@ -32,7 +32,7 @@ export default function NadaCardCTA() {
       </ImageWrapper>
       <ContentWrapper>
         <Overline style={{ marginBottom: '1rem' }}>Coming Soon</Overline>
-        <Heading style={{ fontSize: '56px', marginBottom: '3rem' }}>
+        <Heading style={{ fontSize: '56px', marginBottom: '3rem', maxWidth: '700px' }}>
           Build Real Estate Wealth on the Nada Card
         </Heading>
 
@@ -43,9 +43,9 @@ export default function NadaCardCTA() {
               <SmallHeading style={{ color: '#48DC95', fontSize: '32px' }}>
                 {title}
               </SmallHeading>
-              <SecondaryText style={{ fontSize: '16px' }}>
+              <PrimaryText>
                 {description}
-              </SecondaryText>
+              </PrimaryText>
             </StepWrapper>
           ))}
         </TextWrapper>

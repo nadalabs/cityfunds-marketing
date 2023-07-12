@@ -21,7 +21,7 @@ export default function LongFormText({
   content,
   isSmall,
 }: LongFormTextProps) {
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
 
   const components = {
     block: {
