@@ -1,4 +1,4 @@
-import { Overline, SecondaryText, SmallHeading } from '@elements/Typography';
+import { Overline, PrimaryText, SmallHeading } from '@elements/Typography';
 import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -36,7 +36,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
                 </time>
               </Overline>
               <SmallHeading>{title}</SmallHeading>
-              <SecondaryText>{excerpt}</SecondaryText>
+              <PrimaryText>{excerpt}</PrimaryText>
             </CardWrapper>
           </Link>
         ))}

@@ -36,13 +36,15 @@ export default function TextSlider({
         }}
       >
         {valueProps.map(({ title, description }, idx) => (
-          <TextWrapper key={idx}>
-            <StackWrapper style={{}}>
-              <GreenSquare />
-              <SmallHeading>{title}</SmallHeading>
-              <PrimaryText>{description}</PrimaryText>
-            </StackWrapper>
-          </TextWrapper>
+          <div>
+            <TextWrapper key={idx}>
+              <StackWrapper>
+                <GreenSquare />
+                <SmallHeading>{title}</SmallHeading>
+                <PrimaryText>{description}</PrimaryText>
+              </StackWrapper>
+            </TextWrapper>
+          </div>
         ))}
       </div>
     </SliderWrapper>

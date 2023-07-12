@@ -63,8 +63,10 @@ export default function LongFormText({
     <>
       {overline && <Overline>{overline}</Overline>}
       {title && <Heading>{title}</Heading>}
-      {/* @ts-ignore-next-line */}
-      <PortableText value={content || []} components={components} />
+      <div style={{ width: isSmall ? '100%' : '66%' }}>
+        {/* @ts-ignore-next-line */}
+        <PortableText value={content || []} components={components} />
+      </div>
     </>
   );
 }

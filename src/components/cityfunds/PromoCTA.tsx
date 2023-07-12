@@ -1,5 +1,5 @@
 import EmailCapture from '@components/common/EmailCapture';
-import { Caption, Heading, LargeText, Overline, SmallText } from '@elements/Typography';
+import { Caption, Heading, LargeText, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';

@@ -4,10 +4,8 @@ import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import {
   Heading,
-  LargeText,
   Overline,
   PrimaryText,
-  SecondaryText,
   SmallHeading,
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
@@ -84,7 +82,7 @@ export default function HowItWorks({
                       {idx === jdx && (
                         <PrimaryButton
                           onClick={onClick}
-                          style={{ zIndex: 999 }}
+                          style={{ marginTop: '2rem', zIndex: 999 }}
                         >
                           {btnText}
                         </PrimaryButton>

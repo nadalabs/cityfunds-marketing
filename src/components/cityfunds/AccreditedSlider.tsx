@@ -98,7 +98,7 @@ export default function AccreditedSlider({
                 <NadaText name={name} />
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                   {cardBack.map(({ label, value }) => (
-                    <div style={{ width: '50%' }}>
+                    <div style={{ width: '50%', marginBottom: '0.5rem' }}>
                       <StatLabel>{label}</StatLabel>
                       <StatValue>{value}</StatValue>
                     </div>

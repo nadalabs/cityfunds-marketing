@@ -107,7 +107,7 @@ export const Caption = styled.p`
 
 export const LinkText = styled(Link)`
   transition: ${({ theme }) => theme.transitions.ease};
-  color: ${({ theme }) => theme.colors.darkGrey};
+  color: ${({ theme }) => theme.colors.darkText};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;
@@ -117,7 +117,7 @@ export const LinkText = styled(Link)`
   cursor: pointer;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.lightGrey};
+    color: ${({ theme }) => theme.colors.lightText};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

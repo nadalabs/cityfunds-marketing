@@ -125,7 +125,8 @@ export async function getStaticProps({ params, preview = false }) {
     cityfundsTestimonialsQuery
   );
   const values = await getClient(preview).fetch(cityfundsValuesQuery);
-  const ourFocus = await getClient(preview).fetch(ourFocusQuery);
+  const ourFocusData = await getClient(preview).fetch(ourFocusQuery);
+  const ourFocus = ourFocusData?.summary?.content;
 
   return {
     props: { testimonials, values, ourFocus },

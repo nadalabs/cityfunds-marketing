@@ -51,7 +51,8 @@ export async function getStaticProps({ params, preview = false }) {
   const teammates = await getClient(preview).fetch(teammateIndexQuery);
   const values = await getClient(preview).fetch(nadaValuesQuery);
   const logos = await getClient(preview).fetch(backersLogosQuery);
-  const ourStory = await getClient(preview).fetch(ourStoryQuery);
+  const ourStoryData = await getClient(preview).fetch(ourStoryQuery);
+  const ourStory = ourStoryData?.summary?.content;
 
   return {
     props: { teammates, values, logos, ourStory },

@@ -4,6 +4,7 @@ import { ICityfund } from '@utils/models';
 import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
+import { HeadingSmall } from './NadaText';
 
 interface DocumentCenterProps {
   funds: ICityfund[];
@@ -24,7 +25,6 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
       { label: 'Pitch Deck', value: documents.investorPitchDeck },
     ],
   }));
-  console.log(allDocuments);
 
   const handleOnClick = (index) => {
     // @ts-ignore-next-line
@@ -52,21 +52,23 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
               <ContentWrapper key={jdx}>
                 <HoverHeading
                   onClick={() => handleOnClick(jdx)}
-                  style={{ color: idx === jdx ? '#48DC95' : 'black' }}
+                  style={{ color: idx === jdx ? '#48DC95' : 'black', marginBottom: idx === jdx ? '0' : '1rem' }}
                 >
                   {name}
                 </HoverHeading>
 
+              <div style={{marginBottom:  idx === jdx  ? '1rem' : 0}}>
                 {idx === jdx &&
                   documents.map(({ value, label }, kdx) => (
                     <PrimaryText
                       key={kdx}
                       onClick={() => window.open(value, '_blank')}
-                      style={{ marginLeft: '2rem' }}
+                      style={{ margin: '0 0 1rem 1.5rem' }}
                     >
                       {label}
                     </PrimaryText>
                   ))}
+                  </div>
               </ContentWrapper>
             ))}
           </div>
@@ -87,10 +89,9 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const HoverHeading = styled(Heading)`
+export const HoverHeading = styled(HeadingSmall)`
   transition: ${({ theme }) => theme.transitions.ease};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: 2.5rem;
   cursor: pointer;
 
   &:hover {

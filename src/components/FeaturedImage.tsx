@@ -1,7 +1,7 @@
 import { GreenSquare } from '@components/common/CarouselStepper';
 import { PrimaryButton } from '@elements/Buttons';
 import { StackWrapper } from '@elements/Containers';
-import { Heading, LargeText, Overline } from '@elements/Typography';
+import { Heading, LargeText, Overline, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import Image from 'next/image';
 import { styled } from 'styled-components';
@@ -53,24 +53,29 @@ export default function FeaturedImage({
               }}
             />
           ) : (
-            <LeftImageWrapper style={{ height: isShort ? '28rem' : '500px' }}>
-              <Image src={imageUrl} alt={heading} fill />
-            </LeftImageWrapper>
+            <div>
+              <LeftImageWrapper style={{ height: isShort ? '28rem' : '500px' }}>
+                <Image src={imageUrl} alt={heading} fill />
+              </LeftImageWrapper>
+            </div>
           )}
         </>
       )}
 
       <StackWrapper>
         {overline && <Overline>{overline}</Overline>}
-        <Heading
-          style={{
-            maxWidth: isShortHeader ? '400px' : '700px',
-            fontSize: isBorder ? '52px' : '64px',
-          }}
-        >
-          {heading}
-        </Heading>
-        <LargeText>{primaryText}</LargeText>
+
+        <div>
+          <Heading
+            style={{
+              maxWidth: isShortHeader ? '400px' : '700px',
+              fontSize: isBorder ? '52px' : '64px',
+            }}
+          >
+            {heading}
+          </Heading>
+          <PrimaryText>{primaryText}</PrimaryText>
+        </div>
 
         <div>
           <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>

@@ -3,7 +3,7 @@ import { SectionWrapper } from '@elements/Containers';
 import {
   LinkText,
   Overline,
-  SecondaryText,
+  PrimaryText,
   SmallHeading,
 } from '@elements/Typography';
 import { format, parseISO } from 'date-fns';
@@ -67,13 +67,13 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                 <CardWrapper>
                   <Overline>{post?.tag}</Overline>
                   <SmallHeading>{post?.title}</SmallHeading>
-                  <SecondaryText>{post?.excerpt}</SecondaryText>
+                  <PrimaryText>{post?.excerpt}</PrimaryText>
                   {post?.date && (
-                    <SecondaryText>
+                    <PrimaryText>
                       <time dateTime={post?.date}>
                         {format(parseISO(post?.date), 'LLLL	d, yyyy')}
                       </time>
-                    </SecondaryText>
+                    </PrimaryText>
                   )}
                 </CardWrapper>
               </FlexWrapper>
