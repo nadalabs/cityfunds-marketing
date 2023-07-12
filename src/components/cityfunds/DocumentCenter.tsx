@@ -1,5 +1,5 @@
 import { SectionWrapper } from '@elements/Containers';
-import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import { Heading, PrimaryText } from '@elements/Typography';
 import { ICityfund } from '@utils/models';
 import { useRef } from 'react';
 import Slider from 'react-slick';
@@ -43,7 +43,7 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
 
   return (
     <SectionWrapper>
-      <Overline>Document Center</Overline>
+      <Heading>Document Center</Heading>
 
       <Slider {...settings} ref={sliderRef}>
         {allDocuments.map((_, idx) => (
@@ -52,23 +52,26 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
               <ContentWrapper key={jdx}>
                 <HoverHeading
                   onClick={() => handleOnClick(jdx)}
-                  style={{ color: idx === jdx ? '#48DC95' : 'black', marginBottom: idx === jdx ? '0' : '1rem' }}
+                  style={{
+                    color: idx === jdx ? '#48DC95' : 'black',
+                    marginBottom: idx === jdx ? '0' : '1rem',
+                  }}
                 >
                   {name}
                 </HoverHeading>
 
-              <div style={{marginBottom:  idx === jdx  ? '1rem' : 0}}>
-                {idx === jdx &&
-                  documents.map(({ value, label }, kdx) => (
-                    <PrimaryText
-                      key={kdx}
-                      onClick={() => window.open(value, '_blank')}
-                      style={{ margin: '0 0 1rem 1.5rem' }}
-                    >
-                      {label}
-                    </PrimaryText>
-                  ))}
-                  </div>
+                <div style={{ marginBottom: idx === jdx ? '1rem' : 0 }}>
+                  {idx === jdx &&
+                    documents.map(({ value, label }, kdx) => (
+                      <PrimaryText
+                        key={kdx}
+                        onClick={() => window.open(value, '_blank')}
+                        style={{ margin: '0 0 1rem 1.5rem' }}
+                      >
+                        {label}
+                      </PrimaryText>
+                    ))}
+                </div>
               </ContentWrapper>
             ))}
           </div>

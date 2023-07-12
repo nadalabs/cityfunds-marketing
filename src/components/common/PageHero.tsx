@@ -11,7 +11,7 @@ interface PageHeroProps {
   primaryText: string;
   btnText?: string;
   onClick?: () => void;
-  heroImages: { name: string; heroImage: string; totalAssets?: number }[];
+  heroImages: { name: string; heroImage: string; }[];
   isTextWide?: boolean;
   formName?: string;
 }

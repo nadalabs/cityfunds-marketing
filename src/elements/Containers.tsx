@@ -12,6 +12,10 @@ export const StackWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    gap: 0.5rem;
+  }
 `;
 
 export const SliderWrapper = styled.div`
@@ -24,16 +28,16 @@ export const SliderWrapper = styled.div`
 
 export const CardWrapper = styled.div`
   background-size: cover;
-  width: 25rem;
-  height: 25rem;
+  width: 24rem;
+  height: 24rem;
   padding: 2rem;
   margin-right: 1.5rem;
-  border-radius: 52px;
+  border-radius: 3.174rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 20rem;
-    height: 20rem;
-    padding: 2rem;
+    width: 16rem;
+    height: 16rem;
+    padding: 1.5rem;
     margin-right: 1rem;
     border-radius: 22px;
   }

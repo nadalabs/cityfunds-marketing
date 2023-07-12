@@ -9,11 +9,11 @@ export const Heading = styled.h1`
   font-weight: 600;
   line-height: 100%;
   letter-spacing: -0.035rem;
-  margin: 0 0 0.5rem 0%;
+  margin: 0 0 0.5rem 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 48px;
-    line-height: 48px;
+    font-size: 2rem;
+    line-height: 2.5rem;
   }
 `;
 

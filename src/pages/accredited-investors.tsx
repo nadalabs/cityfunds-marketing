@@ -25,12 +25,12 @@ export default function AccreditedInvestorsPage({
   return (
     <PageLayout>
       <PageHero
-        heading="Diversify Beyond Stocks"
-        primaryText="While helping 10 Million Homeowners and counting to reduce their debt through home equity investments."
+        heading="Invest in Top Cities"
+        primaryText="Novel index-like funds for a city’s home equity market."
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Accredited Lead"
-        heroImages={FEATURED_CITIES}
+        heroImages={FEATURED_CITIES.map(({ name, images }) => ({name, heroImage: images.heroImage}))}
       />
       <AccreditedSlider
         heading="Our Funds"
@@ -38,11 +38,7 @@ export default function AccreditedInvestorsPage({
         cards={FEATURED_CITIES}
       />
       <SectionWrapper>
-        <LongFormText
-          title="Our Focus"
-          overline="We are on a Mission"
-          content={ourFocus}
-        />
+        <LongFormText title="Our Focus" content={ourFocus} />
         <KeyMetrics
           metrics={[
             {
@@ -86,7 +82,6 @@ export default function AccreditedInvestorsPage({
       </SectionWrapper>
 
       <TextSlider
-        overline="You may be wondering..."
         heading="Why Cityfunds?"
         primaryText="We have plenty of reasons."
         valueProps={values}

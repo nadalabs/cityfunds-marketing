@@ -1,5 +1,5 @@
 import { SectionWrapper } from '@elements/Containers';
-import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import { Heading, LinkText, Overline, PrimaryText } from '@elements/Typography';
 import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
@@ -74,6 +74,7 @@ export default function FaqsSection({}) {
           </div>
         ))}
       </Slider>
+      <LinkText href="/faqs">See All FAQs</LinkText>
     </SectionWrapper>
   );
 }
@@ -96,6 +97,7 @@ export const HoverHeading = styled(Heading)`
   margin-bottom: 2rem;
   cursor: pointer;
   width: 60%;
+  font-size: 2.75rem;
 
   &:hover {
     color: ${({ theme }) => theme.colors.lightGrey};

@@ -68,7 +68,7 @@ export const FOOTER_LINKS = [
     links: [
       { name: 'Cityfunds', link: '/' },
       { name: 'Homeshares', link: '/homeshares' },
-      // { name: 'Accredited Investors', link: '/accredited-investors' },
+      { name: 'Accredited Investors', link: '/accredited-investors' },
       { name: 'Learn', link: '/learn' },
     ],
   },
@@ -102,8 +102,8 @@ export const FEATURED_CITIES = [
     images: {
       heroImage: '/images/miami-hero.png',
       cardImage: '/images/miami.png',
-      mapImage: '',
-      accredImage: '',
+      mapImage: '/images/miami-map.png',
+      accredImage: '/images/miami-tall.png',
       carouselImages: [''],
     },
     documents: {
@@ -125,7 +125,7 @@ export const FEATURED_CITIES = [
       managementFee: 0.25,
       fundSize: 5000000,
     },
-    return: {
+    returns: {
       sharePrice: 10.77,
       appreciation: 7.7,
       totalAssets: 10,
@@ -134,10 +134,10 @@ export const FEATURED_CITIES = [
   {
     name: 'Dallas',
     images: {
-      heroImage: '/images/miami-hero.png',
-      cardImage: '/images/miami.png',
-      mapImage: '',
-      accredImage: '',
+      heroImage: '/images/dallas-hero.png',
+      cardImage: '/images/dallas.png',
+      mapImage: '/images/dallas-map.png',
+      accredImage: '/images/dallas-tall.png',
       carouselImages: [''],
     },
     documents: {
@@ -158,15 +158,20 @@ export const FEATURED_CITIES = [
       minInvestment: 5000,
       managementFee: 0.25,
       fundSize: 5000000,
+    },
+    returns: {
+      sharePrice: 10.77,
+      appreciation: 7.7,
+      totalAssets: 10,
     },
   },
   {
     name: 'Austin',
     images: {
-      heroImage: '/images/miami-hero.png',
-      cardImage: '/images/miami.png',
-      mapImage: '',
-      accredImage: '',
+      heroImage: '/images/austin-hero.png',
+      cardImage: '/images/austin.png',
+      mapImage: '/images/austin-map.png',
+      accredImage: '/images/austin-tall.png',
       carouselImages: [''],
     },
     documents: {
@@ -187,15 +192,20 @@ export const FEATURED_CITIES = [
       minInvestment: 5000,
       managementFee: 0.25,
       fundSize: 5000000,
+    },
+    returns: {
+      sharePrice: 10.77,
+      appreciation: 7.7,
+      totalAssets: 10,
     },
   },
   {
     name: 'Tampa',
     images: {
-      heroImage: '/images/miami-hero.png',
-      cardImage: '/images/miami.png',
-      mapImage: '',
-      accredImage: '',
+      heroImage: '/images/tampa-hero.png',
+      cardImage: '/images/tampa.png',
+      mapImage: '/images/tampa-map.png',
+      accredImage: '/images/tampa-tall.png',
       carouselImages: [''],
     },
     documents: {
@@ -216,6 +226,11 @@ export const FEATURED_CITIES = [
       minInvestment: 5000,
       managementFee: 0.25,
       fundSize: 5000000,
+    },
+    returns: {
+      sharePrice: 10.77,
+      appreciation: 7.7,
+      totalAssets: 10,
     },
   },
 ];

@@ -25,9 +25,9 @@ export default function AccreditedSlider({
   const isMobile = useIsMobile();
   const [showCard, setShowCard] = useState<number>(0);
 
-  const cardInfo = cards.map(({ name, cardImage, information }) => ({
+  const cardInfo = cards.map(({ name, images, information }) => ({
     name,
-    cardImage,
+    cardImage: images.accredImage,
     cardFront: [
       { label: 'Type', value: information.fundType },
       { label: 'Strategy', value: information.strategy },

@@ -18,7 +18,7 @@ export const cityfund = {
         },
       },
       {
-        name: 'Card Image',
+        name: 'CardImage',
         title: 'Card Image',
         type: 'image',
         options: {

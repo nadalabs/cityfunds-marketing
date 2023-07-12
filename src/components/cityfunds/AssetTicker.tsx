@@ -29,8 +29,8 @@ export default function AssetTicker({
         <Image
           src="/icons/arrow-up.svg"
           alt="Appreciation"
-          width={18}
-          height={18}
+          width={16}
+          height={16}
         />
       ),
     },
@@ -62,10 +62,18 @@ export default function AssetTicker({
   );
 }
 
-export const BoldText = styled(SecondaryText)`
-  color: white;
+export const BoldText = styled.p`
+  font-family: ${({ theme }) => theme.fonts.main};
+  font-style: normal;
   font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+  color: white;
   margin: 0 4px 0 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 14px;
+  }
 `;
 
 export const BackgroundWrapper = styled.div`
@@ -74,6 +82,10 @@ export const BackgroundWrapper = styled.div`
   border-radius: 0.61038rem;
   background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(2.4415206909179688px);
-  padding: 4px 8px;
+  padding: 0.25rem 0.5rem;
   margin-right: 8px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 0.5rem;
+  }
 `;

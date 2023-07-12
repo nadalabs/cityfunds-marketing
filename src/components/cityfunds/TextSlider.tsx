@@ -9,7 +9,7 @@ import {
 import styled from 'styled-components';
 
 interface TextSliderProps {
-  overline: string;
+  overline?: string;
   heading: string;
   primaryText?: string;
   valueProps: any[];
@@ -23,7 +23,7 @@ export default function TextSlider({
 }: TextSliderProps) {
   return (
     <SliderWrapper>
-      <Overline>{overline}</Overline>
+      {overline && <Overline>{overline}</Overline>}
       <Heading>{heading}</Heading>
       {primaryText && <LargeText>{primaryText}</LargeText>}
 
@@ -61,7 +61,6 @@ export const GreenSquare = styled.div`
     height: 20px;
     width: 20px;
     border-radius: 3px;
-    margin-bottom: 14px;
   }
 `;
 

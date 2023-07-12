@@ -46,7 +46,7 @@ export default function PageFooter({ legal }: PageFooterProps) {
         </div>
 
         {FOOTER_LINKS.map(({ title, links }, idx) => (
-          <div key={idx}>
+          <div key={idx} style={{ marginBottom: '1rem' }}>
             <SecondaryText style={{ color: 'black' }}>{title}</SecondaryText>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               {links.map(({ name, link }, jdx) => (

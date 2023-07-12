@@ -4,20 +4,14 @@ import { CardWrapper, SliderWrapper } from '@elements/Containers';
 import { Heading, LargeText, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
+import { ICityfund } from '@utils/models';
 import { styled } from 'styled-components';
 
 interface CityfundsSliderProps {
   heading: string;
   primaryText: string;
   overline?: string;
-  cards: {
-    name: string;
-    cardImage: string;
-    sharePrice?: number;
-    appreciation?: number;
-    totalAssets?: number;
-    isSmallText?: boolean;
-  }[];
+  cards: ICityfund[];
 }
 
 export default function CityfundsSlider({
@@ -36,69 +30,57 @@ export default function CityfundsSlider({
         <LargeText>{primaryText}</LargeText>
       </HeadingWrapper>
       <div style={{ display: 'flex', overflowX: 'scroll' }}>
-        {cards?.map(
-          (
-            {
-              name,
-              cardImage,
-              sharePrice,
-              appreciation,
-              totalAssets,
-              isSmallText,
-            },
-            idx
-          ) => (
-            <div key={idx}>
-              <CardWrapper
-                onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
-                style={{
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'flex-end',
-                  background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${cardImage}), lightgray 50% / cover no-repeat`,
-                }}
-              >
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                    <Heading
-                      style={{
-                        fontSize: isSmallText
+        {cards?.map(({ name, images, returns }, idx) => (
+          <div key={idx}>
+            <CardWrapper
+              onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+              style={{
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'flex-end',
+                background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${images?.cardImage}), lightgray 50% / cover no-repeat`,
+              }}
+            >
+              <div>
+                <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+                  <Heading
+                    style={{
+                      fontSize: false
+                        ? '1.5rem'
+                        : isMobile
+                        ? '3rem'
+                        : '4.6875rem',
+                      color: 'white',
+                      marginBottom: '0.5rem',
+                    }}
+                  >
+                    {name}
+                  </Heading>
+                  <GreenSquare
+                    style={{
+                      height: false || isMobile ? '0.5rem' : '1rem',
+                      width: false || isMobile ? '0.5rem' : '1rem',
+                      marginLeft: '8px',
+                      marginBottom: isMobile
+                        ? false
                           ? '1.5rem'
-                          : isMobile
-                          ? '3rem'
-                          : '4.6875rem',
-                        color: 'white',
-                        marginBottom: '0.5rem',
-                      }}
-                    >
-                      {name}
-                    </Heading>
-                    <GreenSquare
-                      style={{
-                        height: isSmallText || isMobile ? '0.5rem' : '1rem',
-                        width: isSmallText || isMobile ? '0.5rem' : '1rem',
-                        marginLeft: '8px',
-                        marginBottom: isMobile
-                          ? isSmallText
-                            ? '1.5rem'
-                            : '1rem'
-                          : '1rem',
-                      }}
-                    />
-                  </div>
-
-                  {sharePrice && (
-                    <AssetTicker
-                      sharePrice={sharePrice}
-                      appreciation={appreciation}
-                      totalAssets={totalAssets}
-                    />
-                  )}
+                          : '1rem'
+                        : '1rem',
+                    }}
+                  />
                 </div>
-              </CardWrapper>
-            </div>
-          )
-        )}
+
+                {returns?.sharePrice && (
+                  <AssetTicker
+                    sharePrice={returns?.sharePrice}
+                    appreciation={returns?.appreciation}
+                    totalAssets={returns?.totalAssets}
+                  />
+                )}
+              </div>
+            </CardWrapper>
+          </div>
+        ))}
       </div>
     </SliderWrapper>
   );
