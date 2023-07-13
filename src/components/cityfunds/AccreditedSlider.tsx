@@ -1,10 +1,11 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { SliderWrapper } from '@elements/Containers';
-import { Heading, LargeText, Overline } from '@elements/Typography';
+import { Caption, Heading, LargeText, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { formatPercent, formatPrice, shortenNumber } from '@utils/helpers';
 import { ICityfund, REGULATION } from '@utils/models';
+import Image from 'next/image';
 import { useState } from 'react';
 import { styled } from 'styled-components';
 import NadaText from './NadaText';
@@ -28,6 +29,7 @@ export default function AccreditedSlider({
   const cardInfo = cards.map(({ name, images, information, returns }) => ({
     name,
     cardImage: images.accredImage,
+    regulation: information.regulation,
     cardFront: [
       { label: 'Type', value: information.fundType },
       { label: 'Strategy', value: information.strategy },
@@ -78,7 +80,10 @@ export default function AccreditedSlider({
 
       <div style={{ display: 'flex', gap: '1.5rem', overflowX: 'scroll' }}>
         {cardInfo?.map(
-          ({ name, cardImage, cardFront, cardVariable, cardBack }, idx) => (
+          (
+            { name, cardImage, regulation, cardFront, cardVariable, cardBack },
+            idx
+          ) => (
             <div key={idx}>
               {showCard !== idx + 1 ? (
                 <CardWrapper
@@ -87,10 +92,27 @@ export default function AccreditedSlider({
                     window.location.replace(EXTERNAL_ROUTES.WEB_APP)
                   }
                   style={{
-                    justifyContent: 'flex-end',
+                    justifyContent:
+                      regulation === REGULATION.REG_D
+                        ? 'space-between'
+                        : 'flex-end',
                     background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${cardImage}), lightgray 50% / cover no-repeat`,
                   }}
                 >
+                  {regulation === REGULATION.REG_D && (
+                    <LockWrapper>
+                      <Image
+                        src="/icons/lock.svg"
+                        alt="Accredited Only"
+                        style={{ marginRight: '0.5rem' }}
+                        width={16}
+                        height={16}
+                      />
+                      <Caption style={{ color: 'white', fontWeight: 600 }}>
+                        Accredited Only
+                      </Caption>
+                    </LockWrapper>
+                  )}
                   <TickerWrapper>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <NadaText name={name} />
@@ -166,6 +188,16 @@ export const CardWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
   }
+`;
+
+export const LockWrapper = styled.div`
+  display: flex;
+  border-radius: 0.4265rem;
+  background: rgba(22, 22, 22, 0.33);
+  backdrop-filter: blur(1.7px);
+  padding: 0.17063rem 0.34125rem;
+  text-transform: uppercase;
+  width: fit-content;
 `;
 
 export const TickerWrapper = styled.div`

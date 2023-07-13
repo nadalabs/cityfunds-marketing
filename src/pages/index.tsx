@@ -100,7 +100,7 @@ export default function HomePage({
               formattingFn: (val) => `${val}+`,
             },
             {
-              label: 'Avgerage Appreciation',
+              label: 'Average Appreciation',
               value: 11.7,
               formattingFn: (val) => `${val}%`,
               decimals: 1,
