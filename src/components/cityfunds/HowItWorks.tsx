@@ -57,7 +57,7 @@ export default function HowItWorks({
             <FlewWrapper>
               {!isMobile && isPhoneFrame && <PhoneScreen imageUrl={imageUrl} />}
 
-              <ContentWrapper>
+              <ContentWrapper style={{ marginLeft: isPhoneFrame ? '4rem' : 0 }}>
                 <HeaderWrapper>
                   <Overline>{overline}</Overline>
                   <Heading>How it Works</Heading>
@@ -110,7 +110,7 @@ export default function HowItWorks({
 
 export const ContentWrapper = styled.div`
   width: 60%;
-  margin-left: 4rem;
+  /* margin-left: 4rem; */
   height: 550px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

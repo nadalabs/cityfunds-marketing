@@ -9,25 +9,23 @@ export default function CareersCTA({}) {
     <SectionWrapper>
       <ContentWrapper>
         <StackWrapper>
-        <Heading style={{ color: 'white' }}>
-          Think you're a fit?
-        </Heading>
-        <PrimaryText style={{ color: 'white' }}>
-          Do you want to join us and do Nada? Just kidding, we work - most of
-          the time. We're a group who pride ourselves on rolling up our sleeves
-          and getting the job done. Nada's just getting started, and we'll keep
-          going until we make real estate investing accessible for all. Want to
-          come help us?
-        </PrimaryText>
-        <div>
-          <PrimaryButton
-            style={{ color: '#48dc95', backgroundColor: 'white' }}
-            onClick={() => window.open(EXTERNAL_ROUTES.CAREERS, '_blank')}
-          >
-            Check Out Opportunities
-          </PrimaryButton>
-        </div>
-      </StackWrapper>
+          <Heading style={{ color: 'white' }}>Think you're a fit?</Heading>
+          <PrimaryText style={{ color: 'white' }}>
+            Do you want to join us and do Nada? Just kidding, we work - most of
+            the time. We're a group who pride ourselves on rolling up our
+            sleeves and getting the job done. Nada's just getting started, and
+            we'll keep going until we make real estate investing accessible for
+            all. Want to come help us?
+          </PrimaryText>
+          <div>
+            <PrimaryButton
+              style={{ color: '#48dc95', backgroundColor: 'white' }}
+              onClick={() => window.open(EXTERNAL_ROUTES.CAREERS, '_blank')}
+            >
+              Check Out Opportunities
+            </PrimaryButton>
+          </div>
+        </StackWrapper>
       </ContentWrapper>
     </SectionWrapper>
   );

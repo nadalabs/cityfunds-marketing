@@ -67,10 +67,11 @@ export enum LIQUIDITY {
 
 export enum FUND_TERM {
   OPEN_ENDED = 'Open-ended',
-  MONTHS = '60 Months',
+  YEARS_5 = '60 Months',
 }
 
 export enum LOCKUP_PERIOD {
   NONE = 'N/A',
-  MONTHS = '12 Months',
+  YEARS_1 = '12 Months',
+  YEARS_2 = '24 Months',
 }

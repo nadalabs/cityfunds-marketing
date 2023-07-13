@@ -56,41 +56,32 @@ export default function AccreditedInvestorsPage({
         <KeyMetrics
           metrics={[
             {
-              label: 'Total Invested',
-              value: 1.97,
+              label: 'Total Gross Asset Value',
+              value: 35,
               formattingFn: (val) => `$${val}M+`,
-              decimals: 2,
-            },
-            {
-              label: 'Average NAV',
-              value: 10.68,
-              prefix: '$',
-              decimals: 2,
             },
             {
               label: 'Properties Funded',
               value: 60,
               formattingFn: (val) => `${val}+`,
             },
+            {
+              label: 'Total Members on Platform',
+              value: 8,
+              formattingFn: (val) => `${val}k+`,
+            },
           ]}
         />
         <KeyMetrics
           metrics={[
             {
-              label: 'Total Appreciation',
-              value: 120,
-              formattingFn: (val) => `$${val}K+`,
-            },
-            {
-              label: '1 Year Return',
-              value: 6.83,
-              formattingFn: (val) => `${val}%`,
-              decimals: 2,
-            },
-            {
               label: 'Average Appreciation',
               value: 14,
               formattingFn: (val) => `${val}%`,
+            },
+            {
+              label: 'Major Markets',
+              value: 4,
             },
           ]}
         />

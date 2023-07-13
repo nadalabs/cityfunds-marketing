@@ -16,7 +16,11 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
   };
 
   return (
-    <FlexWrapper>
+    <FlexWrapper
+      style={{
+        justifyContent: metrics.length === 2 ? 'space-evenly' : 'space-between',
+      }}
+    >
       {metrics.map(({ label, value, formattingFn, decimals, prefix }) => (
         <CounterWrapper key={label}>
           <div style={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -51,7 +55,6 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
 
 const FlexWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   margin-top: 120px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

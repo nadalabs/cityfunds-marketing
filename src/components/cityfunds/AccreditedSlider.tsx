@@ -3,8 +3,8 @@ import { SliderWrapper } from '@elements/Containers';
 import { Heading, LargeText, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
-import { formatPercent, formatPrice } from '@utils/helpers';
-import { ICityfund } from '@utils/models';
+import { formatPercent, formatPrice, shortenNumber } from '@utils/helpers';
+import { ICityfund, REGULATION } from '@utils/models';
 import { useState } from 'react';
 import { styled } from 'styled-components';
 import NadaText from './NadaText';
@@ -25,7 +25,7 @@ export default function AccreditedSlider({
   const isMobile = useIsMobile();
   const [showCard, setShowCard] = useState<number>(0);
 
-  const cardInfo = cards.map(({ name, images, information }) => ({
+  const cardInfo = cards.map(({ name, images, information, returns }) => ({
     name,
     cardImage: images.accredImage,
     cardFront: [
@@ -33,23 +33,38 @@ export default function AccreditedSlider({
       { label: 'Strategy', value: information.strategy },
       { label: 'Target IRR', value: information.targetIRR },
     ],
+    cardVariable:
+      information.regulation === REGULATION.REG_A
+        ? [
+            { label: 'Share Price', value: `$${returns?.sharePrice}` },
+            {
+              label: 'Appreciation',
+              value: `${formatPercent(returns?.appreciation)}`,
+            },
+            { label: 'Total Assets', value: returns?.totalAssets },
+          ]
+        : [
+            { label: 'Type', value: information.fundType },
+            { label: 'Strategy', value: information.strategy },
+            { label: 'Target IRR', value: information.targetIRR },
+          ],
     cardBack: [
-      { label: 'Type', value: information.fundType },
-      { label: 'Strategy', value: information.strategy },
+      {
+        label: 'Minimum',
+        value: `${formatPrice(information.minInvestment)}`,
+      },
       { label: 'Tax Form', value: information.taxForm },
-      { label: 'Target IRR', value: information.targetIRR },
       { label: 'Liquidity', value: information.liquidity },
       { label: 'Term', value: information.fundTerm },
       { label: 'Lock Up', value: information.lockupPeriod },
       {
-        label: 'Min Investment',
-        value: `${formatPrice(information.minInvestment)}`,
-      },
-      {
         label: 'Management Fee',
         value: `${formatPercent(information.managementFee)} AUM`,
       },
-      { label: 'Fund Size', value: `${formatPrice(information.fundSize)}` },
+      {
+        label: 'Fund Size',
+        value: `$${shortenNumber(information.fundSize, 0)}`,
+      },
     ],
   }));
 
@@ -62,72 +77,76 @@ export default function AccreditedSlider({
       </HeadingWrapper>
 
       <div style={{ display: 'flex', gap: '1.5rem', overflowX: 'scroll' }}>
-        {cardInfo?.map(({ name, cardImage, cardFront, cardBack }, idx) => (
-          <div key={idx}>
-            {showCard !== idx + 1 ? (
-              <CardWrapper
-                onMouseEnter={() => setShowCard(idx + 1)}
-                onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
-                style={{
-                  justifyContent: 'flex-end',
-                  background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${cardImage}), lightgray 50% / cover no-repeat`,
-                }}
-              >
-                <TickerWrapper>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <NadaText name={name} />
+        {cardInfo?.map(
+          ({ name, cardImage, cardFront, cardVariable, cardBack }, idx) => (
+            <div key={idx}>
+              {showCard !== idx + 1 ? (
+                <CardWrapper
+                  onMouseEnter={() => setShowCard(idx + 1)}
+                  onClick={() =>
+                    window.location.replace(EXTERNAL_ROUTES.WEB_APP)
+                  }
+                  style={{
+                    justifyContent: 'flex-end',
+                    background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${cardImage}), lightgray 50% / cover no-repeat`,
+                  }}
+                >
+                  <TickerWrapper>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <NadaText name={name} />
 
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                      }}
-                    >
-                      {cardFront.map(({ label, value }) => (
-                        <div>
-                          <StatLabel>{label}</StatLabel>
-                          <StatValue>{value}</StatValue>
-                        </div>
-                      ))}
+                      <div
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                        }}
+                      >
+                        {cardFront.map(({ label, value }) => (
+                          <div>
+                            <StatLabel>{label}</StatLabel>
+                            <StatValue>{value}</StatValue>
+                          </div>
+                        ))}
+                      </div>
                     </div>
+                  </TickerWrapper>
+                </CardWrapper>
+              ) : (
+                <CardWrapper onMouseLeave={() => setShowCard(0)}>
+                  <NadaText name={name} />
+                  <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                    {[...cardVariable, ...cardBack].map(({ label, value }) => (
+                      <div style={{ width: '50%', marginBottom: '0.5rem' }}>
+                        <StatLabel>{label}</StatLabel>
+                        <StatValue>{value}</StatValue>
+                      </div>
+                    ))}
                   </div>
-                </TickerWrapper>
-              </CardWrapper>
-            ) : (
-              <CardWrapper onMouseLeave={() => setShowCard(0)}>
-                <NadaText name={name} />
-                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                  {cardBack.map(({ label, value }) => (
-                    <div style={{ width: '50%', marginBottom: '0.5rem' }}>
-                      <StatLabel>{label}</StatLabel>
-                      <StatValue>{value}</StatValue>
-                    </div>
-                  ))}
-                </div>
 
-                {idx === 0 || idx === 1 ? (
-                  <PrimaryButton
-                    isInverted
-                    onClick={() =>
-                      window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
-                    }
-                  >
-                    Get Access
-                  </PrimaryButton>
-                ) : (
-                  <PrimaryButton
-                    isInverted
-                    onClick={() =>
-                      window.open(EXTERNAL_ROUTES.WEB_APP, '_blank')
-                    }
-                  >
-                    Invest Now
-                  </PrimaryButton>
-                )}
-              </CardWrapper>
-            )}
-          </div>
-        ))}
+                  {idx === 0 || idx === 1 ? (
+                    <PrimaryButton
+                      isInverted
+                      onClick={() =>
+                        window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
+                      }
+                    >
+                      Get Access
+                    </PrimaryButton>
+                  ) : (
+                    <PrimaryButton
+                      isInverted
+                      onClick={() =>
+                        window.open(EXTERNAL_ROUTES.WEB_APP, '_blank')
+                      }
+                    >
+                      Invest Now
+                    </PrimaryButton>
+                  )}
+                </CardWrapper>
+              )}
+            </div>
+          )
+        )}
       </div>
     </SliderWrapper>
   );
