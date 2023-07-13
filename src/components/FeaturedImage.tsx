@@ -70,6 +70,7 @@ export default function FeaturedImage({
             style={{
               maxWidth: isShortHeader ? '400px' : '700px',
               fontSize: isBorder ? '52px' : '64px',
+              lineHeight: isBorder ? '52px' : '64px',
             }}
           >
             {heading}

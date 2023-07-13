@@ -87,6 +87,7 @@ export const ContentWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
+    height: inherit;
     margin-bottom: 1rem;
   }
 `;

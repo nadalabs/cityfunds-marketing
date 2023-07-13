@@ -35,5 +35,8 @@ const ContentWrapper = styled.div`
   box-shadow: 2px 4px 25px 0px rgba(0, 0, 0, 0.1);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+    box-shadow: none;
+    padding: 0;
   }
 `;

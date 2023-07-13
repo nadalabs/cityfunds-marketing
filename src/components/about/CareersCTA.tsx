@@ -1,5 +1,5 @@
 import { PrimaryButton } from '@elements/Buttons';
-import { SectionWrapper } from '@elements/Containers';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import styled from 'styled-components';
@@ -8,7 +8,8 @@ export default function CareersCTA({}) {
   return (
     <SectionWrapper>
       <ContentWrapper>
-        <Heading style={{ color: 'white', marginBottom: '48px' }}>
+        <StackWrapper>
+        <Heading style={{ color: 'white' }}>
           Think you're a fit?
         </Heading>
         <PrimaryText style={{ color: 'white' }}>
@@ -26,6 +27,7 @@ export default function CareersCTA({}) {
             Check Out Opportunities
           </PrimaryButton>
         </div>
+      </StackWrapper>
       </ContentWrapper>
     </SectionWrapper>
   );
