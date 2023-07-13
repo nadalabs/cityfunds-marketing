@@ -1,4 +1,5 @@
 import FeaturedImage from '@components/FeaturedImage';
+import FeaturedLogos from '@components/FeaturedLogos';
 import AccreditedSlider from '@components/cityfunds/AccreditedSlider';
 import DocumentCenter from '@components/cityfunds/DocumentCenter';
 import FaqsSection from '@components/cityfunds/FaqsSection';
@@ -15,12 +16,14 @@ import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
   ourFocusQuery,
+  pressLogosQueryQuery,
 } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
 export default function AccreditedInvestorsPage({
   testimonials,
   values,
+  logos,
   ourFocus,
 }) {
   const retailFunds = FEATURED_CITIES.filter(
@@ -40,6 +43,7 @@ export default function AccreditedInvestorsPage({
           heroImage: images.heroImage,
         }))}
       />
+      <FeaturedLogos overline="Featured In" logos={logos} seeMore />
       <AccreditedSlider
         heading="Our Funds"
         primaryText="Pick the fund that suits you, or invest in all six."
@@ -130,11 +134,12 @@ export async function getStaticProps({ params, preview = false }) {
     cityfundsTestimonialsQuery
   );
   const values = await getClient(preview).fetch(cityfundsValuesQuery);
+  const logos = await getClient(preview).fetch(pressLogosQueryQuery);
   const ourFocusData = await getClient(preview).fetch(ourFocusQuery);
   const ourFocus = ourFocusData?.summary?.content;
 
   return {
-    props: { testimonials, values, ourFocus },
+    props: { testimonials, logos, values, ourFocus },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };

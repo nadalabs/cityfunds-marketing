@@ -29,7 +29,7 @@ export const logo = {
         options: {
           list: [
             { title: "Press", value: "Press" },
-            { title: "Backers", value: "Backers" },
+            { title: "Backer", value: "Backer" },
           ],
           layout: 'dropdown'
         }

@@ -47,7 +47,7 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
 
       <Slider {...settings} ref={sliderRef}>
         {allDocuments.map((_, idx) => (
-          <div key={idx}>
+          <div key={idx} >
             {allDocuments.map(({ name, documents }, jdx) => (
               <ContentWrapper key={jdx}>
                 <HoverHeading
