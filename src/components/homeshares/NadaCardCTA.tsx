@@ -32,7 +32,9 @@ export default function NadaCardCTA() {
       </ImageWrapper>
       <ContentWrapper>
         <Overline style={{ marginBottom: '1rem' }}>Coming Soon</Overline>
-        <Heading style={{ fontSize: '56px', marginBottom: '3rem', maxWidth: '700px' }}>
+        <Heading
+          style={{ fontSize: '56px', marginBottom: '3rem', maxWidth: '700px' }}
+        >
           Build Real Estate Wealth on the Nada Card
         </Heading>
 
@@ -43,9 +45,7 @@ export default function NadaCardCTA() {
               <SmallHeading style={{ color: '#48DC95', fontSize: '32px' }}>
                 {title}
               </SmallHeading>
-              <PrimaryText>
-                {description}
-              </PrimaryText>
+              <PrimaryText>{description}</PrimaryText>
             </StepWrapper>
           ))}
         </TextWrapper>

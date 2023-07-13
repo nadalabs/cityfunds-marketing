@@ -1,7 +1,6 @@
 import CarouselStepper from '@components/common/CarouselStepper';
 import EmailCapture from '@components/common/EmailCapture';
 import { Heading, LargeText } from '@elements/Typography';
-import { FEATURED_CITIES } from '@utils/constants';
 import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';

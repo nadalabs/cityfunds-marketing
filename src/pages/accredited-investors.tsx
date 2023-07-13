@@ -4,7 +4,6 @@ import AccreditedSlider from '@components/cityfunds/AccreditedSlider';
 import DocumentCenter from '@components/cityfunds/DocumentCenter';
 import FaqsSection from '@components/cityfunds/FaqsSection';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
-import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
 import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
@@ -28,13 +27,13 @@ export default function AccreditedInvestorsPage({
 }) {
   const retailFunds = FEATURED_CITIES.filter(
     ({ information }) => information.regulation !== REGULATION.REG_D
-  )
+  );
 
   return (
     <PageLayout>
       <PageHero
-        heading="Invest in Top Cities"
-        primaryText="Novel index-like funds for a city’s home equity market."
+        heading="Real Estate Investing Reinvented"
+        primaryText="Diversified real estate portfolios in the nation's top cities."
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Accredited Lead"
@@ -44,21 +43,22 @@ export default function AccreditedInvestorsPage({
         }))}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
+      <SectionWrapper>
+        <LongFormText title="Our Focus" content={ourFocus} />
+      </SectionWrapper>
       <AccreditedSlider
         heading="Our Funds"
         primaryText="Pick the fund that suits you, or invest in all six."
         cards={FEATURED_CITIES}
       />
-      <DocumentCenter funds={FEATURED_CITIES} />
 
       <SectionWrapper>
-        <LongFormText title="Our Focus" content={ourFocus} />
         <KeyMetrics
           metrics={[
             {
               label: 'Total Invested',
               value: 1.97,
-              formattingFn: (val) => `$${val}M`,
+              formattingFn: (val) => `$${val}M+`,
               decimals: 2,
             },
             {
@@ -79,7 +79,7 @@ export default function AccreditedInvestorsPage({
             {
               label: 'Total Appreciation',
               value: 120,
-              formattingFn: (val) => `$${val}K`,
+              formattingFn: (val) => `$${val}K+`,
             },
             {
               label: '1 Year Return',
@@ -113,7 +113,7 @@ export default function AccreditedInvestorsPage({
           isWide
         />
       </SectionWrapper>
-      <Testimonials reviews={testimonials} />
+      <DocumentCenter funds={FEATURED_CITIES} />
       <SectionWrapper>
         <FeaturedImage
           overline="Have any questions?"

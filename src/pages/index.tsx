@@ -39,7 +39,7 @@ export default function HomePage({
   const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
   const retailFunds = FEATURED_CITIES.filter(
     ({ information }) => information.regulation !== REGULATION.REG_D
-  )
+  );
 
   return (
     <PageLayout partnerImage={partner?.coverImage} bannerText={bannerText}>
