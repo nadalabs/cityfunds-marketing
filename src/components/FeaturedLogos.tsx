@@ -1,5 +1,6 @@
 import { SectionWrapper } from '@elements/Containers';
 import { LinkText, Overline } from '@elements/Typography';
+import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -21,14 +22,19 @@ export default function FeaturedLogos({
         {overline}
       </Overline>
       <ContentWrapper>
-        {logos.map(({ name, imageUrl, link }, idx) => (
+        {logos.map(({ name, image, link }, idx) => (
           <Link
             key={idx}
             href={link}
             target="_blank"
             style={{ margin: '1rem 1rem' }}
           >
-            <Image width={145} height={40} alt={name} src={imageUrl} />
+            <Image
+              width={145}
+              height={40}
+              alt={name}
+              src={urlForImage(image).url()}
+            />
           </Link>
         ))}
       </ContentWrapper>

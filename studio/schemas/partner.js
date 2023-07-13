@@ -1,6 +1,6 @@
 export const partner = {
     name: 'partner',
-    title: 'Partners',
+    title: 'Landing Pages',
     type: 'document',
     fields: [
       {

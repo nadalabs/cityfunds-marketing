@@ -1,6 +1,6 @@
 export const post = {
   name: 'post',
-  title: 'Posts',
+  title: 'Blog Posts',
   type: 'document',
   fields: [
     {
@@ -61,12 +61,6 @@ export const post = {
       name: 'date',
       title: 'Date',
       type: 'datetime',
-    },
-    {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: [{ type: 'author' }],
     },
   ],
   preview: {

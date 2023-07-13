@@ -1,6 +1,6 @@
 import CarouselStepper from '@components/common/CarouselStepper';
 import EmailCapture from '@components/common/EmailCapture';
-import { Heading, PrimaryText } from '@elements/Typography';
+import { Heading, LargeText } from '@elements/Typography';
 import { FEATURED_CITIES } from '@utils/constants';
 import { useRef } from 'react';
 import Slider from 'react-slick';
@@ -11,7 +11,7 @@ interface PageHeroProps {
   primaryText: string;
   btnText?: string;
   onClick?: () => void;
-  heroImages: { name: string; heroImage: string; totalAssets?: number }[];
+  heroImages: { name: string; heroImage: string }[];
   isTextWide?: boolean;
   formName?: string;
 }
@@ -66,15 +66,13 @@ export default function PageHero({
                 >
                   {heading}
                 </Heading>
-                <PrimaryText
+                <LargeText
                   style={{
-                    color: '#B0B0B0',
                     maxWidth: isTextWide ? '1100px' : '700px',
-                    marginBottom: '1.5rem',
                   }}
                 >
                   {primaryText}
-                </PrimaryText>
+                </LargeText>
 
                 {!isTextWide && (
                   <EmailCapture
@@ -89,7 +87,7 @@ export default function PageHero({
             {heroImages.length > 1 && (
               <CarouselStepper
                 activeStep={idx}
-                totalSteps={FEATURED_CITIES.length}
+                totalSteps={heroImages.length}
                 sliderRef={sliderRef}
               />
             )}
@@ -125,6 +123,5 @@ const ContentWrapper = styled.div`
     text-align: center;
     padding: 30px;
     margin: 0;
-    width: 100%;
   }
 `;

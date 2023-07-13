@@ -69,6 +69,6 @@ const LargeHeading = styled(Heading)`
   margin-bottom: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 `;

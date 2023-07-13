@@ -1,6 +1,6 @@
 import EmailCapture from '@components/common/EmailCapture';
 import { SectionWrapper } from '@elements/Containers';
-import { Overline, SecondaryHeading } from '@elements/Typography';
+import { Overline, SmallHeading } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import styled from 'styled-components';
 
@@ -8,9 +8,9 @@ export default function BlogCapture() {
   return (
     <SectionWrapper>
       <ContentWrapper>
-        <div style={{ width: '55%' }}>
+        <div style={{ width: '100%' }}>
           <Overline>Be the first to know about new Cityfunds</Overline>
-          <SecondaryHeading>Sign Up for Updates</SecondaryHeading>
+          <SmallHeading>Sign Up for Updates</SmallHeading>
         </div>
 
         <div>

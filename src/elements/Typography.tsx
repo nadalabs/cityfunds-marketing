@@ -2,54 +2,64 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 export const Heading = styled.h1`
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.darkText};
   font-family: ${({ theme }) => theme.fonts.main};
-  font-size: 4.6875rem;
+  font-size: 4.5rem;
   font-style: normal;
   font-weight: 600;
   line-height: 100%;
-  letter-spacing: -0.03513rem;
-  margin: 0 0 1rem 0;
+  letter-spacing: -0.035rem;
+  margin: 0 0 0.5rem 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 48px;
-    line-height: 64px;
+    font-size: 2rem;
+    line-height: 2.5rem;
   }
 `;
 
-export const SecondaryHeading = styled(Heading)`
-  font-size: 40px;
-  line-height: 36px;
+export const SmallHeading = styled(Heading)`
+  font-size: 1.75rem;
+  line-height: 125%;
+  letter-spacing: -0.015rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 24px;
-    line-height: 24px;
-  }
-`;
-
-export const TertiaryHeading = styled(Heading)`
-  font-size: 28px;
-  line-height: 36px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 `;
 
 export const PrimaryText = styled.p`
-  color: ${({ theme }) => theme.colors.grey};
+  color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.main};
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 36px;
-  margin: 0 0 24px 0;
+  line-height: 150%;
+  letter-spacing: 0.03125rem;
+  margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 14px;
+    font-size: 0.875rem;
+  }
+`;
+
+export const LargeText = styled(PrimaryText)`
+  color: ${({ theme }) => theme.colors.lightText};
+  font-size: 1.5rem;
+  letter-spacing: -0.015rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1rem;
+  }
+`;
+
+export const SmallText = styled(PrimaryText)`
+  font-size: 1.125rem;
+  letter-spacing: -0.015rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1rem;
   }
 `;
 
@@ -77,28 +87,27 @@ export const SecondaryText = styled.p`
 `;
 
 export const Overline = styled.p`
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.darkText};
   font-family: ${({ theme }) => theme.fonts.main};
+  font-size: 1.125rem;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 28px;
-  margin: 0 0 0.5rem 0;
+  margin: 0;
 `;
 
-export const Caption = styled.div`
-  color: ${({ theme }) => theme.colors.lightGrey};
+export const Caption = styled.p`
+  color: ${({ theme }) => theme.colors.lightText};
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 0.875rem;
+  line-height: 1rem;
   margin: 0;
 `;
 
 export const LinkText = styled(Link)`
   transition: ${({ theme }) => theme.transitions.ease};
-  color: ${({ theme }) => theme.colors.darkGrey};
+  color: ${({ theme }) => theme.colors.darkText};
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;
@@ -108,7 +117,7 @@ export const LinkText = styled(Link)`
   cursor: pointer;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.lightGrey};
+    color: ${({ theme }) => theme.colors.lightText};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

@@ -1,17 +1,18 @@
-import { CardWrapper, SliderWrapper } from '@elements/Containers';
+import { CardWrapper, SliderWrapper, StackWrapper } from '@elements/Containers';
 import {
   Heading,
+  LargeText,
   Overline,
-  SecondaryText,
-  TertiaryHeading,
+  PrimaryText,
+  SmallHeading,
 } from '@elements/Typography';
 import styled from 'styled-components';
 
 interface TextSliderProps {
-  overline: string;
+  overline?: string;
   heading: string;
   primaryText?: string;
-  valueProps: { title; description }[];
+  valueProps: any[];
 }
 
 export default function TextSlider({
@@ -22,9 +23,9 @@ export default function TextSlider({
 }: TextSliderProps) {
   return (
     <SliderWrapper>
-      <Overline>{overline}</Overline>
+      {overline && <Overline>{overline}</Overline>}
       <Heading>{heading}</Heading>
-      {primaryText && <SecondaryText>{primaryText}</SecondaryText>}
+      {primaryText && <LargeText>{primaryText}</LargeText>}
 
       <div
         style={{
@@ -35,11 +36,13 @@ export default function TextSlider({
         }}
       >
         {valueProps.map(({ title, description }, idx) => (
-          <div key={idx}>
-            <TextWrapper>
-              <GreenSquare />
-              <TertiaryHeading>{title}</TertiaryHeading>
-              <SecondaryText>{description}</SecondaryText>
+          <div>
+            <TextWrapper key={idx}>
+              <StackWrapper>
+                <GreenSquare />
+                <SmallHeading>{title}</SmallHeading>
+                <PrimaryText>{description}</PrimaryText>
+              </StackWrapper>
             </TextWrapper>
           </div>
         ))}
@@ -53,20 +56,17 @@ export const GreenSquare = styled.div`
   height: 30px;
   width: 30px;
   border-radius: 7px;
-  margin-bottom: 20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     height: 20px;
     width: 20px;
     border-radius: 3px;
-    margin-bottom: 14px;
   }
 `;
 
 const TextWrapper = styled(CardWrapper)`
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   margin: 1rem;
-  padding: 3rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 2rem;

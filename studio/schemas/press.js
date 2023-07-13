@@ -1,6 +1,6 @@
 export const press = {
     name: 'press',
-    title: 'Press',
+    title: 'Press Articles',
     type: 'document',
     fields: [
       {

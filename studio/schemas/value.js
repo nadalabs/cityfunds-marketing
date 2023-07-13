@@ -1,23 +1,17 @@
-export const testimonial = {
-    name: 'testimonial',
-    title: 'Testimonials',
+export const value = {
+    name: 'value',
+    title: 'Value Props',
     type: 'document',
     fields: [
       {
-        name: 'review',
-        title: 'Review',
+        name: 'title',
+        title: 'Title',
         type: 'string',
         validation: (Rule) => Rule.required(),
       },
       {
-        name: 'name',
-        title: 'Name',
-        type: 'string',
-        validation: (Rule) => Rule.required(),
-      },
-      {
-        name: 'city',
-        title: 'City',
+        name: 'description',
+        title: 'Description',
         type: 'string',
         validation: (Rule) => Rule.required(),
       },
@@ -28,20 +22,15 @@ export const testimonial = {
         options: {
           list: [
             { title: "Cityfunds", value: "Cityfunds" },
-            { title: "Homeshares", value: "Homeshares" },
+            { title: "Nada", value: "Nada" },
           ],
           layout: 'dropdown'
         }
       },
-      {
-        name: 'date',
-        title: 'Date',
-        type: 'datetime',
-      },
     ],
     preview: {
       select: {
-        title: 'review',
+        title: 'title',
         subtitle: 'category',
       },
     },

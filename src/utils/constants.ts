@@ -1,3 +1,13 @@
+import {
+  FUND_TERM,
+  FUND_TYPE,
+  LIQUIDITY,
+  LOCKUP_PERIOD,
+  REGULATION,
+  STRATEGY,
+  TAX_FORM,
+} from '@utils/models';
+
 export enum EXTERNAL_ROUTES {
   WEB_APP = 'https://invest.nada.co/',
   DOWNLOAD = 'https://nada.onelink.me/wNEn/ksbeffng',
@@ -59,7 +69,7 @@ export const FOOTER_LINKS = [
     links: [
       { name: 'Cityfunds', link: '/' },
       { name: 'Homeshares', link: '/homeshares' },
-      // { name: 'Accredited Investors', link: '/accredited-investors' },
+      { name: 'Accredited Investors', link: '/accredited-investors' },
       { name: 'Learn', link: '/learn' },
     ],
   },
@@ -89,181 +99,203 @@ export const SOCIAL_LINKS = [
 
 export const FEATURED_CITIES = [
   {
+    name: 'Yield',
+    images: {
+      heroImage: '/images/yield-hero.png',
+      cardImage: '/images/yield.png',
+      mapImage: '/images/yield-map.png',
+      accredImage: '/images/yield-tall.png',
+      carouselImages: [''],
+    },
+    documents: {
+      executiveSummary: 'https://google.com',
+      investorPitchDeck: 'https://google.com',
+      offeringMemorandum: 'https://google.com',
+      subscriptionAgreement: 'https://google.com',
+      wireInstructions: 'https://google.com',
+    },
+    information: {
+      regulation: REGULATION.REG_D,
+      fundType: FUND_TYPE.EQUITY,
+      strategy: STRATEGY.GROWTH,
+      taxForm: TAX_FORM.DIV,
+      targetIRR: '7.5% Fixed',
+      liquidity: LIQUIDITY.QUARTERLY,
+      fundTerm: FUND_TERM.OPEN_ENDED,
+      lockupPeriod: LOCKUP_PERIOD.NONE,
+      minInvestment: 5000,
+      managementFee: 0.25,
+      fundSize: 5000000,
+    },
+  },
+  {
+    name: 'Portfolio',
+    images: {
+      heroImage: '/images/portfolio-hero.png',
+      cardImage: '/images/portfolio.png',
+      mapImage: '/images/portfolio-map.png',
+      accredImage: '/images/portfolio-tall.png',
+      carouselImages: [''],
+    },
+    documents: {
+      executiveSummary: 'https://google.com',
+      investorPitchDeck: 'https://google.com',
+      offeringMemorandum: 'https://google.com',
+      subscriptionAgreement: 'https://google.com',
+      wireInstructions: 'https://google.com',
+    },
+    information: {
+      regulation: REGULATION.REG_D,
+      fundType: FUND_TYPE.EQUITY,
+      strategy: STRATEGY.GROWTH,
+      taxForm: TAX_FORM.DIV,
+      targetIRR: '14-17%',
+      liquidity: LIQUIDITY.QUARTERLY,
+      fundTerm: FUND_TERM.OPEN_ENDED,
+      lockupPeriod: LOCKUP_PERIOD.NONE,
+      minInvestment: 5000,
+      managementFee: 0,
+      fundSize: 100000000,
+    },
+  },
+  {
     name: 'Miami',
-    heroImage: '/images/miami-hero.png',
-    cardImage: '/images/miami.png',
-    totalAssets: 10,
-    sharePrice: 10.77,
-    appreciation: 7.7,
+    images: {
+      heroImage: '/images/miami-hero.png',
+      cardImage: '/images/miami.png',
+      mapImage: '/images/miami-map.png',
+      accredImage: '/images/miami-tall.png',
+      carouselImages: [''],
+    },
+    documents: {
+      executiveSummary: 'https://google.com',
+      investorPitchDeck: 'https://google.com',
+      offeringMemorandum: 'https://google.com',
+      subscriptionAgreement: 'https://google.com',
+      wireInstructions: 'https://google.com',
+    },
+    information: {
+      regulation: REGULATION.REG_A,
+      fundType: FUND_TYPE.EQUITY,
+      strategy: STRATEGY.GROWTH,
+      taxForm: TAX_FORM.DIV,
+      targetIRR: '14-17%',
+      liquidity: LIQUIDITY.QUARTERLY,
+      fundTerm: FUND_TERM.OPEN_ENDED,
+      lockupPeriod: LOCKUP_PERIOD.NONE,
+      minInvestment: 5000,
+      managementFee: 1.5,
+      fundSize: 10000000,
+    },
+    returns: {
+      sharePrice: 10.77,
+      appreciation: 7.7,
+      totalAssets: 10,
+    },
   },
   {
     name: 'Dallas',
-    heroImage: '/images/dallas-hero.png',
-    cardImage: '/images/dallas.png',
-    totalAssets: 17,
-    sharePrice: 10.59,
-    appreciation: 5.9,
+    images: {
+      heroImage: '/images/dallas-hero.png',
+      cardImage: '/images/dallas.png',
+      mapImage: '/images/dallas-map.png',
+      accredImage: '/images/dallas-tall.png',
+      carouselImages: [''],
+    },
+    documents: {
+      executiveSummary: 'https://google.com',
+      investorPitchDeck: 'https://google.com',
+      offeringMemorandum: 'https://google.com',
+      subscriptionAgreement: 'https://google.com',
+      wireInstructions: 'https://google.com',
+    },
+    information: {
+      regulation: REGULATION.REG_A,
+      fundType: FUND_TYPE.EQUITY,
+      strategy: STRATEGY.GROWTH,
+      taxForm: TAX_FORM.DIV,
+      targetIRR: '14-17%',
+      liquidity: LIQUIDITY.QUARTERLY,
+      fundTerm: FUND_TERM.OPEN_ENDED,
+      lockupPeriod: LOCKUP_PERIOD.NONE,
+      minInvestment: 5000,
+      managementFee: 1.5,
+      fundSize: 10000000,
+    },
+    returns: {
+      sharePrice: 10.59,
+      appreciation: 5.9,
+      totalAssets: 17,
+    },
   },
   {
     name: 'Austin',
-    heroImage: '/images/austin-hero.png',
-    cardImage: '/images/austin.png',
-    totalAssets: 22,
-    sharePrice: 10.69,
-    appreciation: 6.9,
+    images: {
+      heroImage: '/images/austin-hero.png',
+      cardImage: '/images/austin.png',
+      mapImage: '/images/austin-map.png',
+      accredImage: '/images/austin-tall.png',
+      carouselImages: [''],
+    },
+    documents: {
+      executiveSummary: 'https://google.com',
+      investorPitchDeck: 'https://google.com',
+      offeringMemorandum: 'https://google.com',
+      subscriptionAgreement: 'https://google.com',
+      wireInstructions: 'https://google.com',
+    },
+    information: {
+      regulation: REGULATION.REG_A,
+      fundType: FUND_TYPE.EQUITY,
+      strategy: STRATEGY.GROWTH,
+      taxForm: TAX_FORM.DIV,
+      targetIRR: '14-17%',
+      liquidity: LIQUIDITY.QUARTERLY,
+      fundTerm: FUND_TERM.OPEN_ENDED,
+      lockupPeriod: LOCKUP_PERIOD.NONE,
+      minInvestment: 5000,
+      managementFee: 1.5,
+      fundSize: 10000000,
+    },
+    returns: {
+      sharePrice: 10.69,
+      appreciation: 6.9,
+      totalAssets: 22,
+    },
   },
   {
     name: 'Tampa',
-    heroImage: '/images/tampa-hero.png',
-    cardImage: '/images/tampa.png',
-    totalAssets: 3,
-    sharePrice: 10.0,
-    appreciation: 0.0,
-  },
-];
-
-export const FEATURED_ARTICLES = [
-  {
-    name: 'Forbes',
-    imageUrl: '/icons/forbes.svg',
-    link: 'https://www.forbes.com/sites/rebeccaszkutak/2021/10/14/startups-can-raise-from-crowdfunding-sites-and-get-their-venture-capital-too/?sh=268c80684f2b',
-  },
-  {
-    name: 'The Motley Fool',
-    imageUrl: '/icons/motley-fool.svg',
-    link: '',
-  },
-  {
-    name: 'TechCrunch',
-    imageUrl: '/icons/techcrunch.svg',
-    link: 'https://techcrunch.com/2022/07/27/you-cant-afford-a-house-but-you-can-probably-afford-nada',
-  },
-  {
-    name: 'Yahoo Finance',
-    imageUrl: '/icons/yahoo-finance.svg',
-    link: 'https://finance.yahoo.com/news/nada-raises-8-1m-funding-123300648.html',
-  },
-];
-
-export const FEATURED_BACKERS = [
-  {
-    name: 'Live Oak',
-    imageUrl: '/icons/live-oak.svg',
-    link: 'https://liveoakvp.com/',
-  },
-  {
-    name: 'Revolution',
-    imageUrl: '/icons/revolution.svg',
-    link: 'https://revolution.com/',
-  },
-  {
-    name: 'Capital Factory',
-    imageUrl: '/icons/capital-factory.svg',
-    link: 'https://www.capitalfactory.com/',
-  },
-  {
-    name: 'Sweater Ventures',
-    imageUrl: '/icons/sweater.svg',
-    link: 'https://www.sweaterventures.com/',
-  },
-  {
-    name: '7BC Venture Capital',
-    imageUrl: '/icons/7bc-ventures.svg',
-    link: 'https://www.7bc.vc/',
-  },
-  {
-    name: 'LFG Ventures',
-    imageUrl: '/icons/lfg-ventures.svg',
-    link: 'https://www.letsfg.com/',
-  },
-  {
-    name: 'Texas Venture Labs',
-    imageUrl: '/icons/texas-ventures.svg',
-    link: 'https://www.mccombs.utexas.edu/centers-and-initiatives/jon-brumley-texas-venture-labs/',
-  },
-  {
-    name: 'Stonks Fund',
-    imageUrl: '/icons/stonks.svg',
-    link: 'https://stonks.com/',
-  },
-];
-
-export const VALUE_PROPS = [
-  {
-    title: 'Accessibility',
-    description:
-      'No more heavy restrictions. Own homes in costly high demand cities regardless of where you live or your mortgage qualifications.',
-  },
-  {
-    title: 'Diversification',
-    description:
-      'Not leveraged against 1 property. Immediate exposure to multiple properties spread across a top city keeping you safe from market movement on a specific home.',
-  },
-  {
-    title: 'Passive Income',
-    description:
-      'Build a future where your money works for you. You as the savvy investor earn dividends quarterly from earned rental income and home sales.',
-  },
-  {
-    title: 'Liquidity',
-    description:
-      'Don’t give up years of access to your money. Liquidate your funds by trading your shares.',
-  },
-  {
-    title: 'In the Money',
-    description:
-      'No more waiting for growth. Your investments are immediately in the money with our 10-15% acquisition discount.',
-  },
-  {
-    title: 'Low Volatility',
-    description:
-      'No instantaneous spikes or drops like stocks. Real estate is one of the most stable asset classes.',
-  },
-  {
-    title: 'Aligned',
-    description:
-      'No solo work. We’re a team with vested interest in these same properties as you.',
-  },
-  {
-    title: 'Professionally Managed',
-    description:
-      'Your investments are managed for you by a team of veterans with 20+ years of experience.',
-  },
-  {
-    title: 'Hassle Free',
-    description: 'No heavy lifting. You invest and Nada handles the rest.',
-  },
-  {
-    title: '‍Inflation Protection',
-    description:
-      'Don’t lose the value of your dollar. Build an iron wall of protection by investing in real estate.',
-  },
-  {
-    title: 'No Personal Liability Risk',
-    description:
-      'No added debt. Our series LLC business structure protects you from being directly correlated.',
-  },
-];
-
-export const OUR_VALUES = [
-  {
-    title: 'Passionate',
-    description:
-      'We find meaning in what we do by understanding why we are doing it. We fully embrace change and strive to inspire internally and externally with our insights and initiative.',
-  },
-  {
-    title: 'Bold',
-    description:
-      'We think without the restrictions of how things have always been done. We embrace big problems in a big industry and we are not afraid to create solutions that may change the world.',
-  },
-  {
-    title: 'Customer Obsessed',
-    description:
-      'We create experiences, not transactions. We are deeply focused on solving our customers’ problems and we constantly seek customer feedback.',
-  },
-  {
-    title: 'Authentic',
-    description:
-      'We embrace who we are. We break down artificial barriers and build trust-based relationships. We strive to be transparent in delivering the good, the bad, and the ugly.',
+    images: {
+      heroImage: '/images/tampa-hero.png',
+      cardImage: '/images/tampa.png',
+      mapImage: '/images/tampa-map.png',
+      accredImage: '/images/tampa-tall.png',
+      carouselImages: [''],
+    },
+    documents: {
+      executiveSummary: 'https://google.com',
+      investorPitchDeck: 'https://google.com',
+      offeringMemorandum: 'https://google.com',
+      subscriptionAgreement: 'https://google.com',
+      wireInstructions: 'https://google.com',
+    },
+    information: {
+      regulation: REGULATION.REG_A,
+      fundType: FUND_TYPE.EQUITY,
+      strategy: STRATEGY.GROWTH,
+      taxForm: TAX_FORM.DIV,
+      targetIRR: '14-17%',
+      liquidity: LIQUIDITY.QUARTERLY,
+      fundTerm: FUND_TERM.OPEN_ENDED,
+      lockupPeriod: LOCKUP_PERIOD.NONE,
+      minInvestment: 5000,
+      managementFee: 1.5,
+      fundSize: 10000000,
+    },
+    returns: {
+      sharePrice: 10,
+      appreciation: 0,
+      totalAssets: 3,
+    },
   },
 ];

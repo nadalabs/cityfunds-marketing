@@ -1,5 +1,5 @@
 import { SectionWrapper } from '@elements/Containers';
-import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import { Heading, LinkText, Overline, PrimaryText } from '@elements/Typography';
 import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
@@ -74,12 +74,14 @@ export default function FaqsSection({}) {
           </div>
         ))}
       </Slider>
+      <LinkText href="/faqs">See All FAQs</LinkText>
     </SectionWrapper>
   );
 }
 
 export const ContentWrapper = styled.div`
   width: 100%;
+  height: 8rem;
   display: flex;
   justify-content: space-between;
 
@@ -92,10 +94,10 @@ export const ContentWrapper = styled.div`
 export const HoverHeading = styled(Heading)`
   transition: ${({ theme }) => theme.transitions.ease};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   cursor: pointer;
-  width: 55%;
-  font-size: 5rem;
+  width: 50%;
+  font-size: 3rem;
 
   &:hover {
     color: ${({ theme }) => theme.colors.lightGrey};

@@ -1,5 +1,6 @@
 import { GreenSquare } from '@components/common/CarouselStepper';
 import { PrimaryButton } from '@elements/Buttons';
+import { StackWrapper } from '@elements/Containers';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import Image from 'next/image';
@@ -52,26 +53,34 @@ export default function FeaturedImage({
               }}
             />
           ) : (
-            <LeftImageWrapper style={{ height: isShort ? '28rem' : '500px' }}>
-              <Image src={imageUrl} alt={heading} fill />
-            </LeftImageWrapper>
+            <div>
+              <LeftImageWrapper style={{ height: isShort ? '28rem' : '500px' }}>
+                <Image src={imageUrl} alt={heading} fill />
+              </LeftImageWrapper>
+            </div>
           )}
         </>
       )}
 
-      <TextWrapper>
+      <StackWrapper>
         {overline && <Overline>{overline}</Overline>}
-        <Heading
-          style={{
-            maxWidth: isShortHeader ? '400px' : '700px',
-            fontSize: isBorder ? '52px' : '64px',
-          }}
-        >
-          {heading}
-        </Heading>
-        <PrimaryText>{primaryText}</PrimaryText>
-        <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-      </TextWrapper>
+
+        <div>
+          <Heading
+            style={{
+              maxWidth: isShortHeader ? '400px' : '700px',
+              fontSize: isBorder ? '52px' : '64px',
+            }}
+          >
+            {heading}
+          </Heading>
+          <PrimaryText>{primaryText}</PrimaryText>
+        </div>
+
+        <div>
+          <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+        </div>
+      </StackWrapper>
 
       {isReversed && (
         <FlexWrapper>
@@ -125,15 +134,6 @@ const BorderImageWrapper = styled(ImageWrapper)`
     height: 300px;
     margin-right: 0;
     margin-bottom: 1rem;
-  }
-`;
-
-const TextWrapper = styled.div`
-  width: 50%;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
-    margin-bottom: 2rem;
   }
 `;
 

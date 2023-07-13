@@ -1,16 +1,14 @@
 const theme = {
   colors: {
-    primary: '#1A1A1A',
+    primary: '#2A8356',
     secondary: '#48DC95',
-    success: '#28a745',
+    success: '#2A8356',
     danger: '#FF554F',
     warning: '#ffc107',
     info: '#17a2b8',
-    light: '#f8f9fa',
-    dark: '#303030',
-    white: '#ffffff',
-    grey: '#989898',
-    lightGrey: '#B0B0B0',
+    text: '#888888',
+    darkText: '#303030',
+    lightText: '#989B9F',
   },
   fonts: {
     main: '"Poppins", sans-serif',

@@ -1,5 +1,5 @@
 import { SectionWrapper } from '@elements/Containers';
-import { Overline, SecondaryHeading } from '@elements/Typography';
+import { Overline, SmallHeading } from '@elements/Typography';
 import { format, parseISO } from 'date-fns';
 import Link from 'next/link';
 
@@ -18,7 +18,7 @@ export default function PressArticles({ articles }: PressArticlesProps) {
           <Overline>
             <time dateTime={date}>{format(parseISO(date), 'LLLL	d, yyyy')}</time>
           </Overline>
-          <SecondaryHeading>{title}</SecondaryHeading>
+          <SmallHeading>{title}</SmallHeading>
           <hr style={{ margin: '2rem 0' }} />
         </Link>
       ))}

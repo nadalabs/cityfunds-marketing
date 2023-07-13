@@ -1,14 +1,8 @@
-export const testimonial = {
-    name: 'testimonial',
-    title: 'Testimonials',
+export const logo = {
+    name: 'logo',
+    title: 'Featured Logos',
     type: 'document',
     fields: [
-      {
-        name: 'review',
-        title: 'Review',
-        type: 'string',
-        validation: (Rule) => Rule.required(),
-      },
       {
         name: 'name',
         title: 'Name',
@@ -16,8 +10,15 @@ export const testimonial = {
         validation: (Rule) => Rule.required(),
       },
       {
-        name: 'city',
-        title: 'City',
+        name: 'image',
+        title: 'Image',
+        type: 'image',
+        options: { hotspot: true },
+        validation: (Rule) => Rule.required(),
+      },
+      {
+        name: 'link',
+        title: 'Link',
         type: 'string',
         validation: (Rule) => Rule.required(),
       },
@@ -27,22 +28,18 @@ export const testimonial = {
         type: "string",
         options: {
           list: [
-            { title: "Cityfunds", value: "Cityfunds" },
-            { title: "Homeshares", value: "Homeshares" },
+            { title: "Press", value: "Press" },
+            { title: "Backer", value: "Backer" },
           ],
           layout: 'dropdown'
         }
       },
-      {
-        name: 'date',
-        title: 'Date',
-        type: 'datetime',
-      },
     ],
     preview: {
       select: {
-        title: 'review',
+        title: 'name',
         subtitle: 'category',
+        media: 'image',
       },
     },
   };

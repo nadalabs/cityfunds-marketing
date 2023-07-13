@@ -5,8 +5,8 @@ import { SectionWrapper } from '@elements/Containers';
 import {
   Heading,
   Overline,
-  SecondaryHeading,
-  SecondaryText,
+  PrimaryText,
+  SmallHeading,
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import Image from 'next/image';
@@ -75,16 +75,14 @@ export default function HowItWorks({
                           marginBottom: '24px',
                         }}
                       />
-                      <SecondaryHeading
-                        style={{ color: idx === jdx && '#48DC95' }}
-                      >
+                      <SmallHeading style={{ color: idx === jdx && '#48DC95' }}>
                         {title}
-                      </SecondaryHeading>
-                      <SecondaryText>{description}</SecondaryText>
+                      </SmallHeading>
+                      <PrimaryText>{description}</PrimaryText>
                       {idx === jdx && (
                         <PrimaryButton
                           onClick={onClick}
-                          style={{ zIndex: 999 }}
+                          style={{ marginTop: '2rem', zIndex: 999 }}
                         >
                           {btnText}
                         </PrimaryButton>
