@@ -57,27 +57,27 @@ export default function AccreditedInvestorsPage({
       />
 
       <SectionWrapper>
-        <Heading style={{marginBottom: '-4rem'}}>Our Performance</Heading>
-        <div style={{marginBottom: isMobile ? '-7rem' : 0 }}>
-        <KeyMetrics
-          metrics={[
-            {
-              label: 'Total Gross Asset Value',
-              value: 35,
-              formattingFn: (val) => `$${val}M+`,
-            },
-            {
-              label: 'Properties Funded',
-              value: 60,
-              formattingFn: (val) => `${val}+`,
-            },
-            {
-              label: 'Total Members on Platform',
-              value: 8,
-              formattingFn: (val) => `${val}k+`,
-            },
-          ]}
-        />
+        <Heading style={{ marginBottom: '-4rem' }}>Our Performance</Heading>
+        <div style={{ marginBottom: isMobile ? '-7rem' : 0 }}>
+          <KeyMetrics
+            metrics={[
+              {
+                label: 'Total Gross Asset Value',
+                value: 35,
+                formattingFn: (val) => `$${val}M+`,
+              },
+              {
+                label: 'Properties Funded',
+                value: 60,
+                formattingFn: (val) => `${val}+`,
+              },
+              {
+                label: 'Total Members on Platform',
+                value: 8,
+                formattingFn: (val) => `${val}k+`,
+              },
+            ]}
+          />
         </div>
         <KeyMetrics
           metrics={[

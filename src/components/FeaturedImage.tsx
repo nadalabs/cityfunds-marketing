@@ -54,7 +54,12 @@ export default function FeaturedImage({
             />
           ) : (
             <div>
-              <LeftImageWrapper style={{ height: isShort ? '28rem' : '500px', width: isMobile ? '350px' : '500px' }}>
+              <LeftImageWrapper
+                style={{
+                  height: isShort ? '28rem' : '500px',
+                  width: isMobile ? '350px' : '500px',
+                }}
+              >
                 <Image src={imageUrl} alt={heading} fill />
               </LeftImageWrapper>
             </div>
@@ -83,9 +88,14 @@ export default function FeaturedImage({
         </div>
       </StackWrapper>
 
-      {(isReversed && !isMobile) && (
+      {isReversed && !isMobile && (
         <FlexWrapper>
-          <ImageWrapper style={{ width: isWide ? '700px' : '500px' , height: isMobile ? '400px' : '500px'}}>
+          <ImageWrapper
+            style={{
+              width: isWide ? '700px' : '500px',
+              height: isMobile ? '400px' : '500px',
+            }}
+          >
             <Image src={imageUrl} alt={heading} fill />
           </ImageWrapper>
           <ImageSquare />

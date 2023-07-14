@@ -50,7 +50,7 @@ export default function LongFormText({
             target="_blank"
             rel="noreferrer"
             style={{
-              fontSize: isSmall ? '14px' : '18px',
+              fontSize: isSmall || isMobile ? '14px' : '18px',
               color: '#48DC95',
               margin: 0,
             }}

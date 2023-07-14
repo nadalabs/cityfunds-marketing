@@ -187,8 +187,7 @@ export const CardWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 20rem;
-    padding: 1.5rem 1rem;
-
+    padding: 1.5rem;
   }
 `;
 

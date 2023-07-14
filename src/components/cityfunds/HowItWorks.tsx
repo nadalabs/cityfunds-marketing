@@ -57,7 +57,9 @@ export default function HowItWorks({
             <FlewWrapper>
               {!isMobile && isPhoneFrame && <PhoneScreen imageUrl={imageUrl} />}
 
-              <ContentWrapper style={{ marginLeft: isPhoneFrame && !isMobile ? '4rem' : 0 }}>
+              <ContentWrapper
+                style={{ marginLeft: isPhoneFrame && !isMobile ? '4rem' : 0 }}
+              >
                 <HeaderWrapper>
                   <Overline>{overline}</Overline>
                   <Heading>How it Works</Heading>

@@ -8,7 +8,7 @@ interface FaqsSectionProps {
   overline?: string;
 }
 
-export default function FaqsSection({overline}: FaqsSectionProps) {
+export default function FaqsSection({ overline }: FaqsSectionProps) {
   const sliderRef = useRef();
 
   const handleOnClick = (index) => {
@@ -51,7 +51,7 @@ export default function FaqsSection({overline}: FaqsSectionProps) {
 
   return (
     <SectionWrapper>
-     {overline && <Overline>{overline}</Overline>}
+      {overline && <Overline>{overline}</Overline>}
 
       <Slider {...settings} ref={sliderRef}>
         {FAQS.map((_, idx) => (
