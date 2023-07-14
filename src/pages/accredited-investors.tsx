@@ -10,6 +10,7 @@ import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
 import { REGULATION } from '@utils/models';
 import {
@@ -29,6 +30,7 @@ export default function AccreditedInvestorsPage({
   const retailFunds = FEATURED_CITIES.filter(
     ({ information }) => information.regulation !== REGULATION.REG_D
   );
+  const isMobile = useIsMobile();
 
   return (
     <PageLayout>
@@ -55,7 +57,8 @@ export default function AccreditedInvestorsPage({
       />
 
       <SectionWrapper>
-        <Heading>Our Performance</Heading>
+        <Heading style={{marginBottom: '-4rem'}}>Our Performance</Heading>
+        <div style={{marginBottom: isMobile ? '-7rem' : 0 }}>
         <KeyMetrics
           metrics={[
             {
@@ -75,6 +78,7 @@ export default function AccreditedInvestorsPage({
             },
           ]}
         />
+        </div>
         <KeyMetrics
           metrics={[
             {
