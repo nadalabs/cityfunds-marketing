@@ -11,7 +11,7 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
+import { EXTERNAL_ROUTES, FAQS, FEATURED_CITIES } from '@utils/constants';
 import { REGULATION } from '@utils/models';
 import {
   cityfundsTestimonialsQuery,
@@ -42,7 +42,7 @@ export default function HomePage({
   );
 
   return (
-    <PageLayout partnerImage={partner?.coverImage} bannerText={bannerText}>
+    <PageLayout partnerImage={partner?.coverImage} bannerText={bannerText} hideLinks={!!partner}>
       {bannerText && <AlertBanner primaryText={bannerText} />}
       <PageHero
         heading="Own a Piece of Your Favorite City"
@@ -54,6 +54,7 @@ export default function HomePage({
           name,
           heroImage: images.heroImage,
         }))}
+        bannerText={!!bannerText}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
       <CityfundsSlider
@@ -125,7 +126,7 @@ export default function HomePage({
         primaryText="We have plenty of reasons."
         valueProps={values}
       />
-      <FaqsSection overline="You may also be wondering..." />
+      <FaqsSection overline="You may also be wondering..." faqs={FAQS} />
       <HowItWorks
         overline="Real Estate Investing Simplified"
         steps={[

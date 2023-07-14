@@ -7,12 +7,14 @@ interface PageLayoutProps {
   children: ReactNode;
   partnerImage?: string;
   bannerText?: string;
+  hideLinks?: boolean;
 }
 
 export default function PageLayout({
   children,
   partnerImage,
   bannerText,
+  hideLinks
 }: PageLayoutProps) {
   const isMobile = useIsMobile();
 
@@ -21,7 +23,7 @@ export default function PageLayout({
       {isMobile ? (
         <MobileNavBar bannerText={bannerText} />
       ) : (
-        <DesktopNavBar partnerImage={partnerImage} bannerText={bannerText} />
+        <DesktopNavBar partnerImage={partnerImage} bannerText={bannerText} hideLinks={!!hideLinks} />
       )}
       {children}
     </div>

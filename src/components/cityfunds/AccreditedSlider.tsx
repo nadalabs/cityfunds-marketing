@@ -1,7 +1,6 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { SliderWrapper } from '@elements/Containers';
 import { Caption, Heading, LargeText, Overline } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { formatPercent, formatPrice, shortenNumber } from '@utils/helpers';
 import { ICityfund, REGULATION } from '@utils/models';
@@ -23,7 +22,6 @@ export default function AccreditedSlider({
   overline,
   cards,
 }: AccreditedSliderProps) {
-  const isMobile = useIsMobile();
   const [showCard, setShowCard] = useState<number>(0);
 
   const cardInfo = cards.map(({ name, images, information, returns }) => ({
@@ -71,7 +69,7 @@ export default function AccreditedSlider({
   }));
 
   return (
-    <SliderWrapper>
+    <SliderWrapper id="cityfunds">
       <HeadingWrapper>
         {overline && <Overline>{overline}</Overline>}
         <Heading>{heading}</Heading>
@@ -147,7 +145,7 @@ export default function AccreditedSlider({
 
                   {idx === 0 || idx === 1 ? (
                     <PrimaryButton
-                      isInverted
+                      isInverted={true}
                       onClick={() =>
                         window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
                       }
@@ -156,7 +154,7 @@ export default function AccreditedSlider({
                     </PrimaryButton>
                   ) : (
                     <PrimaryButton
-                      isInverted
+                      isInverted={true}
                       onClick={() =>
                         window.open(EXTERNAL_ROUTES.WEB_APP, '_blank')
                       }

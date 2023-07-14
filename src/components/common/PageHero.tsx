@@ -2,7 +2,7 @@ import CarouselStepper from '@components/common/CarouselStepper';
 import EmailCapture from '@components/common/EmailCapture';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -12,8 +12,10 @@ interface PageHeroProps {
   btnText?: string;
   onClick?: () => void;
   heroImages: { name: string; heroImage: string }[];
+  heroCTA?: ReactNode;
   isTextWide?: boolean;
   formName?: string;
+  bannerText? : boolean;
 }
 
 export default function PageHero({
@@ -22,8 +24,10 @@ export default function PageHero({
   btnText,
   onClick,
   heroImages,
+  heroCTA,
   isTextWide,
   formName,
+  bannerText
 }: PageHeroProps) {
   const sliderRef = useRef();
   const isMobile = useIsMobile();
@@ -56,7 +60,7 @@ export default function PageHero({
               url(${heroImage})`,
             }}
           />
-          <ContentWrapper>
+          <ContentWrapper style={{  bottom: bannerText ? '11rem' : '8rem'}}>
             <div style={{ display: 'flex', alignItems: 'flex-end' }}>
               <div>
                 <Heading
@@ -76,6 +80,7 @@ export default function PageHero({
                   {primaryText}
                 </LargeText>
 
+                {heroCTA && heroCTA}
                 {formName && (
                   <EmailCapture
                     btnText={btnText}
@@ -112,7 +117,6 @@ export const HeroImage = styled.div`
 
 const ContentWrapper = styled.div`
   position: absolute;
-  bottom: 8rem;
   height: 100vh;
   display: flex;
   flex-direction: column;

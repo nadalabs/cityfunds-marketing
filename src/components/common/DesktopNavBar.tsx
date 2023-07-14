@@ -11,12 +11,14 @@ interface HeaderProps {
   partnerImage?: string;
   partnerName?: string;
   bannerText?: string;
+  hideLinks?: boolean;
 }
 
 export default function DesktopNavBar({
   partnerImage,
   partnerName,
   bannerText,
+  hideLinks
 }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const router = useRouter();
@@ -74,7 +76,7 @@ export default function DesktopNavBar({
       )}
 
       <div>
-        {partnerImage ? (
+        {hideLinks ? (
           <PrimaryButton
             onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
           >
