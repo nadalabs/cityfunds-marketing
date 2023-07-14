@@ -9,6 +9,7 @@ import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
+import { Heading } from '@elements/Typography';
 import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
 import { REGULATION } from '@utils/models';
 import {
@@ -45,7 +46,7 @@ export default function AccreditedInvestorsPage({
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
       <SectionWrapper>
-        <LongFormText title="Our Focus" content={ourFocus} />
+        <LongFormText title="Our Mission" content={ourFocus} />
       </SectionWrapper>
       <AccreditedSlider
         heading="Our Funds"
@@ -54,6 +55,7 @@ export default function AccreditedInvestorsPage({
       />
 
       <SectionWrapper>
+        <Heading>Our Performance</Heading>
         <KeyMetrics
           metrics={[
             {

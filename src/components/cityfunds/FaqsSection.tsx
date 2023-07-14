@@ -4,7 +4,11 @@ import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-export default function FaqsSection({}) {
+interface FaqsSectionProps {
+  overline?: string;
+}
+
+export default function FaqsSection({overline}: FaqsSectionProps) {
   const sliderRef = useRef();
 
   const handleOnClick = (index) => {
@@ -47,7 +51,7 @@ export default function FaqsSection({}) {
 
   return (
     <SectionWrapper>
-      <Overline>You may also be wondering...</Overline>
+     {overline && <Overline>{overline}</Overline>}
 
       <Slider {...settings} ref={sliderRef}>
         {FAQS.map((_, idx) => (

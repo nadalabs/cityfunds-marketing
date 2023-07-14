@@ -125,7 +125,7 @@ export default function HomePage({
         primaryText="We have plenty of reasons."
         valueProps={values}
       />
-      <FaqsSection />
+      <FaqsSection overline='You may also be wondering...' />
       <HowItWorks
         overline="Real Estate Investing Simplified"
         steps={[

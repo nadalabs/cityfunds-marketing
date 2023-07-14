@@ -123,8 +123,8 @@ export default function AccreditedSlider({
                           justifyContent: 'space-between',
                         }}
                       >
-                        {cardFront.map(({ label, value }) => (
-                          <div>
+                        {cardFront.map(({ label, value }, idx) => (
+                          <div key={idx}>
                             <StatLabel>{label}</StatLabel>
                             <StatValue>{value}</StatValue>
                           </div>
@@ -186,7 +186,9 @@ export const CardWrapper = styled.div`
   border-radius: 3.125rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
+    width: 20rem;
+    padding: 1.5rem 1rem;
+
   }
 `;
 
