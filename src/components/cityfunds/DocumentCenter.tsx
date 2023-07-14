@@ -1,8 +1,7 @@
 import { SectionWrapper } from '@elements/Containers';
-import { Heading, PrimaryText } from '@elements/Typography';
-import { ICityfund } from '@utils/models';
-import { useRef } from 'react';
-import Slider from 'react-slick';
+import { Heading, LinkText } from '@elements/Typography';
+import { ICityfund, REGULATION } from '@utils/models';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { HeadingSmall } from './NadaText';
 
@@ -11,10 +10,13 @@ interface DocumentCenterProps {
 }
 
 export default function DocumentCenter({ funds }: DocumentCenterProps) {
-  const sliderRef = useRef();
+  const [active, setActive] = useState(0);
 
-  const allDocuments = funds.map(({ name, documents }) => ({
-    name,
+  const allDocuments = funds.map(({ name, information, documents }) => ({
+    name:
+      information.regulation === REGULATION.REG_D
+        ? `${name} Fund`
+        : `${name} Cityfund`,
     documents: [
       { label: 'Offering Memorandum', value: documents.offeringMemorandum },
       {
@@ -22,61 +24,44 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
         value: documents.subscriptionAgreement,
       },
       { label: 'Executive Summary', value: documents.executiveSummary },
-      { label: 'Pitch Deck', value: documents.investorPitchDeck },
+      { label: 'One Sheet', value: documents.oneSheet },
     ],
   }));
 
-  const handleOnClick = (index) => {
-    // @ts-ignore-next-line
-    sliderRef?.current.slickGoTo(index);
-  };
-
-  const settings = {
-    dots: false,
-    fade: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    speed: 1000,
-    cssEase: 'linear',
-  };
-
   return (
     <SectionWrapper>
-      <Heading>Docs</Heading>
+      <Heading style={{ marginBottom: '2rem' }}>Docs</Heading>
 
-      <Slider {...settings} ref={sliderRef}>
-        {allDocuments.map((_, idx) => (
-          <div key={idx}>
-            {allDocuments.map(({ name, documents }, jdx) => (
-              <ContentWrapper key={jdx}>
-                <HoverHeading
-                  onClick={() => handleOnClick(jdx)}
-                  style={{
-                    color: idx === jdx ? '#48DC95' : 'black',
-                    marginBottom: idx === jdx ? '0' : '1rem',
-                  }}
-                >
-                  {name}
-                </HoverHeading>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {allDocuments.map(({ name, documents }, idx) => (
+          <ContentWrapper key={idx}>
+            <HoverHeading
+              onClick={() => setActive(idx)}
+              style={{
+                color: active === idx ? '#48DC95' : 'black',
+                marginBottom: active === idx ? '0' : '2rem',
+              }}
+            >
+              {name}
+            </HoverHeading>
 
-                <div style={{ marginBottom: idx === jdx ? '1rem' : 0 }}>
-                  {idx === jdx &&
-                    documents.map(({ value, label }, kdx) => (
-                      <PrimaryText
-                        key={kdx}
-                        onClick={() => window.open(value, '_blank')}
-                        style={{ margin: '0 0 1rem 1.5rem' }}
-                      >
-                        {label}
-                      </PrimaryText>
-                    ))}
-                </div>
-              </ContentWrapper>
-            ))}
-          </div>
+            {active === idx && (
+              <div style={{ marginBottom: '1rem' }}>
+                {documents.map(({ value, label }, kdx) => (
+                  <LinkText
+                    key={kdx}
+                    href={value}
+                    target="_blank"
+                    style={{ display: 'block', margin: '0 0 1rem 1.5rem' }}
+                  >
+                    {label}
+                  </LinkText>
+                ))}
+              </div>
+            )}
+          </ContentWrapper>
         ))}
-      </Slider>
+      </div>
     </SectionWrapper>
   );
 }
@@ -85,10 +70,10 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  flex-basis: 50%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    flex-direction: column;
-    margin-bottom: 1rem;
+    flex-basis: 100%;
   }
 `;
 

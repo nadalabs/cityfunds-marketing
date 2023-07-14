@@ -110,8 +110,9 @@ export default function HowItWorks({
 
 export const ContentWrapper = styled.div`
   width: 60%;
-  /* margin-left: 4rem; */
   height: 550px;
+  position: relative;
+  top: 4rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;

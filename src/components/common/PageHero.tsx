@@ -1,6 +1,7 @@
 import CarouselStepper from '@components/common/CarouselStepper';
 import EmailCapture from '@components/common/EmailCapture';
 import { Heading, LargeText } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
@@ -25,6 +26,7 @@ export default function PageHero({
   formName,
 }: PageHeroProps) {
   const sliderRef = useRef();
+  const isMobile = useIsMobile();
 
   const settings = {
     dots: false,
@@ -67,13 +69,14 @@ export default function PageHero({
                 </Heading>
                 <LargeText
                   style={{
+                    color: isMobile ? 'white' : '#989B9F',
                     maxWidth: isTextWide ? '1100px' : '700px',
                   }}
                 >
                   {primaryText}
                 </LargeText>
 
-                {!isTextWide && (
+                {formName && (
                   <EmailCapture
                     btnText={btnText}
                     onClick={onClick}

@@ -41,6 +41,7 @@ export default function AccreditedInvestorsPage({
           name,
           heroImage: images.heroImage,
         }))}
+        isTextWide
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
       <SectionWrapper>

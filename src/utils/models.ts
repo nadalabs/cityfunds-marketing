@@ -21,8 +21,8 @@ export interface IFundImages {
 }
 
 export interface IFundDocs {
+  oneSheet: string;
   executiveSummary: string;
-  investorPitchDeck: string;
   offeringMemorandum: string;
   subscriptionAgreement: string;
   wireInstructions: string;
