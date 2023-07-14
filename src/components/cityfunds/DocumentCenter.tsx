@@ -24,8 +24,11 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
         value: documents.subscriptionAgreement,
       },
       { label: 'Executive Summary', value: documents.executiveSummary },
-      { label: 'One Sheet', value: documents.oneSheet },
     ],
+    variableDocuments:
+      information.regulation === REGULATION.REG_D
+        ? [{ label: 'One Sheet', value: documents.oneSheet }]
+        : [],
   }));
 
   return (
@@ -33,7 +36,7 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
       <Heading style={{ marginBottom: '2rem' }}>Docs</Heading>
 
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {allDocuments.map(({ name, documents }, idx) => (
+        {allDocuments.map(({ name, documents, variableDocuments }, idx) => (
           <ContentWrapper key={idx}>
             <HoverHeading
               onClick={() => setActive(idx)}
@@ -47,16 +50,18 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
 
             {active === idx && (
               <div style={{ marginBottom: '1rem' }}>
-                {documents.map(({ value, label }, kdx) => (
-                  <LinkText
-                    key={kdx}
-                    href={value}
-                    target="_blank"
-                    style={{ display: 'block', margin: '0 0 1rem 1.5rem' }}
-                  >
-                    {label}
-                  </LinkText>
-                ))}
+                {[...documents, ...variableDocuments].map(
+                  ({ value, label }, kdx) => (
+                    <LinkText
+                      key={kdx}
+                      href={value}
+                      target="_blank"
+                      style={{ display: 'block', margin: '0 0 1rem 1.5rem' }}
+                    >
+                      {label}
+                    </LinkText>
+                  )
+                )}
               </div>
             )}
           </ContentWrapper>

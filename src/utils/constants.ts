@@ -108,11 +108,16 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet: 'https://nada-offering-documents.s3.amazonaws.com/yield/one-sheet.pdf',
-      executiveSummary: 'https://nada-offering-documents.s3.amazonaws.com/yield/executive-summary.pdf',
-      offeringMemorandum: 'https://nada-offering-documents.s3.amazonaws.com/yield/offering-memorandum.pdf',
-      subscriptionAgreement: 'https://nada-offering-documents.s3.amazonaws.com/yield/subscription-agreement.pdf',
-      wireInstructions: 'https://nada-offering-documents.s3.amazonaws.com/yield/wire-instructions.pdf',
+      oneSheet:
+        'https://nada-offering-documents.s3.amazonaws.com/yield/one-sheet.pdf',
+      executiveSummary:
+        'https://nada-offering-documents.s3.amazonaws.com/yield/executive-summary.pdf',
+      offeringMemorandum:
+        'https://nada-offering-documents.s3.amazonaws.com/yield/offering-memorandum.pdf',
+      subscriptionAgreement:
+        'https://nada-offering-documents.s3.amazonaws.com/yield/subscription-agreement.pdf',
+      wireInstructions:
+        'https://nada-offering-documents.s3.amazonaws.com/yield/wire-instructions.pdf',
     },
     information: {
       regulation: REGULATION.REG_D,
@@ -138,11 +143,16 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/one-sheet.pdf',
-      executiveSummary: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/executive-summary.pdf',
-      offeringMemorandum: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/offering-memorandum.pdf',
-      subscriptionAgreement: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/subscription-agreement.pdf',
-      wireInstructions: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/wire-instructions.pdf',
+      oneSheet:
+        'https://nada-offering-documents.s3.amazonaws.com/portfolio/one-sheet.pdf',
+      executiveSummary:
+        'https://nada-offering-documents.s3.amazonaws.com/portfolio/executive-summary.pdf',
+      offeringMemorandum:
+        'https://nada-offering-documents.s3.amazonaws.com/portfolio/offering-memorandum.pdf',
+      subscriptionAgreement:
+        'https://nada-offering-documents.s3.amazonaws.com/portfolio/subscription-agreement.pdf',
+      wireInstructions:
+        'https://nada-offering-documents.s3.amazonaws.com/portfolio/wire-instructions.pdf',
     },
     information: {
       regulation: REGULATION.REG_D,
@@ -168,11 +178,16 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/one-sheet.pdf',
-      executiveSummary: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/executive-summary.pdf',
-      offeringMemorandum: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/offering-memorandum.pdf',
-      subscriptionAgreement: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/subscription-agreement.pdf',
-      wireInstructions: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/wire-instructions.pdf',
+      oneSheet:
+        'https://nada-offering-documents.s3.amazonaws.com/miami/one-sheet.pdf',
+      executiveSummary:
+        'https://nada-offering-documents.s3.amazonaws.com/miami/executive-summary.pdf',
+      offeringMemorandum:
+        'https://nada-offering-documents.s3.amazonaws.com/miami/offering-memorandum.pdf',
+      subscriptionAgreement:
+        'https://nada-offering-documents.s3.amazonaws.com/miami/subscription-agreement.pdf',
+      wireInstructions:
+        'https://nada-offering-documents.s3.amazonaws.com/miami/wire-instructions.pdf',
     },
     information: {
       regulation: REGULATION.REG_A,
@@ -203,11 +218,16 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/one-sheet.pdf',
-      executiveSummary: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/executive-summary.pdf',
-      offeringMemorandum: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/offering-memorandum.pdf',
-      subscriptionAgreement: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/subscription-agreement.pdf',
-      wireInstructions: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/wire-instructions.pdf',
+      oneSheet:
+        'https://nada-offering-documents.s3.amazonaws.com/dallas/one-sheet.pdf',
+      executiveSummary:
+        'https://nada-offering-documents.s3.amazonaws.com/dallas/executive-summary.pdf',
+      offeringMemorandum:
+        'https://nada-offering-documents.s3.amazonaws.com/dallas/offering-memorandum.pdf',
+      subscriptionAgreement:
+        'https://nada-offering-documents.s3.amazonaws.com/dallas/subscription-agreement.pdf',
+      wireInstructions:
+        'https://nada-offering-documents.s3.amazonaws.com/dallas/wire-instructions.pdf',
     },
     information: {
       regulation: REGULATION.REG_A,
@@ -238,11 +258,16 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/one-sheet.pdf',
-      executiveSummary: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/executive-summary.pdf',
-      offeringMemorandum: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/offering-memorandum.pdf',
-      subscriptionAgreement: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/subscription-agreement.pdf',
-      wireInstructions: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/wire-instructions.pdf',
+      oneSheet:
+        'https://nada-offering-documents.s3.amazonaws.com/austin/one-sheet.pdf',
+      executiveSummary:
+        'https://nada-offering-documents.s3.amazonaws.com/austin/executive-summary.pdf',
+      offeringMemorandum:
+        'https://nada-offering-documents.s3.amazonaws.com/austin/offering-memorandum.pdf',
+      subscriptionAgreement:
+        'https://nada-offering-documents.s3.amazonaws.com/austin/subscription-agreement.pdf',
+      wireInstructions:
+        'https://nada-offering-documents.s3.amazonaws.com/austin/wire-instructions.pdf',
     },
     information: {
       regulation: REGULATION.REG_A,
@@ -273,11 +298,16 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/one-sheet.pdf',
-      executiveSummary: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/executive-summary.pdf',
-      offeringMemorandum: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/offering-memorandum.pdf',
-      subscriptionAgreement: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/subscription-agreement.pdf',
-      wireInstructions: 'https://nada-offering-documents.s3.amazonaws.com/portfolio/wire-instructions.pdf',
+      oneSheet:
+        'https://nada-offering-documents.s3.amazonaws.com/tampa/one-sheet.pdf',
+      executiveSummary:
+        'https://nada-offering-documents.s3.amazonaws.com/tampa/executive-summary.pdf',
+      offeringMemorandum:
+        'https://nada-offering-documents.s3.amazonaws.com/tampa/offering-memorandum.pdf',
+      subscriptionAgreement:
+        'https://nada-offering-documents.s3.amazonaws.com/tampa/subscription-agreement.pdf',
+      wireInstructions:
+        'https://nada-offering-documents.s3.amazonaws.com/tampa/wire-instructions.pdf',
     },
     information: {
       regulation: REGULATION.REG_A,
