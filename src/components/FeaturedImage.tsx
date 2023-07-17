@@ -44,7 +44,7 @@ export default function FeaturedImage({
         padding: !isMobile && isBorder ? '60px' : 0,
       }}
     >
-      {(!isReversed || isMobile) && (
+      {(!isReversed) && (
         <>
           {isBorder ? (
             <BorderImageWrapper
