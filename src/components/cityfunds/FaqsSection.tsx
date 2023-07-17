@@ -1,5 +1,6 @@
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, LinkText, Overline, PrimaryText } from '@elements/Typography';
+import { EXTERNAL_ROUTES } from '@utils/constants';
 import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
@@ -56,7 +57,7 @@ export default function FaqsSection({ overline, faqs }: FaqsSectionProps) {
           </div>
         ))}
       </Slider>
-      <LinkText href="/faqs">See All FAQs</LinkText>
+      <LinkText href={EXTERNAL_ROUTES.HUBSPOT_FAQS} target='_blank'>See All FAQs</LinkText>
     </SectionWrapper>
   );
 }

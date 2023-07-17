@@ -9,14 +9,14 @@ import {
 } from '@utils/models';
 
 export enum EXTERNAL_ROUTES {
-  WEB_APP = 'https://invest.nada.co/',
+  WEB_APP = 'https://invest.nada.co/signup',
   DOWNLOAD = 'https://nada.onelink.me/wNEn/ksbeffng',
   TYPEFORM = 'https://form.typeform.com/to/fv2eTpuT',
-  CAREERS = 'https://www.linkedin.com/company/hellonada/jobs/',
+  CAREERS = 'https://linkedin.com/company/hellonada/jobs',
   APPLE_STORE = 'https://apps.apple.com/us/app/nada-finance/id1615840472',
   GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
   HUBSPOT_MEETING = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
-  HUBSPOT_FAQS = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
+  HUBSPOT_FAQS = 'https://faqs.nada.co',
 }
 
 export const UTM_PARAMETERS = [
