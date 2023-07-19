@@ -8,7 +8,6 @@ export const config = {
   },
 };
 
-const CONTENT_UPDATED_QUERY = `*[_type == "content" && _id == $id].label.current`;
 const LEGAL_UPDATED_QUERY = `*[_type == "legal" && _id == $id].slug.current`;
 const PARTNER_UPDATED_QUERY = `*[_type == "partner" && _id == $id].slug.current`;
 const POST_UPDATED_QUERY = `*[_type == "post" && _id == $id].slug.current`;
@@ -19,8 +18,6 @@ const TESTIMONIAL_UPDATED_QUERY = `*[_type == "testimonial" && _id == $id].name.
 
 const getQueryForType = (type) => {
   switch (type) {
-    case 'content':
-      return CONTENT_UPDATED_QUERY;
     case 'legal':
       return LEGAL_UPDATED_QUERY;
     case 'partner':

@@ -41,6 +41,17 @@ export const cityfund = {
           hotspot: true,
         },
       },
+      {
+        name: 'gallery',
+        title: 'Gallery',
+        type: 'array',
+        of: [
+          {
+            type: 'image',
+            options: { hotspot: true },
+          },
+        ],
+      },
     ],
     preview: {
       select: {
