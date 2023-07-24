@@ -46,14 +46,14 @@ export default function AccreditedInvestorsPage({
         heading="Real Estate Investing Reinvented"
         heroCTA={
           <>
-            <PrimaryButton
-              onClick={() => scrollToId('cityfunds')}
-            >
+            <PrimaryButton onClick={() => scrollToId('cityfunds')}>
               View Our Offerings
             </PrimaryButton>
             <SecondaryButton
-              onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
-              style={{color: 'white', marginLeft: '1rem'}}
+              onClick={() =>
+                window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
+              }
+              style={{ color: 'white', marginLeft: '1rem' }}
             >
               Schedule a Call
             </SecondaryButton>

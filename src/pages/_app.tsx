@@ -2,7 +2,7 @@ import Footer from '@components/common/PageFooter';
 import * as snippet from '@segment/snippet';
 import * as Sentry from '@sentry/react';
 import { UTM_PARAMETERS } from '@utils/constants';
-import { setCookie } from '@utils/helpers';
+import { getCookie, setCookie } from '@utils/helpers';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
 import { footerQuery } from 'lib/queries';
@@ -41,6 +41,22 @@ export default function App({ Component, pageProps, footer }: AppProps) {
         setCookie(param, value);
       }
     });
+
+    if (window.location.pathname === '/verified') {
+      try {
+        fetch(process.env.NEXT_PUBLIC_API_URL + '/verified/kyc', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            verifiedUuid: getCookie('sharedCredentialsUuid'),
+          }),
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
   }, []);
 
   function renderSnippet() {

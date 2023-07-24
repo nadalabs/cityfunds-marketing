@@ -42,7 +42,11 @@ export default function HomePage({
   );
 
   return (
-    <PageLayout partnerImage={partner?.coverImage} bannerText={bannerText} hideLinks={!!partner}>
+    <PageLayout
+      partnerImage={partner?.coverImage}
+      bannerText={bannerText}
+      hideLinks={!!partner}
+    >
       {bannerText && <AlertBanner primaryText={bannerText} />}
       <PageHero
         heading="Own a Piece of Your Favorite City"

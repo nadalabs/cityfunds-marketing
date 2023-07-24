@@ -18,7 +18,7 @@ export default function DesktopNavBar({
   partnerImage,
   partnerName,
   bannerText,
-  hideLinks
+  hideLinks,
 }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const router = useRouter();

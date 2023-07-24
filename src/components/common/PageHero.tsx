@@ -15,7 +15,7 @@ interface PageHeroProps {
   heroCTA?: ReactNode;
   isTextWide?: boolean;
   formName?: string;
-  bannerText? : boolean;
+  bannerText?: boolean;
 }
 
 export default function PageHero({
@@ -27,7 +27,7 @@ export default function PageHero({
   heroCTA,
   isTextWide,
   formName,
-  bannerText
+  bannerText,
 }: PageHeroProps) {
   const sliderRef = useRef();
   const isMobile = useIsMobile();
@@ -60,7 +60,7 @@ export default function PageHero({
               url(${heroImage})`,
             }}
           />
-          <ContentWrapper style={{  bottom: bannerText ? '11rem' : '8rem'}}>
+          <ContentWrapper style={{ bottom: bannerText ? '11rem' : '8rem' }}>
             <div style={{ display: 'flex', alignItems: 'flex-end' }}>
               <div>
                 <Heading

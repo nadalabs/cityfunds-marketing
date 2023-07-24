@@ -29,6 +29,7 @@ export const UTM_PARAMETERS = [
   'fbclid',
   'msclkid',
   'irclickid',
+  'sharedCredentialsUuid',
 ];
 
 export const HEADER_LINKS = [

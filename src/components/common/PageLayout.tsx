@@ -14,7 +14,7 @@ export default function PageLayout({
   children,
   partnerImage,
   bannerText,
-  hideLinks
+  hideLinks,
 }: PageLayoutProps) {
   const isMobile = useIsMobile();
 
@@ -23,7 +23,11 @@ export default function PageLayout({
       {isMobile ? (
         <MobileNavBar bannerText={bannerText} />
       ) : (
-        <DesktopNavBar partnerImage={partnerImage} bannerText={bannerText} hideLinks={!!hideLinks} />
+        <DesktopNavBar
+          partnerImage={partnerImage}
+          bannerText={bannerText}
+          hideLinks={!!hideLinks}
+        />
       )}
       {children}
     </div>

@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 interface FaqsSectionProps {
   overline?: string;
-  faqs: {question: string, answer: string}[]
+  faqs: { question: string; answer: string }[];
 }
 
 export default function FaqsSection({ overline, faqs }: FaqsSectionProps) {
@@ -57,7 +57,9 @@ export default function FaqsSection({ overline, faqs }: FaqsSectionProps) {
           </div>
         ))}
       </Slider>
-      <LinkText href={EXTERNAL_ROUTES.HUBSPOT_FAQS} target='_blank'>See All FAQs</LinkText>
+      <LinkText href={EXTERNAL_ROUTES.HUBSPOT_FAQS} target="_blank">
+        See All FAQs
+      </LinkText>
     </SectionWrapper>
   );
 }
