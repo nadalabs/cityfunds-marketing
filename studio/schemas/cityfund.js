@@ -10,32 +10,16 @@ export const cityfund = {
         validation: (Rule) => Rule.required(),
       },
       {
-        name: 'heroImage',
-        title: 'Hero Image',
+        name: 'cardFront',
+        title: 'Card Front',
         type: 'image',
         options: {
           hotspot: true,
         },
       },
       {
-        name: 'CardImage',
-        title: 'Card Image',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
-      },
-      {
-        name: 'mapImage',
-        title: 'Map Image',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
-      },
-      {
-        name: 'accreditedImage',
-        title: 'Accredited Image',
+        name: 'cardBack',
+        title: 'Card Back',
         type: 'image',
         options: {
           hotspot: true,
@@ -56,6 +40,7 @@ export const cityfund = {
     preview: {
       select: {
         title: 'title',
+        media: 'cardFront',
       },
     },
   };

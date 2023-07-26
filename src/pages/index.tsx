@@ -14,6 +14,7 @@ import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES, FAQS, FEATURED_CITIES } from '@utils/constants';
 import { REGULATION } from '@utils/models';
 import {
+  cityfundIndexQuery,
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
   homeIndexQuery,
@@ -23,6 +24,7 @@ import { getClient } from 'lib/sanity.server';
 
 interface HomePageProps {
   homePage?: any;
+  cityfunds: any[];
   logos: any;
   testimonials: any;
   values: any;
@@ -31,6 +33,7 @@ interface HomePageProps {
 
 export default function HomePage({
   homePage,
+  cityfunds,
   logos,
   testimonials,
   values,
@@ -54,7 +57,7 @@ export default function HomePage({
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Cityfunds Lead"
-        heroImages={retailFunds.map(({ name, images }) => ({
+        heroImages={cityfunds.map(({ name, images }) => ({
           name,
           heroImage: images.heroImage,
         }))}
@@ -66,19 +69,7 @@ export default function HomePage({
         primaryText={
           'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
         }
-        cards={[
-          ...retailFunds,
-          // {
-          //   name: 'Coming Soon',
-          //   cardImage: '/images/coming-soon-1.png',
-          //   isSmallText: true,
-          // },
-          // {
-          //   name: 'Coming Soon',
-          //   cardImage: '/images/coming-soon-2.png',
-          //   isSmallText: true,
-          // },
-        ]}
+        cards={retailFunds}
       />
       <SectionWrapper>
         <FeaturedImage
@@ -165,6 +156,7 @@ export default function HomePage({
 
 export async function getStaticProps({ params, preview = false }) {
   const homePage = await getClient(preview).fetch(homeIndexQuery);
+  const cityfunds = await getClient(preview).fetch(cityfundIndexQuery);
   const testimonials = await getClient(preview).fetch(
     cityfundsTestimonialsQuery
   );
@@ -172,7 +164,7 @@ export async function getStaticProps({ params, preview = false }) {
   const values = await getClient(preview).fetch(cityfundsValuesQuery);
 
   return {
-    props: { homePage: homePage[0], testimonials, logos, values },
+    props: { homePage: homePage[0], cityfunds, testimonials, logos, values },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };

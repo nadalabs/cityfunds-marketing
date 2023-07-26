@@ -13,11 +13,9 @@ export interface IFundInfo {
 }
 
 export interface IFundImages {
-  heroImage: string;
-  cardImage: string;
-  mapImage: string;
-  accredImage: string;
-  carouselImages: string[];
+  cardFront: string;
+  cardBack: string;
+  gallery: string[];
 }
 
 export interface IFundDocs {
@@ -36,8 +34,8 @@ export interface IFundReturns {
 
 export interface ICityfund {
   name: string;
-  images: IFundImages;
   information: IFundInfo;
+  images?: IFundImages;
   documents?: IFundDocs;
   returns?: IFundReturns;
 }

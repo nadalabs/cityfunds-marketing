@@ -1,6 +1,6 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
-import AccreditedSlider from '@components/cityfunds/AccreditedSlider';
+import CityfundsSlider from '@components/cityfunds/CityfundsSlider';
 import DocumentCenter from '@components/cityfunds/DocumentCenter';
 import FaqsSection from '@components/cityfunds/FaqsSection';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
@@ -62,7 +62,7 @@ export default function AccreditedInvestorsPage({
         primaryText="Diversified real estate portfolios in the nation's top cities."
         heroImages={retailFunds.map(({ name, images }) => ({
           name,
-          heroImage: images.heroImage,
+          heroImage: images.gallery[0],
         }))}
         isTextWide
       />
@@ -70,7 +70,7 @@ export default function AccreditedInvestorsPage({
       <SectionWrapper>
         <LongFormText title="Our Mission" content={ourFocus} />
       </SectionWrapper>
-      <AccreditedSlider
+      <CityfundsSlider
         heading="Our Funds"
         primaryText="Pick the fund that suits you, or invest in all six."
         cards={FEATURED_CITIES}

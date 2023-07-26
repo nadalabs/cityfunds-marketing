@@ -124,13 +124,6 @@ export const FAQS = [
 export const FEATURED_CITIES = [
   {
     name: 'Yield',
-    images: {
-      heroImage: '/images/yield-hero.png',
-      cardImage: '/images/yield.png',
-      mapImage: '/images/yield-map.png',
-      accredImage: '/images/yield-tall.png',
-      carouselImages: [''],
-    },
     documents: {
       oneSheet:
         'https://nada-offering-documents.s3.amazonaws.com/yield/one-sheet.pdf',
@@ -159,13 +152,6 @@ export const FEATURED_CITIES = [
   },
   {
     name: 'Portfolio',
-    images: {
-      heroImage: '/images/portfolio-hero.png',
-      cardImage: '/images/portfolio.png',
-      mapImage: '/images/portfolio-map.png',
-      accredImage: '/images/portfolio-tall.png',
-      carouselImages: [''],
-    },
     documents: {
       oneSheet:
         'https://nada-offering-documents.s3.amazonaws.com/portfolio/one-sheet.pdf',
@@ -194,13 +180,6 @@ export const FEATURED_CITIES = [
   },
   {
     name: 'Miami',
-    images: {
-      heroImage: '/images/miami-hero.png',
-      cardImage: '/images/miami.png',
-      mapImage: '/images/miami-map.png',
-      accredImage: '/images/miami-tall.png',
-      carouselImages: [''],
-    },
     documents: {
       oneSheet:
         'https://nada-offering-documents.s3.amazonaws.com/miami/one-sheet.pdf',
@@ -234,13 +213,6 @@ export const FEATURED_CITIES = [
   },
   {
     name: 'Dallas',
-    images: {
-      heroImage: '/images/dallas-hero.png',
-      cardImage: '/images/dallas.png',
-      mapImage: '/images/dallas-map.png',
-      accredImage: '/images/dallas-tall.png',
-      carouselImages: [''],
-    },
     documents: {
       oneSheet:
         'https://nada-offering-documents.s3.amazonaws.com/dallas/one-sheet.pdf',
@@ -274,13 +246,6 @@ export const FEATURED_CITIES = [
   },
   {
     name: 'Austin',
-    images: {
-      heroImage: '/images/austin-hero.png',
-      cardImage: '/images/austin.png',
-      mapImage: '/images/austin-map.png',
-      accredImage: '/images/austin-tall.png',
-      carouselImages: [''],
-    },
     documents: {
       oneSheet:
         'https://nada-offering-documents.s3.amazonaws.com/austin/one-sheet.pdf',
@@ -314,13 +279,6 @@ export const FEATURED_CITIES = [
   },
   {
     name: 'Tampa',
-    images: {
-      heroImage: '/images/tampa-hero.png',
-      cardImage: '/images/tampa.png',
-      mapImage: '/images/tampa-map.png',
-      accredImage: '/images/tampa-tall.png',
-      carouselImages: [''],
-    },
     documents: {
       oneSheet:
         'https://nada-offering-documents.s3.amazonaws.com/tampa/one-sheet.pdf',
