@@ -207,7 +207,7 @@ export const FEATURED_CITIES = [
       executiveSummary:
         'https://nada-offering-documents.s3.amazonaws.com/miami/executive-summary.pdf',
       offeringMemorandum:
-        'https://nada-offering-documents.s3.amazonaws.com/miami/offering-memorandum.pdf',
+        'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_010',
       subscriptionAgreement:
         'https://nada-offering-documents.s3.amazonaws.com/miami/subscription-agreement.pdf',
       wireInstructions:
@@ -247,7 +247,7 @@ export const FEATURED_CITIES = [
       executiveSummary:
         'https://nada-offering-documents.s3.amazonaws.com/dallas/executive-summary.pdf',
       offeringMemorandum:
-        'https://nada-offering-documents.s3.amazonaws.com/dallas/offering-memorandum.pdf',
+        'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_009',
       subscriptionAgreement:
         'https://nada-offering-documents.s3.amazonaws.com/dallas/subscription-agreement.pdf',
       wireInstructions:
@@ -287,7 +287,7 @@ export const FEATURED_CITIES = [
       executiveSummary:
         'https://nada-offering-documents.s3.amazonaws.com/austin/executive-summary.pdf',
       offeringMemorandum:
-        'https://nada-offering-documents.s3.amazonaws.com/austin/offering-memorandum.pdf',
+        'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_008',
       subscriptionAgreement:
         'https://nada-offering-documents.s3.amazonaws.com/austin/subscription-agreement.pdf',
       wireInstructions:
@@ -327,7 +327,7 @@ export const FEATURED_CITIES = [
       executiveSummary:
         'https://nada-offering-documents.s3.amazonaws.com/tampa/executive-summary.pdf',
       offeringMemorandum:
-        'https://nada-offering-documents.s3.amazonaws.com/tampa/offering-memorandum.pdf',
+        'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_012',
       subscriptionAgreement:
         'https://nada-offering-documents.s3.amazonaws.com/tampa/subscription-agreement.pdf',
       wireInstructions:
