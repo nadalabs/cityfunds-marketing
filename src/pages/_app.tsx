@@ -44,7 +44,7 @@ export default function App({ Component, pageProps, footer }: AppProps) {
 
     if (window.location.pathname === '/verified') {
       try {
-        fetch(process.env.NEXT_PUBLIC_API_URL + '/verified/kyc', {
+        fetch(process.env.NEXT_PUBLIC_API_URL + '/verified/kyc/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export default function App({ Component, pageProps, footer }: AppProps) {
     return snippet.min(opts);
   }
 
-  if (process.env.NEXT_PUBLIC_APP_ENV !== 'localhost') {
+  if (process.env.NEXT_PUBLIC_APP_ENV !== 'development') {
     Sentry.init({
       environment: process.env.NEXT_PUBLIC_APP_ENV,
       dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
