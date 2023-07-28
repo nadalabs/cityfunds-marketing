@@ -4,9 +4,16 @@ export const cityfund = {
     type: 'document',
     fields: [
       {
-        name: 'title',
-        title: 'Title',
+        name: 'name',
+        title: 'Name',
         type: 'string',
+        validation: (Rule) => Rule.required(),
+      },
+      {
+        name: 'description',
+        title: 'Description',
+        type: 'array',
+        of: [{ type: 'block' }],
         validation: (Rule) => Rule.required(),
       },
       {
@@ -16,6 +23,7 @@ export const cityfund = {
         options: {
           hotspot: true,
         },
+        validation: (Rule) => Rule.required(),
       },
       {
         name: 'cardBack',
@@ -24,10 +32,23 @@ export const cityfund = {
         options: {
           hotspot: true,
         },
+        validation: (Rule) => Rule.required(),
       },
       {
-        name: 'gallery',
-        title: 'Gallery',
+        name: 'galleryImages',
+        title: 'Gallery Images',
+        type: 'array',
+        of: [
+          {
+            type: 'image',
+            options: { hotspot: true },
+          },
+        ],
+        validation: (Rule) => Rule.required(),
+      },
+      {
+        name: 'cultureImages',
+        title: 'Culture Images',
         type: 'array',
         of: [
           {
@@ -36,10 +57,23 @@ export const cityfund = {
           },
         ],
       },
+      {
+        name: 'cultureDescription',
+        title: 'Culture Description',
+        type: 'array',
+        of: [{ type: 'block' }],
+      },
+      {
+        name: 'articles',
+        title: 'Articles',
+        type: 'array',
+        of: [{ type: 'press' }],
+      },
     ],
     preview: {
       select: {
-        title: 'title',
+        title: 'name',
+        subtitle: 'description',
         media: 'cardFront',
       },
     },
