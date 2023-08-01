@@ -132,8 +132,6 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet:
-        'https://nada-offering-documents.s3.amazonaws.com/yield/one-sheet.pdf',
       executiveSummary:
         'https://nada-offering-documents.s3.amazonaws.com/yield/executive-summary.pdf',
       offeringMemorandum:
@@ -167,8 +165,6 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet:
-        'https://nada-offering-documents.s3.amazonaws.com/portfolio/one-sheet.pdf',
       executiveSummary:
         'https://nada-offering-documents.s3.amazonaws.com/portfolio/executive-summary.pdf',
       offeringMemorandum:
@@ -202,10 +198,8 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet:
-        'https://nada-offering-documents.s3.amazonaws.com/miami/one-sheet.pdf',
       executiveSummary:
-        'https://nada-offering-documents.s3.amazonaws.com/miami/executive-summary.pdf',
+        'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_004',
       offeringMemorandum:
         'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_010',
       subscriptionAgreement:
@@ -227,8 +221,8 @@ export const FEATURED_CITIES = [
       fundSize: 10000000,
     },
     returns: {
-      sharePrice: 10.77,
-      appreciation: 7.7,
+      sharePrice: 10.80,
+      appreciation: 8.0,
       totalAssets: 10,
     },
   },
@@ -242,10 +236,8 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet:
-        'https://nada-offering-documents.s3.amazonaws.com/dallas/one-sheet.pdf',
       executiveSummary:
-        'https://nada-offering-documents.s3.amazonaws.com/dallas/executive-summary.pdf',
+        'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_004',
       offeringMemorandum:
         'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_009',
       subscriptionAgreement:
@@ -267,8 +259,8 @@ export const FEATURED_CITIES = [
       fundSize: 10000000,
     },
     returns: {
-      sharePrice: 10.59,
-      appreciation: 5.9,
+      sharePrice: 10.63,
+      appreciation: 6.3,
       totalAssets: 17,
     },
   },
@@ -282,10 +274,8 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet:
-        'https://nada-offering-documents.s3.amazonaws.com/austin/one-sheet.pdf',
       executiveSummary:
-        'https://nada-offering-documents.s3.amazonaws.com/austin/executive-summary.pdf',
+        'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_004',
       offeringMemorandum:
         'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_008',
       subscriptionAgreement:
@@ -307,8 +297,8 @@ export const FEATURED_CITIES = [
       fundSize: 10000000,
     },
     returns: {
-      sharePrice: 10.69,
-      appreciation: 6.9,
+      sharePrice: 10.75,
+      appreciation: 7.5,
       totalAssets: 22,
     },
   },
@@ -322,10 +312,8 @@ export const FEATURED_CITIES = [
       carouselImages: [''],
     },
     documents: {
-      oneSheet:
-        'https://nada-offering-documents.s3.amazonaws.com/tampa/one-sheet.pdf',
       executiveSummary:
-        'https://nada-offering-documents.s3.amazonaws.com/tampa/executive-summary.pdf',
+        'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_004',
       offeringMemorandum:
         'https://www.sec.gov/Archives/edgar/data/1874979/000149315223008049/form253g2.htm#a_012',
       subscriptionAgreement:

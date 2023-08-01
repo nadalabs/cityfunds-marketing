@@ -25,10 +25,6 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
       },
       { label: 'Executive Summary', value: documents.executiveSummary },
     ],
-    variableDocuments:
-      information.regulation === REGULATION.REG_D
-        ? [{ label: 'One Sheet', value: documents.oneSheet }]
-        : [],
   }));
 
   return (
@@ -36,7 +32,7 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
       <Heading style={{ marginBottom: '2rem' }}>Docs</Heading>
 
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {allDocuments.map(({ name, documents, variableDocuments }, idx) => (
+        {allDocuments.map(({ name, documents }, idx) => (
           <ContentWrapper key={idx}>
             <HoverHeading
               onClick={() => setActive(idx)}
@@ -50,7 +46,7 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
 
             {active === idx && (
               <div style={{ marginBottom: '1rem' }}>
-                {[...documents, ...variableDocuments].map(
+                {documents.map(
                   ({ value, label }, kdx) => (
                     <LinkText
                       key={kdx}

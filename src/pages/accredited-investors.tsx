@@ -23,7 +23,6 @@ import {
 import { getClient } from 'lib/sanity.server';
 
 export default function AccreditedInvestorsPage({
-  testimonials,
   values,
   logos,
   ourFocus,
