@@ -20,19 +20,19 @@ export default function AssetTicker({
 
   const PILLS = [
     {
-      number: formatPrice(sharePrice),
+      number: `$${sharePrice.toFixed(2)}`,
       description: <Caption style={{ color: 'white' }}>/ Share</Caption>,
     },
     {
-      number: formatPercent(appreciation),
-      description: (
+      number: appreciation ? `${appreciation.toFixed(1)}%` : 'New',
+      description: appreciation ? (
         <Image
           src="/icons/arrow-up.svg"
           alt="Appreciation"
           width={16}
           height={16}
         />
-      ),
+      ) : '',
     },
     {
       number: totalAssets,
