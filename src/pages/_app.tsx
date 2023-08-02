@@ -1,7 +1,7 @@
 import Footer from '@components/common/PageFooter';
 import * as snippet from '@segment/snippet';
 import * as Sentry from '@sentry/react';
-import { UTM_PARAMETERS } from '@utils/constants';
+import { EXTERNAL_ROUTES, UTM_PARAMETERS } from '@utils/constants';
 import { getCookie, setCookie } from '@utils/helpers';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
@@ -53,6 +53,7 @@ export default function App({ Component, pageProps, footer }: AppProps) {
             verifiedUuid: getCookie('sharedCredentialsUuid'),
           }),
         });
+        window.open('http://q-r.to/nada-verified', '_blank')
       } catch (err) {
         console.error(err);
       }
