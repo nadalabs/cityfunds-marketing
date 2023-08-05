@@ -6,7 +6,7 @@ import {
   partnerQuery,
   partnerSlugsQuery,
   pressLogosQueryQuery,
-} from 'lib/queries';
+} from '@pages/api/queries';
 import { getClient, sanityClient } from 'lib/sanity.server';
 import dynamic from 'next/dynamic';
 

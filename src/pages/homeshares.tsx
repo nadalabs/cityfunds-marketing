@@ -7,7 +7,7 @@ import PageLayout from '@components/common/PageLayout';
 import NadaCardCTA from '@components/homeshares/NadaCardCTA';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES } from '@utils/constants';
-import { homeIndexQuery, homesharesTestimonialsQuery } from 'lib/queries';
+import { homeIndexQuery, homesharesTestimonialsQuery } from '@pages/api/queries';
 import { getClient } from 'lib/sanity.server';
 
 export default function HomeSharesPage({ testimonials }) {

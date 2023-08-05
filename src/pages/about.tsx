@@ -11,8 +11,7 @@ import {
   nadaValuesQuery,
   ourStoryQuery,
   teammateIndexQuery,
-} from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
+} from '@pages/api/queries';
 
 export default function AboutPage({ teammates, values, logos, ourStory }) {
   return (

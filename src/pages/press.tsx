@@ -1,7 +1,7 @@
 import PressArticles from '@components/PressArticles';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
-import { pressIndexQuery } from 'lib/queries';
+import { pressIndexQuery } from '@pages/api/queries';
 import { getClient, overlayDrafts } from 'lib/sanity.server';
 
 export default function PressPage({ allPress }) {

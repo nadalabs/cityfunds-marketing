@@ -20,11 +20,11 @@ export default function AssetTicker({
 
   const PILLS = [
     {
-      number: formatPrice(sharePrice),
+      number: formatPrice(sharePrice, 2),
       description: <Caption style={{ color: 'white' }}>/ Share</Caption>,
     },
     {
-      number: formatPercent(appreciation),
+      number: formatPercent(appreciation, 2),
       description: (
         <Image
           src="/icons/arrow-up.svg"

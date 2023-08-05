@@ -1,8 +1,8 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
-import CityfundsSlider from '@components/cityfunds/CityfundsSlider';
+import CityfundCards from '@components/cityfunds/CityfundCards';
 import DocumentCenter from '@components/cityfunds/DocumentCenter';
-import FaqsSection from '@components/cityfunds/FaqsSection';
+import FaqsSection from '@components/cityfunds/NadaFaqs';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import TextSlider from '@components/cityfunds/TextSlider';
 import LongFormText from '@components/common/LongFormText';
@@ -12,15 +12,14 @@ import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { EXTERNAL_ROUTES, FAQS, FEATURED_CITIES } from '@utils/constants';
+import { EXTERNAL_ROUTES, FAQS } from '@utils/constants';
 import { REGULATION } from '@utils/models';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
   ourFocusQuery,
   pressLogosQueryQuery,
-} from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
+} from '@pages/api/queries';
 
 export default function AccreditedInvestorsPage({
   testimonials,
@@ -70,10 +69,9 @@ export default function AccreditedInvestorsPage({
       <SectionWrapper>
         <LongFormText title="Our Mission" content={ourFocus} />
       </SectionWrapper>
-      <CityfundsSlider
+      <CityfundCards
         heading="Our Funds"
         primaryText="Pick the fund that suits you, or invest in all six."
-        cards={FEATURED_CITIES}
       />
 
       <SectionWrapper>
@@ -131,7 +129,6 @@ export default function AccreditedInvestorsPage({
           isWide
         />
       </SectionWrapper>
-      <DocumentCenter funds={FEATURED_CITIES} />
       <SectionWrapper>
         <FeaturedImage
           overline="Have any questions?"

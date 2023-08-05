@@ -5,7 +5,7 @@ import { UTM_PARAMETERS } from '@utils/constants';
 import { getCookie, setCookie } from '@utils/helpers';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
-import { footerQuery } from 'lib/queries';
+import { footerQuery } from '@pages/api/queries';
 import { getClient } from 'lib/sanity.server';
 import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';

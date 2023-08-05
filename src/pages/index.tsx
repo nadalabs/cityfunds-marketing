@@ -1,8 +1,8 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import AlertBanner from '@components/cityfunds/AlertBanner';
-import CityfundsSlider from '@components/cityfunds/CityfundsSlider';
-import FaqsSection from '@components/cityfunds/FaqsSection';
+import CityfundsSlider from '@components/cityfunds/CityfundCards';
+import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import PromoCTA from '@components/cityfunds/PromoCTA';
@@ -11,7 +11,7 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { EXTERNAL_ROUTES, FAQS, FEATURED_CITIES } from '@utils/constants';
+import { EXTERNAL_ROUTES, FAQS } from '@utils/constants';
 import { REGULATION } from '@utils/models';
 import {
   cityfundIndexQuery,
@@ -19,8 +19,7 @@ import {
   cityfundsValuesQuery,
   homeIndexQuery,
   pressLogosQueryQuery,
-} from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
+} from '@pages/api/queries';
 
 interface HomePageProps {
   homePage?: any;
@@ -40,9 +39,6 @@ export default function HomePage({
   partner,
 }: HomePageProps) {
   const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
-  const retailFunds = FEATURED_CITIES.filter(
-    ({ information }) => information.regulation !== REGULATION.REG_D
-  );
 
   return (
     <PageLayout
@@ -69,7 +65,6 @@ export default function HomePage({
         primaryText={
           'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
         }
-        cards={retailFunds}
       />
       <SectionWrapper>
         <FeaturedImage
@@ -121,7 +116,7 @@ export default function HomePage({
         primaryText="We have plenty of reasons."
         valueProps={values}
       />
-      <FaqsSection overline="You may also be wondering..." faqs={FAQS} />
+      <NadaFaqs overline="You may also be wondering..." faqs={FAQS} />
       <HowItWorks
         overline="Real Estate Investing Simplified"
         steps={[

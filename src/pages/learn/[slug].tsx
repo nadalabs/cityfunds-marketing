@@ -3,7 +3,7 @@ import BlogHero from '@components/blog/BlogHero';
 import LongFormText from '@components/common/LongFormText';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { postQuery, postSlugsQuery } from 'lib/queries';
+import { postQuery, postSlugsQuery } from '@pages/api/queries';
 import { getClient, sanityClient } from 'lib/sanity.server';
 
 export default function PostPage({ post }) {
