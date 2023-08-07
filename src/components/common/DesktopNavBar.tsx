@@ -4,10 +4,11 @@ import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 interface HeaderProps {
+  pageImage?: ReactNode;
   partnerImage?: string;
   partnerName?: string;
   bannerText?: string;
@@ -15,6 +16,7 @@ interface HeaderProps {
 }
 
 export default function DesktopNavBar({
+  pageImage,
   partnerImage,
   partnerName,
   bannerText,
@@ -40,7 +42,7 @@ export default function DesktopNavBar({
     <NavbarWrapper
       style={{ top: scrollPosition === 0 && bannerText ? '2.85rem' : 0 }}
     >
-      {partnerImage ? (
+      {partnerImage || pageImage ? (
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Image
             width={184}
@@ -57,12 +59,16 @@ export default function DesktopNavBar({
               margin: '0 24px',
             }}
           />
-          <Image
-            width={188}
-            height={54}
-            alt={partnerName}
-            src={urlForImage(partnerImage).url()}
-          />
+          {partnerImage ? (
+            <Image
+              width={188}
+              height={54}
+              alt={partnerName}
+              src={urlForImage(partnerImage).url()}
+            />
+          ) : (
+            pageImage
+          )}
         </div>
       ) : (
         <Link href={`/`}>

@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 
 interface PageLayoutProps {
   children: ReactNode;
+  pageImage?: ReactNode;
   partnerImage?: string;
   bannerText?: string;
   hideLinks?: boolean;
@@ -13,6 +14,7 @@ interface PageLayoutProps {
 export default function PageLayout({
   children,
   partnerImage,
+  pageImage,
   bannerText,
   hideLinks,
 }: PageLayoutProps) {
@@ -25,6 +27,7 @@ export default function PageLayout({
       ) : (
         <DesktopNavBar
           partnerImage={partnerImage}
+          pageImage={pageImage}
           bannerText={bannerText}
           hideLinks={!!hideLinks}
         />

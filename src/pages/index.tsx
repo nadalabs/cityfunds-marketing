@@ -66,19 +66,7 @@ export default function HomePage({
         primaryText={
           'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
         }
-        cards={[
-          ...retailFunds,
-          // {
-          //   name: 'Coming Soon',
-          //   cardImage: '/images/coming-soon-1.png',
-          //   isSmallText: true,
-          // },
-          // {
-          //   name: 'Coming Soon',
-          //   cardImage: '/images/coming-soon-2.png',
-          //   isSmallText: true,
-          // },
-        ]}
+        cards={retailFunds}
       />
       <SectionWrapper>
         <FeaturedImage

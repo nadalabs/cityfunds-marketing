@@ -1,6 +1,5 @@
 import { Caption } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { formatPercent, formatPrice } from '@utils/helpers';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import { styled } from 'styled-components';
@@ -32,7 +31,9 @@ export default function AssetTicker({
           width={16}
           height={16}
         />
-      ) : '',
+      ) : (
+        ''
+      ),
     },
     {
       number: totalAssets,

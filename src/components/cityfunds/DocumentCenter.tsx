@@ -46,18 +46,16 @@ export default function DocumentCenter({ funds }: DocumentCenterProps) {
 
             {active === idx && (
               <div style={{ marginBottom: '1rem' }}>
-                {documents.map(
-                  ({ value, label }, kdx) => (
-                    <LinkText
-                      key={kdx}
-                      href={value}
-                      target="_blank"
-                      style={{ display: 'block', margin: '0 0 1rem 1.5rem' }}
-                    >
-                      {label}
-                    </LinkText>
-                  )
-                )}
+                {documents.map(({ value, label }, kdx) => (
+                  <LinkText
+                    key={kdx}
+                    href={value}
+                    target="_blank"
+                    style={{ display: 'block', margin: '0 0 1rem 1.5rem' }}
+                  >
+                    {label}
+                  </LinkText>
+                ))}
               </div>
             )}
           </ContentWrapper>

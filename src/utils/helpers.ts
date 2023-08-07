@@ -4,7 +4,9 @@ export const setCookie = (name: string, value: string) => {
   date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
   expires = '; expires=' + date.toUTCString();
   const domain =
-    process.env.NEXT_PUBLIC_APP_ENV === 'development' ? 'localhost' : '.nada.co';
+    process.env.NEXT_PUBLIC_APP_ENV === 'development'
+      ? 'localhost'
+      : '.nada.co';
 
   document.cookie =
     name +

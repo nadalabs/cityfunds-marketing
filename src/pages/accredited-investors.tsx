@@ -22,11 +22,7 @@ import {
 } from 'lib/queries';
 import { getClient } from 'lib/sanity.server';
 
-export default function AccreditedInvestorsPage({
-  values,
-  logos,
-  ourFocus,
-}) {
+export default function AccreditedInvestorsPage({ values, logos, ourFocus }) {
   const retailFunds = FEATURED_CITIES.filter(
     ({ information }) => information.regulation !== REGULATION.REG_D
   );

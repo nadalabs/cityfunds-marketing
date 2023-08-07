@@ -221,7 +221,7 @@ export const FEATURED_CITIES = [
       fundSize: 10000000,
     },
     returns: {
-      sharePrice: 10.80,
+      sharePrice: 10.8,
       appreciation: 8.0,
       totalAssets: 10,
     },

@@ -36,10 +36,15 @@ export default function AccreditedSlider({
     cardVariable:
       information.regulation === REGULATION.REG_A
         ? [
-            { label: 'Share Price', value: `$${returns?.sharePrice.toFixed(2)}` },
+            {
+              label: 'Share Price',
+              value: `$${returns?.sharePrice.toFixed(2)}`,
+            },
             {
               label: 'Appreciation',
-              value: returns?.appreciation ? `${returns?.appreciation.toFixed(1)}%` : 'New',
+              value: returns?.appreciation
+                ? `${returns?.appreciation.toFixed(1)}%`
+                : 'New',
             },
             { label: 'Total Assets', value: returns?.totalAssets },
           ]
