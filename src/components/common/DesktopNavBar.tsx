@@ -42,7 +42,7 @@ export default function DesktopNavBar({
     <NavbarWrapper
       style={{ top: scrollPosition === 0 && bannerText ? '2.85rem' : 0 }}
     >
-      {partnerImage || pageImage ? (
+      {partnerImage ? (
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Image
             width={184}
@@ -50,35 +50,31 @@ export default function DesktopNavBar({
             alt={'Cityfunds'}
             src={'/icons/cityfunds-dark.svg'}
           />
-          <hr
-            style={{
-              width: '1px',
-              height: '54px',
-              display: 'inline-block',
-              border: '1px solid black',
-              margin: '0 24px',
-            }}
+          <Divider />
+          <Image
+            width={188}
+            height={54}
+            alt={partnerName}
+            src={urlForImage(partnerImage).url()}
           />
-          {partnerImage ? (
-            <Image
-              width={188}
-              height={54}
-              alt={partnerName}
-              src={urlForImage(partnerImage).url()}
-            />
-          ) : (
-            pageImage
-          )}
         </div>
       ) : (
-        <Link href={`/`}>
-          <Image
-            width={184}
-            height={52}
-            alt="Nada"
-            src="/icons/nada-light.svg"
-          />
-        </Link>
+        <div>
+          <Link href={`/`}>
+            <Image
+              width={184}
+              height={52}
+              alt="Nada"
+              src="/icons/nada-light.svg"
+            />
+          </Link>
+          {pageImage && (
+            <>
+              <Divider />
+              {pageImage}
+            </>
+          )}
+        </div>
       )}
 
       <div>
@@ -128,4 +124,12 @@ const NavbarWrapper = styled.div`
   padding: 20px 100px 40px 100px;
   z-index: 999;
   width: 100%;
+`;
+
+const Divider = styled.div`
+  width: 1px;
+  height: 54px;
+  display: inline-block;
+  border: 1px solid black;
+  margin: 0 24px;
 `;
