@@ -92,9 +92,8 @@ export default function CityfundCards({ isHome }: CityfundCardsProps) {
         <>
           <HeadingWrapper>
             <SmallHeading>Portfolio Assets</SmallHeading>
-            <PrimaryText>As of {getTodaysDate()}</PrimaryText>
+            <PrimaryText>Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.</PrimaryText>
           </HeadingWrapper>
-          <SmallHeading>4 Cityfunds</SmallHeading>
         </>
       )}
 

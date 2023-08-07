@@ -60,12 +60,7 @@ export default function HomePage({
         bannerText={!!bannerText}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
-      <CityfundsSlider
-        heading="Pick your favorite Cityfund, or invest in all of them"
-        primaryText={
-          'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
-        }
-      />
+      <CityfundsSlider />
       <SectionWrapper>
         <FeaturedImage
           overline="Why Cityfunds?"
