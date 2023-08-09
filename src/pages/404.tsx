@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-const NotFoundPage = () => {
+export default function NotFoundPage() {
   const router = useRouter();
 
   useEffect(() => {
@@ -10,5 +10,3 @@ const NotFoundPage = () => {
 
   return <></>;
 };
-
-export default NotFoundPage;
