@@ -4,10 +4,11 @@ import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 interface HeaderProps {
+  pageImage?: ReactNode;
   partnerImage?: string;
   partnerName?: string;
   bannerText?: string;
@@ -15,6 +16,7 @@ interface HeaderProps {
 }
 
 export default function DesktopNavBar({
+  pageImage,
   partnerImage,
   partnerName,
   bannerText,
@@ -48,15 +50,7 @@ export default function DesktopNavBar({
             alt={'Cityfunds'}
             src={'/icons/cityfunds-dark.svg'}
           />
-          <hr
-            style={{
-              width: '1px',
-              height: '54px',
-              display: 'inline-block',
-              border: '1px solid black',
-              margin: '0 24px',
-            }}
-          />
+          <Divider />
           <Image
             width={188}
             height={54}
@@ -65,14 +59,22 @@ export default function DesktopNavBar({
           />
         </div>
       ) : (
-        <Link href={`/`}>
-          <Image
-            width={184}
-            height={52}
-            alt="Nada"
-            src="/icons/nada-light.svg"
-          />
-        </Link>
+        <div>
+          <Link href={`/`}>
+            <Image
+              width={184}
+              height={52}
+              alt="Nada"
+              src="/icons/nada-light.svg"
+            />
+          </Link>
+          {pageImage && (
+            <>
+              <Divider />
+              {pageImage}
+            </>
+          )}
+        </div>
       )}
 
       <div>
@@ -122,4 +124,12 @@ const NavbarWrapper = styled.div`
   padding: 20px 100px 40px 100px;
   z-index: 999;
   width: 100%;
+`;
+
+const Divider = styled.div`
+  width: 1px;
+  height: 54px;
+  display: inline-block;
+  border: 1px solid black;
+  margin: 0 24px;
 `;

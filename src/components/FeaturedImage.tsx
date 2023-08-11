@@ -30,6 +30,7 @@ export default function FeaturedImage({
   isReversed,
   isShortHeader,
   isBorder,
+  isWide,
   isShort,
 }: FeaturedImageProps) {
   const isMobile = useIsMobile();
@@ -90,7 +91,7 @@ export default function FeaturedImage({
       {isReversed && !isMobile && (
         <FlexWrapper>
           <ImageWrapper>
-            <Image src={imageUrl} alt={heading} height={500} width={700} />
+            <Image src={imageUrl} alt={heading} height={500} width={isWide ? 700 : 500} />
           </ImageWrapper>
           <ImageSquare />
         </FlexWrapper>

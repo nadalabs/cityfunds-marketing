@@ -8,8 +8,8 @@ import Slider from 'react-slick';
 import styled from 'styled-components';
 
 interface PageHeroProps {
-  heading: string;
-  primaryText: string;
+  heading?: string;
+  primaryText?: string;
   btnText?: string;
   onClick?: () => void;
   heroImages: { name: string; heroImage: string }[];
