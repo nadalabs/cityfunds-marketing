@@ -7,13 +7,15 @@ import {
   partnerSlugsQuery,
   pressLogosQueryQuery,
 } from 'lib/queries';
-import { sanityClient } from 'lib/sanity';
+import { getAllFundsContent, sanityClient } from 'lib/sanity';
+import { getAllFundsData } from 'lib/supabase';
 import dynamic from 'next/dynamic';
 
 const HomePage = dynamic(() => import('@pages/index'));
 const LegalPage = dynamic(() => import('@components/LegalPage'));
 
 export default function DynamicPage({
+  cityfunds,
   testimonials,
   logos,
   values,
@@ -24,6 +26,7 @@ export default function DynamicPage({
     <>
       {partner && (
         <HomePage
+          cityfunds={cityfunds}
           partner={partner}
           testimonials={testimonials}
           logos={logos}
@@ -36,9 +39,16 @@ export default function DynamicPage({
 }
 
 export async function getStaticProps({ params }) {
-  const testimonials = await sanityClient.fetch(
-    cityfundsTestimonialsQuery
-  );
+  const fundsData = await getAllFundsData();
+  const fundsContent = await getAllFundsContent();
+  const cityfunds = fundsData.map((data) => {
+    const content = fundsContent.find(
+      (content) => content.fund_name === data.fund_name
+    );
+    return { fund_data: data, fund_content: content };
+  });
+
+  const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
   const logos = await sanityClient.fetch(pressLogosQueryQuery);
   const values = await sanityClient.fetch(cityfundsValuesQuery);
   const partnerData = await sanityClient.fetch(partnerQuery, {
@@ -51,7 +61,7 @@ export async function getStaticProps({ params }) {
   const legal = legalData?.legal ?? null;
 
   return {
-    props: { testimonials, logos, values, partner, legal },
+    props: { cityfunds, testimonials, logos, values, partner, legal },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

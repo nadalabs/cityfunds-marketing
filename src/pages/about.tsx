@@ -6,13 +6,13 @@ import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { sanityClient } from 'lib/sanity';
 import {
   backersLogosQuery,
   nadaValuesQuery,
   ourStoryQuery,
   teammateIndexQuery,
 } from 'lib/queries';
+import { sanityClient } from 'lib/sanity';
 
 export default function AboutPage({ teammates, values, logos, ourStory }) {
   return (
@@ -48,10 +48,10 @@ export default function AboutPage({ teammates, values, logos, ourStory }) {
 }
 
 export async function getStaticProps() {
-  const teammates = await  sanityClient.fetch(teammateIndexQuery);
-  const values = await  sanityClient.fetch(nadaValuesQuery);
-  const logos = await  sanityClient.fetch(backersLogosQuery);
-  const ourStoryData = await  sanityClient.fetch(ourStoryQuery);
+  const teammates = await sanityClient.fetch(teammateIndexQuery);
+  const values = await sanityClient.fetch(nadaValuesQuery);
+  const logos = await sanityClient.fetch(backersLogosQuery);
+  const ourStoryData = await sanityClient.fetch(ourStoryQuery);
   const ourStory = ourStoryData?.summary?.content;
 
   return {

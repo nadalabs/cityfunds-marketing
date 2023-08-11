@@ -1,26 +1,17 @@
 import { CityfundCard } from '@components/cityfunds/CityfundCard';
 import { StackWrapper } from '@elements/Containers';
-import {
-  Heading,
-  LargeText,
-  PrimaryText,
-  SmallHeading,
-} from '@elements/Typography';
+import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { FUND_TYPE, REGULATION } from '@utils/constants';
-import { formatPercent, formatPrice, getTodaysDate } from '@utils/helpers';
+import { formatPercent, formatPrice } from '@utils/helpers';
 import { ICityfund } from '@utils/models';
 import styled from 'styled-components';
 
 interface CityfundsCardsProps {
   cityfunds: ICityfund[];
-  isHome?: boolean;
 }
 
-export default function CityfundsCards({
-  cityfunds,
-  isHome,
-}: CityfundsCardsProps) {
+export default function CityfundsCards({ cityfunds }: CityfundsCardsProps) {
   const isMobile = useIsMobile();
 
   const ALL_CARDS = cityfunds.map(({ fund_data, fund_content }) => ({
@@ -57,26 +48,16 @@ export default function CityfundsCards({
   const CITY_CARDS = ALL_CARDS.filter(
     ({ regulation }) => regulation === REGULATION.RETAIL
   );
-  const DISPLAYED_CARDS = isHome ? ALL_CARDS : CITY_CARDS;
+  const DISPLAYED_CARDS = true ? ALL_CARDS : CITY_CARDS;
 
   return (
-    <SectionWrapper style={{ marginLeft: isHome && !isMobile ? '6.25rem' : 0 }}>
-      {isHome ? (
-        <StackWrapper style={{ gap: '0.5rem' }}>
-          <Heading>Explore Offerings</Heading>
-          <LargeText>
-            Pick your favorite fund, or invest in all of them.
-          </LargeText>
-        </StackWrapper>
-      ) : (
-        <>
-          <HeadingWrapper>
-            <SmallHeading>Portfolio Assets</SmallHeading>
-            <PrimaryText>As of {getTodaysDate()}</PrimaryText>
-          </HeadingWrapper>
-          <SmallHeading>{CITY_CARDS.length} Cityfunds</SmallHeading>
-        </>
-      )}
+    <SectionWrapper style={{ marginLeft: !isMobile ? '6.25rem' : 0 }}>
+      <StackWrapper style={{ gap: '0.5rem' }}>
+        <Heading>Explore Offerings</Heading>
+        <LargeText>
+          Pick your favorite fund, or invest in all of them.
+        </LargeText>
+      </StackWrapper>
 
       <div
         style={{

@@ -36,7 +36,6 @@ export const shortenNumber = (num: number, digits: number) => {
     : '';
 };
 
-
 export const formatPrice = (price: number, decimals: number) => {
   if (typeof price !== 'number' || isNaN(price)) {
     return 'Invalid Number';

@@ -1,8 +1,8 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import CityfundCards from '@components/cityfunds/CityfundCards';
-import FaqsSection from '@components/cityfunds/NadaFaqs';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
+import FaqsSection from '@components/cityfunds/NadaFaqs';
 import TextSlider from '@components/cityfunds/TextSlider';
 import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
@@ -11,27 +11,23 @@ import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { EXTERNAL_ROUTES, FAQS, REGULATION } from '@utils/constants';
+import { EXTERNAL_ROUTES, FAQS, FUND_STATUS, REGULATION } from '@utils/constants';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
   ourFocusQuery,
   pressLogosQueryQuery,
 } from 'lib/queries';
-import { sanityClient } from 'lib/sanity';
+import { getAllFundsContent, sanityClient } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 
 export default function AccreditedInvestorsPage({
+  cityfunds,
   values,
   logos,
   ourFocus,
-  cityfunds
 }) {
-  const retailFunds = cityfunds.filter(
-    ({ information }) => information.regulation === REGULATION.RETAIL
-  );
   const isMobile = useIsMobile();
-
   const scrollToId = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -59,10 +55,16 @@ export default function AccreditedInvestorsPage({
           </>
         }
         primaryText="Diversified real estate portfolios in the nation's top cities."
-        heroImages={retailFunds.map(({ name, images }) => ({
-          name,
-          heroImage: images.gallery[0],
-        }))}
+        heroImages={cityfunds
+          .filter(
+            ({ fund_data }) =>
+              fund_data?.regulation === REGULATION.RETAIL &&
+              fund_data?.fund_status === FUND_STATUS.ACTIVE
+          )
+          .map(({ fund_content }) => ({
+            name: fund_content?.fund_name,
+            heroImage: fund_content?.image_gallery[0],
+          }))}
         isTextWide
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
@@ -142,17 +144,23 @@ export default function AccreditedInvestorsPage({
 }
 
 export async function getStaticProps() {
-  const testimonials = await sanityClient.fetch(
-    cityfundsTestimonialsQuery
-  );
+  const fundsData = await getAllFundsData();
+  const fundsContent = await getAllFundsContent();
+  const cityfunds = fundsData.map((data) => {
+    const content = fundsContent.find(
+      (content) => content.fund_name === data.fund_name
+    );
+    return { fund_data: data, fund_content: content };
+  });
+
+  const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
   const values = await sanityClient.fetch(cityfundsValuesQuery);
   const logos = await sanityClient.fetch(pressLogosQueryQuery);
   const ourFocusData = await sanityClient.fetch(ourFocusQuery);
   const ourFocus = ourFocusData?.summary?.content;
-  const cityfunds =  await getAllFundsData();
 
   return {
-    props: { testimonials, logos, values, ourFocus, cityfunds },
+    props: { cityfunds, testimonials, logos, values, ourFocus },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

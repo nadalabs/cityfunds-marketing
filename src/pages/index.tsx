@@ -2,24 +2,29 @@ import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import AlertBanner from '@components/cityfunds/AlertBanner';
 import CityfundCards from '@components/cityfunds/CityfundCards';
-import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
+import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import PromoCTA from '@components/cityfunds/PromoCTA';
 import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { EXTERNAL_ROUTES, FAQS } from '@utils/constants';
 import {
-  cityfundIndexQuery,
+  EXTERNAL_ROUTES,
+  FAQS,
+  FUND_STATUS,
+  REGULATION,
+} from '@utils/constants';
+import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
   homeIndexQuery,
   pressLogosQueryQuery,
 } from 'lib/queries';
-import { sanityClient } from 'lib/sanity';
+import { getAllFundsContent, sanityClient } from 'lib/sanity';
+import { getAllFundsData } from 'lib/supabase';
 
 interface HomePageProps {
   homePage?: any;
@@ -53,10 +58,16 @@ export default function HomePage({
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Cityfunds Lead"
-        heroImages={cityfunds.map(({ name, images }) => ({
-          name,
-          heroImage: images.heroImage,
-        }))}
+        heroImages={cityfunds
+          .filter(
+            ({ fund_data }) =>
+              fund_data?.regulation === REGULATION.RETAIL &&
+              fund_data?.fund_status === FUND_STATUS.ACTIVE
+          )
+          .map(({ fund_content }) => ({
+            name: fund_content?.fund_name,
+            heroImage: fund_content?.image_gallery[0],
+          }))}
         bannerText={!!bannerText}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
@@ -145,11 +156,17 @@ export default function HomePage({
 }
 
 export async function getStaticProps() {
+  const fundsData = await getAllFundsData();
+  const fundsContent = await getAllFundsContent();
+  const cityfunds = fundsData.map((data) => {
+    const content = fundsContent.find(
+      (content) => content.fund_name === data.fund_name
+    );
+    return { fund_data: data, fund_content: content };
+  });
+
   const homePage = await sanityClient.fetch(homeIndexQuery);
-  const cityfunds = await sanityClient.fetch(cityfundIndexQuery);
-  const testimonials = await sanityClient.fetch(
-    cityfundsTestimonialsQuery
-  );
+  const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
   const logos = await sanityClient.fetch(pressLogosQueryQuery);
   const values = await sanityClient.fetch(cityfundsValuesQuery);
 

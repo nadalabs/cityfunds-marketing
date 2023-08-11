@@ -1,4 +1,4 @@
-import { FUND_STATUS, FUND_TYPE, LIQUIDITY, REGULATION } from "./constants";
+import { FUND_STATUS, FUND_TYPE, LIQUIDITY, REGULATION } from './constants';
 
 export interface ICityfund {
   fund_data: IFundData;
@@ -25,12 +25,12 @@ export interface IFundData {
 }
 
 export interface IFundContent {
-    fund_name: string;
-    description: string;
-    image_gallery: string[];
-    card_front: string;
-    card_back: string;
-    culture_gallery: string[];
-    culture_description: string;
-    culture_articles: any[];
-  }
+  fund_name: string;
+  description: string;
+  image_gallery: string[];
+  card_front: string;
+  card_back: string;
+  culture_gallery: string[];
+  culture_description: string;
+  culture_articles: any[];
+}

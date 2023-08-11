@@ -97,9 +97,7 @@ export default function HomeSharesPage({ testimonials }) {
 
 export async function getStaticProps() {
   const homePage = await sanityClient.fetch(homeIndexQuery);
-  const testimonials = await sanityClient.fetch(
-    homesharesTestimonialsQuery
-  );
+  const testimonials = await sanityClient.fetch(homesharesTestimonialsQuery);
 
   return {
     props: { homePage: homePage[0], testimonials },
