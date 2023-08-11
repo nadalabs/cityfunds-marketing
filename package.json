@@ -6,10 +6,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "studio:dev": "npm --prefix studio run start",
-    "studio:deploy": "npx vercel env pull && npm --prefix studio run deploy",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
-    "format": "prettier --write \"src/**/*.+(ts|tsx|js|jsx|json)\""
+    "format": "prettier --write \"src/**/*.+(ts|tsx|js|jsx|json)\" \"lib/**/*.+(ts|tsx|js|jsx|json)\""
   },
   "dependencies": {
     "@portabletext/react": "^3.0.4",

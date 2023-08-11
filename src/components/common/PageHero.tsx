@@ -12,7 +12,7 @@ interface PageHeroProps {
   primaryText: string;
   btnText?: string;
   onClick?: () => void;
-  heroImages: { name: string; heroImage: string; }[];
+  heroImages: { name: string; heroImage: string }[];
   heroCTA?: ReactNode;
   isTextWide?: boolean;
   formName?: string;
@@ -58,7 +58,11 @@ export default function PageHero({
                 rgba(0, 0, 0, 0.32) 44.79%,
                 rgba(0, 0, 0, 0.87) 73.73%
               ),
-              url(${heroImages.length === 1 ? heroImage : urlForImage(heroImage).url()})`,
+              url(${
+                heroImages.length === 1
+                  ? heroImage
+                  : urlForImage(heroImage).url()
+              })`,
             }}
           />
           <ContentWrapper style={{ bottom: bannerText ? '11rem' : '8rem' }}>

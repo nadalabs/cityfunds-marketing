@@ -11,7 +11,12 @@ import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { EXTERNAL_ROUTES, FAQS, FUND_STATUS, REGULATION } from '@utils/constants';
+import {
+  EXTERNAL_ROUTES,
+  FAQS,
+  FUND_STATUS,
+  REGULATION,
+} from '@utils/constants';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,

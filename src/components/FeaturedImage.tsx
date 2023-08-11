@@ -90,7 +90,7 @@ export default function FeaturedImage({
       {isReversed && !isMobile && (
         <FlexWrapper>
           <ImageWrapper>
-            <Image src={imageUrl} alt={heading} height={500} width={700}  />
+            <Image src={imageUrl} alt={heading} height={500} width={700} />
           </ImageWrapper>
           <ImageSquare />
         </FlexWrapper>

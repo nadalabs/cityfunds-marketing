@@ -33,7 +33,7 @@ export default function LearnPage({ allPosts }) {
 
 export async function getStaticProps() {
   const allPosts = await sanityClient.fetch(indexQuery);
-  
+
   return {
     props: { allPosts },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,

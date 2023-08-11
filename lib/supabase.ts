@@ -33,7 +33,7 @@ export const getHomesharesById = async (id: string): Promise<any> => {
   let { data: city_data } = await supabase
     .from('homeshares')
     .select('*')
-    .eq('fund_name', capitalizeFirstLetter(id))
+    .eq('fund_name', capitalizeFirstLetter(id));
   return city_data;
 };
 
