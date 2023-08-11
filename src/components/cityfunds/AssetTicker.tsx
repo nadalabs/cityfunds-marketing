@@ -32,7 +32,7 @@ export default function AssetTicker({
           width={16}
           height={16}
         />
-      )
+      ),
     },
     {
       number: totalAssets,

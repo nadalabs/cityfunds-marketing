@@ -17,7 +17,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { styled } from 'styled-components';
 
-export default function VerifiedPage({cityfunds}) {
+export default function VerifiedPage({ cityfunds }) {
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -115,9 +115,7 @@ export async function getStaticProps() {
     return { fund_data: data, fund_content: content };
   });
 
-  const testimonials = await sanityClient.fetch(
-    cityfundsTestimonialsQuery
-  );
+  const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
   const values = await sanityClient.fetch(cityfundsValuesQuery);
   const logos = await sanityClient.fetch(pressLogosQueryQuery);
   const ourFocusData = await sanityClient.fetch(ourFocusQuery);

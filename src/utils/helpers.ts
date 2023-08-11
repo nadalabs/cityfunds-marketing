@@ -1,3 +1,5 @@
+import { FUND_STATUS, REGULATION } from "./constants";
+
 export const setCookie = (name: string, value: string) => {
   let expires = '';
   const date = new Date();
