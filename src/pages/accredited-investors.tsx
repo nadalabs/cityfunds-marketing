@@ -1,7 +1,6 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import CityfundCards from '@components/cityfunds/CityfundCards';
-import DocumentCenter from '@components/cityfunds/DocumentCenter';
 import FaqsSection from '@components/cityfunds/NadaFaqs';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import TextSlider from '@components/cityfunds/TextSlider';
@@ -12,23 +11,24 @@ import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { EXTERNAL_ROUTES, FAQS } from '@utils/constants';
-import { REGULATION } from '@utils/models';
+import { EXTERNAL_ROUTES, FAQS, REGULATION } from '@utils/constants';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
   ourFocusQuery,
   pressLogosQueryQuery,
-} from '@pages/api/queries';
+} from 'lib/queries';
+import { sanityClient } from 'lib/sanity';
+import { getAllFundsData } from 'lib/supabase';
 
 export default function AccreditedInvestorsPage({
-  testimonials,
   values,
   logos,
   ourFocus,
+  cityfunds
 }) {
-  const retailFunds = FEATURED_CITIES.filter(
-    ({ information }) => information.regulation !== REGULATION.REG_D
+  const retailFunds = cityfunds.filter(
+    ({ information }) => information.regulation === REGULATION.RETAIL
   );
   const isMobile = useIsMobile();
 
@@ -69,10 +69,7 @@ export default function AccreditedInvestorsPage({
       <SectionWrapper>
         <LongFormText title="Our Mission" content={ourFocus} />
       </SectionWrapper>
-      <CityfundCards
-        heading="Our Funds"
-        primaryText="Pick the fund that suits you, or invest in all six."
-      />
+      <CityfundCards cityfunds={cityfunds} />
 
       <SectionWrapper>
         <Heading style={{ marginBottom: '-4rem' }}>Our Performance</Heading>
@@ -144,18 +141,18 @@ export default function AccreditedInvestorsPage({
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const testimonials = await getClient(preview).fetch(
+export async function getStaticProps() {
+  const testimonials = await sanityClient.fetch(
     cityfundsTestimonialsQuery
   );
-  const values = await getClient(preview).fetch(cityfundsValuesQuery);
-  const logos = await getClient(preview).fetch(pressLogosQueryQuery);
-  const ourFocusData = await getClient(preview).fetch(ourFocusQuery);
+  const values = await sanityClient.fetch(cityfundsValuesQuery);
+  const logos = await sanityClient.fetch(pressLogosQueryQuery);
+  const ourFocusData = await sanityClient.fetch(ourFocusQuery);
   const ourFocus = ourFocusData?.summary?.content;
+  const cityfunds =  await getAllFundsData();
 
   return {
-    props: { testimonials, logos, values, ourFocus },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
+    props: { testimonials, logos, values, ourFocus, cityfunds },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

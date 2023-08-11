@@ -2,8 +2,8 @@ import BlogCapture from '@components/blog/BlogCapture';
 import BlogHero from '@components/blog/BlogHero';
 import BlogSlider from '@components/blog/BlogSlider';
 import PageLayout from '@components/common/PageLayout';
-import { indexQuery } from '@pages/api/queries';
-import { getClient, overlayDrafts } from 'lib/sanity.server';
+import { sanityClient } from 'lib/sanity';
+import { indexQuery } from 'lib/queries';
 import _ from 'lodash';
 
 export default function LearnPage({ allPosts }) {
@@ -31,11 +31,10 @@ export default function LearnPage({ allPosts }) {
   );
 }
 
-export async function getStaticProps({ preview = false }) {
-  const allPosts = overlayDrafts(await getClient(preview).fetch(indexQuery));
+export async function getStaticProps() {
+  const allPosts =  await sanityClient.fetch(indexQuery);
   return {
     props: { allPosts },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

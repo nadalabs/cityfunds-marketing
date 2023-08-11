@@ -6,8 +6,8 @@ import {
   partnerQuery,
   partnerSlugsQuery,
   pressLogosQueryQuery,
-} from '@pages/api/queries';
-import { getClient, sanityClient } from 'lib/sanity.server';
+} from 'lib/queries';
+import { sanityClient } from 'lib/sanity';
 import dynamic from 'next/dynamic';
 
 const HomePage = dynamic(() => import('@pages/index'));
@@ -35,16 +35,16 @@ export default function DynamicPage({
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const testimonials = await getClient(preview).fetch(
+export async function getStaticProps({ params }) {
+  const testimonials = await sanityClient.fetch(
     cityfundsTestimonialsQuery
   );
-  const logos = await getClient(preview).fetch(pressLogosQueryQuery);
-  const values = await getClient(preview).fetch(cityfundsValuesQuery);
-  const partnerData = await getClient(preview).fetch(partnerQuery, {
+  const logos = await sanityClient.fetch(pressLogosQueryQuery);
+  const values = await sanityClient.fetch(cityfundsValuesQuery);
+  const partnerData = await sanityClient.fetch(partnerQuery, {
     slug: params.slug,
   });
-  const legalData = await getClient(preview).fetch(legalQuery, {
+  const legalData = await sanityClient.fetch(legalQuery, {
     slug: params.slug,
   });
   const partner = partnerData?.partner ?? null;
@@ -52,7 +52,6 @@ export async function getStaticProps({ params, preview = false }) {
 
   return {
     props: { testimonials, logos, values, partner, legal },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

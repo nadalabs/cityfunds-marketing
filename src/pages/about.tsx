@@ -6,12 +6,13 @@ import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
+import { sanityClient } from 'lib/sanity';
 import {
   backersLogosQuery,
   nadaValuesQuery,
   ourStoryQuery,
   teammateIndexQuery,
-} from '@pages/api/queries';
+} from 'lib/queries';
 
 export default function AboutPage({ teammates, values, logos, ourStory }) {
   return (
@@ -46,16 +47,15 @@ export default function AboutPage({ teammates, values, logos, ourStory }) {
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const teammates = await getClient(preview).fetch(teammateIndexQuery);
-  const values = await getClient(preview).fetch(nadaValuesQuery);
-  const logos = await getClient(preview).fetch(backersLogosQuery);
-  const ourStoryData = await getClient(preview).fetch(ourStoryQuery);
+export async function getStaticProps() {
+  const teammates = await  sanityClient.fetch(teammateIndexQuery);
+  const values = await  sanityClient.fetch(nadaValuesQuery);
+  const logos = await  sanityClient.fetch(backersLogosQuery);
+  const ourStoryData = await  sanityClient.fetch(ourStoryQuery);
   const ourStory = ourStoryData?.summary?.content;
 
   return {
     props: { teammates, values, logos, ourStory },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

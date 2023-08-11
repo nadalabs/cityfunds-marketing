@@ -1,7 +1,7 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import AlertBanner from '@components/cityfunds/AlertBanner';
-import CityfundsSlider from '@components/cityfunds/CityfundCards';
+import CityfundCards from '@components/cityfunds/CityfundCards';
 import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
@@ -12,14 +12,14 @@ import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES, FAQS } from '@utils/constants';
-import { REGULATION } from '@utils/models';
 import {
   cityfundIndexQuery,
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
   homeIndexQuery,
   pressLogosQueryQuery,
-} from '@pages/api/queries';
+} from 'lib/queries';
+import { sanityClient } from 'lib/sanity';
 
 interface HomePageProps {
   homePage?: any;
@@ -60,7 +60,7 @@ export default function HomePage({
         bannerText={!!bannerText}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
-      <CityfundsSlider />
+      <CityfundCards cityfunds={cityfunds} />
       <SectionWrapper>
         <FeaturedImage
           overline="Why Cityfunds?"
@@ -144,18 +144,17 @@ export default function HomePage({
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const homePage = await getClient(preview).fetch(homeIndexQuery);
-  const cityfunds = await getClient(preview).fetch(cityfundIndexQuery);
-  const testimonials = await getClient(preview).fetch(
+export async function getStaticProps() {
+  const homePage = await sanityClient.fetch(homeIndexQuery);
+  const cityfunds = await sanityClient.fetch(cityfundIndexQuery);
+  const testimonials = await sanityClient.fetch(
     cityfundsTestimonialsQuery
   );
-  const logos = await getClient(preview).fetch(pressLogosQueryQuery);
-  const values = await getClient(preview).fetch(cityfundsValuesQuery);
+  const logos = await sanityClient.fetch(pressLogosQueryQuery);
+  const values = await sanityClient.fetch(cityfundsValuesQuery);
 
   return {
     props: { homePage: homePage[0], cityfunds, testimonials, logos, values },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

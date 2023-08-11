@@ -110,3 +110,24 @@ export const FAQS = [
       "No! We have redemption programs in place for you. You're either thrilled about your portfolio growth or sell your shares to get your money back.",
   },
 ];
+
+export enum FUND_STATUS {
+  PRESALE = 'Presale',
+  ACTIVE = 'Active',
+  CLOSED = 'Closed',
+}
+
+export enum FUND_TYPE {
+  EQUITY = 'Equity',
+  DEBT = 'Debt',
+}
+
+export enum REGULATION {
+  RETAIL = 'Retail',
+  ACCREDITED = 'Accredited',
+}
+
+export enum LIQUIDITY {
+  QUARTERLY = 'Quarterly',
+  ANNUALLY = 'Annually',
+}

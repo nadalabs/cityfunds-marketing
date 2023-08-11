@@ -7,8 +7,8 @@ import PageLayout from '@components/common/PageLayout';
 import NadaCardCTA from '@components/homeshares/NadaCardCTA';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES } from '@utils/constants';
-import { homeIndexQuery, homesharesTestimonialsQuery } from '@pages/api/queries';
-import { getClient } from 'lib/sanity.server';
+import { homeIndexQuery, homesharesTestimonialsQuery } from 'lib/queries';
+import { sanityClient } from 'lib/sanity';
 
 export default function HomeSharesPage({ testimonials }) {
   return (
@@ -95,15 +95,14 @@ export default function HomeSharesPage({ testimonials }) {
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const homePage = await getClient(preview).fetch(homeIndexQuery);
-  const testimonials = await getClient(preview).fetch(
+export async function getStaticProps() {
+  const homePage = await sanityClient.fetch(homeIndexQuery);
+  const testimonials = await sanityClient.fetch(
     homesharesTestimonialsQuery
   );
 
   return {
     props: { homePage: homePage[0], testimonials },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }
