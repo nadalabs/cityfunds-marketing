@@ -3,10 +3,11 @@ import * as snippet from '@segment/snippet';
 import * as Sentry from '@sentry/react';
 import { UTM_PARAMETERS } from '@utils/constants';
 import { setCookie } from '@utils/helpers';
+import GlobalStyle from '@utils/styles';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
 import { footerQuery } from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
+import { sanityClient } from 'lib/sanity';
 import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';
 import Script from 'next/script';
@@ -14,7 +15,6 @@ import { useEffect } from 'react';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '../globalstyles';
 
 declare global {
   interface Window {
@@ -28,7 +28,7 @@ interface AppProps extends NextAppProps {
 }
 
 App.getInitialProps = async () => {
-  const foooterData = await getClient().fetch(footerQuery);
+  const foooterData = await sanityClient.fetch(footerQuery);
   return { footer: foooterData?.legal?.content };
 };
 

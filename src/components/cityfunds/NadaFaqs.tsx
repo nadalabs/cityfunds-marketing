@@ -5,12 +5,12 @@ import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-interface FaqsSectionProps {
+interface NadaFaqsProps {
   overline?: string;
   faqs: { question: string; answer: string }[];
 }
 
-export default function FaqsSection({ overline, faqs }: FaqsSectionProps) {
+export default function NadaFaqs({ overline, faqs }: NadaFaqsProps) {
   const sliderRef = useRef();
 
   const handleOnClick = (index) => {

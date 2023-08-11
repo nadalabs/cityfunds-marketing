@@ -1,3 +1,5 @@
+import { FUND_STATUS, REGULATION } from "./constants";
+
 export const setCookie = (name: string, value: string) => {
   let expires = '';
   const date = new Date();
@@ -41,10 +43,41 @@ export const shortenNumber = (num: number, digits: number) => {
     : '';
 };
 
-export const formatPrice = (price: number) => {
-  return `$${price.toLocaleString()}`;
+export const formatPrice = (price: number, decimals: number) => {
+  if (typeof price !== 'number' || isNaN(price)) {
+    return 'Invalid Number';
+  }
+
+  const options = {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  };
+
+  return `$${price.toLocaleString(undefined, options)}`;
 };
 
-export const formatPercent = (percent: number) => {
-  return `${percent}%`;
+export const formatPercent = (percent: number, decimals: number) => {
+  if (typeof percent !== 'number' || isNaN(percent)) {
+    return 'Invalid Number';
+  }
+
+  const options = {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  };
+
+  return `${percent.toLocaleString(undefined, options)}%`;
+};
+
+export const capitalizeFirstLetter = (word: string) => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+};
+
+export const getTodaysDate = () => {
+  const today = new Date();
+  return today.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 };

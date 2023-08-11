@@ -47,13 +47,12 @@ export default function PromoCTA({ overline, promo }: PromoCTAProps) {
             left: '100px',
           }}
         >
-          <Image
-            width={400}
-            height={400}
-            alt={'Limited time offer!'}
-            src={'/images/offer-background.png'}
+          <div
             style={{
-              borderRadius: '75px',
+              height: '400px',
+              minWidth: '400px',
+              backgroundColor: '#48DC95',
+              borderRadius: '120px',
               zIndex: -1,
               position: 'absolute',
               top: '150px',

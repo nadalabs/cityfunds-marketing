@@ -1,28 +1,34 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import AlertBanner from '@components/cityfunds/AlertBanner';
-import CityfundsSlider from '@components/cityfunds/CityfundsSlider';
-import FaqsSection from '@components/cityfunds/FaqsSection';
+import CityfundCards from '@components/cityfunds/CityfundCards';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
+import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import PromoCTA from '@components/cityfunds/PromoCTA';
 import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { EXTERNAL_ROUTES, FAQS, FEATURED_CITIES } from '@utils/constants';
-import { REGULATION } from '@utils/models';
+import {
+  EXTERNAL_ROUTES,
+  FAQS,
+  FUND_STATUS,
+  REGULATION,
+} from '@utils/constants';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
   homeIndexQuery,
   pressLogosQueryQuery,
 } from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
+import { getAllFundsContent, sanityClient } from 'lib/sanity';
+import { getAllFundsData } from 'lib/supabase';
 
 interface HomePageProps {
   homePage?: any;
+  cityfunds: any[];
   logos: any;
   testimonials: any;
   values: any;
@@ -31,15 +37,13 @@ interface HomePageProps {
 
 export default function HomePage({
   homePage,
+  cityfunds,
   logos,
   testimonials,
   values,
   partner,
 }: HomePageProps) {
   const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
-  const retailFunds = FEATURED_CITIES.filter(
-    ({ information }) => information.regulation !== REGULATION.REG_D
-  );
 
   return (
     <PageLayout
@@ -54,20 +58,20 @@ export default function HomePage({
         btnText="Get Started"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
         formName="Cityfunds Lead"
-        heroImages={retailFunds.map(({ name, images }) => ({
-          name,
-          heroImage: images.heroImage,
-        }))}
+        heroImages={cityfunds
+          .filter(
+            ({ fund_data }) =>
+              fund_data?.regulation === REGULATION.RETAIL &&
+              fund_data?.fund_status === FUND_STATUS.ACTIVE
+          )
+          .map(({ fund_content }) => ({
+            name: fund_content?.fund_name,
+            heroImage: fund_content?.image_gallery[0],
+          }))}
         bannerText={!!bannerText}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
-      <CityfundsSlider
-        heading="Pick your favorite Cityfund, or invest in all of them"
-        primaryText={
-          'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
-        }
-        cards={retailFunds}
-      />
+      <CityfundCards cityfunds={cityfunds} />
       <SectionWrapper>
         <FeaturedImage
           overline="Why Cityfunds?"
@@ -118,7 +122,7 @@ export default function HomePage({
         primaryText="We have plenty of reasons."
         valueProps={values}
       />
-      <FaqsSection overline="You may also be wondering..." faqs={FAQS} />
+      <NadaFaqs overline="You may also be wondering..." faqs={FAQS} />
       <HowItWorks
         overline="Real Estate Investing Simplified"
         steps={[
@@ -151,17 +155,23 @@ export default function HomePage({
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const homePage = await getClient(preview).fetch(homeIndexQuery);
-  const testimonials = await getClient(preview).fetch(
-    cityfundsTestimonialsQuery
-  );
-  const logos = await getClient(preview).fetch(pressLogosQueryQuery);
-  const values = await getClient(preview).fetch(cityfundsValuesQuery);
+export async function getStaticProps() {
+  const fundsData = await getAllFundsData();
+  const fundsContent = await getAllFundsContent();
+  const cityfunds = fundsData.map((data) => {
+    const content = fundsContent.find(
+      (content) => content.fund_name === data.fund_name
+    );
+    return { fund_data: data, fund_content: content };
+  });
+
+  const homePage = await sanityClient.fetch(homeIndexQuery);
+  const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
+  const logos = await sanityClient.fetch(pressLogosQueryQuery);
+  const values = await sanityClient.fetch(cityfundsValuesQuery);
 
   return {
-    props: { homePage: homePage[0], testimonials, logos, values },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
+    props: { homePage: homePage[0], cityfunds, testimonials, logos, values },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

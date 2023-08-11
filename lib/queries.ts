@@ -216,14 +216,18 @@ export const summaryIndexQuery = `
 // Cityfund Queries
 const cityfundFields = `
   _id,
-  heroImage,
-  cardImage,
-  link,
-  category
+  fund_name,
+  description,
+  image_gallery,
+  card_front,
+  card_back,
+  culture_gallery,
+  culture_description,
+  culture_articles
 `;
 
 export const cityfundIndexQuery = `
-*[_type == "value"] | order(index asc, _updatedAt desc) {
+*[_type == "cityfund"] | order(index asc, _updatedAt desc) {
   ${cityfundFields}
 }`;
 

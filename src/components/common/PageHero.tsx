@@ -2,6 +2,7 @@ import CarouselStepper from '@components/common/CarouselStepper';
 import EmailCapture from '@components/common/EmailCapture';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { urlForImage } from 'lib/sanity';
 import { ReactNode, useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
@@ -57,7 +58,11 @@ export default function PageHero({
                 rgba(0, 0, 0, 0.32) 44.79%,
                 rgba(0, 0, 0, 0.87) 73.73%
               ),
-              url(${heroImage})`,
+              url(${
+                heroImages.length === 1
+                  ? heroImage
+                  : urlForImage(heroImage).url()
+              })`,
             }}
           />
           <ContentWrapper style={{ bottom: bannerText ? '11rem' : '8rem' }}>

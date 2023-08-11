@@ -90,13 +90,13 @@ export default function FeaturedImage({
 
       {isReversed && !isMobile && (
         <FlexWrapper>
-          <ImageWrapper
-            style={{
-              width: isWide ? '700px' : '500px',
-              height: isMobile ? '400px' : '500px',
-            }}
-          >
-            <Image src={imageUrl} alt={heading} fill />
+          <ImageWrapper>
+            <Image
+              src={imageUrl}
+              alt={heading}
+              height={500}
+              width={isWide ? 700 : 500}
+            />
           </ImageWrapper>
           <ImageSquare />
         </FlexWrapper>
@@ -116,8 +116,6 @@ const ContentWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   position: relative;
-  width: 500px;
-  height: 500px;
   margin-bottom: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

@@ -2,25 +2,22 @@ import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
+import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
 import { getCookie } from '@utils/helpers';
-import { REGULATION } from '@utils/models';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
   ourFocusQuery,
   pressLogosQueryQuery,
 } from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
+import { getAllFundsContent, sanityClient } from 'lib/sanity';
+import { getAllFundsData } from 'lib/supabase';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { styled } from 'styled-components';
 
-export default function VerifiedPage() {
-  const retailFunds = FEATURED_CITIES.filter(
-    ({ information }) => information.regulation !== REGULATION.REG_D
-  );
+export default function VerifiedPage({ cityfunds }) {
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -52,10 +49,16 @@ export default function VerifiedPage() {
       hideLinks
     >
       <PageHero
-        heroImages={retailFunds.map(({ name, images }) => ({
-          name,
-          heroImage: images.heroImage,
-        }))}
+        heroImages={cityfunds
+          .filter(
+            ({ fund_data }) =>
+              fund_data?.regulation === REGULATION.RETAIL &&
+              fund_data?.fund_status === FUND_STATUS.ACTIVE
+          )
+          .map(({ fund_content }) => ({
+            name: fund_content?.fund_name,
+            heroImage: fund_content?.image_gallery[0],
+          }))}
       />
 
       <ModalWrapper>
@@ -102,18 +105,24 @@ export default function VerifiedPage() {
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const testimonials = await getClient(preview).fetch(
-    cityfundsTestimonialsQuery
-  );
-  const values = await getClient(preview).fetch(cityfundsValuesQuery);
-  const logos = await getClient(preview).fetch(pressLogosQueryQuery);
-  const ourFocusData = await getClient(preview).fetch(ourFocusQuery);
+export async function getStaticProps() {
+  const fundsData = await getAllFundsData();
+  const fundsContent = await getAllFundsContent();
+  const cityfunds = fundsData.map((data) => {
+    const content = fundsContent.find(
+      (content) => content.fund_name === data.fund_name
+    );
+    return { fund_data: data, fund_content: content };
+  });
+
+  const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
+  const values = await sanityClient.fetch(cityfundsValuesQuery);
+  const logos = await sanityClient.fetch(pressLogosQueryQuery);
+  const ourFocusData = await sanityClient.fetch(ourFocusQuery);
   const ourFocus = ourFocusData?.summary?.content;
 
   return {
-    props: { testimonials, logos, values, ourFocus },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
+    props: { cityfunds, testimonials, logos, values, ourFocus },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

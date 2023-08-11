@@ -1,5 +1,6 @@
 import { Caption } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { formatPercent, formatPrice } from '@utils/helpers';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import { styled } from 'styled-components';
@@ -19,20 +20,18 @@ export default function AssetTicker({
 
   const PILLS = [
     {
-      number: `$${sharePrice.toFixed(2)}`,
+      number: formatPrice(sharePrice, 2),
       description: <Caption style={{ color: 'white' }}>/ Share</Caption>,
     },
     {
-      number: appreciation ? `${appreciation.toFixed(1)}%` : 'New',
-      description: appreciation ? (
+      number: formatPercent(appreciation, 2),
+      description: (
         <Image
           src="/icons/arrow-up.svg"
           alt="Appreciation"
           width={16}
           height={16}
         />
-      ) : (
-        ''
       ),
     },
     {

@@ -52,10 +52,10 @@ export default function DesktopNavBar({
           />
           <Divider />
           <Image
-            width={188}
+            width={240}
             height={54}
             alt={partnerName}
-            src={urlForImage(partnerImage).url()}
+            src={urlForImage(partnerImage, 54, 240).url()}
           />
         </div>
       ) : (

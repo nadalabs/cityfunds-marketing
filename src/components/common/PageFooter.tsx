@@ -68,7 +68,7 @@ export default function PageFooter({ legal }: PageFooterProps) {
               width={135}
               height={40}
               alt={'Nada'}
-              src={'/images/apple-store.png'}
+              src={'/icons/app-store.svg'}
               style={{ marginBottom: '16px' }}
             />
           </Link>
@@ -77,7 +77,7 @@ export default function PageFooter({ legal }: PageFooterProps) {
               width={135}
               height={40}
               alt={'Nada'}
-              src={'/images/google-store.png'}
+              src={'/icons/google-play.svg'}
             />
           </Link>
         </div>
