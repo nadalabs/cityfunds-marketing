@@ -42,7 +42,7 @@ export const LEGAL_LINKS = [
   },
   {
     name: 'Consumer Complaint Policy',
-    link: 'https://global-uploads.webflow.com/625f180b9d03ad4177055610/6272adeb375b786809b98989_Nada_Consumer_Complaint_Policy.pdf',
+    link: 'https://irgtndauzeikqqggeniu.supabase.co/storage/v1/object/public/nada/consumer-complaint.pdf',
   },
   {
     name: 'Nada SEC Filings',
