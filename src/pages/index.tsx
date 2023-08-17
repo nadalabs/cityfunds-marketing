@@ -1,7 +1,7 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import AlertBanner from '@components/cityfunds/AlertBanner';
-import CityfundCards from '@components/cityfunds/CityfundCards';
+import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import NadaFaqs from '@components/cityfunds/NadaFaqs';
@@ -71,7 +71,7 @@ export default function HomePage({
         bannerText={!!bannerText}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
-      <CityfundCards cityfunds={cityfunds} />
+      <CityfundSlider cityfunds={cityfunds} />
       <SectionWrapper>
         <FeaturedImage
           overline="Why Cityfunds?"

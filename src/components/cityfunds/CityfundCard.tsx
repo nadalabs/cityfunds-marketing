@@ -1,132 +1,121 @@
 import NadaText from '@components/cityfunds/NadaText';
-import { Caption } from '@elements/Typography';
-import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
+import { Caption } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
+import { FUND_STATUS, REGULATION } from '@utils/constants';
+import { IFundData } from '@utils/models';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
-import Slider from 'react-slick';
+import Link from 'next/link';
 import styled from 'styled-components';
 
-export const CityfundCard = ({
-  name,
-  images,
-  regulation,
-  status,
-  card_data,
-}: any) => {
-  const router = useRouter();
-  const [hovered, setHovered] = useState(false);
-  const sliderRef = useRef<Slider>(null);
-  const settings = {
-    dots: false,
-    fade: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: false,
-    speed: 500,
-    autoplaySpeed: 4000,
-    cssEase: 'linear',
-    arrows: false,
-  };
+interface CityfundCardProps {
+  fund_data: IFundData;
+  card_data: any;
+  image: string;
+  isHome: boolean;
+}
 
-  useEffect(() => {
-    if (sliderRef.current) {
-      sliderRef.current.slickGoTo(hovered ? 1 : 0);
-    }
-  }, [hovered]);
+export const CityfundCard = ({
+  fund_data,
+  card_data,
+  image,
+  isHome,
+}: CityfundCardProps) => {
+  const isMobile = useIsMobile();
 
   return (
-    <CardWrapper
-      onClick={() => router.push(`/cityfunds/${name.toLowerCase()}`)}
-    >
-      <div>
-        <Slider {...settings} ref={sliderRef}>
-          {images &&
-            images.map((image: any, idx: number) => (
-              <div key={idx}>
-                <CardWrapper
-                  onMouseEnter={() => setHovered(true)}
-                  onMouseLeave={() => setHovered(false)}
-                  style={{
-                    justifyContent:
-                      regulation === REGULATION.ACCREDITED
-                        ? 'space-between'
-                        : 'flex-end',
-                    background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${urlForImage(
-                      image,
-                      576,
-                      384
-                    ).url()}), lightgray 50% / cover no-repeat`,
-                  }}
-                >
-                  <ContentWrapper
-                    style={{
-                      justifyContent:
-                        regulation === REGULATION.ACCREDITED ||
-                        status === FUND_STATUS.PRESALE
-                          ? 'space-between'
-                          : 'flex-end',
-                    }}
-                  >
-                    {regulation === REGULATION.ACCREDITED && (
-                      <LockWrapper>
-                        <Image
-                          src="/icons/lock.svg"
-                          alt="Lock"
-                          height={16}
-                          width={16}
-                          style={{ marginRight: '0.5rem' }}
-                        />
-                        <Caption style={{ color: 'white', fontWeight: 600 }}>
-                          Accredited Only
-                        </Caption>
-                      </LockWrapper>
-                    )}
-                    {status === FUND_STATUS.PRESALE && (
-                      <LockWrapper>
-                        <Image
-                          src="/icons/lock.svg"
-                          alt="Lock"
-                          height={16}
-                          width={16}
-                          style={{ marginRight: '0.5rem' }}
-                        />
-                        <Caption style={{ color: 'white', fontWeight: 600 }}>
-                          Coming Soon
-                        </Caption>
-                      </LockWrapper>
-                    )}
+    <Link href={`/cityfunds/${fund_data?.fund_name.toLowerCase()}`}>
+      <CardWrapper
+        style={{
+          justifyContent:
+            fund_data?.regulation === REGULATION.ACCREDITED
+              ? 'space-between'
+              : 'flex-end',
+          background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${urlForImage(
+            image,
+            isMobile ? 320 : 512,
+            isMobile ? window?.innerWidth - 32 : 384
+          ).url()}), #232222 50% / cover no-repeat`,
+          width: isMobile && isHome ? '100%' : isMobile ? '20rem' : '24rem',
+        }}
+      >
+        <ContentWrapper
+          style={{
+            justifyContent:
+              fund_data?.regulation === REGULATION.ACCREDITED ||
+              fund_data?.fund_status === FUND_STATUS.PRESALE
+                ? 'space-between'
+                : 'flex-end',
+          }}
+        >
+          {fund_data?.regulation === REGULATION.ACCREDITED && (
+            <LockWrapper>
+              <Image
+                src="/icons/lock.svg"
+                alt="Lock"
+                height={16}
+                width={16}
+                style={{ marginRight: '0.25rem' }}
+              />
+              <Caption style={{ color: 'white', fontWeight: 600 }}>
+                Accredited Only
+              </Caption>
+            </LockWrapper>
+          )}
+          {fund_data?.fund_status === FUND_STATUS.PRESALE && (
+            <LockWrapper>
+              <Image
+                src="/icons/lock.svg"
+                alt="Lock"
+                height={16}
+                width={16}
+                style={{ marginRight: '0.25rem' }}
+              />
+              <Caption style={{ color: 'white', fontWeight: 600 }}>
+                {isHome ? 'Coming Soon' : 'Exclusive'}
+              </Caption>
+            </LockWrapper>
+          )}
 
-                    <TickerWrapper>
-                      <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <NadaText name={name} />
+          <TickerWrapper>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <NadaText name={fund_data?.fund_name} />
 
-                        <div
-                          style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                          }}
-                        >
-                          {card_data.map(
-                            ({ label, value }: any, jdx: number) => (
-                              <div key={jdx}>
-                                <StatLabel>{label}</StatLabel>
-                                <StatValue>{value}</StatValue>
-                              </div>
-                            )
-                          )}
-                        </div>
-                      </div>
-                    </TickerWrapper>
-                  </ContentWrapper>
-                </CardWrapper>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent:
+                    fund_data?.fund_status === FUND_STATUS.ACTIVE
+                      ? 'space-between'
+                      : 'flex-start',
+                  gap:
+                    fund_data?.fund_status === FUND_STATUS.ACTIVE
+                      ? '0'
+                      : '1.5rem',
+                }}
+              >
+                {card_data.map(({ label, value }: any, jdx: number) => (
+                  <div key={jdx}>
+                    <StatLabel>{label}</StatLabel>
+                    <StatWrapper>
+                      <StatValue>{value}</StatValue>
+                      {jdx === 1 && !!fund_data?.appreciation && (
+                        <Image
+                          src="/icons/arrow-up.svg"
+                          alt="Arrow Up"
+                          width={isMobile ? 12 : 16}
+                          height={isMobile ? 12 : 16}
+                        />
+                      )}
+                    </StatWrapper>
+                  </div>
+                ))}
               </div>
-            ))}
-        </Slider>
-      </div>
-    </CardWrapper>
+            </div>
+          </TickerWrapper>
+        </ContentWrapper>
+      </CardWrapper>
+    </Link>
   );
 };
 
@@ -138,7 +127,7 @@ export const CardWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    padding: 0;
+    height: 20rem;
   }
 `;
 
@@ -146,10 +135,10 @@ export const ContentWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 2.5rem;
+  padding: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
   }
 `;
 
@@ -191,11 +180,15 @@ export const StatValue = styled.p`
   font-weight: 600;
   line-height: normal;
   letter-spacing: 0.04638rem;
+`;
+
+export const StatWrapper = styled.div`
   border-radius: 0.46388rem;
   background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(1.8555556535720825px);
-  display: inline;
+  display: inline-flex;
+  align-items: center;
   padding: 0.18556rem 0.37113rem;
   gap: 0.18556rem;
-  margin-bottom: 1.25rem;
+  height: 2rem;
 `;

@@ -55,7 +55,7 @@ export default function App({ Component, pageProps, footer }: AppProps) {
     return snippet.min(opts);
   }
 
-  if (process.env.NEXT_PUBLIC_APP_ENV !== 'development') {
+  if (process.env.NEXT_PUBLIC_APP_ENV !== 'localhost') {
     Sentry.init({
       environment: process.env.NEXT_PUBLIC_APP_ENV,
       dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,

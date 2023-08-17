@@ -54,13 +54,8 @@ export default function FeaturedImage({
             />
           ) : (
             <div>
-              <LeftImageWrapper
-                style={{
-                  height: isShort ? '28rem' : '500px',
-                  width: isMobile ? '350px' : '500px',
-                }}
-              >
-                <Image src={imageUrl} alt={heading} fill />
+              <LeftImageWrapper>
+                <Image src={imageUrl} alt={heading} height={isShort ? 448 : 500} width={isMobile ? 350 : 500} />
               </LeftImageWrapper>
             </div>
           )}

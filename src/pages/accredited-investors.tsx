@@ -1,6 +1,6 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
-import CityfundCards from '@components/cityfunds/CityfundCards';
+import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import FaqsSection from '@components/cityfunds/NadaFaqs';
 import TextSlider from '@components/cityfunds/TextSlider';
@@ -76,7 +76,7 @@ export default function AccreditedInvestorsPage({
       <SectionWrapper>
         <LongFormText title="Our Mission" content={ourFocus} />
       </SectionWrapper>
-      <CityfundCards cityfunds={cityfunds} />
+      <CityfundSlider cityfunds={cityfunds} />
 
       <SectionWrapper>
         <Heading style={{ marginBottom: '-4rem' }}>Our Performance</Heading>
