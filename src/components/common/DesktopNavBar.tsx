@@ -80,7 +80,10 @@ export default function DesktopNavBar({
       <div>
         {hideLinks ? (
           <PrimaryButton
-            onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+            onClick={() =>           window.open(
+              `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+              '_blank'
+            )}
           >
             Get Started
           </PrimaryButton>
@@ -99,8 +102,10 @@ export default function DesktopNavBar({
             ))}
 
             <PrimaryButton
-              onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
-            >
+            onClick={() =>           window.open(
+              `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+              '_blank'
+            )}            >
               Get Started
             </PrimaryButton>
           </div>

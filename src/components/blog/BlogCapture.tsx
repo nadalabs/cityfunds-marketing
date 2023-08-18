@@ -16,8 +16,10 @@ export default function BlogCapture() {
         <div>
           <EmailCapture
             btnText="Subscribe"
-            onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
-            formName="Newsletter Lead"
+            onClick={() =>           window.open(
+              `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+              '_blank'
+            )}            formName="Newsletter Lead"
           />
         </div>
       </ContentWrapper>

@@ -32,8 +32,10 @@ export default function PromoCTA({ overline, promo }: PromoCTAProps) {
         <Caption style={{ marginBottom: '2rem' }}>{promo?.disclaimer}</Caption>
         <EmailCapture
           btnText="Get Started"
-          onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
-          formName="Cityfunds Lead"
+          onClick={() =>           window.open(
+            `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+            '_blank'
+          )}          formName="Cityfunds Lead"
         />
       </ContentWrapper>
 
