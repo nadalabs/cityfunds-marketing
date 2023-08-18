@@ -4,13 +4,7 @@ import { PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
 import { getCookie } from '@utils/helpers';
-import {
-  cityfundsTestimonialsQuery,
-  cityfundsValuesQuery,
-  ourFocusQuery,
-  pressLogosQueryQuery,
-} from 'lib/queries';
-import { getAllFundsContent, sanityClient } from 'lib/sanity';
+import { getAllFundsContent } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -105,7 +99,7 @@ export default function VerifiedPage({ cityfunds }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const fundsData = await getAllFundsData();
   const fundsContent = await getAllFundsContent();
   const cityfunds = fundsData.map((data) => {
@@ -115,15 +109,8 @@ export async function getStaticProps() {
     return { fund_data: data, fund_content: content };
   });
 
-  const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
-  const values = await sanityClient.fetch(cityfundsValuesQuery);
-  const logos = await sanityClient.fetch(pressLogosQueryQuery);
-  const ourFocusData = await sanityClient.fetch(ourFocusQuery);
-  const ourFocus = ourFocusData?.summary?.content;
-
   return {
-    props: { cityfunds, testimonials, logos, values, ourFocus },
-    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
+    props: { cityfunds },
   };
 }
 

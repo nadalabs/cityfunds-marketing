@@ -103,8 +103,8 @@ export default function CityfundSlider({
   });
 
   const AUTH_CARDS = SORTED_CARDS.filter(
-        ({ fund_data }) => fund_data?.fund_status === FUND_STATUS.ACTIVE
-      );
+    ({ fund_data }) => fund_data?.fund_status === FUND_STATUS.ACTIVE
+  );
   const CITY_CARDS = AUTH_CARDS.filter(
     ({ fund_data }) => fund_data?.regulation === REGULATION.RETAIL
   );

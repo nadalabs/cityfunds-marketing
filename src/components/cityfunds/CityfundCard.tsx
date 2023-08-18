@@ -1,9 +1,9 @@
 import NadaText from '@components/cityfunds/NadaText';
-import { urlForImage } from 'lib/sanity';
 import { Caption } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { IFundData } from '@utils/models';
+import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';

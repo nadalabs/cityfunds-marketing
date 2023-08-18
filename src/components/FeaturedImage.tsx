@@ -55,7 +55,12 @@ export default function FeaturedImage({
           ) : (
             <div>
               <LeftImageWrapper>
-                <Image src={imageUrl} alt={heading} height={isShort ? 448 : 500} width={isMobile ? 350 : 500} />
+                <Image
+                  src={imageUrl}
+                  alt={heading}
+                  height={isShort ? 448 : 500}
+                  width={isMobile ? 350 : 500}
+                />
               </LeftImageWrapper>
             </div>
           )}
