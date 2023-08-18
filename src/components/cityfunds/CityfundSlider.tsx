@@ -1,14 +1,9 @@
 import { CityfundCard } from '@components/cityfunds/CityfundCard';
 import { StackWrapper } from '@elements/Containers';
-import {
-  Heading,
-  LargeText,
-  PrimaryText,
-  SmallHeading,
-} from '@elements/Typography';
+import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { FUND_STATUS, FUND_TYPE, REGULATION } from '@utils/constants';
-import { formatPercent, formatPrice, getTodaysDate } from '@utils/helpers';
+import { formatPercent, formatPrice } from '@utils/helpers';
 import { ICityfund } from '@utils/models';
 import styled from 'styled-components';
 
@@ -111,23 +106,13 @@ export default function CityfundSlider({
   const DISPLAYED_CARDS = isHome ? AUTH_CARDS : CITY_CARDS;
 
   return (
-    <SectionWrapper style={{ marginLeft: isHome && !isMobile ? '6.25rem' : 0 }}>
-      {isHome ? (
-        <StackWrapper style={{ gap: '0.5rem' }}>
-          <Heading>Explore Offerings</Heading>
-          <LargeText>
-            Pick your favorite fund, or invest in all of them.
-          </LargeText>
-        </StackWrapper>
-      ) : (
-        <>
-          <HeadingWrapper>
-            <SmallHeading>Portfolio Assets</SmallHeading>
-            <PrimaryText>As of {getTodaysDate()}</PrimaryText>
-          </HeadingWrapper>
-          <SmallHeading>{CITY_CARDS.length} Cityfunds</SmallHeading>
-        </>
-      )}
+    <SectionWrapper style={{ marginLeft: isHome && !isMobile ? '150px' : 0 }}>
+      <StackWrapper style={{ gap: '0.5rem' }}>
+        <Heading>Explore Offerings</Heading>
+        <LargeText>
+          Pick your favorite fund, or invest in all of them.
+        </LargeText>
+      </StackWrapper>
 
       <div
         style={{

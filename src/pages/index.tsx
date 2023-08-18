@@ -11,12 +11,7 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import {
-  EXTERNAL_ROUTES,
-  FAQS,
-  FUND_STATUS,
-  REGULATION,
-} from '@utils/constants';
+import { FAQS, FUND_STATUS, REGULATION } from '@utils/constants';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
@@ -56,7 +51,12 @@ export default function HomePage({
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios in the nation’s top cities."
         btnText="Get Started"
-        onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+        onClick={() =>
+          window.location.replace(
+            `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+            '_blank'
+          )
+        }
         formName="Cityfunds Lead"
         heroImages={cityfunds
           .filter(
@@ -71,7 +71,7 @@ export default function HomePage({
         bannerText={!!bannerText}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
-      <CityfundSlider cityfunds={cityfunds} />
+      <CityfundSlider cityfunds={cityfunds} isHome />
       <SectionWrapper>
         <FeaturedImage
           overline="Why Cityfunds?"
@@ -81,7 +81,12 @@ export default function HomePage({
             real estate in your favorite city takes less than 5 minutes."
           imageUrl="/images/location-tiles.png"
           btnText="Get Started"
-          onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+          onClick={() =>
+            window.open(
+              `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+              '_blank'
+            )
+          }
           isShortHeader
         />
         <KeyMetrics
@@ -112,7 +117,12 @@ export default function HomePage({
           primaryText="Own fractional shares of peoples homes across the nations top cities on day one."
           imageUrl="/images/location-map.png"
           btnText="Get Started"
-          onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+          onClick={() =>
+            window.open(
+              `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+              '_blank'
+            )
+          }
           isReversed
         />
       </SectionWrapper>
@@ -143,7 +153,9 @@ export default function HomePage({
           },
         ]}
         btnText="Get Started"
-        onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+        onClick={() =>
+          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
+        }
         isPhoneFrame
       />
       <Testimonials reviews={testimonials} />

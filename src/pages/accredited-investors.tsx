@@ -76,7 +76,7 @@ export default function AccreditedInvestorsPage({
       <SectionWrapper>
         <LongFormText title="Our Mission" content={ourFocus} />
       </SectionWrapper>
-      <CityfundSlider cityfunds={cityfunds} />
+      <CityfundSlider cityfunds={cityfunds} isHome />
 
       <SectionWrapper>
         <Heading style={{ marginBottom: '-4rem' }}>Our Performance</Heading>
