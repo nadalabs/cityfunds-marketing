@@ -47,7 +47,7 @@ export default function VerifiedPage({ cityfunds }) {
           .filter(
             ({ fund_data }) =>
               fund_data?.regulation === REGULATION.RETAIL &&
-              fund_data?.fund_status === FUND_STATUS.ACTIVE
+              fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
           )
           .map(({ fund_content }) => ({
             name: fund_content?.fund_name,

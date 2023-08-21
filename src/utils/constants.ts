@@ -59,7 +59,7 @@ export const FOOTER_LINKS = [
     links: [
       { name: 'Cityfunds', link: '/' },
       { name: 'Homeshares', link: '/homeshares' },
-      { name: 'Accredited Investors', link: '/accredited-investors' },
+      { name: 'Investors', link: '/accredited-investors' },
       { name: 'Learn', link: '/learn' },
     ],
   },
@@ -111,9 +111,10 @@ export const FAQS = [
 ];
 
 export enum FUND_STATUS {
-  PRESALE = 'Presale',
-  ACTIVE = 'Active',
-  CLOSED = 'Closed',
+  NEW_OFFERING = 'New Offering',
+  RAMPING_UP = 'Ramping Up',
+  PERFORMING = 'Performing',
+  TRADING = 'Trading',
 }
 
 export enum FUND_TYPE {

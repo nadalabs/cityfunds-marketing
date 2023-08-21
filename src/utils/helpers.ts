@@ -77,3 +77,18 @@ export const getTodaysDate = () => {
     day: 'numeric',
   });
 };
+
+export const getTimeRemaining = () => {
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const nextMonth = (currentMonth + 1) % 12;
+  const nextMonthYear =
+    currentMonth === 11 ? now.getFullYear() + 1 : now.getFullYear();
+  const endOfMonth = new Date(nextMonthYear, nextMonth, 0);
+  const remainingTime = endOfMonth.getTime() - now.getTime();
+  const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(
+    (remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  return { days, hours };
+};
