@@ -1,11 +1,10 @@
-import NadaText from '@components/cityfunds/NadaText';
 import AssetTicker from '@components/cityfunds/AssetTicker';
+import NadaText from '@components/cityfunds/NadaText';
 import StatusTicker from '@components/cityfunds/StatusTicker';
 import useIsMobile from '@hooks/useIsMobile';
 import { REGULATION } from '@utils/constants';
 import { IFundData } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
-import Link from 'next/link';
 import styled from 'styled-components';
 
 interface CityfundCardProps {
@@ -22,30 +21,37 @@ export const CityfundCard = ({
   const isMobile = useIsMobile();
 
   return (
-      <CardWrapper
-      onClick={() => window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/cityfunds/${fund_data?.fund_name.toLowerCase()}`, '_blank')}
-        style={{
-          justifyContent:
-            fund_data?.regulation === REGULATION.ACCREDITED
-              ? 'space-between'
-              : 'flex-end',
-          background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${urlForImage(
-            image,
-            isMobile ? 320 : 512,
-            isMobile ? window?.innerWidth - 32 : 384
-          ).url()}), #232222 50% / cover no-repeat`,
-          width: isMobile && isHome ? '100%' : isMobile ? '20rem' : '24rem',
-          padding: isMobile && isHome ? '1.5rem' : isMobile ? '1.15rem' : '2rem',
-        }}
-      >
-        <ContentWrapper>
-          <StatusTicker fund_data={fund_data} isHome={isHome} />
-          <TickerWrapper>
-            <NadaText name={fund_data?.fund_name} />
-            <AssetTicker fund_data={fund_data} />
-          </TickerWrapper>
-        </ContentWrapper>
-      </CardWrapper>
+    <CardWrapper
+      onClick={() =>
+        window.open(
+          `${
+            process.env.NEXT_PUBLIC_WEB_APP_URL
+          }/cityfunds/${fund_data?.fund_name.toLowerCase()}`,
+          '_blank'
+        )
+      }
+      style={{
+        justifyContent:
+          fund_data?.regulation === REGULATION.ACCREDITED
+            ? 'space-between'
+            : 'flex-end',
+        background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${urlForImage(
+          image,
+          isMobile ? 320 : 512,
+          isMobile ? window?.innerWidth - 32 : 384
+        ).url()}), #232222 50% / cover no-repeat`,
+        width: isMobile && isHome ? '100%' : isMobile ? '20rem' : '24rem',
+        padding: isMobile && isHome ? '1.5rem' : isMobile ? '1.15rem' : '2rem',
+      }}
+    >
+      <ContentWrapper>
+        <StatusTicker fund_data={fund_data} isHome={isHome} />
+        <TickerWrapper>
+          <NadaText name={fund_data?.fund_name} />
+          <AssetTicker fund_data={fund_data} />
+        </TickerWrapper>
+      </ContentWrapper>
+    </CardWrapper>
   );
 };
 

@@ -10,7 +10,11 @@ interface StatusTickerProps {
   isDark?: boolean;
 }
 
-export default function StatusTicker({ fund_data, isHome, isDark }: StatusTickerProps) {
+export default function StatusTicker({
+  fund_data,
+  isHome,
+  isDark,
+}: StatusTickerProps) {
   const { days, hours } = getTimeRemaining();
 
   return (
@@ -40,7 +44,7 @@ export default function StatusTicker({ fund_data, isHome, isDark }: StatusTicker
             style={{ marginRight: '0.25rem' }}
           />
           <Caption style={{ color: 'white', fontWeight: 600 }}>
-            {(isHome || isDark) ? 'Coming Soon' : 'Exclusive'}
+            {isHome || isDark ? 'Coming Soon' : 'Exclusive'}
           </Caption>
         </>
       ) : (

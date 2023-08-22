@@ -1,7 +1,6 @@
 import EmailCapture from '@components/common/EmailCapture';
 import { SectionWrapper } from '@elements/Containers';
 import { Overline, SmallHeading } from '@elements/Typography';
-import { EXTERNAL_ROUTES } from '@utils/constants';
 import styled from 'styled-components';
 
 export default function BlogCapture() {
@@ -16,10 +15,13 @@ export default function BlogCapture() {
         <div>
           <EmailCapture
             btnText="Subscribe"
-            onClick={() =>           window.open(
-              `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-              '_blank'
-            )}            formName="Newsletter Lead"
+            onClick={() =>
+              window.open(
+                `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+                '_blank'
+              )
+            }
+            formName="Newsletter Lead"
           />
         </div>
       </ContentWrapper>

@@ -1,8 +1,8 @@
 import { CityfundCard } from '@components/cityfunds/CityfundCard';
 import { StackWrapper } from '@elements/Containers';
-import { Heading, LargeText, SmallHeading } from '@elements/Typography';
+import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { FUND_STATUS, REGULATION } from '@utils/constants';
+import { FUND_STATUS } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 import styled from 'styled-components';
 
@@ -60,17 +60,17 @@ export default function CityfundSlider({
   });
 
   const DISPLAYED_CARDS = SORTED_CARDS.filter(
-        ({ fund_data }) => fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
-      );
+    ({ fund_data }) => fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
+  );
 
   return (
     <SectionWrapper style={{ marginLeft: isHome && !isMobile ? '150px' : 0 }}>
-        <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
-          <Heading>Explore Offerings</Heading>
-          <LargeText>
-            Pick your favorite fund, or invest in all of them.
-          </LargeText>
-        </StackWrapper>
+      <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
+        <Heading>Explore Offerings</Heading>
+        <LargeText>
+          Pick your favorite fund, or invest in all of them.
+        </LargeText>
+      </StackWrapper>
 
       <div
         style={{
