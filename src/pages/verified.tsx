@@ -3,7 +3,6 @@ import PageLayout from '@components/common/PageLayout';
 import { PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
-import { getCookie } from '@utils/helpers';
 import { REGULATION } from '@utils/models';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,13 +17,14 @@ export default function VerifiedPage() {
 
   useEffect(() => {
     try {
+      const urlParams = new URLSearchParams(window.location.search);
       fetch(process.env.NEXT_PUBLIC_API_URL + '/verified/kyc/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          verifiedUuid: getCookie('sharedCredentialsUuid'),
+          verifiedUuid: urlParams.get('sharedCredentialsUuid'),
         }),
       });
     } catch (err) {
