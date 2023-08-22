@@ -5,23 +5,16 @@ import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
 import { getCookie } from '@utils/helpers';
 import { REGULATION } from '@utils/models';
-import {
-  cityfundsTestimonialsQuery,
-  cityfundsValuesQuery,
-  ourFocusQuery,
-  pressLogosQueryQuery,
-} from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { styled } from 'styled-components';
 
 export default function VerifiedPage() {
+  const isMobile = useIsMobile();
   const retailFunds = FEATURED_CITIES.filter(
     ({ information }) => information.regulation !== REGULATION.REG_D
   );
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     try {
@@ -100,22 +93,6 @@ export default function VerifiedPage() {
       </ModalWrapper>
     </PageLayout>
   );
-}
-
-export async function getStaticProps({ params, preview = false }) {
-  const testimonials = await getClient(preview).fetch(
-    cityfundsTestimonialsQuery
-  );
-  const values = await getClient(preview).fetch(cityfundsValuesQuery);
-  const logos = await getClient(preview).fetch(pressLogosQueryQuery);
-  const ourFocusData = await getClient(preview).fetch(ourFocusQuery);
-  const ourFocus = ourFocusData?.summary?.content;
-
-  return {
-    props: { testimonials, logos, values, ourFocus },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
-    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
-  };
 }
 
 export const ModalWrapper = styled.div`
