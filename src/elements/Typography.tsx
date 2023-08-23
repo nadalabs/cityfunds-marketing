@@ -89,9 +89,10 @@ export const SecondaryText = styled.p`
 export const Overline = styled.p`
   color: ${({ theme }) => theme.colors.darkText};
   font-family: ${({ theme }) => theme.fonts.main};
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.0175rem;
   margin: 0;
 `;
 

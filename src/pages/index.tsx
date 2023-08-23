@@ -11,14 +11,17 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { FAQS, FUND_STATUS, REGULATION } from '@utils/constants';
+import { FUND_STATUS, REGULATION } from '@utils/constants';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
-  homeIndexQuery,
   pressLogosQueryQuery,
 } from 'lib/queries';
-import { getAllFundsContent, sanityClient } from 'lib/sanity';
+import {
+  getAllFundsContent,
+  getHomePageContent,
+  sanityClient,
+} from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 
 interface HomePageProps {
@@ -39,6 +42,7 @@ export default function HomePage({
   partner,
 }: HomePageProps) {
   const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
+  console.log(homePage);
 
   return (
     <PageLayout
@@ -129,7 +133,7 @@ export default function HomePage({
         primaryText="We have plenty of reasons."
         valueProps={values}
       />
-      <NadaFaqs overline="You may also be wondering..." faqs={FAQS} />
+      <NadaFaqs faqs={homePage?.questions} />
       <HowItWorks
         overline="Real Estate Investing Simplified"
         steps={[
@@ -174,13 +178,14 @@ export async function getStaticProps() {
     return { fund_data: data, fund_content: content };
   });
 
-  const homePage = await sanityClient.fetch(homeIndexQuery);
+  const homePage = await getHomePageContent();
+  console.log(homePage);
   const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
   const logos = await sanityClient.fetch(pressLogosQueryQuery);
   const values = await sanityClient.fetch(cityfundsValuesQuery);
 
   return {
-    props: { homePage: homePage[0], cityfunds, testimonials, logos, values },
+    props: { homePage, cityfunds, testimonials, logos, values },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

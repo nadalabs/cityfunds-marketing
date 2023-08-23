@@ -214,12 +214,12 @@ export const summaryIndexQuery = `
 }`;
 
 // Cityfund Queries
-const cityfundFields = `
+export const cityfundFields = `
   _id,
   fund_name,
+  call_to_action,
   description,
   image_gallery,
-  card_front,
   card_back,
   culture_gallery,
   culture_description,
@@ -232,15 +232,11 @@ export const cityfundIndexQuery = `
 }`;
 
 // Home Queries
-const homeFields = `
+export const homePageFields = `
   _id,
+  questions,
   "promo": promo->{banner, title, description, disclaimer, image},
 `;
-
-export const homeIndexQuery = `
-*[_type == "home"] | order(index asc, _updatedAt desc) {
-  ${homeFields}
-}`;
 
 export const footerQuery = `
 {
