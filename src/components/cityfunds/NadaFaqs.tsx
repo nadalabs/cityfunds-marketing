@@ -79,7 +79,7 @@ export const HoverHeading = styled(Heading)`
   }
 `;
 
-export const TextWrapper = styled(Heading)`
+export const TextWrapper = styled.div`
   max-width: 45%;
   transition: ${({ theme }) => theme.transitions.ease};
 

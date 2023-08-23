@@ -1,6 +1,6 @@
 import { GreenSquare } from '@components/common/CarouselStepper';
 import { CardWrapper, SliderWrapper } from '@elements/Containers';
-import { Heading, Overline, SecondaryText } from '@elements/Typography';
+import { BoldText, Heading, Overline } from '@elements/Typography';
 import { urlForImage } from 'lib/sanity';
 import { styled } from 'styled-components';
 
@@ -62,9 +62,9 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                     />
                   </div>
 
-                  <SecondaryText style={{ color: 'white', margin: 0 }}>
+                  <BoldText style={{ color: 'white', margin: 0 }}>
                     {role}
-                  </SecondaryText>
+                  </BoldText>
                 </div>
               </CardWrapper>
             </div>

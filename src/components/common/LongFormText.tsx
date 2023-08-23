@@ -25,7 +25,7 @@ export default function LongFormText({
 
   const components = {
     block: {
-      normal: ({ children }) => {
+      normal: ({ children }: any) => {
         if (isSmall) {
           return <Caption>{children}</Caption>;
         } else {
@@ -34,7 +34,7 @@ export default function LongFormText({
       },
     },
     list: {
-      bullet: ({ children }) => {
+      bullet: ({ children }: any) => {
         if (isSmall) {
           return <Caption>{children}</Caption>;
         } else {
@@ -43,12 +43,10 @@ export default function LongFormText({
       },
     },
     marks: {
-      link: ({ children, value }) => {
+      link: ({ children, value }: any) => {
         return (
           <LinkText
-            href={value.href}
-            target="_blank"
-            rel="noreferrer"
+            href={value}
             style={{
               fontSize: isSmall || isMobile ? '14px' : '18px',
               color: '#48DC95',
@@ -61,12 +59,11 @@ export default function LongFormText({
       },
     },
   };
-
   return (
     <>
       {overline && <Overline>{overline}</Overline>}
       {title && <Heading>{title}</Heading>}
-      <div style={{ width: isSmall || isMobile ? '100%' : '66%' }}>
+      <div style={{ width: '100%' }}>
         {/* @ts-ignore-next-line */}
         <PortableText value={content || []} components={components} />
       </div>
