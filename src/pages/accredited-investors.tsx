@@ -13,7 +13,6 @@ import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import {
   EXTERNAL_ROUTES,
-  FAQS,
   FUND_STATUS,
   REGULATION,
 } from '@utils/constants';
@@ -23,10 +22,11 @@ import {
   ourFocusQuery,
   pressLogosQueryQuery,
 } from 'lib/queries';
-import { getAllFundsContent, sanityClient } from 'lib/sanity';
+import { getAllFundsContent, getHomePageContent, sanityClient } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 
 export default function AccreditedInvestorsPage({
+  homePage,
   cityfunds,
   values,
   logos,
@@ -121,7 +121,7 @@ export default function AccreditedInvestorsPage({
         primaryText="We have plenty of reasons."
         valueProps={values}
       />
-      <FaqsSection faqs={FAQS.slice(0, 3)} />
+      <FaqsSection faqs={homePage?.questions} />
       <SectionWrapper>
         <FeaturedImage
           heading="Trusted by 8,000+ Investors"
@@ -158,6 +158,7 @@ export async function getStaticProps() {
     return { fund_data: data, fund_content: content };
   });
 
+  const homePage = await getHomePageContent();
   const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
   const values = await sanityClient.fetch(cityfundsValuesQuery);
   const logos = await sanityClient.fetch(pressLogosQueryQuery);
@@ -165,7 +166,7 @@ export async function getStaticProps() {
   const ourFocus = ourFocusData?.summary?.content;
 
   return {
-    props: { cityfunds, testimonials, logos, values, ourFocus },
+    props: { homePage, cityfunds, testimonials, logos, values, ourFocus },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

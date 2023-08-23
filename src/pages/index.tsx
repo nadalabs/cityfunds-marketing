@@ -179,7 +179,6 @@ export async function getStaticProps() {
   });
 
   const homePage = await getHomePageContent();
-  console.log(homePage);
   const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
   const logos = await sanityClient.fetch(pressLogosQueryQuery);
   const values = await sanityClient.fetch(cityfundsValuesQuery);

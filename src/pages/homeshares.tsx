@@ -7,7 +7,7 @@ import PageLayout from '@components/common/PageLayout';
 import NadaCardCTA from '@components/homeshares/NadaCardCTA';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES } from '@utils/constants';
-import { homeIndexQuery, homesharesTestimonialsQuery } from 'lib/queries';
+import { homesharesTestimonialsQuery } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
 
 export default function HomeSharesPage({ testimonials }) {
@@ -96,11 +96,10 @@ export default function HomeSharesPage({ testimonials }) {
 }
 
 export async function getStaticProps() {
-  const homePage = await sanityClient.fetch(homeIndexQuery);
   const testimonials = await sanityClient.fetch(homesharesTestimonialsQuery);
 
   return {
-    props: { homePage: homePage[0], testimonials },
+    props: { testimonials },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }
