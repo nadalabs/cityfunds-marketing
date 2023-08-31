@@ -92,19 +92,18 @@ export default function HomePage({
           metrics={[
             {
               label: 'Total Investors',
-              value: 7000,
-              formattingFn: (val) => `${val.toLocaleString('us-en')}+`,
+              value: 10,
+              formattingFn: (val) => `${val}K+`,
             },
             {
               label: 'Properties Funded',
-              value: 60,
+              value: 70,
               formattingFn: (val) => `${val}+`,
             },
             {
-              label: 'Average Appreciation',
-              value: 11.7,
-              formattingFn: (val) => `${val}%`,
-              decimals: 1,
+              label: 'Gross Asset Value',
+              value: 35,
+              formattingFn: (val) => `$${val}M+`,
             },
           ]}
         />
