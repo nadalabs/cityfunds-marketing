@@ -44,6 +44,7 @@ export const SectionWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin: 4rem 0;
+    padding: 0 1rem;
   }
 `;
 
