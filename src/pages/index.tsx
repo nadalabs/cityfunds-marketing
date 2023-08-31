@@ -4,7 +4,6 @@ import AlertBanner from '@components/cityfunds/AlertBanner';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
-import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import PromoCTA from '@components/cityfunds/PromoCTA';
 import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
@@ -42,7 +41,6 @@ export default function HomePage({
   partner,
 }: HomePageProps) {
   const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
-  console.log(homePage);
 
   return (
     <PageLayout
@@ -133,7 +131,7 @@ export default function HomePage({
         primaryText="We have plenty of reasons."
         valueProps={values}
       />
-      <NadaFaqs faqs={homePage?.questions} />
+      {/* <NadaFaqs faqs={homePage?.questions} /> */}
       <HowItWorks
         overline="Real Estate Investing Simplified"
         steps={[
