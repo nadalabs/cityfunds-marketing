@@ -163,4 +163,8 @@ export const SectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 1rem;
+  }
 `;
