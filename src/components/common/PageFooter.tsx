@@ -1,6 +1,6 @@
 import LongFormText from '@components/common/LongFormText';
 import { LinkButton, SecondaryButton } from '@elements/Buttons';
-import { LinkText, BoldText } from '@elements/Typography';
+import { BoldText, LinkText } from '@elements/Typography';
 import { EXTERNAL_ROUTES, FOOTER_LINKS, SOCIAL_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';

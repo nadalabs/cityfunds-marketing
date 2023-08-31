@@ -48,10 +48,7 @@ export default function EmailCapture({
 
   return (
     <FormProvider {...methods}>
-      <StyledForm
-        onSubmit={handleSubmit(onSubmit)}
-        style={{ flexDirection: isMobile ? 'column' : 'row' }}
-      >
+      <StyledForm style={{ flexDirection: isMobile ? 'column' : 'row' }}>
         <FormWrapper>
           <FormInput
             name="email"
@@ -68,14 +65,18 @@ export default function EmailCapture({
 
           {!isMobile && (
             <BtnWrapper>
-              <PrimaryButton>{btnText}</PrimaryButton>
+              <PrimaryButton onClick={() => handleSubmit(onSubmit)}>
+                {btnText}
+              </PrimaryButton>
             </BtnWrapper>
           )}
         </FormWrapper>
 
         {isMobile && (
           <BtnWrapper>
-            <PrimaryButton>{btnText}</PrimaryButton>
+            <PrimaryButton onClick={() => handleSubmit(onSubmit)}>
+              {btnText}
+            </PrimaryButton>
           </BtnWrapper>
         )}
       </StyledForm>

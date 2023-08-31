@@ -11,18 +11,18 @@ import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import {
-  EXTERNAL_ROUTES,
-  FUND_STATUS,
-  REGULATION,
-} from '@utils/constants';
+import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
   ourFocusQuery,
   pressLogosQueryQuery,
 } from 'lib/queries';
-import { getAllFundsContent, getHomePageContent, sanityClient } from 'lib/sanity';
+import {
+  getAllFundsContent,
+  getHomePageContent,
+  sanityClient,
+} from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 
 export default function AccreditedInvestorsPage({

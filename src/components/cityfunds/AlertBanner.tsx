@@ -1,4 +1,4 @@
-import { LinkText, BoldText } from '@elements/Typography';
+import { BoldText, LinkText } from '@elements/Typography';
 import { styled } from 'styled-components';
 
 interface AlertBannerProps {
