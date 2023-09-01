@@ -2,16 +2,18 @@ import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
-import { getAllFundsContent } from 'lib/sanity';
-import { getAllFundsData } from 'lib/supabase';
+import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
+import { REGULATION } from '@utils/models';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { styled } from 'styled-components';
 
-export default function VerifiedPage({ cityfunds }) {
+export default function VerifiedPage() {
   const isMobile = useIsMobile();
+  const retailFunds = FEATURED_CITIES.filter(
+    ({ information }) => information.regulation !== REGULATION.REG_D
+  );
 
   useEffect(() => {
     try {
@@ -43,16 +45,10 @@ export default function VerifiedPage({ cityfunds }) {
       hideLinks
     >
       <PageHero
-        heroImages={cityfunds
-          .filter(
-            ({ fund_data }) =>
-              fund_data?.regulation === REGULATION.RETAIL &&
-              fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
-          )
-          .map(({ fund_content }) => ({
-            name: fund_content?.fund_name,
-            heroImage: fund_content?.image_gallery[0],
-          }))}
+        heroImages={retailFunds.map(({ name, images }) => ({
+          name,
+          heroImage: images.heroImage,
+        }))}
       />
 
       <ModalWrapper>
@@ -97,21 +93,6 @@ export default function VerifiedPage({ cityfunds }) {
       </ModalWrapper>
     </PageLayout>
   );
-}
-
-export async function getServerSideProps() {
-  const fundsData = await getAllFundsData();
-  const fundsContent = await getAllFundsContent();
-  const cityfunds = fundsData.map((data) => {
-    const content = fundsContent.find(
-      (content) => content.fund_name === data.fund_name
-    );
-    return { fund_data: data, fund_content: content };
-  });
-
-  return {
-    props: { cityfunds },
-  };
 }
 
 export const ModalWrapper = styled.div`
