@@ -2,18 +2,16 @@ import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { EXTERNAL_ROUTES, FEATURED_CITIES } from '@utils/constants';
-import { REGULATION } from '@utils/models';
+import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
+import { getAllFundsContent } from 'lib/sanity';
+import { getAllFundsData } from 'lib/supabase';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { styled } from 'styled-components';
 
-export default function VerifiedPage() {
+export default function VerifiedPage({ cityfunds }) {
   const isMobile = useIsMobile();
-  const retailFunds = FEATURED_CITIES.filter(
-    ({ information }) => information.regulation !== REGULATION.REG_D
-  );
 
   useEffect(() => {
     try {
@@ -45,10 +43,16 @@ export default function VerifiedPage() {
       hideLinks
     >
       <PageHero
-        heroImages={retailFunds.map(({ name, images }) => ({
-          name,
-          heroImage: images.heroImage,
-        }))}
+        heroImages={cityfunds
+          .filter(
+            ({ fund_data }) =>
+              fund_data?.regulation === REGULATION.RETAIL &&
+              fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
+          )
+          .map(({ fund_content }) => ({
+            name: fund_content?.fund_name,
+            heroImage: fund_content?.image_gallery[0],
+          }))}
       />
 
       <ModalWrapper>
@@ -60,7 +64,6 @@ export default function VerifiedPage() {
             investing today!
           </PrimaryText>
         </div>
-
         {isMobile ? (
           <div
             style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
@@ -95,6 +98,21 @@ export default function VerifiedPage() {
   );
 }
 
+export async function getServerSideProps() {
+  const fundsData = await getAllFundsData();
+  const fundsContent = await getAllFundsContent();
+  const cityfunds = fundsData.map((data) => {
+    const content = fundsContent.find(
+      (content) => content.fund_name === data.fund_name
+    );
+    return { fund_data: data, fund_content: content };
+  });
+
+  return {
+    props: { cityfunds },
+  };
+}
+
 export const ModalWrapper = styled.div`
   position: absolute;
   top: 50%;
@@ -113,7 +131,6 @@ export const ModalWrapper = styled.div`
   text-align: center;
   width: 36rem;
   padding: 4rem;
-
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     top: 25%;
     left: 0;
