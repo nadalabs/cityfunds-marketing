@@ -19,16 +19,11 @@ export const CityfundCard = ({
   isHome,
 }: CityfundCardProps) => {
   const isMobile = useIsMobile();
-
+  // cityfunds/${fund_data?.fund_name.toLowerCase()}
   return (
     <CardWrapper
       onClick={() =>
-        window.open(
-          `${
-            process.env.NEXT_PUBLIC_WEB_APP_URL
-          }/cityfunds/${fund_data?.fund_name.toLowerCase()}`,
-          '_blank'
-        )
+        window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
       }
       style={{
         justifyContent:

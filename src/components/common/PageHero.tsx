@@ -80,7 +80,7 @@ export default function PageHero({
                   style={{
                     color: isMobile ? 'white' : '#989B9F',
                     maxWidth: isTextWide ? '1100px' : '700px',
-                    marginBottom: '0.5rem'
+                    marginBottom: '0.5rem',
                   }}
                 >
                   {primaryText}

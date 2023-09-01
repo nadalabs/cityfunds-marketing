@@ -18,11 +18,11 @@ export default function StatusTicker({
   const { days, hours } = getTimeRemaining();
 
   return (
-    <LockWrapper
-      style={{ background: isDark ? '#2A8356' : 'rgba(22, 22, 22, 0.33)' }}
-    >
+    <div>
       {fund_data?.regulation === REGULATION.ACCREDITED ? (
-        <>
+        <LockWrapper
+          style={{ background: isDark ? '#2A8356' : 'rgba(22, 22, 22, 0.33)' }}
+        >
           <Image
             src="/icons/lock.svg"
             alt="Lock"
@@ -31,11 +31,13 @@ export default function StatusTicker({
             style={{ marginRight: '0.25rem' }}
           />
           <Caption style={{ color: 'white', fontWeight: 600 }}>
-            Accredited Only
+            Accredited Offering
           </Caption>
-        </>
+        </LockWrapper>
       ) : fund_data?.fund_status === FUND_STATUS.NEW_OFFERING ? (
-        <>
+        <LockWrapper
+          style={{ background: isDark ? '#2A8356' : 'rgba(22, 22, 22, 0.33)' }}
+        >
           <Image
             src="/icons/lock.svg"
             alt="Lock"
@@ -46,9 +48,11 @@ export default function StatusTicker({
           <Caption style={{ color: 'white', fontWeight: 600 }}>
             {isHome || isDark ? 'Coming Soon' : 'Exclusive'}
           </Caption>
-        </>
-      ) : (
-        <>
+        </LockWrapper>
+      ) : (days <= 10 && days >= 1) ? (
+        <LockWrapper
+          style={{ background: isDark ? '#2A8356' : 'rgba(22, 22, 22, 0.33)' }}
+        >
           <Image
             src="/icons/flash.svg"
             alt="Lock"
@@ -59,9 +63,9 @@ export default function StatusTicker({
           <Caption style={{ color: 'white', fontWeight: 600 }}>
             {days} Days {hours} Hours Left
           </Caption>
-        </>
-      )}
-    </LockWrapper>
+        </LockWrapper>
+      ) : null}
+    </div>
   );
 }
 
