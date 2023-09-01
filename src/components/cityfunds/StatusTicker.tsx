@@ -49,7 +49,7 @@ export default function StatusTicker({
             {isHome || isDark ? 'Coming Soon' : 'Exclusive'}
           </Caption>
         </LockWrapper>
-      ) : (days <= 10 && days >= 1) ? (
+      ) : days <= 10 && days >= 1 ? (
         <LockWrapper
           style={{ background: isDark ? '#2A8356' : 'rgba(22, 22, 22, 0.33)' }}
         >

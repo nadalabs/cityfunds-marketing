@@ -51,10 +51,10 @@ export default function CityfundSlider({
     )
       return 1;
     if (
-      a.fund_data.fund_status !== FUND_STATUS.PERFORMING &&
-      b.fund_data.fund_status === FUND_STATUS.NEW_OFFERING
+      a.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING &&
+      b.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING
     ) {
-      return b.fund_data.appreciation - a.fund_data.appreciation;
+      return b.fund_data.total_assets - a.fund_data.total_assets;
     }
     return 0;
   });
