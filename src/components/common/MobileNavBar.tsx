@@ -1,6 +1,6 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { LinkText } from '@elements/Typography';
-import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
+import { HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -67,7 +67,12 @@ export default function MobileNavBar({ bannerText }) {
           ))}
 
           <PrimaryButton
-            onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+            onClick={() =>
+              window.open(
+                `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+                '_blank'
+              )
+            }
           >
             Get Started
           </PrimaryButton>

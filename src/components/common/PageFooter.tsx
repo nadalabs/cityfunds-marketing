@@ -1,6 +1,6 @@
 import LongFormText from '@components/common/LongFormText';
 import { LinkButton, SecondaryButton } from '@elements/Buttons';
-import { LinkText, SecondaryText } from '@elements/Typography';
+import { BoldText, LinkText } from '@elements/Typography';
 import { EXTERNAL_ROUTES, FOOTER_LINKS, SOCIAL_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -47,7 +47,9 @@ export default function PageFooter({ legal }: PageFooterProps) {
 
         {FOOTER_LINKS.map(({ title, links }, idx) => (
           <div key={idx} style={{ marginBottom: '1rem' }}>
-            <SecondaryText style={{ color: 'black' }}>{title}</SecondaryText>
+            <BoldText style={{ color: 'black', marginBottom: '0.5rem' }}>
+              {title}
+            </BoldText>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               {links.map(({ name, link }, jdx) => (
                 <LinkText
@@ -68,7 +70,7 @@ export default function PageFooter({ legal }: PageFooterProps) {
               width={135}
               height={40}
               alt={'Nada'}
-              src={'/images/apple-store.png'}
+              src={'/icons/app-store.svg'}
               style={{ marginBottom: '16px' }}
             />
           </Link>
@@ -77,7 +79,7 @@ export default function PageFooter({ legal }: PageFooterProps) {
               width={135}
               height={40}
               alt={'Nada'}
-              src={'/images/google-store.png'}
+              src={'/icons/google-play.svg'}
             />
           </Link>
         </div>

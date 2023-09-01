@@ -1,5 +1,5 @@
 import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook';
-import { sanityClient } from 'lib/sanity.server';
+import { sanityClient } from 'lib/sanity';
 
 // Next.js will by default parse the body, which can lead to invalid signatures
 export const config = {
@@ -73,7 +73,6 @@ export default async function revalidate(req, res) {
     return res.status(400).json({ message: invalidId });
   }
 
-  log(`Querying post slug for _id '${id}', type '${_type}' ..`);
   const _slug = await sanityClient.fetch(getQueryForType(_type), { id });
   let staleRoutes = [];
 
@@ -94,7 +93,6 @@ export default async function revalidate(req, res) {
   try {
     await Promise.all(staleRoutes.map((route) => res.revalidate(route)));
     const updatedRoutes = `Updated routes: ${staleRoutes.join(', ')}`;
-    log(updatedRoutes);
     return res.status(200).json({ message: updatedRoutes });
   } catch (err) {
     log(err.message, true);

@@ -214,29 +214,29 @@ export const summaryIndexQuery = `
 }`;
 
 // Cityfund Queries
-const cityfundFields = `
+export const cityfundFields = `
   _id,
-  heroImage,
-  cardImage,
-  link,
-  category
+  fund_name,
+  call_to_action,
+  description,
+  image_gallery,
+  card_back,
+  culture_gallery,
+  culture_description,
+  culture_articles
 `;
 
 export const cityfundIndexQuery = `
-*[_type == "value"] | order(index asc, _updatedAt desc) {
+*[_type == "cityfund"] | order(index asc, _updatedAt desc) {
   ${cityfundFields}
 }`;
 
 // Home Queries
-const homeFields = `
+export const homePageFields = `
   _id,
+  questions,
   "promo": promo->{banner, title, description, disclaimer, image},
 `;
-
-export const homeIndexQuery = `
-*[_type == "home"] | order(index asc, _updatedAt desc) {
-  ${homeFields}
-}`;
 
 export const footerQuery = `
 {

@@ -1,13 +1,13 @@
 {
+  "name": "nada-marketing",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "studio:dev": "npm --prefix studio run start",
-    "studio:deploy": "npx vercel env pull && npm --prefix studio run deploy",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
-    "format": "prettier --write \"src/**/*.+(ts|tsx|js|jsx|json)\""
+    "format": "prettier --write \"src/**/*.+(ts|tsx|js|jsx|json)\" \"lib/**/*.+(ts|tsx|js|jsx|json)\""
   },
   "dependencies": {
     "@portabletext/react": "^3.0.4",
@@ -15,6 +15,7 @@
     "@sanity/webhook": "^2.0.0",
     "@segment/snippet": "^4.16.0",
     "@sentry/react": "^7.53.0",
+    "@supabase/supabase-js": "^2.32.0",
     "@vercel/analytics": "^1.0.1",
     "date-fns": "^2.29.3",
     "lodash": "^4.17.21",

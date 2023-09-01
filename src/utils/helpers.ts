@@ -4,9 +4,7 @@ export const setCookie = (name: string, value: string) => {
   date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
   expires = '; expires=' + date.toUTCString();
   const domain =
-    process.env.NEXT_PUBLIC_APP_ENV === 'development'
-      ? 'localhost'
-      : '.nada.co';
+    process.env.NEXT_PUBLIC_APP_ENV === 'localhost' ? 'localhost' : '.nada.co';
 
   document.cookie =
     name +
@@ -41,10 +39,56 @@ export const shortenNumber = (num: number, digits: number) => {
     : '';
 };
 
-export const formatPrice = (price: number) => {
-  return `$${price.toLocaleString()}`;
+export const formatPrice = (price: number, decimals: number) => {
+  if (typeof price !== 'number' || isNaN(price)) {
+    return 'Invalid Number';
+  }
+
+  const options = {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  };
+
+  return `$${price.toLocaleString(undefined, options)}`;
 };
 
-export const formatPercent = (percent: number) => {
-  return `${percent}%`;
+export const formatPercent = (percent: number, decimals: number) => {
+  if (typeof percent !== 'number' || isNaN(percent)) {
+    return 'Invalid Number';
+  }
+
+  const options = {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  };
+
+  return `${percent.toLocaleString(undefined, options)}%`;
+};
+
+export const capitalizeFirstLetter = (word: string) => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+};
+
+export const getTodaysDate = () => {
+  const today = new Date();
+  return today.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+
+export const getTimeRemaining = () => {
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const nextMonth = (currentMonth + 1) % 12;
+  const nextMonthYear =
+    currentMonth === 11 ? now.getFullYear() + 1 : now.getFullYear();
+  const endOfMonth = new Date(nextMonthYear, nextMonth, 1);
+  const remainingTime = endOfMonth.getTime() - now.getTime();
+  const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(
+    (remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  return { days, hours };
 };

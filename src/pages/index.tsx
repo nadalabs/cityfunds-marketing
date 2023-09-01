@@ -1,8 +1,7 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import AlertBanner from '@components/cityfunds/AlertBanner';
-import CityfundsSlider from '@components/cityfunds/CityfundsSlider';
-import FaqsSection from '@components/cityfunds/FaqsSection';
+import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import PromoCTA from '@components/cityfunds/PromoCTA';
@@ -11,18 +10,22 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
-import { EXTERNAL_ROUTES, FAQS, FEATURED_CITIES } from '@utils/constants';
-import { REGULATION } from '@utils/models';
+import { FUND_STATUS, REGULATION } from '@utils/constants';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
-  homeIndexQuery,
   pressLogosQueryQuery,
 } from 'lib/queries';
-import { getClient } from 'lib/sanity.server';
+import {
+  getAllFundsContent,
+  getHomePageContent,
+  sanityClient,
+} from 'lib/sanity';
+import { getAllFundsData } from 'lib/supabase';
 
 interface HomePageProps {
   homePage?: any;
+  cityfunds: any[];
   logos: any;
   testimonials: any;
   values: any;
@@ -31,15 +34,13 @@ interface HomePageProps {
 
 export default function HomePage({
   homePage,
+  cityfunds,
   logos,
   testimonials,
   values,
   partner,
 }: HomePageProps) {
   const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
-  const retailFunds = FEATURED_CITIES.filter(
-    ({ information }) => information.regulation !== REGULATION.REG_D
-  );
 
   return (
     <PageLayout
@@ -52,22 +53,24 @@ export default function HomePage({
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios in the nation’s top cities."
         btnText="Get Started"
-        onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+        onClick={() =>
+          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
+        }
         formName="Cityfunds Lead"
-        heroImages={retailFunds.map(({ name, images }) => ({
-          name,
-          heroImage: images.heroImage,
-        }))}
+        heroImages={cityfunds
+          .filter(
+            ({ fund_data }) =>
+              fund_data?.regulation === REGULATION.RETAIL &&
+              fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
+          )
+          .map(({ fund_content }) => ({
+            name: fund_content?.fund_name,
+            heroImage: fund_content?.image_gallery[0],
+          }))}
         bannerText={!!bannerText}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
-      <CityfundsSlider
-        heading="Pick your favorite Cityfund, or invest in all of them"
-        primaryText={
-          'Cityfunds is the only investment platform that provides direct access to diversified portfolios of owner-occupied homes in the nation’s top cities.'
-        }
-        cards={retailFunds}
-      />
+      <CityfundSlider cityfunds={cityfunds} isHome />
       <SectionWrapper>
         <FeaturedImage
           overline="Why Cityfunds?"
@@ -77,26 +80,30 @@ export default function HomePage({
             real estate in your favorite city takes less than 5 minutes."
           imageUrl="/images/location-tiles.png"
           btnText="Get Started"
-          onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+          onClick={() =>
+            window.open(
+              `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+              '_blank'
+            )
+          }
           isShortHeader
         />
         <KeyMetrics
           metrics={[
             {
               label: 'Total Investors',
-              value: 7000,
-              formattingFn: (val) => `${val.toLocaleString('us-en')}+`,
+              value: 10,
+              formattingFn: (val) => `${val}K+`,
             },
             {
               label: 'Properties Funded',
-              value: 60,
+              value: 70,
               formattingFn: (val) => `${val}+`,
             },
             {
-              label: 'Average Appreciation',
-              value: 11.7,
-              formattingFn: (val) => `${val}%`,
-              decimals: 1,
+              label: 'Gross Asset Value',
+              value: 35,
+              formattingFn: (val) => `$${val}M+`,
             },
           ]}
         />
@@ -108,7 +115,12 @@ export default function HomePage({
           primaryText="Own fractional shares of peoples homes across the nations top cities on day one."
           imageUrl="/images/location-map.png"
           btnText="Get Started"
-          onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+          onClick={() =>
+            window.open(
+              `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+              '_blank'
+            )
+          }
           isReversed
         />
       </SectionWrapper>
@@ -118,7 +130,7 @@ export default function HomePage({
         primaryText="We have plenty of reasons."
         valueProps={values}
       />
-      <FaqsSection overline="You may also be wondering..." faqs={FAQS} />
+      {/* <NadaFaqs faqs={homePage?.questions} /> */}
       <HowItWorks
         overline="Real Estate Investing Simplified"
         steps={[
@@ -139,7 +151,9 @@ export default function HomePage({
           },
         ]}
         btnText="Get Started"
-        onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+        onClick={() =>
+          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
+        }
         isPhoneFrame
       />
       <Testimonials reviews={testimonials} />
@@ -151,17 +165,23 @@ export default function HomePage({
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const homePage = await getClient(preview).fetch(homeIndexQuery);
-  const testimonials = await getClient(preview).fetch(
-    cityfundsTestimonialsQuery
-  );
-  const logos = await getClient(preview).fetch(pressLogosQueryQuery);
-  const values = await getClient(preview).fetch(cityfundsValuesQuery);
+export async function getStaticProps() {
+  const fundsData = await getAllFundsData();
+  const fundsContent = await getAllFundsContent();
+  const cityfunds = fundsData.map((data) => {
+    const content = fundsContent.find(
+      (content) => content.fund_name === data.fund_name
+    );
+    return { fund_data: data, fund_content: content };
+  });
+
+  const homePage = await getHomePageContent();
+  const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
+  const logos = await sanityClient.fetch(pressLogosQueryQuery);
+  const values = await sanityClient.fetch(cityfundsValuesQuery);
 
   return {
-    props: { homePage: homePage[0], testimonials, logos, values },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
+    props: { homePage, cityfunds, testimonials, logos, values },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

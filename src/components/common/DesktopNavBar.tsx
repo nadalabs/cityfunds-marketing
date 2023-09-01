@@ -1,5 +1,5 @@
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
-import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
+import { HEADER_LINKS } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -52,10 +52,10 @@ export default function DesktopNavBar({
           />
           <Divider />
           <Image
-            width={188}
+            width={240}
             height={54}
             alt={partnerName}
-            src={urlForImage(partnerImage).url()}
+            src={urlForImage(partnerImage, 54, 240).url()}
           />
         </div>
       ) : (
@@ -80,7 +80,12 @@ export default function DesktopNavBar({
       <div>
         {hideLinks ? (
           <PrimaryButton
-            onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+            onClick={() =>
+              window.open(
+                `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+                '_blank'
+              )
+            }
           >
             Get Started
           </PrimaryButton>
@@ -99,7 +104,12 @@ export default function DesktopNavBar({
             ))}
 
             <PrimaryButton
-              onClick={() => window.location.replace(EXTERNAL_ROUTES.WEB_APP)}
+              onClick={() =>
+                window.open(
+                  `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+                  '_blank'
+                )
+              }
             >
               Get Started
             </PrimaryButton>

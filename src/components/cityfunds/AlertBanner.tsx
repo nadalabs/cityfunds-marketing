@@ -1,4 +1,4 @@
-import { LinkText, SecondaryText } from '@elements/Typography';
+import { BoldText, LinkText } from '@elements/Typography';
 import { styled } from 'styled-components';
 
 interface AlertBannerProps {
@@ -8,11 +8,11 @@ interface AlertBannerProps {
 export default function AlertBanner({ primaryText }: AlertBannerProps) {
   return (
     <BannerWrapper>
-      <SecondaryText
+      <BoldText
         style={{ color: 'white', margin: '0 1rem 0 0', fontSize: '18px' }}
       >
         {primaryText}
-      </SecondaryText>
+      </BoldText>
       <LinkText
         href="/rewards-program"
         style={{ color: '#48DC95', margin: '0 1rem 0 0' }}

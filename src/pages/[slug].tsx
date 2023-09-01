@@ -7,13 +7,15 @@ import {
   partnerSlugsQuery,
   pressLogosQueryQuery,
 } from 'lib/queries';
-import { getClient, sanityClient } from 'lib/sanity.server';
+import { getAllFundsContent, sanityClient } from 'lib/sanity';
+import { getAllFundsData } from 'lib/supabase';
 import dynamic from 'next/dynamic';
 
 const HomePage = dynamic(() => import('@pages/index'));
 const LegalPage = dynamic(() => import('@components/LegalPage'));
 
 export default function DynamicPage({
+  cityfunds,
   testimonials,
   logos,
   values,
@@ -24,6 +26,7 @@ export default function DynamicPage({
     <>
       {partner && (
         <HomePage
+          cityfunds={cityfunds}
           partner={partner}
           testimonials={testimonials}
           logos={logos}
@@ -35,24 +38,30 @@ export default function DynamicPage({
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const testimonials = await getClient(preview).fetch(
-    cityfundsTestimonialsQuery
-  );
-  const logos = await getClient(preview).fetch(pressLogosQueryQuery);
-  const values = await getClient(preview).fetch(cityfundsValuesQuery);
-  const partnerData = await getClient(preview).fetch(partnerQuery, {
+export async function getStaticProps({ params }) {
+  const fundsData = await getAllFundsData();
+  const fundsContent = await getAllFundsContent();
+  const cityfunds = fundsData.map((data) => {
+    const content = fundsContent.find(
+      (content) => content.fund_name === data.fund_name
+    );
+    return { fund_data: data, fund_content: content };
+  });
+
+  const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
+  const logos = await sanityClient.fetch(pressLogosQueryQuery);
+  const values = await sanityClient.fetch(cityfundsValuesQuery);
+  const partnerData = await sanityClient.fetch(partnerQuery, {
     slug: params.slug,
   });
-  const legalData = await getClient(preview).fetch(legalQuery, {
+  const legalData = await sanityClient.fetch(legalQuery, {
     slug: params.slug,
   });
   const partner = partnerData?.partner ?? null;
   const legal = legalData?.legal ?? null;
 
   return {
-    props: { testimonials, logos, values, partner, legal },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
+    props: { cityfunds, testimonials, logos, values, partner, legal },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

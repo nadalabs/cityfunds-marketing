@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Heading = styled.h1`
   color: ${({ theme }) => theme.colors.darkText};
   font-family: ${({ theme }) => theme.fonts.main};
-  font-size: 4.5rem;
+  font-size: 3.125rem;
   font-style: normal;
   font-weight: 600;
   line-height: 100%;
@@ -21,17 +21,17 @@ export const SmallHeading = styled(Heading)`
   font-size: 1.75rem;
   line-height: 125%;
   letter-spacing: -0.015rem;
+  margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 1.5rem;
   }
 `;
 
 export const PrimaryText = styled.p`
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.main};
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 150%;
@@ -47,60 +47,39 @@ export const LargeText = styled(PrimaryText)`
   color: ${({ theme }) => theme.colors.lightText};
   font-size: 1.5rem;
   letter-spacing: -0.015rem;
-  margin-bottom: 1.5rem;
+  line-height: 125%;
+  margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 1rem;
   }
 `;
 
-export const SmallText = styled(PrimaryText)`
-  font-size: 1.125rem;
-  letter-spacing: -0.015rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 1rem;
-  }
-`;
-
-export const LongText = styled(PrimaryText)`
-  width: 70%;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
-  }
-`;
-
-export const SecondaryText = styled.p`
-  color: ${({ theme }) => theme.colors.grey};
-  font-family: ${({ theme }) => theme.fonts.main};
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 30px;
-  margin: 0 0 24px 0;
+export const BoldText = styled(LargeText)`
+  color: ${({ theme }) => theme.colors.darkText};
+  font-weight: 600;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 14px;
-    line-height: 18px;
   }
 `;
 
 export const Overline = styled.p`
   color: ${({ theme }) => theme.colors.darkText};
   font-family: ${({ theme }) => theme.fonts.main};
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.0175rem;
   margin: 0;
 `;
 
 export const Caption = styled.p`
   color: ${({ theme }) => theme.colors.lightText};
   font-family: ${({ theme }) => theme.fonts.secondary};
+  font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
-  font-size: 0.875rem;
   line-height: 1rem;
   margin: 0;
 `;
@@ -127,6 +106,10 @@ export const LinkText = styled(Link)`
 `;
 
 export const ErrorText = styled.p`
+  position: relative;
+  top: 0.25rem;
+  left: 0.5rem;
+  height: 0;
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 400;
