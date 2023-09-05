@@ -20,7 +20,7 @@ export const UTM_PARAMETERS = [
   'irclickid',
   'sharedCredentialsUuid',
 ];
-
+// Console log
 export const HEADER_LINKS = [
   { name: 'Cityfunds', link: '/' },
   { name: 'About', link: '/about' },
