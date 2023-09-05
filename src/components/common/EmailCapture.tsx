@@ -65,7 +65,7 @@ export default function EmailCapture({
 
           {!isMobile && (
             <BtnWrapper>
-              <PrimaryButton onClick={() => handleSubmit(onSubmit)}>
+              <PrimaryButton onClick={handleSubmit(onSubmit)}>
                 {btnText}
               </PrimaryButton>
             </BtnWrapper>
@@ -74,7 +74,7 @@ export default function EmailCapture({
 
         {isMobile && (
           <BtnWrapper>
-            <PrimaryButton onClick={() => handleSubmit(onSubmit)}>
+            <PrimaryButton onClick={handleSubmit(onSubmit)}>
               {btnText}
             </PrimaryButton>
           </BtnWrapper>

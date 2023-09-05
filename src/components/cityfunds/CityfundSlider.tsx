@@ -72,13 +72,10 @@ export default function CityfundSlider({
         </LargeText>
       </StackWrapper>
 
-      <div
+      <ScrollWrapper
         style={{
-          display: 'flex',
           flexDirection: isMobile && isHome ? 'column' : 'row',
-          gap: '1.5rem',
           paddingRight: isMobile || !isHome ? 0 : '150px',
-          overflowX: 'scroll',
         }}
       >
         {DISPLAYED_CARDS.map((card, idx) => (
@@ -111,7 +108,7 @@ export default function CityfundSlider({
             )}
           </>
         ))}
-      </div>
+      </ScrollWrapper>
     </SectionWrapper>
   );
 }
@@ -123,6 +120,18 @@ const FadeWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
     height: 20rem;
+  }
+`;
+
+const ScrollWrapper = styled.div`
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;
 

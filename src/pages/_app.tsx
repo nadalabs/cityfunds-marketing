@@ -1,4 +1,4 @@
-import Footer from '@components/common/PageFooter';
+import PageFooter from '@components/common/PageFooter';
 import * as snippet from '@segment/snippet';
 import * as Sentry from '@sentry/react';
 import { UTM_PARAMETERS } from '@utils/constants';
@@ -84,7 +84,7 @@ export default function App({ Component, pageProps, footer }: AppProps) {
           dangerouslySetInnerHTML={{ __html: renderSnippet() }}
         />
         <Component {...pageProps} />
-        <Footer legal={footer} />
+        <PageFooter legal={footer} />
         <Analytics />
       </ThemeProvider>
     </>
