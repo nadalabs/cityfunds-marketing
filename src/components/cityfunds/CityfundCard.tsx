@@ -26,7 +26,7 @@ export const CityfundCard = ({
         window.open(
           `${
             process.env.NEXT_PUBLIC_WEB_APP_URL
-          }/signup`,
+          }/cityfunds/${fund_data?.fund_name.toLowerCase()}`,
           '_blank'
         )
       }

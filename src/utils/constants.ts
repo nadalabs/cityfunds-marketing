@@ -20,11 +20,12 @@ export const UTM_PARAMETERS = [
   'irclickid',
   'sharedCredentialsUuid',
 ];
-// Console log
+
 export const HEADER_LINKS = [
   { name: 'Cityfunds', link: '/' },
   { name: 'About', link: '/about' },
   { name: 'Learn', link: '/learn' },
+  { name: 'Login', link: `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`, isNewTab: true },
 ];
 
 export const LEGAL_LINKS = [
