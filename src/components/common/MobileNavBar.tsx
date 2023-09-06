@@ -56,11 +56,12 @@ export default function MobileNavBar({ bannerText }) {
 
       {showMenu && (
         <MenuWrapper>
-          {HEADER_LINKS.map(({ name, link }, idx) => (
+          {HEADER_LINKS.map(({ name, link, isNewTab }, idx) => (
             <LinkText
               key={idx}
               href={link}
               style={{ color: link === router.pathname ? '#48DC95' : 'white' }}
+              target={isNewTab ? '_blank' : ''}
             >
               {name.toUpperCase()}
             </LinkText>
