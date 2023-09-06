@@ -54,10 +54,7 @@ export default function HomePage({
         primaryText="Diversified real estate portfolios in the nation’s top cities."
         btnText="Get Started"
         onClick={() =>
-          window.open(
-            `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-            '_blank'
-          )
+          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
         }
         formName="Cityfunds Lead"
         heroImages={cityfunds

@@ -4,7 +4,6 @@ import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import Testimonials from '@components/cityfunds/Testimonials';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
-import NadaCardCTA from '@components/homeshares/NadaCardCTA';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { homesharesTestimonialsQuery } from 'lib/queries';
