@@ -47,7 +47,7 @@ export default function LongFormText({
         return (
           <LinkText
             href={value.href}
-            target='_blank'
+            target="_blank"
             style={{
               fontSize: isSmall || isMobile ? '14px' : '16px',
               lineHeight: isSmall || isMobile ? '1rem' : '150%',

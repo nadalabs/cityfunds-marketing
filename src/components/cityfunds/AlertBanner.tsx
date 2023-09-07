@@ -1,4 +1,5 @@
-import { BoldText, LinkText } from '@elements/Typography';
+import { BoldText } from '@elements/Typography';
+import { scrollToId } from '@utils/helpers';
 import { styled } from 'styled-components';
 
 interface AlertBannerProps {
@@ -13,12 +14,17 @@ export default function AlertBanner({ primaryText }: AlertBannerProps) {
       >
         {primaryText}
       </BoldText>
-      <LinkText
-        href="/rewards-program"
-        style={{ color: '#48DC95', margin: '0 1rem 0 0' }}
+      <BoldText
+        onClick={() => scrollToId('promo')}
+        style={{
+          color: '#48DC95',
+          margin: '0 1rem 0 0',
+          fontSize: '18px',
+          cursor: 'pointer',
+        }}
       >
-        *Conditions apply
-      </LinkText>
+        Learn More
+      </BoldText>
     </BannerWrapper>
   );
 }

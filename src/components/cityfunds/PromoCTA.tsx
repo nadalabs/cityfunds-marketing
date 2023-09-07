@@ -21,14 +21,18 @@ export default function PromoCTA({ promo }: PromoCTAProps) {
   const isMobile = useIsMobile();
 
   return (
-    <SectionWrapper>
+    <SectionWrapper id="promo">
       <ContentWrapper>
         <StackWrapper style={{ gap: '0.5rem', marginBottom: '2rem' }}>
           <Heading style={{ maxWidth: '34rem' }}>{promo?.title}</Heading>
           <LongFormText content={promo?.description} />
           <LinkText
             href="/rewards-program"
-            style={{ color: '#888888', fontSize: '0.875rem', lineHeight: '1rem' }}
+            style={{
+              color: '#888888',
+              fontSize: '0.875rem',
+              lineHeight: '1rem',
+            }}
           >
             *Terms and conditions apply
           </LinkText>

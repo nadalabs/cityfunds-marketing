@@ -64,7 +64,10 @@ export default function CityfundSlider({
   );
 
   return (
-    <SectionWrapper style={{ marginLeft: isHome && !isMobile ? '150px' : 0 }}>
+    <SectionWrapper
+      style={{ marginLeft: isHome && !isMobile ? '150px' : 0 }}
+      id="cityfunds"
+    >
       <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
         <Heading>Explore Offerings</Heading>
         <LargeText>
