@@ -12,6 +12,7 @@ import { SectionWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
+import { scrollToId } from '@utils/helpers';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
@@ -33,12 +34,6 @@ export default function AccreditedInvestorsPage({
   ourFocus,
 }) {
   const isMobile = useIsMobile();
-  const scrollToId = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <PageLayout hideLinks>

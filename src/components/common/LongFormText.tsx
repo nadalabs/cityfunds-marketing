@@ -46,7 +46,8 @@ export default function LongFormText({
       link: ({ children, value }: any) => {
         return (
           <LinkText
-            href={value}
+            href={value.href}
+            target="_blank"
             style={{
               fontSize: isSmall || isMobile ? '14px' : '16px',
               lineHeight: isSmall || isMobile ? '1rem' : '150%',
