@@ -48,7 +48,8 @@ export default function LongFormText({
           <LinkText
             href={value}
             style={{
-              fontSize: isSmall || isMobile ? '14px' : '18px',
+              fontSize: isSmall || isMobile ? '14px' : '16px',
+              lineHeight: isSmall || isMobile ? '1rem' : '150%',
               color: '#48DC95',
               margin: 0,
             }}

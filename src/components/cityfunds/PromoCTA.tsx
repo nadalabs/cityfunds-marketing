@@ -1,12 +1,14 @@
-import EmailCapture from '@components/common/EmailCapture';
-import { Caption, Heading, LargeText, Overline } from '@elements/Typography';
+import LongFormText from '@components/common/LongFormText';
+import { PrimaryButton } from '@elements/Buttons';
+import { StackWrapper } from '@elements/Containers';
+import { Heading, LinkText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 interface PromoCTAProps {
-  overline?: string;
   promo?: {
     title: string;
     description: string;
@@ -15,30 +17,31 @@ interface PromoCTAProps {
   };
 }
 
-export default function PromoCTA({ overline, promo }: PromoCTAProps) {
+export default function PromoCTA({ promo }: PromoCTAProps) {
   const isMobile = useIsMobile();
 
   return (
     <SectionWrapper>
       <ContentWrapper>
-        {overline && (
-          <Overline style={{ marginBottom: '1rem' }}>{overline}</Overline>
-        )}
-        <Heading>{promo?.title}</Heading>
-        <LargeText style={{ marginBottom: '4px' }}>
-          {promo?.description}
-        </LargeText>
-        <Caption style={{ marginBottom: '2rem' }}>{promo?.disclaimer}</Caption>
-        <EmailCapture
-          btnText="Get Started"
-          onClick={() =>
-            window.open(
-              `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-              '_blank'
-            )
-          }
-          formName="Cityfunds Lead"
-        />
+        <StackWrapper style={{ gap: '0.5rem', marginBottom: '2rem' }}>
+          <Heading style={{ maxWidth: '34rem' }}>{promo?.title}</Heading>
+          <LongFormText content={promo?.description} />
+          <LinkText
+            href="/rewards-program"
+            style={{ color: '#888888', fontSize: '0.875rem', lineHeight: '1rem' }}
+          >
+            *Terms and conditions apply
+          </LinkText>
+        </StackWrapper>
+
+        <div style={{ display: 'flex', gap: '1.25rem' }}>
+          <Link href="https://invest.nada.co/cityfunds/austin" target="_blank">
+            <PrimaryButton>Austin Cityfund</PrimaryButton>
+          </Link>
+          <Link href="https://invest.nada.co/cityfunds/dallas" target="_blank">
+            <PrimaryButton>Dallas Cityfund</PrimaryButton>
+          </Link>
+        </div>
       </ContentWrapper>
 
       {!isMobile && (

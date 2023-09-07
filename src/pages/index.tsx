@@ -157,10 +157,7 @@ export default function HomePage({
         isPhoneFrame
       />
       <Testimonials reviews={testimonials} />
-      <PromoCTA
-        promo={partner?.promo || homePage?.promo}
-        overline={partner?.name ? `Limited Time Bonus` : ''}
-      />
+      <PromoCTA promo={partner?.promo || homePage?.promo} />
     </PageLayout>
   );
 }

@@ -40,7 +40,7 @@ export default function DesktopNavBar({
 
   return (
     <NavbarWrapper
-      style={{ top: scrollPosition === 0 && bannerText ? '2.85rem' : 0 }}
+      style={{ top: scrollPosition === 0 && bannerText ? '2.5rem' : 0 }}
     >
       {partnerImage ? (
         <div style={{ display: 'flex', alignItems: 'center' }}>
