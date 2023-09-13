@@ -147,6 +147,9 @@ export const TextWrapper = styled.div`
 `;
 
 export const HeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   margin-bottom: 60px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

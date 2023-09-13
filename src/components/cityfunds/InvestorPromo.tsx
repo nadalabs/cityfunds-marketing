@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-interface PromoCTAProps {
+interface InvestorPromoProps {
   promo?: {
     title: string;
     description: string;
@@ -17,7 +17,7 @@ interface PromoCTAProps {
   };
 }
 
-export default function PromoCTA({ promo }: PromoCTAProps) {
+export default function InvestorPromo({ promo }: InvestorPromoProps) {
   const isMobile = useIsMobile();
 
   return (

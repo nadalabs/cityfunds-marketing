@@ -7,7 +7,11 @@ import {
   partnerSlugsQuery,
   pressLogosQueryQuery,
 } from 'lib/queries';
-import { getAllFundsContent, sanityClient } from 'lib/sanity';
+import {
+  getAllFundsContent,
+  getHomePageContent,
+  sanityClient,
+} from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 import dynamic from 'next/dynamic';
 
@@ -21,6 +25,7 @@ export default function DynamicPage({
   values,
   partner,
   legal,
+  homePage,
 }) {
   return (
     <>
@@ -31,6 +36,7 @@ export default function DynamicPage({
           testimonials={testimonials}
           logos={logos}
           values={values}
+          homePage={homePage}
         />
       )}
       {legal && <LegalPage legal={legal} />}
@@ -40,6 +46,7 @@ export default function DynamicPage({
 
 export async function getStaticProps({ params }) {
   const fundsData = await getAllFundsData();
+  const homePage = await getHomePageContent();
   const fundsContent = await getAllFundsContent();
   const cityfunds = fundsData.map((data) => {
     const content = fundsContent.find(
@@ -61,7 +68,7 @@ export async function getStaticProps({ params }) {
   const legal = legalData?.legal ?? null;
 
   return {
-    props: { cityfunds, testimonials, logos, values, partner, legal },
+    props: { cityfunds, testimonials, logos, values, partner, legal, homePage },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

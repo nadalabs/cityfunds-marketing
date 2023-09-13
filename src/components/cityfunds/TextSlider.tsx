@@ -38,7 +38,7 @@ export default function TextSlider({
         {valueProps.map(({ title, description }, idx) => (
           <div key={idx}>
             <TextWrapper>
-              <StackWrapper>
+              <StackWrapper style={{ gap: '1rem' }}>
                 <GreenSquare />
                 <SmallHeading>{title}</SmallHeading>
                 <PrimaryText>{description}</PrimaryText>
@@ -53,8 +53,8 @@ export default function TextSlider({
 
 export const GreenSquare = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary};
-  height: 30px;
-  width: 30px;
+  height: 1.5rem;
+  width: 1.5rem;
   border-radius: 7px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -67,6 +67,8 @@ export const GreenSquare = styled.div`
 const TextWrapper = styled(CardWrapper)`
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   margin: 1rem;
+  height: 20rem;
+  width: 20rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 2rem;

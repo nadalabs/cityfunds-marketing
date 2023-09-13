@@ -1,5 +1,5 @@
 import CarouselStepper from '@components/common/CarouselStepper';
-import EmailCapture from '@components/common/EmailCapture';
+import { PrimaryButton } from '@elements/Buttons';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
@@ -27,7 +27,6 @@ export default function PageHero({
   heroImages,
   heroCTA,
   isTextWide,
-  formName,
   bannerText,
 }: PageHeroProps) {
   const sliderRef = useRef();
@@ -87,12 +86,8 @@ export default function PageHero({
                 </LargeText>
 
                 {heroCTA && heroCTA}
-                {formName && (
-                  <EmailCapture
-                    btnText={btnText}
-                    onClick={onClick}
-                    formName={formName}
-                  />
+                {btnText && (
+                  <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
                 )}
               </div>
             </div>
