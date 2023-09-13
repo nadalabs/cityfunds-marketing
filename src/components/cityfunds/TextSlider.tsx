@@ -38,7 +38,7 @@ export default function TextSlider({
         {valueProps.map(({ title, description }, idx) => (
           <div key={idx}>
             <TextWrapper>
-              <StackWrapper style={{gap: '1rem'}}>
+              <StackWrapper style={{ gap: '1rem' }}>
                 <GreenSquare />
                 <SmallHeading>{title}</SmallHeading>
                 <PrimaryText>{description}</PrimaryText>

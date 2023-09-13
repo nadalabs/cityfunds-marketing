@@ -41,8 +41,10 @@ export default function AccreditedInvestorsPage({
         heading="Real Estate Investing Reinvented"
         heroCTA={
           <>
-            <PrimaryButton onClick={() => scrollToId('cityfunds')}>
-              View Our Offerings
+            <PrimaryButton onClick={() =>
+          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
+        }>
+              Explore Offerings
             </PrimaryButton>
             <SecondaryButton
               onClick={() =>

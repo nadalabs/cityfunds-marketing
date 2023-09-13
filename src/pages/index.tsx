@@ -4,7 +4,7 @@ import AlertBanner from '@components/cityfunds/AlertBanner';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
-import PromoCTA from '@components/cityfunds/PromoCTA';
+import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
@@ -22,6 +22,7 @@ import {
   sanityClient,
 } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
+import NadaFaqs from '@components/cityfunds/NadaFaqs';
 
 interface HomePageProps {
   homePage?: any;
@@ -52,9 +53,9 @@ export default function HomePage({
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios in the nation’s top cities."
-        btnText="Get Started"
+        btnText="Explore Offerings"
         onClick={() =>
-          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
+          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
         }
         formName="Cityfunds Lead"
         heroImages={cityfunds
@@ -71,6 +72,31 @@ export default function HomePage({
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
       <CityfundSlider cityfunds={cityfunds} isHome />
+      <HowItWorks
+        overline="Real Estate Investing Simplified"
+        steps={[
+          {
+            title: 'Select a City',
+            description: 'Choose from our 4 Cityfunds with more coming soon',
+            imageUrl: '/images/screen-1.png',
+          },
+          {
+            title: 'Invest Money',
+            description: 'Connect your bank account and invest',
+            imageUrl: '/images/screen-2.png',
+          },
+          {
+            title: 'Build Wealth',
+            description: 'Grow your portfolio passively',
+            imageUrl: '/images/screen-3.png',
+          },
+        ]}
+        btnText="Get Started"
+        onClick={() =>
+          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
+        }
+        isPhoneFrame
+      />
       <SectionWrapper>
         <FeaturedImage
           overline="Why Cityfunds?"
@@ -130,34 +156,9 @@ export default function HomePage({
         primaryText="We have plenty of reasons."
         valueProps={values}
       />
-      {/* <NadaFaqs faqs={homePage?.questions} /> */}
-      <HowItWorks
-        overline="Real Estate Investing Simplified"
-        steps={[
-          {
-            title: 'Select a City',
-            description: 'Choose from our 4 Cityfunds with more coming soon',
-            imageUrl: '/images/screen-1.png',
-          },
-          {
-            title: 'Invest Money',
-            description: 'Connect your bank account and invest',
-            imageUrl: '/images/screen-2.png',
-          },
-          {
-            title: 'Build Wealth',
-            description: 'Grow your portfolio passively',
-            imageUrl: '/images/screen-3.png',
-          },
-        ]}
-        btnText="Get Started"
-        onClick={() =>
-          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
-        }
-        isPhoneFrame
-      />
+      <NadaFaqs faqs={homePage?.questions} />
       <Testimonials reviews={testimonials} />
-      <PromoCTA promo={partner?.promo || homePage?.promo} />
+      {(partner?.promo || homePage?.promo) && <InvestorPromo promo={partner?.promo || homePage?.promo} />}
     </PageLayout>
   );
 }
