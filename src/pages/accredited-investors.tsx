@@ -12,7 +12,6 @@ import { SectionWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
-import { scrollToId } from '@utils/helpers';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
@@ -41,9 +40,11 @@ export default function AccreditedInvestorsPage({
         heading="Real Estate Investing Reinvented"
         heroCTA={
           <>
-            <PrimaryButton onClick={() =>
-          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
-        }>
+            <PrimaryButton
+              onClick={() =>
+                window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
+              }
+            >
               Explore Offerings
             </PrimaryButton>
             <SecondaryButton

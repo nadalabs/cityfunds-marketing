@@ -87,9 +87,7 @@ export default function PageHero({
 
                 {heroCTA && heroCTA}
                 {btnText && (
-                  <PrimaryButton onClick={onClick}>
-                    {btnText}
-                  </PrimaryButton>
+                  <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
                 )}
               </div>
             </div>

@@ -3,8 +3,9 @@ import FeaturedLogos from '@components/FeaturedLogos';
 import AlertBanner from '@components/cityfunds/AlertBanner';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HowItWorks from '@components/cityfunds/HowItWorks';
-import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
+import KeyMetrics from '@components/cityfunds/KeyMetrics';
+import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
 import PageHero from '@components/common/PageHero';
@@ -22,7 +23,6 @@ import {
   sanityClient,
 } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
-import NadaFaqs from '@components/cityfunds/NadaFaqs';
 
 interface HomePageProps {
   homePage?: any;
@@ -158,7 +158,7 @@ export default function HomePage({
       />
       <NadaFaqs faqs={homePage?.questions} />
       <Testimonials reviews={testimonials} />
-      {(partner?.promo || homePage?.promo) && <InvestorPromo promo={partner?.promo || homePage?.promo} />}
+      {homePage?.promo && <InvestorPromo promo={homePage?.promo} />}
     </PageLayout>
   );
 }
