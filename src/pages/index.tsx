@@ -68,6 +68,7 @@ export default function HomePage({
             heroImage: fund_content?.image_gallery[0],
           }))}
         bannerText={!!bannerText}
+        maxWidth={700}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
       <CityfundSlider cityfunds={cityfunds} isHome />

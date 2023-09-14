@@ -9,22 +9,21 @@ import { EXTERNAL_ROUTES } from '@utils/constants';
 import { homesharesTestimonialsQuery } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
 
-export default function HomeSharesPage({ testimonials }) {
+export default function HomesharesPage({ testimonials }) {
   return (
     <PageLayout>
       <PageHero
         heading="Unlock Home Equity with No Monthly Payments"
         primaryText="Trade in fractions of your home equity for cash and spend it on everyday items. Apply below and one of our home equity specialists will reach out."
         btnText="Apply Now"
-        onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
-        formName="Homeshares Lead"
+        onClick={() => window.open(EXTERNAL_ROUTES.TYPEFORM, '_blank')}
         heroImages={[
           {
             name: 'Homeshares',
             heroImage: '/images/homeshares-hero.png',
           },
         ]}
-        isTextWide
+        maxWidth={900}
       />
       <SectionWrapper>
         <FeaturedImage
@@ -33,7 +32,7 @@ export default function HomeSharesPage({ testimonials }) {
           primaryText="Your home is your biggest asset. It continuously grows with your hard earned time and money. It should be usable like any other savings account. Now you can unlock your equity in 14 days with no monthly payments."
           imageUrl="/images/homeshares.png"
           btnText="Apply Now"
-          onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
+          onClick={() => window.open(EXTERNAL_ROUTES.TYPEFORM, '_blank')}
           isShortHeader
         />
         <KeyMetrics

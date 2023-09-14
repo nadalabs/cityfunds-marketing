@@ -17,6 +17,7 @@ interface PageHeroProps {
   heroImages: { name: string; heroImage: string }[];
   isTextWide?: boolean;
   bannerText?: boolean;
+  maxWidth?: number;
 }
 
 export default function PageHero({
@@ -29,10 +30,11 @@ export default function PageHero({
   heroImages,
   isTextWide,
   bannerText,
+  maxWidth,
 }: PageHeroProps) {
   const sliderRef = useRef();
   const isMobile = useIsMobile();
-console.log(btnTextSecondary)
+
   const settings = {
     dots: false,
     fade: true,
@@ -73,11 +75,10 @@ console.log(btnTextSecondary)
                 gap: '1.5rem',
               }}
             >
-              <div>
+              <div style={{ maxWidth: maxWidth }}>
                 <Heading
                   style={{
                     color: 'white',
-                    maxWidth: isTextWide ? '800px' : '700px',
                     fontSize: isMobile ? '2rem' : '4rem',
                   }}
                 >
@@ -86,19 +87,23 @@ console.log(btnTextSecondary)
                 <LargeText
                   style={{
                     color: isMobile ? 'white' : '#989B9F',
-                    maxWidth: isTextWide ? '900px' : '700px',
                   }}
                 >
                   {primaryText}
                 </LargeText>
               </div>
 
-              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+              <div
+                style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}
+              >
                 {btnText && (
                   <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
                 )}
                 {btnTextSecondary && (
-                  <SecondaryButton onClick={onClickSecondary} style={{color: 'white', height: '100%'}}>
+                  <SecondaryButton
+                    onClick={onClickSecondary}
+                    style={{ color: 'white', height: '100%' }}
+                  >
                     {btnTextSecondary}
                   </SecondaryButton>
                 )}

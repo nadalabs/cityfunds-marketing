@@ -26,7 +26,7 @@ export default function AboutPage({ teammates, values, logos, ourStory }) {
             heroImage: '/images/about-hero.png',
           },
         ]}
-        isTextWide
+        maxWidth={1000}
       />
       <SectionWrapper>
         <LongFormText
