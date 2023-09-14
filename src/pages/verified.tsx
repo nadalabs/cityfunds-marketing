@@ -3,6 +3,7 @@ import PageLayout from '@components/common/PageLayout';
 import { PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
+import { trackPageView } from '@utils/helpers';
 import { getAllFundsContent } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 import Image from 'next/image';
@@ -12,6 +13,10 @@ import { styled } from 'styled-components';
 
 export default function VerifiedPage({ cityfunds }) {
   const isMobile = useIsMobile();
+
+  useEffect(() => {
+    trackPageView('Verified Page Viewed');
+  })
 
   useEffect(() => {
     try {

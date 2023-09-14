@@ -1,10 +1,16 @@
 import PressArticles from '@components/PressArticles';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
+import { trackPageView } from '@utils/helpers';
 import { pressIndexQuery } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
+import { useEffect } from 'react';
 
 export default function PressPage({ allPress }) {
+  useEffect(() => {
+    trackPageView('Press Page Viewed');
+  })
+
   return (
     <PageLayout>
       <PageHero

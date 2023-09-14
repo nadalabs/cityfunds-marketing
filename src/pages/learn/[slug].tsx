@@ -3,10 +3,16 @@ import BlogHero from '@components/blog/BlogHero';
 import LongFormText from '@components/common/LongFormText';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
+import { trackPageView } from '@utils/helpers';
 import { postQuery, postSlugsQuery } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
+import { useEffect } from 'react';
 
 export default function PostPage({ post }) {
+  useEffect(() => {
+    trackPageView('Blog Article Viewed');
+  })
+
   return (
     <PageLayout>
       <BlogHero blogPosts={[post]} />

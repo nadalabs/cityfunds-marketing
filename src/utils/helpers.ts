@@ -99,3 +99,8 @@ export const scrollToId = (id: string) => {
     element.scrollIntoView({ behavior: 'smooth' });
   }
 };
+
+export const trackPageView = async (event: string) => {
+  await window.analytics.identify();
+  await window.analytics.track(event);
+};
