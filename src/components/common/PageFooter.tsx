@@ -47,7 +47,13 @@ export default function PageFooter({ legal }: PageFooterProps) {
 
         {FOOTER_LINKS.map(({ title, links }, idx) => (
           <div key={idx} style={{ marginBottom: '1rem' }}>
-            <BoldText style={{ color: 'black', marginBottom: '0.5rem' }}>
+            <BoldText
+              style={{
+                fontSize: '1rem',
+                color: 'black',
+                marginBottom: '0.5rem',
+              }}
+            >
               {title}
             </BoldText>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -55,7 +61,11 @@ export default function PageFooter({ legal }: PageFooterProps) {
                 <LinkText
                   key={jdx}
                   href={link}
-                  style={{ color: '#989898', marginBottom: '1rem' }}
+                  style={{
+                    fontSize: '1rem',
+                    color: '#989898',
+                    marginBottom: '1rem',
+                  }}
                 >
                   {name}
                 </LinkText>
@@ -64,14 +74,13 @@ export default function PageFooter({ legal }: PageFooterProps) {
           </div>
         ))}
 
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <Link href={EXTERNAL_ROUTES.APPLE_STORE} target="blank">
             <Image
               width={135}
               height={40}
               alt={'Nada'}
               src={'/icons/app-store.svg'}
-              style={{ marginBottom: '16px' }}
             />
           </Link>
           <Link href={EXTERNAL_ROUTES.GOOGLE_STORE} target="blank">
@@ -80,6 +89,14 @@ export default function PageFooter({ legal }: PageFooterProps) {
               height={40}
               alt={'Nada'}
               src={'/icons/google-play.svg'}
+            />
+          </Link>
+          <Link href={EXTERNAL_ROUTES.BUSINESS_BUREAU} target="blank">
+            <Image
+              width={135}
+              height={40}
+              alt={'Nada'}
+              src={'/images/business-bureau.png'}
             />
           </Link>
         </div>

@@ -1,9 +1,9 @@
 import CarouselStepper from '@components/common/CarouselStepper';
-import { PrimaryButton } from '@elements/Buttons';
+import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
-import { ReactNode, useRef } from 'react';
+import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -12,11 +12,11 @@ interface PageHeroProps {
   primaryText?: string;
   btnText?: string;
   onClick?: () => void;
+  btnTextSecondary?: string;
+  onClickSecondary?: () => void;
   heroImages: { name: string; heroImage: string }[];
-  heroCTA?: ReactNode;
-  isTextWide?: boolean;
-  formName?: string;
   bannerText?: boolean;
+  maxWidth?: number;
 }
 
 export default function PageHero({
@@ -24,10 +24,11 @@ export default function PageHero({
   primaryText,
   btnText,
   onClick,
+  btnTextSecondary,
+  onClickSecondary,
   heroImages,
-  heroCTA,
-  isTextWide,
   bannerText,
+  maxWidth,
 }: PageHeroProps) {
   const sliderRef = useRef();
   const isMobile = useIsMobile();
@@ -65,12 +66,18 @@ export default function PageHero({
             }}
           />
           <ContentWrapper style={{ bottom: bannerText ? '11rem' : '8rem' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-              <div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem',
+              }}
+            >
+              <div style={{ maxWidth: maxWidth }}>
                 <Heading
                   style={{
                     color: 'white',
-                    maxWidth: isTextWide ? '1100px' : '700px',
+                    fontSize: isMobile ? '2rem' : '4rem',
                   }}
                 >
                   {heading}
@@ -78,27 +85,44 @@ export default function PageHero({
                 <LargeText
                   style={{
                     color: isMobile ? 'white' : '#989B9F',
-                    maxWidth: isTextWide ? '1100px' : '700px',
-                    marginBottom: '0.5rem',
                   }}
                 >
                   {primaryText}
                 </LargeText>
+              </div>
 
-                {heroCTA && heroCTA}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: isMobile ? 'column' : 'row',
+                  alignItems: 'center',
+                }}
+              >
                 {btnText && (
-                  <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+                  <PrimaryButton
+                    onClick={onClick}
+                    style={{ marginRight: '1rem' }}
+                  >
+                    {btnText}
+                  </PrimaryButton>
+                )}
+                {btnTextSecondary && (
+                  <SecondaryButton
+                    onClick={onClickSecondary}
+                    style={{ color: 'white' }}
+                  >
+                    {btnTextSecondary}
+                  </SecondaryButton>
                 )}
               </div>
+              {heroImages.length > 1 && (
+                <CarouselStepper
+                  activeStep={idx}
+                  totalSteps={heroImages.length}
+                  sliderRef={sliderRef}
+                />
+              )}
             </div>
-
-            {heroImages.length > 1 && (
-              <CarouselStepper
-                activeStep={idx}
-                totalSteps={heroImages.length}
-                sliderRef={sliderRef}
-              />
-            )}
           </ContentWrapper>
         </div>
       ))}

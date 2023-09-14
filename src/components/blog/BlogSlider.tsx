@@ -1,4 +1,9 @@
-import { Overline, PrimaryText, SmallHeading } from '@elements/Typography';
+import {
+  BoldText,
+  Overline,
+  PrimaryText,
+  SmallHeading,
+} from '@elements/Typography';
 import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -20,22 +25,25 @@ interface BlogSliderProps {
 export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
   return (
     <SectionWrapper>
-      <SmallHeading style={{ marginBottom: '48px' }}>{tag}</SmallHeading>
+      <SmallHeading style={{ marginBottom: '2rem' }}>{tag}</SmallHeading>
 
       <div style={{ display: 'flex', overflowX: 'scroll' }}>
         {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
           <Link key={idx} href={`/learn/${slug}`}>
             <CardWrapper>
-              <ImageWrapper>
-                <Image fill alt={title} src={urlForImage(coverImage).url()} />
-              </ImageWrapper>
-
+              <Image
+                alt={title}
+                src={urlForImage(coverImage).url()}
+                width={300}
+                height={200}
+                style={{ borderRadius: '3rem' }}
+              />
               <Overline>
                 <time dateTime={date}>
                   {format(parseISO(date), 'LLLL	d, yyyy')}
                 </time>
               </Overline>
-              <SmallHeading>{title}</SmallHeading>
+              <BoldText>{title}</BoldText>
               <PrimaryText>{excerpt}</PrimaryText>
             </CardWrapper>
           </Link>
@@ -54,25 +62,14 @@ export const SectionWrapper = styled.div`
 `;
 
 export const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   transition: ${({ theme }) => theme.transitions.ease};
-  max-width: 420px;
+  max-width: 300px;
   margin-right: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 300px;
-  }
-`;
-
-export const ImageWrapper = styled.div`
-  position: relative;
-  width: 360px;
-  height: 280px;
-  border-radius: 50px;
-  overflow: hidden;
-  margin-bottom: 20px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 300px;
-    height: 300px;
   }
 `;

@@ -4,6 +4,7 @@ export enum EXTERNAL_ROUTES {
   CAREERS = 'https://linkedin.com/company/hellonada/jobs',
   APPLE_STORE = 'https://apps.apple.com/us/app/nada-finance/id1615840472',
   GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
+  BUSINESS_BUREAU = 'https://www.bbb.org/us/tx/dallas/profile/investment-management/cityfunds-by-nada-0875-91340285#sealclick',
   HUBSPOT_MEETING = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
   HUBSPOT_FAQS = 'https://faqs.nada.co',
 }
