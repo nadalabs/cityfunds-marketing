@@ -15,7 +15,6 @@ interface PageHeroProps {
   btnTextSecondary?: string;
   onClickSecondary?: () => void;
   heroImages: { name: string; heroImage: string }[];
-  isTextWide?: boolean;
   bannerText?: boolean;
   maxWidth?: number;
 }
@@ -28,7 +27,6 @@ export default function PageHero({
   btnTextSecondary,
   onClickSecondary,
   heroImages,
-  isTextWide,
   bannerText,
   maxWidth,
 }: PageHeroProps) {
@@ -94,15 +92,24 @@ export default function PageHero({
               </div>
 
               <div
-                style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}
+                style={{
+                  display: 'flex',
+                  flexDirection: isMobile ? 'column' : 'row',
+                  alignItems: 'center',
+                }}
               >
                 {btnText && (
-                  <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+                  <PrimaryButton
+                    onClick={onClick}
+                    style={{ marginRight: '1rem' }}
+                  >
+                    {btnText}
+                  </PrimaryButton>
                 )}
                 {btnTextSecondary && (
                   <SecondaryButton
                     onClick={onClickSecondary}
-                    style={{ color: 'white', height: '100%' }}
+                    style={{ color: 'white' }}
                   >
                     {btnTextSecondary}
                   </SecondaryButton>

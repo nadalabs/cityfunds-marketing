@@ -56,6 +56,7 @@ export default function AccreditedInvestorsPage({
             name: fund_content?.fund_name,
             heroImage: fund_content?.image_gallery[0],
           }))}
+        maxWidth={700}
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
       <SectionWrapper>

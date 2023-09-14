@@ -38,7 +38,6 @@ export const SecondaryButton = styled.button`
   background: transparent;
   border: transparent;
   border-radius: 3px;
-  height: 40px;
   cursor: pointer;
   padding: 20px 0;
 `;
