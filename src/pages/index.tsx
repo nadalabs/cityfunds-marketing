@@ -57,7 +57,6 @@ export default function HomePage({
         onClick={() =>
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
         }
-        formName="Cityfunds Lead"
         heroImages={cityfunds
           .filter(
             ({ fund_data }) =>
@@ -77,18 +76,19 @@ export default function HomePage({
         steps={[
           {
             title: 'Select a City',
-            description: 'Choose from our 4 Cityfunds with more coming soon',
-            imageUrl: '/images/screen-1.png',
+            description: 'Choose from our cityfunds with more coming soon',
+            imageUrl: '/images/app-1.png',
           },
           {
-            title: 'Invest Money',
-            description: 'Connect your bank account and invest',
-            imageUrl: '/images/screen-2.png',
+            title: 'Get Approved',
+            description:
+              'Verify your identity and connect your bank account to invest',
+            imageUrl: '/images/app-2.png',
           },
           {
             title: 'Build Wealth',
-            description: 'Grow your portfolio passively',
-            imageUrl: '/images/screen-3.png',
+            description: 'Watch your portfolio gain value over time',
+            imageUrl: '/images/app-3.png',
           },
         ]}
         btnText="Get Started"
@@ -139,7 +139,7 @@ export default function HomePage({
           overline="What am I investing in?"
           heading="Diversified Portfolios of Homes"
           primaryText="Own fractional shares of peoples homes across the nations top cities on day one."
-          imageUrl="/images/location-map.png"
+          imageUrl="/images/map.png"
           btnText="Get Started"
           onClick={() =>
             window.open(
@@ -148,6 +148,7 @@ export default function HomePage({
             )
           }
           isReversed
+          isWide
         />
       </SectionWrapper>
       <TextSlider

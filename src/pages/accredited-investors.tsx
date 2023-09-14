@@ -7,7 +7,6 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
-import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
@@ -38,24 +37,13 @@ export default function AccreditedInvestorsPage({
     <PageLayout hideLinks>
       <PageHero
         heading="Real Estate Investing Reinvented"
-        heroCTA={
-          <>
-            <PrimaryButton
-              onClick={() =>
-                window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
-              }
-            >
-              Explore Offerings
-            </PrimaryButton>
-            <SecondaryButton
-              onClick={() =>
-                window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
-              }
-              style={{ color: 'white', marginLeft: '1rem' }}
-            >
-              Schedule a Call
-            </SecondaryButton>
-          </>
+        btnText="Explore Offerings"
+        onClick={() =>
+          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
+        }
+        btnTextSecondary="Schedule a Call"
+        onClickSecondary={() =>
+          window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
         }
         primaryText="Diversified real estate portfolios in the nation's top cities."
         heroImages={cityfunds
@@ -68,7 +56,6 @@ export default function AccreditedInvestorsPage({
             name: fund_content?.fund_name,
             heroImage: fund_content?.image_gallery[0],
           }))}
-        isTextWide
       />
       <FeaturedLogos overline="Featured In" logos={logos} seeMore />
       <SectionWrapper>

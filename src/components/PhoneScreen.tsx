@@ -24,11 +24,11 @@ export default function PhoneScreen({ imageUrl }: PhoneScreenProps) {
           zIndex: -1,
           position: 'absolute',
           top: '150px',
-          left: '-80px',
+          left: '-70px',
         }}
       />
 
-      <Image width={250} height={500} alt={'Phone Screen'} src={imageUrl} />
+      <Image width={300} height={500} alt={'Phone Screen'} src={imageUrl} />
     </div>
   );
 }
