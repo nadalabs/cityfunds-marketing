@@ -6,10 +6,16 @@ import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES } from '@utils/constants';
+import { trackPageView } from '@utils/helpers';
 import { homesharesTestimonialsQuery } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
+import { useEffect } from 'react';
 
 export default function HomesharesPage({ testimonials }) {
+  useEffect(() => {
+    trackPageView('Homeshares Page Viewed');
+  })
+
   return (
     <PageLayout>
       <PageHero

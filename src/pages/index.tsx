@@ -12,6 +12,7 @@ import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { FUND_STATUS, REGULATION } from '@utils/constants';
+import { trackPageView } from '@utils/helpers';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
@@ -23,6 +24,7 @@ import {
   sanityClient,
 } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
+import { useEffect } from 'react';
 
 interface HomePageProps {
   homePage?: any;
@@ -42,6 +44,10 @@ export default function HomePage({
   partner,
 }: HomePageProps) {
   const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
+  
+  useEffect(() => {
+    trackPageView('Cityfunds Page Viewed');
+  })
 
   return (
     <PageLayout

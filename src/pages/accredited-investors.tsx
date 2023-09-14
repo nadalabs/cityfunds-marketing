@@ -11,6 +11,7 @@ import { SectionWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
+import { trackPageView } from '@utils/helpers';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
@@ -23,6 +24,7 @@ import {
   sanityClient,
 } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
+import { useEffect } from 'react';
 
 export default function AccreditedInvestorsPage({
   homePage,
@@ -32,6 +34,9 @@ export default function AccreditedInvestorsPage({
   ourFocus,
 }) {
   const isMobile = useIsMobile();
+  useEffect(() => {
+    trackPageView('Investors Page Viewed');
+  })
 
   return (
     <PageLayout hideLinks>

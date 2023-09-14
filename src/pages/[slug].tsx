@@ -1,3 +1,4 @@
+import { trackPageView } from '@utils/helpers';
 import {
   cityfundsTestimonialsQuery,
   cityfundsValuesQuery,
@@ -14,6 +15,7 @@ import {
 } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 import dynamic from 'next/dynamic';
+import { useEffect } from 'react';
 
 const HomePage = dynamic(() => import('@pages/index'));
 const LegalPage = dynamic(() => import('@components/LegalPage'));
@@ -27,6 +29,10 @@ export default function DynamicPage({
   legal,
   homePage,
 }) {
+  useEffect(() => {
+    trackPageView(`${partner ? 'Publisher' : 'Legal'} Page Viewed`);
+  })
+
   return (
     <>
       {partner && (

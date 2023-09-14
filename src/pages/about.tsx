@@ -6,6 +6,7 @@ import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
+import { trackPageView } from '@utils/helpers';
 import {
   backersLogosQuery,
   nadaValuesQuery,
@@ -13,8 +14,13 @@ import {
   teammateIndexQuery,
 } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
+import { useEffect } from 'react';
 
 export default function AboutPage({ teammates, values, logos, ourStory }) {
+  useEffect(() => {
+    trackPageView('About Page Viewed');
+  })
+
   return (
     <PageLayout>
       <PageHero

@@ -133,12 +133,6 @@ const ScrollWrapper = styled.div`
   display: flex;
   gap: 1.5rem;
   overflow-x: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 const TopWrapper = styled.div`

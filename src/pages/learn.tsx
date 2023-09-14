@@ -2,11 +2,17 @@ import BlogCapture from '@components/blog/BlogCapture';
 import BlogHero from '@components/blog/BlogHero';
 import BlogSlider from '@components/blog/BlogSlider';
 import PageLayout from '@components/common/PageLayout';
+import { trackPageView } from '@utils/helpers';
 import { indexQuery } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
 import _ from 'lodash';
+import { useEffect } from 'react';
 
 export default function LearnPage({ allPosts }) {
+  useEffect(() => {
+    trackPageView('Blog Page Viewed');
+  })
+
   const postsByTag = _.groupBy(allPosts, 'tag');
   const heroPosts = allPosts
     .filter(({ tag }) => tag === 'Investing' || tag === 'Home Equity')
