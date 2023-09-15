@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 export default function PressPage({ allPress }) {
   useEffect(() => {
     trackPageView('Press Page Viewed');
-  })
+  });
 
   return (
     <PageLayout>

@@ -31,7 +31,7 @@ export default function DynamicPage({
 }) {
   useEffect(() => {
     trackPageView(`${partner ? 'Publisher' : 'Legal'} Page Viewed`);
-  })
+  });
 
   return (
     <>

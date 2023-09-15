@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 export default function HomesharesPage({ testimonials }) {
   useEffect(() => {
     trackPageView('Homeshares Page Viewed');
-  })
+  });
 
   return (
     <PageLayout>

@@ -36,7 +36,7 @@ export default function AccreditedInvestorsPage({
   const isMobile = useIsMobile();
   useEffect(() => {
     trackPageView('Investors Page Viewed');
-  })
+  });
 
   return (
     <PageLayout hideLinks>

@@ -44,10 +44,10 @@ export default function HomePage({
   partner,
 }: HomePageProps) {
   const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
-  
+
   useEffect(() => {
     trackPageView('Cityfunds Page Viewed');
-  })
+  });
 
   return (
     <PageLayout
