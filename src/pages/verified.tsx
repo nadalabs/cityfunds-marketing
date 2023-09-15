@@ -16,7 +16,7 @@ export default function VerifiedPage({ cityfunds }) {
 
   useEffect(() => {
     trackPageView('Verified Page Viewed');
-  })
+  });
 
   useEffect(() => {
     try {

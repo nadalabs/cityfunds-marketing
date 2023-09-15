@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 export default function PostPage({ post }) {
   useEffect(() => {
     trackPageView('Blog Article Viewed');
-  })
+  });
 
   return (
     <PageLayout>

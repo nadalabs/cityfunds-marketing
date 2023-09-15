@@ -19,7 +19,7 @@ import { useEffect } from 'react';
 export default function AboutPage({ teammates, values, logos, ourStory }) {
   useEffect(() => {
     trackPageView('About Page Viewed');
-  })
+  });
 
   return (
     <PageLayout>

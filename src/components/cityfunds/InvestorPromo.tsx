@@ -23,7 +23,7 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
   return (
     <SectionWrapper id="promo">
       <ContentWrapper>
-        <StackWrapper style={{ gap: '0.5rem', marginBottom: '2rem' }}>
+        <StackWrapper style={{ gap: '0.5rem', marginBottom: '1rem' }}>
           <Heading style={{ maxWidth: '34rem' }}>{promo?.title}</Heading>
           <LongFormText content={promo?.description} />
           <LinkText
@@ -37,15 +37,9 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
             *Terms and conditions apply
           </LinkText>
         </StackWrapper>
-
-        <div style={{ display: 'flex', gap: '1.25rem' }}>
-          <Link href="https://invest.nada.co/cityfunds/austin" target="_blank">
-            <PrimaryButton>Austin Cityfund</PrimaryButton>
-          </Link>
-          <Link href="https://invest.nada.co/cityfunds/dallas" target="_blank">
-            <PrimaryButton>Dallas Cityfund</PrimaryButton>
-          </Link>
-        </div>
+        <Link href={process.env.NEXT_PUBLIC_WEB_APP_URL} target="_blank">
+          <PrimaryButton>Invest Now</PrimaryButton>
+        </Link>
       </ContentWrapper>
 
       {!isMobile && (

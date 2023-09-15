@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 export default function LearnPage({ allPosts }) {
   useEffect(() => {
     trackPageView('Blog Page Viewed');
-  })
+  });
 
   const postsByTag = _.groupBy(allPosts, 'tag');
   const heroPosts = allPosts
