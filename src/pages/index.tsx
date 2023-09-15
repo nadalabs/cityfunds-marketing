@@ -1,6 +1,5 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
-import AlertBanner from '@components/cityfunds/AlertBanner';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
@@ -55,7 +54,6 @@ export default function HomePage({
       bannerText={bannerText}
       hideLinks={!!partner}
     >
-      {bannerText && <AlertBanner primaryText={bannerText} />}
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios in the nation’s top cities."

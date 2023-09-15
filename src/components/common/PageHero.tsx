@@ -147,7 +147,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   gap: 1.5rem;
-  margin-left: 100px;
+  padding-left: 6.25rem;
   z-index: 999;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

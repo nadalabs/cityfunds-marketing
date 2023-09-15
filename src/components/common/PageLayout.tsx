@@ -1,7 +1,9 @@
+import AlertBanner from '@components/cityfunds/AlertBanner';
 import DesktopNavBar from '@components/common/DesktopNavBar';
 import MobileNavBar from '@components/common/MobileNavBar';
 import useIsMobile from '@hooks/useIsMobile';
 import { ReactNode } from 'react';
+import styled from 'styled-components';
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -21,7 +23,8 @@ export default function PageLayout({
   const isMobile = useIsMobile();
 
   return (
-    <div>
+    <LayoutWrapper>
+      {bannerText && <AlertBanner primaryText={bannerText} />}
       {isMobile ? (
         <MobileNavBar bannerText={bannerText} />
       ) : (
@@ -32,7 +35,19 @@ export default function PageLayout({
           hideLinks={!!hideLinks}
         />
       )}
-      {children}
-    </div>
+      <MainWrapper>{children}</MainWrapper>
+    </LayoutWrapper>
   );
 }
+
+const LayoutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+`;
+
+const MainWrapper = styled.div`
+  width: 100%;
+  max-width: 100rem;
+`;

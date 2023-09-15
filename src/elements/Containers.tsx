@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SectionWrapper = styled.div`
-  padding: 100px 150px;
+  padding: 6.25rem 150px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 48px 24px;
