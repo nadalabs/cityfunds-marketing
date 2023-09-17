@@ -37,14 +37,16 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
 
   useEffect(() => {
     const checkVisibility = () => {
-      if (window.scrollY > window.innerHeight * 2 && !isCanceled) {
+      if (!isCanceled && window.scrollY > window.innerHeight * 2) {
         setIsVisible(true);
+      } else {
+        setIsVisible(false);
       }
     };
 
     window.addEventListener('scroll', checkVisibility);
     return () => window.removeEventListener('scroll', checkVisibility);
-  }, []);
+  }, [isCanceled]);
 
   const onSubmit = async (inputs: FieldValues) => {
     try {
@@ -57,6 +59,10 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
       await window.analytics.track(formName, payload);
       setCookie('email', inputs.email);
       setIsSubmitted(true);
+      setInterval(() => {
+        setIsCanceled(true);
+        setIsVisible(false);
+      }, 3000);
     } catch (err: any) {
       setError('email', {
         message: err.response.data.errors.message,
@@ -102,7 +108,7 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
           )}
         </div>
 
-        <div style={{ maxWidth: '600px' }}>
+        <div style={{ width: '100%' }}>
           <FormProvider {...methods}>
             <StyledForm
               style={{ flexDirection: isMobile ? 'column' : 'row' }}
@@ -182,6 +188,8 @@ const StickyWrapper = styled.div`
   transition: opacity 0.5s ease-in-out;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+    bottom: 0;
   }
 `;
 
@@ -218,8 +226,6 @@ const FormWrapper = styled.div`
 `;
 
 const BtnWrapper = styled.div`
-  width: 200px;
-
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
     margin-bottom: 1rem;
