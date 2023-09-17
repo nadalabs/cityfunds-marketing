@@ -16,16 +16,16 @@ export default function PostPage({ post }) {
   return (
     <>
       <BlogHero blogPosts={[post]} />
-    <PageLayout>
-      <SectionWrapper>
-        <LongFormText
-          overline={post?.tag}
-          title={post?.title}
-          content={post?.content}
-        />
-      </SectionWrapper>
-      <EmailCapture formName="Blog" />
-    </PageLayout>
+      <PageLayout>
+        <SectionWrapper>
+          <LongFormText
+            overline={post?.tag}
+            title={post?.title}
+            content={post?.content}
+          />
+        </SectionWrapper>
+        <EmailCapture formName="Blog" />
+      </PageLayout>
     </>
   );
 }

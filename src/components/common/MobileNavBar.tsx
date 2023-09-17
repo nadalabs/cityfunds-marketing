@@ -1,6 +1,7 @@
 import { PrimaryButton } from '@elements/Buttons';
+import { StackWrapper } from '@elements/Containers';
 import { LinkText } from '@elements/Typography';
-import { HEADER_LINKS } from '@utils/constants';
+import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,9 +9,10 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 export default function MobileNavBar({ bannerText }) {
+  const router = useRouter();
+  const isHomeshares = router.pathname.includes('homeshares');
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
-  const router = useRouter();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -56,27 +58,45 @@ export default function MobileNavBar({ bannerText }) {
 
       {showMenu && (
         <MenuWrapper>
-          {HEADER_LINKS.map(({ name, link, isNewTab }, idx) => (
+          {HEADER_LINKS.map(({ name, link }, idx) => (
             <LinkText
               key={idx}
               href={link}
               style={{ color: link === router.pathname ? '#48DC95' : 'white' }}
-              target={isNewTab ? '_blank' : ''}
             >
               {name.toUpperCase()}
             </LinkText>
           ))}
 
-          <PrimaryButton
-            onClick={() =>
-              window.open(
-                `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-                '_blank'
-              )
-            }
-          >
-            Get Started
-          </PrimaryButton>
+          <StackWrapper>
+            {!isHomeshares && (
+              <PrimaryButton
+                onClick={() =>
+                  window.open(
+                    isHomeshares
+                      ? `${EXTERNAL_ROUTES.TYPEFORM}`
+                      : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
+                    '_blank'
+                  )
+                }
+                isInverted
+              >
+                Login
+              </PrimaryButton>
+            )}
+            <PrimaryButton
+              onClick={() =>
+                window.open(
+                  isHomeshares
+                    ? `${EXTERNAL_ROUTES.TYPEFORM}`
+                    : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+                  '_blank'
+                )
+              }
+            >
+              {isHomeshares ? 'Apply Now' : 'Get Started'}
+            </PrimaryButton>
+          </StackWrapper>
         </MenuWrapper>
       )}
     </SectionWrapper>
