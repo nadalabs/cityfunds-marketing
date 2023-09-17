@@ -163,7 +163,12 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
 
   if (isPopup) {
     return (
-      <StickyWrapper style={{ opacity: isVisible ? '1' : '0' }}>
+      <StickyWrapper
+        style={{
+          opacity: isVisible ? '1' : '0',
+          zIndex: isVisible ? '999' : '-999',
+        }}
+      >
         {renderContent()}
       </StickyWrapper>
     );

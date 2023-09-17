@@ -1,5 +1,5 @@
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
-import { HEADER_LINKS } from '@utils/constants';
+import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -24,6 +24,7 @@ export default function DesktopNavBar({
 }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const router = useRouter();
+  const isHomeshares = router.pathname.includes('homeshares');
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -106,15 +107,32 @@ export default function DesktopNavBar({
                 </NavbarLink>
               ))}
 
+              {!isHomeshares && (
+                <PrimaryButton
+                  onClick={() =>
+                    window.open(
+                      isHomeshares
+                        ? `${EXTERNAL_ROUTES.TYPEFORM}`
+                        : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
+                      '_blank'
+                    )
+                  }
+                  isInverted
+                >
+                  Login
+                </PrimaryButton>
+              )}
               <PrimaryButton
                 onClick={() =>
                   window.open(
-                    `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+                    isHomeshares
+                      ? `${EXTERNAL_ROUTES.TYPEFORM}`
+                      : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
                     '_blank'
                   )
                 }
               >
-                Get Started
+                {isHomeshares ? 'Apply Now' : 'Get Started'}
               </PrimaryButton>
             </div>
           )}
