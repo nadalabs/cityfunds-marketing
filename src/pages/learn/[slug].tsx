@@ -14,17 +14,19 @@ export default function PostPage({ post }) {
   });
 
   return (
-    <PageLayout>
+    <>
       <BlogHero blogPosts={[post]} />
-      <SectionWrapper>
-        <LongFormText
-          overline={post?.tag}
-          title={post?.title}
-          content={post?.content}
-        />
-      </SectionWrapper>
-      <EmailCapture formName="Blog" />
-    </PageLayout>
+      <PageLayout>
+        <SectionWrapper>
+          <LongFormText
+            overline={post?.tag}
+            title={post?.title}
+            content={post?.content}
+          />
+        </SectionWrapper>
+        <EmailCapture formName="Blog" />
+      </PageLayout>
+    </>
   );
 }
 

@@ -37,6 +37,8 @@ const BannerWrapper = styled.div`
   background-color: #303030;
   text-align: center;
   padding: 0.5rem 0;
+  position: absolute;
+  top: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;

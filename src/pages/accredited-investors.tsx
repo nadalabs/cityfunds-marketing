@@ -39,7 +39,7 @@ export default function AccreditedInvestorsPage({
   });
 
   return (
-    <PageLayout hideLinks>
+    <>
       <PageHero
         heading="Real Estate Investing Reinvented"
         btnText="Explore Offerings"
@@ -63,66 +63,73 @@ export default function AccreditedInvestorsPage({
           }))}
         maxWidth={700}
       />
-      <FeaturedLogos overline="Featured In" logos={logos} seeMore />
-      <SectionWrapper>
-        <LongFormText title="Our Mission" content={ourFocus} />
-      </SectionWrapper>
-      <CityfundSlider cityfunds={cityfunds} isHome />
+      <PageLayout hideLinks>
+        <FeaturedLogos overline="Featured In" logos={logos} seeMore />
+        <SectionWrapper>
+          <LongFormText title="Our Mission" content={ourFocus} />
+        </SectionWrapper>
+        <CityfundSlider cityfunds={cityfunds} isHome />
 
-      <SectionWrapper>
-        <Heading style={{ marginBottom: '-4rem' }}>Our Performance</Heading>
-        <div style={{ marginBottom: isMobile ? '-7rem' : 0 }}>
-          <KeyMetrics
-            metrics={[
-              {
-                label: 'Total Investors',
-                value: 10,
-                formattingFn: (val) => `${val}K+`,
-              },
-              {
-                label: 'Properties Funded',
-                value: 70,
-                formattingFn: (val) => `${val}+`,
-              },
-              {
-                label: 'Gross Asset Value',
-                value: 35,
-                formattingFn: (val) => `$${val}M+`,
-              },
-            ]}
+        <SectionWrapper>
+          <Heading style={{ marginBottom: '-4rem' }}>Our Performance</Heading>
+          <div style={{ marginBottom: isMobile ? '-7rem' : 0 }}>
+            <KeyMetrics
+              metrics={[
+                {
+                  label: 'Total Investors',
+                  value: 10,
+                  formattingFn: (val) => `${val}K+`,
+                },
+                {
+                  label: 'Properties Funded',
+                  value: 70,
+                  formattingFn: (val) => `${val}+`,
+                },
+                {
+                  label: 'Gross Asset Value',
+                  value: 35,
+                  formattingFn: (val) => `$${val}M+`,
+                },
+              ]}
+            />
+          </div>
+        </SectionWrapper>
+
+        <TextSlider
+          overline="You may be wondering..."
+          heading="Why Cityfunds?"
+          primaryText="We have plenty of reasons."
+          valueProps={values}
+        />
+        <FaqsSection faqs={homePage?.questions} />
+        <SectionWrapper>
+          <FeaturedImage
+            heading="Trusted by 10,000+ Investors"
+            primaryText="With $1.8M+ capital invested"
+            imageUrl="/images/america-states.png"
+            btnText="Schedule a Call"
+            onClick={() =>
+              window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
+            }
+            isReversed
+            isWide
           />
-        </div>
-      </SectionWrapper>
-
-      <TextSlider
-        heading="Why Cityfunds?"
-        primaryText="We have plenty of reasons."
-        valueProps={values}
-      />
-      <FaqsSection faqs={homePage?.questions} />
-      <SectionWrapper>
-        <FeaturedImage
-          heading="Trusted by 8,000+ Investors"
-          primaryText="With $1.8M+ capital invested"
-          imageUrl="/images/america-states.png"
-          btnText="Schedule a Call"
-          onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
-          isReversed
-          isWide
-        />
-      </SectionWrapper>
-      <SectionWrapper>
-        <FeaturedImage
-          overline="Have any questions?"
-          heading="Let’s Talk"
-          primaryText="Our team is licensed and standing by to answer your questions and share the Cityfunds strategy in private consultations. Contact Deyon Robertson, our Investor Relations Lead today to learn more and get access to private offerings."
-          imageUrl="/images/deyon.png"
-          btnText="Schedule a Call"
-          onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
-          isShort
-        />
-      </SectionWrapper>
-    </PageLayout>
+        </SectionWrapper>
+        <SectionWrapper>
+          <FeaturedImage
+            overline="Have any questions?"
+            heading="Let’s Talk"
+            primaryText="Our team is licensed and standing by to answer your questions and share the Cityfunds strategy in private consultations. Contact Deyon Robertson, our Investor Relations Lead today to learn more and get access to private offerings."
+            imageUrl="/images/deyon.png"
+            btnText="Schedule a Call"
+            onClick={() =>
+              window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
+            }
+            isShort
+          />
+        </SectionWrapper>
+      </PageLayout>
+    </>
   );
 }
 
