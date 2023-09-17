@@ -66,7 +66,7 @@ export default function CityfundSlider({
   return (
     <SectionWrapper
       style={{
-        marginLeft: isHome && !isMobile ? '150px' : 0,
+        marginLeft: isHome && !isMobile ? '6.25rem' : 0,
         marginBottom: isHome && !isMobile ? '8rem' : 0,
       }}
       id="cityfunds"

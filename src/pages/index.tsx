@@ -1,6 +1,5 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
-import AlertBanner from '@components/cityfunds/AlertBanner';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
@@ -8,6 +7,7 @@ import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
+import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
@@ -55,7 +55,6 @@ export default function HomePage({
       bannerText={bannerText}
       hideLinks={!!partner}
     >
-      {bannerText && <AlertBanner primaryText={bannerText} />}
       <PageHero
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified real estate portfolios in the nation’s top cities."
@@ -167,6 +166,7 @@ export default function HomePage({
       <NadaFaqs faqs={homePage?.questions} />
       <Testimonials reviews={testimonials} />
       {homePage?.promo && <InvestorPromo promo={homePage?.promo} />}
+      <EmailCapture formName="Cityfunds" isPopup />
     </PageLayout>
   );
 }

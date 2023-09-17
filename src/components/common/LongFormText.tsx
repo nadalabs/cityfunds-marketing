@@ -1,3 +1,4 @@
+import { StackWrapper } from '@elements/Containers';
 import {
   Caption,
   Heading,
@@ -62,13 +63,13 @@ export default function LongFormText({
     },
   };
   return (
-    <>
+    <StackWrapper>
       {overline && <Overline>{overline}</Overline>}
       {title && <Heading>{title}</Heading>}
       <div style={{ width: '100%' }}>
         {/* @ts-ignore-next-line */}
         <PortableText value={content || []} components={components} />
       </div>
-    </>
+    </StackWrapper>
   );
 }

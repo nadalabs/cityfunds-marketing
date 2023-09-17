@@ -1,5 +1,5 @@
-import BlogCapture from '@components/blog/BlogCapture';
 import BlogHero from '@components/blog/BlogHero';
+import EmailCapture from '@components/common/EmailCapture';
 import LongFormText from '@components/common/LongFormText';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
@@ -23,7 +23,7 @@ export default function PostPage({ post }) {
           content={post?.content}
         />
       </SectionWrapper>
-      <BlogCapture />
+      <EmailCapture formName="Blog" />
     </PageLayout>
   );
 }

@@ -1,5 +1,5 @@
 import CarouselStepper from '@components/common/CarouselStepper';
-import { SectionWrapper } from '@elements/Containers';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import { useRef } from 'react';
 import Slider from 'react-slick';
@@ -25,32 +25,38 @@ export default function Testimonials({ reviews }: TestimonialsProps) {
 
   return (
     <SectionWrapper>
-      <Overline>Hear it from our users...</Overline>
-      <Slider {...settings} ref={sliderRef}>
-        {reviews?.map(({ name, review, city }, idx) => (
-          <div key={idx}>
-            <ContentWrapper>
-              <div style={{ maxWidth: '788px', marginRight: '24px' }}>
-                <QuoteText>"{review}"</QuoteText>
-                <CarouselStepper
-                  activeStep={idx}
-                  totalSteps={reviews.length}
-                  sliderRef={sliderRef}
-                />
-              </div>
+      <StackWrapper>
+        <Overline>Hear it from our users...</Overline>
+        <Slider {...settings} ref={sliderRef}>
+          {reviews?.map(({ name, review, city }, idx) => (
+            <div key={idx}>
+              <ContentWrapper>
+                <div style={{ maxWidth: '788px', marginRight: '24px' }}>
+                  <QuoteText>"{review}"</QuoteText>
+                  <CarouselStepper
+                    activeStep={idx}
+                    totalSteps={reviews.length}
+                    sliderRef={sliderRef}
+                  />
+                </div>
 
-              <TextWrapper>
-                <PrimaryText
-                  style={{ color: '#48DC95', fontWeight: 600, marginBottom: 0 }}
-                >
-                  {name}
-                </PrimaryText>
-                <PrimaryText style={{ color: 'black' }}>{city}</PrimaryText>
-              </TextWrapper>
-            </ContentWrapper>
-          </div>
-        ))}
-      </Slider>
+                <TextWrapper>
+                  <PrimaryText
+                    style={{
+                      color: '#48DC95',
+                      fontWeight: 600,
+                      marginBottom: 0,
+                    }}
+                  >
+                    {name}
+                  </PrimaryText>
+                  <PrimaryText style={{ color: 'black' }}>{city}</PrimaryText>
+                </TextWrapper>
+              </ContentWrapper>
+            </div>
+          ))}
+        </Slider>
+      </StackWrapper>
     </SectionWrapper>
   );
 }

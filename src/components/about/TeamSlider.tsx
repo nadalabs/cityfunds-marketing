@@ -2,7 +2,6 @@ import { GreenSquare } from '@components/common/CarouselStepper';
 import { CardWrapper, SliderWrapper } from '@elements/Containers';
 import { BoldText, Heading, Overline } from '@elements/Typography';
 import { urlForImage } from 'lib/sanity';
-import { styled } from 'styled-components';
 
 interface TeamSliderProps {
   teammates: {
@@ -16,10 +15,8 @@ interface TeamSliderProps {
 export default function TeamSlider({ teammates }: TeamSliderProps) {
   return (
     <SliderWrapper>
-      <HeadingWrapper>
-        <Overline>Who We Are</Overline>
-        <Heading>Our Team</Heading>
-      </HeadingWrapper>
+      <Overline>Who We Are</Overline>
+      <Heading>Our Team</Heading>
       <div style={{ display: 'flex', overflowX: 'scroll' }}>
         {teammates
           ?.map((props) => ({
@@ -73,11 +70,3 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
     </SliderWrapper>
   );
 }
-
-export const HeadingWrapper = styled.div`
-  max-width: 1100px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
-  }
-`;
