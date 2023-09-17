@@ -1,7 +1,6 @@
 import { CardWrapper, SliderWrapper, StackWrapper } from '@elements/Containers';
 import {
   Heading,
-  LargeText,
   Overline,
   PrimaryText,
   SmallHeading,
@@ -24,8 +23,11 @@ export default function TextSlider({
   return (
     <SliderWrapper>
       {overline && <Overline>{overline}</Overline>}
-      <Heading>{heading}</Heading>
-      {primaryText && <LargeText>{primaryText}</LargeText>}
+
+      <div>
+        <Heading>{heading}</Heading>
+        {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
+      </div>
 
       <div
         style={{
