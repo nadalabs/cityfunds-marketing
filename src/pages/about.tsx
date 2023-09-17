@@ -22,7 +22,7 @@ export default function AboutPage({ teammates, values, logos, ourStory }) {
   });
 
   return (
-    <PageLayout>
+    <>
       <PageHero
         heading="Create products that unlock wealth & financial freedom."
         primaryText="Unlock diversified real estate portfolios with passive income in the nations top cities."
@@ -34,22 +34,24 @@ export default function AboutPage({ teammates, values, logos, ourStory }) {
         ]}
         maxWidth={1000}
       />
-      <SectionWrapper>
-        <LongFormText
-          title="Our Story"
-          overline="We are on a Mission"
-          content={ourStory}
+      <PageLayout>
+        <SectionWrapper>
+          <LongFormText
+            title="Our Story"
+            overline="We are on a Mission"
+            content={ourStory}
+          />
+        </SectionWrapper>
+        <FeaturedLogos overline="World Class Backing" logos={logos} />
+        <TeamSlider teammates={teammates} />
+        <TextSlider
+          overline="How We Think"
+          heading="Our Values"
+          valueProps={values}
         />
-      </SectionWrapper>
-      <FeaturedLogos overline="World Class Backing" logos={logos} />
-      <TeamSlider teammates={teammates} />
-      <TextSlider
-        overline="How We Think"
-        heading="Our Values"
-        valueProps={values}
-      />
-      <CareersCTA />
-    </PageLayout>
+        <CareersCTA />
+      </PageLayout>
+    </>
   );
 }
 

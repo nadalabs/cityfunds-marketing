@@ -14,8 +14,9 @@ export default function PostPage({ post }) {
   });
 
   return (
-    <PageLayout>
+    <>
       <BlogHero blogPosts={[post]} />
+    <PageLayout>
       <SectionWrapper>
         <LongFormText
           overline={post?.tag}
@@ -25,6 +26,7 @@ export default function PostPage({ post }) {
       </SectionWrapper>
       <EmailCapture formName="Blog" />
     </PageLayout>
+    </>
   );
 }
 
