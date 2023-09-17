@@ -89,7 +89,7 @@ const StyledInput = styled.input`
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.5rem;
-  padding: 0.375rem 0.375rem 0.375rem 1.5rem;
+  padding: 0.375rem 0.375rem 0.375rem 1rem;
   border: none;
   border-radius: 0.625rem;
 

@@ -2,6 +2,7 @@ import FeaturedImage from '@components/FeaturedImage';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import Testimonials from '@components/cityfunds/Testimonials';
+import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
@@ -84,6 +85,7 @@ export default function HomesharesPage({ testimonials }) {
         onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
       />
       <Testimonials reviews={testimonials} />
+      <EmailCapture formName="Homeshares" isPopup />
     </PageLayout>
   );
 }
