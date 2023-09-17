@@ -7,6 +7,7 @@ import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
+import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
@@ -165,6 +166,7 @@ export default function HomePage({
       <NadaFaqs faqs={homePage?.questions} />
       <Testimonials reviews={testimonials} />
       {homePage?.promo && <InvestorPromo promo={homePage?.promo} />}
+      <EmailCapture formName="Cityfunds" isPopup />
     </PageLayout>
   );
 }

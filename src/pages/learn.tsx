@@ -1,6 +1,6 @@
-import BlogCapture from '@components/blog/BlogCapture';
 import BlogHero from '@components/blog/BlogHero';
 import BlogSlider from '@components/blog/BlogSlider';
+import EmailCapture from '@components/common/EmailCapture';
 import PageLayout from '@components/common/PageLayout';
 import { trackPageView } from '@utils/helpers';
 import { indexQuery } from 'lib/queries';
@@ -32,7 +32,7 @@ export default function LearnPage({ allPosts }) {
     <PageLayout>
       <BlogHero blogPosts={heroPosts} />
       {renderBlogSliders()}
-      <BlogCapture />
+      <EmailCapture formName="Blog" />
     </PageLayout>
   );
 }

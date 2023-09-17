@@ -82,7 +82,7 @@ export const FormInput: React.FC<FormInputProps> = ({
 const StyledInput = styled.input`
   width: 33.5rem;
   height: 3.5rem;
-  color: white;
+  color: black;
   background-color: transparent;
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;

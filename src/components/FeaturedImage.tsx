@@ -1,4 +1,3 @@
-import { GreenSquare } from '@components/common/CarouselStepper';
 import { PrimaryButton } from '@elements/Buttons';
 import { StackWrapper } from '@elements/Containers';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
@@ -98,7 +97,6 @@ export default function FeaturedImage({
               width={isWide ? 700 : 500}
             />
           </ImageWrapper>
-          <ImageSquare />
         </FlexWrapper>
       )}
     </ContentWrapper>
@@ -144,13 +142,6 @@ const BorderImageWrapper = styled(ImageWrapper)`
     margin-right: 0;
     margin-bottom: 1rem;
   }
-`;
-
-const ImageSquare = styled(GreenSquare)`
-  height: 30px;
-  width: 30px;
-  position: absolute;
-  margin: 0;
 `;
 
 const FlexWrapper = styled.div`

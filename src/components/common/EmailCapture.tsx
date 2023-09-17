@@ -1,25 +1,28 @@
 import { PrimaryButton } from '@elements/Buttons';
+import { SectionWrapper } from '@elements/Containers';
 import { FormInput, StyledForm } from '@elements/FormInput';
-import { Caption, ErrorText } from '@elements/Typography';
+import {
+  Caption,
+  ErrorText,
+  Overline,
+  SmallHeading,
+} from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { LEGAL_LINKS, UTM_PARAMETERS } from '@utils/constants';
 import { getCookie, setCookie } from '@utils/helpers';
 import Link from 'next/link';
+import { useState } from 'react';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { styled } from 'styled-components';
 
 interface EmailCaptureProps {
-  btnText: string;
-  onClick: () => void;
   formName: string;
+  isPopup?: boolean;
 }
 
-export default function EmailCapture({
-  btnText,
-  onClick,
-  formName,
-}: EmailCaptureProps) {
+export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
   const isMobile = useIsMobile();
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const methods = useForm<FieldValues>({
     defaultValues: {
       email: '',
@@ -38,7 +41,7 @@ export default function EmailCapture({
       await window.analytics.identify(payload);
       await window.analytics.track(formName, payload);
       setCookie('email', inputs.email);
-      onClick();
+      setIsSubmitted(true);
     } catch (err: any) {
       setError('email', {
         message: err.response.data.errors.message,
@@ -46,60 +49,113 @@ export default function EmailCapture({
     }
   };
 
+  function renderContent() {
+    return (
+      <>
+        <div>
+          <Overline>Be the first to know about new Cityfunds</Overline>
+          <SmallHeading>Sign Up for Updates</SmallHeading>
+        </div>
+
+        <div style={{ maxWidth: '600px' }}>
+          <FormProvider {...methods}>
+            <StyledForm
+              style={{ flexDirection: isMobile ? 'column' : 'row' }}
+              onSubmit={() => handleSubmit(onSubmit)}
+            >
+              <FormWrapper>
+                <FormInput
+                  name="email"
+                  rules={{
+                    required: 'Email address is required',
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: 'Invalid email address',
+                    },
+                  }}
+                  type="email"
+                  placeholder="Enter Your Email"
+                />
+
+                {!isMobile && (
+                  <BtnWrapper>
+                    <PrimaryButton type="submit">Subscribe</PrimaryButton>
+                  </BtnWrapper>
+                )}
+              </FormWrapper>
+
+              {isMobile && (
+                <BtnWrapper>
+                  <PrimaryButton type="submit">Subscribe</PrimaryButton>
+                </BtnWrapper>
+              )}
+            </StyledForm>
+
+            {formState?.errors?.root?.message && (
+              <ErrorText>{formState?.errors?.root?.message}</ErrorText>
+            )}
+            <Caption>
+              By subscribing you agree with our{' '}
+              <Link
+                href={LEGAL_LINKS[1].link}
+                style={{ color: '#48DC95', cursor: 'pointer' }}
+              >
+                Privacy Policy
+              </Link>{' '}
+              and provide consent to receiving updates from our company.
+            </Caption>
+          </FormProvider>
+        </div>
+      </>
+    );
+  }
+
+  if (isPopup) {
+    return <StickyWrapper>{renderContent()}</StickyWrapper>;
+  }
+
   return (
-    <FormProvider {...methods}>
-      <StyledForm style={{ flexDirection: isMobile ? 'column' : 'row' }}>
-        <FormWrapper>
-          <FormInput
-            name="email"
-            rules={{
-              required: 'Email address is required',
-              pattern: {
-                value: /^\S+@\S+$/i,
-                message: 'Invalid email address',
-              },
-            }}
-            type="email"
-            placeholder="Enter Your Email"
-          />
-
-          {!isMobile && (
-            <BtnWrapper>
-              <PrimaryButton onClick={handleSubmit(onSubmit)}>
-                {btnText}
-              </PrimaryButton>
-            </BtnWrapper>
-          )}
-        </FormWrapper>
-
-        {isMobile && (
-          <BtnWrapper>
-            <PrimaryButton onClick={handleSubmit(onSubmit)}>
-              {btnText}
-            </PrimaryButton>
-          </BtnWrapper>
-        )}
-      </StyledForm>
-
-      {formState?.errors?.root?.message && (
-        <ErrorText>{formState?.errors?.root?.message}</ErrorText>
-      )}
-      <Caption>
-        By subscribing you agree with our{' '}
-        <Link
-          href={LEGAL_LINKS[1].link}
-          style={{ color: '#48DC95', cursor: 'pointer' }}
-        >
-          Privacy Policy
-        </Link>{' '}
-        and provide consent to receiving updates from our company.
-      </Caption>
-    </FormProvider>
+    <SectionWrapper>
+      <ContentWrapper>{renderContent()}</ContentWrapper>
+    </SectionWrapper>
   );
 }
 
+const StickyWrapper = styled.div`
+  flex-direction: column;
+  align-items: flex-start;
+  position: sticky;
+  left: 6.5rem;
+  bottom: 2rem;
+  width: 40%;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  gap: 1.5rem;
+  background-color: white;
+  box-shadow: 2px 4px 25px 0px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+  }
+`;
+
+const ContentWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 4px 25px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 3.5rem;
+  padding: 3.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+    box-shadow: none;
+    padding: 0;
+  }
+`;
+
 const FormWrapper = styled.div`
-  width: 700px;
+  width: inherit;
   display: flex;
   align-items: center;
   justify-items: space-between;
@@ -115,7 +171,7 @@ const FormWrapper = styled.div`
 `;
 
 const BtnWrapper = styled.div`
-  width: 230px;
+  width: 200px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
