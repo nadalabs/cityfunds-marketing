@@ -42,53 +42,55 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
 
   return (
     <BackgroundWrapper>
-      {blogPosts.length === 1 && (
-        <LinkText href="/learn">Back to Blog</LinkText>
-      )}
+      <ContentWrapper>
+        {blogPosts.length === 1 && (
+          <LinkText href="/learn">Back to Blog</LinkText>
+        )}
 
-      <Slider {...settings} ref={sliderRef}>
-        {blogPosts.map((post, idx) => (
-          <div key={idx} onClick={() => console.log(post?.slug, idx)}>
-            <Link href={`/learn/${post?.slug}`}>
-              <FlexWrapper>
-                <ImageWrapper>
-                  <Image
-                    fill
-                    alt={post?.title}
-                    style={{ borderRadius: '60px' }}
-                    src={
-                      post?.coverImage
-                        ? urlForImage(post?.coverImage).url()
-                        : '/images/nada-press.png'
-                    }
-                  />
-                </ImageWrapper>
+        <Slider {...settings} ref={sliderRef}>
+          {blogPosts.map((post, idx) => (
+            <div key={idx} onClick={() => console.log(post?.slug, idx)}>
+              <Link href={`/learn/${post?.slug}`}>
+                <FlexWrapper>
+                  <ImageWrapper>
+                    <Image
+                      fill
+                      alt={post?.title}
+                      style={{ borderRadius: '60px' }}
+                      src={
+                        post?.coverImage
+                          ? urlForImage(post?.coverImage).url()
+                          : '/images/nada-press.png'
+                      }
+                    />
+                  </ImageWrapper>
 
-                <CardWrapper>
-                  <Overline>{post?.tag}</Overline>
-                  <SmallHeading>{post?.title}</SmallHeading>
-                  <PrimaryText>{post?.excerpt}</PrimaryText>
-                  {post?.date && (
-                    <PrimaryText>
-                      <time dateTime={post?.date}>
-                        {format(parseISO(post?.date), 'LLLL	d, yyyy')}
-                      </time>
-                    </PrimaryText>
-                  )}
-                </CardWrapper>
-              </FlexWrapper>
-            </Link>
+                  <CardWrapper>
+                    <Overline>{post?.tag}</Overline>
+                    <SmallHeading>{post?.title}</SmallHeading>
+                    <PrimaryText>{post?.excerpt}</PrimaryText>
+                    {post?.date && (
+                      <PrimaryText>
+                        <time dateTime={post?.date}>
+                          {format(parseISO(post?.date), 'LLLL	d, yyyy')}
+                        </time>
+                      </PrimaryText>
+                    )}
+                  </CardWrapper>
+                </FlexWrapper>
+              </Link>
 
-            {blogPosts.length > 1 && (
-              <CarouselStepper
-                activeStep={idx}
-                totalSteps={blogPosts.length}
-                sliderRef={sliderRef}
-              />
-            )}
-          </div>
-        ))}
-      </Slider>
+              {blogPosts.length > 1 && (
+                <CarouselStepper
+                  activeStep={idx}
+                  totalSteps={blogPosts.length}
+                  sliderRef={sliderRef}
+                />
+              )}
+            </div>
+          ))}
+        </Slider>
+      </ContentWrapper>
     </BackgroundWrapper>
   );
 }
@@ -115,6 +117,8 @@ export const CardWrapper = styled.div`
 `;
 
 const BackgroundWrapper = styled(SectionWrapper)`
+  display: flex;
+  justify-content: center;
   padding-top: 20vh;
   background-color: #fbfbfb;
   height: 110vh;
@@ -124,6 +128,11 @@ const BackgroundWrapper = styled(SectionWrapper)`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding-top: 125px;
   }
+`;
+
+const ContentWrapper = styled.div`
+  width: 100%;
+  max-width: 75rem;
 `;
 
 const FlexWrapper = styled.div`

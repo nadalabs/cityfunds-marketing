@@ -29,11 +29,13 @@ export default function LearnPage({ allPosts }) {
   }
 
   return (
-    <PageLayout>
+    <>
       <BlogHero blogPosts={heroPosts} />
-      {renderBlogSliders()}
-      <EmailCapture formName="Blog" />
-    </PageLayout>
+      <PageLayout>
+        {renderBlogSliders()}
+        <EmailCapture formName="Blog" />
+      </PageLayout>
+    </>
   );
 }
 
