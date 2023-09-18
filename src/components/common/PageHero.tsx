@@ -71,6 +71,8 @@ export default function PageHero({
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '1.5rem',
+                width: '100%',
+                maxWidth: '100rem',
               }}
             >
               <div style={{ maxWidth: maxWidth }}>
@@ -143,8 +145,10 @@ export const HeroImage = styled.div`
 const ContentWrapper = styled.div`
   position: absolute;
   height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: flex-end;
   gap: 1.5rem;
   padding-left: 6.25rem;
