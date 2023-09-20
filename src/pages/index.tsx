@@ -144,7 +144,7 @@ export default function HomePage({
             ]}
           />
         </SectionWrapper>
-        <SectionWrapper>
+        {/* <SectionWrapper>
           <FeaturedImage
             overline="What am I investing in?"
             heading="Diversified Portfolios of Homes"
@@ -160,7 +160,7 @@ export default function HomePage({
             isReversed
             isWide
           />
-        </SectionWrapper>
+        </SectionWrapper> */}
         <TextSlider
           overline="You may be wondering..."
           heading="Why Cityfunds?"
