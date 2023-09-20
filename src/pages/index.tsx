@@ -108,7 +108,7 @@ export default function HomePage({
           isPhoneFrame
         />
         <SectionWrapper>
-          <FeaturedImage
+          {/* <FeaturedImage
             overline="Why Cityfunds?"
             heading="Location, Location, Location"
             primaryText="Investing in real estate is all about location, yet the increased
@@ -123,7 +123,7 @@ export default function HomePage({
               )
             }
             isShortHeader
-          />
+          /> */}
           <KeyMetrics
             metrics={[
               {
