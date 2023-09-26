@@ -89,7 +89,7 @@ export default function DesktopNavBar({
                 )
               }
             >
-              Get Started
+              Sign Up
             </PrimaryButton>
           ) : (
             <div
@@ -132,7 +132,7 @@ export default function DesktopNavBar({
                   )
                 }
               >
-                {isHomeshares ? 'Apply Now' : 'Get Started'}
+                {isHomeshares ? 'Apply Now' : 'Sign Up'}
               </PrimaryButton>
             </div>
           )}

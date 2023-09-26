@@ -1,4 +1,3 @@
-import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HowItWorks from '@components/cityfunds/HowItWorks';
@@ -98,7 +97,7 @@ export default function HomePage({
               imageUrl: '/images/app-3.png',
             },
           ]}
-          btnText="Get Started"
+          btnText="Sign Up"
           onClick={() =>
             window.open(
               `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
@@ -115,7 +114,7 @@ export default function HomePage({
             cost of living has made desirable places unaffordable. Now, owning
             real estate in your favorite city takes less than 5 minutes."
             imageUrl="/images/location-tiles.png"
-            btnText="Get Started"
+            btnText="Sign Up"
             onClick={() =>
               window.open(
                 `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
@@ -150,7 +149,7 @@ export default function HomePage({
             heading="Diversified Portfolios of Homes"
             primaryText="Own fractional shares of peoples homes across the nations top cities on day one."
             imageUrl="/images/map.png"
-            btnText="Get Started"
+            btnText="Sign Up"
             onClick={() =>
               window.open(
                 `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,

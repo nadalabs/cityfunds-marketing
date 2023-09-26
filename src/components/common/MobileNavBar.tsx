@@ -94,7 +94,7 @@ export default function MobileNavBar({ bannerText }) {
                 )
               }
             >
-              {isHomeshares ? 'Apply Now' : 'Get Started'}
+              {isHomeshares ? 'Apply Now' : 'Sign Up'}
             </PrimaryButton>
           </StackWrapper>
         </MenuWrapper>
