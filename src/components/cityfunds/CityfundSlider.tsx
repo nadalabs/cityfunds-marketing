@@ -2,7 +2,7 @@ import { CityfundCard } from '@components/cityfunds/CityfundCard';
 import { StackWrapper } from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { FUND_STATUS } from '@utils/constants';
+import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 import styled from 'styled-components';
 
@@ -24,39 +24,33 @@ export default function CityfundSlider({
   }));
 
   const SORTED_CARDS = ALL_CARDS.sort((a, b) => {
-    if (a.fund_data.fund_name === 'Yield') {
-      return 1;
-    }
-    if (b.fund_data.fund_name === 'Yield') {
-      return -1;
-    }
     if (
-      a.fund_data.fund_name === 'Portfolio' &&
-      b.fund_data.fund_name !== 'Portfolio'
-    )
-      return -1;
-    if (
-      a.fund_data.fund_name !== 'Portfolio' &&
-      b.fund_data.fund_name === 'Portfolio'
-    )
-      return 1;
-    if (
-      a.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING &&
-      b.fund_data.fund_status === FUND_STATUS.NEW_OFFERING
-    )
-      return -1;
-    if (
-      a.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING &&
-      b.fund_data.fund_status === FUND_STATUS.NEW_OFFERING
-    )
-      return 1;
-    if (
-      a.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING &&
+      a.fund_data.fund_status === FUND_STATUS.NEW_OFFERING &&
       b.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING
     ) {
-      return b.fund_data.total_assets - a.fund_data.total_assets;
+      return 1;
     }
-    return 0;
+    if (
+      a.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING &&
+      b.fund_data.fund_status === FUND_STATUS.NEW_OFFERING
+    ) {
+      return -1;
+    }
+
+    if (
+      a.fund_data.regulation === REGULATION.ACCREDITED &&
+      b.fund_data.regulation !== REGULATION.ACCREDITED
+    ) {
+      return 1;
+    }
+    if (
+      a.fund_data.regulation !== REGULATION.ACCREDITED &&
+      b.fund_data.regulation === REGULATION.ACCREDITED
+    ) {
+      return -1;
+    }
+
+    return b.fund_data.total_assets - a.fund_data.total_assets;
   });
 
   const DISPLAYED_CARDS = SORTED_CARDS.filter(
