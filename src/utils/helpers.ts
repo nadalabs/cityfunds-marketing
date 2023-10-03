@@ -101,6 +101,5 @@ export const scrollToId = (id: string) => {
 };
 
 export const trackPageView = async (event: string) => {
-  await window.analytics.identify();
   await window.analytics.track(event);
 };
