@@ -80,13 +80,7 @@ export default function AssetTicker({
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'flex-start',
-        flexWrap: 'wrap',
-      }}
-    >
+    <div style={{ display: 'flex' }}>
       {FILTERED_PILLS.map(({ number, description }: any, idx) =>
         renderPill(number, description, idx)
       )}
@@ -113,10 +107,5 @@ export const BackgroundWrapper = styled.div`
   border-radius: 0.61038rem;
   backdrop-filter: blur(1.85px);
   padding: 0 0.25rem;
-  margin: 0 0.5rem 0 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 0.5rem;
-    margin: 0 0.25rem 0.25rem 0;
-  }
+  margin: 0 0.25rem 0 0;
 `;

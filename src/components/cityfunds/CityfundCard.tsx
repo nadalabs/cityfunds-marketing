@@ -37,12 +37,12 @@ export const CityfundCard = ({
             : 'flex-end',
         background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${urlForImage(
           image,
-          isMobile ? 320 : 576,
-          isMobile ? window?.innerWidth - 32 : 352
+          isMobile ? 480 : 576,
+          isMobile ? 320 : 352
         ).url()}), #232222 50% / cover no-repeat`,
-        width: isMobile && isHome ? '100%' : isMobile ? '20rem' : '22rem',
-        height: '36rem',
-        padding: isMobile && isHome ? '1.5rem' : isMobile ? '1.15rem' : '2rem',
+        width: isMobile ? '20rem' : '22rem',
+        height: isMobile ? '30rem' : '36rem',
+        padding: '1.5rem',
       }}
     >
       <ContentWrapper>
@@ -62,7 +62,7 @@ export const CardWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    height: 20rem;
+    height: 30rem;
   }
 `;
 
@@ -71,6 +71,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0.5rem;
 `;
 
 export const TickerWrapper = styled.div`

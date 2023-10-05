@@ -59,11 +59,11 @@ export default function CityfundSlider({
 
   return (
     <SectionWrapper
-      style={{
-        marginLeft: isHome && !isMobile ? '150px' : 0,
-        marginBottom: isHome && !isMobile ? '8rem' : 0,
-      }}
       id="cityfunds"
+      style={{
+        marginLeft: !isMobile ? '150px' : 0,
+        marginBottom: !isMobile ? '8rem' : 0,
+      }}
     >
       <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
         <Heading>Explore Offerings</Heading>
@@ -73,11 +73,7 @@ export default function CityfundSlider({
       </StackWrapper>
 
       <div style={{ display: 'flex' }}>
-        <ScrollWrapper
-          style={{
-            flexDirection: isMobile && isHome ? 'column' : 'row',
-          }}
-        >
+        <ScrollWrapper>
           {DISPLAYED_CARDS.map((card, idx) => (
             <>
               {isMobile ? (
@@ -121,7 +117,7 @@ const FadeWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    height: 20rem;
+    height: 30rem;
   }
 `;
 
@@ -166,7 +162,7 @@ const BottomWrapper = styled.div`
   z-index: -1;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    bottom: 20rem;
+    bottom: 30rem;
   }
 `;
 
