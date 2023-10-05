@@ -72,50 +72,52 @@ export default function CityfundSlider({
         </LargeText>
       </StackWrapper>
 
-      <ScrollWrapper
-        style={{
-          flexDirection: isMobile && isHome ? 'column' : 'row',
-          paddingRight: isMobile || !isHome ? 0 : '150px',
-        }}
-      >
-        {DISPLAYED_CARDS.map((card, idx) => (
-          <>
-            {isMobile ? (
-              <FadeWrapper key={idx}>
-                <CityfundCard
-                  {...card}
-                  image={card?.images[0]}
-                  isHome={isHome}
-                />
-              </FadeWrapper>
-            ) : (
-              <FadeWrapper key={idx}>
-                <TopWrapper>
+      <div style={{ display: 'flex' }}>
+        <ScrollWrapper
+          style={{
+            flexDirection: isMobile && isHome ? 'column' : 'row',
+          }}
+        >
+          {DISPLAYED_CARDS.map((card, idx) => (
+            <>
+              {isMobile ? (
+                <FadeWrapper key={idx}>
                   <CityfundCard
                     {...card}
                     image={card?.images[0]}
                     isHome={isHome}
                   />
-                </TopWrapper>
-                <BottomWrapper>
-                  <CityfundCard
-                    {...card}
-                    image={card?.images[1]}
-                    isHome={isHome}
-                  />
-                </BottomWrapper>
-              </FadeWrapper>
-            )}
-          </>
-        ))}
-      </ScrollWrapper>
+                </FadeWrapper>
+              ) : (
+                <FadeWrapper key={idx}>
+                  <TopWrapper>
+                    <CityfundCard
+                      {...card}
+                      image={card?.images[0]}
+                      isHome={isHome}
+                    />
+                  </TopWrapper>
+                  <BottomWrapper>
+                    <CityfundCard
+                      {...card}
+                      image={card?.images[1]}
+                      isHome={isHome}
+                    />
+                  </BottomWrapper>
+                </FadeWrapper>
+              )}
+            </>
+          ))}
+        </ScrollWrapper>
+        <ScrollFade />
+      </div>
     </SectionWrapper>
   );
 }
 
 const FadeWrapper = styled.div`
-  width: 24rem;
-  height: 32rem;
+  width: 22rem;
+  height: 36rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
@@ -127,6 +129,22 @@ const ScrollWrapper = styled.div`
   display: flex;
   gap: 1.5rem;
   overflow-x: scroll;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    white 1rem,
+    white 90%,
+    transparent
+  );
+`;
+
+const ScrollFade = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 3.125rem;
+  background: linear-gradient(to left, #ffffff, transparent);
 `;
 
 const TopWrapper = styled.div`
@@ -144,7 +162,7 @@ const TopWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   position: relative;
-  bottom: 32rem;
+  bottom: 36rem;
   z-index: -1;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -166,6 +184,7 @@ export const SectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  position: relative;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0 1rem;

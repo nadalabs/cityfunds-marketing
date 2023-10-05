@@ -37,10 +37,11 @@ export const CityfundCard = ({
             : 'flex-end',
         background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${urlForImage(
           image,
-          isMobile ? 320 : 512,
-          isMobile ? window?.innerWidth - 32 : 384
+          isMobile ? 320 : 576,
+          isMobile ? window?.innerWidth - 32 : 352
         ).url()}), #232222 50% / cover no-repeat`,
-        width: isMobile && isHome ? '100%' : isMobile ? '20rem' : '24rem',
+        width: isMobile && isHome ? '100%' : isMobile ? '20rem' : '22rem',
+        height: '36rem',
         padding: isMobile && isHome ? '1.5rem' : isMobile ? '1.15rem' : '2rem',
       }}
     >
@@ -56,8 +57,6 @@ export const CityfundCard = ({
 };
 
 export const CardWrapper = styled.div`
-  width: 24rem;
-  height: 32rem;
   border-radius: 3.125rem;
   cursor: pointer;
 
