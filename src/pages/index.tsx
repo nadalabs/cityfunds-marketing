@@ -1,3 +1,4 @@
+import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HowItWorks from '@components/cityfunds/HowItWorks';
@@ -107,7 +108,7 @@ export default function HomePage({
           isPhoneFrame
         />
         <SectionWrapper>
-          {/* <FeaturedImage
+          <FeaturedImage
             overline="Why Cityfunds?"
             heading="Location, Location, Location"
             primaryText="Investing in real estate is all about location, yet the increased
@@ -122,7 +123,7 @@ export default function HomePage({
               )
             }
             isShortHeader
-          /> */}
+          />
           <KeyMetrics
             metrics={[
               {
@@ -143,7 +144,7 @@ export default function HomePage({
             ]}
           />
         </SectionWrapper>
-        {/* <SectionWrapper>
+        <SectionWrapper>
           <FeaturedImage
             overline="What am I investing in?"
             heading="Diversified Portfolios of Homes"
@@ -159,7 +160,7 @@ export default function HomePage({
             isReversed
             isWide
           />
-        </SectionWrapper> */}
+        </SectionWrapper>
         <TextSlider
           overline="You may be wondering..."
           heading="Why Cityfunds?"

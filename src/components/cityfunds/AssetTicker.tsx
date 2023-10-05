@@ -1,5 +1,4 @@
 import { Caption } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
 import { FUND_STATUS, FUND_TYPE } from '@utils/constants';
 import { formatPercent, formatPrice } from '@utils/helpers';
 import Image from 'next/image';
@@ -9,11 +8,14 @@ import styled from 'styled-components';
 interface AssetTickerProps {
   fund_data: any;
   isDark?: boolean;
+  isSmall?: boolean;
 }
 
-export default function AssetTicker({ fund_data, isDark }: AssetTickerProps) {
-  const isMobile = useIsMobile();
-
+export default function AssetTicker({
+  fund_data,
+  isDark,
+  isSmall,
+}: AssetTickerProps) {
   const PILLS = [
     {
       number: formatPrice(fund_data?.share_price, 2),
@@ -32,8 +34,8 @@ export default function AssetTicker({ fund_data, isDark }: AssetTickerProps) {
         <Image
           src="/icons/arrow-up.svg"
           alt="Arrow Up"
-          width={isMobile ? 12 : 16}
-          height={isMobile ? 12 : 16}
+          width={12}
+          height={12}
         />
       ) : (
         ''
@@ -59,6 +61,7 @@ export default function AssetTicker({ fund_data, isDark }: AssetTickerProps) {
       <BackgroundWrapper
         key={idx}
         style={{
+          fontSize: isSmall ? '0.875rem' : '1rem',
           background: isDark
             ? 'rgba(136, 136, 136, 0.05)'
             : 'rgba(255, 255, 255, 0.35)',
@@ -77,13 +80,7 @@ export default function AssetTicker({ fund_data, isDark }: AssetTickerProps) {
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: isMobile ? 'center' : 'flex-start',
-        flexWrap: 'wrap',
-      }}
-    >
+    <div style={{ display: 'flex' }}>
       {FILTERED_PILLS.map(({ number, description }: any, idx) =>
         renderPill(number, description, idx)
       )}
@@ -95,7 +92,7 @@ export const BoldText = styled.p`
   font-family: ${({ theme }) => theme.fonts.main};
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 0.875;
   line-height: 30px;
   margin: 0 4px 0 0;
 
@@ -108,11 +105,7 @@ export const BackgroundWrapper = styled.div`
   display: flex;
   align-items: center;
   border-radius: 0.61038rem;
-  backdrop-filter: blur(2.4415206909179688px);
-  padding: 0.25rem 0.5rem;
-  margin: 0 0.5rem 0.5rem 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 0.5rem;
-  }
+  backdrop-filter: blur(1.85px);
+  padding: 0 0.25rem;
+  margin: 0 0.25rem 0 0;
 `;
