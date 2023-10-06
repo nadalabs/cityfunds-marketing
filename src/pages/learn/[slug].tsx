@@ -11,13 +11,21 @@ import {
   postSlugsQuery,
 } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player/youtube';
 
 export default function PostPage({ post, media }) {
+  const playerRef = useRef(null);
+
   useEffect(() => {
     trackPageView('Blog Article Viewed');
   });
+
+  const handlePlay = () => {
+    if (playerRef.current) {
+      playerRef.current.getInternalPlayer().requestFullscreen();
+    }
+  };
 
   return (
     <>
@@ -38,7 +46,13 @@ export default function PostPage({ post, media }) {
                 justifyContent: 'center',
               }}
             >
-              <ReactPlayer url={media?.link} height={'32rem'} width={'50rem'} />
+              <ReactPlayer
+                ref={playerRef}
+                onPlay={handlePlay}
+                url={media?.link}
+                height={'32rem'}
+                width={'50rem'}
+              />
             </div>
           )}
         </SectionWrapper>

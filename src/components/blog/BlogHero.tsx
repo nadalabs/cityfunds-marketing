@@ -119,9 +119,8 @@ export const CardWrapper = styled.div`
 const BackgroundWrapper = styled(SectionWrapper)`
   display: flex;
   justify-content: center;
-  padding-top: 20vh;
+  padding-top: 12rem;
   background-color: #fbfbfb;
-  height: 90vh;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
 
