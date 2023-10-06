@@ -40,7 +40,9 @@ export default function Webinanars({ webinar }: WebinanarsProps) {
 
         <ContentWrapper>
           <StackWrapper>
-            <Heading>💻 Upcoming Webinar</Heading>
+            <Heading>
+              💻 Upcoming <span style={{ color: '#48DC95' }}>Webinar</span>
+            </Heading>
             <LongFormText content={webinar?.description} />
           </StackWrapper>
 
