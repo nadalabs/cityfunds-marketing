@@ -235,7 +235,8 @@ export const cityfundIndexQuery = `
 export const homePageFields = `
   _id,
   questions,
-  "promo": promo->{banner, title, description, disclaimer, image},
+  "promo": promo->{banner, title, description, image},
+  "webinar": webinar->{banner, title, description, date, image},
 `;
 
 export const footerQuery = `
