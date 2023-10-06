@@ -54,6 +54,28 @@ export const MediaIndexQuery = `
   ${mediaFields}
 }`;
 
+export const mediaQuery = `
+{
+  "media": *[_type == "media" && slug.current == $slug] | order(_updatedAt desc) [0] {
+    content,
+    ${mediaFields}
+  },
+  "moreMedias": *[_type == "media" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
+    content,
+    ${mediaFields}
+  }
+}`;
+
+export const mediaSlugsQuery = `
+*[_type == "media" && defined(slug.current)][].slug.current
+`;
+
+export const mediaBySlugQuery = `
+*[_type == "media" && slug.current == $slug][0] {
+  ${mediaFields}
+}
+`;
+
 // Partner Queries
 const partnerFields = `
   _id,

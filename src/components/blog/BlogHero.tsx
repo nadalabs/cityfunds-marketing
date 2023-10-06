@@ -100,11 +100,11 @@ export const CardWrapper = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   width: 50%;
-  height: 480px;
+  height: 400px;
   background: #ffffff;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   border-radius: 60px;
-  padding: 50px 82px;
+  padding: 3rem 4rem;
   margin: 1rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -121,7 +121,7 @@ const BackgroundWrapper = styled(SectionWrapper)`
   justify-content: center;
   padding-top: 20vh;
   background-color: #fbfbfb;
-  height: 110vh;
+  height: 90vh;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
 
@@ -149,7 +149,7 @@ export const ImageWrapper = styled.div`
   border-radius: 50px;
   position: relative;
   width: 50%;
-  height: 480px;
+  height: 400px;
   margin-right: 48px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
