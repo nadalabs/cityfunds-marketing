@@ -120,10 +120,7 @@ export default function HomePage({
             imageUrl="/images/location-tiles.png"
             btnText="Explore Offerings"
             onClick={() =>
-              window.open(
-                `${process.env.NEXT_PUBLIC_WEB_APP_URL}`,
-                '_blank'
-              )
+              window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
             }
             isShortHeader
           />
@@ -155,10 +152,7 @@ export default function HomePage({
             imageUrl="/images/map.png"
             btnText="Explore Offerings"
             onClick={() =>
-              window.open(
-                `${process.env.NEXT_PUBLIC_WEB_APP_URL}`,
-                '_blank'
-              )
+              window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
             }
             isReversed
             isWide

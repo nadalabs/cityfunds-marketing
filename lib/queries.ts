@@ -1,7 +1,6 @@
 // Post Queries
 const postFields = `
   _id,
-  name,
   title,
   date,
   excerpt,
@@ -11,7 +10,7 @@ const postFields = `
   "slug": slug.current,
 `;
 
-export const indexQuery = `
+export const postIndexQuery = `
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`;
@@ -37,6 +36,23 @@ export const postBySlugQuery = `
   ${postFields}
 }
 `;
+
+// Media Queries
+const mediaFields = `
+  _id,
+  title,
+  date,
+  excerpt,
+  coverImage,
+  link,
+  tag,
+  "slug": slug.current,
+`;
+
+export const MediaIndexQuery = `
+*[_type == "media"] | order(date desc, _updatedAt desc) {
+  ${mediaFields}
+}`;
 
 // Partner Queries
 const partnerFields = `

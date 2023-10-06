@@ -7,6 +7,7 @@ import { trackPageView } from '@utils/helpers';
 import { postQuery, postSlugsQuery } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
 import { useEffect } from 'react';
+import ReactPlayer from 'react-player/youtube';
 
 export default function PostPage({ post }) {
   useEffect(() => {
@@ -23,6 +24,7 @@ export default function PostPage({ post }) {
             title={post?.title}
             content={post?.content}
           />
+          <ReactPlayer url="https://www.youtube.com/watch?v=LXb3EKWsInQ" />
         </SectionWrapper>
         <EmailCapture formName="Blog" />
       </PageLayout>
