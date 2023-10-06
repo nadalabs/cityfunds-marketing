@@ -111,6 +111,7 @@ export default function AccreditedInvestorsPage({
             onClick={() =>
               window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
             }
+            isWide
           />
         </SectionWrapper>
         <SectionWrapper>

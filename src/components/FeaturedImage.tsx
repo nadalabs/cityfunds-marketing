@@ -13,6 +13,7 @@ interface FeaturedImageProps {
   btnText: string;
   onClick: () => void;
   isReversed?: boolean;
+  isWide?: boolean;
 }
 
 export default function FeaturedImage({
@@ -23,6 +24,7 @@ export default function FeaturedImage({
   btnText,
   onClick,
   isReversed,
+  isWide,
 }: FeaturedImageProps) {
   const isMobile = useIsMobile();
 
@@ -41,7 +43,12 @@ export default function FeaturedImage({
         </StackWrapper>
       </ContentWrapper>
 
-      <Image width={450} height={450} alt={heading} src={imageUrl} />
+      <Image
+        width={isWide ? 600 : 450}
+        height={450}
+        alt={heading}
+        src={imageUrl}
+      />
     </SectionWrapper>
   );
 }
