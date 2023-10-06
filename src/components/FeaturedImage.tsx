@@ -3,7 +3,7 @@ import { StackWrapper } from '@elements/Containers';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import Image from 'next/image';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 interface FeaturedImageProps {
   overline?: string;
@@ -13,10 +13,6 @@ interface FeaturedImageProps {
   btnText: string;
   onClick: () => void;
   isReversed?: boolean;
-  isShortHeader?: boolean;
-  isBorder?: boolean;
-  isWide?: boolean;
-  isShort?: boolean;
 }
 
 export default function FeaturedImage({
@@ -27,132 +23,45 @@ export default function FeaturedImage({
   btnText,
   onClick,
   isReversed,
-  isShortHeader,
-  isBorder,
-  isWide,
-  isShort,
 }: FeaturedImageProps) {
   const isMobile = useIsMobile();
 
   return (
-    <ContentWrapper
-      style={{
-        boxShadow:
-          !isMobile && isBorder ? '2px 4px 25px rgba(0, 0, 0, 0.1)' : 'none',
-        borderRadius: isBorder ? '100px' : 'none',
-        padding: !isMobile && isBorder ? '60px' : 0,
-      }}
+    <SectionWrapper
+      style={{ flexDirection: isReversed ? 'row-reverse' : 'row' }}
     >
-      {!isReversed && (
-        <>
-          {isBorder ? (
-            <BorderImageWrapper
-              style={{
-                background: `linear-gradient(180deg, rgba(0, 0, 0, 0) 22.38%, rgba(0, 0, 0, 0.144) 44.79%, rgba(0, 0, 0, 0.3915) 73.73%), url(${imageUrl})`,
-              }}
-            />
-          ) : (
-            <div>
-              <LeftImageWrapper>
-                <Image
-                  src={imageUrl}
-                  alt={heading}
-                  height={isMobile ? 350 : isShort ? 448 : 500}
-                  width={isMobile ? 350 : 500}
-                />
-              </LeftImageWrapper>
-            </div>
-          )}
-        </>
-      )}
-
-      <StackWrapper>
-        {overline && <Overline>{overline}</Overline>}
-
-        <div>
-          <Heading
-            style={{
-              maxWidth: isShortHeader ? '400px' : '700px',
-              fontSize: isBorder ? '52px' : '64px',
-              lineHeight: isBorder ? '52px' : '64px',
-            }}
-          >
-            {heading}
-          </Heading>
+      <ContentWrapper>
+        <StackWrapper style={{ gap: '1rem' }}>
+          {overline && <Overline>{overline}</Overline>}
+          <Heading>{heading}</Heading>
           <PrimaryText>{primaryText}</PrimaryText>
-        </div>
+          <div>
+            <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+          </div>
+        </StackWrapper>
+      </ContentWrapper>
 
-        <div>
-          <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-        </div>
-      </StackWrapper>
-
-      {isReversed && !isMobile && (
-        <FlexWrapper>
-          <ImageWrapper>
-            <Image
-              src={imageUrl}
-              alt={heading}
-              height={500}
-              width={isWide ? 700 : 500}
-            />
-          </ImageWrapper>
-        </FlexWrapper>
-      )}
-    </ContentWrapper>
+      <Image width={450} height={450} alt={heading} src={imageUrl} />
+    </SectionWrapper>
   );
 }
 
-const ContentWrapper = styled.div`
+export const SectionWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 0 6.25rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    flex-direction: column;
+    padding: 0 24px;
   }
 `;
 
-const ImageWrapper = styled.div`
-  position: relative;
-  margin-bottom: 2rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
-    height: 350px !important;
-  }
-`;
-
-const LeftImageWrapper = styled(ImageWrapper)`
-  margin-right: 80px;
+export const ContentWrapper = styled.div`
+  max-width: 500px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-right: 0;
-  }
-`;
-
-const BorderImageWrapper = styled(ImageWrapper)`
-  height: 400px;
-  border-radius: 50px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-right: 80px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    height: 300px;
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-`;
-
-const FlexWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 80px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
-    height: 350px;
-    margin: 0;
   }
 `;

@@ -111,8 +111,6 @@ export default function AccreditedInvestorsPage({
             onClick={() =>
               window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
             }
-            isReversed
-            isWide
           />
         </SectionWrapper>
         <SectionWrapper>
@@ -125,7 +123,7 @@ export default function AccreditedInvestorsPage({
             onClick={() =>
               window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
             }
-            isShort
+            isReversed
           />
         </SectionWrapper>
       </PageLayout>

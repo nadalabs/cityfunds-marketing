@@ -122,7 +122,7 @@ export default function HomePage({
             onClick={() =>
               window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
             }
-            isShortHeader
+            isReversed
           />
           <KeyMetrics
             metrics={[
@@ -154,8 +154,6 @@ export default function HomePage({
             onClick={() =>
               window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
             }
-            isReversed
-            isWide
           />
         </SectionWrapper>
         <TextSlider
