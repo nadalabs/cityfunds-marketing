@@ -45,3 +45,10 @@ export const CardWrapper = styled.div`
     border-radius: 22px;
   }
 `;
+
+export const FlexWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;

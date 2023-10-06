@@ -7,6 +7,7 @@ import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
+import Webinanars from '@components/cityfunds/Webinars';
 import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
 import PageLayout from '@components/common/PageLayout';
@@ -43,7 +44,9 @@ export default function HomePage({
   values,
   partner,
 }: HomePageProps) {
-  const bannerText = partner?.promo?.banner || homePage?.promo?.banner;
+  const bannerText = partner?.promo?.banner
+    ? homePage?.promo?.banner
+    : homePage?.webinar?.banner;
 
   useEffect(() => {
     trackPageView('Cityfunds Page Viewed');
@@ -115,14 +118,11 @@ export default function HomePage({
             cost of living has made desirable places unaffordable. Now, owning
             real estate in your favorite city takes less than 5 minutes."
             imageUrl="/images/location-tiles.png"
-            btnText="Sign Up"
+            btnText="Explore Offerings"
             onClick={() =>
-              window.open(
-                `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-                '_blank'
-              )
+              window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
             }
-            isShortHeader
+            isReversed
           />
           <KeyMetrics
             metrics={[
@@ -150,14 +150,10 @@ export default function HomePage({
             heading="Diversified Portfolios of Homes"
             primaryText="Own fractional shares of peoples homes across the nations top cities on day one."
             imageUrl="/images/map.png"
-            btnText="Sign Up"
+            btnText="Explore Offerings"
             onClick={() =>
-              window.open(
-                `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-                '_blank'
-              )
+              window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
             }
-            isReversed
             isWide
           />
         </SectionWrapper>
@@ -170,6 +166,7 @@ export default function HomePage({
         <NadaFaqs faqs={homePage?.questions} />
         <Testimonials reviews={testimonials} />
         {homePage?.promo && <InvestorPromo promo={homePage?.promo} />}
+        {homePage?.webinar && <Webinanars webinar={homePage?.webinar} />}
         <EmailCapture formName="Cityfunds" isPopup />
       </PageLayout>
     </>

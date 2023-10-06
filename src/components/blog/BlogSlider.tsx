@@ -54,7 +54,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
 }
 
 export const SectionWrapper = styled.div`
-  padding: 140px 0 0 156px;
+  padding: 5rem 0 0 156px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 24px 0 24px 24px;

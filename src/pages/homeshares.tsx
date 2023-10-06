@@ -41,7 +41,7 @@ export default function HomesharesPage({ testimonials }) {
             imageUrl="/images/homeshares.png"
             btnText="Apply Now"
             onClick={() => window.open(EXTERNAL_ROUTES.TYPEFORM, '_blank')}
-            isShortHeader
+            isReversed
           />
           <KeyMetrics
             metrics={[

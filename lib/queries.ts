@@ -1,7 +1,6 @@
 // Post Queries
 const postFields = `
   _id,
-  name,
   title,
   date,
   excerpt,
@@ -11,7 +10,7 @@ const postFields = `
   "slug": slug.current,
 `;
 
-export const indexQuery = `
+export const postIndexQuery = `
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`;
@@ -35,6 +34,45 @@ export const postSlugsQuery = `
 export const postBySlugQuery = `
 *[_type == "post" && slug.current == $slug][0] {
   ${postFields}
+}
+`;
+
+// Media Queries
+const mediaFields = `
+  _id,
+  title,
+  date,
+  excerpt,
+  coverImage,
+  link,
+  tag,
+  "slug": slug.current,
+`;
+
+export const MediaIndexQuery = `
+*[_type == "media"] | order(date desc, _updatedAt desc) {
+  ${mediaFields}
+}`;
+
+export const mediaQuery = `
+{
+  "media": *[_type == "media" && slug.current == $slug] | order(_updatedAt desc) [0] {
+    content,
+    ${mediaFields}
+  },
+  "moreMedias": *[_type == "media" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
+    content,
+    ${mediaFields}
+  }
+}`;
+
+export const mediaSlugsQuery = `
+*[_type == "media" && defined(slug.current)][].slug.current
+`;
+
+export const mediaBySlugQuery = `
+*[_type == "media" && slug.current == $slug][0] {
+  ${mediaFields}
 }
 `;
 
@@ -235,7 +273,8 @@ export const cityfundIndexQuery = `
 export const homePageFields = `
   _id,
   questions,
-  "promo": promo->{banner, title, description, disclaimer, image},
+  "promo": promo->{banner, title, description, image},
+  "webinar": webinar->{banner, title, description, date, image},
 `;
 
 export const footerQuery = `
