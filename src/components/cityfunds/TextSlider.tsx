@@ -73,6 +73,8 @@ const TextWrapper = styled(CardWrapper)`
   width: 20rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    height: 18rem;
+    width: 18rem;
     padding: 2rem;
   }
 `;

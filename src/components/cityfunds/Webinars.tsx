@@ -28,7 +28,7 @@ export default function Webinanars({ webinar }: WebinanarsProps) {
           flexDirection: isMobile ? 'column' : 'row',
           alignItems: 'center',
           gap: isMobile ? '1rem' : '2.5rem',
-          padding: '2rem 6.25rem',
+          padding: isMobile ? '0 1rem' : '2rem 6.25rem',
         }}
       >
         <Image

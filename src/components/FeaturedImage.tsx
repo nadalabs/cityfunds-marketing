@@ -30,7 +30,13 @@ export default function FeaturedImage({
 
   return (
     <SectionWrapper
-      style={{ flexDirection: isReversed ? 'row-reverse' : 'row' }}
+      style={{
+        flexDirection: isMobile
+          ? 'column-reverse'
+          : isReversed
+          ? 'row-reverse'
+          : 'row',
+      }}
     >
       <ContentWrapper>
         <StackWrapper style={{ gap: '1rem' }}>
@@ -44,8 +50,8 @@ export default function FeaturedImage({
       </ContentWrapper>
 
       <Image
-        width={isWide ? 600 : 450}
-        height={450}
+        width={isMobile ? (isWide ? 380 : 300) : isWide ? 650 : 450}
+        height={isMobile ? 300 : 450}
         alt={heading}
         src={imageUrl}
       />
@@ -61,7 +67,7 @@ export const SectionWrapper = styled.div`
   padding: 0 6.25rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 24px;
+    padding: 0 0rem;
   }
 `;
 
