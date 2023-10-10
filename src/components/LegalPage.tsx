@@ -1,5 +1,4 @@
 import LongFormText from '@components/common/LongFormText';
-import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, LinkText } from '@elements/Typography';
 import { LEGAL_LINKS } from '@utils/constants';

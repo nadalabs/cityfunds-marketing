@@ -101,7 +101,9 @@ export default function App({
           btnText={homePage?.promo?.banner ? 'Learn More' : 'Register Here'}
           onClick={() =>
             window.open(
-              homePage?.promo?.banner ? '/rewards' : homePage?.webinar?.link,
+              homePage?.promo?.banner
+                ? '/rewards-program'
+                : homePage?.webinar?.link,
               '_blank'
             )
           }
