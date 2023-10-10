@@ -99,9 +99,19 @@ const StyledInput = styled.input`
 `;
 
 export const StyledForm = styled.form`
+  width: inherit;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-items: center;
+  justify-items: space-between;
+  background-color: rgba(152, 152, 152, 0.15);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 1rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+  }
 `;
 
 export const FormWrapper = styled.div`
