@@ -111,7 +111,7 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
         <div style={{ width: '100%' }}>
           <FormProvider {...methods}>
             <StyledForm
-              style={{ flexDirection: isMobile ? 'column' : 'row' }}
+              style={{ flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 0 : '0.5rem' }}
               onSubmit={handleSubmit(onSubmit)}
             >
               <FormWrapper>
@@ -128,18 +128,11 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
                   placeholder="Enter Your Email"
                 />
 
-                {!isMobile && (
-                  <BtnWrapper>
-                    <PrimaryButton type="submit">Subscribe</PrimaryButton>
-                  </BtnWrapper>
-                )}
               </FormWrapper>
 
-              {isMobile && (
                 <BtnWrapper>
                   <PrimaryButton type="submit">Subscribe</PrimaryButton>
                 </BtnWrapper>
-              )}
             </StyledForm>
 
             {formState?.errors?.root?.message && (
