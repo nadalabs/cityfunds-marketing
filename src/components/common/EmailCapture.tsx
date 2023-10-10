@@ -111,35 +111,27 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
         <div style={{ width: '100%' }}>
           <FormProvider {...methods}>
             <StyledForm
-              style={{ flexDirection: isMobile ? 'column' : 'row' }}
+              style={{
+                flexDirection: isMobile ? 'column' : 'row',
+                gap: '0.5rem',
+              }}
               onSubmit={handleSubmit(onSubmit)}
             >
-              <FormWrapper>
-                <FormInput
-                  name="email"
-                  rules={{
-                    required: 'Email address is required',
-                    pattern: {
-                      value: /^\S+@\S+$/i,
-                      message: 'Invalid email address',
-                    },
-                  }}
-                  type="email"
-                  placeholder="Enter Your Email"
-                />
-
-                {!isMobile && (
-                  <BtnWrapper>
-                    <PrimaryButton type="submit">Subscribe</PrimaryButton>
-                  </BtnWrapper>
-                )}
-              </FormWrapper>
-
-              {isMobile && (
-                <BtnWrapper>
-                  <PrimaryButton type="submit">Subscribe</PrimaryButton>
-                </BtnWrapper>
-              )}
+              <FormInput
+                name="email"
+                rules={{
+                  required: 'Email address is required',
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: 'Invalid email address',
+                  },
+                }}
+                type="email"
+                placeholder="Enter Your Email"
+              />
+              <BtnWrapper>
+                <PrimaryButton type="submit">Subscribe</PrimaryButton>
+              </BtnWrapper>
             </StyledForm>
 
             {formState?.errors?.root?.message && (
@@ -214,25 +206,8 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const FormWrapper = styled.div`
-  width: inherit;
-  display: flex;
-  align-items: center;
-  justify-items: space-between;
-  background-color: rgba(152, 152, 152, 0.15);
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
-  margin-bottom: 1rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    flex-direction: column;
-    width: 100%;
-  }
-`;
-
 const BtnWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    margin-bottom: 1rem;
   }
 `;

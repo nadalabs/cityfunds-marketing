@@ -1,6 +1,5 @@
 import PressArticles from '@components/PressArticles';
 import PageHero from '@components/common/PageHero';
-import PageLayout from '@components/common/PageLayout';
 import { trackPageView } from '@utils/helpers';
 import { pressIndexQuery } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
@@ -18,9 +17,7 @@ export default function PressPage({ allPress }) {
         primaryText="For media inquiries reach out to us at media@nada.co"
         heroImages={[{ name: '', heroImage: '/images/press-hero.png' }]}
       />
-      <PageLayout>
-        <PressArticles articles={allPress} />
-      </PageLayout>
+      <PressArticles articles={allPress} />
     </>
   );
 }

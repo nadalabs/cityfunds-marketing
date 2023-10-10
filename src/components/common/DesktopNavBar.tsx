@@ -11,7 +11,7 @@ interface HeaderProps {
   pageImage?: ReactNode;
   partnerImage?: string;
   partnerName?: string;
-  bannerText?: string;
+  isBanner?: boolean;
   hideLinks?: boolean;
 }
 
@@ -19,7 +19,7 @@ export default function DesktopNavBar({
   pageImage,
   partnerImage,
   partnerName,
-  bannerText,
+  isBanner,
   hideLinks,
 }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -41,7 +41,7 @@ export default function DesktopNavBar({
 
   return (
     <NavbarWrapper
-      style={{ top: scrollPosition === 0 && bannerText ? '2.4rem' : 0 }}
+      style={{ top: scrollPosition === 0 && isBanner ? '2.4rem' : 0 }}
     >
       <NavbarContent>
         {partnerImage ? (

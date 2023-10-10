@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-export default function MobileNavBar({ bannerText }) {
+export default function MobileNavBar({ isBanner }) {
   const router = useRouter();
   const isHomeshares = router.pathname.includes('homeshares');
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -34,7 +34,7 @@ export default function MobileNavBar({ bannerText }) {
           ? '#303030'
           : 'linear-gradient(rgba(0, 0, 0, 0.27) 42.74%,rgba(0, 0, 0, 0.21) 65.57%,rgba(0, 0, 0, 0) 100%)',
         backdropFilter: 'blur(1.5px)',
-        top: scrollPosition === 0 && bannerText ? '4.75rem' : 0,
+        top: scrollPosition === 0 && isBanner ? '4.75rem' : 0,
       }}
     >
       <FlexWrapper>

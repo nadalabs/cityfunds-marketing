@@ -1,5 +1,4 @@
 import PageHero from '@components/common/PageHero';
-import PageLayout from '@components/common/PageLayout';
 import { PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
@@ -37,7 +36,6 @@ export default function VerifiedPage({ cityfunds }) {
 
   return (
     <>
-      {' '}
       <PageHero
         heroImages={cityfunds
           .filter(
@@ -50,61 +48,49 @@ export default function VerifiedPage({ cityfunds }) {
             heroImage: fund_content?.image_gallery[0],
           }))}
       />
-      <PageLayout
-        pageImage={
-          <Image
-            width={188}
-            height={54}
-            alt={'Verified'}
-            src={'/icons/verified.svg'}
-          />
-        }
-        hideLinks
-      >
-        <ModalWrapper>
-          <div>
-            <SmallHeading>Your account was created!</SmallHeading>
-            <PrimaryText>
-              {isMobile ? 'Click the link' : 'Scan the QR code'} or check out
-              the text we sent you to download the app. Log in to get started
-              investing today!
-            </PrimaryText>
+      <ModalWrapper>
+        <div>
+          <SmallHeading>Your account was created!</SmallHeading>
+          <PrimaryText>
+            {isMobile ? 'Click the link' : 'Scan the QR code'} or check out the
+            text we sent you to download the app. Log in to get started
+            investing today!
+          </PrimaryText>
+        </div>
+        {isMobile ? (
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem',
+            }}
+          >
+            <Link href={EXTERNAL_ROUTES.APPLE_STORE} target="blank">
+              <Image
+                width={135}
+                height={40}
+                alt={'Nada'}
+                src={'/images/apple-store.png'}
+              />
+            </Link>
+            <Link href={EXTERNAL_ROUTES.GOOGLE_STORE} target="blank">
+              <Image
+                width={135}
+                height={40}
+                alt={'Nada'}
+                src={'/images/google-store.png'}
+              />
+            </Link>
           </div>
-          {isMobile ? (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.5rem',
-              }}
-            >
-              <Link href={EXTERNAL_ROUTES.APPLE_STORE} target="blank">
-                <Image
-                  width={135}
-                  height={40}
-                  alt={'Nada'}
-                  src={'/images/apple-store.png'}
-                />
-              </Link>
-              <Link href={EXTERNAL_ROUTES.GOOGLE_STORE} target="blank">
-                <Image
-                  width={135}
-                  height={40}
-                  alt={'Nada'}
-                  src={'/images/google-store.png'}
-                />
-              </Link>
-            </div>
-          ) : (
-            <Image
-              width={200}
-              height={200}
-              alt={'Nada'}
-              src={'/images/qr-code.png'}
-            />
-          )}
-        </ModalWrapper>
-      </PageLayout>
+        ) : (
+          <Image
+            width={200}
+            height={200}
+            alt={'Nada'}
+            src={'/images/qr-code.png'}
+          />
+        )}
+      </ModalWrapper>
     </>
   );
 }

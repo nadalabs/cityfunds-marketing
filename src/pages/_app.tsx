@@ -1,4 +1,6 @@
+import AlertBanner from '@components/cityfunds/AlertBanner';
 import PageFooter from '@components/common/PageFooter';
+import PageLayout from '@components/common/PageLayout';
 import * as snippet from '@segment/snippet';
 import * as Sentry from '@sentry/react';
 import { UTM_PARAMETERS } from '@utils/constants';
@@ -6,8 +8,7 @@ import { setCookie } from '@utils/helpers';
 import GlobalStyle from '@utils/styles';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
-import { footerQuery } from 'lib/queries';
-import { sanityClient } from 'lib/sanity';
+import { getFooterContent, getHomePageContent } from 'lib/sanity';
 import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';
 import Script from 'next/script';
@@ -23,16 +24,22 @@ declare global {
 }
 
 interface AppProps extends NextAppProps {
+  homePage?: any;
   footer?: any[];
-  banner?: string;
 }
 
 App.getInitialProps = async () => {
-  const foooterData = await sanityClient.fetch(footerQuery);
-  return { footer: foooterData?.legal?.content };
+  const homePage = await getHomePageContent();
+  const footer = await getFooterContent();
+  return { homePage, footer };
 };
 
-export default function App({ Component, pageProps, footer }: AppProps) {
+export default function App({
+  Component,
+  pageProps,
+  homePage,
+  footer,
+}: AppProps) {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     UTM_PARAMETERS.forEach((param) => {
@@ -77,13 +84,36 @@ export default function App({ Component, pageProps, footer }: AppProps) {
         <title>Nada</title>
       </Head>
 
+      <Script
+        id="segment-script"
+        dangerouslySetInnerHTML={{ __html: renderSnippet() }}
+      />
+
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Script
-          id="segment-script"
-          dangerouslySetInnerHTML={{ __html: renderSnippet() }}
+        (homePage?.promo?.banner || homePage?.webinar?.banner) && (
+        <AlertBanner
+          primaryText={
+            homePage?.promo?.banner
+              ? homePage?.promo?.banner
+              : homePage?.webinar?.banner
+          }
+          btnText={homePage?.promo?.banner ? 'Learn More' : 'Register Here'}
+          onClick={() =>
+            window.open(
+              homePage?.promo?.banner
+                ? '/rewards-program'
+                : homePage?.webinar?.link,
+              '_blank'
+            )
+          }
         />
-        <Component {...pageProps} />
+        )
+        <PageLayout
+          isBanner={homePage?.promo?.banner || homePage?.webinar?.banner}
+        >
+          <Component {...pageProps} />
+        </PageLayout>
         <PageFooter legal={footer} />
         <Analytics />
       </ThemeProvider>

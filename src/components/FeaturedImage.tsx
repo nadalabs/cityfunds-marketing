@@ -50,7 +50,7 @@ export default function FeaturedImage({
       </ContentWrapper>
 
       <Image
-        width={isMobile ? (isWide ? 380 : 300) : isWide ? 650 : 450}
+        width={isMobile ? (isWide ? 380 : 300) : isWide ? 700 : 450}
         height={isMobile ? 300 : 450}
         alt={heading}
         src={imageUrl}
@@ -62,9 +62,8 @@ export default function FeaturedImage({
 export const SectionWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 3rem;
-  padding: 0 6.25rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0 0rem;

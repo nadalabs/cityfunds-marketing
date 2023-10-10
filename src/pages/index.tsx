@@ -10,7 +10,6 @@ import TextSlider from '@components/cityfunds/TextSlider';
 import Webinanars from '@components/cityfunds/Webinars';
 import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
-import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
@@ -74,101 +73,92 @@ export default function HomePage({
         bannerText={!!bannerText}
         maxWidth={700}
       />
-      <PageLayout
-        partnerImage={partner?.coverImage}
-        bannerText={bannerText}
-        hideLinks={!!partner}
-      >
-        <FeaturedLogos overline="Featured In" logos={logos} seeMore />
-        <CityfundSlider cityfunds={cityfunds} isHome />
-        <HowItWorks
-          overline="Real Estate Investing Simplified"
-          steps={[
-            {
-              title: 'Select a City',
-              description: 'Choose from our cityfunds with more coming soon',
-              imageUrl: '/images/app-1.png',
-            },
-            {
-              title: 'Get Approved',
-              description:
-                'Verify your identity and connect your bank account to invest',
-              imageUrl: '/images/app-2.png',
-            },
-            {
-              title: 'Build Wealth',
-              description: 'Watch your portfolio gain value over time',
-              imageUrl: '/images/app-3.png',
-            },
-          ]}
-          btnText="Sign Up"
-          onClick={() =>
-            window.open(
-              `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-              '_blank'
-            )
-          }
-          isPhoneFrame
-        />
-        <SectionWrapper>
-          <FeaturedImage
-            overline="Why Cityfunds?"
-            heading="Location, Location, Location"
-            primaryText="Investing in real estate is all about location, yet the increased
+      <FeaturedLogos overline="Featured In" logos={logos} seeMore />
+      <CityfundSlider cityfunds={cityfunds} isHome />
+      <HowItWorks
+        overline="Real Estate Investing Simplified"
+        steps={[
+          {
+            title: 'Select a City',
+            description: 'Choose from our cityfunds with more coming soon',
+            imageUrl: '/images/app-1.png',
+          },
+          {
+            title: 'Get Approved',
+            description:
+              'Verify your identity and connect your bank account to invest',
+            imageUrl: '/images/app-2.png',
+          },
+          {
+            title: 'Build Wealth',
+            description: 'Watch your portfolio gain value over time',
+            imageUrl: '/images/app-3.png',
+          },
+        ]}
+        btnText="Sign Up"
+        onClick={() =>
+          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
+        }
+        isPhoneFrame
+      />
+      <SectionWrapper>
+        <FeaturedImage
+          overline="Why Cityfunds?"
+          heading="Location, Location, Location"
+          primaryText="Investing in real estate is all about location, yet the increased
             cost of living has made desirable places unaffordable. Now, owning
             real estate in your favorite city takes less than 5 minutes."
-            imageUrl="/images/location-tiles.png"
-            btnText="Explore Offerings"
-            onClick={() =>
-              window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
-            }
-            isReversed
-          />
-          <KeyMetrics
-            metrics={[
-              {
-                label: 'Total Investors',
-                value: 10,
-                formattingFn: (val) => `${val}K+`,
-              },
-              {
-                label: 'Properties Funded',
-                value: 70,
-                formattingFn: (val) => `${val}+`,
-              },
-              {
-                label: 'Gross Asset Value',
-                value: 35,
-                formattingFn: (val) => `$${val}M+`,
-              },
-            ]}
-          />
-        </SectionWrapper>
-        <SectionWrapper>
-          <FeaturedImage
-            overline="What am I investing in?"
-            heading="Diversified Portfolios of Homes"
-            primaryText="Own fractional shares of peoples homes across the nations top cities on day one."
-            imageUrl="/images/map.png"
-            btnText="Explore Offerings"
-            onClick={() =>
-              window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
-            }
-            isWide
-          />
-        </SectionWrapper>
-        <TextSlider
-          overline="You may be wondering..."
-          heading="Why Cityfunds?"
-          primaryText="We have plenty of reasons."
-          valueProps={values}
+          imageUrl="/images/location-tiles.png"
+          btnText="Explore Offerings"
+          onClick={() =>
+            window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
+          }
+          isReversed
         />
-        <NadaFaqs faqs={homePage?.questions} />
-        <Testimonials reviews={testimonials} />
-        {homePage?.promo && <InvestorPromo promo={homePage?.promo} />}
-        {homePage?.webinar && <Webinanars webinar={homePage?.webinar} />}
-        <EmailCapture formName="Cityfunds" isPopup />
-      </PageLayout>
+        <KeyMetrics
+          metrics={[
+            {
+              label: 'Total Investors',
+              value: 10,
+              formattingFn: (val) => `${val}K+`,
+            },
+            {
+              label: 'Properties Funded',
+              value: 70,
+              formattingFn: (val) => `${val}+`,
+            },
+            {
+              label: 'Gross Asset Value',
+              value: 35,
+              formattingFn: (val) => `$${val}M+`,
+            },
+          ]}
+        />
+      </SectionWrapper>
+      <SectionWrapper>
+        <FeaturedImage
+          overline="What am I investing in?"
+          heading="Diversified Portfolios of Homes"
+          primaryText="Own fractional shares of peoples homes across the nations top cities on day one."
+          imageUrl="/images/map.png"
+          btnText="Explore Offerings"
+          onClick={() =>
+            window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
+          }
+          isWide
+        />
+      </SectionWrapper>
+      <TextSlider
+        overline="You may be wondering..."
+        heading="Why Cityfunds?"
+        primaryText="We have plenty of reasons."
+        valueProps={values}
+      />
+      <NadaFaqs faqs={homePage?.questions} />
+      <Testimonials reviews={testimonials} />
+      {homePage?.promo && <InvestorPromo promo={homePage?.promo} />}
+      {homePage?.webinar && <Webinanars webinar={homePage?.webinar} />}
+      <EmailCapture formName="Cityfunds" isPopup />
     </>
   );
 }
