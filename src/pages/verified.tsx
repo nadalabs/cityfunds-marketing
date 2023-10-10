@@ -37,7 +37,6 @@ export default function VerifiedPage({ cityfunds }) {
 
   return (
     <>
-      {' '}
       <PageHero
         heroImages={cityfunds
           .filter(
@@ -50,17 +49,6 @@ export default function VerifiedPage({ cityfunds }) {
             heroImage: fund_content?.image_gallery[0],
           }))}
       />
-      <PageLayout
-        pageImage={
-          <Image
-            width={188}
-            height={54}
-            alt={'Verified'}
-            src={'/icons/verified.svg'}
-          />
-        }
-        hideLinks
-      >
         <ModalWrapper>
           <div>
             <SmallHeading>Your account was created!</SmallHeading>
@@ -104,7 +92,6 @@ export default function VerifiedPage({ cityfunds }) {
             />
           )}
         </ModalWrapper>
-      </PageLayout>
     </>
   );
 }

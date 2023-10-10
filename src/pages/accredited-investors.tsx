@@ -6,7 +6,6 @@ import FaqsSection from '@components/cityfunds/NadaFaqs';
 import TextSlider from '@components/cityfunds/TextSlider';
 import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
-import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
@@ -63,71 +62,65 @@ export default function AccreditedInvestorsPage({
           }))}
         maxWidth={700}
       />
-      <PageLayout hideLinks>
-        <FeaturedLogos overline="Featured In" logos={logos} seeMore />
-        <SectionWrapper>
-          <LongFormText title="Our Mission" content={ourFocus} />
-        </SectionWrapper>
-        <CityfundSlider cityfunds={cityfunds} isHome />
+      <FeaturedLogos overline="Featured In" logos={logos} seeMore />
+      <SectionWrapper>
+        <LongFormText title="Our Mission" content={ourFocus} />
+      </SectionWrapper>
+      <CityfundSlider cityfunds={cityfunds} isHome />
 
-        <SectionWrapper>
-          <Heading style={{ marginBottom: '-4rem' }}>Our Performance</Heading>
-          <div style={{ marginBottom: isMobile ? '-7rem' : 0 }}>
-            <KeyMetrics
-              metrics={[
-                {
-                  label: 'Total Investors',
-                  value: 10,
-                  formattingFn: (val) => `${val}K+`,
-                },
-                {
-                  label: 'Properties Funded',
-                  value: 70,
-                  formattingFn: (val) => `${val}+`,
-                },
-                {
-                  label: 'Gross Asset Value',
-                  value: 35,
-                  formattingFn: (val) => `$${val}M+`,
-                },
-              ]}
-            />
-          </div>
-        </SectionWrapper>
+      <SectionWrapper>
+        <Heading style={{ marginBottom: '-4rem' }}>Our Performance</Heading>
+        <div style={{ marginBottom: isMobile ? '-7rem' : 0 }}>
+          <KeyMetrics
+            metrics={[
+              {
+                label: 'Total Investors',
+                value: 10,
+                formattingFn: (val) => `${val}K+`,
+              },
+              {
+                label: 'Properties Funded',
+                value: 70,
+                formattingFn: (val) => `${val}+`,
+              },
+              {
+                label: 'Gross Asset Value',
+                value: 35,
+                formattingFn: (val) => `$${val}M+`,
+              },
+            ]}
+          />
+        </div>
+      </SectionWrapper>
 
-        <TextSlider
-          overline="You may be wondering..."
-          heading="Why Cityfunds?"
-          primaryText="We have plenty of reasons."
-          valueProps={values}
+      <TextSlider
+        overline="You may be wondering..."
+        heading="Why Cityfunds?"
+        primaryText="We have plenty of reasons."
+        valueProps={values}
+      />
+      <FaqsSection faqs={homePage?.questions} />
+      <SectionWrapper>
+        <FeaturedImage
+          heading="Trusted by 10,000+ Investors"
+          primaryText="With $1.8M+ capital invested"
+          imageUrl="/images/america-states.png"
+          btnText="Schedule a Call"
+          onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
+          isWide
         />
-        <FaqsSection faqs={homePage?.questions} />
-        <SectionWrapper>
-          <FeaturedImage
-            heading="Trusted by 10,000+ Investors"
-            primaryText="With $1.8M+ capital invested"
-            imageUrl="/images/america-states.png"
-            btnText="Schedule a Call"
-            onClick={() =>
-              window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
-            }
-            isWide
-          />
-        </SectionWrapper>
-        <SectionWrapper>
-          <FeaturedImage
-            overline="Have any questions?"
-            heading="Let’s Talk"
-            primaryText="Our team is licensed and standing by to answer your questions and share the Cityfunds strategy in private consultations. Contact Deyon Robertson, our Investor Relations Lead today to learn more and get access to private offerings."
-            imageUrl="/images/deyon.png"
-            btnText="Schedule a Call"
-            onClick={() =>
-              window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
-            }
-            isReversed
-          />
-        </SectionWrapper>
-      </PageLayout>
+      </SectionWrapper>
+      <SectionWrapper>
+        <FeaturedImage
+          overline="Have any questions?"
+          heading="Let’s Talk"
+          primaryText="Our team is licensed and standing by to answer your questions and share the Cityfunds strategy in private consultations. Contact Deyon Robertson, our Investor Relations Lead today to learn more and get access to private offerings."
+          imageUrl="/images/deyon.png"
+          btnText="Schedule a Call"
+          onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
+          isReversed
+        />
+      </SectionWrapper>
     </>
   );
 }

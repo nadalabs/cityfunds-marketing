@@ -1,12 +1,17 @@
 import { BoldText } from '@elements/Typography';
-import { scrollToId } from '@utils/helpers';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 interface AlertBannerProps {
   primaryText: string;
+  btnText: string;
+  onClick: () => void;
 }
 
-export default function AlertBanner({ primaryText }: AlertBannerProps) {
+export default function AlertBanner({
+  primaryText,
+  btnText,
+  onClick,
+}: AlertBannerProps) {
   return (
     <BannerWrapper>
       <BoldText
@@ -15,7 +20,7 @@ export default function AlertBanner({ primaryText }: AlertBannerProps) {
         {primaryText}
       </BoldText>
       <BoldText
-        onClick={() => scrollToId('promo')}
+        onClick={onClick}
         style={{
           color: '#48DC95',
           margin: '0 1rem 0 0',
@@ -23,7 +28,7 @@ export default function AlertBanner({ primaryText }: AlertBannerProps) {
           cursor: 'pointer',
         }}
       >
-        Learn More
+        {btnText}
       </BoldText>
     </BannerWrapper>
   );

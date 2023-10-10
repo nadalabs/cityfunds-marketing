@@ -2,7 +2,7 @@ import { ClientConfig, createClient } from '@sanity/client';
 import createImageUrlBuilder from '@sanity/image-url';
 import { capitalizeFirstLetter } from '@utils/helpers';
 import { IFundContent } from '@utils/models';
-import { cityfundFields, homePageFields } from 'lib/queries';
+import { cityfundFields, homePageFields, legalFields } from 'lib/queries';
 
 const sanityConfig: ClientConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -38,4 +38,12 @@ export const getHomePageContent = async (): Promise<any> => {
       ${homePageFields}
     }`);
   return res[0];
+};
+
+export const getFooterContent = async (): Promise<any> => {
+  const res = await sanityClient.fetch(`
+  *[_type == "legal" && slug.current == "footer"] | order(_updatedAt desc) [0] {
+    ${legalFields}
+  }`);
+  return res?.content;
 };

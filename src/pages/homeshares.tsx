@@ -4,7 +4,6 @@ import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import Testimonials from '@components/cityfunds/Testimonials';
 import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
-import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
@@ -32,62 +31,60 @@ export default function HomesharesPage({ testimonials }) {
         ]}
         maxWidth={900}
       />
-      <PageLayout>
-        <SectionWrapper>
-          <FeaturedImage
-            overline="Why did we create HomeShares?"
-            heading="Your Equity, Your Way"
-            primaryText="Your home is your biggest asset. It continuously grows with your hard earned time and money. It should be usable like any other savings account. Now you can unlock your equity in 14 days with no monthly payments."
-            imageUrl="/images/homeshares.png"
-            btnText="Apply Now"
-            onClick={() => window.open(EXTERNAL_ROUTES.TYPEFORM, '_blank')}
-            isReversed
-          />
-          <KeyMetrics
-            metrics={[
-              {
-                label: 'Average Amount Unlocked',
-                value: 47045,
-                prefix: '$',
-              },
-              {
-                label: 'Average Days to Close',
-                value: 13.8,
-                decimals: 1,
-              },
-              {
-                label: 'Monthly Payments',
-                value: 0,
-              },
-            ]}
-          />
-        </SectionWrapper>
-        <HowItWorks
-          overline="Three easy steps to unlock your home equity"
-          steps={[
+      <SectionWrapper>
+        <FeaturedImage
+          overline="Why did we create HomeShares?"
+          heading="Your Equity, Your Way"
+          primaryText="Your home is your biggest asset. It continuously grows with your hard earned time and money. It should be usable like any other savings account. Now you can unlock your equity in 14 days with no monthly payments."
+          imageUrl="/images/homeshares.png"
+          btnText="Apply Now"
+          onClick={() => window.open(EXTERNAL_ROUTES.TYPEFORM, '_blank')}
+          isReversed
+        />
+        <KeyMetrics
+          metrics={[
             {
-              title: 'Apply for a Homeshare',
-              description: 'Fill out an application in under 90 seconds',
-              imageUrl: '/images/homeshares-1.png',
+              label: 'Average Amount Unlocked',
+              value: 47045,
+              prefix: '$',
             },
             {
-              title: 'Schedule  Inspection',
-              description: "Once approved, we'll schedule your home inspection",
-              imageUrl: '/images/homeshares-2.png',
+              label: 'Average Days to Close',
+              value: 13.8,
+              decimals: 1,
             },
             {
-              title: 'Get Funded',
-              description:
-                'We will finalize the paperwork & deposit funds in a few days',
-              imageUrl: '/images/homeshares-3.png',
+              label: 'Monthly Payments',
+              value: 0,
             },
           ]}
-          btnText="Apply Now"
-          onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
         />
-        <Testimonials reviews={testimonials} />
-        <EmailCapture formName="Homeshares" isPopup />
-      </PageLayout>
+      </SectionWrapper>
+      <HowItWorks
+        overline="Three easy steps to unlock your home equity"
+        steps={[
+          {
+            title: 'Apply for a Homeshare',
+            description: 'Fill out an application in under 90 seconds',
+            imageUrl: '/images/homeshares-1.png',
+          },
+          {
+            title: 'Schedule  Inspection',
+            description: "Once approved, we'll schedule your home inspection",
+            imageUrl: '/images/homeshares-2.png',
+          },
+          {
+            title: 'Get Funded',
+            description:
+              'We will finalize the paperwork & deposit funds in a few days',
+            imageUrl: '/images/homeshares-3.png',
+          },
+        ]}
+        btnText="Apply Now"
+        onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
+      />
+      <Testimonials reviews={testimonials} />
+      <EmailCapture formName="Homeshares" isPopup />
     </>
   );
 }

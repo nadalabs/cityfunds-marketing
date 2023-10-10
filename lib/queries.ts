@@ -108,7 +108,7 @@ export const partnerBySlugQuery = `
 `;
 
 // Legal Queries
-const legalFields = `
+export const legalFields = `
   _id,
   title,
   content,

@@ -4,7 +4,6 @@ import TeamSlider from '@components/about/TeamSlider';
 import TextSlider from '@components/cityfunds/TextSlider';
 import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
-import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { trackPageView } from '@utils/helpers';
 import {
@@ -34,23 +33,21 @@ export default function AboutPage({ teammates, values, logos, ourStory }) {
         ]}
         maxWidth={1000}
       />
-      <PageLayout>
-        <SectionWrapper>
-          <LongFormText
-            title="Our Story"
-            overline="We are on a Mission"
-            content={ourStory}
-          />
-        </SectionWrapper>
-        <FeaturedLogos overline="World Class Backing" logos={logos} />
-        <TeamSlider teammates={teammates} />
-        <TextSlider
-          overline="How We Think"
-          heading="Our Values"
-          valueProps={values}
+      <SectionWrapper>
+        <LongFormText
+          title="Our Story"
+          overline="We are on a Mission"
+          content={ourStory}
         />
-        <CareersCTA />
-      </PageLayout>
+      </SectionWrapper>
+      <FeaturedLogos overline="World Class Backing" logos={logos} />
+      <TeamSlider teammates={teammates} />
+      <TextSlider
+        overline="How We Think"
+        heading="Our Values"
+        valueProps={values}
+      />
+      <CareersCTA />
     </>
   );
 }

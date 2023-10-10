@@ -1,7 +1,6 @@
 import BlogHero from '@components/blog/BlogHero';
 import BlogSlider from '@components/blog/BlogSlider';
 import EmailCapture from '@components/common/EmailCapture';
-import PageLayout from '@components/common/PageLayout';
 import { trackPageView } from '@utils/helpers';
 import { MediaIndexQuery, postIndexQuery } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
@@ -39,10 +38,8 @@ export default function LearnPage({ allPosts, allMedia }) {
   return (
     <>
       <BlogHero blogPosts={heroPosts} />
-      <PageLayout>
-        {renderBlogSliders()}
-        <EmailCapture formName="Blog" />
-      </PageLayout>
+      {renderBlogSliders()}
+      <EmailCapture formName="Blog" />
     </>
   );
 }
