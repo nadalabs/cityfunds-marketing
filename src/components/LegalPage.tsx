@@ -12,7 +12,7 @@ interface LegalPageProps {
 
 export default function LegalPage({ legal }: LegalPageProps) {
   return (
-    <PageLayout>
+    <>
       <HeadingWrapper>
         <Heading>Transparency</Heading>
         {LEGAL_LINKS.map(({ name, link }, idx) => (
@@ -32,7 +32,7 @@ export default function LegalPage({ legal }: LegalPageProps) {
           content={legal?.content}
         />
       </SectionWrapper>
-    </PageLayout>
+    </>
   );
 }
 
