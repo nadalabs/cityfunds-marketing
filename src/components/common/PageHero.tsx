@@ -47,12 +47,14 @@ export default function PageHero({
   };
 
   return (
-    <Slider {...settings} ref={sliderRef}>
-      {heroImages.map(({ heroImage }, idx) => (
-        <div key={idx}>
-          <HeroImage
-            style={{
-              backgroundImage: `linear-gradient(
+    <>
+      <HeroWrapper>
+        <Slider {...settings} ref={sliderRef}>
+          {heroImages.map(({ heroImage }, idx) => (
+            <div key={idx}>
+              <HeroImage
+                style={{
+                  backgroundImage: `linear-gradient(
                 to bottom,
                 rgba(0, 0, 0, 0) 22.38%,
                 rgba(0, 0, 0, 0.32) 44.79%,
@@ -63,74 +65,83 @@ export default function PageHero({
                   ? heroImage
                   : urlForImage(heroImage).url()
               })`,
-            }}
-          />
-          <ContentWrapper style={{ bottom: bannerText ? '10rem' : '8rem' }}>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1.5rem',
-                width: '100%',
-                maxWidth: '100rem',
-              }}
-            >
-              <div style={{ maxWidth: maxWidth }}>
-                <Heading
-                  style={{
-                    color: 'white',
-                    fontSize: isMobile ? '2rem' : '4rem',
-                  }}
-                >
-                  {heading}
-                </Heading>
-                <LargeText
-                  style={{
-                    color: isMobile ? 'white' : '#989B9F',
-                  }}
-                >
-                  {primaryText}
-                </LargeText>
-              </div>
-
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: isMobile ? 'column' : 'row',
-                  alignItems: 'center',
                 }}
-              >
-                {btnText && (
-                  <PrimaryButton
-                    onClick={onClick}
-                    style={{ marginRight: '1rem' }}
+              />
+              <ContentWrapper style={{ bottom: bannerText ? '10rem' : '8rem' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.5rem',
+                    width: '100%',
+                    maxWidth: '100rem',
+                  }}
+                >
+                  <div style={{ maxWidth: maxWidth }}>
+                    <Heading
+                      style={{
+                        color: 'white',
+                        fontSize: isMobile ? '2rem' : '4rem',
+                      }}
+                    >
+                      {heading}
+                    </Heading>
+                    <LargeText
+                      style={{
+                        color: isMobile ? 'white' : '#989B9F',
+                      }}
+                    >
+                      {primaryText}
+                    </LargeText>
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: isMobile ? 'column' : 'row',
+                      alignItems: 'center',
+                    }}
                   >
-                    {btnText}
-                  </PrimaryButton>
-                )}
-                {btnTextSecondary && (
-                  <SecondaryButton
-                    onClick={onClickSecondary}
-                    style={{ color: 'white' }}
-                  >
-                    {btnTextSecondary}
-                  </SecondaryButton>
-                )}
-              </div>
-              {heroImages.length > 1 && (
-                <CarouselStepper
-                  activeStep={idx}
-                  totalSteps={heroImages.length}
-                  sliderRef={sliderRef}
-                />
-              )}
+                    {btnText && (
+                      <PrimaryButton
+                        onClick={onClick}
+                        style={{ marginRight: '1rem' }}
+                      >
+                        {btnText}
+                      </PrimaryButton>
+                    )}
+                    {btnTextSecondary && (
+                      <SecondaryButton
+                        onClick={onClickSecondary}
+                        style={{ color: 'white' }}
+                      >
+                        {btnTextSecondary}
+                      </SecondaryButton>
+                    )}
+                  </div>
+                  {heroImages.length > 1 && (
+                    <CarouselStepper
+                      activeStep={idx}
+                      totalSteps={heroImages.length}
+                      sliderRef={sliderRef}
+                    />
+                  )}
+                </div>
+              </ContentWrapper>
             </div>
-          </ContentWrapper>
-        </div>
-      ))}
-    </Slider>
+          ))}
+        </Slider>
+      </HeroWrapper>
+      <div style={{ height: '110vh' }} />
+    </>
   );
 }
+
+export const HeroWrapper = styled.div`
+  position: absolute;
+  left: 0;
+  width: 100vw;
+`;
 
 export const HeroImage = styled.div`
   width: 100vw;

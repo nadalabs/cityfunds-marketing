@@ -91,24 +91,24 @@ export default function App({
 
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        (homePage?.promo?.banner || homePage?.webinar?.banner) && (
-        <AlertBanner
-          primaryText={
-            homePage?.promo?.banner
-              ? homePage?.promo?.banner
-              : homePage?.webinar?.banner
-          }
-          btnText={homePage?.promo?.banner ? 'Learn More' : 'Register Here'}
-          onClick={() =>
-            window.open(
+        {(homePage?.promo?.banner || homePage?.webinar?.banner) && (
+          <AlertBanner
+            primaryText={
               homePage?.promo?.banner
-                ? '/rewards-program'
-                : homePage?.webinar?.link,
-              '_blank'
-            )
-          }
-        />
-        )
+                ? homePage?.promo?.banner
+                : homePage?.webinar?.banner
+            }
+            btnText={homePage?.promo?.banner ? 'Learn More' : 'Register Here'}
+            onClick={() =>
+              window.open(
+                homePage?.promo?.banner
+                  ? '/rewards-program'
+                  : homePage?.webinar?.link,
+                '_blank'
+              )
+            }
+          />
+        )}
         <PageLayout
           isBanner={homePage?.promo?.banner || homePage?.webinar?.banner}
         >
