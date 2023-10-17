@@ -1,7 +1,7 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { FlexWrapper } from '@elements/Containers';
 import { LinkText } from '@elements/Typography';
-import { HEADER_LINKS } from '@utils/constants';
+import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -102,24 +102,52 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
               style={{
                 fontSize: '1rem',
                 color: link === location.pathname ? '#48DC95' : 'white',
-                marginBottom: 0
+                marginBottom: 0,
               }}
             >
               {name.toUpperCase()}
             </LinkText>
           ))}
-          <Link href={'/login'}>
-            <PrimaryButton
-              onClick={() => setShowMenu(false)}
-              style={{ textTransform: 'uppercase' }}
-              isInverted
+          {isHomeshares ? (
+            <a
+              href={EXTERNAL_ROUTES.TYPEFORM}
+              target="_blank"
             >
-              Log In
-            </PrimaryButton>
-          </Link>
-          <Link href={'/signup'} onClick={() => setShowMenu(false)}>
-            <PrimaryButton>Sign Up</PrimaryButton>
-          </Link>
+              <PrimaryButton
+                onClick={() => setShowMenu(false)}
+                style={{ textTransform: 'uppercase' }}
+                isInverted
+              >
+                Apply Now
+              </PrimaryButton>
+            </a>
+          ) : (
+            <>
+              <a
+                href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`}
+                target="_blank"
+              >
+                <PrimaryButton
+                  onClick={() => setShowMenu(false)}
+                  style={{ textTransform: 'uppercase' }}
+                  isInverted
+                >
+                  Log In
+                </PrimaryButton>
+              </a>
+              <a
+                href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`}
+                target="_blank"
+              >
+                <PrimaryButton
+                  onClick={() => setShowMenu(false)}
+                  style={{ textTransform: 'uppercase' }}
+                >
+                  Sign Up
+                </PrimaryButton>
+              </a>
+            </>
+          )}
         </div>
       </Drawer>
     </>
