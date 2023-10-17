@@ -1,18 +1,23 @@
 import { PrimaryButton } from '@elements/Buttons';
-import { StackWrapper } from '@elements/Containers';
+import { FlexWrapper } from '@elements/Containers';
 import { LinkText } from '@elements/Typography';
-import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
+import { HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Drawer from 'react-modern-drawer';
 import styled from 'styled-components';
 
-export default function MobileNavBar({ isBanner }) {
+interface MobileNavBarProps {
+  isBanner?: boolean;
+}
+
+export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
   const router = useRouter();
-  const isHomeshares = router.pathname.includes('homeshares');
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const isHomeshares = router.pathname.includes('homeshares');
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -28,100 +33,113 @@ export default function MobileNavBar({ isBanner }) {
   }, []);
 
   return (
-    <SectionWrapper
-      style={{
-        background: showMenu
-          ? '#303030'
-          : 'linear-gradient(rgba(0, 0, 0, 0.27) 42.74%,rgba(0, 0, 0, 0.21) 65.57%,rgba(0, 0, 0, 0) 100%)',
-        backdropFilter: 'blur(1.5px)',
-        top: scrollPosition === 0 && isBanner ? '4.75rem' : 0,
-      }}
-    >
-      <FlexWrapper>
-        <Link href={`/`}>
+    <>
+      <NavbarWrapper
+        style={{ top: scrollPosition === 0 && isBanner ? '5.2rem' : 0 }}
+      >
+        <FlexWrapper>
+          <Link href="/">
+            <Image
+              src="/icons/nada-light.svg"
+              alt="Nada"
+              height={40}
+              width={160}
+            />
+          </Link>
           <Image
-            width={150}
+            src="/icons/menu-light.svg"
+            alt="Menu"
+            onClick={() => setShowMenu(true)}
             height={40}
-            alt={'Nada'}
-            src={'/icons/nada-light.svg'}
+            width={40}
+            style={{ zIndex: 9999999 }}
           />
-        </Link>
+        </FlexWrapper>
+      </NavbarWrapper>
 
-        <Image
-          width={40}
-          height={40}
-          alt={'Cityfunds'}
-          src={'/icons/mobile-light.svg'}
-          onClick={() => setShowMenu(!showMenu)}
-        />
-      </FlexWrapper>
+      <Drawer
+        open={showMenu}
+        onClose={() => setShowMenu(false)}
+        direction="top"
+        style={{
+          height: 'inherit',
+          backgroundColor: '#303030',
+          borderBottomRightRadius: '1.5rem',
+          borderBottomLeftRadius: '1.5rem',
+          padding: '2rem 1rem',
+        }}
+      >
+        <FlexWrapper style={{ paddingBottom: '2rem' }}>
+          <Link href="/">
+            <Image
+              src="/icons/nada-light.svg"
+              alt="Nada"
+              height={40}
+              width={160}
+            />
+          </Link>
+          <Image
+            src="/icons/cancel-light.svg"
+            alt="Menu"
+            onClick={() => setShowMenu(!showMenu)}
+            height={20}
+            width={20}
+            style={{ marginRight: '0.5rem' }}
+          />
+        </FlexWrapper>
 
-      {showMenu && (
-        <MenuWrapper>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+            padding: '0 0.5rem',
+          }}
+        >
           {HEADER_LINKS.map(({ name, link }, idx) => (
             <LinkText
               key={idx}
               href={link}
-              style={{ color: link === router.pathname ? '#48DC95' : 'white' }}
+              onClick={() => setShowMenu(false)}
+              style={{
+                color: link === location.pathname ? '#48DC95' : 'white',
+              }}
             >
               {name.toUpperCase()}
             </LinkText>
           ))}
-
-          <StackWrapper>
-            {!isHomeshares && (
-              <PrimaryButton
-                onClick={() =>
-                  window.open(
-                    isHomeshares
-                      ? `${EXTERNAL_ROUTES.TYPEFORM}`
-                      : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
-                    '_blank'
-                  )
-                }
-                isInverted
-              >
-                Login
-              </PrimaryButton>
-            )}
+          <Link href={'/login'}>
             <PrimaryButton
-              onClick={() =>
-                window.open(
-                  isHomeshares
-                    ? `${EXTERNAL_ROUTES.TYPEFORM}`
-                    : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-                  '_blank'
-                )
-              }
+              onClick={() => setShowMenu(false)}
+              style={{ textTransform: 'uppercase' }}
+              isInverted
             >
-              {isHomeshares ? 'Apply Now' : 'Sign Up'}
+              Log In
             </PrimaryButton>
-          </StackWrapper>
-        </MenuWrapper>
-      )}
-    </SectionWrapper>
+          </Link>
+          <Link href={'/signup'} onClick={() => setShowMenu(false)}>
+            <PrimaryButton>Sign Up</PrimaryButton>
+          </Link>
+        </div>
+      </Drawer>
+    </>
   );
 }
 
-const SectionWrapper = styled.div`
-  transition: ${({ theme }) => theme.transitions.ease};
-  position: fixed;
-  z-index: 999;
-  width: 100vw;
-  padding: 30px;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-`;
-
-const MenuWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-  width: 158px;
-`;
-
-const FlexWrapper = styled.div`
+const NavbarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.27) 42.74%,
+    rgba(0, 0, 0, 0.21) 65.57%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  backdrop-filter: blur(1.5px);
+  position: fixed;
+  width: 100vw;
+  z-index: 99;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  padding: 2rem 1rem;
 `;

@@ -1,4 +1,3 @@
-import AlertBanner from '@components/cityfunds/AlertBanner';
 import PageFooter from '@components/common/PageFooter';
 import PageLayout from '@components/common/PageLayout';
 import * as snippet from '@segment/snippet';
@@ -13,6 +12,7 @@ import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';
 import Script from 'next/script';
 import { useEffect } from 'react';
+import 'react-modern-drawer/dist/index.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { ThemeProvider } from 'styled-components';
@@ -91,7 +91,7 @@ export default function App({
 
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        {(homePage?.promo?.banner || homePage?.webinar?.banner) && (
+        {/* {(homePage?.promo?.banner || homePage?.webinar?.banner) && (
           <AlertBanner
             primaryText={
               homePage?.promo?.banner
@@ -108,7 +108,7 @@ export default function App({
               )
             }
           />
-        )}
+        )} */}
         <PageLayout
           isBanner={homePage?.promo?.banner || homePage?.webinar?.banner}
         >
