@@ -119,7 +119,7 @@ export default function DesktopNavBar({
                   }
                   isInverted
                 >
-                  Login
+                  Log In
                 </PrimaryButton>
               )}
               <PrimaryButton

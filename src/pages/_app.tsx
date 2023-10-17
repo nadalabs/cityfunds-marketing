@@ -13,6 +13,7 @@ import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';
 import Script from 'next/script';
 import { useEffect } from 'react';
+import 'react-modern-drawer/dist/index.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { ThemeProvider } from 'styled-components';
