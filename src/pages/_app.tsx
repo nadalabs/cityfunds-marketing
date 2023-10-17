@@ -1,3 +1,4 @@
+import AlertBanner from '@components/cityfunds/AlertBanner';
 import PageFooter from '@components/common/PageFooter';
 import PageLayout from '@components/common/PageLayout';
 import * as snippet from '@segment/snippet';
@@ -91,7 +92,7 @@ export default function App({
 
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        {/* {(homePage?.promo?.banner || homePage?.webinar?.banner) && (
+        {(homePage?.promo?.banner || homePage?.webinar?.banner) && (
           <AlertBanner
             primaryText={
               homePage?.promo?.banner
@@ -108,7 +109,7 @@ export default function App({
               )
             }
           />
-        )} */}
+        )}
         <PageLayout
           isBanner={homePage?.promo?.banner || homePage?.webinar?.banner}
         >

@@ -109,10 +109,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
             </LinkText>
           ))}
           {isHomeshares ? (
-            <a
-              href={EXTERNAL_ROUTES.TYPEFORM}
-              target="_blank"
-            >
+            <a href={EXTERNAL_ROUTES.TYPEFORM} target="_blank">
               <PrimaryButton
                 onClick={() => setShowMenu(false)}
                 style={{ textTransform: 'uppercase' }}
