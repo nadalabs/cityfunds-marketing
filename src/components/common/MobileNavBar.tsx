@@ -66,7 +66,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
           backgroundColor: '#303030',
           borderBottomRightRadius: '1.5rem',
           borderBottomLeftRadius: '1.5rem',
-          padding: '2rem 1rem',
+          padding: '1.5rem',
         }}
       >
         <FlexWrapper style={{ paddingBottom: '2rem' }}>
@@ -84,7 +84,6 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
             onClick={() => setShowMenu(!showMenu)}
             height={20}
             width={20}
-            style={{ marginRight: '0.5rem' }}
           />
         </FlexWrapper>
 
@@ -93,7 +92,6 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
             display: 'flex',
             flexDirection: 'column',
             gap: '1rem',
-            padding: '0 0.5rem',
           }}
         >
           {HEADER_LINKS.map(({ name, link }, idx) => (
@@ -102,7 +100,9 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
               href={link}
               onClick={() => setShowMenu(false)}
               style={{
+                fontSize: '1rem',
                 color: link === location.pathname ? '#48DC95' : 'white',
+                marginBottom: 0
               }}
             >
               {name.toUpperCase()}
