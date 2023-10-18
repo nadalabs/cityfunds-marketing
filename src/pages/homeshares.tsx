@@ -1,6 +1,7 @@
 import FeaturedImage from '@components/FeaturedImage';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
+import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import Testimonials from '@components/cityfunds/Testimonials';
 import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
@@ -8,10 +9,10 @@ import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
 import { homesharesTestimonialsQuery } from 'lib/queries';
-import { sanityClient } from 'lib/sanity';
+import { getHomesharesPageContent, sanityClient } from 'lib/sanity';
 import { useEffect } from 'react';
 
-export default function HomesharesPage({ testimonials }) {
+export default function HomesharesPage({ homesharesPage, testimonials }) {
   useEffect(() => {
     trackPageView('Homeshares Page Viewed');
   });
@@ -83,6 +84,10 @@ export default function HomesharesPage({ testimonials }) {
         btnText="Apply Now"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
       />
+      <NadaFaqs
+        faqs={homesharesPage?.questions}
+        seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/homeshares`}
+      />
       <Testimonials reviews={testimonials} />
       <EmailCapture formName="Homeshares" isPopup />
     </>
@@ -90,10 +95,11 @@ export default function HomesharesPage({ testimonials }) {
 }
 
 export async function getStaticProps() {
+  const homesharesPage = await getHomesharesPageContent();
   const testimonials = await sanityClient.fetch(homesharesTestimonialsQuery);
 
   return {
-    props: { testimonials },
+    props: { homesharesPage, testimonials },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

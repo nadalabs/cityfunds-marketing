@@ -1,14 +1,14 @@
 import LongFormText from '@components/common/LongFormText';
 import { Heading, LinkText, Overline } from '@elements/Typography';
-import { EXTERNAL_ROUTES } from '@utils/constants';
 import { useState } from 'react';
 import styled from 'styled-components';
 
 interface NadaFaqsProps {
   faqs: { question: string; answer: string }[];
+  seeAllUrl: string;
 }
 
-export default function NadaFaqs({ faqs }: NadaFaqsProps) {
+export default function NadaFaqs({ faqs, seeAllUrl }: NadaFaqsProps) {
   const [active, setActive] = useState(0);
 
   return (
@@ -29,7 +29,7 @@ export default function NadaFaqs({ faqs }: NadaFaqsProps) {
         </ContentWrapper>
       ))}
 
-      <LinkText href={EXTERNAL_ROUTES.HUBSPOT_FAQS} target="_blank">
+      <LinkText href={seeAllUrl} target="_blank">
         See All FAQs
       </LinkText>
     </SectionWrapper>
