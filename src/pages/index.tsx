@@ -11,7 +11,7 @@ import Webinanars from '@components/cityfunds/Webinars';
 import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
 import { SectionWrapper } from '@elements/Containers';
-import { FUND_STATUS, REGULATION } from '@utils/constants';
+import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
 import {
   cityfundsTestimonialsQuery,
@@ -154,7 +154,10 @@ export default function HomePage({
         primaryText="We have plenty of reasons."
         valueProps={values}
       />
-      <NadaFaqs faqs={homePage?.questions} />
+      <NadaFaqs
+        faqs={homePage?.questions}
+        seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/cityfunds`}
+      />
       <Testimonials reviews={testimonials} />
       {homePage?.promo && <InvestorPromo promo={homePage?.promo} />}
       {homePage?.webinar && <Webinanars webinar={homePage?.webinar} />}

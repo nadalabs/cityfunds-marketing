@@ -99,7 +99,10 @@ export default function AccreditedInvestorsPage({
         primaryText="We have plenty of reasons."
         valueProps={values}
       />
-      <FaqsSection faqs={homePage?.questions} />
+      <FaqsSection
+        faqs={homePage?.questions}
+        seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/cityfunds`}
+      />
       <SectionWrapper>
         <FeaturedImage
           heading="Trusted by 10,000+ Investors"

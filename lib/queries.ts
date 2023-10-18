@@ -277,6 +277,14 @@ export const homePageFields = `
   "webinar": webinar->{banner, title, description, date, image, link},
 `;
 
+// Homeshares Queries
+export const homesharesPageFields = `
+  _id,
+  questions,
+  "promo": promo->{banner, title, description, image},
+  "webinar": webinar->{banner, title, description, date, image, link},
+`;
+
 export const footerQuery = `
 {
   "legal": *[_type == "legal" && slug.current == "footer"] | order(_updatedAt desc) [0] {

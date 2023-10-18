@@ -2,7 +2,12 @@ import { ClientConfig, createClient } from '@sanity/client';
 import createImageUrlBuilder from '@sanity/image-url';
 import { capitalizeFirstLetter } from '@utils/helpers';
 import { IFundContent } from '@utils/models';
-import { cityfundFields, homePageFields, legalFields } from 'lib/queries';
+import {
+  cityfundFields,
+  homePageFields,
+  homesharesPageFields,
+  legalFields,
+} from 'lib/queries';
 
 const sanityConfig: ClientConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -36,6 +41,14 @@ export const getHomePageContent = async (): Promise<any> => {
   const res = await sanityClient.fetch(`
     *[_type == "home"] | order(index asc, _updatedAt desc) {
       ${homePageFields}
+    }`);
+  return res[0];
+};
+
+export const getHomesharesPageContent = async (): Promise<any> => {
+  const res = await sanityClient.fetch(`
+    *[_type == "homesharesPage"] | order(index asc, _updatedAt desc) {
+      ${homesharesPageFields}
     }`);
   return res[0];
 };
