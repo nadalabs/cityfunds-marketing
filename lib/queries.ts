@@ -1,4 +1,3 @@
-// Post Queries
 const postFields = `
   _id,
   title,
@@ -37,7 +36,6 @@ export const postBySlugQuery = `
 }
 `;
 
-// Media Queries
 const mediaFields = `
   _id,
   title,
@@ -76,7 +74,6 @@ export const mediaBySlugQuery = `
 }
 `;
 
-// Partner Queries
 const partnerFields = `
   _id,
   name,
@@ -107,7 +104,6 @@ export const partnerBySlugQuery = `
 }
 `;
 
-// Legal Queries
 export const legalFields = `
   _id,
   title,
@@ -153,105 +149,6 @@ export const pressIndexQuery = `
   ${pressFields}
 }`;
 
-// Teammate Queries
-const teammateFields = `
-  _id,
-  name,
-  role,
-  image,
-  linkedIn,
-  index
-`;
-
-export const teammateIndexQuery = `
-*[_type == "teammate"] | order(index asc, _updatedAt desc) {
-  ${teammateFields}
-}`;
-
-// Testimonial Queries
-const testimonialFields = `
-  _id,
-  review,
-  name,
-  city,
-  category,
-  date,
-`;
-
-export const cityfundsTestimonialsQuery = `
-*[_type == "testimonial" && category == "Cityfunds"] | order(index asc, _updatedAt desc) {
-  ${testimonialFields}
-}`;
-
-export const homesharesTestimonialsQuery = `
-*[_type == "testimonial" && category == "Homeshares"] | order(index asc, _updatedAt desc) {
-  ${testimonialFields}
-}`;
-
-// Promo Queries
-const promoFields = `
-  _id,
-  title,
-  description,
-  disclaimer,
-  image,
-`;
-
-export const promoIndexQuery = `
-*[_type == "promo"] | order(index asc, _updatedAt desc) {
-  ${promoFields}
-}`;
-
-// Values Queries
-const valueFields = `
-  _id,
-  title,
-  description,
-  category
-`;
-
-export const nadaValuesQuery = `
-*[_type == "value" && category == "Nada"] | order(index asc, _updatedAt asc) {
-  ${valueFields}
-}`;
-
-export const cityfundsValuesQuery = `
-*[_type == "value" && category == "Cityfunds"] | order(index asc, _updatedAt asc) {
-  ${valueFields}
-}`;
-
-// Logos Queries
-const logoFields = `
-  _id,
-  title,
-  image,
-  link,
-  category
-`;
-
-export const pressLogosQueryQuery = `
-*[_type == "logo" && category == "Press"] | order(index asc, _updatedAt asc) {
-  ${logoFields}
-}`;
-
-export const backersLogosQuery = `
-*[_type == "logo" && category == "Backer"] | order(index asc, _updatedAt asc) {
-  ${logoFields}
-}`;
-
-// Summaries Queries
-const summaryFields = `
-  _id,
-  title,
-  content,
-`;
-
-export const summaryIndexQuery = `
-*[_type == "summary"] | order(index asc, _updatedAt desc) {
-  ${summaryFields}
-}`;
-
-// Cityfund Queries
 export const cityfundFields = `
   _id,
   fund_name,
@@ -264,21 +161,28 @@ export const cityfundFields = `
   culture_articles
 `;
 
-export const cityfundIndexQuery = `
-*[_type == "cityfund"] | order(index asc, _updatedAt desc) {
-  ${cityfundFields}
-}`;
-
-// Home Queries
-export const homePageFields = `
+export const cityfundsPageFields = `
   _id,
   questions,
   "promo": promo->{banner, title, description, image},
   "webinar": webinar->{banner, title, description, date, image, link},
 `;
 
-// Homeshares Queries
 export const homesharesPageFields = `
+  _id,
+  questions,
+  "promo": promo->{banner, title, description, image},
+  "webinar": webinar->{banner, title, description, date, image, link},
+`;
+
+export const aboutPageFields = `
+  _id,
+  questions,
+  "promo": promo->{banner, title, description, image},
+  "webinar": webinar->{banner, title, description, date, image, link},
+`;
+
+export const investorsPageFields = `
   _id,
   questions,
   "promo": promo->{banner, title, description, image},
@@ -288,20 +192,6 @@ export const homesharesPageFields = `
 export const footerQuery = `
 {
   "legal": *[_type == "legal" && slug.current == "footer"] | order(_updatedAt desc) [0] {
-    ${legalFields}
-  },
-}`;
-
-export const ourFocusQuery = `
-{
-  "summary": *[_type == "summary" && title == "Our Focus"] | order(_updatedAt desc) [0] {
-    ${legalFields}
-  },
-}`;
-
-export const ourStoryQuery = `
-{
-  "summary": *[_type == "summary" && title == "Our Story"] | order(_updatedAt desc) [0] {
     ${legalFields}
   },
 }`;

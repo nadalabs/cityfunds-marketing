@@ -3,9 +3,11 @@ import createImageUrlBuilder from '@sanity/image-url';
 import { capitalizeFirstLetter } from '@utils/helpers';
 import { IFundContent } from '@utils/models';
 import {
+  aboutPageFields,
   cityfundFields,
-  homePageFields,
+  cityfundsPageFields,
   homesharesPageFields,
+  investorsPageFields,
   legalFields,
 } from 'lib/queries';
 
@@ -37,10 +39,10 @@ export const getFundContentById = async (id: string): Promise<IFundContent> => {
   return res[0];
 };
 
-export const getHomePageContent = async (): Promise<any> => {
+export const getCityfundsPageContent = async (): Promise<any> => {
   const res = await sanityClient.fetch(`
-    *[_type == "home"] | order(index asc, _updatedAt desc) {
-      ${homePageFields}
+    *[_type == "cityfundsPage"] | order(index asc, _updatedAt desc) {
+      ${cityfundsPageFields}
     }`);
   return res[0];
 };
@@ -49,6 +51,22 @@ export const getHomesharesPageContent = async (): Promise<any> => {
   const res = await sanityClient.fetch(`
     *[_type == "homesharesPage"] | order(index asc, _updatedAt desc) {
       ${homesharesPageFields}
+    }`);
+  return res[0];
+};
+
+export const getAboutPageContent = async (): Promise<any> => {
+  const res = await sanityClient.fetch(`
+    *[_type == "aboutPage"] | order(index asc, _updatedAt desc) {
+      ${aboutPageFields}
+    }`);
+  return res[0];
+};
+
+export const getInvestorsPageContent = async (): Promise<any> => {
+  const res = await sanityClient.fetch(`
+    *[_type == "investorsPage"] | order(index asc, _updatedAt desc) {
+      ${investorsPageFields}
     }`);
   return res[0];
 };

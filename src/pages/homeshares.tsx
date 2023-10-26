@@ -8,11 +8,10 @@ import PageHero from '@components/common/PageHero';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
-import { homesharesTestimonialsQuery } from 'lib/queries';
-import { getHomesharesPageContent, sanityClient } from 'lib/sanity';
+import { getHomesharesPageContent } from 'lib/sanity';
 import { useEffect } from 'react';
 
-export default function HomesharesPage({ homesharesPage, testimonials }) {
+export default function HomesharesPage({ homesharesPage }) {
   useEffect(() => {
     trackPageView('Homeshares Page Viewed');
   });
@@ -88,7 +87,7 @@ export default function HomesharesPage({ homesharesPage, testimonials }) {
         faqs={homesharesPage?.questions}
         seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/homeshares`}
       />
-      <Testimonials reviews={testimonials} />
+      <Testimonials reviews={homesharesPage?.testimonials} />
       <EmailCapture formName="Homeshares" isPopup />
     </>
   );
@@ -96,10 +95,9 @@ export default function HomesharesPage({ homesharesPage, testimonials }) {
 
 export async function getStaticProps() {
   const homesharesPage = await getHomesharesPageContent();
-  const testimonials = await sanityClient.fetch(homesharesTestimonialsQuery);
 
   return {
-    props: { homesharesPage, testimonials },
+    props: { homesharesPage },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }
