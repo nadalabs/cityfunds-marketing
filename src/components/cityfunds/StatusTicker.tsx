@@ -1,7 +1,9 @@
+import { FlexWrapper } from '@elements/Containers';
 import { Caption } from '@elements/Typography';
 import { FUND_STATUS, REGULATION } from '@utils/constants';
-import { getTimeRemaining } from '@utils/helpers';
+import { isDateInRange } from '@utils/helpers';
 import Image from 'next/image';
+import Countdown from 'react-countdown';
 import styled from 'styled-components';
 
 interface StatusTickerProps {
@@ -15,7 +17,24 @@ export default function StatusTicker({
   isHome,
   isDark,
 }: StatusTickerProps) {
-  const { days, hours } = getTimeRemaining();
+  const showCountdown = isDateInRange(new Date(fund_data?.nav_update));
+
+  const renderer = ({ days, hours }) => {
+    const numbers = [
+      { label: 'days', value: days },
+      { label: 'hrs', value: hours },
+    ];
+
+    return (
+      <FlexWrapper style={{ justifyContent: 'flex-start', gap: '0.25rem' }}>
+        {numbers.map(({ label, value }, idx) => (
+          <Caption key={idx} style={{ color: 'white', fontWeight: 600 }}>
+            {`${value} ${label}`}
+          </Caption>
+        ))}
+      </FlexWrapper>
+    );
+  };
 
   return (
     <div>
@@ -49,20 +68,32 @@ export default function StatusTicker({
             {isHome || isDark ? 'Coming Soon' : 'Exclusive'}
           </Caption>
         </LockWrapper>
-      ) : days <= 10 && days >= 1 ? (
+      ) : showCountdown ? (
         <LockWrapper
           style={{ background: isDark ? '#2A8356' : 'rgba(22, 22, 22, 0.33)' }}
         >
-          <Image
-            src="/icons/flash.svg"
-            alt="Lock"
-            height={16}
-            width={16}
-            style={{ marginRight: '0.25rem' }}
-          />
-          <Caption style={{ color: 'white', fontWeight: 600 }}>
-            {days} Days {hours} Hours Left
-          </Caption>
+          <FlexWrapper>
+            <Image
+              src="/icons/flash.svg"
+              alt="Lock"
+              height={16}
+              width={16}
+              style={{ marginRight: '0.25rem' }}
+            />
+            <FlexWrapper style={{ flexDirection: 'column' }}>
+              <Caption
+                style={{
+                  color: 'white',
+                  fontWeight: 600,
+                  lineHeight: '100%',
+                  marginTop: '0.25rem',
+                }}
+              >
+                Next Price Update
+              </Caption>
+              <Countdown date={fund_data?.nav_update} renderer={renderer} />
+            </FlexWrapper>
+          </FlexWrapper>
         </LockWrapper>
       ) : null}
     </div>
