@@ -8,11 +8,10 @@ import PageHero from '@components/common/PageHero';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
-import { homesharesTestimonialsQuery } from 'lib/queries';
-import { getHomesharesPageContent, sanityClient } from 'lib/sanity';
+import { getHomesharesPageContent } from 'lib/sanity';
 import { useEffect } from 'react';
 
-export default function HomesharesPage({ homesharesPage, testimonials }) {
+export default function HomesharesPage({ homesharesPage }) {
   useEffect(() => {
     trackPageView('Homeshares Page Viewed');
   });
@@ -63,24 +62,7 @@ export default function HomesharesPage({ homesharesPage, testimonials }) {
       </SectionWrapper>
       <HowItWorks
         overline="Three easy steps to unlock your home equity"
-        steps={[
-          {
-            title: 'Apply for a Homeshare',
-            description: 'Fill out an application in under 90 seconds',
-            imageUrl: '/images/homeshares-1.png',
-          },
-          {
-            title: 'Schedule  Inspection',
-            description: "Once approved, we'll schedule your home inspection",
-            imageUrl: '/images/homeshares-2.png',
-          },
-          {
-            title: 'Get Funded',
-            description:
-              'We will finalize the paperwork & deposit funds in a few days',
-            imageUrl: '/images/homeshares-3.png',
-          },
-        ]}
+        tutorials={homesharesPage?.tutorials}
         btnText="Apply Now"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
       />
@@ -88,7 +70,7 @@ export default function HomesharesPage({ homesharesPage, testimonials }) {
         faqs={homesharesPage?.questions}
         seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/homeshares`}
       />
-      <Testimonials reviews={testimonials} />
+      <Testimonials testimonials={homesharesPage?.testimonials} />
       <EmailCapture formName="Homeshares" isPopup />
     </>
   );
@@ -96,10 +78,9 @@ export default function HomesharesPage({ homesharesPage, testimonials }) {
 
 export async function getStaticProps() {
   const homesharesPage = await getHomesharesPageContent();
-  const testimonials = await sanityClient.fetch(homesharesTestimonialsQuery);
 
   return {
-    props: { homesharesPage, testimonials },
+    props: { homesharesPage },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

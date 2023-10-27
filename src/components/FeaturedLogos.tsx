@@ -22,7 +22,7 @@ export default function FeaturedLogos({
         {overline}
       </Overline>
       <ContentWrapper>
-        {logos.map(({ name, image, link }, idx) => (
+        {logos?.map(({ name, image, link }, idx) => (
           <Link
             key={idx}
             href={link}

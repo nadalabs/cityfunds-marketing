@@ -1,15 +1,16 @@
 import CarouselStepper from '@components/common/CarouselStepper';
+import LongFormText from '@components/common/LongFormText';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';
-import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import { Overline, PrimaryText } from '@elements/Typography';
 import { useRef } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
 interface TestimonialsProps {
-  reviews: { name: string; review: string; city: string }[];
+  testimonials: { name: string; review: string; city: string }[];
 }
 
-export default function Testimonials({ reviews }: TestimonialsProps) {
+export default function Testimonials({ testimonials }: TestimonialsProps) {
   const sliderRef = useRef();
   const settings = {
     dots: false,
@@ -28,14 +29,14 @@ export default function Testimonials({ reviews }: TestimonialsProps) {
       <StackWrapper>
         <Overline>Hear it from our users...</Overline>
         <Slider {...settings} ref={sliderRef}>
-          {reviews?.map(({ name, review, city }, idx) => (
+          {testimonials?.map(({ name, review, city }, idx) => (
             <div key={idx}>
               <ContentWrapper>
                 <div style={{ maxWidth: '788px', marginRight: '24px' }}>
-                  <QuoteText>"{review}"</QuoteText>
+                  <LongFormText content={review} />
                   <CarouselStepper
                     activeStep={idx}
-                    totalSteps={reviews.length}
+                    totalSteps={testimonials?.length}
                     sliderRef={sliderRef}
                   />
                 </div>
@@ -66,18 +67,6 @@ const ContentWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
-  }
-`;
-
-const QuoteText = styled(Heading)`
-  height: 420px;
-  font-size: 3rem;
-  line-height: 125%;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    height: 400px;
-    font-size: 32px;
-    line-height: 40px;
   }
 `;
 

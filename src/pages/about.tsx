@@ -6,16 +6,10 @@ import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
 import { SectionWrapper } from '@elements/Containers';
 import { trackPageView } from '@utils/helpers';
-import {
-  backersLogosQuery,
-  nadaValuesQuery,
-  ourStoryQuery,
-  teammateIndexQuery,
-} from 'lib/queries';
-import { sanityClient } from 'lib/sanity';
+import { getAboutPageContent } from 'lib/sanity';
 import { useEffect } from 'react';
 
-export default function AboutPage({ teammates, values, logos, ourStory }) {
+export default function AboutPage({ aboutPage }) {
   useEffect(() => {
     trackPageView('About Page Viewed');
   });
@@ -37,15 +31,15 @@ export default function AboutPage({ teammates, values, logos, ourStory }) {
         <LongFormText
           title="Our Story"
           overline="We are on a Mission"
-          content={ourStory}
+          content={aboutPage?.ourStory}
         />
       </SectionWrapper>
-      <FeaturedLogos overline="World Class Backing" logos={logos} />
-      <TeamSlider teammates={teammates} />
+      <FeaturedLogos overline="World Class Backing" logos={aboutPage?.logos} />
+      <TeamSlider teammates={aboutPage?.teammates} />
       <TextSlider
         overline="How We Think"
         heading="Our Values"
-        valueProps={values}
+        valueProps={aboutPage?.values}
       />
       <CareersCTA />
     </>
@@ -53,14 +47,10 @@ export default function AboutPage({ teammates, values, logos, ourStory }) {
 }
 
 export async function getStaticProps() {
-  const teammates = await sanityClient.fetch(teammateIndexQuery);
-  const values = await sanityClient.fetch(nadaValuesQuery);
-  const logos = await sanityClient.fetch(backersLogosQuery);
-  const ourStoryData = await sanityClient.fetch(ourStoryQuery);
-  const ourStory = ourStoryData?.summary?.content;
+  const aboutPage = await getAboutPageContent();
 
   return {
-    props: { teammates, values, logos, ourStory },
+    props: { aboutPage },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

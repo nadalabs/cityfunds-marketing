@@ -1,3 +1,4 @@
+import LongFormText from '@components/common/LongFormText';
 import { CardWrapper, SliderWrapper, StackWrapper } from '@elements/Containers';
 import {
   Heading,
@@ -37,13 +38,13 @@ export default function TextSlider({
           right: '1rem',
         }}
       >
-        {valueProps.map(({ title, description }, idx) => (
+        {valueProps?.map(({ title, description }, idx) => (
           <div key={idx}>
             <TextWrapper>
               <StackWrapper style={{ gap: '1rem' }}>
                 <GreenSquare />
                 <SmallHeading>{title}</SmallHeading>
-                <PrimaryText>{description}</PrimaryText>
+                <LongFormText content={description} />
               </StackWrapper>
             </TextWrapper>
           </div>

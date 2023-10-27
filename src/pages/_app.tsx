@@ -8,7 +8,7 @@ import { setCookie } from '@utils/helpers';
 import GlobalStyle from '@utils/styles';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
-import { getFooterContent, getHomePageContent } from 'lib/sanity';
+import { getCityfundsPageContent, getFooterContent } from 'lib/sanity';
 import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';
 import Script from 'next/script';
@@ -25,20 +25,20 @@ declare global {
 }
 
 interface AppProps extends NextAppProps {
-  homePage?: any;
+  cityfundsPage?: any;
   footer?: any[];
 }
 
 App.getInitialProps = async () => {
-  const homePage = await getHomePageContent();
+  const cityfundsPage = await getCityfundsPageContent();
   const footer = await getFooterContent();
-  return { homePage, footer };
+  return { cityfundsPage, footer };
 };
 
 export default function App({
   Component,
   pageProps,
-  homePage,
+  cityfundsPage,
   footer,
 }: AppProps) {
   useEffect(() => {
@@ -77,7 +77,6 @@ export default function App({
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#48DC95" />
         <meta
           name="description"
           content="Gain access to professionally-managed, diversified real estate portfolios in the world’s best cities - start with as little as $100."
@@ -92,26 +91,30 @@ export default function App({
 
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        {(homePage?.promo?.banner || homePage?.webinar?.banner) && (
+        {(cityfundsPage?.promo?.banner || cityfundsPage?.webinar?.banner) && (
           <AlertBanner
             primaryText={
-              homePage?.promo?.banner
-                ? homePage?.promo?.banner
-                : homePage?.webinar?.banner
+              cityfundsPage?.promo?.banner
+                ? cityfundsPage?.promo?.banner
+                : cityfundsPage?.webinar?.banner
             }
-            btnText={homePage?.promo?.banner ? 'Learn More' : 'Register Here'}
+            btnText={
+              cityfundsPage?.promo?.banner ? 'Learn More' : 'Register Here'
+            }
             onClick={() =>
               window.open(
-                homePage?.promo?.banner
+                cityfundsPage?.promo?.banner
                   ? '/rewards-program'
-                  : homePage?.webinar?.link,
+                  : cityfundsPage?.webinar?.link,
                 '_blank'
               )
             }
           />
         )}
         <PageLayout
-          isBanner={homePage?.promo?.banner || homePage?.webinar?.banner}
+          isBanner={
+            cityfundsPage?.promo?.banner || cityfundsPage?.webinar?.banner
+          }
         >
           <Component {...pageProps} />
         </PageLayout>

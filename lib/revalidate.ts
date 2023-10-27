@@ -8,31 +8,34 @@ export const config = {
   },
 };
 
-const LEGAL_UPDATED_QUERY = `*[_type == "legal" && _id == $id].slug.current`;
-const PARTNER_UPDATED_QUERY = `*[_type == "partner" && _id == $id].slug.current`;
-const POST_UPDATED_QUERY = `*[_type == "post" && _id == $id].slug.current`;
-const PRESS_UPDATED_QUERY = `*[_type == "press" && _id == $id].title.current`;
-const PROMO_UPDATED_QUERY = `*[_type == "promo" && _id == $id].title.current`;
-const TEAMMATE_UPDATED_QUERY = `*[_type == "teammate" && _id == $id].name.current`;
-const TESTIMONIAL_UPDATED_QUERY = `*[_type == "testimonial" && _id == $id].name.current`;
+const CITYFUNDS_QUERY = `*[_type == "legal" && _id == $id].slug.current`;
+const HOMESHARES_QUERY = `*[_type == "legal" && _id == $id].slug.current`;
+const ABOUT_QUERY = `*[_type == "legal" && _id == $id].slug.current`;
+const INVESTORS_QUERY = `*[_type == "legal" && _id == $id].slug.current`;
+const LEGAL_QUERY = `*[_type == "legal" && _id == $id].slug.current`;
+const PARTNER_QUERY = `*[_type == "partner" && _id == $id].slug.current`;
+const POST_QUERY = `*[_type == "post" && _id == $id].slug.current`;
+const PRESS_QUERY = `*[_type == "press" && _id == $id].title.current`;
+
 
 const getQueryForType = (type) => {
   switch (type) {
+    case 'cityfundsPage':
+      return CITYFUNDS_QUERY;
+    case 'homesharesPage':
+      return HOMESHARES_QUERY;
+    case 'aboutPage':
+      return ABOUT_QUERY;
+    case 'investorsPage':
+      return INVESTORS_QUERY;
     case 'legal':
-      return LEGAL_UPDATED_QUERY;
+      return LEGAL_QUERY;
     case 'partner':
-      return PARTNER_UPDATED_QUERY;
+      return PARTNER_QUERY;
     case 'post':
-      return POST_UPDATED_QUERY;
+      return POST_QUERY;
     case 'press':
-      return PRESS_UPDATED_QUERY;
-    case 'promo':
-      return PROMO_UPDATED_QUERY;
-    case 'teammate':
-      return TEAMMATE_UPDATED_QUERY;
-    case 'testimonial':
-      return TESTIMONIAL_UPDATED_QUERY;
-
+      return PRESS_QUERY;
     default:
       throw new TypeError(`Unknown type: ${type}`);
   }
@@ -76,18 +79,20 @@ export default async function revalidate(req, res) {
   const _slug = await sanityClient.fetch(getQueryForType(_type), { id });
   let staleRoutes = [];
 
-  if (_type === 'post') {
+   if (_type === 'cityfundsPage') {
+    staleRoutes = [`/`, `/${_slug}`];
+  } else if (_type === 'homesharesPage') {
+    staleRoutes = [`/homeshares`];
+  } else if (_type === 'aboutPage') {
+    staleRoutes = [`/about`];
+  } else if (_type === 'post') {
     staleRoutes = ['/learn', `/learn/${_slug}`];
-  } else if (_type === 'partner' || _type === 'legal' || _type === 'promo') {
+  } else if (_type === 'legal') {
+    staleRoutes = [`/${_slug}`];
+  } else if (_type === 'partner') {
     staleRoutes = [`/${_slug}`];
   } else if (_type === 'press') {
-    staleRoutes = [`/press`];
-  } else if (_type === 'teammate') {
-    staleRoutes = [`/about`];
-  } else if (_type === 'testimonial') {
-    staleRoutes = [`/`, '/homeshares'];
-  } else if (_type === 'home') {
-    staleRoutes = [`/`];
+    staleRoutes = ['/press'];
   }
 
   try {

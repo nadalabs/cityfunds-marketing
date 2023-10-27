@@ -2,7 +2,7 @@ import BlogHero from '@components/blog/BlogHero';
 import BlogSlider from '@components/blog/BlogSlider';
 import EmailCapture from '@components/common/EmailCapture';
 import { trackPageView } from '@utils/helpers';
-import { MediaIndexQuery, postIndexQuery } from 'lib/queries';
+import { mediaIndexQuery, postIndexQuery } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
 import _ from 'lodash';
 import { useEffect } from 'react';
@@ -46,7 +46,7 @@ export default function LearnPage({ allPosts, allMedia }) {
 
 export async function getStaticProps() {
   const allPosts = await sanityClient.fetch(postIndexQuery);
-  const allMedia = await sanityClient.fetch(MediaIndexQuery);
+  const allMedia = await sanityClient.fetch(mediaIndexQuery);
 
   return {
     props: { allPosts, allMedia },

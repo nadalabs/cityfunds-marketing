@@ -13,39 +13,24 @@ import PageHero from '@components/common/PageHero';
 import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
-import {
-  cityfundsTestimonialsQuery,
-  cityfundsValuesQuery,
-  pressLogosQueryQuery,
-} from 'lib/queries';
-import {
-  getAllFundsContent,
-  getHomePageContent,
-  sanityClient,
-} from 'lib/sanity';
+import { getAllFundsContent, getCityfundsPageContent } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 import { useEffect } from 'react';
 
-interface HomePageProps {
-  homePage?: any;
+interface CityfundsPageProps {
+  cityfundsPage?: any;
   cityfunds: any[];
-  logos: any;
-  testimonials: any;
-  values: any;
   partner: any;
 }
 
-export default function HomePage({
-  homePage,
+export default function CityfundsPage({
+  cityfundsPage,
   cityfunds,
-  logos,
-  testimonials,
-  values,
   partner,
-}: HomePageProps) {
+}: CityfundsPageProps) {
   const bannerText = partner?.promo?.banner
-    ? homePage?.promo?.banner
-    : homePage?.webinar?.banner;
+    ? cityfundsPage?.promo?.banner
+    : cityfundsPage?.webinar?.banner;
 
   useEffect(() => {
     trackPageView('Cityfunds Page Viewed');
@@ -73,28 +58,15 @@ export default function HomePage({
         bannerText={!!bannerText}
         maxWidth={700}
       />
-      <FeaturedLogos overline="Featured In" logos={logos} seeMore />
+      <FeaturedLogos
+        overline="Featured In"
+        logos={cityfundsPage?.logos}
+        seeMore
+      />
       <CityfundSlider cityfunds={cityfunds} isHome />
       <HowItWorks
         overline="Real Estate Investing Simplified"
-        steps={[
-          {
-            title: 'Select a City',
-            description: 'Choose from our cityfunds with more coming soon',
-            imageUrl: '/images/app-1.png',
-          },
-          {
-            title: 'Get Approved',
-            description:
-              'Verify your identity and connect your bank account to invest',
-            imageUrl: '/images/app-2.png',
-          },
-          {
-            title: 'Build Wealth',
-            description: 'Watch your portfolio gain value over time',
-            imageUrl: '/images/app-3.png',
-          },
-        ]}
+        tutorials={cityfundsPage?.tutorials}
         btnText="Sign Up"
         onClick={() =>
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
@@ -152,21 +124,24 @@ export default function HomePage({
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         primaryText="We have plenty of reasons."
-        valueProps={values}
+        valueProps={cityfundsPage?.values}
       />
       <NadaFaqs
-        faqs={homePage?.questions}
+        faqs={cityfundsPage?.questions}
         seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/cityfunds`}
       />
-      <Testimonials reviews={testimonials} />
-      {homePage?.promo && <InvestorPromo promo={homePage?.promo} />}
-      {homePage?.webinar && <Webinanars webinar={homePage?.webinar} />}
+      <Testimonials testimonials={cityfundsPage?.testimonials} />
+      {cityfundsPage?.promo && <InvestorPromo promo={cityfundsPage?.promo} />}
+      {cityfundsPage?.webinar && (
+        <Webinanars webinar={cityfundsPage?.webinar} />
+      )}
       <EmailCapture formName="Cityfunds" isPopup />
     </>
   );
 }
 
 export async function getStaticProps() {
+  const cityfundsPage = await getCityfundsPageContent();
   const fundsData = await getAllFundsData();
   const fundsContent = await getAllFundsContent();
   const cityfunds = fundsData.map((data) => {
@@ -176,13 +151,8 @@ export async function getStaticProps() {
     return { fund_data: data, fund_content: content };
   });
 
-  const homePage = await getHomePageContent();
-  const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
-  const logos = await sanityClient.fetch(pressLogosQueryQuery);
-  const values = await sanityClient.fetch(cityfundsValuesQuery);
-
   return {
-    props: { homePage, cityfunds, testimonials, logos, values },
+    props: { cityfundsPage, cityfunds },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }

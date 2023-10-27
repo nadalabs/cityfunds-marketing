@@ -11,27 +11,11 @@ import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
-import {
-  cityfundsTestimonialsQuery,
-  cityfundsValuesQuery,
-  ourFocusQuery,
-  pressLogosQueryQuery,
-} from 'lib/queries';
-import {
-  getAllFundsContent,
-  getHomePageContent,
-  sanityClient,
-} from 'lib/sanity';
+import { getAllFundsContent, getInvestorsPageContent } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 import { useEffect } from 'react';
 
-export default function AccreditedInvestorsPage({
-  homePage,
-  cityfunds,
-  values,
-  logos,
-  ourFocus,
-}) {
+export default function InvestorsPage({ investorsPage, cityfunds }) {
   const isMobile = useIsMobile();
   useEffect(() => {
     trackPageView('Investors Page Viewed');
@@ -62,9 +46,13 @@ export default function AccreditedInvestorsPage({
           }))}
         maxWidth={700}
       />
-      <FeaturedLogos overline="Featured In" logos={logos} seeMore />
+      <FeaturedLogos
+        overline="Featured In"
+        logos={investorsPage?.logos}
+        seeMore
+      />
       <SectionWrapper>
-        <LongFormText title="Our Mission" content={ourFocus} />
+        <LongFormText title="Our Mission" content={investorsPage?.ourMission} />
       </SectionWrapper>
       <CityfundSlider cityfunds={cityfunds} isHome />
 
@@ -97,10 +85,10 @@ export default function AccreditedInvestorsPage({
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         primaryText="We have plenty of reasons."
-        valueProps={values}
+        valueProps={investorsPage?.values}
       />
       <FaqsSection
-        faqs={homePage?.questions}
+        faqs={investorsPage?.questions}
         seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/cityfunds`}
       />
       <SectionWrapper>
@@ -129,6 +117,7 @@ export default function AccreditedInvestorsPage({
 }
 
 export async function getStaticProps() {
+  const investorsPage = await getInvestorsPageContent();
   const fundsData = await getAllFundsData();
   const fundsContent = await getAllFundsContent();
   const cityfunds = fundsData.map((data) => {
@@ -138,15 +127,8 @@ export async function getStaticProps() {
     return { fund_data: data, fund_content: content };
   });
 
-  const homePage = await getHomePageContent();
-  const testimonials = await sanityClient.fetch(cityfundsTestimonialsQuery);
-  const values = await sanityClient.fetch(cityfundsValuesQuery);
-  const logos = await sanityClient.fetch(pressLogosQueryQuery);
-  const ourFocusData = await sanityClient.fetch(ourFocusQuery);
-  const ourFocus = ourFocusData?.summary?.content;
-
   return {
-    props: { homePage, cityfunds, testimonials, logos, values, ourFocus },
+    props: { investorsPage, cityfunds },
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
   };
 }
