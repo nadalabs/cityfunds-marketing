@@ -103,3 +103,10 @@ export const scrollToId = (id: string) => {
 export const trackPageView = async (event: string) => {
   await window.analytics.track(event);
 };
+
+export const isDateInRange = (targetDate) => {
+  const now = new Date();
+  const tenDaysFromNow = new Date();
+  tenDaysFromNow.setDate(now.getDate() + 10);
+  return targetDate > now && targetDate < tenDaysFromNow;
+};

@@ -17,7 +17,6 @@ const PARTNER_QUERY = `*[_type == "partner" && _id == $id].slug.current`;
 const POST_QUERY = `*[_type == "post" && _id == $id].slug.current`;
 const PRESS_QUERY = `*[_type == "press" && _id == $id].title.current`;
 
-
 const getQueryForType = (type) => {
   switch (type) {
     case 'cityfundsPage':
@@ -79,7 +78,7 @@ export default async function revalidate(req, res) {
   const _slug = await sanityClient.fetch(getQueryForType(_type), { id });
   let staleRoutes = [];
 
-   if (_type === 'cityfundsPage') {
+  if (_type === 'cityfundsPage') {
     staleRoutes = [`/`, `/${_slug}`];
   } else if (_type === 'homesharesPage') {
     staleRoutes = [`/homeshares`];
