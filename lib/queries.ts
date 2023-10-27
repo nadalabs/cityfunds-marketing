@@ -135,7 +135,6 @@ export const legalBySlugQuery = `
 }
 `;
 
-// Press Queries
 const pressFields = `
   _id,
   title,
