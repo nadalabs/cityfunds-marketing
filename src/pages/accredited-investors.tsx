@@ -52,7 +52,7 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
         seeMore
       />
       <SectionWrapper>
-        <LongFormText title="Our Mission" content={investorsPage?.ourFocus} />
+        <LongFormText title="Our Mission" content={investorsPage?.ourMission} />
       </SectionWrapper>
       <CityfundSlider cityfunds={cityfunds} isHome />
 

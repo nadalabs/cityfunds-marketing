@@ -1,6 +1,7 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
+import HowItWorks from '@components/cityfunds/HowItWorks';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import NadaFaqs from '@components/cityfunds/NadaFaqs';
@@ -34,7 +35,6 @@ export default function CityfundsPage({
   useEffect(() => {
     trackPageView('Cityfunds Page Viewed');
   });
-  console.log(cityfundsPage);
 
   return (
     <>
@@ -64,7 +64,7 @@ export default function CityfundsPage({
         seeMore
       />
       <CityfundSlider cityfunds={cityfunds} isHome />
-      {/* <HowItWorks
+      <HowItWorks
         overline="Real Estate Investing Simplified"
         tutorials={cityfundsPage?.tutorials}
         btnText="Sign Up"
@@ -72,7 +72,7 @@ export default function CityfundsPage({
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
         }
         isPhoneFrame
-      /> */}
+      />
       <SectionWrapper>
         <FeaturedImage
           overline="Why Cityfunds?"
@@ -142,7 +142,6 @@ export default function CityfundsPage({
 
 export async function getStaticProps() {
   const cityfundsPage = await getCityfundsPageContent();
-  console.log(cityfundsPage);
   const fundsData = await getAllFundsData();
   const fundsContent = await getAllFundsContent();
   const cityfunds = fundsData.map((data) => {

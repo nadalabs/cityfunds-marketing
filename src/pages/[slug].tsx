@@ -19,9 +19,6 @@ const LegalPage = dynamic(() => import('@components/LegalPage'));
 
 export default function DynamicPage({
   cityfunds,
-  testimonials,
-  logos,
-  values,
   partner,
   legal,
   cityfundsPage,

@@ -189,10 +189,10 @@ export const aboutPageFields = `
 
 export const investorsPageFields = `
   _id,
-  ourStory,
-  tutorials,
+  logos,
+  ourMission,
+  values,
   questions,
-  teestimonials,
 `;
 
 export const footerQuery = `

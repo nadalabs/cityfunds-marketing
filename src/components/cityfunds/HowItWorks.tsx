@@ -1,12 +1,8 @@
 import { GreenSquare } from '@components/common/CarouselStepper';
+import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
-import {
-  Heading,
-  Overline,
-  PrimaryText,
-  SmallHeading,
-} from '@elements/Typography';
+import { Heading, Overline, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -110,7 +106,7 @@ export default function HowItWorks({
                       <SmallHeading style={{ color: idx === jdx && '#48DC95' }}>
                         {title}
                       </SmallHeading>
-                      <PrimaryText>{description}</PrimaryText>
+                      <LongFormText content={description} />
                       {idx === jdx && (
                         <PrimaryButton
                           onClick={onClick}
@@ -129,7 +125,7 @@ export default function HowItWorks({
                   width={500}
                   height={500}
                   alt={'Phone Screen'}
-                  src={image}
+                  src={urlForImage(image).url()}
                 />
               )}
             </FlewWrapper>
