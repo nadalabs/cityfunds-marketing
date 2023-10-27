@@ -8,10 +8,10 @@ export const config = {
   },
 };
 
-const CITYFUNDS_QUERY = `*[_type == "cityfundsPage"`;
-const HOMESHARES_QUERY = `*[_type == "homesharesPage"`;
-const ABOUT_QUERY = `*[_type == "aboutPage"`;
-const INVESTORS_QUERY = `*[_type == "investorsPage"`;
+const CITYFUNDS_QUERY = `*[_type == "cityfundsPage"]`;
+const HOMESHARES_QUERY = `*[_type == "homesharesPage"]`;
+const ABOUT_QUERY = `*[_type == "aboutPage"]`;
+const INVESTORS_QUERY = `*[_type == "investorsPage"]`;
 const LEGAL_QUERY = `*[_type == "legal" && _id == $id].slug.current`;
 const PARTNER_QUERY = `*[_type == "partner" && _id == $id].slug.current`;
 const POST_QUERY = `*[_type == "post" && _id == $id].slug.current`;
