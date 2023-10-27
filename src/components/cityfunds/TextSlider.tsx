@@ -37,7 +37,7 @@ export default function TextSlider({
           right: '1rem',
         }}
       >
-        {valueProps.map(({ title, description }, idx) => (
+        {valueProps?.map(({ title, description }, idx) => (
           <div key={idx}>
             <TextWrapper>
               <StackWrapper style={{ gap: '1rem' }}>

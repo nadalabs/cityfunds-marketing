@@ -47,7 +47,7 @@ const mediaFields = `
   "slug": slug.current,
 `;
 
-export const MediaIndexQuery = `
+export const mediaIndexQuery = `
 *[_type == "media"] | order(date desc, _updatedAt desc) {
   ${mediaFields}
 }`;
@@ -163,30 +163,36 @@ export const cityfundFields = `
 
 export const cityfundsPageFields = `
   _id,
+  logos,
+  tutorials,
+  values,
   questions,
+  testimonials,
   "promo": promo->{banner, title, description, image},
   "webinar": webinar->{banner, title, description, date, image, link},
 `;
 
 export const homesharesPageFields = `
   _id,
+  tutorials,
   questions,
-  "promo": promo->{banner, title, description, image},
-  "webinar": webinar->{banner, title, description, date, image, link},
+  testimonials,
 `;
 
 export const aboutPageFields = `
   _id,
-  questions,
-  "promo": promo->{banner, title, description, image},
-  "webinar": webinar->{banner, title, description, date, image, link},
+  ourStory,
+  logos,
+  teammates,
+  values,
 `;
 
 export const investorsPageFields = `
   _id,
+  ourStory,
+  tutorials,
   questions,
-  "promo": promo->{banner, title, description, image},
-  "webinar": webinar->{banner, title, description, date, image, link},
+  teestimonials,
 `;
 
 export const footerQuery = `

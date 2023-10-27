@@ -1,5 +1,4 @@
 import { GreenSquare } from '@components/common/CarouselStepper';
-import PhoneScreen from '@components/PhoneScreen';
 import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import {
@@ -9,6 +8,7 @@ import {
   SmallHeading,
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import { useRef } from 'react';
 import Slider from 'react-slick';
@@ -16,7 +16,7 @@ import styled from 'styled-components';
 
 interface HowItWorksProps {
   overline: string;
-  steps: { title: string; description: string; imageUrl: string }[];
+  tutorials: { title: string; description: string; image: string }[];
   btnText: string;
   onClick: () => void;
   isPhoneFrame?: boolean;
@@ -24,7 +24,7 @@ interface HowItWorksProps {
 
 export default function HowItWorks({
   overline,
-  steps,
+  tutorials,
   btnText,
   onClick,
   isPhoneFrame,
@@ -52,10 +52,40 @@ export default function HowItWorks({
   return (
     <SectionWrapper>
       <Slider {...settings} ref={sliderRef}>
-        {steps.map(({ imageUrl }, idx) => (
+        {tutorials?.map(({ image }, idx) => (
           <div key={idx}>
             <FlewWrapper>
-              {!isMobile && isPhoneFrame && <PhoneScreen imageUrl={imageUrl} />}
+              {!isMobile && isPhoneFrame && (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '35%',
+                    position: 'relative',
+                    left: '100px',
+                  }}
+                >
+                  <div
+                    style={{
+                      height: '400px',
+                      minWidth: '400px',
+                      backgroundColor: '#48DC95',
+                      borderRadius: '120px',
+                      zIndex: -1,
+                      position: 'absolute',
+                      top: '150px',
+                      left: '-70px',
+                    }}
+                  />
+
+                  <Image
+                    width={300}
+                    height={500}
+                    alt={'Phone Screen'}
+                    src={urlForImage(image).url()}
+                  />
+                </div>
+              )}
 
               <ContentWrapper
                 style={{ marginLeft: isPhoneFrame && !isMobile ? '4rem' : 0 }}
@@ -65,7 +95,7 @@ export default function HowItWorks({
                   <Heading>How it Works</Heading>
                 </HeaderWrapper>
                 <TextWrapper>
-                  {steps.map(({ title, description }, jdx) => (
+                  {tutorials?.map(({ title, description }, jdx) => (
                     <StepWrapper
                       key={jdx}
                       onClick={() => handleOnClick(jdx)}
@@ -99,7 +129,7 @@ export default function HowItWorks({
                   width={500}
                   height={500}
                   alt={'Phone Screen'}
-                  src={imageUrl}
+                  src={image}
                 />
               )}
             </FlewWrapper>

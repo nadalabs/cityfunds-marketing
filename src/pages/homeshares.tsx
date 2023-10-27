@@ -62,24 +62,7 @@ export default function HomesharesPage({ homesharesPage }) {
       </SectionWrapper>
       <HowItWorks
         overline="Three easy steps to unlock your home equity"
-        steps={[
-          {
-            title: 'Apply for a Homeshare',
-            description: 'Fill out an application in under 90 seconds',
-            imageUrl: '/images/homeshares-1.png',
-          },
-          {
-            title: 'Schedule  Inspection',
-            description: "Once approved, we'll schedule your home inspection",
-            imageUrl: '/images/homeshares-2.png',
-          },
-          {
-            title: 'Get Funded',
-            description:
-              'We will finalize the paperwork & deposit funds in a few days',
-            imageUrl: '/images/homeshares-3.png',
-          },
-        ]}
+        tutorials={homesharesPage?.tutorials}
         btnText="Apply Now"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
       />
@@ -87,7 +70,7 @@ export default function HomesharesPage({ homesharesPage }) {
         faqs={homesharesPage?.questions}
         seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/homeshares`}
       />
-      <Testimonials reviews={homesharesPage?.testimonials} />
+      <Testimonials testimonials={homesharesPage?.testimonials} />
       <EmailCapture formName="Homeshares" isPopup />
     </>
   );

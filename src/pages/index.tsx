@@ -1,7 +1,6 @@
 import FeaturedImage from '@components/FeaturedImage';
 import FeaturedLogos from '@components/FeaturedLogos';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
-import HowItWorks from '@components/cityfunds/HowItWorks';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import NadaFaqs from '@components/cityfunds/NadaFaqs';
@@ -17,17 +16,17 @@ import { getAllFundsContent, getCityfundsPageContent } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 import { useEffect } from 'react';
 
-interface HomePageProps {
+interface CityfundsPageProps {
   cityfundsPage?: any;
   cityfunds: any[];
   partner: any;
 }
 
-export default function HomePage({
+export default function CityfundsPage({
   cityfundsPage,
   cityfunds,
   partner,
-}: HomePageProps) {
+}: CityfundsPageProps) {
   const bannerText = partner?.promo?.banner
     ? cityfundsPage?.promo?.banner
     : cityfundsPage?.webinar?.banner;
@@ -35,6 +34,7 @@ export default function HomePage({
   useEffect(() => {
     trackPageView('Cityfunds Page Viewed');
   });
+  console.log(cityfundsPage);
 
   return (
     <>
@@ -64,32 +64,15 @@ export default function HomePage({
         seeMore
       />
       <CityfundSlider cityfunds={cityfunds} isHome />
-      <HowItWorks
+      {/* <HowItWorks
         overline="Real Estate Investing Simplified"
-        steps={[
-          {
-            title: 'Select a City',
-            description: 'Choose from our cityfunds with more coming soon',
-            imageUrl: '/images/app-1.png',
-          },
-          {
-            title: 'Get Approved',
-            description:
-              'Verify your identity and connect your bank account to invest',
-            imageUrl: '/images/app-2.png',
-          },
-          {
-            title: 'Build Wealth',
-            description: 'Watch your portfolio gain value over time',
-            imageUrl: '/images/app-3.png',
-          },
-        ]}
+        tutorials={cityfundsPage?.tutorials}
         btnText="Sign Up"
         onClick={() =>
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
         }
         isPhoneFrame
-      />
+      /> */}
       <SectionWrapper>
         <FeaturedImage
           overline="Why Cityfunds?"
@@ -147,7 +130,7 @@ export default function HomePage({
         faqs={cityfundsPage?.questions}
         seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/cityfunds`}
       />
-      <Testimonials reviews={cityfundsPage?.testimonials} />
+      <Testimonials testimonials={cityfundsPage?.testimonials} />
       {cityfundsPage?.promo && <InvestorPromo promo={cityfundsPage?.promo} />}
       {cityfundsPage?.webinar && (
         <Webinanars webinar={cityfundsPage?.webinar} />
@@ -159,6 +142,7 @@ export default function HomePage({
 
 export async function getStaticProps() {
   const cityfundsPage = await getCityfundsPageContent();
+  console.log(cityfundsPage);
   const fundsData = await getAllFundsData();
   const fundsContent = await getAllFundsContent();
   const cityfunds = fundsData.map((data) => {

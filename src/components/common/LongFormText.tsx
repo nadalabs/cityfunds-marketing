@@ -8,6 +8,7 @@ import {
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { PortableText } from '@portabletext/react';
+import styled from 'styled-components';
 
 interface LongFormTextProps {
   title?: string;
@@ -32,6 +33,9 @@ export default function LongFormText({
         } else {
           return <PrimaryText>{children}</PrimaryText>;
         }
+      },
+      blockquote: ({ children }: any) => {
+        return <QuoteText>{children}</QuoteText>;
       },
     },
     list: {
@@ -62,6 +66,7 @@ export default function LongFormText({
       },
     },
   };
+
   return (
     <StackWrapper>
       {overline && <Overline>{overline}</Overline>}
@@ -73,3 +78,15 @@ export default function LongFormText({
     </StackWrapper>
   );
 }
+
+const QuoteText = styled(Heading)`
+  height: 420px;
+  font-size: 3rem;
+  line-height: 125%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    height: 400px;
+    font-size: 32px;
+    line-height: 40px;
+  }
+`;
