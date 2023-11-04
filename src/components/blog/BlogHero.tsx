@@ -56,7 +56,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                     <Image
                       fill
                       alt={post?.title}
-                      style={{ borderRadius: '60px' }}
+                      style={{ borderRadius: '2rem' }}
                       src={
                         post?.coverImage
                           ? urlForImage(post?.coverImage).url()
@@ -102,8 +102,8 @@ export const CardWrapper = styled.div`
   width: 50%;
   height: 400px;
   background: #ffffff;
-  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
-  border-radius: 60px;
+  border-radius: 2rem;
+  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
   padding: 3rem 4rem;
   margin: 1rem;
 
@@ -145,11 +145,12 @@ const FlexWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  border-radius: 50px;
   position: relative;
   width: 50%;
   height: 400px;
   margin-right: 48px;
+  border-radius: 2rem;
+  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;

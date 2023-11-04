@@ -1,15 +1,14 @@
 import FeaturedImage from '@components/FeaturedImage';
-import CityfundSlider from '@components/cityfunds/CityfundSlider';
+import CityfundsGrid from '@components/cityfunds/CityfundGrid';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
-import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import Testimonials from '@components/cityfunds/Testimonials';
 import TextSlider from '@components/cityfunds/TextSlider';
 import Webinanars from '@components/cityfunds/Webinars';
 import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
-import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
+import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
 import { getAllFundsContent, getCityfundsPageContent } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
@@ -91,15 +90,20 @@ export default function CityfundsPage({
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
         }
       />
-      <CityfundSlider cityfunds={cityfunds} isHome />
+      {/* Chart TODO */}
+
+      <CityfundsGrid cityfunds={cityfunds} />
+      <FeaturedImage
+        feature={cityfundsPage?.accredited_feature}
+        btnText="Learn More"
+        onClick={() =>
+          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
+        }
+      />
       <TextSlider
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         valueProps={cityfundsPage?.values}
-      />
-      <NadaFaqs
-        faqs={cityfundsPage?.questions}
-        seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/cityfunds`}
       />
       <Testimonials testimonials={cityfundsPage?.testimonials} />
       <HowItWorks

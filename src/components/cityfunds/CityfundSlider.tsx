@@ -38,14 +38,14 @@ export default function CityfundSlider({
     }
 
     if (
-      a.fund_data.regulation === REGULATION.ACCREDITED &&
-      b.fund_data.regulation !== REGULATION.ACCREDITED
+      a.fund_data.regulation === REGULATION.RETAIL &&
+      b.fund_data.regulation !== REGULATION.RETAIL
     ) {
       return 1;
     }
     if (
-      a.fund_data.regulation !== REGULATION.ACCREDITED &&
-      b.fund_data.regulation === REGULATION.ACCREDITED
+      a.fund_data.regulation !== REGULATION.RETAIL &&
+      b.fund_data.regulation === REGULATION.RETAIL
     ) {
       return -1;
     }

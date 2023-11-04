@@ -165,6 +165,7 @@ export const cityfundsPageFields = `
   logos,
   cityfunds_feature,
   hei_feature,
+  accredited_feature,
   tutorials,
   values,
   questions,
@@ -176,6 +177,7 @@ export const cityfundsPageFields = `
 
 export const homesharesPageFields = `
   _id,
+  homeshares_feature,
   tutorials,
   questions,
   testimonials,
@@ -193,8 +195,10 @@ export const investorsPageFields = `
   _id,
   logos,
   ourMission,
+  hei_feature,
   values,
   questions,
+  investors_feature,
 `;
 
 export const footerQuery = `

@@ -133,11 +133,14 @@ export default function PageHero({
                       />
                     )}
                     {heroImages.length > 1 && (
-                      <CarouselStepper
-                        activeStep={idx}
-                        totalSteps={heroImages.length}
-                        sliderRef={sliderRef}
-                      />
+                      <>
+                        {/* <PrimaryText>{heroImages?.fund_name}</PrimaryText> */}
+                        <CarouselStepper
+                          activeStep={idx}
+                          totalSteps={heroImages.length}
+                          sliderRef={sliderRef}
+                        />
+                      </>
                     )}
                   </FlexWrapper>
                 </div>

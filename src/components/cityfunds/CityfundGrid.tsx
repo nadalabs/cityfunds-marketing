@@ -1,0 +1,153 @@
+import { CityfundCard } from '@components/cityfunds/CityfundCard';
+import { PrimaryButton } from '@elements/Buttons';
+import useIsMobile from '@hooks/useIsMobile';
+import { FUND_STATUS, REGULATION } from '@utils/constants';
+import { ICityfund } from '@utils/models';
+import { useState } from 'react';
+import styled from 'styled-components';
+
+interface CityfundsGridProps {
+  cityfunds: ICityfund[];
+}
+
+export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
+  const isMobile = useIsMobile();
+  const [showMore, setShowMore] = useState(false);
+
+  const ALL_CARDS = cityfunds.map(({ fund_data, fund_content }) => ({
+    fund_data,
+    fund_content,
+    images: [fund_content?.image_gallery[0], fund_content?.card_back],
+  }));
+
+  const SORTED_CARDS = ALL_CARDS.sort((a, b) => {
+    if (
+      a.fund_data.fund_status === FUND_STATUS.NEW_OFFERING &&
+      b.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING
+    ) {
+      return 1;
+    }
+    if (
+      a.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING &&
+      b.fund_data.fund_status === FUND_STATUS.NEW_OFFERING
+    ) {
+      return -1;
+    }
+
+    if (
+      a.fund_data.regulation === REGULATION.ACCREDITED &&
+      b.fund_data.regulation !== REGULATION.ACCREDITED
+    ) {
+      return 1;
+    }
+    if (
+      a.fund_data.regulation !== REGULATION.ACCREDITED &&
+      b.fund_data.regulation === REGULATION.ACCREDITED
+    ) {
+      return -1;
+    }
+
+    return b.fund_data.total_assets - a.fund_data.total_assets;
+  });
+
+  const OPEN_CARDS = SORTED_CARDS.filter(
+    ({ fund_data }) => fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
+  );
+  const RETAIL_CARDS = OPEN_CARDS.filter(
+    ({ fund_data }) => fund_data?.regulation === REGULATION.RETAIL
+  );
+  const SHOWN_CARDS =
+    showMore || !isMobile ? RETAIL_CARDS : RETAIL_CARDS.slice(0, 3);
+
+  return (
+    <SectionWrapper>
+      <GridWrapper
+        style={{
+          flexDirection: isMobile ? 'column' : 'row',
+          flexWrap: isMobile ? 'nowrap' : 'wrap',
+          marginBottom: isMobile ? 0 : '4rem',
+          alignSelf: 'flex-start',
+        }}
+      >
+        {SHOWN_CARDS.map((card, idx) => (
+          <>
+            {isMobile ? (
+              <FadeWrapper key={idx}>
+                <CityfundCard {...card} image={card?.images[0]} isHome />
+              </FadeWrapper>
+            ) : (
+              <FadeWrapper key={idx}>
+                <TopWrapper>
+                  <CityfundCard {...card} image={card?.images[0]} isHome />
+                </TopWrapper>
+                <BottomWrapper>
+                  <CityfundCard {...card} image={card?.images[1]} isHome />
+                </BottomWrapper>
+              </FadeWrapper>
+            )}
+          </>
+        ))}
+      </GridWrapper>
+
+      {isMobile && (
+        <PrimaryButton onClick={() => setShowMore(!showMore)}>
+          {showMore ? 'Show Less' : 'Show More'}
+        </PrimaryButton>
+      )}
+    </SectionWrapper>
+  );
+}
+
+const FadeWrapper = styled.div``;
+
+const GridWrapper = styled.div`
+  display: flex;
+  gap: 2rem;
+`;
+
+const TopWrapper = styled.div`
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+
+  &:hover {
+    opacity: 0;
+  }
+`;
+
+const BottomWrapper = styled.div`
+  position: relative;
+  bottom: 19rem;
+  z-index: -1;
+  height: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    bottom: 20rem;
+  }
+`;
+
+export const HeadingWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+  }
+`;
+
+export const SectionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 6.25rem;
+  width: 100%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin: 0;
+  }
+`;

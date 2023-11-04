@@ -36,7 +36,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
                 src={urlForImage(coverImage).url()}
                 width={300}
                 height={200}
-                style={{ borderRadius: '3rem' }}
+                style={{ borderRadius: '2rem' }}
               />
               <Overline>
                 <time dateTime={date}>

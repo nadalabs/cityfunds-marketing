@@ -33,10 +33,7 @@ export default function HomesharesPage({ homesharesPage }) {
       />
       <SectionWrapper>
         <FeaturedImage
-          overline="Why did we create HomeShares?"
-          heading="Your Equity, Your Way"
-          primaryText="Your home is your biggest asset. It continuously grows with your hard earned time and money. It should be usable like any other savings account. Now you can unlock your equity in 14 days with no monthly payments."
-          imageUrl="/images/homeshares.png"
+          feature={homesharesPage?.homeshares_feature}
           btnText="Apply Now"
           onClick={() => window.open(EXTERNAL_ROUTES.TYPEFORM, '_blank')}
           isReversed

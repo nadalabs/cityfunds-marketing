@@ -27,7 +27,7 @@ export default function AboutPage({ aboutPage }) {
         ]}
         maxWidth={1000}
       />
-      <SectionWrapper>
+      <SectionWrapper style={{ maxWidth: '75%' }}>
         <LongFormText
           title="Our Story"
           overline="We are on a Mission"

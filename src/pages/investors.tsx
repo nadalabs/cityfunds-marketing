@@ -22,7 +22,7 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
   return (
     <>
       <PageHero
-        heading="Real Estate Investing Reinvented"
+        heading="Creating New Real Estate Wealth"
         btnText="Explore Offerings"
         logos={investorsPage?.logos}
         onClick={() =>
@@ -43,7 +43,7 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
             name: fund_content?.fund_name,
             heroImage: fund_content?.image_gallery[0],
           }))}
-        maxWidth={700}
+        maxWidth={720}
       />
       <KeyMetrics
         metrics={[
@@ -64,17 +64,22 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
           },
         ]}
       />
-      <SectionWrapper>
+      <SectionWrapper style={{ maxWidth: '75%' }}>
         <LongFormText
           title="Our Strategy"
           content={investorsPage?.ourMission}
         />
       </SectionWrapper>
+      <FeaturedImage
+        feature={investorsPage?.hei_feature}
+        btnText="Schedule a Call"
+        onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
+        isReversed
+      />
       <CityfundSlider cityfunds={cityfunds} isHome />
       <TextSlider
         overline="You may be wondering..."
         heading="Why Cityfunds?"
-        primaryText="We have plenty of reasons."
         valueProps={investorsPage?.values}
       />
       <FaqsSection

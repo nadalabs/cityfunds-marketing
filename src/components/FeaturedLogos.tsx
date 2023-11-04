@@ -29,7 +29,7 @@ export default function FeaturedLogos({
             style={{ margin: '1rem 1rem' }}
           >
             <Image
-              width={145}
+              width={150}
               height={40}
               alt={name}
               src={urlForImage(image).url()}
