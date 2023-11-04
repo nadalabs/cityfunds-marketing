@@ -12,6 +12,7 @@ import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
 import { getAllFundsContent, getCityfundsPageContent } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 interface CityfundsPageProps {
@@ -25,6 +26,7 @@ export default function CityfundsPage({
   cityfunds,
   partner,
 }: CityfundsPageProps) {
+  const router = useRouter();
   const bannerText = partner?.promo?.banner
     ? cityfundsPage?.promo?.banner
     : cityfundsPage?.webinar?.banner;
@@ -32,7 +34,6 @@ export default function CityfundsPage({
   useEffect(() => {
     trackPageView('Cityfunds Page Viewed');
   });
-  console.log(cityfundsPage);
 
   return (
     <>
@@ -89,6 +90,7 @@ export default function CityfundsPage({
         onClick={() =>
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
         }
+        isBackground
       />
       {/* Chart TODO */}
 
@@ -96,16 +98,15 @@ export default function CityfundsPage({
       <FeaturedImage
         feature={cityfundsPage?.accredited_feature}
         btnText="Learn More"
-        onClick={() =>
-          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
-        }
+        onClick={() => router.push(`/investors`)}
+        isBackground
       />
       <TextSlider
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         valueProps={cityfundsPage?.values}
       />
-      <Testimonials testimonials={cityfundsPage?.testimonials} />
+      <Testimonials testimonials={cityfundsPage?.testimonials} isBackground />
       <HowItWorks
         overline="Real Estate Investing Simplified"
         tutorials={cityfundsPage?.tutorials}
@@ -118,9 +119,8 @@ export default function CityfundsPage({
       <FeaturedImage
         feature={cityfundsPage?.homeowners_feature}
         btnText="Learn More"
-        onClick={() =>
-          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
-        }
+        onClick={() => router.push(`/homeshares`)}
+        isBackground
       />
 
       {cityfundsPage?.promo && <InvestorPromo promo={cityfundsPage?.promo} />}

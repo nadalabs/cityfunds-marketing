@@ -1,5 +1,9 @@
 import LongFormText from '@components/common/LongFormText';
-import { CardWrapper, SliderWrapper, StackWrapper } from '@elements/Containers';
+import {
+  CardWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import {
   Heading,
   Overline,
@@ -22,7 +26,7 @@ export default function TextSlider({
   valueProps,
 }: TextSliderProps) {
   return (
-    <SliderWrapper>
+    <SectionWrapper>
       {overline && <Overline>{overline}</Overline>}
 
       <div>
@@ -50,7 +54,7 @@ export default function TextSlider({
           </div>
         ))}
       </div>
-    </SliderWrapper>
+    </SectionWrapper>
   );
 }
 

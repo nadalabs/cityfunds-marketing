@@ -17,6 +17,7 @@ interface FeaturedImageProps {
   onClick: () => void;
   isReversed?: boolean;
   isWide?: boolean;
+  isBackground?: boolean;
 }
 
 export default function FeaturedImage({
@@ -24,6 +25,7 @@ export default function FeaturedImage({
   btnText,
   onClick,
   isReversed,
+  isBackground,
 }: FeaturedImageProps) {
   const isMobile = useIsMobile();
 
@@ -39,6 +41,7 @@ export default function FeaturedImage({
           : 'row',
         gap: '2.5rem',
       }}
+      isBackground={isBackground}
     >
       <ContentWrapper>
         <StackWrapper style={{ gap: '1rem' }}>

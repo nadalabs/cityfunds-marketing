@@ -1,5 +1,7 @@
 import { CityfundCard } from '@components/cityfunds/CityfundCard';
 import { PrimaryButton } from '@elements/Buttons';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
+import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
@@ -60,7 +62,16 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
     showMore || !isMobile ? RETAIL_CARDS : RETAIL_CARDS.slice(0, 3);
 
   return (
-    <SectionWrapper>
+    <SectionWrapper style={{ background: 'none' }}>
+      <StackWrapper
+        style={{ gap: isMobile ? '0' : '0.5rem', marginBottom: '1.5rem' }}
+      >
+        <Heading>Explore Offerings</Heading>
+        <LargeText>
+          Pick your favorite fund, or invest in all of them.
+        </LargeText>
+      </StackWrapper>
+
       <GridWrapper
         style={{
           flexDirection: isMobile ? 'column' : 'row',
@@ -136,18 +147,5 @@ export const HeadingWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-  }
-`;
-
-export const SectionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  margin: 6.25rem;
-  width: 100%;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin: 0;
   }
 `;

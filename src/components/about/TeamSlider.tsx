@@ -1,5 +1,5 @@
 import { GreenSquare } from '@components/common/CarouselStepper';
-import { CardWrapper, SliderWrapper } from '@elements/Containers';
+import { CardWrapper, SectionWrapper } from '@elements/Containers';
 import { BoldText, Heading, Overline } from '@elements/Typography';
 import { urlForImage } from 'lib/sanity';
 
@@ -14,7 +14,7 @@ interface TeamSliderProps {
 
 export default function TeamSlider({ teammates }: TeamSliderProps) {
   return (
-    <SliderWrapper>
+    <SectionWrapper>
       <Overline>Who We Are</Overline>
       <Heading>Our Team</Heading>
       <div style={{ display: 'flex', overflowX: 'scroll' }}>
@@ -67,6 +67,6 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
             </div>
           ))}
       </div>
-    </SliderWrapper>
+    </SectionWrapper>
   );
 }

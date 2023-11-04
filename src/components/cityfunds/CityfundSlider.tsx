@@ -8,12 +8,10 @@ import styled from 'styled-components';
 
 interface CityfundSliderProps {
   cityfunds: ICityfund[];
-  isHome?: boolean;
 }
 
 export default function CityfundSlider({
   cityfunds,
-  isHome,
 }: CityfundSliderProps) {
   const isMobile = useIsMobile();
 
@@ -59,7 +57,6 @@ export default function CityfundSlider({
 
   return (
     <SectionWrapper
-      id="cityfunds"
       style={{
         marginLeft: !isMobile ? '150px' : 0,
         marginBottom: !isMobile ? '8rem' : 0,
@@ -81,7 +78,6 @@ export default function CityfundSlider({
                   <CityfundCard
                     {...card}
                     image={card?.images[0]}
-                    isHome={isHome}
                   />
                 </FadeWrapper>
               ) : (
@@ -90,14 +86,12 @@ export default function CityfundSlider({
                     <CityfundCard
                       {...card}
                       image={card?.images[0]}
-                      isHome={isHome}
                     />
                   </TopWrapper>
                   <BottomWrapper>
                     <CityfundCard
                       {...card}
                       image={card?.images[1]}
-                      isHome={isHome}
                     />
                   </BottomWrapper>
                 </FadeWrapper>

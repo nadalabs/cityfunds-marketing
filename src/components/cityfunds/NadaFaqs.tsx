@@ -1,4 +1,5 @@
 import LongFormText from '@components/common/LongFormText';
+import { SectionWrapper } from '@elements/Containers';
 import { Heading, LinkText, Overline } from '@elements/Typography';
 import { useState } from 'react';
 import styled from 'styled-components';
@@ -35,18 +36,6 @@ export default function NadaFaqs({ faqs, seeAllUrl }: NadaFaqsProps) {
     </SectionWrapper>
   );
 }
-
-export const SectionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin: 6.25rem 9.25rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin: 4rem 0;
-    padding: 0 1rem;
-  }
-`;
 
 export const ContentWrapper = styled.div`
   width: 100%;

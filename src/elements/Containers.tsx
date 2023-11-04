@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
-export const SectionWrapper = styled.div`
-  padding: 6.25rem 150px;
+export const SectionWrapper = styled.div<{ isBackground?: boolean }>`
+  padding: 6.25rem 9.5rem;
+  background: ${({ isBackground }) =>
+    isBackground
+      ? 'linear-gradient(0deg, rgba(42, 131, 86, 0.05) 0%, rgba(42, 131, 86, 0.05) 100%), #FFF'
+      : '#FFF'};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 48px 24px;
@@ -15,17 +19,6 @@ export const StackWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     gap: 0.5rem;
-  }
-`;
-
-export const SliderWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 100px 0 100px 150px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 48px 0 48px 24px;
   }
 `;
 
