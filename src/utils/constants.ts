@@ -60,7 +60,7 @@ export const FOOTER_LINKS = [
     links: [
       { name: 'Cityfunds', link: '/' },
       { name: 'Homeshares', link: '/homeshares' },
-      { name: 'Investors', link: '/accredited-investors' },
+      { name: 'Investors', link: '/investors' },
       { name: 'Learn', link: '/learn' },
     ],
   },

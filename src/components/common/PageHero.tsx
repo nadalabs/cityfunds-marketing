@@ -1,5 +1,7 @@
+import FeaturedLogos from '@components/FeaturedLogos';
 import CarouselStepper from '@components/common/CarouselStepper';
 import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
+import { FlexWrapper } from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
@@ -11,6 +13,7 @@ interface PageHeroProps {
   heading?: string;
   primaryText?: string;
   btnText?: string;
+  logos?: any[];
   onClick?: () => void;
   btnTextSecondary?: string;
   onClickSecondary?: () => void;
@@ -23,6 +26,7 @@ export default function PageHero({
   heading,
   primaryText,
   btnText,
+  logos,
   onClick,
   btnTextSecondary,
   onClickSecondary,
@@ -119,13 +123,23 @@ export default function PageHero({
                       </SecondaryButton>
                     )}
                   </div>
-                  {heroImages.length > 1 && (
-                    <CarouselStepper
-                      activeStep={idx}
-                      totalSteps={heroImages.length}
-                      sliderRef={sliderRef}
-                    />
-                  )}
+
+                  <FlexWrapper>
+                    {logos && (
+                      <FeaturedLogos
+                        overline="Featured In"
+                        logos={logos}
+                        isHero
+                      />
+                    )}
+                    {heroImages.length > 1 && (
+                      <CarouselStepper
+                        activeStep={idx}
+                        totalSteps={heroImages.length}
+                        sliderRef={sliderRef}
+                      />
+                    )}
+                  </FlexWrapper>
                 </div>
               </ContentWrapper>
             </div>
@@ -162,7 +176,7 @@ const ContentWrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 1.5rem;
-  padding-left: 6.25rem;
+  padding: 0 6.25rem;
   z-index: 999;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

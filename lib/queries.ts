@@ -163,10 +163,13 @@ export const cityfundFields = `
 export const cityfundsPageFields = `
   _id,
   logos,
+  cityfunds_feature,
+  hei_feature,
   tutorials,
   values,
   questions,
   testimonials,
+  homeowners_feature,
   "promo": promo->{banner, title, description, image},
   "webinar": webinar->{banner, title, description, date, image, link},
 `;
