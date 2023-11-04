@@ -1,5 +1,7 @@
 import FeaturedImage from '@components/FeaturedImage';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
+import EquityPayoff from '@components/cityfunds/EquityPayoff';
+import InvestChart from '@components/cityfunds/InvestChart';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import FaqsSection from '@components/cityfunds/NadaFaqs';
 import TextSlider from '@components/cityfunds/TextSlider';
@@ -64,6 +66,7 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
           },
         ]}
       />
+
       <SectionWrapper style={{ maxWidth: isMobile ? '100%' : '75%' }}>
         <LongFormText
           title="Our Strategy"
@@ -72,11 +75,12 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
       </SectionWrapper>
       <FeaturedImage
         feature={investorsPage?.hei_feature}
-        btnText="Schedule a Call"
-        onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
+        ctaComponent={<EquityPayoff />}
         isBackground
       />
+      <InvestChart />
       <CityfundSlider cityfunds={cityfunds} />
+
       <TextSlider
         overline="You may be wondering..."
         heading="Why Cityfunds?"

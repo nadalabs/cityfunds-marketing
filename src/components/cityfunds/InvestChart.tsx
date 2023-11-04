@@ -5,6 +5,7 @@ import {
 } from '@elements/Containers';
 import { PrimaryText, SmallHeading } from '@elements/Typography';
 import { LineChart } from '@tremor/react';
+import { formatPrice } from '@utils/helpers';
 import { useState } from 'react';
 
 interface InvestChartProps {}
@@ -13,16 +14,16 @@ export default function InvestChart({}: InvestChartProps) {
   const [value, setValue] = useState(null);
 
   const chartData = [
-    { date: 'Yr 1', 'Initial Investment': 100000, 'HEI Value': 131818 },
-    { date: 'Yr 2', 'Initial Investment': 100000, 'HEI Value': 131818 },
-    { date: 'Yr 3', 'Initial Investment': 100000, 'HEI Value': 131818 },
-    { date: 'Yr 4', 'Initial Investment': 100000, 'HEI Value': 131818 },
-    { date: 'Yr 5', 'Initial Investment': 100000, 'HEI Value': 131818 },
-    { date: 'Yr 6', 'Initial Investment': 100000, 'HEI Value': 131818 },
-    { date: 'Yr 7', 'Initial Investment': 100000, 'HEI Value': 131818 },
-    { date: 'Yr 8', 'Initial Investment': 100000, 'HEI Value': 131818 },
-    { date: 'Yr 9', 'Initial Investment': 100000, 'HEI Value': 131818 },
-    { date: 'Yr 10', 'Initial Investment': 100000, 'HEI Value': 131818 },
+    { date: 'Yr 1', 'HEI Value': 131818, 'Initial Investment': 100000 },
+    { date: 'Yr 2', 'HEI Value': 142955, 'Initial Investment': 100000 },
+    { date: 'Yr 3', 'HEI Value': 154648, 'Initial Investment': 100000 },
+    { date: 'Yr 4', 'HEI Value': 166926, 'Initial Investment': 100000 },
+    { date: 'Yr 5', 'HEI Value': 179817, 'Initial Investment': 100000 },
+    { date: 'Yr 6', 'HEI Value': 193354, 'Initial Investment': 100000 },
+    { date: 'Yr 7', 'HEI Value': 207567, 'Initial Investment': 100000 },
+    { date: 'Yr 8', 'HEI Value': 222491, 'Initial Investment': 100000 },
+    { date: 'Yr 9', 'HEI Value': 238161, 'Initial Investment': 100000 },
+    { date: 'Yr 10', 'HEI Value': 254614, 'Initial Investment': 100000 },
   ];
 
   return (
@@ -34,10 +35,10 @@ export default function InvestChart({}: InvestChartProps) {
           className="h-72 mt-4"
           data={chartData}
           index="date"
-          categories={['Initial Investment', 'HEI Value']}
+          categories={['HEI Value', 'Initial Investment']}
           colors={['green', 'slate']}
           yAxisWidth={30}
-          valueFormatter={(v) => `$${v}`}
+          valueFormatter={(v) => `${formatPrice(v, 0)}`}
           onValueChange={(v) => setValue(v)}
           connectNulls
           showAnimation
@@ -46,7 +47,7 @@ export default function InvestChart({}: InvestChartProps) {
 
       <FlexWrapper style={{ gap: '2.5rem' }}>
         <ShaddowWrapper isShort>
-          <SmallHeading>Year 1</SmallHeading>
+          <SmallHeading style={{ marginBottom: '1rem' }}>Year 1</SmallHeading>
           <PrimaryText>
             The homeowner receives $100,000 in cash, and in exchange, we acquire
             approximately 30% equity ownership in the home's future
@@ -54,7 +55,7 @@ export default function InvestChart({}: InvestChartProps) {
           </PrimaryText>
         </ShaddowWrapper>
         <ShaddowWrapper isShort>
-          <SmallHeading>Year 1</SmallHeading>
+          <SmallHeading style={{ marginBottom: '1rem' }}>Year 10</SmallHeading>
           <PrimaryText>
             The home's value has risen to $1,140,226. At this point, our equity
             share amounts to $254,614, while the homeowner's share stands at

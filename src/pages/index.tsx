@@ -1,5 +1,6 @@
 import FeaturedImage from '@components/FeaturedImage';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
+import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import HowItWorks from '@components/cityfunds/HowItWorks';
 import InvestChart from '@components/cityfunds/InvestChart';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
@@ -87,10 +88,7 @@ export default function CityfundsPage({
       />
       <FeaturedImage
         feature={cityfundsPage?.hei_feature}
-        btnText="Explore Offerings"
-        onClick={() =>
-          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
-        }
+        ctaComponent={<EquityPayoff />}
         isBackground
       />
       <InvestChart />

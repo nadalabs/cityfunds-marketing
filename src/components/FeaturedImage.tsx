@@ -5,6 +5,7 @@ import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface FeaturedImageProps {
@@ -13,10 +14,10 @@ interface FeaturedImageProps {
     description: string;
     image: string;
   };
-  btnText: string;
-  onClick: () => void;
+  btnText?: string;
+  onClick?: () => void;
+  ctaComponent?: ReactNode;
   isReversed?: boolean;
-  isWide?: boolean;
   isBackground?: boolean;
 }
 
@@ -24,6 +25,7 @@ export default function FeaturedImage({
   feature,
   btnText,
   onClick,
+  ctaComponent,
   isReversed,
   isBackground,
 }: FeaturedImageProps) {
@@ -47,9 +49,13 @@ export default function FeaturedImage({
         <StackWrapper style={{ gap: '1rem' }}>
           <Heading>{feature?.title}</Heading>
           <LongFormText content={feature?.description} />
-          <div>
-            <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-          </div>
+          {ctaComponent ? (
+            <>{ctaComponent}</>
+          ) : (
+            <div>
+              <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+            </div>
+          )}
         </StackWrapper>
       </ContentWrapper>
 
