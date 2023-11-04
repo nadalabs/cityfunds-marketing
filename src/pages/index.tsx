@@ -1,6 +1,7 @@
 import FeaturedImage from '@components/FeaturedImage';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
 import HowItWorks from '@components/cityfunds/HowItWorks';
+import InvestChart from '@components/cityfunds/InvestChart';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import Testimonials from '@components/cityfunds/Testimonials';
@@ -92,7 +93,7 @@ export default function CityfundsPage({
         }
         isBackground
       />
-      {/* Chart TODO */}
+      <InvestChart />
 
       <CityfundsGrid cityfunds={cityfunds} />
       <FeaturedImage

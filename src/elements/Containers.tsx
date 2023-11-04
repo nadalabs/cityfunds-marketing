@@ -46,3 +46,11 @@ export const FlexWrapper = styled.div`
   align-items: center;
   width: 100%;
 `;
+
+export const ShaddowWrapper = styled.div<{ isShort?: boolean }>`
+  padding: 1.5rem;
+  height: ${({ isShort }) => (isShort ? 'inherit' : '22rem')};
+  width: 100%;
+  border-radius: 2rem;
+  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
+`;
