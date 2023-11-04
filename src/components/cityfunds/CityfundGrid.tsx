@@ -1,17 +1,20 @@
 import { CityfundCard } from '@components/cityfunds/CityfundCard';
+import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
+import { useState } from 'react';
 import styled from 'styled-components';
 
-interface CityfundSliderProps {
+interface CityfundsGridProps {
   cityfunds: ICityfund[];
 }
 
-export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
+export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
   const isMobile = useIsMobile();
+  const [showMore, setShowMore] = useState(false);
 
   const ALL_CARDS = cityfunds.map(({ fund_data, fund_content }) => ({
     fund_data,
@@ -34,14 +37,14 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     }
 
     if (
-      a.fund_data.regulation === REGULATION.RETAIL &&
-      b.fund_data.regulation !== REGULATION.RETAIL
+      a.fund_data.regulation === REGULATION.ACCREDITED &&
+      b.fund_data.regulation !== REGULATION.ACCREDITED
     ) {
       return 1;
     }
     if (
-      a.fund_data.regulation !== REGULATION.RETAIL &&
-      b.fund_data.regulation === REGULATION.RETAIL
+      a.fund_data.regulation !== REGULATION.ACCREDITED &&
+      b.fund_data.regulation === REGULATION.ACCREDITED
     ) {
       return -1;
     }
@@ -49,76 +52,68 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     return b.fund_data.total_assets - a.fund_data.total_assets;
   });
 
-  const DISPLAYED_CARDS = SORTED_CARDS.filter(
+  const OPEN_CARDS = SORTED_CARDS.filter(
     ({ fund_data }) => fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
   );
+  const RETAIL_CARDS = OPEN_CARDS.filter(
+    ({ fund_data }) => fund_data?.regulation === REGULATION.RETAIL
+  );
+  const SHOWN_CARDS =
+    showMore || !isMobile ? RETAIL_CARDS : RETAIL_CARDS.slice(0, 3);
 
   return (
     <SectionWrapper>
-      <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
+      <StackWrapper
+        style={{ gap: isMobile ? '0' : '0.5rem', marginBottom: '1.5rem' }}
+      >
         <Heading>Explore Offerings</Heading>
         <LargeText>
           Pick your favorite fund, or invest in all of them.
         </LargeText>
       </StackWrapper>
 
-      <div style={{ display: 'flex' }}>
-        <ScrollWrapper>
-          {DISPLAYED_CARDS.map((card, idx) => (
-            <>
-              {isMobile ? (
-                <FadeWrapper key={idx}>
-                  <CityfundCard {...card} image={card?.images[0]} />
-                </FadeWrapper>
-              ) : (
-                <FadeWrapper key={idx}>
-                  <TopWrapper>
-                    <CityfundCard {...card} image={card?.images[0]} />
-                  </TopWrapper>
-                  <BottomWrapper>
-                    <CityfundCard {...card} image={card?.images[1]} />
-                  </BottomWrapper>
-                </FadeWrapper>
-              )}
-            </>
-          ))}
-        </ScrollWrapper>
-        <ScrollFade />
-      </div>
+      <GridWrapper
+        style={{
+          flexDirection: isMobile ? 'column' : 'row',
+          flexWrap: isMobile ? 'nowrap' : 'wrap',
+          marginBottom: isMobile ? 0 : '4rem',
+          alignSelf: 'flex-start',
+        }}
+      >
+        {SHOWN_CARDS.map((card, idx) => (
+          <>
+            {isMobile ? (
+              <FadeWrapper key={idx}>
+                <CityfundCard {...card} image={card?.images[0]} isHome />
+              </FadeWrapper>
+            ) : (
+              <FadeWrapper key={idx}>
+                <TopWrapper>
+                  <CityfundCard {...card} image={card?.images[0]} isHome />
+                </TopWrapper>
+                <BottomWrapper>
+                  <CityfundCard {...card} image={card?.images[1]} isHome />
+                </BottomWrapper>
+              </FadeWrapper>
+            )}
+          </>
+        ))}
+      </GridWrapper>
+
+      {isMobile && (
+        <PrimaryButton onClick={() => setShowMore(!showMore)}>
+          {showMore ? 'Show Less' : 'Show More'}
+        </PrimaryButton>
+      )}
     </SectionWrapper>
   );
 }
 
-const FadeWrapper = styled.div`
-  width: 22rem;
-  height: 36rem;
+const FadeWrapper = styled.div``;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
-    height: 30rem;
-  }
-`;
-
-const ScrollWrapper = styled.div`
+const GridWrapper = styled.div`
   display: flex;
-  gap: 1.5rem;
-  overflow-x: scroll;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    white 1rem,
-    white 90%,
-    transparent
-  );
-`;
-
-const ScrollFade = styled.div`
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 3.125rem;
-  background: linear-gradient(to left, #ffffff, transparent);
+  gap: 2rem;
 `;
 
 const TopWrapper = styled.div`
@@ -136,11 +131,12 @@ const TopWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   position: relative;
-  bottom: 36rem;
+  bottom: 19rem;
   z-index: -1;
+  height: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    bottom: 30rem;
+    bottom: 20rem;
   }
 `;
 

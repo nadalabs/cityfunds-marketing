@@ -1,5 +1,6 @@
-import { SectionWrapper } from '@elements/Containers';
+import { FlexWrapper, SectionWrapper } from '@elements/Containers';
 import { LinkText, Overline } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,20 +9,21 @@ import styled from 'styled-components';
 interface FeaturedLogosProps {
   overline: string;
   logos: any[];
+  isHero?: boolean;
   seeMore?: boolean;
 }
 
 export default function FeaturedLogos({
   overline,
   logos,
+  isHero,
   seeMore,
 }: FeaturedLogosProps) {
-  return (
-    <SectionWrapper style={{ textAlign: 'center' }}>
-      <Overline style={{ color: '#989898', textAlign: 'center' }}>
-        {overline}
-      </Overline>
-      <ContentWrapper>
+  const isMobile = useIsMobile();
+
+  function renderLogos(logos) {
+    return (
+      <>
         {logos?.map(({ name, image, link }, idx) => (
           <Link
             key={idx}
@@ -30,14 +32,35 @@ export default function FeaturedLogos({
             style={{ margin: '1rem 1rem' }}
           >
             <Image
-              width={145}
-              height={40}
+              width={isMobile ? 120 : 150}
+              height={isMobile ? 32 : 40}
               alt={name}
               src={urlForImage(image).url()}
             />
           </Link>
         ))}
-      </ContentWrapper>
+      </>
+    );
+  }
+
+  if (isHero) {
+    return (
+      <FlexWrapper
+        style={{ flexWrap: 'wrap', maxWidth: isMobile ? '100%' : '60%' }}
+      >
+        {renderLogos(logos)}
+      </FlexWrapper>
+    );
+  }
+
+  return (
+    <SectionWrapper style={{ textAlign: 'center' }}>
+      <Overline
+        style={{ color: '#989898', textAlign: isHero ? 'left' : 'center' }}
+      >
+        {overline}
+      </Overline>
+      <ContentWrapper>{renderLogos(logos)}</ContentWrapper>
 
       {seeMore && (
         <div style={{ paddingLeft: '1.25rem' }}>
@@ -57,5 +80,6 @@ const ContentWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
     align-items: center;
+    padding: 0;
   }
 `;

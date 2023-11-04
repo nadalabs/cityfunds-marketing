@@ -17,6 +17,7 @@ import 'react-modern-drawer/dist/index.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { ThemeProvider } from 'styled-components';
+import '../../styles/globals.css';
 
 declare global {
   interface Window {
