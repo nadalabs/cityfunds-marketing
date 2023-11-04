@@ -67,6 +67,7 @@ export const ContentWrapper = styled.div`
   width: 50%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
     margin-right: 0;
   }
 `;

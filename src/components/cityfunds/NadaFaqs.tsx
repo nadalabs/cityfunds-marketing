@@ -7,13 +7,18 @@ import styled from 'styled-components';
 interface NadaFaqsProps {
   faqs: { question: string; answer: string }[];
   seeAllUrl: string;
+  isBackground?: boolean;
 }
 
-export default function NadaFaqs({ faqs, seeAllUrl }: NadaFaqsProps) {
+export default function NadaFaqs({
+  faqs,
+  seeAllUrl,
+  isBackground,
+}: NadaFaqsProps) {
   const [active, setActive] = useState(0);
 
   return (
-    <SectionWrapper>
+    <SectionWrapper isBackground={isBackground}>
       <Overline>Frequently Asked Questions</Overline>
 
       {faqs.map(({ question, answer }, idx) => (

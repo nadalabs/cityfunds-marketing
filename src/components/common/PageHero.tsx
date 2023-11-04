@@ -132,7 +132,7 @@ export default function PageHero({
                         isHero
                       />
                     )}
-                    {heroImages.length > 1 && (
+                    {heroImages.length > 1 && !isMobile && (
                       <>
                         {/* <PrimaryText>{heroImages?.fund_name}</PrimaryText> */}
                         <CarouselStepper

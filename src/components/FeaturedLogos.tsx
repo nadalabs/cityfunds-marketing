@@ -1,5 +1,6 @@
 import { FlexWrapper, SectionWrapper } from '@elements/Containers';
 import { LinkText, Overline } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,6 +19,8 @@ export default function FeaturedLogos({
   isHero,
   seeMore,
 }: FeaturedLogosProps) {
+  const isMobile = useIsMobile();
+
   function renderLogos(logos) {
     return (
       <>
@@ -29,8 +32,8 @@ export default function FeaturedLogos({
             style={{ margin: '1rem 1rem' }}
           >
             <Image
-              width={150}
-              height={40}
+              width={isMobile ? 120 : 150}
+              height={isMobile ? 32 : 40}
               alt={name}
               src={urlForImage(image).url()}
             />
@@ -42,7 +45,7 @@ export default function FeaturedLogos({
 
   if (isHero) {
     return (
-      <FlexWrapper style={{ maxWidth: '50%' }}>
+      <FlexWrapper style={{ flexWrap: 'wrap' }}>
         {renderLogos(logos)}
       </FlexWrapper>
     );
@@ -75,5 +78,6 @@ const ContentWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
     align-items: center;
+    padding: 0;
   }
 `;

@@ -62,7 +62,7 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
     showMore || !isMobile ? RETAIL_CARDS : RETAIL_CARDS.slice(0, 3);
 
   return (
-    <SectionWrapper style={{ background: 'none' }}>
+    <SectionWrapper>
       <StackWrapper
         style={{ gap: isMobile ? '0' : '0.5rem', marginBottom: '1.5rem' }}
       >

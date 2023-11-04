@@ -64,7 +64,7 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
           },
         ]}
       />
-      <SectionWrapper style={{ maxWidth: '75%' }}>
+      <SectionWrapper style={{ maxWidth: isMobile ? '100%' : '75%' }}>
         <LongFormText
           title="Our Strategy"
           content={investorsPage?.ourMission}
@@ -74,9 +74,9 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
         feature={investorsPage?.hei_feature}
         btnText="Schedule a Call"
         onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
-        isReversed
+        isBackground
       />
-      <CityfundSlider cityfunds={cityfunds} isHome />
+      <CityfundSlider cityfunds={cityfunds} />
       <TextSlider
         overline="You may be wondering..."
         heading="Why Cityfunds?"
@@ -85,6 +85,7 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
       <FaqsSection
         faqs={investorsPage?.questions}
         seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/cityfunds`}
+        isBackground
       />
       <FeaturedImage
         feature={investorsPage?.investors_feature}

@@ -1,5 +1,5 @@
 import { CityfundCard } from '@components/cityfunds/CityfundCard';
-import { StackWrapper } from '@elements/Containers';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { FUND_STATUS, REGULATION } from '@utils/constants';
@@ -10,9 +10,7 @@ interface CityfundSliderProps {
   cityfunds: ICityfund[];
 }
 
-export default function CityfundSlider({
-  cityfunds,
-}: CityfundSliderProps) {
+export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
   const isMobile = useIsMobile();
 
   const ALL_CARDS = cityfunds.map(({ fund_data, fund_content }) => ({
@@ -56,12 +54,7 @@ export default function CityfundSlider({
   );
 
   return (
-    <SectionWrapper
-      style={{
-        marginLeft: !isMobile ? '150px' : 0,
-        marginBottom: !isMobile ? '8rem' : 0,
-      }}
-    >
+    <SectionWrapper>
       <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
         <Heading>Explore Offerings</Heading>
         <LargeText>
@@ -75,24 +68,15 @@ export default function CityfundSlider({
             <>
               {isMobile ? (
                 <FadeWrapper key={idx}>
-                  <CityfundCard
-                    {...card}
-                    image={card?.images[0]}
-                  />
+                  <CityfundCard {...card} image={card?.images[0]} />
                 </FadeWrapper>
               ) : (
                 <FadeWrapper key={idx}>
                   <TopWrapper>
-                    <CityfundCard
-                      {...card}
-                      image={card?.images[0]}
-                    />
+                    <CityfundCard {...card} image={card?.images[0]} />
                   </TopWrapper>
                   <BottomWrapper>
-                    <CityfundCard
-                      {...card}
-                      image={card?.images[1]}
-                    />
+                    <CityfundCard {...card} image={card?.images[1]} />
                   </BottomWrapper>
                 </FadeWrapper>
               )}
@@ -167,16 +151,5 @@ export const HeadingWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-  }
-`;
-
-export const SectionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  position: relative;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 1rem;
   }
 `;

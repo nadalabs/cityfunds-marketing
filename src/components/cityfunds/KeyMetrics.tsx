@@ -1,6 +1,7 @@
 import { GreenSquare } from '@components/common/CarouselStepper';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
@@ -11,13 +12,14 @@ interface KeyMetricsProps {
 }
 
 export default function KeyMetrics({ metrics }: KeyMetricsProps) {
+  const isMobile = useIsMobile();
   const easingFn = function (t) {
     // Example: easeInOutCubic
     return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
   };
 
   return (
-    <SectionWrapper>
+    <SectionWrapper style={{ marginTop: '1rem' }}>
       <FlexWrapper
         style={{
           justifyContent:
@@ -41,7 +43,7 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
                   <LargeHeading
                     // @ts-ignore-next-line
                     ref={countUpRef}
-                    style={{ fontSize: '6rem' }}
+                    style={{ fontSize: isMobile ? '4rem' : '6rem' }}
                   />
                 )}
               </CountUp>
@@ -75,6 +77,6 @@ const LargeHeading = styled(Heading)`
   margin-bottom: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 `;
