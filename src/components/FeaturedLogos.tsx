@@ -45,7 +45,9 @@ export default function FeaturedLogos({
 
   if (isHero) {
     return (
-      <FlexWrapper style={{ flexWrap: 'wrap' }}>
+      <FlexWrapper
+        style={{ flexWrap: 'wrap', maxWidth: isMobile ? '100%' : '60%' }}
+      >
         {renderLogos(logos)}
       </FlexWrapper>
     );
