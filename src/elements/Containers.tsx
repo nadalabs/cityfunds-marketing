@@ -35,7 +35,8 @@ export const CardWrapper = styled.div`
   height: 24rem;
   padding: 2rem;
   margin-right: 1.5rem;
-  border-radius: 3.174rem;
+  border-radius: 2rem;
+  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 16rem;

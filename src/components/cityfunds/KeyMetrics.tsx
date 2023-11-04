@@ -1,4 +1,5 @@
 import { GreenSquare } from '@components/common/CarouselStepper';
+import { SectionWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
@@ -16,46 +17,48 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
   };
 
   return (
-    <FlexWrapper
-      style={{
-        justifyContent: metrics.length === 2 ? 'space-evenly' : 'space-between',
-      }}
-    >
-      {metrics.map(({ label, value, formattingFn, decimals, prefix }) => (
-        <CounterWrapper key={label}>
-          <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-            <CountUp
-              end={value}
-              enableScrollSpy
-              scrollSpyDelay={100}
-              formattingFn={formattingFn}
-              decimals={decimals}
-              prefix={prefix}
-              // easingFn={easingFn}
-              // duration={3}
-            >
-              {({ countUpRef }) => (
-                <LargeHeading
-                  // @ts-ignore-next-line
-                  ref={countUpRef}
-                  style={{ fontSize: '6rem' }}
-                />
-              )}
-            </CountUp>
-            <GreenSquare
-              style={{ position: 'relative', bottom: '0.75rem', left: '8px' }}
-            />
-          </div>
-          <PrimaryText>{label}</PrimaryText>
-        </CounterWrapper>
-      ))}
-    </FlexWrapper>
+    <SectionWrapper>
+      <FlexWrapper
+        style={{
+          justifyContent:
+            metrics.length === 2 ? 'space-evenly' : 'space-between',
+        }}
+      >
+        {metrics.map(({ label, value, formattingFn, decimals, prefix }) => (
+          <CounterWrapper key={label}>
+            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+              <CountUp
+                end={value}
+                enableScrollSpy
+                scrollSpyDelay={100}
+                formattingFn={formattingFn}
+                decimals={decimals}
+                prefix={prefix}
+                // easingFn={easingFn}
+                // duration={3}
+              >
+                {({ countUpRef }) => (
+                  <LargeHeading
+                    // @ts-ignore-next-line
+                    ref={countUpRef}
+                    style={{ fontSize: '6rem' }}
+                  />
+                )}
+              </CountUp>
+              <GreenSquare
+                style={{ position: 'relative', bottom: '0.75rem', left: '8px' }}
+              />
+            </div>
+            <PrimaryText>{label}</PrimaryText>
+          </CounterWrapper>
+        ))}
+      </FlexWrapper>
+    </SectionWrapper>
   );
 }
 
 const FlexWrapper = styled.div`
   display: flex;
-  margin-top: 120px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;

@@ -2,14 +2,17 @@ import { PrimaryButton } from '@elements/Buttons';
 import { StackWrapper } from '@elements/Containers';
 import { Heading, Overline, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import styled from 'styled-components';
 
 interface FeaturedImageProps {
   overline?: string;
-  heading: string;
-  primaryText: string;
-  imageUrl: string;
+  feature: {
+    title: string;
+    description: string;
+    image: string;
+  };
   btnText: string;
   onClick: () => void;
   isReversed?: boolean;
@@ -18,9 +21,7 @@ interface FeaturedImageProps {
 
 export default function FeaturedImage({
   overline,
-  heading,
-  primaryText,
-  imageUrl,
+  feature,
   btnText,
   onClick,
   isReversed,
@@ -41,8 +42,8 @@ export default function FeaturedImage({
       <ContentWrapper>
         <StackWrapper style={{ gap: '1rem' }}>
           {overline && <Overline>{overline}</Overline>}
-          <Heading>{heading}</Heading>
-          <PrimaryText>{primaryText}</PrimaryText>
+          <Heading>{feature?.title}</Heading>
+          <PrimaryText>{feature?.description}</PrimaryText>
           <div>
             <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
           </div>
@@ -52,8 +53,8 @@ export default function FeaturedImage({
       <Image
         width={isMobile ? (isWide ? 380 : 300) : isWide ? 700 : 450}
         height={isMobile ? 300 : 450}
-        alt={heading}
-        src={imageUrl}
+        alt={feature?.title}
+        src={urlForImage(feature?.image).url()}
       />
     </SectionWrapper>
   );

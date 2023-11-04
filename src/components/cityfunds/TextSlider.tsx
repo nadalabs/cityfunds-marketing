@@ -68,9 +68,8 @@ export const GreenSquare = styled.div`
 `;
 
 const TextWrapper = styled(CardWrapper)`
-  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   margin: 1rem;
-  height: 20rem;
+  height: 24rem;
   width: 20rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

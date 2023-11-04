@@ -1,4 +1,4 @@
-import { SectionWrapper } from '@elements/Containers';
+import { FlexWrapper, SectionWrapper } from '@elements/Containers';
 import { LinkText, Overline } from '@elements/Typography';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -8,20 +8,19 @@ import styled from 'styled-components';
 interface FeaturedLogosProps {
   overline: string;
   logos: any[];
+  isHero?: boolean;
   seeMore?: boolean;
 }
 
 export default function FeaturedLogos({
   overline,
   logos,
+  isHero,
   seeMore,
 }: FeaturedLogosProps) {
-  return (
-    <SectionWrapper style={{ textAlign: 'center' }}>
-      <Overline style={{ color: '#989898', textAlign: 'center' }}>
-        {overline}
-      </Overline>
-      <ContentWrapper>
+  function renderLogos(logos) {
+    return (
+      <>
         {logos?.map(({ name, image, link }, idx) => (
           <Link
             key={idx}
@@ -37,7 +36,26 @@ export default function FeaturedLogos({
             />
           </Link>
         ))}
-      </ContentWrapper>
+      </>
+    );
+  }
+
+  if (isHero) {
+    return (
+      <FlexWrapper style={{ maxWidth: '50%' }}>
+        {renderLogos(logos)}
+      </FlexWrapper>
+    );
+  }
+
+  return (
+    <SectionWrapper style={{ textAlign: 'center' }}>
+      <Overline
+        style={{ color: '#989898', textAlign: isHero ? 'left' : 'center' }}
+      >
+        {overline}
+      </Overline>
+      <ContentWrapper>{renderLogos(logos)}</ContentWrapper>
 
       {seeMore && (
         <div style={{ paddingLeft: '1.25rem' }}>
