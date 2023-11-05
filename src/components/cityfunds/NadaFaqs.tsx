@@ -1,5 +1,5 @@
 import LongFormText from '@components/common/LongFormText';
-import { SectionWrapper } from '@elements/Containers';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LinkText, Overline } from '@elements/Typography';
 import { useState } from 'react';
 import styled from 'styled-components';
@@ -19,6 +19,7 @@ export default function NadaFaqs({
 
   return (
     <SectionWrapper isBackground={isBackground}>
+      <StackWrapper style={{gap: '1rem'}}>
       <Overline>Frequently Asked Questions</Overline>
 
       {faqs.map(({ question, answer }, idx) => (
@@ -38,6 +39,7 @@ export default function NadaFaqs({
       <LinkText href={seeAllUrl} target="_blank">
         See All FAQs
       </LinkText>
+      </StackWrapper>
     </SectionWrapper>
   );
 }

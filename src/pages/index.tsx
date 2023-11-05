@@ -53,9 +53,9 @@ export default function CityfundsPage({
               fund_data?.regulation === REGULATION.RETAIL &&
               fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
           )
-          .map(({ fund_content }) => ({
-            name: fund_content?.fund_name,
+          .map(({ fund_content, fund_data }) => ({
             heroImage: fund_content?.image_gallery[0],
+            fund_data,
           }))}
         bannerText={!!bannerText}
         maxWidth={720}
@@ -68,7 +68,7 @@ export default function CityfundsPage({
             formattingFn: (val) => `${val}K+`,
           },
           {
-            label: 'Properties Funded',
+            label: 'Home Equity Investments',
             value: 70,
             formattingFn: (val) => `${val}+`,
           },

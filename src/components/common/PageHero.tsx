@@ -1,9 +1,12 @@
 import FeaturedLogos from '@components/FeaturedLogos';
+import AssetTicker from '@components/cityfunds/AssetTicker';
+import NadaText from '@components/cityfunds/NadaText';
 import CarouselStepper from '@components/common/CarouselStepper';
 import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
-import { FlexWrapper } from '@elements/Containers';
+import { FlexWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { IFundData } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import { useRef } from 'react';
 import Slider from 'react-slick';
@@ -17,7 +20,7 @@ interface PageHeroProps {
   onClick?: () => void;
   btnTextSecondary?: string;
   onClickSecondary?: () => void;
-  heroImages: { name: string; heroImage: string }[];
+  heroImages: { name?: string; fund_data?: IFundData; heroImage: string }[];
   bannerText?: boolean;
   maxWidth?: number;
 }
@@ -54,7 +57,7 @@ export default function PageHero({
     <>
       <HeroWrapper>
         <Slider {...settings} ref={sliderRef}>
-          {heroImages.map(({ heroImage }, idx) => (
+          {heroImages.map(({ heroImage, fund_data }, idx) => (
             <div key={idx}>
               <HeroImage
                 style={{
@@ -124,7 +127,7 @@ export default function PageHero({
                     )}
                   </div>
 
-                  <FlexWrapper>
+                  <FlexWrapper style={{ alignItems: 'flex-end' }}>
                     {logos && (
                       <FeaturedLogos
                         overline="Featured In"
@@ -133,14 +136,17 @@ export default function PageHero({
                       />
                     )}
                     {heroImages.length > 1 && !isMobile && (
-                      <>
-                        {/* <PrimaryText>{heroImages?.fund_name}</PrimaryText> */}
-                        <CarouselStepper
-                          activeStep={idx}
-                          totalSteps={heroImages.length}
-                          sliderRef={sliderRef}
-                        />
-                      </>
+                        <StackWrapper style={{ gap: '1rem' }}>
+                          <StackWrapper style={{ gap: '0.5rem' }}>
+                            <NadaText name={fund_data?.fund_name} />
+                            <AssetTicker fund_data={fund_data} />
+                          </StackWrapper>
+                          <CarouselStepper
+                            activeStep={idx}
+                            totalSteps={heroImages?.length}
+                            sliderRef={sliderRef}
+                          />
+                        </StackWrapper>
                     )}
                   </FlexWrapper>
                 </div>

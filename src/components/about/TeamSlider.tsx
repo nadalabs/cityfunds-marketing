@@ -1,5 +1,5 @@
 import { GreenSquare } from '@components/common/CarouselStepper';
-import { CardWrapper, SectionWrapper } from '@elements/Containers';
+import { CardWrapper, SectionWrapper, StackWrapper } from '@elements/Containers';
 import { BoldText, Heading, Overline } from '@elements/Typography';
 import { urlForImage } from 'lib/sanity';
 
@@ -15,8 +15,11 @@ interface TeamSliderProps {
 export default function TeamSlider({ teammates }: TeamSliderProps) {
   return (
     <SectionWrapper>
+      <StackWrapper style={{gap: '1rem'}}>
       <Overline>Who We Are</Overline>
       <Heading>Our Team</Heading>
+
+
       <div style={{ display: 'flex', overflowX: 'scroll' }}>
         {teammates
           ?.map((props) => ({
@@ -41,7 +44,7 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                   <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                     <Heading
                       style={{
-                        fontSize: '1.5rem',
+                        fontSize: name.length > 20 ? '1.4rem' : '1.5rem',
                         lineHeight: '2rem',
                         color: 'white',
                         marginBottom: 0,
@@ -54,12 +57,13 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                         height: '0.5rem',
                         width: '0.5rem',
                         marginLeft: '8px',
+                        borderRadius: '2px',
                         marginBottom: '0.5rem',
                       }}
                     />
                   </div>
 
-                  <BoldText style={{ color: 'white', margin: 0 }}>
+                  <BoldText style={{ fontSize: '1rem', color: 'white', margin: 0 }}>
                     {role}
                   </BoldText>
                 </div>
@@ -67,6 +71,7 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
             </div>
           ))}
       </div>
+      </StackWrapper>
     </SectionWrapper>
   );
 }

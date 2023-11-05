@@ -45,19 +45,20 @@ export default function FeaturedLogos({
 
   if (isHero) {
     return (
-      <FlexWrapper
-        style={{ flexWrap: 'wrap', maxWidth: isMobile ? '100%' : '60%' }}
-      >
-        {renderLogos(logos)}
-      </FlexWrapper>
+      <div style={{ maxWidth: isMobile ? '100%' : '70%' }}>
+        <Overline style={{ color: '#989898', textAlign: 'left' }}>
+          {overline}
+        </Overline>
+        <FlexWrapper style={{ flexWrap: 'wrap' }}>
+          {renderLogos(logos)}
+        </FlexWrapper>
+      </div>
     );
   }
 
   return (
     <SectionWrapper style={{ textAlign: 'center' }}>
-      <Overline
-        style={{ color: '#989898', textAlign: isHero ? 'left' : 'center' }}
-      >
+      <Overline style={{ color: '#989898', textAlign: 'center' }}>
         {overline}
       </Overline>
       <ContentWrapper>{renderLogos(logos)}</ContentWrapper>

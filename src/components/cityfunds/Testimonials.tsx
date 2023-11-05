@@ -30,7 +30,7 @@ export default function Testimonials({
 
   return (
     <SectionWrapper isBackground={isBackground}>
-      <StackWrapper>
+      <StackWrapper style={{gap: '1rem'}}>
         <Overline>Hear it from our users...</Overline>
         <Slider {...settings} ref={sliderRef}>
           {testimonials?.map(({ name, review, city }, idx) => (
