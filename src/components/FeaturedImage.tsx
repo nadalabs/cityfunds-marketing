@@ -41,7 +41,7 @@ export default function FeaturedImage({
           : isReversed
           ? 'row-reverse'
           : 'row',
-        gap: '5rem',
+        gap: isMobile ? '1.5rem' : '5rem',
       }}
       isBackground={isBackground}
     >

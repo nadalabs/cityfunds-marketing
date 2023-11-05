@@ -136,17 +136,17 @@ export default function PageHero({
                       />
                     )}
                     {heroImages.length > 1 && !isMobile && (
-                        <StackWrapper style={{ gap: '1rem' }}>
-                          <StackWrapper style={{ gap: '0.5rem' }}>
-                            <NadaText name={fund_data?.fund_name} />
-                            <AssetTicker fund_data={fund_data} />
-                          </StackWrapper>
-                          <CarouselStepper
-                            activeStep={idx}
-                            totalSteps={heroImages?.length}
-                            sliderRef={sliderRef}
-                          />
+                      <StackWrapper style={{ gap: '1rem' }}>
+                        <StackWrapper style={{ gap: '0.5rem' }}>
+                          <NadaText name={fund_data?.fund_name} />
+                          <AssetTicker fund_data={fund_data} />
                         </StackWrapper>
+                        <CarouselStepper
+                          activeStep={idx}
+                          totalSteps={heroImages?.length}
+                          sliderRef={sliderRef}
+                        />
+                      </StackWrapper>
                     )}
                   </FlexWrapper>
                 </div>

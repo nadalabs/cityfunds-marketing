@@ -19,26 +19,26 @@ export default function NadaFaqs({
 
   return (
     <SectionWrapper isBackground={isBackground}>
-      <StackWrapper style={{gap: '1rem'}}>
-      <Overline>Frequently Asked Questions</Overline>
+      <StackWrapper style={{ gap: '1rem' }}>
+        <Overline>Frequently Asked Questions</Overline>
 
-      {faqs.map(({ question, answer }, idx) => (
-        <ContentWrapper key={idx}>
-          <HoverHeading
-            onClick={() => setActive(idx)}
-            style={{ color: idx === active ? '#48DC95' : 'black' }}
-          >
-            {question}
-          </HoverHeading>
-          <TextWrapper style={{ display: idx === active ? 'block' : 'none' }}>
-            <LongFormText content={answer} />
-          </TextWrapper>
-        </ContentWrapper>
-      ))}
+        {faqs.map(({ question, answer }, idx) => (
+          <ContentWrapper key={idx}>
+            <HoverHeading
+              onClick={() => setActive(idx)}
+              style={{ color: idx === active ? '#48DC95' : 'black' }}
+            >
+              {question}
+            </HoverHeading>
+            <TextWrapper style={{ display: idx === active ? 'block' : 'none' }}>
+              <LongFormText content={answer} />
+            </TextWrapper>
+          </ContentWrapper>
+        ))}
 
-      <LinkText href={seeAllUrl} target="_blank">
-        See All FAQs
-      </LinkText>
+        <LinkText href={seeAllUrl} target="_blank">
+          See All FAQs
+        </LinkText>
       </StackWrapper>
     </SectionWrapper>
   );

@@ -27,8 +27,8 @@ export default function TextSlider({
 }: TextSliderProps) {
   return (
     <SectionWrapper>
-      <StackWrapper style={{gap: '1rem'}}>
-      {overline && <Overline>{overline}</Overline>}
+      <StackWrapper style={{ gap: '1rem' }}>
+        {overline && <Overline>{overline}</Overline>}
         <Heading>{heading}</Heading>
         {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
       </StackWrapper>

@@ -54,7 +54,7 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
   );
 
   return (
-    <SectionWrapper>
+    <SectionWrapper style={{ paddingRight: 0 }}>
       <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
         <Heading>Explore Offerings</Heading>
         <LargeText>
@@ -62,7 +62,7 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
         </LargeText>
       </StackWrapper>
 
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', marginTop: '1.5rem' }}>
         <ScrollWrapper>
           {DISPLAYED_CARDS.map((card, idx) => (
             <>
@@ -83,7 +83,7 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
             </>
           ))}
         </ScrollWrapper>
-        <ScrollFade />
+        {/* <ScrollFade /> */}
       </div>
     </SectionWrapper>
   );

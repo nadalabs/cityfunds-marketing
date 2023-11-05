@@ -38,7 +38,7 @@ export const CityfundCard = ({
             isMobile ? (isHome ? 160 : 320) : isHome ? 304 : 576,
             isMobile ? window?.innerWidth - 32 : 304
           ).url()}), #232222 50% / cover no-repeat`,
-          height: isMobile ? '10rem' : '19rem',
+          height: isHome ? '19rem' : isMobile ? '10rem' : '36rem',
           width: isMobile ? window?.innerWidth - 32 : '19rem',
           padding: '1.5rem',
         }}

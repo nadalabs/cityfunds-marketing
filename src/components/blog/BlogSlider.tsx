@@ -30,7 +30,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
       <div style={{ display: 'flex', overflowX: 'scroll' }}>
         {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
           <Link key={idx} href={`/learn/${slug}`}>
-            <CardWrapper style={{width: '500px'}}>
+            <CardWrapper style={{ width: '500px' }}>
               <Image
                 alt={title}
                 src={urlForImage(coverImage).url()}

@@ -68,7 +68,7 @@ export default function LongFormText({
   };
 
   return (
-    <StackWrapper style={{gap: '1rem'}}>
+    <StackWrapper style={{ gap: '1rem' }}>
       {overline && <Overline>{overline}</Overline>}
       {title && <Heading>{title}</Heading>}
       <div style={{ width: '100%' }}>
