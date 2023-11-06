@@ -1,5 +1,5 @@
 import FeaturedImage from '@components/FeaturedImage';
-import CityfundSlider from '@components/cityfunds/CityfundSlider';
+import AccredSlider from '@components/cityfunds/AccredSlider';
 import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import InvestChart from '@components/cityfunds/InvestChart';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
@@ -79,7 +79,7 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
         isBackground
       />
       <InvestChart />
-      <CityfundSlider cityfunds={cityfunds} />
+      <AccredSlider cityfunds={cityfunds} />
 
       <TextSlider
         overline="You may be wondering..."

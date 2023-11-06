@@ -1,5 +1,5 @@
 import { Caption } from '@elements/Typography';
-import { FUND_STATUS, FUND_TYPE } from '@utils/constants';
+import { FUND_STATUS, FUND_TYPE, REGULATION } from '@utils/constants';
 import { formatPercent, formatPrice } from '@utils/helpers';
 import Image from 'next/image';
 import { ReactNode } from 'react';
@@ -16,6 +16,11 @@ export default function AssetTicker({
   isDark,
   isSmall,
 }: AssetTickerProps) {
+  const originalPrice =
+    fund_data?.regulation === REGULATION.ACCREDITED ? 100 : 10;
+  const appreciation =
+    ((fund_data?.share_price - originalPrice) / originalPrice) * 100;
+
   const PILLS = [
     {
       number: formatPrice(fund_data?.share_price, 2),
@@ -27,8 +32,8 @@ export default function AssetTicker({
       number:
         fund_data?.fund_type === FUND_TYPE.DEBT
           ? `${formatPercent(fund_data?.target_return, 1)} APY`
-          : fund_data?.appreciation
-          ? formatPercent(fund_data?.appreciation, 1)
+          : appreciation
+          ? formatPercent(appreciation, 1)
           : 'New',
       description: fund_data?.appreciation ? (
         <Image

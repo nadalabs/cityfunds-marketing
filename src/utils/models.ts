@@ -1,4 +1,4 @@
-import { FUND_STATUS, FUND_TYPE, LIQUIDITY, REGULATION } from './constants';
+import { FUND_STATUS, FUND_TYPE, REGULATION } from './constants';
 
 export interface ICityfund {
   fund_data: IFundData;
@@ -11,24 +11,24 @@ export interface IFundData {
   fund_status: FUND_STATUS;
   fund_type: FUND_TYPE;
   regulation: REGULATION;
-  liquidity: LIQUIDITY;
-  target_irr: string;
-  lockup_months: number;
-  term_months: number;
+  target_return: number;
   min_investment: number;
   management_fee: number;
   fund_size: number;
   share_price: number;
-  appreciation: number;
   total_assets: number;
+  total_aum: number;
   total_investors: number;
+  nav_update?: Date;
+  series_url?: string;
 }
 
 export interface IFundContent {
   fund_name: string;
+  call_to_action: string;
+  highlights: string[];
   description: string;
   image_gallery: string[];
-  card_front: string;
   card_back: string;
   culture_gallery: string[];
   culture_description: string;

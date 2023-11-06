@@ -14,6 +14,7 @@ interface CityfundsGridProps {
 
 export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
   const isMobile = useIsMobile();
+  const [toggle, setToggle] = useState<REGULATION>(null);
   const [showMore, setShowMore] = useState(false);
 
   const ALL_CARDS = cityfunds.map(({ fund_data, fund_content }) => ({
@@ -62,7 +63,7 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
     showMore || !isMobile ? RETAIL_CARDS : RETAIL_CARDS.slice(0, 3);
 
   return (
-    <SectionWrapper>
+    <SectionWrapper style={{ gap: '2rem' }}>
       <StackWrapper
         style={{ gap: isMobile ? '0' : '0.5rem', marginBottom: '1.5rem' }}
       >

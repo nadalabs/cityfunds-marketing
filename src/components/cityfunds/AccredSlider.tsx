@@ -1,4 +1,4 @@
-import { CityfundCard } from '@components/cityfunds/CityfundCard';
+import AccredCard from '@components/cityfunds/AccredCard';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
@@ -6,11 +6,12 @@ import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 import styled from 'styled-components';
 
-interface CityfundSliderProps {
+interface AccredSliderProps {
   cityfunds: ICityfund[];
+  isHome?: boolean;
 }
 
-export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
+export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
   const isMobile = useIsMobile();
 
   const ALL_CARDS = cityfunds.map(({ fund_data, fund_content }) => ({
@@ -54,36 +55,50 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
   );
 
   return (
-    <SectionWrapper style={{ paddingRight: 0 }}>
-      <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
+    <SectionWrapper>
+      <StackWrapper
+        style={{ gap: isMobile ? '0' : '0.5rem', marginBottom: '1.5rem' }}
+      >
         <Heading>Explore Offerings</Heading>
         <LargeText>
           Pick your favorite fund, or invest in all of them.
         </LargeText>
       </StackWrapper>
 
-      <div style={{ display: 'flex', marginTop: '1.5rem' }}>
+      <div style={{ display: 'flex' }}>
         <ScrollWrapper>
-          {DISPLAYED_CARDS.map((card, idx) => (
+          {DISPLAYED_CARDS?.map((card, idx) => (
             <>
               {isMobile ? (
                 <FadeWrapper key={idx}>
-                  <CityfundCard {...card} image={card?.images[0]} />
+                  <AccredCard
+                    {...card}
+                    image={card?.images[0]}
+                    isHome={isHome}
+                  />
                 </FadeWrapper>
               ) : (
                 <FadeWrapper key={idx}>
                   <TopWrapper>
-                    <CityfundCard {...card} image={card?.images[0]} />
+                    <AccredCard
+                      {...card}
+                      image={card?.images[0]}
+                      isHome={isHome}
+                    />
                   </TopWrapper>
                   <BottomWrapper>
-                    <CityfundCard {...card} image={card?.images[1]} />
+                    <AccredCard
+                      {...card}
+                      image={card?.images[1]}
+                      isHome={isHome}
+                    />
                   </BottomWrapper>
                 </FadeWrapper>
               )}
             </>
           ))}
         </ScrollWrapper>
-        {/* <ScrollFade /> */}
+        <ScrollFade />
       </div>
     </SectionWrapper>
   );
@@ -100,6 +115,10 @@ const FadeWrapper = styled.div`
 `;
 
 const ScrollWrapper = styled.div`
+  position: relative;
+  bottom: 0.5rem;
+  right: 1rem;
+  padding: 0.5rem 4rem 1rem 1rem;
   display: flex;
   gap: 1.5rem;
   overflow-x: scroll;

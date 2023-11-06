@@ -6,7 +6,7 @@ import {
 import { BoldText, PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { LineChart } from '@tremor/react';
-import { formatPrice } from '@utils/helpers';
+import { shortenNumber } from '@utils/helpers';
 import { useState } from 'react';
 
 interface InvestChartProps {}
@@ -42,8 +42,8 @@ export default function InvestChart({}: InvestChartProps) {
           index="date"
           categories={['HEI Value', 'Original Investment']}
           colors={['green', 'slate']}
-          yAxisWidth={60}
-          valueFormatter={(v) => `${formatPrice(v, 0)}`}
+          yAxisWidth={45}
+          valueFormatter={(v) => `$${shortenNumber(v, 0)}`}
           onValueChange={(v) => setValue(v)}
           connectNulls
           showAnimation

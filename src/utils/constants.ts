@@ -104,8 +104,3 @@ export enum REGULATION {
   RETAIL = 'Retail',
   ACCREDITED = 'Accredited',
 }
-
-export enum LIQUIDITY {
-  QUARTERLY = 'Quarterly',
-  ANNUALLY = 'Annually',
-}
