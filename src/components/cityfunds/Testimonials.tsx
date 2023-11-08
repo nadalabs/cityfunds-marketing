@@ -1,4 +1,4 @@
-import CarouselStepper from '@components/common/CarouselStepper';
+import ImageStepper from '@components/common/ImageStepper';
 import LongFormText from '@components/common/LongFormText';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Overline, PrimaryText } from '@elements/Typography';
@@ -38,7 +38,7 @@ export default function Testimonials({
               <ContentWrapper>
                 <div style={{ maxWidth: '788px', marginRight: '24px' }}>
                   <LongFormText content={review} />
-                  <CarouselStepper
+                  <ImageStepper
                     activeStep={idx}
                     totalSteps={testimonials?.length}
                     sliderRef={sliderRef}

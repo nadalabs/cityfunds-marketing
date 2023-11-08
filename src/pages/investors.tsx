@@ -76,7 +76,6 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
       <FeaturedImage
         feature={investorsPage?.hei_feature}
         ctaComponent={<EquityPayoff />}
-        isBackground
       />
       <InvestChart />
       <AccredSlider cityfunds={cityfunds} />

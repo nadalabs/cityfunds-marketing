@@ -1,6 +1,6 @@
 import { FlexWrapper } from '@elements/Containers';
 import { Caption } from '@elements/Typography';
-import { FUND_STATUS, REGULATION } from '@utils/constants';
+import { REGULATION } from '@utils/constants';
 import { isDateInRange } from '@utils/helpers';
 import Image from 'next/image';
 import Countdown from 'react-countdown';
@@ -51,21 +51,6 @@ export default function StatusTicker({
           />
           <Caption style={{ color: 'white', fontWeight: 600 }}>
             Accredited Offering
-          </Caption>
-        </LockWrapper>
-      ) : fund_data?.fund_status === FUND_STATUS.NEW_OFFERING ? (
-        <LockWrapper
-          style={{ background: isDark ? '#2A8356' : 'rgba(22, 22, 22, 0.33)' }}
-        >
-          <Image
-            src="/icons/lock.svg"
-            alt="Lock"
-            height={16}
-            width={16}
-            style={{ marginRight: '0.25rem' }}
-          />
-          <Caption style={{ color: 'white', fontWeight: 600 }}>
-            {isHome || isDark ? 'Coming Soon' : 'Exclusive'}
           </Caption>
         </LockWrapper>
       ) : showCountdown ? (

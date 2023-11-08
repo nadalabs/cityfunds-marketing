@@ -89,7 +89,6 @@ export default function CityfundsPage({
       <FeaturedImage
         feature={cityfundsPage?.hei_feature}
         ctaComponent={<EquityPayoff />}
-        isBackground
       />
       <InvestChart />
 

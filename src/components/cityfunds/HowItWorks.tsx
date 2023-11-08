@@ -1,4 +1,4 @@
-import { GreenSquare } from '@components/common/CarouselStepper';
+import { GreenSquare } from '@components/common/ImageStepper';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';

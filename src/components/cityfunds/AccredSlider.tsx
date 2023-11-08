@@ -50,10 +50,6 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
     return b.fund_data.total_assets - a.fund_data.total_assets;
   });
 
-  const DISPLAYED_CARDS = SORTED_CARDS.filter(
-    ({ fund_data }) => fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
-  );
-
   return (
     <SectionWrapper>
       <StackWrapper
@@ -67,7 +63,7 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
 
       <div style={{ display: 'flex' }}>
         <ScrollWrapper>
-          {DISPLAYED_CARDS?.map((card, idx) => (
+          {SORTED_CARDS?.map((card, idx) => (
             <>
               {isMobile ? (
                 <FadeWrapper key={idx}>
@@ -98,7 +94,6 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
             </>
           ))}
         </ScrollWrapper>
-        <ScrollFade />
       </div>
     </SectionWrapper>
   );

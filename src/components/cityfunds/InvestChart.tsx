@@ -31,6 +31,7 @@ export default function InvestChart({}: InvestChartProps) {
   return (
     <SectionWrapper
       style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}
+      isBackground
     >
       <ShaddowWrapper>
         <BoldText style={{ fontSize: '1rem', textAlign: 'center' }}>

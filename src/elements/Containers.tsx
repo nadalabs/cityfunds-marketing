@@ -49,8 +49,9 @@ export const FlexWrapper = styled.div`
 
 export const ShaddowWrapper = styled.div<{ isShort?: boolean }>`
   padding: 1.5rem;
-  height: ${({ isShort }) => (isShort ? 'inherit' : '22rem')};
+  height: ${({ isShort }) => (isShort ? '14rem' : '22rem')};
   width: 100%;
   border-radius: 2rem;
   box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
 `;

@@ -1,5 +1,5 @@
 import FeaturedLogos from '@components/FeaturedLogos';
-import CarouselStepper from '@components/common/CarouselStepper';
+import ImageStepper from '@components/common/ImageStepper';
 import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LargeText, SmallHeading } from '@elements/Typography';
@@ -138,7 +138,7 @@ export default function PageHero({
                         <SmallHeading style={{ color: '#888888' }}>
                           {fund_data.fund_name}
                         </SmallHeading>
-                        <CarouselStepper
+                        <ImageStepper
                           activeStep={idx}
                           totalSteps={heroImages?.length}
                           sliderRef={sliderRef}

@@ -1,4 +1,4 @@
-import { GreenSquare } from '@components/common/CarouselStepper';
+import { GreenSquare } from '@components/common/ImageStepper';
 import {
   CardWrapper,
   SectionWrapper,

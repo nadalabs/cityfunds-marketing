@@ -53,10 +53,7 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
     return b.fund_data.total_assets - a.fund_data.total_assets;
   });
 
-  const OPEN_CARDS = SORTED_CARDS.filter(
-    ({ fund_data }) => fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
-  );
-  const RETAIL_CARDS = OPEN_CARDS.filter(
+  const RETAIL_CARDS = SORTED_CARDS.filter(
     ({ fund_data }) => fund_data?.regulation === REGULATION.RETAIL
   );
   const SHOWN_CARDS =

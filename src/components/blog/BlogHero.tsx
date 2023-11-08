@@ -1,4 +1,4 @@
-import CarouselStepper from '@components/common/CarouselStepper';
+import ImageStepper from '@components/common/ImageStepper';
 import { SectionWrapper } from '@elements/Containers';
 import {
   LinkText,
@@ -81,7 +81,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
               </Link>
 
               {blogPosts.length > 1 && (
-                <CarouselStepper
+                <ImageStepper
                   activeStep={idx}
                   totalSteps={blogPosts.length}
                   sliderRef={sliderRef}
