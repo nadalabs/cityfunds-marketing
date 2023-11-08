@@ -56,7 +56,7 @@ export default function AssetTicker({
     },
   ];
   const FILTERED_PILLS =
-    fund_data.fund_status === FUND_STATUS.NEW_OFFERING ||
+    fund_data?.fund_status === FUND_STATUS.NEW_OFFERING ||
     fund_data?.fund_type === FUND_TYPE.DEBT
       ? PILLS.slice(0, 2)
       : PILLS;
@@ -75,6 +75,7 @@ export default function AssetTicker({
         <BoldText
           style={{
             color: isDark ? 'black' : 'white',
+            lineHeight: '100%',
           }}
         >
           {number}
@@ -111,6 +112,6 @@ export const BackgroundWrapper = styled.div`
   align-items: center;
   border-radius: 0.61038rem;
   backdrop-filter: blur(1.85px);
-  padding: 0 0.25rem;
+  padding: 0.3rem 0.25rem;
   margin: 0 0.25rem 0 0;
 `;

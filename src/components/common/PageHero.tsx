@@ -1,10 +1,8 @@
 import FeaturedLogos from '@components/FeaturedLogos';
-import AssetTicker from '@components/cityfunds/AssetTicker';
-import NadaText from '@components/cityfunds/NadaText';
 import CarouselStepper from '@components/common/CarouselStepper';
 import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
-import { Heading, LargeText } from '@elements/Typography';
+import { Heading, LargeText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { IFundData } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
@@ -127,7 +125,7 @@ export default function PageHero({
                     )}
                   </div>
 
-                  <FlexWrapper style={{ alignItems: 'flex-end' }}>
+                  <FlexWrapper>
                     {logos && (
                       <FeaturedLogos
                         overline="Featured In"
@@ -136,11 +134,10 @@ export default function PageHero({
                       />
                     )}
                     {heroImages.length > 1 && !isMobile && (
-                      <StackWrapper style={{ gap: '1rem' }}>
-                        <StackWrapper style={{ gap: '0.5rem' }}>
-                          <NadaText name={fund_data?.fund_name} />
-                          <AssetTicker fund_data={fund_data} />
-                        </StackWrapper>
+                      <StackWrapper style={{ gap: '0.5rem' }}>
+                        <SmallHeading style={{ color: '#888888' }}>
+                          {fund_data.fund_name}
+                        </SmallHeading>
                         <CarouselStepper
                           activeStep={idx}
                           totalSteps={heroImages?.length}

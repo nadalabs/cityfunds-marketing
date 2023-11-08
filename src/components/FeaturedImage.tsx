@@ -1,7 +1,7 @@
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';
-import { Heading } from '@elements/Typography';
+import { Heading, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -17,6 +17,7 @@ interface FeaturedImageProps {
   btnText?: string;
   onClick?: () => void;
   ctaComponent?: ReactNode;
+  overline?: string;
   isReversed?: boolean;
   isBackground?: boolean;
 }
@@ -25,6 +26,7 @@ export default function FeaturedImage({
   feature,
   btnText,
   onClick,
+  overline,
   ctaComponent,
   isReversed,
   isBackground,
@@ -47,6 +49,7 @@ export default function FeaturedImage({
     >
       <ContentWrapper>
         <StackWrapper style={{ gap: '1rem' }}>
+          {overline && <Overline>{overline}</Overline>}
           <Heading>{feature?.title}</Heading>
           <LongFormText content={feature?.description} />
           {ctaComponent ? (

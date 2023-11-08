@@ -116,6 +116,7 @@ export default function CityfundsPage({
         isPhoneFrame
       />
       <FeaturedImage
+        overline="FOR HOMEOWNERS"
         feature={cityfundsPage?.homeowners_feature}
         btnText="Learn More"
         onClick={() => router.push(`/homeshares`)}

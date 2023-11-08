@@ -64,10 +64,11 @@ export default function InvestChart({}: InvestChartProps) {
         <ShaddowWrapper isShort>
           <SmallHeading style={{ marginBottom: '1rem' }}>Year 10</SmallHeading>
           <PrimaryText>
-            The home's value has risen to $1,140,226. At this point, our equity
-            share amounts to $254,614, while the homeowner's share stands at
-            $885,612. The effective annual percentage rate (APR) for this
-            investment arrangement is calculated at 9.80%.
+            The homeowner decides to sell or refinance. The home's value has
+            risen to $1,140,226. At this point, our equity share amounts to
+            $254,614, while the homeowner's share stands at $885,612. The
+            effective annual percentage rate (APR) for this investment
+            arrangement is calculated at 9.80%.
           </PrimaryText>
         </ShaddowWrapper>
       </FlexWrapper>

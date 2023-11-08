@@ -6,7 +6,7 @@ export interface ICityfund {
 }
 
 export interface IFundData {
-  offering_id: string;
+  id: string;
   fund_name: string;
   fund_status: FUND_STATUS;
   fund_type: FUND_TYPE;
