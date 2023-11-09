@@ -4,7 +4,7 @@ import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import InvestChart from '@components/cityfunds/InvestChart';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import FaqsSection from '@components/cityfunds/NadaFaqs';
-import TextSlider from '@components/cityfunds/TextSlider';
+import ValueProps from '@components/cityfunds/ValueProps';
 import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
 import { SectionWrapper } from '@elements/Containers';
@@ -80,7 +80,7 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
       <InvestChart />
       <AccredSlider cityfunds={cityfunds} />
 
-      <TextSlider
+      <ValueProps
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         valueProps={investorsPage?.values}

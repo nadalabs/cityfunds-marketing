@@ -1,25 +1,26 @@
 import LongFormText from '@components/common/LongFormText';
 import {
   CardWrapper,
+  FlexWrapper,
   SectionWrapper,
   StackWrapper,
 } from '@elements/Containers';
 import { BoldText, Heading, Overline, PrimaryText } from '@elements/Typography';
 import styled from 'styled-components';
 
-interface TextSliderProps {
+interface ValuePropsProps {
   overline?: string;
   heading: string;
   primaryText?: string;
   valueProps: any[];
 }
 
-export default function TextSlider({
+export default function ValueProps({
   overline,
   heading,
   primaryText,
   valueProps,
-}: TextSliderProps) {
+}: ValuePropsProps) {
   return (
     <SectionWrapper>
       <StackWrapper style={{ gap: '1rem' }}>
@@ -28,7 +29,7 @@ export default function TextSlider({
         {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
       </StackWrapper>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <FlexWrapper>
         {valueProps?.map(({ title, description }, idx) => (
           <div key={idx}>
             <TextWrapper>
@@ -40,7 +41,7 @@ export default function TextSlider({
             </TextWrapper>
           </div>
         ))}
-      </div>
+      </FlexWrapper>
     </SectionWrapper>
   );
 }

@@ -6,7 +6,7 @@ import InvestChart from '@components/cityfunds/InvestChart';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import KeyMetrics from '@components/cityfunds/KeyMetrics';
 import Testimonials from '@components/cityfunds/Testimonials';
-import TextSlider from '@components/cityfunds/TextSlider';
+import ValueProps from '@components/cityfunds/ValueProps';
 import Webinanars from '@components/cityfunds/Webinars';
 import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
@@ -99,7 +99,7 @@ export default function CityfundsPage({
         onClick={() => router.push(`/investors`)}
         isBackground
       />
-      <TextSlider
+      <ValueProps
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         valueProps={cityfundsPage?.values}

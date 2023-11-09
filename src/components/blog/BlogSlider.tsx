@@ -1,3 +1,5 @@
+import SliderStepper from '@components/common/SliderStepper';
+import { StackWrapper } from '@elements/Containers';
 import {
   BoldText,
   Overline,
@@ -8,6 +10,8 @@ import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRef, useState } from 'react';
+import Slider from 'react-slick';
 import styled from 'styled-components';
 
 interface BlogSliderProps {
@@ -23,11 +27,32 @@ interface BlogSliderProps {
 }
 
 export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
+  const [activeStep, setActiveStep] = useState(1);
+  const sliderRef = useRef(null);
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    swipeToSlide: true,
+  };
+
   return (
     <SectionWrapper>
-      <SmallHeading style={{ marginBottom: '2rem' }}>{tag}</SmallHeading>
+      <StackWrapper>
+        <SmallHeading>{tag}</SmallHeading>
+        <SliderStepper
+          activeStep={activeStep}
+          setActiveStep={setActiveStep}
+          totalSteps={blogPosts?.length / 2}
+          increment={2}
+          sliderRef={sliderRef}
+        />
+      </StackWrapper>
 
-      <div style={{ display: 'flex', overflowX: 'scroll' }}>
+      <Slider ref={sliderRef} {...settings}>
         {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
           <Link key={idx} href={`/learn/${slug}`}>
             <CardWrapper style={{ width: '500px' }}>
@@ -48,7 +73,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
             </CardWrapper>
           </Link>
         ))}
-      </div>
+      </Slider>
     </SectionWrapper>
   );
 }

@@ -1,7 +1,7 @@
 import FeaturedLogos from '@components/FeaturedLogos';
 import CareersCTA from '@components/about/CareersCTA';
 import TeamSlider from '@components/about/TeamSlider';
-import TextSlider from '@components/cityfunds/TextSlider';
+import ValueProps from '@components/cityfunds/ValueProps';
 import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
 import { SectionWrapper } from '@elements/Containers';
@@ -39,7 +39,7 @@ export default function AboutPage({ aboutPage }) {
       </SectionWrapper>
       <FeaturedLogos overline="World Class Backing" logos={aboutPage?.logos} />
       <TeamSlider teammates={aboutPage?.teammates} />
-      <TextSlider
+      <ValueProps
         overline="How We Think"
         heading="Our Values"
         valueProps={aboutPage?.values}

@@ -1,9 +1,16 @@
 import AccredCard from '@components/cityfunds/AccredCard';
-import { SectionWrapper, StackWrapper } from '@elements/Containers';
+import SliderStepper from '@components/common/SliderStepper';
+import {
+  FlexWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
+import { useRef, useState } from 'react';
+import Slider from 'react-slick';
 import styled from 'styled-components';
 
 interface AccredSliderProps {
@@ -12,7 +19,18 @@ interface AccredSliderProps {
 }
 
 export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
+  const [activeStep, setActiveStep] = useState(1);
   const isMobile = useIsMobile();
+  const sliderRef = useRef(null);
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    swipeToSlide: true,
+  };
 
   const ALL_CARDS = cityfunds.map(({ fund_data, fund_content }) => ({
     fund_data,
@@ -52,49 +70,52 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
 
   return (
     <SectionWrapper>
-      <StackWrapper
-        style={{ gap: isMobile ? '0' : '0.5rem', marginBottom: '1.5rem' }}
-      >
-        <Heading>Explore Offerings</Heading>
-        <LargeText>
-          Pick your favorite fund, or invest in all of them.
-        </LargeText>
-      </StackWrapper>
+      <FlexWrapper>
+        <StackWrapper
+          style={{ gap: isMobile ? '0' : '0.5rem', marginBottom: '1.5rem' }}
+        >
+          <Heading>Explore Offerings</Heading>
+          <LargeText>
+            Pick your favorite fund, or invest in all of them.
+          </LargeText>
+        </StackWrapper>
+        <SliderStepper
+          activeStep={activeStep}
+          setActiveStep={setActiveStep}
+          totalSteps={cityfunds?.length / 2}
+          increment={2}
+          sliderRef={sliderRef}
+        />
+      </FlexWrapper>
 
-      <div style={{ display: 'flex' }}>
-        <ScrollWrapper>
-          {SORTED_CARDS?.map((card, idx) => (
-            <>
-              {isMobile ? (
-                <FadeWrapper key={idx}>
+      <Slider ref={sliderRef} {...settings}>
+        {SORTED_CARDS?.map((card, idx) => (
+          <>
+            {isMobile ? (
+              <FadeWrapper key={idx}>
+                <AccredCard {...card} image={card?.images[0]} isHome={isHome} />
+              </FadeWrapper>
+            ) : (
+              <FadeWrapper key={idx}>
+                <TopWrapper>
                   <AccredCard
                     {...card}
                     image={card?.images[0]}
                     isHome={isHome}
                   />
-                </FadeWrapper>
-              ) : (
-                <FadeWrapper key={idx}>
-                  <TopWrapper>
-                    <AccredCard
-                      {...card}
-                      image={card?.images[0]}
-                      isHome={isHome}
-                    />
-                  </TopWrapper>
-                  <BottomWrapper>
-                    <AccredCard
-                      {...card}
-                      image={card?.images[1]}
-                      isHome={isHome}
-                    />
-                  </BottomWrapper>
-                </FadeWrapper>
-              )}
-            </>
-          ))}
-        </ScrollWrapper>
-      </div>
+                </TopWrapper>
+                <BottomWrapper>
+                  <AccredCard
+                    {...card}
+                    image={card?.images[1]}
+                    isHome={isHome}
+                  />
+                </BottomWrapper>
+              </FadeWrapper>
+            )}
+          </>
+        ))}
+      </Slider>
     </SectionWrapper>
   );
 }
