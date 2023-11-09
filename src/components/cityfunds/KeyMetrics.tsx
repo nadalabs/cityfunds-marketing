@@ -19,14 +19,14 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
   };
 
   return (
-    <SectionWrapper style={{ marginTop: '1rem' }}>
+    <SectionWrapper>
       <FlexWrapper
         style={{
-          justifyContent:
-            metrics.length === 2 ? 'space-evenly' : 'space-between',
+          justifyContent: 'space-between',
+          flexWrap: metrics.length > 3 ? 'wrap' : 'nowrap',
         }}
       >
-        {metrics.map(({ label, value, formattingFn, decimals, prefix }) => (
+        {metrics?.map(({ label, value, formattingFn, decimals, prefix }) => (
           <CounterWrapper key={label}>
             <div style={{ display: 'flex', alignItems: 'flex-end' }}>
               <CountUp
@@ -68,9 +68,7 @@ const FlexWrapper = styled.div`
 `;
 
 const CounterWrapper = styled.div`
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 48px;
-  }
+  margin: 2rem 4rem;
 `;
 
 const LargeHeading = styled(Heading)`

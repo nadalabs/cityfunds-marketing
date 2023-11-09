@@ -64,6 +64,15 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
             value: 35,
             formattingFn: (val) => `$${val}M+`,
           },
+          {
+            label: 'Total Asset Appreciation',
+            value: 14,
+            formattingFn: (val) => `${val}%`,
+          },
+          {
+            label: 'Major Markets',
+            value: 8,
+          },
         ]}
       />
 
