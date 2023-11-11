@@ -22,7 +22,7 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
     <SectionWrapper>
       <FlexWrapper
         style={{
-          justifyContent: 'space-between',
+          justifyContent: 'space-evenly',
           flexWrap: metrics.length > 3 ? 'wrap' : 'nowrap',
         }}
       >

@@ -24,8 +24,17 @@ export const UTM_PARAMETERS = [
 
 export const HEADER_LINKS = [
   { name: 'Cityfunds', link: '/' },
-  { name: 'About', link: '/about' },
-  { name: 'Learn', link: '/learn' },
+  { name: 'Homeshares', link: '/homeshares' },
+  {
+    name: 'Resources',
+    links: [
+      { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
+      { name: 'Learning Center', link: '/learn' },
+      { name: 'Investor Relations', link: '/investors' },
+      { name: 'About', link: '/about' },
+      { name: 'Newsroom', link: '/press' },
+    ],
+  },
 ];
 
 export const LEGAL_LINKS = [
