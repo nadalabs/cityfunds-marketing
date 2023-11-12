@@ -20,32 +20,59 @@ export default function SliderStepper({
   increment,
   sliderRef,
 }: SliderStepperProps) {
-  const handleOnClick = (activeStep: number, isIncrement?: boolean) => {
+  const isBackDisabled = !activeStep;
+  const isNextDisabled =
+    Math.round(activeStep / increment) + 1 ===
+    Math.round(totalSteps / increment);
+
+  const handleBack = (activeStep: number) => {
+    const index = activeStep - increment;
     // @ts-ignore-next-line
-    sliderRef?.current?.slickGoTo(
-      isIncrement
-        ? totalSteps / activeStep + increment
-        : totalSteps / activeStep + increment
-    );
-    setActiveStep(isIncrement ? activeStep + 1 : activeStep - 1);
+    sliderRef?.current?.slickGoTo(index);
+    setActiveStep(index);
+  };
+
+  const handleNext = (activeStep: number) => {
+    const index = activeStep + increment;
+    // @ts-ignore-next-line
+    sliderRef?.current?.slickGoTo(index);
+    setActiveStep(index);
   };
 
   return (
     <div>
       <FlexWrapper style={{ justifyContent: 'flex-end', gap: '0.5rem' }}>
         <PrimaryText>
-          {activeStep} / {Math.round(totalSteps / increment)}
+          {Math.round(activeStep / increment) + 1} /{' '}
+          {Math.round(totalSteps / increment)}
         </PrimaryText>
         <div style={{ display: 'flex', gap: '0.5rem' }}>
           <PrimaryButton
-            onClick={() => handleOnClick(activeStep, true)}
+            onClick={() => handleBack(activeStep)}
+            style={{ cursor: isBackDisabled ? 'default' : 'pointer' }}
+            disabled={isBackDisabled}
             isInverted
           >
-            <Image src="/icons/back.svg" alt="Back" height={8} width={8} />
+            <Image
+              src={`/icons/${isBackDisabled ? 'back-disabled' : 'back'}.svg`}
+              alt="Back"
+              height={8}
+              width={8}
+            />
           </PrimaryButton>
 
-          <PrimaryButton onClick={() => handleOnClick(activeStep)} isInverted>
-            <Image src="/icons/next.svg" alt="Next" height={8} width={8} />
+          <PrimaryButton
+            onClick={() => handleNext(activeStep)}
+            style={{ cursor: isNextDisabled ? 'default' : 'pointer' }}
+            disabled={isNextDisabled}
+            isInverted
+          >
+            <Image
+              src={`/icons/${isNextDisabled ? 'next-disabled' : 'next'}.svg`}
+              alt="Next"
+              height={8}
+              width={8}
+            />
           </PrimaryButton>
         </div>
       </FlexWrapper>

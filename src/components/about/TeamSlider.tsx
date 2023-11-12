@@ -21,7 +21,7 @@ interface TeamSliderProps {
 }
 
 export default function TeamSlider({ teammates }: TeamSliderProps) {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const sliderRef = useRef(null);
 
   const settings = {
@@ -35,7 +35,7 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
 
   return (
     <SectionWrapper>
-      <FlexWrapper>
+      <FlexWrapper style={{ alignItems: 'flex-end' }}>
         <StackWrapper>
           <Overline>Who We Are</Overline>
           <Heading>Our Team</Heading>
@@ -43,8 +43,8 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
         <SliderStepper
           activeStep={activeStep}
           setActiveStep={setActiveStep}
-          totalSteps={teammates?.length / 2}
-          increment={2}
+          totalSteps={teammates?.length}
+          increment={3}
           sliderRef={sliderRef}
         />
       </FlexWrapper>
