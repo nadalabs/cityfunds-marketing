@@ -132,6 +132,11 @@ const BackgroundWrapper = styled(SectionWrapper)`
 const ContentWrapper = styled.div`
   width: 100%;
   max-width: 75rem;
+  padding-top: 4rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding-top: 10rem;
+  }
 `;
 
 const FlexWrapper = styled.div`
@@ -154,7 +159,7 @@ export const ImageWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    height: 350px;
+    height: 280px;
     margin-right: 0;
   }
 `;

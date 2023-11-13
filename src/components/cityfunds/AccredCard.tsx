@@ -22,7 +22,12 @@ export default function AccredCard({
   const isMobile = useIsMobile();
 
   return (
-    <Link href={`/cityfunds/${fund_data?.fund_name.toLowerCase()}`}>
+    <Link
+      href={`${
+        process.env.NEXT_PUBLIC_WEB_APP_URL
+      }/cityfunds/${fund_data?.fund_name.toLowerCase()}`}
+      target="_blank"
+    >
       <CardWrapper
         style={{
           justifyContent:

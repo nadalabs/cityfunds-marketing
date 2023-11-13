@@ -23,9 +23,10 @@ export const CityfundCard = ({
 
   return (
     <Link
-      href={`/cityfunds/${fund_data?.fund_name
-        .toLowerCase()
-        .replace(/ /g, '-')}`}
+      href={`${
+        process.env.NEXT_PUBLIC_WEB_APP_URL
+      }/cityfunds/${fund_data?.fund_name.toLowerCase().replace(/ /g, '-')}`}
+      target="_blank"
     >
       <CardWrapper
         style={{
