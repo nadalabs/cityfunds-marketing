@@ -72,7 +72,7 @@ export default function PageHero({
               })`,
                 }}
               />
-              <ContentWrapper style={{ bottom: bannerText ? '10rem' : '8rem' }}>
+              <ContentWrapper style={{ bottom: bannerText ? '16vh' : '20vh' }}>
                 <div
                   style={{
                     display: 'flex',
