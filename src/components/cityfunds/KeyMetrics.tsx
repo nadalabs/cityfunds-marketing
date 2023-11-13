@@ -69,6 +69,13 @@ const FlexWrapper = styled.div`
 
 const CounterWrapper = styled.div`
   margin: 2rem 4rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+  }
 `;
 
 const LargeHeading = styled(Heading)`

@@ -46,7 +46,9 @@ export default function FeaturedLogos({
   if (isHero) {
     return (
       <div style={{ maxWidth: isMobile ? '100%' : '70%' }}>
-        <Overline style={{ color: '#989898', textAlign: 'left' }}>
+        <Overline
+          style={{ color: '#989898', textAlign: isMobile ? 'center' : 'left' }}
+        >
           {overline}
         </Overline>
         <FlexWrapper style={{ flexWrap: 'wrap' }}>

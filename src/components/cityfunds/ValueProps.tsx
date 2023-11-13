@@ -34,15 +34,13 @@ export default function ValueProps({
 
       <FlexWrapper style={{ flexDirection: isMobile ? 'column' : 'row' }}>
         {valueProps?.map(({ title, description }, idx) => (
-          <div key={idx}>
-            <TextWrapper>
-              <StackWrapper style={{ gap: '1rem' }}>
-                <GreenSquare />
-                <BoldText>{title}</BoldText>
-                <LongFormText content={description} isSmall />
-              </StackWrapper>
-            </TextWrapper>
-          </div>
+          <TextWrapper key={idx}>
+            <StackWrapper style={{ gap: '1rem' }}>
+              <GreenSquare />
+              <BoldText>{title}</BoldText>
+              <LongFormText content={description} isSmall />
+            </StackWrapper>
+          </TextWrapper>
         ))}
       </FlexWrapper>
     </SectionWrapper>
@@ -68,8 +66,8 @@ const TextWrapper = styled(CardWrapper)`
   width: 18rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    height: 18rem;
-    width: 18rem;
+    height: 100%;
+    width: 100%;
     padding: 2rem;
   }
 `;

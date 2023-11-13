@@ -97,11 +97,8 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
           {HEADER_LINKS.map(({ name, link, links }, idx) => (
             <>
               {links ? (
-                <StackWrapper onMouseLeave={() => setDropdown(false)}>
-                  <FlexWrapper
-                    onMouseEnter={() => setDropdown(true)}
-                    style={{ cursor: 'pointer', gap: '0.5rem' }}
-                  >
+                <StackWrapper onClick={() => setDropdown(!dropDown)}>
+                  <FlexWrapper style={{ cursor: 'pointer', gap: '0.5rem' }}>
                     <NavbarLink
                       key={idx}
                       href={link}
@@ -120,7 +117,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
                   </FlexWrapper>
 
                   {links && dropDown && (
-                    <div style={{ marginTop: '1rem' }}>
+                    <StackWrapper style={{ paddingLeft: '1rem' }}>
                       {links.map(({ name, link }, idx) => (
                         <NavbarLink
                           key={idx}
@@ -130,7 +127,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
                           {name.toUpperCase()}
                         </NavbarLink>
                       ))}
-                    </div>
+                    </StackWrapper>
                   )}
                 </StackWrapper>
               ) : (
