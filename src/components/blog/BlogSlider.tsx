@@ -49,7 +49,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
           activeStep={activeStep}
           setActiveStep={setActiveStep}
           totalSteps={blogPosts?.length}
-          increment={4}
+          increment={isMobile ? 1 : 4}
           sliderRef={sliderRef}
         />
       </StackWrapper>

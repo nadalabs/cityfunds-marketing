@@ -46,7 +46,7 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
           activeStep={activeStep}
           setActiveStep={setActiveStep}
           totalSteps={teammates?.length}
-          increment={3}
+          increment={isMobile ? 1 : 3}
           sliderRef={sliderRef}
         />
       </FlexWrapper>

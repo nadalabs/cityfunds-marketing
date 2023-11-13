@@ -1,10 +1,6 @@
 import AccredCard from '@components/cityfunds/AccredCard';
 import SliderStepper from '@components/common/SliderStepper';
-import {
-  FlexWrapper,
-  SectionWrapper,
-  StackWrapper,
-} from '@elements/Containers';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { FUND_STATUS, REGULATION } from '@utils/constants';
@@ -70,23 +66,24 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
 
   return (
     <SectionWrapper>
-      <FlexWrapper>
-        <StackWrapper
-          style={{ gap: isMobile ? '0' : '0.5rem', marginBottom: '1.5rem' }}
-        >
+      <StackWrapper style={{ marginBottom: '1.5rem' }}>
+        <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
           <Heading>Explore Offerings</Heading>
           <LargeText>
             Pick your favorite fund, or invest in all of them.
           </LargeText>
         </StackWrapper>
-        <SliderStepper
-          activeStep={activeStep}
-          setActiveStep={setActiveStep}
-          totalSteps={cityfunds?.length}
-          increment={3}
-          sliderRef={sliderRef}
-        />
-      </FlexWrapper>
+
+        <div>
+          <SliderStepper
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
+            totalSteps={cityfunds?.length}
+            increment={isMobile ? 1 : 3}
+            sliderRef={sliderRef}
+          />
+        </div>
+      </StackWrapper>
 
       <Slider ref={sliderRef} {...settings}>
         {SORTED_CARDS?.map((card, idx) => (
