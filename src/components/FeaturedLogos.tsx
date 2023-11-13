@@ -82,7 +82,8 @@ const ContentWrapper = styled.div`
   padding: 0 6rem 2rem 6rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     padding: 0;
   }

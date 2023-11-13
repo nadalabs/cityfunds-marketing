@@ -26,6 +26,7 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
     slidesToShow: isMobile ? 1 : 3.15,
     slidesToScroll: isMobile ? 1 : 3,
     swipeToSlide: true,
+    beforeChange: (_, next) => setActiveStep(next),
   };
 
   const ALL_CARDS = cityfunds.map(({ fund_data, fund_content }) => ({

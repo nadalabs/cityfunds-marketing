@@ -33,6 +33,7 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
     slidesToShow: isMobile ? 1.25 : 3,
     slidesToScroll: isMobile ? 1 : 3,
     swipeToSlide: true,
+    beforeChange: (_, next) => setActiveStep(next),
   };
 
   return (
@@ -75,7 +76,7 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                   <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                     <Heading
                       style={{
-                        fontSize: name.length > 20 ? '1.4rem' : '1.5rem',
+                        fontSize: isMobile ? '1rem' : name.length > 20 ? '1.4rem' : '1.5rem',
                         lineHeight: '2rem',
                         color: 'white',
                         marginBottom: 0,

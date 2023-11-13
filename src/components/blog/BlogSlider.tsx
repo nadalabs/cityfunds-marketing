@@ -39,6 +39,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
     slidesToShow: isMobile ? 1.15 : 4,
     slidesToScroll: isMobile ? 1 : 4,
     swipeToSlide: true,
+    beforeChange: (_, next) => setActiveStep(next),
   };
 
   return (
