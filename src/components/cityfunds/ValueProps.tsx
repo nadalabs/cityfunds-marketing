@@ -6,6 +6,7 @@ import {
   StackWrapper,
 } from '@elements/Containers';
 import { BoldText, Heading, Overline, PrimaryText } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import styled from 'styled-components';
 
 interface ValuePropsProps {
@@ -21,6 +22,8 @@ export default function ValueProps({
   primaryText,
   valueProps,
 }: ValuePropsProps) {
+  const isMobile = useIsMobile();
+
   return (
     <SectionWrapper>
       <StackWrapper style={{ gap: '1rem' }}>
@@ -29,7 +32,7 @@ export default function ValueProps({
         {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
       </StackWrapper>
 
-      <FlexWrapper>
+      <FlexWrapper style={{ flexDirection: isMobile ? 'column' : 'row' }}>
         {valueProps?.map(({ title, description }, idx) => (
           <div key={idx}>
             <TextWrapper>

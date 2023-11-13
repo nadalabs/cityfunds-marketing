@@ -1,6 +1,5 @@
-import { PrimaryButton } from '@elements/Buttons';
-import { FlexWrapper } from '@elements/Containers';
-import { LinkText } from '@elements/Typography';
+import { NavbarLink, PrimaryButton } from '@elements/Buttons';
+import { FlexWrapper, StackWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,6 +14,7 @@ interface MobileNavBarProps {
 
 export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
   const router = useRouter();
+  const [dropDown, setDropdown] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const isHomeshares = router.pathname.includes('homeshares');
@@ -94,19 +94,57 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
             gap: '1rem',
           }}
         >
-          {HEADER_LINKS.map(({ name, link }, idx) => (
-            <LinkText
-              key={idx}
-              href={link}
-              onClick={() => setShowMenu(false)}
-              style={{
-                fontSize: '1rem',
-                color: link === location.pathname ? '#48DC95' : 'white',
-                marginBottom: 0,
-              }}
-            >
-              {name.toUpperCase()}
-            </LinkText>
+          {HEADER_LINKS.map(({ name, link, links }, idx) => (
+            <>
+              {links ? (
+                <StackWrapper onMouseLeave={() => setDropdown(false)}>
+                  <FlexWrapper
+                    onMouseEnter={() => setDropdown(true)}
+                    style={{ cursor: 'pointer', gap: '0.5rem' }}
+                  >
+                    <NavbarLink
+                      key={idx}
+                      href={link}
+                      style={{
+                        color: link === router.pathname ? '#48DC95' : 'white',
+                      }}
+                    >
+                      {name.toUpperCase()}
+                    </NavbarLink>
+                    <Image
+                      width={16}
+                      height={16}
+                      alt={'Menu'}
+                      src={'/icons/arrow-down.svg'}
+                    />
+                  </FlexWrapper>
+
+                  {links && dropDown && (
+                    <div style={{ marginTop: '1rem' }}>
+                      {links.map(({ name, link }, idx) => (
+                        <NavbarLink
+                          key={idx}
+                          href={link}
+                          onMouseEnter={() => setDropdown(true)}
+                        >
+                          {name.toUpperCase()}
+                        </NavbarLink>
+                      ))}
+                    </div>
+                  )}
+                </StackWrapper>
+              ) : (
+                <NavbarLink
+                  key={idx}
+                  href={link}
+                  style={{
+                    color: link === router.pathname ? '#48DC95' : 'white',
+                  }}
+                >
+                  {name.toUpperCase()}
+                </NavbarLink>
+              )}
+            </>
           ))}
           {isHomeshares ? (
             <a href={EXTERNAL_ROUTES.TYPEFORM} target="_blank">

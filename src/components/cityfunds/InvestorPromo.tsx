@@ -22,6 +22,15 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
 
   return (
     <SectionWrapper id="promo">
+      {isMobile && (
+        <Image
+          width={250}
+          height={500}
+          alt={'Limited time offer!'}
+          src={urlForImage(promo?.image).url()}
+        />
+      )}
+
       <ContentWrapper>
         <StackWrapper style={{ gap: '0.5rem', marginBottom: '1rem' }}>
           <Heading style={{ maxWidth: '34rem' }}>{promo?.title}</Heading>
@@ -85,6 +94,8 @@ export const SectionWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0 24px;
+    flex-direction: column;
+    gap: 2rem;
   }
 `;
 

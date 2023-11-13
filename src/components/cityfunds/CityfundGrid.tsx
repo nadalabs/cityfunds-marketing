@@ -99,9 +99,11 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
       </GridWrapper>
 
       {isMobile && (
-        <PrimaryButton onClick={() => setShowMore(!showMore)}>
-          {showMore ? 'Show Less' : 'Show More'}
-        </PrimaryButton>
+        <div style={{ marginTop: '1rem' }}>
+          <PrimaryButton onClick={() => setShowMore(!showMore)}>
+            {showMore ? 'Show Less' : 'Show More'}
+          </PrimaryButton>
+        </div>
       )}
     </SectionWrapper>
   );

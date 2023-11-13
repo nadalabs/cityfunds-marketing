@@ -54,4 +54,8 @@ export const ShaddowWrapper = styled.div<{ isShort?: boolean }>`
   border-radius: 2rem;
   box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
   background-color: #ffffff;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    height: ${({ isShort }) => (isShort ? 'inherit' : '22rem')};
+  }
 `;
