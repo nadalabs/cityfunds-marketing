@@ -6,6 +6,7 @@ import {
   PrimaryText,
   SmallHeading,
 } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -29,13 +30,14 @@ interface BlogSliderProps {
 export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
   const [activeStep, setActiveStep] = useState(0);
   const sliderRef = useRef(null);
+  const isMobile = useIsMobile();
 
   const settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: isMobile ? 1.15 : 4,
+    slidesToScroll: isMobile ? 1 : 4,
     swipeToSlide: true,
   };
 

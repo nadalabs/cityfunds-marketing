@@ -7,6 +7,7 @@ import {
   StackWrapper,
 } from '@elements/Containers';
 import { BoldText, Heading, Overline } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
@@ -23,13 +24,14 @@ interface TeamSliderProps {
 export default function TeamSlider({ teammates }: TeamSliderProps) {
   const [activeStep, setActiveStep] = useState(0);
   const sliderRef = useRef(null);
+  const isMobile = useIsMobile();
 
   const settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: isMobile ? 1.25 : 3,
+    slidesToScroll: isMobile ? 1 : 3,
     swipeToSlide: true,
   };
 
