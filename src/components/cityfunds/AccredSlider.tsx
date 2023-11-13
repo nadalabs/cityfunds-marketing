@@ -27,7 +27,7 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 2.35,
+    slidesToShow: 3.15,
     slidesToScroll: 3,
     swipeToSlide: true,
   };

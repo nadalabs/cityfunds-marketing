@@ -35,8 +35,8 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
 
   return (
     <SectionWrapper>
-      <FlexWrapper style={{ alignItems: 'flex-end' }}>
-        <StackWrapper>
+      <FlexWrapper style={{ alignItems: 'flex-end', marginBottom: '1rem' }}>
+        <StackWrapper style={{ gap: '1rem' }}>
           <Overline>Who We Are</Overline>
           <Heading>Our Team</Heading>
         </StackWrapper>
