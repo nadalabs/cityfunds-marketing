@@ -1,5 +1,5 @@
 import SliderStepper from '@components/common/SliderStepper';
-import { StackWrapper } from '@elements/Containers';
+import { FlexWrapper } from '@elements/Containers';
 import {
   BoldText,
   Overline,
@@ -43,16 +43,18 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
 
   return (
     <SectionWrapper>
-      <StackWrapper>
+      <FlexWrapper
+        style={{ justifyContent: 'space-between', marginBottom: '1rem' }}
+      >
         <SmallHeading>{tag}</SmallHeading>
         <SliderStepper
           activeStep={activeStep}
           setActiveStep={setActiveStep}
-          totalSteps={blogPosts?.length}
+          totalSteps={blogPosts?.length + 1}
           increment={isMobile ? 1 : 4}
           sliderRef={sliderRef}
         />
-      </StackWrapper>
+      </FlexWrapper>
 
       <Slider ref={sliderRef} {...settings}>
         {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
@@ -60,7 +62,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
             <CardWrapper style={{ width: '500px' }}>
               <Image
                 alt={title}
-                src={urlForImage(coverImage).url()}
+                src={urlForImage(coverImage, 200, 300).url()}
                 width={300}
                 height={200}
                 style={{ borderRadius: '2rem' }}
