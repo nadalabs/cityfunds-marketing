@@ -19,7 +19,7 @@ interface AccredSliderProps {
 }
 
 export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const isMobile = useIsMobile();
   const sliderRef = useRef(null);
 
@@ -82,8 +82,8 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
         <SliderStepper
           activeStep={activeStep}
           setActiveStep={setActiveStep}
-          totalSteps={cityfunds?.length / 2}
-          increment={2}
+          totalSteps={cityfunds?.length}
+          increment={3}
           sliderRef={sliderRef}
         />
       </FlexWrapper>

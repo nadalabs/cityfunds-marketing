@@ -57,6 +57,7 @@ export const NavbarLink = styled.a`
   line-height: 1.5rem;
   letter-spacing: 0.075rem;
   text-transform: uppercase;
+  transition: ${({ theme }) => theme.transitions.ease};
   cursor: pointer;
   margin: 0;
 

@@ -24,7 +24,7 @@ export default function DesktopNavBar({
   hideLinks,
 }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [dropDown, setDropdown] = useState(true);
+  const [dropDown, setDropdown] = useState(false);
   const router = useRouter();
   const isHomeshares = router.pathname.includes('homeshares');
 
@@ -100,9 +100,12 @@ export default function DesktopNavBar({
               {HEADER_LINKS.map(({ name, link, links }, idx) => (
                 <>
                   {links ? (
-                    <StackWrapper>
-                      <FlexWrapper style={{ gap: '0.5rem' }}>
-                        <NavbarLink
+                    <StackWrapper onMouseLeave={() => setDropdown(false)}>
+                      <FlexWrapper
+                        onMouseEnter={() => setDropdown(true)}
+                        style={{ cursor: 'pointer', gap: '0.5rem' }}
+                      >
+                        <PrimaryLink
                           key={idx}
                           href={link}
                           style={{
@@ -111,7 +114,7 @@ export default function DesktopNavBar({
                           }}
                         >
                           {name.toUpperCase()}
-                        </NavbarLink>
+                        </PrimaryLink>
                         <Image
                           width={16}
                           height={16}
@@ -121,30 +124,21 @@ export default function DesktopNavBar({
                       </FlexWrapper>
 
                       {links && dropDown && (
-                        <StackWrapper
-                          style={{
-                            position: 'absolute',
-                            top: '5rem',
-                            backgroundColor: '#FFFFFF',
-                            gap: '1rem',
-                            padding: '1.5rem',
-                            borderRadius: '2rem',
-                          }}
-                        >
+                        <DropdownMenu style={{ marginTop: '1rem' }}>
                           {links.map(({ name, link }, idx) => (
-                            <NavbarLink
+                            <MenuLink
                               key={idx}
                               href={link}
-                              style={{ color: '#2A8356' }}
+                              onMouseEnter={() => setDropdown(true)}
                             >
                               {name.toUpperCase()}
-                            </NavbarLink>
+                            </MenuLink>
                           ))}
-                        </StackWrapper>
+                        </DropdownMenu>
                       )}
                     </StackWrapper>
                   ) : (
-                    <NavbarLink
+                    <PrimaryLink
                       key={idx}
                       href={link}
                       style={{
@@ -152,7 +146,7 @@ export default function DesktopNavBar({
                       }}
                     >
                       {name.toUpperCase()}
-                    </NavbarLink>
+                    </PrimaryLink>
                   )}
                 </>
               ))}
@@ -221,4 +215,30 @@ const Divider = styled.div`
   display: inline-block;
   border: 1px solid black;
   margin: 0 24px;
+`;
+
+const DropdownMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 3.5rem;
+  background-color: #ffffff;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 2rem;
+  transition: ${({ theme }) => theme.transitions.ease};
+`;
+
+const PrimaryLink = styled(NavbarLink)`
+  &:hover {
+    color: #48dc95 !important;
+  }
+`;
+
+const MenuLink = styled(NavbarLink)`
+  color: #2a8356;
+
+  &:hover {
+    color: #888888 !important;
+  }
 `;

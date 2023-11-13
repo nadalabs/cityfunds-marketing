@@ -111,7 +111,7 @@ const FadeWrapper = styled.div``;
 
 const GridWrapper = styled.div`
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
 `;
 
 const TopWrapper = styled.div`
@@ -129,7 +129,7 @@ const TopWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   position: relative;
-  bottom: 19rem;
+  bottom: 18rem;
   z-index: -1;
   height: 0;
 

@@ -35,11 +35,11 @@ export const CityfundCard = ({
               : 'flex-end',
           background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${urlForImage(
             image,
-            isMobile ? (isHome ? 160 : 320) : isHome ? 304 : 576,
-            isMobile ? window?.innerWidth - 32 : 304
+            isMobile ? (isHome ? 160 : 320) : isHome ? 288 : 576,
+            isMobile ? window?.innerWidth - 32 : 288
           ).url()}), #232222 50% / cover no-repeat`,
-          height: isMobile ? '10rem' : '19rem',
-          width: isMobile ? window?.innerWidth - 32 : '19rem',
+          height: isMobile ? '10rem' : '18rem',
+          width: isMobile ? window?.innerWidth - 32 : '18rem',
           padding: '1.5rem',
         }}
       >

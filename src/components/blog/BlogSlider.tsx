@@ -27,7 +27,7 @@ interface BlogSliderProps {
 }
 
 export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const sliderRef = useRef(null);
 
   const settings = {
@@ -46,8 +46,8 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
         <SliderStepper
           activeStep={activeStep}
           setActiveStep={setActiveStep}
-          totalSteps={blogPosts?.length / 2}
-          increment={2}
+          totalSteps={blogPosts?.length}
+          increment={4}
           sliderRef={sliderRef}
         />
       </StackWrapper>
