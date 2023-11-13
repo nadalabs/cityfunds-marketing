@@ -6,15 +6,11 @@ import styled from 'styled-components';
 
 interface NadaFaqsProps {
   faqs: { question: string; answer: string }[];
-  seeAllUrl: string;
+  link: string;
   isBackground?: boolean;
 }
 
-export default function NadaFaqs({
-  faqs,
-  seeAllUrl,
-  isBackground,
-}: NadaFaqsProps) {
+export default function NadaFaqs({ faqs, link, isBackground }: NadaFaqsProps) {
   const [active, setActive] = useState(0);
 
   return (
@@ -36,8 +32,12 @@ export default function NadaFaqs({
           </ContentWrapper>
         ))}
 
-        <LinkText href={seeAllUrl} target="_blank">
-          See All FAQs
+        <LinkText
+          href={link}
+          target="_blank"
+          style={{ textDecoration: 'underline' }}
+        >
+          Learn More About Cityfund Offerings
         </LinkText>
       </StackWrapper>
     </SectionWrapper>

@@ -10,7 +10,7 @@ import ValueProps from '@components/cityfunds/ValueProps';
 import Webinanars from '@components/cityfunds/Webinars';
 import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
-import { FUND_STATUS, REGULATION } from '@utils/constants';
+import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
 import { getAllFundsContent, getCityfundsPageContent } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
@@ -103,6 +103,8 @@ export default function CityfundsPage({
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         valueProps={cityfundsPage?.values}
+        link={EXTERNAL_ROUTES.HUBSPOT_FAQS}
+        linkText="See All FAQs"
       />
       <Testimonials testimonials={cityfundsPage?.testimonials} isBackground />
       <HowItWorks

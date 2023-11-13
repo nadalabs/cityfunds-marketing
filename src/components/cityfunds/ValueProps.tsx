@@ -5,22 +5,32 @@ import {
   SectionWrapper,
   StackWrapper,
 } from '@elements/Containers';
-import { BoldText, Heading, Overline, PrimaryText } from '@elements/Typography';
+import {
+  BoldText,
+  Heading,
+  LinkText,
+  Overline,
+  PrimaryText,
+} from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import styled from 'styled-components';
 
 interface ValuePropsProps {
+  valueProps: any[];
   overline?: string;
   heading: string;
   primaryText?: string;
-  valueProps: any[];
+  link?: string;
+  linkText?: string;
 }
 
 export default function ValueProps({
+  valueProps,
   overline,
   heading,
   primaryText,
-  valueProps,
+  link,
+  linkText,
 }: ValuePropsProps) {
   const isMobile = useIsMobile();
 
@@ -43,6 +53,16 @@ export default function ValueProps({
           </TextWrapper>
         ))}
       </FlexWrapper>
+
+      {link && (
+        <LinkText
+          href={link}
+          target="_blank"
+          style={{ textDecoration: 'underline' }}
+        >
+          {linkText}
+        </LinkText>
+      )}
     </SectionWrapper>
   );
 }

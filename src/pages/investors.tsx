@@ -25,15 +25,9 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
     <>
       <PageHero
         heading="Creating New Real Estate Wealth"
-        btnText="Explore Offerings"
+        btnText="Schedule a Call"
         logos={investorsPage?.logos}
-        onClick={() =>
-          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
-        }
-        btnTextSecondary="Schedule a Call"
-        onClickSecondary={() =>
-          window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')
-        }
+        onClick={() => window.open(EXTERNAL_ROUTES.HUBSPOT_MEETING, '_blank')}
         primaryText="Diversified Home Equity Investments in the nation's top cities."
         heroImages={cityfunds
           .filter(
@@ -93,10 +87,12 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         valueProps={investorsPage?.values}
+        link={EXTERNAL_ROUTES.HUBSPOT_FAQS}
+        linkText="See All FAQs"
       />
       <FaqsSection
         faqs={investorsPage?.questions}
-        seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/cityfunds`}
+        link={process.env.NEXT_PUBLIC_WEB_APP_URL}
         isBackground
       />
       <FeaturedImage
