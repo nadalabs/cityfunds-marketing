@@ -119,13 +119,13 @@ export const CardWrapper = styled.div`
 const BackgroundWrapper = styled(SectionWrapper)`
   display: flex;
   justify-content: center;
-  padding-top: 12rem;
+  padding-top: 8rem;
   background-color: #fbfbfb;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding-top: 125px;
+    padding-top: 2rem;
   }
 `;
 

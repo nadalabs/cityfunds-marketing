@@ -1,7 +1,6 @@
 import BlogHero from '@components/blog/BlogHero';
 import EmailCapture from '@components/common/EmailCapture';
 import LongFormText from '@components/common/LongFormText';
-import PageLayout from '@components/common/PageLayout';
 import { SectionWrapper } from '@elements/Containers';
 import { trackPageView } from '@utils/helpers';
 import {
@@ -30,34 +29,32 @@ export default function PostPage({ post, media }) {
   return (
     <>
       <BlogHero blogPosts={post ? [post] : [media]} />
-      <PageLayout>
-        <SectionWrapper style={{ paddingBottom: 0 }}>
-          {post ? (
-            <LongFormText
-              overline={post?.tag}
-              title={post?.title}
-              content={post?.content}
+      <SectionWrapper style={{ paddingBottom: 0 }}>
+        {post ? (
+          <LongFormText
+            overline={post?.tag}
+            title={post?.title}
+            content={post?.content}
+          />
+        ) : (
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <ReactPlayer
+              ref={playerRef}
+              onPlay={handlePlay}
+              url={media?.link}
+              height={'32rem'}
+              width={'50rem'}
             />
-          ) : (
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
-              <ReactPlayer
-                ref={playerRef}
-                onPlay={handlePlay}
-                url={media?.link}
-                height={'32rem'}
-                width={'50rem'}
-              />
-            </div>
-          )}
-        </SectionWrapper>
-        <EmailCapture formName="Blog" />
-      </PageLayout>
+          </div>
+        )}
+      </SectionWrapper>
+      <EmailCapture formName="Blog" />
     </>
   );
 }
