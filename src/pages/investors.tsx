@@ -93,6 +93,7 @@ export default function InvestorsPage({ investorsPage, cityfunds }) {
       <FaqsSection
         faqs={investorsPage?.questions}
         link={process.env.NEXT_PUBLIC_WEB_APP_URL}
+        linkText="Learn More About Cityfund Offerings"
         isBackground
       />
       <FeaturedImage

@@ -7,10 +7,16 @@ import styled from 'styled-components';
 interface NadaFaqsProps {
   faqs: { question: string; answer: string }[];
   link: string;
+  linkText?: string;
   isBackground?: boolean;
 }
 
-export default function NadaFaqs({ faqs, link, isBackground }: NadaFaqsProps) {
+export default function NadaFaqs({
+  faqs,
+  link,
+  linkText,
+  isBackground,
+}: NadaFaqsProps) {
   const [active, setActive] = useState(0);
 
   return (
@@ -37,7 +43,7 @@ export default function NadaFaqs({ faqs, link, isBackground }: NadaFaqsProps) {
           target="_blank"
           style={{ textDecoration: 'underline' }}
         >
-          Learn More About Cityfund Offerings
+          {linkText}
         </LinkText>
       </StackWrapper>
     </SectionWrapper>

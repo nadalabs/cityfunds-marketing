@@ -62,7 +62,8 @@ export default function HomesharesPage({ homesharesPage }) {
       />
       <NadaFaqs
         faqs={homesharesPage?.questions}
-        seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/homeshares`}
+        link={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/homeshares`}
+        linkText="See All FAQs"
       />
       <Testimonials testimonials={homesharesPage?.testimonials} />
       <EmailCapture formName="Homeshares" isPopup />
