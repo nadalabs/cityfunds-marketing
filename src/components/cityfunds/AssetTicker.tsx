@@ -25,9 +25,6 @@ export default function AssetTicker({
   const PILLS = [
     {
       number: formatPrice(fund_data?.share_price, 2),
-      description: (
-        <Caption style={{ color: isDark ? 'black' : 'white' }}>/ Share</Caption>
-      ),
     },
     {
       number:
