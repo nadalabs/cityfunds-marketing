@@ -23,7 +23,7 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: isMobile ? 1 : 3.15,
+    slidesToShow: isMobile ? 1 : 3.25,
     slidesToScroll: isMobile ? 1 : 3,
     swipeToSlide: true,
     beforeChange: (_, next) => setActiveStep(next),
@@ -79,7 +79,7 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
           <SliderStepper
             activeStep={activeStep}
             setActiveStep={setActiveStep}
-            totalSteps={cityfunds?.length}
+            totalSteps={cityfunds?.length + 1}
             increment={isMobile ? 1 : 3}
             sliderRef={sliderRef}
           />

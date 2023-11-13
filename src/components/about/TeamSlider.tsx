@@ -46,7 +46,7 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
         <SliderStepper
           activeStep={activeStep}
           setActiveStep={setActiveStep}
-          totalSteps={teammates?.length}
+          totalSteps={teammates?.length + 1}
           increment={isMobile ? 1 : 3}
           sliderRef={sliderRef}
         />
@@ -76,7 +76,11 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                   <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                     <Heading
                       style={{
-                        fontSize: isMobile ? '1rem' : name.length > 20 ? '1.4rem' : '1.5rem',
+                        fontSize: isMobile
+                          ? '1rem'
+                          : name.length > 20
+                          ? '1.4rem'
+                          : '1.5rem',
                         lineHeight: '2rem',
                         color: 'white',
                         marginBottom: 0,
