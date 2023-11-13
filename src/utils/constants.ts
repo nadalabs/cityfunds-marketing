@@ -24,8 +24,17 @@ export const UTM_PARAMETERS = [
 
 export const HEADER_LINKS = [
   { name: 'Cityfunds', link: '/' },
-  { name: 'About', link: '/about' },
-  { name: 'Learn', link: '/learn' },
+  { name: 'Homeshares', link: '/homeshares' },
+  {
+    name: 'Resources',
+    links: [
+      { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
+      { name: 'Learning Center', link: '/learn' },
+      { name: 'Investor Relations', link: '/investors' },
+      { name: 'About', link: '/about' },
+      { name: 'Newsroom', link: '/press' },
+    ],
+  },
 ];
 
 export const LEGAL_LINKS = [
@@ -60,7 +69,7 @@ export const FOOTER_LINKS = [
     links: [
       { name: 'Cityfunds', link: '/' },
       { name: 'Homeshares', link: '/homeshares' },
-      { name: 'Investors', link: '/accredited-investors' },
+      { name: 'Investors', link: '/investors' },
       { name: 'Learn', link: '/learn' },
     ],
   },
@@ -103,9 +112,4 @@ export enum FUND_TYPE {
 export enum REGULATION {
   RETAIL = 'Retail',
   ACCREDITED = 'Accredited',
-}
-
-export enum LIQUIDITY {
-  QUARTERLY = 'Quarterly',
-  ANNUALLY = 'Annually',
 }

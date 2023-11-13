@@ -1,4 +1,5 @@
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
+import { FlexWrapper, StackWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -23,6 +24,7 @@ export default function DesktopNavBar({
   hideLinks,
 }: HeaderProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [dropDown, setDropdown] = useState(false);
   const router = useRouter();
   const isHomeshares = router.pathname.includes('homeshares');
 
@@ -95,16 +97,58 @@ export default function DesktopNavBar({
             <div
               style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}
             >
-              {HEADER_LINKS.map(({ name, link }, idx) => (
-                <NavbarLink
-                  key={idx}
-                  href={link}
-                  style={{
-                    color: link === router.pathname ? '#48DC95' : 'white',
-                  }}
-                >
-                  {name.toUpperCase()}
-                </NavbarLink>
+              {HEADER_LINKS.map(({ name, link, links }, idx) => (
+                <>
+                  {links ? (
+                    <StackWrapper onMouseLeave={() => setDropdown(false)}>
+                      <FlexWrapper
+                        onMouseEnter={() => setDropdown(true)}
+                        style={{ cursor: 'pointer', gap: '0.5rem' }}
+                      >
+                        <PrimaryLink
+                          key={idx}
+                          href={link}
+                          style={{
+                            color:
+                              link === router.pathname ? '#48DC95' : 'white',
+                          }}
+                        >
+                          {name.toUpperCase()}
+                        </PrimaryLink>
+                        <Image
+                          width={16}
+                          height={16}
+                          alt={'Menu'}
+                          src={'/icons/arrow-down.svg'}
+                        />
+                      </FlexWrapper>
+
+                      {links && dropDown && (
+                        <DropdownMenu style={{ marginTop: '1rem' }}>
+                          {links.map(({ name, link }, idx) => (
+                            <MenuLink
+                              key={idx}
+                              href={link}
+                              onMouseEnter={() => setDropdown(true)}
+                            >
+                              {name.toUpperCase()}
+                            </MenuLink>
+                          ))}
+                        </DropdownMenu>
+                      )}
+                    </StackWrapper>
+                  ) : (
+                    <PrimaryLink
+                      key={idx}
+                      href={link}
+                      style={{
+                        color: link === router.pathname ? '#48DC95' : 'white',
+                      }}
+                    >
+                      {name.toUpperCase()}
+                    </PrimaryLink>
+                  )}
+                </>
               ))}
 
               {!isHomeshares && (
@@ -171,4 +215,30 @@ const Divider = styled.div`
   display: inline-block;
   border: 1px solid black;
   margin: 0 24px;
+`;
+
+const DropdownMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 2.5rem;
+  background-color: #ffffff;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 2rem;
+  transition: ${({ theme }) => theme.transitions.ease};
+`;
+
+const PrimaryLink = styled(NavbarLink)`
+  &:hover {
+    color: #48dc95 !important;
+  }
+`;
+
+const MenuLink = styled(NavbarLink)`
+  color: #2a8356;
+
+  &:hover {
+    color: #888888 !important;
+  }
 `;

@@ -1,21 +1,33 @@
-import { CityfundCard } from '@components/cityfunds/CityfundCard';
-import { StackWrapper } from '@elements/Containers';
+import AccredCard from '@components/cityfunds/AccredCard';
+import SliderStepper from '@components/common/SliderStepper';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
+import { useRef, useState } from 'react';
+import Slider from 'react-slick';
 import styled from 'styled-components';
 
-interface CityfundSliderProps {
+interface AccredSliderProps {
   cityfunds: ICityfund[];
   isHome?: boolean;
 }
 
-export default function CityfundSlider({
-  cityfunds,
-  isHome,
-}: CityfundSliderProps) {
+export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
+  const [activeStep, setActiveStep] = useState(0);
   const isMobile = useIsMobile();
+  const sliderRef = useRef(null);
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: isMobile ? 1 : 3.25,
+    slidesToScroll: isMobile ? 1 : 3,
+    swipeToSlide: true,
+    beforeChange: (_, next) => setActiveStep(next),
+  };
 
   const ALL_CARDS = cityfunds.map(({ fund_data, fund_content }) => ({
     fund_data,
@@ -38,14 +50,14 @@ export default function CityfundSlider({
     }
 
     if (
-      a.fund_data.regulation === REGULATION.ACCREDITED &&
-      b.fund_data.regulation !== REGULATION.ACCREDITED
+      a.fund_data.regulation === REGULATION.RETAIL &&
+      b.fund_data.regulation !== REGULATION.RETAIL
     ) {
       return 1;
     }
     if (
-      a.fund_data.regulation !== REGULATION.ACCREDITED &&
-      b.fund_data.regulation === REGULATION.ACCREDITED
+      a.fund_data.regulation !== REGULATION.RETAIL &&
+      b.fund_data.regulation === REGULATION.RETAIL
     ) {
       return -1;
     }
@@ -53,60 +65,55 @@ export default function CityfundSlider({
     return b.fund_data.total_assets - a.fund_data.total_assets;
   });
 
-  const DISPLAYED_CARDS = SORTED_CARDS.filter(
-    ({ fund_data }) => fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
-  );
-
   return (
-    <SectionWrapper
-      id="cityfunds"
-      style={{
-        marginLeft: !isMobile ? '150px' : 0,
-        marginBottom: !isMobile ? '8rem' : 0,
-      }}
-    >
-      <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
-        <Heading>Explore Offerings</Heading>
-        <LargeText>
-          Pick your favorite fund, or invest in all of them.
-        </LargeText>
+    <SectionWrapper>
+      <StackWrapper style={{ marginBottom: '1.5rem' }}>
+        <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
+          <Heading>Explore Offerings</Heading>
+          <LargeText>
+            Pick your favorite fund, or invest in all of them.
+          </LargeText>
+        </StackWrapper>
+
+        <div>
+          <SliderStepper
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
+            totalSteps={cityfunds?.length + 1}
+            increment={isMobile ? 1 : 3}
+            sliderRef={sliderRef}
+          />
+        </div>
       </StackWrapper>
 
-      <div style={{ display: 'flex' }}>
-        <ScrollWrapper>
-          {DISPLAYED_CARDS.map((card, idx) => (
-            <>
-              {isMobile ? (
-                <FadeWrapper key={idx}>
-                  <CityfundCard
+      <Slider ref={sliderRef} {...settings}>
+        {SORTED_CARDS?.map((card, idx) => (
+          <>
+            {isMobile ? (
+              <FadeWrapper key={idx}>
+                <AccredCard {...card} image={card?.images[0]} isHome={isHome} />
+              </FadeWrapper>
+            ) : (
+              <FadeWrapper key={idx}>
+                <TopWrapper>
+                  <AccredCard
                     {...card}
                     image={card?.images[0]}
                     isHome={isHome}
                   />
-                </FadeWrapper>
-              ) : (
-                <FadeWrapper key={idx}>
-                  <TopWrapper>
-                    <CityfundCard
-                      {...card}
-                      image={card?.images[0]}
-                      isHome={isHome}
-                    />
-                  </TopWrapper>
-                  <BottomWrapper>
-                    <CityfundCard
-                      {...card}
-                      image={card?.images[1]}
-                      isHome={isHome}
-                    />
-                  </BottomWrapper>
-                </FadeWrapper>
-              )}
-            </>
-          ))}
-        </ScrollWrapper>
-        <ScrollFade />
-      </div>
+                </TopWrapper>
+                <BottomWrapper>
+                  <AccredCard
+                    {...card}
+                    image={card?.images[1]}
+                    isHome={isHome}
+                  />
+                </BottomWrapper>
+              </FadeWrapper>
+            )}
+          </>
+        ))}
+      </Slider>
     </SectionWrapper>
   );
 }
@@ -122,6 +129,10 @@ const FadeWrapper = styled.div`
 `;
 
 const ScrollWrapper = styled.div`
+  position: relative;
+  bottom: 0.5rem;
+  right: 1rem;
+  padding: 0.5rem 4rem 1rem 1rem;
   display: flex;
   gap: 1.5rem;
   overflow-x: scroll;
@@ -173,16 +184,5 @@ export const HeadingWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-  }
-`;
-
-export const SectionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  position: relative;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 1rem;
   }
 `;

@@ -163,16 +163,21 @@ export const cityfundFields = `
 export const cityfundsPageFields = `
   _id,
   logos,
+  cityfunds_feature,
+  hei_feature,
+  accredited_feature,
   tutorials,
   values,
   questions,
   testimonials,
+  homeowners_feature,
   "promo": promo->{banner, title, description, image},
   "webinar": webinar->{banner, title, description, date, image, link},
 `;
 
 export const homesharesPageFields = `
   _id,
+  homeshares_feature,
   tutorials,
   questions,
   testimonials,
@@ -190,8 +195,10 @@ export const investorsPageFields = `
   _id,
   logos,
   ourMission,
+  hei_feature,
   values,
   questions,
+  investors_feature,
 `;
 
 export const footerQuery = `

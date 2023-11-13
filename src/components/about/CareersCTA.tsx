@@ -37,7 +37,8 @@ const ContentWrapper = styled.section`
   justify-content: center;
   padding: 100px;
   background: #48dc95;
-  border-radius: 80px;
+  border-radius: 2rem;
+  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 48px 24px;

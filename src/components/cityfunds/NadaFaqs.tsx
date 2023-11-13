@@ -1,52 +1,54 @@
 import LongFormText from '@components/common/LongFormText';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LinkText, Overline } from '@elements/Typography';
 import { useState } from 'react';
 import styled from 'styled-components';
 
 interface NadaFaqsProps {
   faqs: { question: string; answer: string }[];
-  seeAllUrl: string;
+  link: string;
+  linkText?: string;
+  isBackground?: boolean;
 }
 
-export default function NadaFaqs({ faqs, seeAllUrl }: NadaFaqsProps) {
+export default function NadaFaqs({
+  faqs,
+  link,
+  linkText,
+  isBackground,
+}: NadaFaqsProps) {
   const [active, setActive] = useState(0);
 
   return (
-    <SectionWrapper>
-      <Overline>Frequently Asked Questions</Overline>
+    <SectionWrapper isBackground={isBackground}>
+      <StackWrapper style={{ gap: '1rem' }}>
+        <Overline>Frequently Asked Questions</Overline>
 
-      {faqs.map(({ question, answer }, idx) => (
-        <ContentWrapper key={idx}>
-          <HoverHeading
-            onClick={() => setActive(idx)}
-            style={{ color: idx === active ? '#48DC95' : 'black' }}
-          >
-            {question}
-          </HoverHeading>
-          <TextWrapper style={{ display: idx === active ? 'block' : 'none' }}>
-            <LongFormText content={answer} />
-          </TextWrapper>
-        </ContentWrapper>
-      ))}
+        {faqs.map(({ question, answer }, idx) => (
+          <ContentWrapper key={idx}>
+            <HoverHeading
+              onClick={() => setActive(idx)}
+              style={{ color: idx === active ? '#48DC95' : 'black' }}
+            >
+              {question}
+            </HoverHeading>
+            <TextWrapper style={{ display: idx === active ? 'block' : 'none' }}>
+              <LongFormText content={answer} />
+            </TextWrapper>
+          </ContentWrapper>
+        ))}
 
-      <LinkText href={seeAllUrl} target="_blank">
-        See All FAQs
-      </LinkText>
+        <LinkText
+          href={link}
+          target="_blank"
+          style={{ textDecoration: 'underline' }}
+        >
+          {linkText}
+        </LinkText>
+      </StackWrapper>
     </SectionWrapper>
   );
 }
-
-export const SectionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin: 6.25rem 9.25rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin: 4rem 0;
-    padding: 0 1rem;
-  }
-`;
 
 export const ContentWrapper = styled.div`
   width: 100%;

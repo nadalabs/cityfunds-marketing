@@ -1,79 +1,82 @@
+import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
-import { StackWrapper } from '@elements/Containers';
-import { Heading, Overline, PrimaryText } from '@elements/Typography';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
+import { Heading, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface FeaturedImageProps {
+  feature: {
+    title: string;
+    description: string;
+    image: string;
+  };
+  btnText?: string;
+  onClick?: () => void;
+  ctaComponent?: ReactNode;
   overline?: string;
-  heading: string;
-  primaryText: string;
-  imageUrl: string;
-  btnText: string;
-  onClick: () => void;
   isReversed?: boolean;
-  isWide?: boolean;
+  isBackground?: boolean;
 }
 
 export default function FeaturedImage({
-  overline,
-  heading,
-  primaryText,
-  imageUrl,
+  feature,
   btnText,
   onClick,
+  overline,
+  ctaComponent,
   isReversed,
-  isWide,
+  isBackground,
 }: FeaturedImageProps) {
   const isMobile = useIsMobile();
 
   return (
     <SectionWrapper
       style={{
+        display: 'flex',
+        alignItems: 'center',
         flexDirection: isMobile
           ? 'column-reverse'
           : isReversed
           ? 'row-reverse'
           : 'row',
+        gap: isMobile ? '1.5rem' : '5rem',
       }}
+      isBackground={isBackground}
     >
       <ContentWrapper>
         <StackWrapper style={{ gap: '1rem' }}>
           {overline && <Overline>{overline}</Overline>}
-          <Heading>{heading}</Heading>
-          <PrimaryText>{primaryText}</PrimaryText>
-          <div>
-            <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-          </div>
+          <Heading>{feature?.title}</Heading>
+          <LongFormText content={feature?.description} />
+          {ctaComponent ? (
+            <>{ctaComponent}</>
+          ) : (
+            <div>
+              <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+            </div>
+          )}
         </StackWrapper>
       </ContentWrapper>
 
       <Image
-        width={isMobile ? (isWide ? 380 : 300) : isWide ? 700 : 450}
-        height={isMobile ? 300 : 450}
-        alt={heading}
-        src={imageUrl}
+        width={isMobile ? 300 : 704}
+        height={isMobile ? 300 : 560}
+        alt={feature?.title}
+        src={urlForImage(feature?.image).url()}
       />
     </SectionWrapper>
   );
 }
 
-export const SectionWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 0rem;
-  }
-`;
-
 export const ContentWrapper = styled.div`
-  max-width: 500px;
+  width: 50%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
     margin-right: 0;
   }
 `;

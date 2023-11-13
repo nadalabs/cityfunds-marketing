@@ -1,4 +1,4 @@
-import CarouselStepper from '@components/common/CarouselStepper';
+import ImageStepper from '@components/common/ImageStepper';
 import { SectionWrapper } from '@elements/Containers';
 import {
   LinkText,
@@ -56,7 +56,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                     <Image
                       fill
                       alt={post?.title}
-                      style={{ borderRadius: '60px' }}
+                      style={{ borderRadius: '2rem' }}
                       src={
                         post?.coverImage
                           ? urlForImage(post?.coverImage).url()
@@ -81,7 +81,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
               </Link>
 
               {blogPosts.length > 1 && (
-                <CarouselStepper
+                <ImageStepper
                   activeStep={idx}
                   totalSteps={blogPosts.length}
                   sliderRef={sliderRef}
@@ -102,8 +102,8 @@ export const CardWrapper = styled.div`
   width: 50%;
   height: 400px;
   background: #ffffff;
-  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
-  border-radius: 60px;
+  border-radius: 2rem;
+  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
   padding: 3rem 4rem;
   margin: 1rem;
 
@@ -119,19 +119,24 @@ export const CardWrapper = styled.div`
 const BackgroundWrapper = styled(SectionWrapper)`
   display: flex;
   justify-content: center;
-  padding-top: 12rem;
+  padding-top: 8rem;
   background-color: #fbfbfb;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding-top: 125px;
+    padding-top: 2rem;
   }
 `;
 
 const ContentWrapper = styled.div`
   width: 100%;
   max-width: 75rem;
+  padding-top: 4rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding-top: 10rem;
+  }
 `;
 
 const FlexWrapper = styled.div`
@@ -145,15 +150,16 @@ const FlexWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  border-radius: 50px;
   position: relative;
   width: 50%;
   height: 400px;
   margin-right: 48px;
+  border-radius: 2rem;
+  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    height: 350px;
+    height: 280px;
     margin-right: 0;
   }
 `;

@@ -1,12 +1,13 @@
 import { Caption } from '@elements/Typography';
-import { FUND_STATUS, FUND_TYPE } from '@utils/constants';
+import { FUND_STATUS, FUND_TYPE, REGULATION } from '@utils/constants';
 import { formatPercent, formatPrice } from '@utils/helpers';
+import { IFundData } from '@utils/models';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface AssetTickerProps {
-  fund_data: any;
+  fund_data: IFundData;
   isDark?: boolean;
   isSmall?: boolean;
 }
@@ -16,30 +17,41 @@ export default function AssetTicker({
   isDark,
   isSmall,
 }: AssetTickerProps) {
+  const originalPrice =
+    fund_data?.regulation === REGULATION.ACCREDITED ? 100 : 10;
+  const appreciation =
+    ((fund_data?.share_price - originalPrice) / originalPrice) * 100;
+
   const PILLS = [
     {
       number: formatPrice(fund_data?.share_price, 2),
       description: (
-        <Caption style={{ color: isDark ? 'black' : 'white' }}>/ Share</Caption>
+        <Caption
+          style={{ fontSize: '0.6rem', color: isDark ? 'black' : 'white' }}
+        >
+          {' / share'}
+        </Caption>
       ),
     },
     {
       number:
         fund_data?.fund_type === FUND_TYPE.DEBT
           ? `${formatPercent(fund_data?.target_return, 1)} APY`
-          : fund_data?.appreciation
-          ? formatPercent(fund_data?.appreciation, 1)
+          : appreciation
+          ? formatPercent(appreciation, 1)
           : 'New',
-      description: fund_data?.appreciation ? (
-        <Image
-          src="/icons/arrow-up.svg"
-          alt="Arrow Up"
-          width={12}
-          height={12}
-        />
-      ) : (
-        ''
-      ),
+      icon:
+        fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING ? (
+          <Image
+            src="/icons/gain.svg"
+            alt="Appreciation"
+            style={{ marginRight: '0.25rem' }}
+            width={12}
+            height={12}
+          />
+        ) : (
+          <Image src="/icons/flash.svg" alt="New" width={14} height={14} />
+        ),
     },
     {
       number: fund_data?.total_assets,
@@ -51,12 +63,17 @@ export default function AssetTicker({
     },
   ];
   const FILTERED_PILLS =
-    fund_data.fund_status === FUND_STATUS.NEW_OFFERING ||
+    fund_data?.fund_status === FUND_STATUS.NEW_OFFERING ||
     fund_data?.fund_type === FUND_TYPE.DEBT
       ? PILLS.slice(0, 2)
       : PILLS;
 
-  function renderPill(number: number, description: ReactNode, idx: number) {
+  function renderPill(
+    number: number,
+    icon: ReactNode,
+    description: ReactNode,
+    idx: number
+  ) {
     return (
       <BackgroundWrapper
         key={idx}
@@ -67,9 +84,11 @@ export default function AssetTicker({
             : 'rgba(255, 255, 255, 0.35)',
         }}
       >
+        {icon}
         <BoldText
           style={{
             color: isDark ? 'black' : 'white',
+            lineHeight: '100%',
           }}
         >
           {number}
@@ -81,8 +100,8 @@ export default function AssetTicker({
 
   return (
     <div style={{ display: 'flex' }}>
-      {FILTERED_PILLS.map(({ number, description }: any, idx) =>
-        renderPill(number, description, idx)
+      {FILTERED_PILLS.map(({ number, icon, description }: any, idx) =>
+        renderPill(number, icon, description, idx)
       )}
     </div>
   );
@@ -106,6 +125,6 @@ export const BackgroundWrapper = styled.div`
   align-items: center;
   border-radius: 0.61038rem;
   backdrop-filter: blur(1.85px);
-  padding: 0 0.25rem;
+  padding: 0.3rem 0.25rem;
   margin: 0 0.25rem 0 0;
 `;

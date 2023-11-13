@@ -1,7 +1,10 @@
-import CarouselStepper from '@components/common/CarouselStepper';
+import FeaturedLogos from '@components/FeaturedLogos';
+import ImageStepper from '@components/common/ImageStepper';
 import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
-import { Heading, LargeText } from '@elements/Typography';
+import { FlexWrapper, StackWrapper } from '@elements/Containers';
+import { Heading, LargeText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { IFundData } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import { useRef } from 'react';
 import Slider from 'react-slick';
@@ -11,10 +14,11 @@ interface PageHeroProps {
   heading?: string;
   primaryText?: string;
   btnText?: string;
+  logos?: any[];
   onClick?: () => void;
   btnTextSecondary?: string;
   onClickSecondary?: () => void;
-  heroImages: { name: string; heroImage: string }[];
+  heroImages: { name?: string; fund_data?: IFundData; heroImage: string }[];
   bannerText?: boolean;
   maxWidth?: number;
 }
@@ -23,6 +27,7 @@ export default function PageHero({
   heading,
   primaryText,
   btnText,
+  logos,
   onClick,
   btnTextSecondary,
   onClickSecondary,
@@ -50,7 +55,7 @@ export default function PageHero({
     <>
       <HeroWrapper>
         <Slider {...settings} ref={sliderRef}>
-          {heroImages.map(({ heroImage }, idx) => (
+          {heroImages.map(({ heroImage, fund_data }, idx) => (
             <div key={idx}>
               <HeroImage
                 style={{
@@ -67,7 +72,7 @@ export default function PageHero({
               })`,
                 }}
               />
-              <ContentWrapper style={{ bottom: bannerText ? '10rem' : '8rem' }}>
+              <ContentWrapper style={{ bottom: bannerText ? '16vh' : '20vh' }}>
                 <div
                   style={{
                     display: 'flex',
@@ -119,13 +124,28 @@ export default function PageHero({
                       </SecondaryButton>
                     )}
                   </div>
-                  {heroImages.length > 1 && (
-                    <CarouselStepper
-                      activeStep={idx}
-                      totalSteps={heroImages.length}
-                      sliderRef={sliderRef}
-                    />
-                  )}
+
+                  <FlexWrapper>
+                    {logos && (
+                      <FeaturedLogos
+                        overline="Featured In"
+                        logos={logos}
+                        isHero
+                      />
+                    )}
+                    {heroImages.length > 1 && !isMobile && (
+                      <StackWrapper style={{ gap: '0.5rem' }}>
+                        <SmallHeading style={{ color: '#888888' }}>
+                          {fund_data.fund_name}
+                        </SmallHeading>
+                        <ImageStepper
+                          activeStep={idx}
+                          totalSteps={heroImages?.length}
+                          sliderRef={sliderRef}
+                        />
+                      </StackWrapper>
+                    )}
+                  </FlexWrapper>
                 </div>
               </ContentWrapper>
             </div>
@@ -162,7 +182,7 @@ const ContentWrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 1.5rem;
-  padding-left: 6.25rem;
+  padding: 0 6.25rem;
   z-index: 999;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

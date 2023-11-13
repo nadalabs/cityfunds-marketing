@@ -18,9 +18,11 @@ export const PrimaryButton = styled.button<{ isInverted?: boolean }>`
   cursor: pointer;
   border: none;
   text-transform: uppercase;
+  box-shadow: 2px 2px 30px 0px rgba(0, 0, 0, 0.05);
 
   &:disabled {
-    background-color: rgba(42, 131, 86, 0.4);
+    background-color: ${({ isInverted }) =>
+      isInverted ? '#FFFFFF' : 'rgba(42, 131, 86, 0.4)'};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -57,6 +59,7 @@ export const NavbarLink = styled.a`
   line-height: 1.5rem;
   letter-spacing: 0.075rem;
   text-transform: uppercase;
+  transition: ${({ theme }) => theme.transitions.ease};
   cursor: pointer;
   margin: 0;
 

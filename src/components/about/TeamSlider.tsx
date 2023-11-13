@@ -1,7 +1,16 @@
-import { GreenSquare } from '@components/common/CarouselStepper';
-import { CardWrapper, SliderWrapper } from '@elements/Containers';
+import { GreenSquare } from '@components/common/ImageStepper';
+import SliderStepper from '@components/common/SliderStepper';
+import {
+  CardWrapper,
+  FlexWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import { BoldText, Heading, Overline } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
+import { useRef, useState } from 'react';
+import Slider from 'react-slick';
 
 interface TeamSliderProps {
   teammates: {
@@ -13,11 +22,37 @@ interface TeamSliderProps {
 }
 
 export default function TeamSlider({ teammates }: TeamSliderProps) {
+  const [activeStep, setActiveStep] = useState(0);
+  const sliderRef = useRef(null);
+  const isMobile = useIsMobile();
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: isMobile ? 1.25 : 3,
+    slidesToScroll: isMobile ? 1 : 3,
+    swipeToSlide: true,
+    beforeChange: (_, next) => setActiveStep(next),
+  };
+
   return (
-    <SliderWrapper>
-      <Overline>Who We Are</Overline>
-      <Heading>Our Team</Heading>
-      <div style={{ display: 'flex', overflowX: 'scroll' }}>
+    <SectionWrapper>
+      <FlexWrapper style={{ alignItems: 'flex-end', marginBottom: '1rem' }}>
+        <StackWrapper style={{ gap: '1rem' }}>
+          <Overline>Who We Are</Overline>
+          <Heading>Our Team</Heading>
+        </StackWrapper>
+        <SliderStepper
+          activeStep={activeStep}
+          setActiveStep={setActiveStep}
+          totalSteps={teammates?.length + 1}
+          increment={isMobile ? 1 : 3}
+          sliderRef={sliderRef}
+        />
+      </FlexWrapper>
+
+      <Slider ref={sliderRef} {...settings}>
         {teammates
           ?.map((props) => ({
             ...props,
@@ -41,7 +76,11 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                   <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                     <Heading
                       style={{
-                        fontSize: '1.5rem',
+                        fontSize: isMobile
+                          ? '1rem'
+                          : name.length > 20
+                          ? '1.4rem'
+                          : '1.5rem',
                         lineHeight: '2rem',
                         color: 'white',
                         marginBottom: 0,
@@ -54,19 +93,22 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                         height: '0.5rem',
                         width: '0.5rem',
                         marginLeft: '8px',
+                        borderRadius: '2px',
                         marginBottom: '0.5rem',
                       }}
                     />
                   </div>
 
-                  <BoldText style={{ color: 'white', margin: 0 }}>
+                  <BoldText
+                    style={{ fontSize: '1rem', color: 'white', margin: 0 }}
+                  >
                     {role}
                   </BoldText>
                 </div>
               </CardWrapper>
             </div>
           ))}
-      </div>
-    </SliderWrapper>
+      </Slider>
+    </SectionWrapper>
   );
 }

@@ -1,5 +1,7 @@
-import { GreenSquare } from '@components/common/CarouselStepper';
+import { GreenSquare } from '@components/common/ImageStepper';
+import { SectionWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
@@ -10,52 +12,55 @@ interface KeyMetricsProps {
 }
 
 export default function KeyMetrics({ metrics }: KeyMetricsProps) {
+  const isMobile = useIsMobile();
   const easingFn = function (t) {
     // Example: easeInOutCubic
     return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
   };
 
   return (
-    <FlexWrapper
-      style={{
-        justifyContent: metrics.length === 2 ? 'space-evenly' : 'space-between',
-      }}
-    >
-      {metrics.map(({ label, value, formattingFn, decimals, prefix }) => (
-        <CounterWrapper key={label}>
-          <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-            <CountUp
-              end={value}
-              enableScrollSpy
-              scrollSpyDelay={100}
-              formattingFn={formattingFn}
-              decimals={decimals}
-              prefix={prefix}
-              // easingFn={easingFn}
-              // duration={3}
-            >
-              {({ countUpRef }) => (
-                <LargeHeading
-                  // @ts-ignore-next-line
-                  ref={countUpRef}
-                  style={{ fontSize: '6rem' }}
-                />
-              )}
-            </CountUp>
-            <GreenSquare
-              style={{ position: 'relative', bottom: '0.75rem', left: '8px' }}
-            />
-          </div>
-          <PrimaryText>{label}</PrimaryText>
-        </CounterWrapper>
-      ))}
-    </FlexWrapper>
+    <SectionWrapper>
+      <FlexWrapper
+        style={{
+          justifyContent: 'space-evenly',
+          flexWrap: metrics.length > 3 ? 'wrap' : 'nowrap',
+        }}
+      >
+        {metrics?.map(({ label, value, formattingFn, decimals, prefix }) => (
+          <CounterWrapper key={label}>
+            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+              <CountUp
+                end={value}
+                enableScrollSpy
+                scrollSpyDelay={100}
+                formattingFn={formattingFn}
+                decimals={decimals}
+                prefix={prefix}
+                // easingFn={easingFn}
+                // duration={3}
+              >
+                {({ countUpRef }) => (
+                  <LargeHeading
+                    // @ts-ignore-next-line
+                    ref={countUpRef}
+                    style={{ fontSize: isMobile ? '4rem' : '6rem' }}
+                  />
+                )}
+              </CountUp>
+              <GreenSquare
+                style={{ position: 'relative', bottom: '0.75rem', left: '8px' }}
+              />
+            </div>
+            <PrimaryText>{label}</PrimaryText>
+          </CounterWrapper>
+        ))}
+      </FlexWrapper>
+    </SectionWrapper>
   );
 }
 
 const FlexWrapper = styled.div`
   display: flex;
-  margin-top: 120px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
@@ -63,8 +68,13 @@ const FlexWrapper = styled.div`
 `;
 
 const CounterWrapper = styled.div`
+  margin: 2rem 4rem;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
   }
 `;
 
@@ -72,6 +82,6 @@ const LargeHeading = styled(Heading)`
   margin-bottom: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 `;

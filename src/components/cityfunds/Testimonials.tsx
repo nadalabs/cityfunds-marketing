@@ -1,4 +1,4 @@
-import CarouselStepper from '@components/common/CarouselStepper';
+import ImageStepper from '@components/common/ImageStepper';
 import LongFormText from '@components/common/LongFormText';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Overline, PrimaryText } from '@elements/Typography';
@@ -8,9 +8,13 @@ import styled from 'styled-components';
 
 interface TestimonialsProps {
   testimonials: { name: string; review: string; city: string }[];
+  isBackground?: boolean;
 }
 
-export default function Testimonials({ testimonials }: TestimonialsProps) {
+export default function Testimonials({
+  testimonials,
+  isBackground,
+}: TestimonialsProps) {
   const sliderRef = useRef();
   const settings = {
     dots: false,
@@ -25,8 +29,8 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
   };
 
   return (
-    <SectionWrapper>
-      <StackWrapper>
+    <SectionWrapper isBackground={isBackground}>
+      <StackWrapper style={{ gap: '1rem' }}>
         <Overline>Hear it from our users...</Overline>
         <Slider {...settings} ref={sliderRef}>
           {testimonials?.map(({ name, review, city }, idx) => (
@@ -34,7 +38,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
               <ContentWrapper>
                 <div style={{ maxWidth: '788px', marginRight: '24px' }}>
                   <LongFormText content={review} />
-                  <CarouselStepper
+                  <ImageStepper
                     activeStep={idx}
                     totalSteps={testimonials?.length}
                     sliderRef={sliderRef}

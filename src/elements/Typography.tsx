@@ -67,7 +67,7 @@ export const BoldText = styled(LargeText)`
 export const Overline = styled.p`
   color: ${({ theme }) => theme.colors.darkText};
   font-family: ${({ theme }) => theme.fonts.main};
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 600;
   letter-spacing: 0.0175rem;

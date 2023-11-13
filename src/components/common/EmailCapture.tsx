@@ -178,10 +178,10 @@ const StickyWrapper = styled.div`
   left: 6.5rem;
   bottom: 2rem;
   width: 40%;
-  border-radius: 1.5rem;
   padding: 2rem;
   background-color: white;
-  box-shadow: 2px 4px 25px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
   transition: opacity 0.5s ease-in-out;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -195,8 +195,8 @@ const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 2px 4px 25px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 3.5rem;
+  border-radius: 2rem;
+  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
   padding: 3.5rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

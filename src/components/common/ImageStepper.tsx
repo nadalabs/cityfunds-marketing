@@ -1,17 +1,17 @@
 import { Ref } from 'react';
 import styled from 'styled-components';
 
-interface CarouselStepperProps {
+interface ImageStepperProps {
   activeStep: number;
   totalSteps: number;
   sliderRef: Ref<any>;
 }
 
-export default function CarouselStepper({
+export default function ImageStepper({
   activeStep,
   totalSteps,
   sliderRef,
-}: CarouselStepperProps) {
+}: ImageStepperProps) {
   const handleOnClick = (index: number) => {
     // @ts-ignore-next-line
     sliderRef?.current.slickGoTo(index);

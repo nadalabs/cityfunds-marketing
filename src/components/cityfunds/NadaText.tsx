@@ -1,20 +1,41 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 interface NadaTextProps {
   name: string;
+  isDark?: boolean;
+  size?: 'small' | 'extraSmall';
 }
 
-export default function NadaText({ name }: NadaTextProps) {
+export default function NadaText({ name, isDark, size }: NadaTextProps) {
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-      <HeadingSmall>{name}</HeadingSmall>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'flex-start',
+      }}
+    >
+      <NadaHeading
+        style={{
+          color: isDark ? '#303030' : '#FFFFFF',
+          fontSize:
+            size === 'extraSmall'
+              ? '2rem'
+              : size === 'small'
+              ? '2.5rem'
+              : '3.125rem',
+          width: 'inherit',
+        }}
+      >
+        {name}
+      </NadaHeading>
       <GreenSquare />
     </div>
   );
 }
 
-export const HeadingSmall = styled.h2`
-  color: #fff;
+export const NadaHeading = styled.h2`
+  font-family: ${({ theme }) => theme.fonts.main};
   font-family: Poppins;
   font-size: 3.125rem;
   font-style: normal;
@@ -26,15 +47,8 @@ export const HeadingSmall = styled.h2`
 
 export const GreenSquare = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary};
-  height: 0.6875rem;
-  width: 0.6875rem;
+  height: 0.75rem;
+  width: 0.75rem;
   border-radius: 3px;
   margin: 0 0 0.5rem 0.5rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    height: 20px;
-    width: 20px;
-    border-radius: 3px;
-    margin-bottom: 14px;
-  }
 `;

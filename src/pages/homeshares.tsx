@@ -5,7 +5,6 @@ import NadaFaqs from '@components/cityfunds/NadaFaqs';
 import Testimonials from '@components/cityfunds/Testimonials';
 import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
-import { SectionWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
 import { getHomesharesPageContent } from 'lib/sanity';
@@ -31,35 +30,30 @@ export default function HomesharesPage({ homesharesPage }) {
         ]}
         maxWidth={900}
       />
-      <SectionWrapper>
-        <FeaturedImage
-          overline="Why did we create HomeShares?"
-          heading="Your Equity, Your Way"
-          primaryText="Your home is your biggest asset. It continuously grows with your hard earned time and money. It should be usable like any other savings account. Now you can unlock your equity in 14 days with no monthly payments."
-          imageUrl="/images/homeshares.png"
-          btnText="Apply Now"
-          onClick={() => window.open(EXTERNAL_ROUTES.TYPEFORM, '_blank')}
-          isReversed
-        />
-        <KeyMetrics
-          metrics={[
-            {
-              label: 'Average Amount Unlocked',
-              value: 47045,
-              prefix: '$',
-            },
-            {
-              label: 'Average Days to Close',
-              value: 13.8,
-              decimals: 1,
-            },
-            {
-              label: 'Monthly Payments',
-              value: 0,
-            },
-          ]}
-        />
-      </SectionWrapper>
+      <KeyMetrics
+        metrics={[
+          {
+            label: 'Average Amount Unlocked',
+            value: 47045,
+            prefix: '$',
+          },
+          {
+            label: 'Average Days to Close',
+            value: 13.8,
+            decimals: 1,
+          },
+          {
+            label: 'Monthly Payments',
+            value: 0,
+          },
+        ]}
+      />
+      <FeaturedImage
+        feature={homesharesPage?.homeshares_feature}
+        btnText="Apply Now"
+        onClick={() => window.open(EXTERNAL_ROUTES.TYPEFORM, '_blank')}
+        isReversed
+      />
       <HowItWorks
         overline="Three easy steps to unlock your home equity"
         tutorials={homesharesPage?.tutorials}
@@ -68,7 +62,8 @@ export default function HomesharesPage({ homesharesPage }) {
       />
       <NadaFaqs
         faqs={homesharesPage?.questions}
-        seeAllUrl={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/homeshares`}
+        link={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/homeshares`}
+        linkText="See All FAQs"
       />
       <Testimonials testimonials={homesharesPage?.testimonials} />
       <EmailCapture formName="Homeshares" isPopup />

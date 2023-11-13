@@ -1,15 +1,18 @@
 import FeaturedLogos from '@components/FeaturedLogos';
 import CareersCTA from '@components/about/CareersCTA';
 import TeamSlider from '@components/about/TeamSlider';
-import TextSlider from '@components/cityfunds/TextSlider';
+import ValueProps from '@components/cityfunds/ValueProps';
 import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
 import { SectionWrapper } from '@elements/Containers';
+import useIsMobile from '@hooks/useIsMobile';
 import { trackPageView } from '@utils/helpers';
 import { getAboutPageContent } from 'lib/sanity';
 import { useEffect } from 'react';
 
 export default function AboutPage({ aboutPage }) {
+  const isMobile = useIsMobile();
+
   useEffect(() => {
     trackPageView('About Page Viewed');
   });
@@ -27,7 +30,7 @@ export default function AboutPage({ aboutPage }) {
         ]}
         maxWidth={1000}
       />
-      <SectionWrapper>
+      <SectionWrapper style={{ maxWidth: isMobile ? '100%' : '75%' }}>
         <LongFormText
           title="Our Story"
           overline="We are on a Mission"
@@ -36,7 +39,7 @@ export default function AboutPage({ aboutPage }) {
       </SectionWrapper>
       <FeaturedLogos overline="World Class Backing" logos={aboutPage?.logos} />
       <TeamSlider teammates={aboutPage?.teammates} />
-      <TextSlider
+      <ValueProps
         overline="How We Think"
         heading="Our Values"
         valueProps={aboutPage?.values}
