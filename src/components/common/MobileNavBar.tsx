@@ -35,7 +35,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
   return (
     <>
       <NavbarWrapper
-        style={{ top: scrollPosition === 0 && isBanner ? '5.2rem' : 0 }}
+        style={{ top: scrollPosition === 0 && isBanner ? '4rem' : 0 }}
       >
         <FlexWrapper>
           <Link href="/">

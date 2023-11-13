@@ -15,13 +15,19 @@ export default function AlertBanner({
   return (
     <BannerWrapper>
       <BoldText
-        style={{ color: 'white', margin: '0 1rem 0 0', fontSize: '18px' }}
+        style={{
+          display: 'inline',
+          color: 'white',
+          margin: '0 0.5rem 0 0',
+          fontSize: '18px',
+        }}
       >
         {primaryText}
       </BoldText>
       <BoldText
         onClick={onClick}
         style={{
+          display: 'inline',
           color: '#48DC95',
           margin: '0 1rem 0 0',
           fontSize: '18px',
@@ -35,9 +41,6 @@ export default function AlertBanner({
 }
 
 const BannerWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100vw;
   background-color: #303030;
   text-align: center;
@@ -48,6 +51,5 @@ const BannerWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    flex-direction: column;
   }
 `;
