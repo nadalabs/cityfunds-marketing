@@ -1,4 +1,5 @@
 import FeaturedImage from '@components/FeaturedImage';
+import AccredBanner from '@components/cityfunds/AccredBanner';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
 import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import HowItWorks from '@components/cityfunds/HowItWorks';
@@ -93,12 +94,7 @@ export default function CityfundsPage({
       <InvestChart />
 
       <CityfundsGrid cityfunds={cityfunds} />
-      <FeaturedImage
-        feature={cityfundsPage?.accredited_feature}
-        btnText="Learn More"
-        onClick={() => router.push(`/investors`)}
-        isBackground
-      />
+      <AccredBanner cityfunds={cityfunds} />
       <ValueProps
         overline="You may be wondering..."
         heading="Why Cityfunds?"

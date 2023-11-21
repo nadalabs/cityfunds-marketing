@@ -3,7 +3,6 @@ import SliderStepper from '@components/common/SliderStepper';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
@@ -29,41 +28,15 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
     beforeChange: (_, next) => setActiveStep(next),
   };
 
-  const ALL_CARDS = cityfunds.map(({ fund_data, fund_content }) => ({
-    fund_data,
-    fund_content,
-    images: [fund_content?.image_gallery[0], fund_content?.card_back],
-  }));
-
-  const SORTED_CARDS = ALL_CARDS.sort((a, b) => {
-    if (
-      a.fund_data.fund_status === FUND_STATUS.NEW_OFFERING &&
-      b.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING
-    ) {
-      return 1;
-    }
-    if (
-      a.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING &&
-      b.fund_data.fund_status === FUND_STATUS.NEW_OFFERING
-    ) {
-      return -1;
-    }
-
-    if (
-      a.fund_data.regulation === REGULATION.RETAIL &&
-      b.fund_data.regulation !== REGULATION.RETAIL
-    ) {
-      return 1;
-    }
-    if (
-      a.fund_data.regulation !== REGULATION.RETAIL &&
-      b.fund_data.regulation === REGULATION.RETAIL
-    ) {
-      return -1;
-    }
-
-    return b.fund_data.total_assets - a.fund_data.total_assets;
-  });
+  const ALL_CARDS = cityfunds
+    .map(({ fund_data, fund_content }) => ({
+      fund_data,
+      fund_content,
+      images: [fund_content?.image_gallery[0], fund_content?.card_back],
+    }))
+    .sort((a, b) =>
+      a.fund_data?.share_price < b.fund_data?.share_price ? 1 : -1
+    );
 
   return (
     <SectionWrapper>
@@ -87,7 +60,7 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
       </StackWrapper>
 
       <Slider ref={sliderRef} {...settings}>
-        {SORTED_CARDS?.map((card, idx) => (
+        {ALL_CARDS?.map((card, idx) => (
           <>
             {isMobile ? (
               <FadeWrapper key={idx}>

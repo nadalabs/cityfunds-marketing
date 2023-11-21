@@ -1,4 +1,3 @@
-import { CityfundCard } from '@components/cityfunds/CityfundCard';
 import { PrimaryButton } from '@elements/Buttons';
 import {
   BottomWrapper,
@@ -7,20 +6,21 @@ import {
   StackWrapper,
   TopWrapper,
 } from '@elements/Containers';
-import { Heading, LargeText } from '@elements/Typography';
+import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import { CityfundCard } from './CityfundCard';
 
-interface CityfundsGridProps {
+interface AccredBannerProps {
   cityfunds: ICityfund[];
 }
 
-export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
+export default function AccredBanner({ cityfunds }: AccredBannerProps) {
   const isMobile = useIsMobile();
-  const [showMore, setShowMore] = useState(false);
+  const router = useRouter();
 
   const ALL_CARDS = cityfunds
     .map(({ fund_data, fund_content }) => ({
@@ -32,23 +32,31 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
       a.fund_data?.share_price < b.fund_data?.share_price ? 1 : -1
     );
 
-  const RETAIL_CARDS = ALL_CARDS.filter(
-    ({ fund_data }) => fund_data?.regulation === REGULATION.RETAIL
+  const ACCRED_CARDS = ALL_CARDS.filter(
+    ({ fund_data }) => fund_data?.regulation === REGULATION.ACCREDITED
   );
 
-  const SHOWN_CARDS =
-    showMore || !isMobile ? RETAIL_CARDS : RETAIL_CARDS.slice(0, 3);
-
   return (
-    <SectionWrapper style={{ gap: '2rem' }}>
-      <StackWrapper
-        style={{ gap: isMobile ? '0' : '0.5rem', marginBottom: '1.5rem' }}
-      >
-        <Heading>Explore Offerings</Heading>
-        <LargeText>
-          Pick your favorite fund, or invest in all of them.
-        </LargeText>
-      </StackWrapper>
+    <SectionWrapper
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: isMobile ? 'column-reverse' : 'row',
+        gap: isMobile ? '1.5rem' : '5rem',
+      }}
+      isBackground
+    >
+      <ContentWrapper>
+        <StackWrapper style={{ gap: '1rem' }}>
+          <Heading>Are you an Accredited Investor?</Heading>
+          <PrimaryText>
+            Unlock exclusive offerings like the Yield and Portfolio Funds.
+          </PrimaryText>
+          <PrimaryButton onClick={() => router.push(`/investors`)}>
+            Learn More
+          </PrimaryButton>
+        </StackWrapper>
+      </ContentWrapper>
 
       <GridWrapper
         style={{
@@ -58,7 +66,7 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
           alignSelf: 'flex-start',
         }}
       >
-        {SHOWN_CARDS.map((card, idx) => (
+        {ACCRED_CARDS.map((card, idx) => (
           <>
             {isMobile ? (
               <div key={idx}>
@@ -77,24 +85,15 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
           </>
         ))}
       </GridWrapper>
-
-      {isMobile && (
-        <div style={{ marginTop: '1rem' }}>
-          <PrimaryButton onClick={() => setShowMore(!showMore)}>
-            {showMore ? 'Show Less' : 'Show More'}
-          </PrimaryButton>
-        </div>
-      )}
     </SectionWrapper>
   );
 }
 
-export const HeadingWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+export const ContentWrapper = styled.div`
+  width: 50%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
+    margin-right: 0;
   }
 `;

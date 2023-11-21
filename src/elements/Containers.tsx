@@ -59,3 +59,32 @@ export const ShaddowWrapper = styled.div<{ isShort?: boolean }>`
     height: ${({ isShort }) => (isShort ? 'inherit' : '22rem')};
   }
 `;
+
+export const GridWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+export const TopWrapper = styled.div`
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+
+  &:hover {
+    opacity: 0;
+  }
+`;
+
+export const BottomWrapper = styled.div`
+  position: relative;
+  bottom: 18rem;
+  z-index: -1;
+  height: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    bottom: 20rem;
+  }
+`;
