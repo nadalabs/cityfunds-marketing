@@ -4,7 +4,7 @@ import PageLayout from '@components/common/PageLayout';
 import * as snippet from '@segment/snippet';
 import * as Sentry from '@sentry/react';
 import { UTM_PARAMETERS } from '@utils/constants';
-import { setCookie } from '@utils/helpers';
+import { scrollToDiv, setCookie } from '@utils/helpers';
 import GlobalStyle from '@utils/styles';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
@@ -103,12 +103,9 @@ export default function App({
               cityfundsPage?.promo?.banner ? 'Learn More' : 'Register Here'
             }
             onClick={() =>
-              window.open(
-                cityfundsPage?.promo?.banner
-                  ? '/rewards-program'
-                  : cityfundsPage?.webinar?.link,
-                '_blank'
-              )
+              cityfundsPage?.promo?.banner
+                ? scrollToDiv('promo')
+                : window.open(cityfundsPage?.webinar?.link, '_blank')
             }
           />
         )}

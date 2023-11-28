@@ -93,13 +93,6 @@ export const getTimeRemaining = () => {
   return { days, hours };
 };
 
-export const scrollToId = (id: string) => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
-};
-
 export const trackPageView = async (event: string) => {
   await window.analytics.track(event);
 };
@@ -109,4 +102,9 @@ export const isDateInRange = (targetDate) => {
   const tenDaysFromNow = new Date();
   tenDaysFromNow.setDate(now.getDate() + 10);
   return targetDate > now && targetDate < tenDaysFromNow;
+};
+
+export const scrollToDiv = (id: string) => {
+  const div = document.getElementById(id);
+  div.scrollIntoView({ behavior: 'smooth' });
 };

@@ -1,3 +1,4 @@
+import { CityfundCard } from '@components/cityfunds/CityfundCard';
 import { PrimaryButton } from '@elements/Buttons';
 import {
   BottomWrapper,
@@ -12,7 +13,6 @@ import { REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { CityfundCard } from './CityfundCard';
 
 interface AccredBannerProps {
   cityfunds: ICityfund[];
@@ -52,9 +52,11 @@ export default function AccredBanner({ cityfunds }: AccredBannerProps) {
           <PrimaryText>
             Unlock exclusive offerings like the Yield and Portfolio Funds.
           </PrimaryText>
-          <PrimaryButton onClick={() => router.push(`/investors`)}>
-            Learn More
-          </PrimaryButton>
+          <div>
+            <PrimaryButton onClick={() => router.push(`/investors`)}>
+              Learn More
+            </PrimaryButton>
+          </div>
         </StackWrapper>
       </ContentWrapper>
 
@@ -70,15 +72,25 @@ export default function AccredBanner({ cityfunds }: AccredBannerProps) {
           <>
             {isMobile ? (
               <div key={idx}>
-                <CityfundCard {...card} image={card?.images[0]} isHome />
+                <CityfundCard {...card} image={card?.images[0]} isHome isWide />
               </div>
             ) : (
               <div key={idx}>
                 <TopWrapper>
-                  <CityfundCard {...card} image={card?.images[0]} isHome />
+                  <CityfundCard
+                    {...card}
+                    image={card?.images[0]}
+                    isHome
+                    isWide
+                  />
                 </TopWrapper>
                 <BottomWrapper>
-                  <CityfundCard {...card} image={card?.images[1]} isHome />
+                  <CityfundCard
+                    {...card}
+                    image={card?.images[1]}
+                    isHome
+                    isWide
+                  />
                 </BottomWrapper>
               </div>
             )}

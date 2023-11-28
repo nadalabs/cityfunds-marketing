@@ -1,7 +1,7 @@
 import LongFormText from '@components/common/LongFormText';
 import { LinkButton, SecondaryButton } from '@elements/Buttons';
 import { BoldText, LinkText } from '@elements/Typography';
-import { EXTERNAL_ROUTES, FOOTER_LINKS, SOCIAL_LINKS } from '@utils/constants';
+import { FOOTER_LINKS, ICON_LINKS, SOCIAL_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -78,30 +78,11 @@ export default function PageFooter({ legal }: PageFooterProps) {
           <div
             style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
           >
-            <Link href={EXTERNAL_ROUTES.APPLE_STORE} target="blank">
-              <Image
-                width={135}
-                height={40}
-                alt={'Nada'}
-                src={'/icons/app-store.svg'}
-              />
-            </Link>
-            <Link href={EXTERNAL_ROUTES.GOOGLE_STORE} target="blank">
-              <Image
-                width={135}
-                height={40}
-                alt={'Nada'}
-                src={'/icons/google-play.svg'}
-              />
-            </Link>
-            <Link href={EXTERNAL_ROUTES.BUSINESS_BUREAU} target="blank">
-              <Image
-                width={135}
-                height={40}
-                alt={'Nada'}
-                src={'/images/business-bureau.png'}
-              />
-            </Link>
+            {ICON_LINKS.map(({ name, link, icon }, idx) => (
+              <Link href={link} target="blank" key={idx}>
+                <Image width={135} height={40} alt={name} src={icon} />
+              </Link>
+            ))}
           </div>
         </LinkWrapper>
 
