@@ -1,12 +1,17 @@
 import AssetTicker from '@components/cityfunds/AssetTicker';
 import NadaText from '@components/cityfunds/NadaText';
 import StatusTicker from '@components/cityfunds/StatusTicker';
+import {
+  FundWrapper,
+  ImageWrapper,
+  InnerWrapper,
+  TickerWrapper,
+} from '@elements/Containers';
 import useIsMobile from '@hooks/useIsMobile';
 import { IFundData } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
-import styled from 'styled-components';
 
 interface CityfundCardProps {
   fund_data: IFundData;
@@ -30,15 +35,15 @@ export const CityfundCard = ({
       }/cityfunds/${fund_data?.fund_name.toLowerCase().replace(/ /g, '-')}`}
       target="_blank"
     >
-      <CardWrapper>
+      <FundWrapper>
         <ImageWrapper>
           <Image
             alt={fund_data?.fund_name}
-            src={urlForImage(image, 400, width).url()}
+            src={urlForImage(image, isMobile ? 200 : 400, width).url()}
             fill
           />
         </ImageWrapper>
-        <ContentWrapper>
+        <InnerWrapper>
           <StatusTicker fund_data={fund_data} isHome={isHome} />
           <TickerWrapper>
             <NadaText
@@ -47,51 +52,8 @@ export const CityfundCard = ({
             />
             <AssetTicker fund_data={fund_data} isSmall />
           </TickerWrapper>
-        </ContentWrapper>
-      </CardWrapper>
+        </InnerWrapper>
+      </FundWrapper>
     </Link>
   );
 };
-
-export const CardWrapper = styled.div`
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 39.06%,
-    rgba(0, 0, 0, 0.22) 67.71%,
-    rgba(0, 0, 0, 0.4) 95.83%
-  );
-  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
-  cursor: pointer;
-  border-radius: 2rem;
-  height: 18rem;
-  width: inherit;
-`;
-
-export const ImageWrapper = styled.div`
-  position: relative;
-  border-radius: 2rem;
-  overflow: hidden;
-  width: inherit;
-  height: 18rem;
-`;
-
-export const ContentWrapper = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  bottom: 18rem;
-  padding: 1.5rem;
-`;
-
-export const TickerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    gap: 0.25rem;
-  }
-`;

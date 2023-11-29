@@ -90,6 +90,6 @@ export const BackgroundWrapper = styled.div`
   padding: 6.25rem 9.5rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding: 6.25rem 0;
+    padding: 6.25rem 1rem;
   }
 `;
