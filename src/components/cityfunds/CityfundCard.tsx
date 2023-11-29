@@ -2,9 +2,9 @@ import AssetTicker from '@components/cityfunds/AssetTicker';
 import NadaText from '@components/cityfunds/NadaText';
 import StatusTicker from '@components/cityfunds/StatusTicker';
 import useIsMobile from '@hooks/useIsMobile';
-import { REGULATION } from '@utils/constants';
 import { IFundData } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
+import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -12,14 +12,14 @@ interface CityfundCardProps {
   fund_data: IFundData;
   image: string;
   isHome?: boolean;
-  isWide?: boolean;
+  width?: number;
 }
 
 export const CityfundCard = ({
   fund_data,
   image,
   isHome,
-  isWide,
+  width,
 }: CityfundCardProps) => {
   const isMobile = useIsMobile();
 
@@ -30,26 +30,14 @@ export const CityfundCard = ({
       }/cityfunds/${fund_data?.fund_name.toLowerCase().replace(/ /g, '-')}`}
       target="_blank"
     >
-      <CardWrapper
-        style={{
-          justifyContent:
-            fund_data?.regulation === REGULATION.ACCREDITED
-              ? 'space-between'
-              : 'flex-end',
-          background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${urlForImage(
-            image,
-            isMobile ? (isHome ? 160 : 320) : isHome ? 288 : 576,
-            isMobile ? window?.innerWidth - 48 : isWide ? 400 : 288
-          ).url()}), #232222 50% / cover no-repeat`,
-          height: isMobile ? '10rem' : '18rem',
-          width: isMobile
-            ? window?.innerWidth - 48
-            : isWide
-            ? '32rem'
-            : '18rem',
-          padding: '1.5rem',
-        }}
-      >
+      <CardWrapper>
+        <ImageWrapper>
+          <Image
+            alt={fund_data?.fund_name}
+            src={urlForImage(image, 400, width).url()}
+            fill
+          />
+        </ImageWrapper>
         <ContentWrapper>
           <StatusTicker fund_data={fund_data} isHome={isHome} />
           <TickerWrapper>
@@ -69,6 +57,14 @@ export const CardWrapper = styled.div`
   border-radius: 2rem;
   box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
   cursor: pointer;
+`;
+
+export const ImageWrapper = styled.div`
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  width: inherit;
+  height: 19rem;
 `;
 
 export const ContentWrapper = styled.div`

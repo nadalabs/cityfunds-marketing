@@ -31,7 +31,6 @@ export const HEADER_LINKS = [
     links: [
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
       { name: 'Learning Center', link: '/learn' },
-      { name: 'Investor Relations', link: '/investors' },
       { name: 'About', link: '/about' },
       { name: 'Newsroom', link: '/press' },
     ],
@@ -70,7 +69,6 @@ export const FOOTER_LINKS = [
     links: [
       { name: 'Cityfunds', link: '/' },
       { name: 'Homeshares', link: '/homeshares' },
-      { name: 'Investors', link: '/investors' },
       { name: 'Learn', link: '/learn' },
     ],
   },
@@ -78,9 +76,8 @@ export const FOOTER_LINKS = [
     title: 'About',
     links: [
       { name: 'About', link: '/about' },
-      { name: 'Careers', link: EXTERNAL_ROUTES.CAREERS },
-      { name: 'Press', link: '/press' },
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
+      { name: 'Press', link: '/press' },
     ],
   },
   {

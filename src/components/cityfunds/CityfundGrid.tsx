@@ -12,7 +12,6 @@ import useIsMobile from '@hooks/useIsMobile';
 import { REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 import { useState } from 'react';
-import styled from 'styled-components';
 
 interface CityfundsGridProps {
   cityfunds: ICityfund[];
@@ -50,31 +49,26 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
         </LargeText>
       </StackWrapper>
 
-      <GridWrapper
-        style={{
-          flexDirection: isMobile ? 'column' : 'row',
-          flexWrap: isMobile ? 'nowrap' : 'wrap',
-          marginBottom: isMobile ? 0 : '4rem',
-          alignSelf: 'flex-start',
-        }}
-      >
+      <GridWrapper>
         {SHOWN_CARDS.map((card, idx) => (
-          <>
-            {isMobile ? (
-              <div key={idx}>
-                <CityfundCard {...card} image={card?.images[0]} isHome />
-              </div>
-            ) : (
-              <div key={idx}>
-                <TopWrapper>
-                  <CityfundCard {...card} image={card?.images[0]} isHome />
-                </TopWrapper>
-                <BottomWrapper>
-                  <CityfundCard {...card} image={card?.images[1]} isHome />
-                </BottomWrapper>
-              </div>
-            )}
-          </>
+          <div key={idx}>
+            <TopWrapper>
+              <CityfundCard
+                {...card}
+                image={card?.images[0]}
+                width={400}
+                isHome
+              />
+            </TopWrapper>
+            <BottomWrapper>
+              <CityfundCard
+                {...card}
+                image={card?.images[1]}
+                width={400}
+                isHome
+              />
+            </BottomWrapper>
+          </div>
         ))}
       </GridWrapper>
 
@@ -88,13 +82,3 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
     </SectionWrapper>
   );
 }
-
-export const HeadingWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
-  }
-`;

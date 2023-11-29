@@ -113,7 +113,7 @@ export default function DesktopNavBar({
                               link === router.pathname ? '#48DC95' : 'white',
                           }}
                         >
-                          {name.toUpperCase()}
+                          {name}
                         </PrimaryLink>
                         <Image
                           width={16}
@@ -131,7 +131,7 @@ export default function DesktopNavBar({
                               href={link}
                               onMouseEnter={() => setDropdown(true)}
                             >
-                              {name.toUpperCase()}
+                              {name}
                             </MenuLink>
                           ))}
                         </DropdownMenu>
@@ -145,7 +145,7 @@ export default function DesktopNavBar({
                         color: link === router.pathname ? '#48DC95' : 'white',
                       }}
                     >
-                      {name.toUpperCase()}
+                      {name}
                     </PrimaryLink>
                   )}
                 </>

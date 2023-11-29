@@ -61,8 +61,9 @@ export const ShaddowWrapper = styled.div<{ isShort?: boolean }>`
 `;
 
 export const GridWrapper = styled.div`
-  display: flex;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 2rem;
 `;
 
 export const TopWrapper = styled.div`
@@ -87,4 +88,10 @@ export const BottomWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     bottom: 20rem;
   }
+`;
+
+export const SliderWrapper = styled.div`
+  position: relative;
+  right: 1rem;
+  bottom: 1rem;
 `;
