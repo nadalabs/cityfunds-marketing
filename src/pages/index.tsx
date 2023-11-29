@@ -65,17 +65,17 @@ export default function CityfundsPage({
         metrics={[
           {
             label: 'Total Investors',
-            value: 10,
+            value: 15,
             formattingFn: (val) => `${val}K+`,
           },
           {
             label: 'Home Equity Investments',
-            value: 70,
+            value: 100,
             formattingFn: (val) => `${val}+`,
           },
           {
             label: 'Gross Asset Value',
-            value: 35,
+            value: 40,
             formattingFn: (val) => `$${val}M+`,
           },
         ]}
