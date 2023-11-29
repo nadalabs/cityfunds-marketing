@@ -9,7 +9,6 @@ import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
-import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
 interface AccredBannerProps {
@@ -18,7 +17,6 @@ interface AccredBannerProps {
 
 export default function AccredBanner({ cityfunds }: AccredBannerProps) {
   const isMobile = useIsMobile();
-  const router = useRouter();
 
   const ALL_CARDS = cityfunds
     .map(({ fund_data, fund_content }) => ({
@@ -35,7 +33,7 @@ export default function AccredBanner({ cityfunds }: AccredBannerProps) {
   );
 
   return (
-    <div style={{ height: '34rem' }}>
+    <div style={{ height: isMobile ? '48rem' : '34rem' }}>
       <BackgroundWrapper>
         <GridWrapper style={{ maxWidth: '81rem' }}>
           <StackWrapper style={{ justifyContent: 'center', gap: '0.5rem' }}>
