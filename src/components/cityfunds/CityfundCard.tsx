@@ -54,9 +54,17 @@ export const CityfundCard = ({
 };
 
 export const CardWrapper = styled.div`
-  border-radius: 2rem;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 39.06%,
+    rgba(0, 0, 0, 0.22) 67.71%,
+    rgba(0, 0, 0, 0.4) 95.83%
+  );
   box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
   cursor: pointer;
+  border-radius: 2rem;
+  height: 18rem;
+  width: inherit;
 `;
 
 export const ImageWrapper = styled.div`
@@ -64,7 +72,7 @@ export const ImageWrapper = styled.div`
   border-radius: 2rem;
   overflow: hidden;
   width: inherit;
-  height: 19rem;
+  height: 18rem;
 `;
 
 export const ContentWrapper = styled.div`
@@ -72,6 +80,9 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  bottom: 18rem;
+  padding: 1.5rem;
 `;
 
 export const TickerWrapper = styled.div`
