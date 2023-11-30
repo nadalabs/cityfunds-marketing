@@ -101,12 +101,6 @@ export const SliderWrapper = styled.div`
 `;
 
 export const FundWrapper = styled.div`
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 39.06%,
-    rgba(0, 0, 0, 0.22) 67.71%,
-    rgba(0, 0, 0, 0.4) 95.83%
-  );
   box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   border-radius: 2rem;
@@ -124,6 +118,21 @@ export const ImageWrapper = styled.div`
   overflow: hidden;
   width: inherit;
   height: inherit;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(0, 0, 0, 0.25) 60%,
+      rgba(0, 0, 0, 0.5) 80%
+    );
+  }
 `;
 
 export const InnerWrapper = styled.div`
