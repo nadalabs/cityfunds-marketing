@@ -1,4 +1,5 @@
 import FeaturedImage from '@components/FeaturedImage';
+import AccredBanner from '@components/cityfunds/AccredBanner';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
 import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import HowItWorks from '@components/cityfunds/HowItWorks';
@@ -64,17 +65,17 @@ export default function CityfundsPage({
         metrics={[
           {
             label: 'Total Investors',
-            value: 10,
+            value: 15,
             formattingFn: (val) => `${val}K+`,
           },
           {
             label: 'Home Equity Investments',
-            value: 70,
+            value: 100,
             formattingFn: (val) => `${val}+`,
           },
           {
             label: 'Gross Asset Value',
-            value: 35,
+            value: 40,
             formattingFn: (val) => `$${val}M+`,
           },
         ]}
@@ -93,12 +94,7 @@ export default function CityfundsPage({
       <InvestChart />
 
       <CityfundsGrid cityfunds={cityfunds} />
-      <FeaturedImage
-        feature={cityfundsPage?.accredited_feature}
-        btnText="Learn More"
-        onClick={() => router.push(`/investors`)}
-        isBackground
-      />
+      <AccredBanner cityfunds={cityfunds} />
       <ValueProps
         overline="You may be wondering..."
         heading="Why Cityfunds?"

@@ -1,5 +1,5 @@
 import { Caption } from '@elements/Typography';
-import { FUND_STATUS, FUND_TYPE, REGULATION } from '@utils/constants';
+import { FUND_TYPE, REGULATION } from '@utils/constants';
 import { formatPercent, formatPrice } from '@utils/helpers';
 import { IFundData } from '@utils/models';
 import Image from 'next/image';
@@ -40,18 +40,17 @@ export default function AssetTicker({
           : appreciation
           ? formatPercent(appreciation, 1)
           : 'New',
-      icon:
-        fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING ? (
-          <Image
-            src="/icons/gain.svg"
-            alt="Appreciation"
-            style={{ marginRight: '0.25rem' }}
-            width={12}
-            height={12}
-          />
-        ) : (
-          <Image src="/icons/flash.svg" alt="New" width={14} height={14} />
-        ),
+      icon: appreciation ? (
+        <Image
+          src="/icons/gain.svg"
+          alt="Appreciation"
+          style={{ marginRight: '0.25rem' }}
+          width={12}
+          height={12}
+        />
+      ) : (
+        <Image src="/icons/flash.svg" alt="New" width={14} height={14} />
+      ),
     },
     {
       number: fund_data?.total_assets,
@@ -63,8 +62,7 @@ export default function AssetTicker({
     },
   ];
   const FILTERED_PILLS =
-    fund_data?.fund_status === FUND_STATUS.NEW_OFFERING ||
-    fund_data?.fund_type === FUND_TYPE.DEBT
+    fund_data?.total_assets === 0 || fund_data?.fund_type === FUND_TYPE.DEBT
       ? PILLS.slice(0, 2)
       : PILLS;
 
@@ -125,6 +123,7 @@ export const BackgroundWrapper = styled.div`
   align-items: center;
   border-radius: 0.61038rem;
   backdrop-filter: blur(1.85px);
-  padding: 0.3rem 0.25rem;
+  padding: 0rem 0.25rem;
   margin: 0 0.25rem 0 0;
+  height: 1.5rem;
 `;

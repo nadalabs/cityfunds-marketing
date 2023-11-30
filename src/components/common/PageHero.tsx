@@ -129,7 +129,7 @@ export default function PageHero({
                     {logos && (
                       <FeaturedLogos
                         overline="Featured In"
-                        logos={logos}
+                        logos={isMobile ? logos.slice(0, 4) : logos}
                         isHero
                       />
                     )}

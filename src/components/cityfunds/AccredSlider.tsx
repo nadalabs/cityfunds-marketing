@@ -1,9 +1,12 @@
 import AccredCard from '@components/cityfunds/AccredCard';
 import SliderStepper from '@components/common/SliderStepper';
-import { SectionWrapper, StackWrapper } from '@elements/Containers';
+import {
+  FlexWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { FUND_STATUS, REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
@@ -27,47 +30,44 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
     slidesToScroll: isMobile ? 1 : 3,
     swipeToSlide: true,
     beforeChange: (_, next) => setActiveStep(next),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3.25,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2.25,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1.25,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
-  const ALL_CARDS = cityfunds.map(({ fund_data, fund_content }) => ({
-    fund_data,
-    fund_content,
-    images: [fund_content?.image_gallery[0], fund_content?.card_back],
-  }));
-
-  const SORTED_CARDS = ALL_CARDS.sort((a, b) => {
-    if (
-      a.fund_data.fund_status === FUND_STATUS.NEW_OFFERING &&
-      b.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING
-    ) {
-      return 1;
-    }
-    if (
-      a.fund_data.fund_status !== FUND_STATUS.NEW_OFFERING &&
-      b.fund_data.fund_status === FUND_STATUS.NEW_OFFERING
-    ) {
-      return -1;
-    }
-
-    if (
-      a.fund_data.regulation === REGULATION.RETAIL &&
-      b.fund_data.regulation !== REGULATION.RETAIL
-    ) {
-      return 1;
-    }
-    if (
-      a.fund_data.regulation !== REGULATION.RETAIL &&
-      b.fund_data.regulation === REGULATION.RETAIL
-    ) {
-      return -1;
-    }
-
-    return b.fund_data.total_assets - a.fund_data.total_assets;
-  });
+  const ALL_CARDS = cityfunds
+    .map(({ fund_data, fund_content }) => ({
+      fund_data,
+      fund_content,
+      images: [fund_content?.image_gallery[0], fund_content?.card_back],
+    }))
+    .sort((a, b) =>
+      a.fund_data?.share_price < b.fund_data?.share_price ? 1 : -1
+    );
 
   return (
     <SectionWrapper>
-      <StackWrapper style={{ marginBottom: '1.5rem' }}>
+      <FlexWrapper style={{ alignItems: 'flex-end', marginBottom: '1.5rem' }}>
         <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
           <Heading>Explore Offerings</Heading>
           <LargeText>
@@ -84,10 +84,10 @@ export default function AccredSlider({ cityfunds, isHome }: AccredSliderProps) {
             sliderRef={sliderRef}
           />
         </div>
-      </StackWrapper>
+      </FlexWrapper>
 
       <Slider ref={sliderRef} {...settings}>
-        {SORTED_CARDS?.map((card, idx) => (
+        {ALL_CARDS?.map((card, idx) => (
           <>
             {isMobile ? (
               <FadeWrapper key={idx}>

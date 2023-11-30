@@ -5,6 +5,7 @@ export enum EXTERNAL_ROUTES {
   APPLE_STORE = 'https://apps.apple.com/us/app/nada-finance/id1615840472',
   GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
   BUSINESS_BUREAU = 'https://www.bbb.org/us/tx/dallas/profile/investment-management/cityfunds-by-nada-0875-91340285#sealclick',
+  BENZINGA_AWARD = 'https://www.benzinga.com/fintech/23/11/35922810/nada-takes-home-coveted-best-alternative-investments-platform-at-benzinga-global-fintech-awards-2023',
   HUBSPOT_MEETING = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
   HUBSPOT_FAQS = 'https://faqs.nada.co',
 }
@@ -30,7 +31,6 @@ export const HEADER_LINKS = [
     links: [
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
       { name: 'Learning Center', link: '/learn' },
-      { name: 'Investor Relations', link: '/investors' },
       { name: 'About', link: '/about' },
       { name: 'Newsroom', link: '/press' },
     ],
@@ -69,7 +69,6 @@ export const FOOTER_LINKS = [
     links: [
       { name: 'Cityfunds', link: '/' },
       { name: 'Homeshares', link: '/homeshares' },
-      { name: 'Investors', link: '/investors' },
       { name: 'Learn', link: '/learn' },
     ],
   },
@@ -77,14 +76,36 @@ export const FOOTER_LINKS = [
     title: 'About',
     links: [
       { name: 'About', link: '/about' },
-      { name: 'Careers', link: EXTERNAL_ROUTES.CAREERS },
-      { name: 'Press', link: '/press' },
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
+      { name: 'Press', link: '/press' },
     ],
   },
   {
     title: 'Transparency',
     links: LEGAL_LINKS,
+  },
+];
+
+export const ICON_LINKS = [
+  {
+    name: 'Apple Store',
+    link: EXTERNAL_ROUTES.APPLE_STORE,
+    icon: '/icons/app-store.svg',
+  },
+  {
+    name: 'Google Store',
+    link: EXTERNAL_ROUTES.GOOGLE_STORE,
+    icon: '/icons/google-play.svg',
+  },
+  {
+    name: 'Better Business Bureau',
+    link: EXTERNAL_ROUTES.BUSINESS_BUREAU,
+    icon: '/images/business-bureau.png',
+  },
+  {
+    name: 'Benzinga Award Winner',
+    link: EXTERNAL_ROUTES.BENZINGA_AWARD,
+    icon: '/images/benzinga-award.png',
   },
 ];
 
