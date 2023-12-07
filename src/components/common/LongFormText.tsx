@@ -41,9 +41,48 @@ export default function LongFormText({
     list: {
       bullet: ({ children }: any) => {
         if (isSmall) {
-          return <Caption>{children}</Caption>;
+          return <ul>{children}</ul>;
         } else {
-          return <PrimaryText>{children}</PrimaryText>;
+          return <ul>{children}</ul>;
+        }
+      },
+      number: ({ children }: any) => {
+        if (isSmall) {
+          return <ol>{children}</ol>;
+        } else {
+          return <ol>{children}</ol>;
+        }
+      },
+    },
+    listItem: {
+      bullet: ({ children }: any) => {
+        if (isSmall) {
+          return (
+            <Caption>
+              <li style={{ listStyleType: 'disc' }}>{children}</li>
+            </Caption>
+          );
+        } else {
+          return (
+            <PrimaryText>
+              <li style={{ listStyleType: 'disc' }}>{children}</li>
+            </PrimaryText>
+          );
+        }
+      },
+      number: ({ children }: any) => {
+        if (isSmall) {
+          return (
+            <Caption>
+              <li style={{ listStyleType: 'decimal' }}>{children}</li>
+            </Caption>
+          );
+        } else {
+          return (
+            <PrimaryText>
+              <li style={{ listStyleType: 'decimal' }}>{children}</li>
+            </PrimaryText>
+          );
         }
       },
     },
