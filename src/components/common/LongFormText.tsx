@@ -41,16 +41,16 @@ export default function LongFormText({
     list: {
       bullet: ({ children }: any) => {
         if (isSmall) {
-          return <ul>{children}</ul>;
+          return <ul style={{ marginLeft: '1rem' }}>{children}</ul>;
         } else {
-          return <ul>{children}</ul>;
+          return <ul style={{ marginLeft: '1rem' }}>{children}</ul>;
         }
       },
       number: ({ children }: any) => {
         if (isSmall) {
-          return <ol>{children}</ol>;
+          return <ol style={{ marginLeft: '1rem' }}>{children}</ol>;
         } else {
-          return <ol>{children}</ol>;
+          return <ol style={{ marginLeft: '1rem' }}>{children}</ol>;
         }
       },
     },
