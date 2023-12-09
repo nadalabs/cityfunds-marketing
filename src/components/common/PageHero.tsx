@@ -1,4 +1,5 @@
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
+import LogoSoup from '@components/marketing/LogoSoup';
 import { PrimaryButton } from '@elements/Buttons';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
@@ -32,7 +33,7 @@ export default function PageHero({
 
   return (
     <HeroWrapper>
-      <ContentWrapper>
+      <ContentWrapper style={{ width: maxWidth }}>
         <Heading style={{ fontSize: isMobile ? '2rem' : '4rem' }}>
           {heading}
         </Heading>
@@ -41,15 +42,15 @@ export default function PageHero({
           <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
         </div>
 
-        {/* {logos && (
-              <LogoSoup
-                overline="Featured In"
-                logos={isMobile ? logos.slice(0, 4) : logos}
-                isHero
-              />
-            )} */}
+        {logos && (
+          <LogoSoup
+            overline="Featured In"
+            logos={isMobile ? logos.slice(0, 4) : logos}
+            isHero
+          />
+        )}
       </ContentWrapper>
-      <CityfundSlider cityfunds={cityfunds} />
+      {cityfunds && <CityfundSlider cityfunds={cityfunds} />}
     </HeroWrapper>
   );
 }
@@ -65,7 +66,6 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 36rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     text-align: center;

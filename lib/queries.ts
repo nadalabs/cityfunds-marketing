@@ -165,18 +165,19 @@ export const cityfundsPageFields = `
   logos,
   cityfunds_feature,
   hei_feature,
-  accredited_feature,
   tutorials,
   values,
   questions,
   testimonials,
   homeowners_feature,
-  "promo": promo->{banner, title, description, image},
-  "webinar": webinar->{banner, title, description, date, image, link},
+  investor_relations,
+  promo,
+  webinar,
 `;
 
 export const homesharesPageFields = `
   _id,
+  hero_image,
   homeshares_feature,
   tutorials,
   questions,
@@ -185,10 +186,12 @@ export const homesharesPageFields = `
 
 export const aboutPageFields = `
   _id,
+  hero_image,
   ourStory,
   logos,
   teammates,
   values,
+  press_hero
 `;
 
 export const footerQuery = `

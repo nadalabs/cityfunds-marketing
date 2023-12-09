@@ -22,7 +22,7 @@ export default function AboutPage({ aboutPage }) {
       <PageHero
         heading="Create products that unlock wealth & financial freedom."
         primaryText="Unlock diversified real estate portfolios with passive income in the nations top cities."
-        heroImage="/images/about-hero.png"
+        heroImage={aboutPage.hero_image}
         maxWidth={1000}
       />
       <SectionWrapper style={{ maxWidth: isMobile ? '100%' : '75%' }}>
