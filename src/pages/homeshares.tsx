@@ -1,10 +1,10 @@
 import FeaturedImage from '@components/FeaturedImage';
-import HowItWorks from '@components/cityfunds/HowItWorks';
-import KeyMetrics from '@components/cityfunds/KeyMetrics';
-import NadaFaqs from '@components/cityfunds/NadaFaqs';
-import Testimonials from '@components/cityfunds/Testimonials';
 import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
+import FaqQuestions from '@components/marketing/FaqQuestions';
+import HowItWorks from '@components/marketing/HowItWorks';
+import KeyMetrics from '@components/marketing/KeyMetrics';
+import Testimonials from '@components/marketing/Testimonials';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
 import { getHomesharesPageContent } from 'lib/sanity';
@@ -60,7 +60,7 @@ export default function HomesharesPage({ homesharesPage }) {
         btnText="Apply Now"
         onClick={() => window.location.replace(EXTERNAL_ROUTES.TYPEFORM)}
       />
-      <NadaFaqs
+      <FaqQuestions
         faqs={homesharesPage?.questions}
         link={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/homeshares`}
         linkText="See All FAQs"

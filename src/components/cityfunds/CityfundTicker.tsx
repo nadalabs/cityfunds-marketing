@@ -6,17 +6,17 @@ import Image from 'next/image';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-interface AssetTickerProps {
+interface CityfundTickerProps {
   fund_data: IFundData;
   isDark?: boolean;
   isSmall?: boolean;
 }
 
-export default function AssetTicker({
+export default function CityfundTicker({
   fund_data,
   isDark,
   isSmall,
-}: AssetTickerProps) {
+}: CityfundTickerProps) {
   const originalPrice =
     fund_data?.regulation === REGULATION.ACCREDITED ? 100 : 10;
   const appreciation =

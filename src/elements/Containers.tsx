@@ -150,9 +150,11 @@ export const InnerWrapper = styled.div`
 `;
 
 export const TickerWrapper = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-end;
   gap: 0.5rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

@@ -1,4 +1,4 @@
-import AlertBanner from '@components/cityfunds/AlertBanner';
+import AlertBanner from '@components/common/AlertBanner';
 import PageFooter from '@components/common/PageFooter';
 import PageLayout from '@components/common/PageLayout';
 import * as snippet from '@segment/snippet';

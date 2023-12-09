@@ -191,16 +191,6 @@ export const aboutPageFields = `
   values,
 `;
 
-export const investorsPageFields = `
-  _id,
-  logos,
-  ourMission,
-  hei_feature,
-  values,
-  questions,
-  investors_feature,
-`;
-
 export const footerQuery = `
 {
   "legal": *[_type == "legal" && slug.current == "footer"] | order(_updatedAt desc) [0] {

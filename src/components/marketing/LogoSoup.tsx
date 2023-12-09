@@ -6,19 +6,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-interface FeaturedLogosProps {
+interface LogoSoupProps {
   overline: string;
   logos: any[];
   isHero?: boolean;
   seeMore?: boolean;
 }
 
-export default function FeaturedLogos({
+export default function LogoSoup({
   overline,
   logos,
   isHero,
   seeMore,
-}: FeaturedLogosProps) {
+}: LogoSoupProps) {
   const isMobile = useIsMobile();
 
   function renderLogos(logos) {

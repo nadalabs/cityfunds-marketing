@@ -4,19 +4,19 @@ import { Heading, LinkText, Overline } from '@elements/Typography';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-interface NadaFaqsProps {
+interface FaqQuestionsProps {
   faqs: { question: string; answer: string }[];
   link: string;
   linkText?: string;
   isBackground?: boolean;
 }
 
-export default function NadaFaqs({
+export default function FaqQuestions({
   faqs,
   link,
   linkText,
   isBackground,
-}: NadaFaqsProps) {
+}: FaqQuestionsProps) {
   const [active, setActive] = useState(0);
 
   return (

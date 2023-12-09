@@ -1,5 +1,5 @@
-import FeaturedLogos from '@components/FeaturedLogos';
 import ImageStepper from '@components/common/ImageStepper';
+import LogoSoup from '@components/marketing/LogoSoup';
 import { PrimaryButton, SecondaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LargeText, SmallHeading } from '@elements/Typography';
@@ -127,7 +127,7 @@ export default function PageHero({
 
                   <FlexWrapper>
                     {logos && (
-                      <FeaturedLogos
+                      <LogoSoup
                         overline="Featured In"
                         logos={isMobile ? logos.slice(0, 4) : logos}
                         isHero

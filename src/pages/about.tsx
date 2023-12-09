@@ -1,9 +1,9 @@
-import FeaturedLogos from '@components/FeaturedLogos';
 import CareersCTA from '@components/about/CareersCTA';
 import TeamSlider from '@components/about/TeamSlider';
-import ValueProps from '@components/cityfunds/ValueProps';
 import LongFormText from '@components/common/LongFormText';
 import PageHero from '@components/common/PageHero';
+import LogoSoup from '@components/marketing/LogoSoup';
+import ValueProps from '@components/marketing/ValueProps';
 import { SectionWrapper } from '@elements/Containers';
 import useIsMobile from '@hooks/useIsMobile';
 import { trackPageView } from '@utils/helpers';
@@ -37,7 +37,7 @@ export default function AboutPage({ aboutPage }) {
           content={aboutPage?.ourStory}
         />
       </SectionWrapper>
-      <FeaturedLogos overline="World Class Backing" logos={aboutPage?.logos} />
+      <LogoSoup overline="World Class Backing" logos={aboutPage?.logos} />
       <TeamSlider teammates={aboutPage?.teammates} />
       <ValueProps
         overline="How We Think"

@@ -7,7 +7,6 @@ import {
   cityfundFields,
   cityfundsPageFields,
   homesharesPageFields,
-  investorsPageFields,
   legalFields,
 } from 'lib/queries';
 
@@ -59,14 +58,6 @@ export const getAboutPageContent = async (): Promise<any> => {
   const res = await sanityClient.fetch(`
     *[_type == "aboutPage"] | order(index asc, _updatedAt desc) {
       ${aboutPageFields}
-    }`);
-  return res[0];
-};
-
-export const getInvestorsPageContent = async (): Promise<any> => {
-  const res = await sanityClient.fetch(`
-    *[_type == "investorsPage"] | order(index asc, _updatedAt desc) {
-      ${investorsPageFields}
     }`);
   return res[0];
 };

@@ -1,6 +1,5 @@
-import AssetTicker from '@components/cityfunds/AssetTicker';
+import CityfundTicker from '@components/cityfunds/CityfundTicker';
 import NadaText from '@components/cityfunds/NadaText';
-import StatusTicker from '@components/cityfunds/StatusTicker';
 import {
   FundWrapper,
   ImageWrapper,
@@ -16,14 +15,12 @@ import Link from 'next/link';
 interface CityfundCardProps {
   fund_data: IFundData;
   image: string;
-  isHome?: boolean;
   width?: number;
 }
 
 export const CityfundCard = ({
   fund_data,
   image,
-  isHome,
   width,
 }: CityfundCardProps) => {
   const isMobile = useIsMobile();
@@ -44,13 +41,12 @@ export const CityfundCard = ({
           />
         </ImageWrapper>
         <InnerWrapper>
-          <StatusTicker fund_data={fund_data} isHome={isHome} />
           <TickerWrapper>
             <NadaText
               name={fund_data?.fund_name}
               size={fund_data?.fund_name.length > 10 ? 'extraSmall' : 'small'}
             />
-            <AssetTicker fund_data={fund_data} isSmall />
+            <CityfundTicker fund_data={fund_data} isSmall />
           </TickerWrapper>
         </InnerWrapper>
       </FundWrapper>
