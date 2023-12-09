@@ -53,20 +53,10 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
         {SHOWN_CARDS.map((card, idx) => (
           <div key={idx}>
             <TopWrapper>
-              <CityfundCard
-                {...card}
-                image={card?.images[0]}
-                width={400}
-                isHome
-              />
+              <CityfundCard {...card} image={card?.images[0]} width={400} />
             </TopWrapper>
             <BottomWrapper>
-              <CityfundCard
-                {...card}
-                image={card?.images[1]}
-                width={400}
-                isHome
-              />
+              <CityfundCard {...card} image={card?.images[1]} width={400} />
             </BottomWrapper>
           </div>
         ))}

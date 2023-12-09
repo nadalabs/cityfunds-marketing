@@ -39,7 +39,7 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     );
 
   return (
-    <div style={{ width: '40%' }}>
+    <div style={{ width: '40%', height: 'inherit' }}>
       <Slider ref={sliderRef} {...settings}>
         {ALL_CARDS?.map((card, idx) => (
           <FadeWrapper key={idx}>
@@ -58,7 +58,7 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
 
 const FadeWrapper = styled.div`
   width: 22rem;
-  height: 22rem;
+  /* height: 22rem; */
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;

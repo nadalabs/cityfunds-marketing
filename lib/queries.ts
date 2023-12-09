@@ -191,6 +191,7 @@ export const aboutPageFields = `
   logos,
   teammates,
   values,
+  careers,
   press_hero
 `;
 

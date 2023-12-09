@@ -4,19 +4,17 @@ import { Heading, PrimaryText } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import styled from 'styled-components';
 
-export default function CareersCTA({}) {
+interface CareersCTAProps {
+  description: string;
+}
+
+export default function CareersCTA({ description }) {
   return (
     <SectionWrapper>
       <ContentWrapper>
         <StackWrapper>
           <Heading style={{ color: 'white' }}>Think you're a fit?</Heading>
-          <PrimaryText style={{ color: 'white' }}>
-            Do you want to join us and do Nada? Just kidding, we work - most of
-            the time. We're a group who pride ourselves on rolling up our
-            sleeves and getting the job done. Nada's just getting started, and
-            we'll keep going until we make real estate investing accessible for
-            all. Want to come help us?
-          </PrimaryText>
+          <PrimaryText style={{ color: 'white' }}>{description}</PrimaryText>
           <div>
             <PrimaryButton
               style={{ color: '#48dc95', backgroundColor: 'white' }}

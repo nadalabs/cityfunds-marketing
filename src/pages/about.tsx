@@ -22,7 +22,7 @@ export default function AboutPage({ aboutPage }) {
       <PageHero
         heading="Create products that unlock wealth & financial freedom."
         primaryText="Unlock diversified real estate portfolios with passive income in the nations top cities."
-        heroImage={aboutPage.hero_image}
+        heroImage={aboutPage?.hero_image}
         maxWidth={1000}
       />
       <SectionWrapper style={{ maxWidth: isMobile ? '100%' : '75%' }}>
@@ -39,7 +39,7 @@ export default function AboutPage({ aboutPage }) {
         heading="Our Values"
         valueProps={aboutPage?.values}
       />
-      <CareersCTA />
+      <CareersCTA description={aboutPage?.careers} />
     </>
   );
 }

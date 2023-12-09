@@ -1,16 +1,14 @@
 import FeaturedImage from '@components/FeaturedImage';
 import AccredBanner from '@components/cityfunds/AccredBanner';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
+import CityfundsHero from '@components/cityfunds/CityfundsHero';
 import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import InvestChart from '@components/cityfunds/InvestChart';
-import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import EmailCapture from '@components/common/EmailCapture';
-import PageHero from '@components/common/PageHero';
 import HowItWorks from '@components/marketing/HowItWorks';
 import KeyMetrics from '@components/marketing/KeyMetrics';
 import Testimonials from '@components/marketing/Testimonials';
 import ValueProps from '@components/marketing/ValueProps';
-import Webinanars from '@components/marketing/Webinars';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
 import { getAllFundsContent, getCityfundsPageContent } from 'lib/sanity';
@@ -40,7 +38,7 @@ export default function CityfundsPage({
 
   return (
     <>
-      <PageHero
+      <CityfundsHero
         cityfunds={cityfunds}
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified Home Equity Investments in the nation's top cities."
@@ -50,7 +48,7 @@ export default function CityfundsPage({
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
         }
         isBanner={!!bannerText}
-        maxWidth={720}
+        maxWidth={580}
       />
       <KeyMetrics
         metrics={[
@@ -112,10 +110,10 @@ export default function CityfundsPage({
         isBackground
       />
 
-      {cityfundsPage?.promo && <InvestorPromo promo={cityfundsPage?.promo} />}
-      {cityfundsPage?.webinar && (
+      {/* {cityfundsPage?.promo && <InvestorPromo promo={cityfundsPage?.promo} />} */}
+      {/* {cityfundsPage?.webinar && (
         <Webinanars webinar={cityfundsPage?.webinar} />
-      )}
+      )} */}
       <EmailCapture formName="Cityfunds" isPopup />
     </>
   );

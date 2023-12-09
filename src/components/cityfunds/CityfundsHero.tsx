@@ -1,25 +1,31 @@
+import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import { PrimaryButton } from '@elements/Buttons';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { urlForImage } from 'lib/sanity';
-import Image from 'next/image';
+import { ICityfund } from '@utils/models';
 import styled from 'styled-components';
 
 interface PageHeroProps {
   heading: string;
   primaryText: string;
+  cityfunds?: ICityfund[];
   heroImage?: string;
   btnText?: string;
   onClick?: () => void;
+  logos?: any[];
+  isBanner?: boolean;
   maxWidth?: number;
 }
 
 export default function PageHero({
   heading,
   primaryText,
+  cityfunds,
   heroImage,
   btnText,
   onClick,
+  logos,
+  isBanner,
   maxWidth,
 }: PageHeroProps) {
   const isMobile = useIsMobile();
@@ -31,29 +37,29 @@ export default function PageHero({
           {heading}
         </Heading>
         <LargeText>{primaryText}</LargeText>
-        {btnText && (
-          <div>
-            <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-          </div>
-        )}
-      </ContentWrapper>
+        <div>
+          <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+        </div>
 
-      <Image
-        width={isMobile ? 300 : 704}
-        height={isMobile ? 300 : 560}
-        alt={heading}
-        src={urlForImage(heroImage).url()}
-      />
+        {/* {logos && (
+          <LogoSoup
+            overline="Featured In"
+            logos={isMobile ? logos.slice(0, 4) : logos}
+            isHero
+          />
+        )} */}
+      </ContentWrapper>
+      {cityfunds && <CityfundSlider cityfunds={cityfunds} />}
     </HeroWrapper>
   );
 }
 
 export const HeroWrapper = styled.div`
-  height: 100vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 9.25rem;
+  height: 100vh;
 `;
 
 const ContentWrapper = styled.div`

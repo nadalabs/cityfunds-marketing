@@ -8,6 +8,7 @@ import {
   cityfundsPageFields,
   homesharesPageFields,
   legalFields,
+  pressIndexQuery,
 } from 'lib/queries';
 
 const sanityConfig: ClientConfig = {
@@ -60,6 +61,11 @@ export const getAboutPageContent = async (): Promise<any> => {
       ${aboutPageFields}
     }`);
   return res[0];
+};
+
+export const getAllPress = async (): Promise<any> => {
+  const res = await sanityClient.fetch(pressIndexQuery);
+  return res;
 };
 
 export const getFooterContent = async (): Promise<any> => {
