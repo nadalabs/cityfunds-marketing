@@ -15,7 +15,7 @@ export default function PressPage({ allPress }) {
       <PageHero
         heading="Nada in the News"
         primaryText="For media inquiries reach out to us at media@nada.co"
-        heroImages={[{ name: '', heroImage: '/images/press-hero.png' }]}
+        heroImage="/images/press-hero.png"
       />
       <PressArticles articles={allPress} />
     </>

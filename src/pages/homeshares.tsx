@@ -20,14 +20,9 @@ export default function HomesharesPage({ homesharesPage }) {
       <PageHero
         heading="Unlock Home Equity with No Monthly Payments"
         primaryText="Trade in fractions of your home equity for cash and spend it on everyday items. Apply below and one of our home equity specialists will reach out."
+        heroImage="/images/homeshares-hero.png"
         btnText="Apply Now"
         onClick={() => window.open(EXTERNAL_ROUTES.TYPEFORM, '_blank')}
-        heroImages={[
-          {
-            name: 'Homeshares',
-            heroImage: '/images/homeshares-hero.png',
-          },
-        ]}
         maxWidth={900}
       />
       <KeyMetrics

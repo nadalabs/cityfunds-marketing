@@ -1,6 +1,6 @@
 import { CityfundCard } from '@components/cityfunds/CityfundCard';
-import { SectionWrapper } from '@elements/Containers';
 import useIsMobile from '@hooks/useIsMobile';
+import { REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 import { useRef } from 'react';
 import Slider from 'react-slick';
@@ -16,14 +16,19 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
 
   const settings = {
     dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: isMobile ? 1 : 3.25,
-    slidesToScroll: isMobile ? 1 : 3,
-    swipeToSlide: true,
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 4000,
+    autoplaySpeed: 4000,
+    cssEase: 'linear',
+    vertical: true,
+    rtl: true,
   };
 
   const ALL_CARDS = cityfunds
+    .filter(({ fund_data }) => fund_data?.regulation === REGULATION.RETAIL)
     .map(({ fund_data, fund_content }) => ({
       fund_data,
       fund_content,
@@ -34,7 +39,7 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     );
 
   return (
-    <SectionWrapper>
+    <div style={{ width: '40%' }}>
       <Slider ref={sliderRef} {...settings}>
         {ALL_CARDS?.map((card, idx) => (
           <FadeWrapper key={idx}>
@@ -47,13 +52,13 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
           </FadeWrapper>
         ))}
       </Slider>
-    </SectionWrapper>
+    </div>
   );
 }
 
 const FadeWrapper = styled.div`
   width: 22rem;
-  height: 36rem;
+  height: 22rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
@@ -76,20 +81,10 @@ const TopWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   position: relative;
-  bottom: 36rem;
+  bottom: 18rem;
   z-index: -1;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     bottom: 30rem;
-  }
-`;
-
-export const HeadingWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
   }
 `;

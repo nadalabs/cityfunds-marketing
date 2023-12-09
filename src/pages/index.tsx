@@ -11,7 +11,7 @@ import KeyMetrics from '@components/marketing/KeyMetrics';
 import Testimonials from '@components/marketing/Testimonials';
 import ValueProps from '@components/marketing/ValueProps';
 import Webinanars from '@components/marketing/Webinars';
-import { EXTERNAL_ROUTES, FUND_STATUS, REGULATION } from '@utils/constants';
+import { EXTERNAL_ROUTES } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
 import { getAllFundsContent, getCityfundsPageContent } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
@@ -41,6 +41,7 @@ export default function CityfundsPage({
   return (
     <>
       <PageHero
+        cityfunds={cityfunds}
         heading="Own a Piece of Your Favorite City"
         primaryText="Diversified Home Equity Investments in the nation's top cities."
         btnText="Explore Offerings"
@@ -48,17 +49,7 @@ export default function CityfundsPage({
         onClick={() =>
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
         }
-        heroImages={cityfunds
-          .filter(
-            ({ fund_data }) =>
-              fund_data?.regulation === REGULATION.RETAIL &&
-              fund_data?.fund_status !== FUND_STATUS.NEW_OFFERING
-          )
-          .map(({ fund_content, fund_data }) => ({
-            heroImage: fund_content?.image_gallery[0],
-            fund_data,
-          }))}
-        bannerText={!!bannerText}
+        isBanner={!!bannerText}
         maxWidth={720}
       />
       <KeyMetrics
@@ -79,6 +70,7 @@ export default function CityfundsPage({
             formattingFn: (val) => `$${val}M+`,
           },
         ]}
+        isBackground
       />
       <FeaturedImage
         feature={cityfundsPage?.cityfunds_feature}
