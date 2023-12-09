@@ -1,4 +1,4 @@
-import { CityfundCard } from '@components/cityfunds/CityfundCard';
+import CityfundCard from '@components/cityfunds/CityfundCard';
 import {
   BottomWrapper,
   GridWrapper,

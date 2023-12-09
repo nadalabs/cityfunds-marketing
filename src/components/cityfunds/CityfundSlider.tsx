@@ -1,4 +1,4 @@
-import { CityfundCard } from '@components/cityfunds/CityfundCard';
+import CityfundCard from '@components/cityfunds/CityfundCard';
 import useIsMobile from '@hooks/useIsMobile';
 import { REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
@@ -58,7 +58,7 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
 
 const FadeWrapper = styled.div`
   width: 22rem;
-  /* height: 22rem; */
+  height: 22rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;

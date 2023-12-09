@@ -18,11 +18,11 @@ interface CityfundCardProps {
   width?: number;
 }
 
-export const CityfundCard = ({
+export default function CityfundCard({
   fund_data,
   image,
   width,
-}: CityfundCardProps) => {
+}: CityfundCardProps) {
   const isMobile = useIsMobile();
 
   return (
