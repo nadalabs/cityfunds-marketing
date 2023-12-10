@@ -68,7 +68,6 @@ export default function CityfundsPage({
             formattingFn: (val) => `$${val}M+`,
           },
         ]}
-        isBackground
       />
       <FeaturedImage
         feature={cityfundsPage?.cityfunds_feature}

@@ -1,5 +1,4 @@
 import CityfundCard from '@components/cityfunds/CityfundCard';
-import useIsMobile from '@hooks/useIsMobile';
 import { REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 import { useRef } from 'react';
@@ -11,9 +10,7 @@ interface CityfundSliderProps {
 }
 
 export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
-  const isMobile = useIsMobile();
   const sliderRef = useRef(null);
-
   const settings = {
     dots: false,
     infinite: true,
@@ -39,16 +36,16 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     );
 
   return (
-    <div style={{ width: '40%', height: 'inherit' }}>
+    <div style={{ width: '40%' }}>
       <Slider ref={sliderRef} {...settings}>
         {ALL_CARDS?.map((card, idx) => (
           <FadeWrapper key={idx}>
             <TopWrapper>
               <CityfundCard {...card} image={card?.images[0]} />
             </TopWrapper>
-            <BottomWrapper>
+            {/* <BottomWrapper>
               <CityfundCard {...card} image={card?.images[1]} />
-            </BottomWrapper>
+            </BottomWrapper> */}
           </FadeWrapper>
         ))}
       </Slider>

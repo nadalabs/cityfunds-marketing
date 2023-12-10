@@ -58,8 +58,9 @@ export const HeroWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 9.25rem;
+  width: 100vw;
   height: 100vh;
+  padding: 9.25rem;
 `;
 
 const ContentWrapper = styled.div`

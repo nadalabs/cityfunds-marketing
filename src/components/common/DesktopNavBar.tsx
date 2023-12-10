@@ -1,4 +1,5 @@
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
+import { FlexWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,7 +14,6 @@ interface DesktopNavBarProps {
 export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
   const router = useRouter();
   const [scrollPosition, setScrollPosition] = useState(0);
-  const isAuth = router.pathname === '/login' || router.pathname === '/signup';
   const isScroll = scrollPosition > 0;
   const isHomeshares = false;
 
@@ -33,35 +33,35 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
   return (
     <NavbarWrapper
       style={{
-        zIndex: isAuth ? 9 : 99,
+        zIndex: 99,
         top: scrollPosition === 0 && isBanner ? '2.4rem' : 0,
-        backgroundColor: isAuth ? 'transparent' : 'white',
-        boxShadow:
-          !isAuth && isScroll ? '0px 4px 25px 0px rgba(0, 0, 0, 0.10)' : 'none',
+        backgroundColor: 'white',
+        boxShadow: isScroll ? '0px 4px 25px 0px rgba(0, 0, 0, 0.10)' : 'none',
       }}
     >
       <NavbarContent>
         <Link href="/">
           <Image
-            src={isAuth ? '/icons/nada-light.svg' : '/icons/nada-dark.svg'}
+            src='/icons/nada-dark.svg'
             alt="Nada"
             width={184}
             height={52}
           />
         </Link>
 
-        <div>
-        {HEADER_LINKS.map(({ name, link }, idx) => (
-          <Link href={link} key={idx}>
-            <NavbarLink
-              style={{
-                color: link === router.pathname ? '#48DC95' : '#3F3F3F',
-              }}
-            >
-              {name}
-            </NavbarLink>
-          </Link>
-        ))}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1.5rem' }}>
+        <div style={{  display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          {HEADER_LINKS.map(({ name, link }, idx) => (
+            <Link href={link} key={idx}>
+              <NavbarLink
+                style={{
+                  color: link === router.pathname ? '#48DC95' : '#3F3F3F',
+                }}
+              >
+                {name}
+              </NavbarLink>
+            </Link>
+          ))}
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
@@ -92,6 +92,7 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
           >
             {isHomeshares ? 'Apply Now' : 'Sign Up'}
           </PrimaryButton>
+        </div>
         </div>
       </NavbarContent>
     </NavbarWrapper>

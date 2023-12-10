@@ -9,10 +9,9 @@ const CountUp = dynamic(() => import('react-countup'), { ssr: false });
 
 interface KeyMetricsProps {
   metrics: any[];
-  isBackground?: boolean;
 }
 
-export default function KeyMetrics({ metrics, isBackground }: KeyMetricsProps) {
+export default function KeyMetrics({ metrics }: KeyMetricsProps) {
   const isMobile = useIsMobile();
   const easingFn = function (t) {
     // Example: easeInOutCubic
@@ -20,7 +19,7 @@ export default function KeyMetrics({ metrics, isBackground }: KeyMetricsProps) {
   };
 
   return (
-    <SectionWrapper isBackground={isBackground}>
+    <SectionWrapper isBackground>
       <FlexWrapper
         style={{
           justifyContent: 'space-evenly',
