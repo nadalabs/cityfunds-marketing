@@ -1,6 +1,7 @@
+import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';
-import { Heading, PrimaryText } from '@elements/Typography';
+import { Heading } from '@elements/Typography';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import styled from 'styled-components';
 
@@ -8,13 +9,13 @@ interface CareersCTAProps {
   description: string;
 }
 
-export default function CareersCTA({ description }) {
+export default function CareersCTA({ description }: CareersCTAProps) {
   return (
     <SectionWrapper>
       <ContentWrapper>
         <StackWrapper>
           <Heading style={{ color: 'white' }}>Think you're a fit?</Heading>
-          <PrimaryText style={{ color: 'white' }}>{description}</PrimaryText>
+          <LongFormText content={description} />
           <div>
             <PrimaryButton
               style={{ color: '#48dc95', backgroundColor: 'white' }}

@@ -44,12 +44,14 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
     <BackgroundWrapper>
       <ContentWrapper>
         {blogPosts.length === 1 && (
+        <div style={{paddingBottom: '2rem'}}>
           <LinkText href="/learn">Back to Blog</LinkText>
+        </div>
         )}
 
         <Slider {...settings} ref={sliderRef}>
           {blogPosts.map((post, idx) => (
-            <div key={idx} onClick={() => console.log(post?.slug, idx)}>
+            <div key={idx}>
               <Link href={`/learn/${post?.slug}`}>
                 <FlexWrapper>
                   <ImageWrapper>
@@ -117,12 +119,10 @@ export const CardWrapper = styled.div`
 `;
 
 const BackgroundWrapper = styled(SectionWrapper)`
+  height: 100vh;
   display: flex;
   justify-content: center;
-  padding-top: 8rem;
   background-color: #fbfbfb;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding-top: 2rem;
@@ -135,7 +135,7 @@ const ContentWrapper = styled.div`
   padding-top: 4rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding-top: 10rem;
+    padding-top: 6rem;
   }
 `;
 
