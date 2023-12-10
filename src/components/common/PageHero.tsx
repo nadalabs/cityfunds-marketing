@@ -26,7 +26,7 @@ export default function PageHero({
 
   return (
     <HeroWrapper>
-      <ContentWrapper style={{ width: maxWidth }}>
+      <ContentWrapper style={{ width: isMobile ? '100%' : maxWidth }}>
         <Heading style={{ fontSize: isMobile ? '2rem' : '4rem' }}>
           {heading}
         </Heading>
@@ -54,6 +54,12 @@ export const HeroWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 9.25rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 0 1rem;
+  }
 `;
 
 const ContentWrapper = styled.div`

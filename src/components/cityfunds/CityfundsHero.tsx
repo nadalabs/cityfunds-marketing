@@ -46,7 +46,7 @@ export default function PageHero({
           />
         )}
       </ContentWrapper>
-      {!isMobile && <CityfundSlider cityfunds={cityfunds} />}
+      <CityfundSlider cityfunds={cityfunds} />
     </HeroWrapper>
   );
 }
@@ -60,7 +60,9 @@ export const HeroWrapper = styled.div`
   padding: 9.25rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 1rem;
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 10rem 1rem 0 1rem;
   }
 `;
 
@@ -73,7 +75,7 @@ const ContentWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
     text-align: center;
-    padding: 30px;
+    padding: 2rem;
     margin: 0;
   }
 `;

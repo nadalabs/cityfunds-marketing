@@ -17,13 +17,13 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 2,
+    slidesToShow: isMobile ? 1.25 : 2,
     slidesToScroll: 1,
     autoplay: true,
     speed: 4000,
     autoplaySpeed: 4000,
     cssEase: 'linear',
-    vertical: true,
+    vertical: !isMobile,
     rtl: true,
   };
 
@@ -39,7 +39,7 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     );
 
   return (
-    <div style={{ width: '40%' }}>
+    <div style={{ width: isMobile ? '100%' : '40%' }}>
       <Slider ref={sliderRef} {...settings}>
         {ALL_CARDS?.map((card, idx) => (
           <div key={idx}>

@@ -81,6 +81,12 @@ export const TopWrapper = styled.div`
   &:hover {
     opacity: 0;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    &:hover {
+      opacity: 1;
+    }
+  }
 `;
 
 export const BottomWrapper = styled.div`
