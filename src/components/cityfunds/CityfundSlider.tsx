@@ -39,7 +39,7 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     );
 
   return (
-    <div style={{ width: isMobile ? '100%' : '40%' }}>
+    <div style={{ width: '100%' }}>
       <Slider ref={sliderRef} {...settings}>
         {ALL_CARDS?.map((card, idx) => (
           <div key={idx}>

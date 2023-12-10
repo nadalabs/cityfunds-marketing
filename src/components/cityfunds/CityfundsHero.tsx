@@ -55,6 +55,7 @@ export const HeroWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8rem;
   width: 100vw;
   height: 100vh;
   padding: 9.25rem;
@@ -70,7 +71,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 36.25rem;
+  width: 100%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
