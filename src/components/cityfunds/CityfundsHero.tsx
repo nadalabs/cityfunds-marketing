@@ -8,31 +8,27 @@ import styled from 'styled-components';
 interface PageHeroProps {
   heading: string;
   primaryText: string;
-  cityfunds?: ICityfund[];
-  heroImage?: string;
-  btnText?: string;
-  onClick?: () => void;
-  logos?: any[];
+  cityfunds: ICityfund[];
+  btnText: string;
+  onClick: () => void;
+  logos: any[];
   isBanner?: boolean;
-  maxWidth?: number;
 }
 
 export default function PageHero({
   heading,
   primaryText,
   cityfunds,
-  heroImage,
   btnText,
   onClick,
   logos,
   isBanner,
-  maxWidth,
 }: PageHeroProps) {
   const isMobile = useIsMobile();
 
   return (
     <HeroWrapper>
-      <ContentWrapper style={{ width: maxWidth }}>
+      <ContentWrapper>
         <Heading style={{ fontSize: isMobile ? '2rem' : '4rem' }}>
           {heading}
         </Heading>
@@ -49,7 +45,7 @@ export default function PageHero({
           />
         )} */}
       </ContentWrapper>
-      {cityfunds && <CityfundSlider cityfunds={cityfunds} />}
+      {!isMobile && <CityfundSlider cityfunds={cityfunds} />}
     </HeroWrapper>
   );
 }
@@ -61,14 +57,20 @@ export const HeroWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   padding: 9.25rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 1rem;
+  }
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 36.25rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
     text-align: center;
     padding: 30px;
     margin: 0;

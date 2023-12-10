@@ -48,7 +48,6 @@ export default function CityfundsPage({
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
         }
         isBanner={!!bannerText}
-        maxWidth={580}
       />
       <KeyMetrics
         metrics={[

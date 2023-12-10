@@ -1,5 +1,4 @@
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
-import { FlexWrapper } from '@elements/Containers';
 import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -42,57 +41,59 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
       <NavbarContent>
         <Link href="/">
           <Image
-            src='/icons/nada-dark.svg'
+            src="/icons/nada-dark.svg"
             alt="Nada"
             width={184}
             height={52}
           />
         </Link>
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1.5rem' }}>
-        <div style={{  display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          {HEADER_LINKS.map(({ name, link }, idx) => (
-            <Link href={link} key={idx}>
-              <NavbarLink
-                style={{
-                  color: link === router.pathname ? '#48DC95' : '#3F3F3F',
-                }}
-              >
-                {name}
-              </NavbarLink>
-            </Link>
-          ))}
-        </div>
+        <div
+          style={{ display: 'flex', justifyContent: 'flex-end', gap: '1.5rem' }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            {HEADER_LINKS.map(({ name, link }, idx) => (
+              <Link href={link} key={idx}>
+                <NavbarLink
+                  style={{
+                    color: link === router.pathname ? '#48DC95' : '#3F3F3F',
+                  }}
+                >
+                  {name}
+                </NavbarLink>
+              </Link>
+            ))}
+          </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          {!isHomeshares && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            {!isHomeshares && (
+              <PrimaryButton
+                onClick={() =>
+                  window.open(
+                    isHomeshares
+                      ? `${EXTERNAL_ROUTES.TYPEFORM}`
+                      : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
+                    '_blank'
+                  )
+                }
+                isInverted
+              >
+                Log In
+              </PrimaryButton>
+            )}
             <PrimaryButton
               onClick={() =>
                 window.open(
                   isHomeshares
                     ? `${EXTERNAL_ROUTES.TYPEFORM}`
-                    : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
+                    : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
                   '_blank'
                 )
               }
-              isInverted
             >
-              Log In
+              {isHomeshares ? 'Apply Now' : 'Sign Up'}
             </PrimaryButton>
-          )}
-          <PrimaryButton
-            onClick={() =>
-              window.open(
-                isHomeshares
-                  ? `${EXTERNAL_ROUTES.TYPEFORM}`
-                  : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-                '_blank'
-              )
-            }
-          >
-            {isHomeshares ? 'Apply Now' : 'Sign Up'}
-          </PrimaryButton>
-        </div>
+          </div>
         </div>
       </NavbarContent>
     </NavbarWrapper>
