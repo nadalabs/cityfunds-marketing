@@ -28,7 +28,7 @@ export const HEADER_LINKS = [
   { name: 'Homeshares', link: '/homeshares' },
   {
     name: 'Resources',
-    link: '',
+    link: '/',
     links: [
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
       { name: 'Learning Center', link: '/learn' },

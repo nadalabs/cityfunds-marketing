@@ -1,4 +1,6 @@
 import CityfundCard from '@components/cityfunds/CityfundCard';
+import { TopWrapper } from '@elements/Containers';
+import useIsMobile from '@hooks/useIsMobile';
 import { REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 import { useRef } from 'react';
@@ -10,6 +12,7 @@ interface CityfundSliderProps {
 }
 
 export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
+  const isMobile = useIsMobile();
   const sliderRef = useRef(null);
   const settings = {
     dots: false,
@@ -39,42 +42,21 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     <div style={{ width: '40%' }}>
       <Slider ref={sliderRef} {...settings}>
         {ALL_CARDS?.map((card, idx) => (
-          <FadeWrapper key={idx}>
+          <div key={idx}>
             <TopWrapper>
               <CityfundCard {...card} image={card?.images[0]} />
             </TopWrapper>
-            {/* <BottomWrapper>
-              <CityfundCard {...card} image={card?.images[1]} />
-            </BottomWrapper> */}
-          </FadeWrapper>
+            {!isMobile && (
+              <BottomWrapper>
+                <CityfundCard {...card} image={card?.images[1]} />
+              </BottomWrapper>
+            )}
+          </div>
         ))}
       </Slider>
     </div>
   );
 }
-
-const FadeWrapper = styled.div`
-  width: 22rem;
-  height: 22rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
-    height: 30rem;
-  }
-`;
-
-const TopWrapper = styled.div`
-  opacity: 1;
-  -webkit-transition: opacity 0.5s ease-in-out;
-  -moz-transition: opacity 0.5s ease-in-out;
-  -o-transition: opacity 0.5s ease-in-out;
-  -ms-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
-
-  &:hover {
-    opacity: 0;
-  }
-`;
 
 const BottomWrapper = styled.div`
   position: relative;

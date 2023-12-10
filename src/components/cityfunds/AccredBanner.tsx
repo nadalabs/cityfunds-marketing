@@ -50,9 +50,11 @@ export default function AccredBanner({ cityfunds }: AccredBannerProps) {
               <TopWrapper>
                 <CityfundCard {...card} image={card?.images[0]} width={600} />
               </TopWrapper>
-              <BottomWrapper>
-                <CityfundCard {...card} image={card?.images[1]} width={600} />
-              </BottomWrapper>
+              {!isMobile && (
+                <BottomWrapper>
+                  <CityfundCard {...card} image={card?.images[1]} width={600} />
+                </BottomWrapper>
+              )}
             </div>
           ))}
         </GridWrapper>

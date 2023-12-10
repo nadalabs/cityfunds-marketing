@@ -90,7 +90,7 @@ export default function CityfundsPage({
         link={EXTERNAL_ROUTES.HUBSPOT_FAQS}
         linkText="See All FAQs"
       />
-      <Testimonials testimonials={cityfundsPage?.testimonials} isBackground />
+      <Testimonials testimonials={cityfundsPage?.testimonials} />
       <HowItWorks
         overline="Real Estate Investing Simplified"
         tutorials={cityfundsPage?.tutorials}

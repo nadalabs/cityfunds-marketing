@@ -1,4 +1,5 @@
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
+import LogoSoup from '@components/marketing/LogoSoup';
 import { PrimaryButton } from '@elements/Buttons';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
@@ -37,13 +38,13 @@ export default function PageHero({
           <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
         </div>
 
-        {/* {logos && (
+        {logos && (
           <LogoSoup
             overline="Featured In"
             logos={isMobile ? logos.slice(0, 4) : logos}
             isHero
           />
-        )} */}
+        )}
       </ContentWrapper>
       {!isMobile && <CityfundSlider cityfunds={cityfunds} />}
     </HeroWrapper>

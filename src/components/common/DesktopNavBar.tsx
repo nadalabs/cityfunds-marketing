@@ -53,15 +53,15 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             {HEADER_LINKS.map(({ name, link }, idx) => (
-              <Link href={link} key={idx}>
-                <NavbarLink
-                  style={{
-                    color: link === router.pathname ? '#48DC95' : '#3F3F3F',
-                  }}
-                >
-                  {name}
-                </NavbarLink>
-              </Link>
+              <NavbarLink
+                key={idx}
+                href={link}
+                style={{
+                  color: link === router.pathname ? '#48DC95' : '#3F3F3F',
+                }}
+              >
+                {name}
+              </NavbarLink>
             ))}
           </div>
 
@@ -70,9 +70,7 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
               <PrimaryButton
                 onClick={() =>
                   window.open(
-                    isHomeshares
-                      ? `${EXTERNAL_ROUTES.TYPEFORM}`
-                      : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
+                    `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
                     '_blank'
                   )
                 }

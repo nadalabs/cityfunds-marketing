@@ -32,8 +32,8 @@ export default function LogoSoup({
             style={{ margin: '1rem 1rem' }}
           >
             <Image
-              width={isMobile ? 120 : 150}
-              height={isMobile ? 32 : 40}
+              width={isMobile ? 120 : isHero ? 104 : 150}
+              height={isMobile ? 32 : isHero ? 36 : 40}
               alt={name}
               src={urlForImage(image).url()}
             />
@@ -45,13 +45,13 @@ export default function LogoSoup({
 
   if (isHero) {
     return (
-      <div style={{ maxWidth: isMobile ? '100%' : '70%' }}>
+      <div style={{ maxWidth: '100%' }}>
         <Overline
           style={{ color: '#989898', textAlign: isMobile ? 'center' : 'left' }}
         >
           {overline}
         </Overline>
-        <FlexWrapper style={{ flexWrap: 'wrap' }}>
+        <FlexWrapper style={{ flexWrap: isMobile ? 'wrap' : 'initial' }}>
           {renderLogos(logos)}
         </FlexWrapper>
       </div>

@@ -55,9 +55,11 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
             <TopWrapper>
               <CityfundCard {...card} image={card?.images[0]} width={400} />
             </TopWrapper>
-            <BottomWrapper>
-              <CityfundCard {...card} image={card?.images[1]} width={400} />
-            </BottomWrapper>
+            {!isMobile && (
+              <BottomWrapper>
+                <CityfundCard {...card} image={card?.images[1]} width={400} />
+              </BottomWrapper>
+            )}
           </div>
         ))}
       </GridWrapper>
