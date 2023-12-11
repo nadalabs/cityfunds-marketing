@@ -37,7 +37,7 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     );
 
   return (
-    <div style={{ maxWidth: '40rem' }}>
+    <div style={{ maxWidth: '38rem' }}>
       <Slider ref={sliderRef} {...settings}>
         {ALL_CARDS?.map((card, idx) => (
           <CityfundCard key={idx} {...card} image={card?.images[0]} isSlider />
