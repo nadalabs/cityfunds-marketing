@@ -2,7 +2,6 @@ import { PrimaryButton } from '@elements/Buttons';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
-import Image from 'next/image';
 import styled from 'styled-components';
 
 interface PageHeroProps {
@@ -27,9 +26,7 @@ export default function PageHero({
   return (
     <HeroWrapper>
       <ContentWrapper style={{ width: isMobile ? '100%' : maxWidth }}>
-        <Heading style={{ fontSize: isMobile ? '2rem' : '4rem' }}>
-          {heading}
-        </Heading>
+        <Heading>{heading}</Heading>
         <LargeText>{primaryText}</LargeText>
         {btnText && (
           <div>
@@ -38,7 +35,7 @@ export default function PageHero({
         )}
       </ContentWrapper>
 
-      <Image
+      <ImageWrapper
         width={isMobile ? 300 : 704}
         height={isMobile ? 300 : 560}
         alt={heading}
@@ -54,6 +51,7 @@ export const HeroWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 9.25rem;
+  gap: 4rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column-reverse;
@@ -72,4 +70,9 @@ const ContentWrapper = styled.div`
     padding: 30px;
     margin: 0;
   }
+`;
+
+const ImageWrapper = styled.img`
+  border-radius: 2rem;
+  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
 `;
