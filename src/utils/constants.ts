@@ -1,6 +1,5 @@
 export enum EXTERNAL_ROUTES {
   DOWNLOAD = 'https://nada.onelink.me/wNEn/ksbeffng',
-  TYPEFORM = 'https://form.typeform.com/to/fv2eTpuT',
   CAREERS = 'https://linkedin.com/company/hellonada/jobs',
   APPLE_STORE = 'https://apps.apple.com/us/app/nada-finance/id1615840472',
   GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
@@ -24,16 +23,16 @@ export const UTM_PARAMETERS = [
 ];
 
 export const HEADER_LINKS = [
-  { name: 'Cityfunds', link: '/' },
-  { name: 'Homeshares', link: '/homeshares' },
+  { name: 'Investors', link: '/' },
+  { name: 'Learn', link: '/learn' },
   {
-    name: 'Resources',
-    link: '/',
+    name: 'About',
+    link: '/about',
     links: [
-      { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
-      { name: 'Learning Center', link: '/learn' },
       { name: 'About', link: '/about' },
+      { name: 'Nada', link: '/nada' },
       { name: 'Newsroom', link: '/press' },
+      { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
     ],
   },
 ];

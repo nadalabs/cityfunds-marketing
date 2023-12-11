@@ -17,7 +17,6 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
   const [dropDown, setDropdown] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const isHomeshares = router.pathname.includes('homeshares');
   const isScroll = scrollPosition > 0;
 
   const handleScroll = () => {
@@ -44,7 +43,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
         <FlexWrapper>
           <Link href="/">
             <Image
-              src="/icons/nada-dark.svg"
+              src="/icons/cityfunds-dark.svg"
               alt="Nada"
               height={40}
               width={160}
@@ -75,7 +74,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
         <FlexWrapper style={{ paddingBottom: '2rem' }}>
           <Link href="/">
             <Image
-              src="/icons/nada-light.svg"
+              src="/icons/cityfunds-light.svg"
               alt="Nada"
               height={40}
               width={160}
@@ -146,17 +145,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
               )}
             </>
           ))}
-          {isHomeshares ? (
-            <a href={EXTERNAL_ROUTES.TYPEFORM} target="_blank">
-              <PrimaryButton
-                onClick={() => setShowMenu(false)}
-                style={{ textTransform: 'uppercase' }}
-                isInverted
-              >
-                Apply Now
-              </PrimaryButton>
-            </a>
-          ) : (
+
             <>
               <a
                 href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`}
@@ -182,7 +171,6 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
                 </PrimaryButton>
               </a>
             </>
-          )}
         </div>
       </Drawer>
     </>

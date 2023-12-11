@@ -14,7 +14,6 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
   const router = useRouter();
   const [scrollPosition, setScrollPosition] = useState(0);
   const isScroll = scrollPosition > 0;
-  const isHomeshares = false;
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -41,7 +40,7 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
       <NavbarContent>
         <Link href="/">
           <Image
-            src="/icons/nada-dark.svg"
+            src="/icons/cityfunds-dark.svg"
             alt="Nada"
             width={184}
             height={52}
@@ -66,7 +65,6 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            {!isHomeshares && (
               <PrimaryButton
                 onClick={() =>
                   window.open(
@@ -78,18 +76,14 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
               >
                 Log In
               </PrimaryButton>
-            )}
             <PrimaryButton
               onClick={() =>
-                window.open(
-                  isHomeshares
-                    ? `${EXTERNAL_ROUTES.TYPEFORM}`
-                    : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+                window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
                   '_blank'
                 )
               }
             >
-              {isHomeshares ? 'Apply Now' : 'Sign Up'}
+             Sign Up
             </PrimaryButton>
           </div>
         </div>

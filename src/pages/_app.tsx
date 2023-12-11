@@ -80,9 +80,9 @@ export default function App({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="Gain access to professionally-managed, diversified real estate portfolios in the world’s best cities - start with as little as $100."
+          content="Diversified Home Equity Investments in the nation's top cities."
         />
-        <title>Nada</title>
+        <title>Cityfunds</title>
       </Head>
 
       <Script
