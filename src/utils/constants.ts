@@ -30,7 +30,7 @@ export const HEADER_LINKS = [
     link: '/about',
     links: [
       { name: 'About', link: '/about' },
-      { name: 'Nada', link: '/nada' },
+      { name: 'Nada', link: process.env.NEXT_PUBLIC_NADA_URL },
       { name: 'Press', link: '/press' },
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
     ],
@@ -68,7 +68,7 @@ export const FOOTER_LINKS = [
     title: 'Home',
     links: [
       { name: 'Cityfunds', link: '/' },
-      { name: 'Homeshares', link: '/homeshares' },
+      { name: 'Nada', link: process.env.NEXT_PUBLIC_NADA_URL },
       { name: 'Learn', link: '/learn' },
     ],
   },

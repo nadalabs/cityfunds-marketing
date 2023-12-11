@@ -104,7 +104,7 @@ export default function CityfundsPage({
         overline="FOR HOMEOWNERS"
         feature={cityfundsPage?.homeowners_feature}
         btnText="Learn More"
-        onClick={() => router.push(`/homeshares`)}
+        onClick={() => window.open(process.env.NEXT_PUBLIC_NADA_URL, '_blank')}
         isBackground
       />
 

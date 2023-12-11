@@ -182,6 +182,7 @@ export const homesharesPageFields = `
   tutorials,
   questions,
   testimonials,
+  cityfunds_feature
 `;
 
 export const aboutPageFields = `
