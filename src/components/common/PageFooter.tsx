@@ -20,10 +20,10 @@ export default function PageFooter({ legal }: PageFooterProps) {
         <LinkWrapper>
           <div>
             <Image
+              src={'/icons/cityfunds-dark.svg'}
+              alt={'Cityfunds'}
               width={270}
               height={80}
-              alt={'Nada'}
-              src={'/icons/nada-dark.svg'}
             />
             <div
               style={{
