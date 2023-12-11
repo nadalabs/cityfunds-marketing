@@ -1,6 +1,7 @@
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import LogoSoup from '@components/marketing/LogoSoup';
 import { PrimaryButton } from '@elements/Buttons';
+import { StackWrapper } from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { ICityfund } from '@utils/models';
@@ -30,13 +31,15 @@ export default function PageHero({
   return (
     <HeroWrapper>
       <ContentWrapper>
-        <Heading style={{ fontSize: isMobile ? '2rem' : '4rem' }}>
-          {heading}
-        </Heading>
-        <LargeText>{primaryText}</LargeText>
-        <div>
-          <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-        </div>
+        <StackWrapper style={{ gap: '1rem' }}>
+          <Heading style={{ fontSize: isMobile ? '2rem' : '4rem' }}>
+            {heading}
+          </Heading>
+          <LargeText>{primaryText}</LargeText>
+          <div>
+            <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+          </div>
+        </StackWrapper>
 
         {logos && (
           <LogoSoup
@@ -53,10 +56,9 @@ export default function PageHero({
 
 export const HeroWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 8rem;
-  width: 100vw;
+  gap: 4rem;
   height: 100vh;
   padding: 9.25rem;
 
@@ -70,8 +72,9 @@ export const HeroWrapper = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 4rem;
   width: 100%;
+  max-width: 36rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;

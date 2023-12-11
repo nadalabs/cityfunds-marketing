@@ -18,8 +18,8 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     slidesToShow: isMobile ? 1.25 : 2.5,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 4000,
-    autoplaySpeed: 4000,
+    speed: 5000,
+    autoplaySpeed: 5000,
     cssEase: 'linear',
     vertical: !isMobile,
     rtl: true,
@@ -37,7 +37,7 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     );
 
   return (
-    <div style={{ width: '60%' }}>
+    <div style={{ maxWidth: '40rem' }}>
       <Slider ref={sliderRef} {...settings}>
         {ALL_CARDS?.map((card, idx) => (
           <CityfundCard key={idx} {...card} image={card?.images[0]} isSlider />
