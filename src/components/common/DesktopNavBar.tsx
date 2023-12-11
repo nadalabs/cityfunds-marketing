@@ -1,5 +1,5 @@
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
-import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
+import { HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -65,25 +65,26 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-              <PrimaryButton
-                onClick={() =>
-                  window.open(
-                    `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
-                    '_blank'
-                  )
-                }
-                isInverted
-              >
-                Log In
-              </PrimaryButton>
             <PrimaryButton
               onClick={() =>
-                window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+                window.open(
+                  `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
+                  '_blank'
+                )
+              }
+              isInverted
+            >
+              Log In
+            </PrimaryButton>
+            <PrimaryButton
+              onClick={() =>
+                window.open(
+                  `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
                   '_blank'
                 )
               }
             >
-             Sign Up
+              Sign Up
             </PrimaryButton>
           </div>
         </div>

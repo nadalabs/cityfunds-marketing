@@ -44,9 +44,9 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
     <BackgroundWrapper>
       <ContentWrapper>
         {blogPosts.length === 1 && (
-        <div style={{paddingBottom: '2rem'}}>
-          <LinkText href="/learn">Back to Blog</LinkText>
-        </div>
+          <div style={{ paddingBottom: '2rem' }}>
+            <LinkText href="/learn">Back to Blog</LinkText>
+          </div>
         )}
 
         <Slider {...settings} ref={sliderRef}>

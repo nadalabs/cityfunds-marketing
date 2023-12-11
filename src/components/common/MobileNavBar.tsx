@@ -1,6 +1,6 @@
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
-import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
+import { HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -146,31 +146,31 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
             </>
           ))}
 
-            <>
-              <a
-                href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`}
-                target="_blank"
+          <>
+            <a
+              href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`}
+              target="_blank"
+            >
+              <PrimaryButton
+                onClick={() => setShowMenu(false)}
+                style={{ textTransform: 'uppercase' }}
+                isInverted
               >
-                <PrimaryButton
-                  onClick={() => setShowMenu(false)}
-                  style={{ textTransform: 'uppercase' }}
-                  isInverted
-                >
-                  Log In
-                </PrimaryButton>
-              </a>
-              <a
-                href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`}
-                target="_blank"
+                Log In
+              </PrimaryButton>
+            </a>
+            <a
+              href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`}
+              target="_blank"
+            >
+              <PrimaryButton
+                onClick={() => setShowMenu(false)}
+                style={{ textTransform: 'uppercase' }}
               >
-                <PrimaryButton
-                  onClick={() => setShowMenu(false)}
-                  style={{ textTransform: 'uppercase' }}
-                >
-                  Sign Up
-                </PrimaryButton>
-              </a>
-            </>
+                Sign Up
+              </PrimaryButton>
+            </a>
+          </>
         </div>
       </Drawer>
     </>

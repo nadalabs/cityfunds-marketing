@@ -16,12 +16,14 @@ interface CityfundCardProps {
   fund_data: IFundData;
   image: string;
   width?: number;
+  isSlider?: boolean;
 }
 
 export default function CityfundCard({
   fund_data,
   image,
   width,
+  isSlider,
 }: CityfundCardProps) {
   const isMobile = useIsMobile();
 
@@ -32,7 +34,7 @@ export default function CityfundCard({
       }/cityfunds/${fund_data?.fund_name.toLowerCase().replace(/ /g, '-')}`}
       target="_blank"
     >
-      <FundWrapper>
+      <FundWrapper style={{ margin: isSlider ? '0.5rem 0' : '0' }}>
         <ImageWrapper>
           <Image
             alt={fund_data?.fund_name}
