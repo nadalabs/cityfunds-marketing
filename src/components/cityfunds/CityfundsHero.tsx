@@ -77,7 +77,6 @@ const ContentWrapper = styled.div`
   max-width: 36rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
     text-align: center;
     padding: 2rem;
     margin: 0;
