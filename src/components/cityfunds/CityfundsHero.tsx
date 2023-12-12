@@ -1,15 +1,15 @@
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
+import LongFormText from '@components/common/LongFormText';
 import LogoSoup from '@components/marketing/LogoSoup';
 import { PrimaryButton } from '@elements/Buttons';
 import { StackWrapper } from '@elements/Containers';
-import { Heading, LargeText } from '@elements/Typography';
+import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { ICityfund } from '@utils/models';
 import styled from 'styled-components';
 
 interface PageHeroProps {
-  heading: string;
-  primaryText: string;
+  feature: any;
   cityfunds: ICityfund[];
   btnText: string;
   onClick: () => void;
@@ -18,8 +18,7 @@ interface PageHeroProps {
 }
 
 export default function PageHero({
-  heading,
-  primaryText,
+  feature,
   cityfunds,
   btnText,
   onClick,
@@ -33,9 +32,9 @@ export default function PageHero({
       <ContentWrapper>
         <StackWrapper style={{ gap: '1rem' }}>
           <Heading style={{ fontSize: isMobile ? '2rem' : '4rem' }}>
-            {heading}
+            {feature?.title}
           </Heading>
-          <LargeText>{primaryText}</LargeText>
+          <LongFormText content={feature?.description} />
           <div>
             <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
           </div>

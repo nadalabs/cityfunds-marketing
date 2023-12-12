@@ -13,7 +13,6 @@ import { EXTERNAL_ROUTES } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
 import { getAllFundsContent, getCityfundsPageContent } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
-import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 interface CityfundsPageProps {
@@ -27,7 +26,6 @@ export default function CityfundsPage({
   cityfunds,
   partner,
 }: CityfundsPageProps) {
-  const router = useRouter();
   const bannerText = partner?.promo?.banner
     ? cityfundsPage?.promo?.banner
     : cityfundsPage?.webinar?.banner;
@@ -40,8 +38,7 @@ export default function CityfundsPage({
     <>
       <CityfundsHero
         cityfunds={cityfunds}
-        heading="Own a Piece of Your Favorite City"
-        primaryText="Diversified Home Equity Investments in the nation's top cities."
+        feature={cityfundsPage?.marketing_hero}
         btnText="Explore Offerings"
         logos={cityfundsPage?.logos}
         onClick={() =>

@@ -163,6 +163,7 @@ export const cityfundFields = `
 export const cityfundsPageFields = `
   _id,
   logos,
+  marketing_hero,
   cityfunds_feature,
   hei_feature,
   tutorials,
