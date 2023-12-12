@@ -26,12 +26,11 @@ export const HEADER_LINKS = [
   { name: 'Cityfunds', link: '/' },
   { name: 'Learn', link: '/learn' },
   {
-    name: 'About',
-    link: '/about',
+    name: 'Resources',
     links: [
       { name: 'About', link: '/about' },
       { name: 'Nada', link: process.env.NEXT_PUBLIC_NADA_URL },
-      { name: 'Press', link: '/press' },
+      { name: 'Newsroom', link: '/press' },
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
     ],
   },
@@ -68,16 +67,16 @@ export const FOOTER_LINKS = [
     title: 'Home',
     links: [
       { name: 'Cityfunds', link: '/' },
-      { name: 'Nada', link: process.env.NEXT_PUBLIC_NADA_URL },
       { name: 'Learn', link: '/learn' },
+      { name: 'About', link: '/about' },
     ],
   },
   {
-    title: 'About',
+    title: 'Resources',
     links: [
-      { name: 'About', link: '/about' },
+      { name: 'Nada', link: process.env.NEXT_PUBLIC_NADA_URL },
+      { name: 'Newsroom', link: '/press' },
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
-      { name: 'Press', link: '/press' },
     ],
   },
   {
