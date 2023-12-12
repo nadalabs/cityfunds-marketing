@@ -8,6 +8,7 @@ import { scrollToDiv, setCookie } from '@utils/helpers';
 import GlobalStyle from '@utils/styles';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getCityfundsPageContent, getFooterContent } from 'lib/sanity';
 import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';
@@ -118,6 +119,7 @@ export default function App({
         </PageLayout>
         <PageFooter legal={footer} />
         <Analytics />
+        <SpeedInsights />
       </ThemeProvider>
     </>
   );
