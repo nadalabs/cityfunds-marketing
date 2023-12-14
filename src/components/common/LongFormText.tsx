@@ -2,6 +2,7 @@ import { StackWrapper } from '@elements/Containers';
 import {
   Caption,
   Heading,
+  LargeText,
   LinkText,
   Overline,
   PrimaryText,
@@ -15,6 +16,7 @@ interface LongFormTextProps {
   overline?: string;
   content: any;
   isSmall?: boolean;
+  isLarge?: boolean;
 }
 
 export default function LongFormText({
@@ -22,6 +24,7 @@ export default function LongFormText({
   overline,
   content,
   isSmall,
+  isLarge,
 }: LongFormTextProps) {
   const isMobile = useIsMobile();
 
@@ -30,6 +33,8 @@ export default function LongFormText({
       normal: ({ children }: any) => {
         if (isSmall) {
           return <Caption>{children}</Caption>;
+        } else if (isLarge) {
+          return <LargeText>{children}</LargeText>;
         } else {
           return <PrimaryText>{children}</PrimaryText>;
         }

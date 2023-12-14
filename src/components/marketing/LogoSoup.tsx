@@ -21,7 +21,7 @@ export default function LogoSoup({
 }: LogoSoupProps) {
   const isMobile = useIsMobile();
 
-  function renderLogos(logos) {
+  function renderLogos(logos: any[], isMargin?: boolean) {
     return (
       <>
         {logos?.map(({ name, image, link }, idx) => (
@@ -29,11 +29,11 @@ export default function LogoSoup({
             key={idx}
             href={link}
             target="_blank"
-            style={{ margin: '1rem 1rem' }}
+            style={{ margin: isMargin ? '1rem 1rem' : 0 }}
           >
             <Image
-              width={isMobile ? 100 : isHero ? 104 : 150}
-              height={isMobile ? 32 : isHero ? 36 : 40}
+              width={isMobile ? 100 : isHero ? 200 : 150}
+              height={isMobile ? 32 : isHero ? 40 : 40}
               alt={name}
               src={urlForImage(image).url()}
             />
@@ -47,7 +47,11 @@ export default function LogoSoup({
     return (
       <div style={{ maxWidth: '100%' }}>
         <Overline
-          style={{ color: '#989898', textAlign: isMobile ? 'center' : 'left' }}
+          style={{
+            color: '#989898',
+            textAlign: isMobile ? 'center' : 'left',
+            marginBottom: '1rem',
+          }}
         >
           {overline}
         </Overline>
@@ -63,7 +67,7 @@ export default function LogoSoup({
       <Overline style={{ color: '#989898', textAlign: 'center' }}>
         {overline}
       </Overline>
-      <ContentWrapper>{renderLogos(logos)}</ContentWrapper>
+      <ContentWrapper>{renderLogos(logos, true)}</ContentWrapper>
 
       {seeMore && (
         <div style={{ paddingLeft: '1.25rem' }}>
