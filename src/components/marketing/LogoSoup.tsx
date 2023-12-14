@@ -32,7 +32,7 @@ export default function LogoSoup({
             style={{ margin: isMargin ? '1rem 1rem' : 0 }}
           >
             <Image
-              width={isMobile ? 100 : isHero ? 200 : 150}
+              width={isMobile ? 140 : isHero ? 200 : 150}
               height={isMobile ? 32 : isHero ? 40 : 40}
               alt={name}
               src={urlForImage(image).url()}

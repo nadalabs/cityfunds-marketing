@@ -14,7 +14,6 @@ interface PageHeroProps {
   btnText: string;
   onClick: () => void;
   logos: any[];
-  isBanner?: boolean;
 }
 
 export default function PageHero({
@@ -23,13 +22,18 @@ export default function PageHero({
   btnText,
   onClick,
   logos,
-  isBanner,
 }: PageHeroProps) {
   const isMobile = useIsMobile();
 
   return (
     <HeroWrapper>
-      <GridWrapper style={{ gap: '4rem' }}>
+      <GridWrapper style={{ gap: isMobile ? 0 : '4rem' }}>
+        {isMobile && (
+          <div style={{ maxWidth: '22rem' }}>
+            <CityfundSlider cityfunds={cityfunds} />
+          </div>
+        )}
+
         <ContentWrapper>
           <StackWrapper style={{ gap: '1rem' }}>
             <Heading style={{ fontSize: isMobile ? '2rem' : '4rem' }}>
@@ -50,9 +54,11 @@ export default function PageHero({
           )}
         </ContentWrapper>
 
-        <div style={{ maxWidth: '32rem' }}>
-          <CityfundSlider cityfunds={cityfunds} />
-        </div>
+        {!isMobile && (
+          <div style={{ maxWidth: '32rem' }}>
+            <CityfundSlider cityfunds={cityfunds} />
+          </div>
+        )}
       </GridWrapper>
     </HeroWrapper>
   );
@@ -69,7 +75,7 @@ export const HeroWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column-reverse;
     justify-content: center;
-    padding: 10rem 1rem 0 1rem;
+    padding: 1rem;
   }
 `;
 
