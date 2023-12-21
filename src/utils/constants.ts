@@ -24,12 +24,12 @@ export const UTM_PARAMETERS = [
 
 export const HEADER_LINKS = [
   { name: 'Cityfunds', link: '/' },
-  { name: 'Learn', link: '/learn' },
+
   {
     name: 'Resources',
     links: [
+      { name: 'Learn', link: '/learn' },
       { name: 'About', link: '/about' },
-      { name: 'Nada', link: process.env.NEXT_PUBLIC_NADA_URL },
       { name: 'Newsroom', link: '/press' },
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
     ],

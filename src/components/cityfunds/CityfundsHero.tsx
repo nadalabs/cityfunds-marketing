@@ -1,8 +1,9 @@
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
+import HeroBanner from '@components/common/HeroBanner';
 import LongFormText from '@components/common/LongFormText';
 import LogoSoup from '@components/marketing/LogoSoup';
 import { PrimaryButton } from '@elements/Buttons';
-import { GridWrapper, StackWrapper } from '@elements/Containers';
+import { FlexWrapper, StackWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { ICityfund } from '@utils/models';
@@ -27,7 +28,7 @@ export default function PageHero({
 
   return (
     <HeroWrapper>
-      <GridWrapper style={{ gap: isMobile ? 0 : '4rem' }}>
+      <FlexWrapper style={{ gap: isMobile ? 0 : '4rem' }}>
         {isMobile && (
           <div style={{ maxWidth: '22rem' }}>
             <CityfundSlider cityfunds={cityfunds} />
@@ -35,6 +36,8 @@ export default function PageHero({
         )}
 
         <ContentWrapper>
+          <HeroBanner primaryText="🏆 Voted Benzinga’s Best Alternative Investment Platform " />
+
           <StackWrapper style={{ gap: '1rem' }}>
             <Heading style={{ fontSize: isMobile ? '2rem' : '4rem' }}>
               {feature?.title}
@@ -55,11 +58,11 @@ export default function PageHero({
         </ContentWrapper>
 
         {!isMobile && (
-          <div style={{ maxWidth: '32rem' }}>
+          <div style={{ maxWidth: '30rem' }}>
             <CityfundSlider cityfunds={cityfunds} />
           </div>
         )}
-      </GridWrapper>
+      </FlexWrapper>
     </HeroWrapper>
   );
 }

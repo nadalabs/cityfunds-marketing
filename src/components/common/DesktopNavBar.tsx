@@ -133,6 +133,7 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
     </NavbarWrapper>
   );
 }
+
 const NavbarWrapper = styled.div`
   position: fixed;
   display: flex;

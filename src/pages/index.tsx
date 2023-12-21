@@ -44,7 +44,7 @@ export default function CityfundsPage({
         onClick={() =>
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
         }
-        isBanner={!!bannerText}
+        // isBanner={!!bannerText}
       />
       <KeyMetrics
         metrics={[
