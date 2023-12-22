@@ -30,7 +30,7 @@ export const HEADER_LINKS = [
     links: [
       { name: 'Learn', link: '/learn' },
       { name: 'About', link: '/about' },
-      { name: 'Newsroom', link: '/press' },
+      { name: 'News', link: '/news' },
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
     ],
   },

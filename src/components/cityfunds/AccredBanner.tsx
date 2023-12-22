@@ -41,7 +41,7 @@ export default function AccredBanner({ cityfunds }: AccredBannerProps) {
               Are you an Accredited Investor?
             </Heading>
             <LargeText>
-              Unlock exclusive offerings like the Portfolio and Yield Funds.
+              Unlock exclusive offerings like the Select and Yield Funds.
             </LargeText>
           </StackWrapper>
 

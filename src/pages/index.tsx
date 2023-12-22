@@ -4,11 +4,13 @@ import CityfundsGrid from '@components/cityfunds/CityfundGrid';
 import CityfundsHero from '@components/cityfunds/CityfundsHero';
 import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import InvestChart from '@components/cityfunds/InvestChart';
+import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import EmailCapture from '@components/common/EmailCapture';
 import HowItWorks from '@components/marketing/HowItWorks';
 import KeyMetrics from '@components/marketing/KeyMetrics';
 import Testimonials from '@components/marketing/Testimonials';
 import ValueProps from '@components/marketing/ValueProps';
+import Webinanars from '@components/marketing/Webinars';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
 import { getAllFundsContent, getCityfundsPageContent } from 'lib/sanity';
@@ -80,22 +82,21 @@ export default function CityfundsPage({
 
       <CityfundsGrid cityfunds={cityfunds} />
       <AccredBanner cityfunds={cityfunds} />
+
+      <HowItWorks
+        tutorials={cityfundsPage?.tutorials}
+        btnText="Sign Up"
+        onClick={() =>
+          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
+        }
+      />
+      <Testimonials testimonials={cityfundsPage?.testimonials} />
       <ValueProps
         overline="You may be wondering..."
         heading="Why Cityfunds?"
         valueProps={cityfundsPage?.values}
         link={EXTERNAL_ROUTES.HUBSPOT_FAQS}
         linkText="See All FAQs"
-      />
-      <Testimonials testimonials={cityfundsPage?.testimonials} />
-      <HowItWorks
-        overline="Real Estate Investing Simplified"
-        tutorials={cityfundsPage?.tutorials}
-        btnText="Sign Up"
-        onClick={() =>
-          window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank')
-        }
-        isPhoneFrame
       />
       <FeaturedImage
         overline="FOR HOMEOWNERS"
@@ -105,10 +106,10 @@ export default function CityfundsPage({
         isBackground
       />
 
-      {/* {cityfundsPage?.promo && <InvestorPromo promo={cityfundsPage?.promo} />} */}
-      {/* {cityfundsPage?.webinar && (
+      {cityfundsPage?.promo && <InvestorPromo promo={cityfundsPage?.promo} />}
+      {cityfundsPage?.webinar && (
         <Webinanars webinar={cityfundsPage?.webinar} />
-      )} */}
+      )}
       <EmailCapture formName="Cityfunds" isPopup />
     </>
   );
