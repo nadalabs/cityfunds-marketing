@@ -35,7 +35,7 @@ export default function LogoSoup({
               width={isMobile ? 140 : isHero ? 200 : 150}
               height={isMobile ? 32 : isHero ? 40 : 40}
               alt={name}
-              src={urlForImage(image).url()}
+              src={urlForImage(image)}
             />
           </Link>
         ))}

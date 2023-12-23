@@ -38,7 +38,7 @@ export default function CityfundCard({
         <ImageWrapper>
           <Image
             alt={fund_data?.fund_name}
-            src={urlForImage(image, isMobile ? 200 : 400, width).url()}
+            src={urlForImage(image, isMobile ? 200 : 400, width)}
             fill
           />
         </ImageWrapper>

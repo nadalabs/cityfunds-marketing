@@ -61,7 +61,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                       style={{ borderRadius: '2rem' }}
                       src={
                         post?.coverImage
-                          ? urlForImage(post?.coverImage).url()
+                          ? urlForImage(post?.coverImage)
                           : '/images/nada-press.png'
                       }
                     />

@@ -1,11 +1,10 @@
-import FeaturedImage from '@components/FeaturedImage';
 import AccredBanner from '@components/cityfunds/AccredBanner';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
 import CityfundsHero from '@components/cityfunds/CityfundsHero';
-import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import InvestChart from '@components/cityfunds/InvestChart';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import EmailCapture from '@components/common/EmailCapture';
+import FeaturedImage from '@components/marketing/FeaturedImage';
 import HowItWorks from '@components/marketing/HowItWorks';
 import KeyMetrics from '@components/marketing/KeyMetrics';
 import Testimonials from '@components/marketing/Testimonials';
@@ -76,7 +75,7 @@ export default function CityfundsPage({
       />
       <FeaturedImage
         feature={cityfundsPage?.hei_feature}
-        ctaComponent={<EquityPayoff />}
+        // ctaComponent={<EquityPayoff />}
       />
       <InvestChart />
 

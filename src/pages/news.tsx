@@ -4,18 +4,20 @@ import { trackPageView } from '@utils/helpers';
 import { getAboutPageContent, getAllPress } from 'lib/sanity';
 import { useEffect } from 'react';
 
-export default function NewsPage({ allPress, aboutPage }) {
+export default function PressPage({ allPress, aboutPage }) {
   useEffect(() => {
     trackPageView('Press Page Viewed');
   });
 
+  const PRESS_FEATURE = {
+    title: 'Cityfunds in the News',
+    description: 'For media inquiries reach out to us at media@nada.co',
+    image: aboutPage?.press_hero,
+  };
+
   return (
     <>
-      <PageHero
-        heading="Cityfunds in the News"
-        primaryText="For media inquiries reach out to us at media@nada.co"
-        heroImage={aboutPage?.press_hero}
-      />
+      <PageHero feature={PRESS_FEATURE} />
       <PressArticles articles={allPress} />
     </>
   );

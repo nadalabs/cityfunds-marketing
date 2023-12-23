@@ -21,7 +21,7 @@ const sanityConfig: ClientConfig = {
 export const sanityClient = createClient(sanityConfig);
 const imageBuilder = createImageUrlBuilder(sanityConfig as any);
 export const urlForImage = (source: string, height?: number, width?: number) =>
-  imageBuilder.image(source).fit('fill').height(height).width(width);
+  imageBuilder.image(source).fit('fill').height(height).width(width).url();
 
 export const getAllFundsContent = async (): Promise<IFundContent[]> => {
   const res = await sanityClient.fetch(`

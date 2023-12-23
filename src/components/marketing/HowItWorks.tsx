@@ -1,9 +1,13 @@
 import { GreenSquare } from '@components/common/ImageStepper';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
-import { FlexWrapper, SectionWrapper } from '@elements/Containers';
+import {
+  FlexWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import { Heading, SmallHeading } from '@elements/Typography';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 
 interface HowItWorksProps {
@@ -20,6 +24,7 @@ export default function HowItWorks({
   onClick,
 }: HowItWorksProps) {
   const playerRef = useRef(null);
+  const [activeIdx, setActiveIdx] = useState(0);
 
   const handlePlay = () => {
     if (playerRef.current) {
@@ -36,26 +41,34 @@ export default function HowItWorks({
           url={videoUrl}
           height={'32rem'}
           width={'50%'}
-          style={{ borderRadius: '5rem' }}
         />
 
-        <div>
+        <StackWrapper>
           <Heading>How it Works</Heading>
-          {tutorials?.map(({ title, description }, jdx) => (
-            <div
-              key={jdx}
-              onClick={() => {}}
-              style={{ cursor: 'pointer', marginBottom: '1.5rem' }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <GreenSquare />
-                <SmallHeading>{title}</SmallHeading>
+          <div>
+            {tutorials?.map(({ title, description }, idx) => (
+              <div
+                key={idx}
+                onClick={() => setActiveIdx(idx)}
+                style={{ cursor: 'pointer', marginBottom: '1.5rem' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <GreenSquare />
+                  <SmallHeading
+                    style={{ color: activeIdx === idx ? '#2A8356' : '#989B9F' }}
+                  >
+                    {title}
+                  </SmallHeading>
+                </div>
+                {activeIdx === idx && <LongFormText content={description} />}
               </div>
-              <LongFormText content={description} />
-            </div>
-          ))}
-          <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-        </div>
+            ))}
+          </div>
+
+          <div>
+            <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+          </div>
+        </StackWrapper>
       </FlexWrapper>
     </SectionWrapper>
   );

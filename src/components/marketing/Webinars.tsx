@@ -35,7 +35,7 @@ export default function Webinanars({ webinar }: WebinanarsProps) {
           width={isMobile ? 360 : 672}
           height={isMobile ? 240 : 352}
           alt={webinar?.title}
-          src={urlForImage(webinar?.image).url()}
+          src={urlForImage(webinar?.image)}
         />
 
         <ContentWrapper>

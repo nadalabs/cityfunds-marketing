@@ -63,7 +63,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
             <CardWrapper style={{ width: '500px' }}>
               <Image
                 alt={title}
-                src={urlForImage(coverImage, 200, 300).url()}
+                src={urlForImage(coverImage, 200, 300)}
                 width={300}
                 height={200}
                 style={{ borderRadius: '2rem' }}

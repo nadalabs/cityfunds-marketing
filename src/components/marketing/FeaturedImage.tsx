@@ -3,23 +3,19 @@ import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { IFeature } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
-import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface FeaturedImageProps {
-  feature: {
-    title: string;
-    description: string;
-    image: string;
-  };
+  feature: IFeature;
   btnText?: string;
   onClick?: () => void;
-  ctaComponent?: ReactNode;
   overline?: string;
   isReversed?: boolean;
   isBackground?: boolean;
+  isWide?: boolean;
 }
 
 export default function FeaturedImage({
@@ -27,9 +23,9 @@ export default function FeaturedImage({
   btnText,
   onClick,
   overline,
-  ctaComponent,
   isReversed,
   isBackground,
+  isWide,
 }: FeaturedImageProps) {
   const isMobile = useIsMobile();
 
@@ -52,21 +48,21 @@ export default function FeaturedImage({
           {overline && <Overline>{overline}</Overline>}
           <Heading>{feature?.title}</Heading>
           <LongFormText content={feature?.description} />
-          {ctaComponent ? (
-            <>{ctaComponent}</>
-          ) : (
-            <div>
-              <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-            </div>
-          )}
+          <div>
+            <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+          </div>
         </StackWrapper>
       </ContentWrapper>
 
       <Image
-        width={isMobile ? 300 : 704}
+        width={isMobile ? 300 : 560}
         height={isMobile ? 300 : 560}
         alt={feature?.title}
-        src={urlForImage(feature?.image).url()}
+        src={
+          isWide
+            ? urlForImage(feature?.image)
+            : urlForImage(feature?.image, 560, 560)
+        }
       />
     </SectionWrapper>
   );
