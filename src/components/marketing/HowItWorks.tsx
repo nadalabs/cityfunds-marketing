@@ -1,12 +1,9 @@
 import { GreenSquare } from '@components/common/ImageStepper';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
-import {
-  FlexWrapper,
-  SectionWrapper,
-  StackWrapper,
-} from '@elements/Containers';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, SmallHeading } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 
@@ -23,6 +20,7 @@ export default function HowItWorks({
   btnText,
   onClick,
 }: HowItWorksProps) {
+  const isMobile = useIsMobile();
   const playerRef = useRef(null);
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -33,43 +31,48 @@ export default function HowItWorks({
   };
 
   return (
-    <SectionWrapper>
-      <FlexWrapper>
-        <ReactPlayer
-          ref={playerRef}
-          onPlay={handlePlay}
-          url={videoUrl}
-          height={'32rem'}
-          width={'50%'}
-        />
+    <SectionWrapper
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: isMobile ? 'column-reverse' : 'row',
+        gap: isMobile ? '1.5rem' : '5rem',
+      }}
+    >
+      <ReactPlayer
+        ref={playerRef}
+        onPlay={handlePlay}
+        url={videoUrl}
+        height={'32rem'}
+        width={'50%'}
+      />
 
-        <StackWrapper>
-          <Heading>How it Works</Heading>
-          <div>
-            {tutorials?.map(({ title, description }, idx) => (
-              <div
-                key={idx}
-                onClick={() => setActiveIdx(idx)}
-                style={{ cursor: 'pointer', marginBottom: '1.5rem' }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <GreenSquare />
-                  <SmallHeading
-                    style={{ color: activeIdx === idx ? '#2A8356' : '#989B9F' }}
-                  >
-                    {title}
-                  </SmallHeading>
-                </div>
-                {activeIdx === idx && <LongFormText content={description} />}
+      <StackWrapper style={{ width: '50%' }}>
+        <Heading>How it Works</Heading>
+        <div>
+          {tutorials?.map(({ title, description }, idx) => (
+            <div
+              key={idx}
+              onClick={() => setActiveIdx(idx)}
+              style={{ cursor: 'pointer', marginBottom: '1.5rem' }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <GreenSquare />
+                <SmallHeading
+                  style={{ color: activeIdx === idx ? '#2A8356' : '#989B9F' }}
+                >
+                  {title}
+                </SmallHeading>
               </div>
-            ))}
-          </div>
+              {activeIdx === idx && <LongFormText content={description} />}
+            </div>
+          ))}
+        </div>
 
-          <div>
-            <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-          </div>
-        </StackWrapper>
-      </FlexWrapper>
+        <div>
+          <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+        </div>
+      </StackWrapper>
     </SectionWrapper>
   );
 }

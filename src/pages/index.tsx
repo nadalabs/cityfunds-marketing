@@ -1,9 +1,9 @@
 import AccredBanner from '@components/cityfunds/AccredBanner';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
-import CityfundsHero from '@components/cityfunds/CityfundsHero';
 import InvestChart from '@components/cityfunds/InvestChart';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import EmailCapture from '@components/common/EmailCapture';
+import PageHero from '@components/common/PageHero';
 import FeaturedImage from '@components/marketing/FeaturedImage';
 import HowItWorks from '@components/marketing/HowItWorks';
 import KeyMetrics from '@components/marketing/KeyMetrics';
@@ -37,10 +37,12 @@ export default function CityfundsPage({
 
   return (
     <>
-      <CityfundsHero
+      <PageHero
         cityfunds={cityfunds}
         feature={cityfundsPage?.marketing_hero}
+        bannerText="🏆 Voted Benzinga’s Best Alternative Investment Platform"
         btnText="Explore Offerings"
+        logoTitle="Featured In"
         logos={cityfundsPage?.logos}
         onClick={() =>
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
@@ -72,10 +74,12 @@ export default function CityfundsPage({
         onClick={() =>
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
         }
+        isWide
       />
       <FeaturedImage
         feature={cityfundsPage?.hei_feature}
         // ctaComponent={<EquityPayoff />}
+        isWide
       />
       <InvestChart />
 

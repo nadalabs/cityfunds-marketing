@@ -1,3 +1,4 @@
+import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HeroBanner from '@components/common/HeroBanner';
 import LongFormText from '@components/common/LongFormText';
 import LogoSoup from '@components/marketing/LogoSoup';
@@ -5,24 +6,29 @@ import { PrimaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { ICityfund } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import styled from 'styled-components';
 
-interface NadaHeroProps {
+interface PageHeroProps {
   feature: any;
+  bannerText?: string;
   btnText?: string;
   onClick?: () => void;
   logoTitle?: string;
   logos?: any[];
+  cityfunds?: ICityfund[];
 }
 
-export default function NadaHero({
+export default function PageHero({
   feature,
+  bannerText,
   btnText,
   onClick,
   logoTitle,
   logos,
-}: NadaHeroProps) {
+  cityfunds,
+}: PageHeroProps) {
   const isMobile = useIsMobile();
 
   return (
@@ -30,7 +36,7 @@ export default function NadaHero({
       <FlexWrapper style={{ gap: isMobile ? 0 : '4rem' }}>
         <ContentWrapper>
           <StackWrapper style={{ gap: '1rem' }}>
-            <HeroBanner primaryText="🏆 Voted Benzinga’s Best Alternative Investment Platform " />
+            {bannerText && <HeroBanner primaryText={bannerText} />}
             <Heading>{feature?.title}</Heading>
             <LongFormText content={feature?.description} isLarge />
             {btnText && (
@@ -49,12 +55,15 @@ export default function NadaHero({
           )}
         </ContentWrapper>
 
-        <ImageWrapper
-          width={isMobile ? 300 : 560}
-          height={isMobile ? 300 : 560}
-          alt={feature?.title}
-          src={urlForImage(feature?.image, 560, 560)}
-        />
+        {feature?.image && (
+          <ImageWrapper
+            width={isMobile ? 300 : 560}
+            height={isMobile ? 300 : 560}
+            alt={feature?.title}
+            src={urlForImage(feature?.image, 560, 560)}
+          />
+        )}
+        {cityfunds && <CityfundSlider cityfunds={cityfunds} />}
       </FlexWrapper>
     </HeroWrapper>
   );

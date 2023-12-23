@@ -47,7 +47,7 @@ export default function FeaturedImage({
         <StackWrapper style={{ gap: '1rem' }}>
           {overline && <Overline>{overline}</Overline>}
           <Heading>{feature?.title}</Heading>
-          <LongFormText content={feature?.description} />
+          <LongFormText content={feature?.description} isLarge />
           <div>
             <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
           </div>
