@@ -7,12 +7,14 @@ import { useRef } from 'react';
 import ReactPlayer from 'react-player';
 
 interface HowItWorksProps {
+  videoUrl: string;
   tutorials: { title: string; description: string; image: string }[];
   btnText: string;
   onClick: () => void;
 }
 
 export default function HowItWorks({
+  videoUrl,
   tutorials,
   btnText,
   onClick,
@@ -31,7 +33,7 @@ export default function HowItWorks({
         <ReactPlayer
           ref={playerRef}
           onPlay={handlePlay}
-          url={'https://www.youtube.com/watch?v=cVyTz8b6oBA'}
+          url={videoUrl}
           height={'32rem'}
           width={'50%'}
           style={{ borderRadius: '5rem' }}

@@ -84,6 +84,7 @@ export default function CityfundsPage({
       <AccredBanner cityfunds={cityfunds} />
 
       <HowItWorks
+        videoUrl={cityfundsPage?.video_url}
         tutorials={cityfundsPage?.tutorials}
         btnText="Sign Up"
         onClick={() =>

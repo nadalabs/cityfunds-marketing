@@ -75,7 +75,7 @@ export const FOOTER_LINKS = [
     title: 'Resources',
     links: [
       { name: 'Nada', link: process.env.NEXT_PUBLIC_NADA_URL },
-      { name: 'Newsroom', link: '/press' },
+      { name: 'News', link: '/news' },
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
     ],
   },
