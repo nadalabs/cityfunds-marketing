@@ -189,7 +189,7 @@ export const homesharesPageFields = `
 
 export const aboutPageFields = `
   _id,
-  hero_image,
+  about_hero,
   ourStory,
   logos,
   teammates,

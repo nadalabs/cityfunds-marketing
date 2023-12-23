@@ -19,12 +19,7 @@ export default function AboutPage({ aboutPage }) {
 
   return (
     <>
-      <PageHero
-        heading="Create products that unlock wealth & financial freedom."
-        primaryText="Unlock diversified real estate portfolios with passive income in the nations top cities."
-        heroImage={aboutPage?.hero_image}
-        maxWidth={1000}
-      />
+      <PageHero feature={aboutPage?.about_hero} />
       <SectionWrapper style={{ maxWidth: isMobile ? '100%' : '75%' }}>
         <LongFormText
           title="Our Story"

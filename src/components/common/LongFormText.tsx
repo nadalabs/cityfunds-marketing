@@ -17,6 +17,7 @@ interface LongFormTextProps {
   content: any;
   isSmall?: boolean;
   isLarge?: boolean;
+  isInverted?: boolean;
 }
 
 export default function LongFormText({
@@ -25,6 +26,7 @@ export default function LongFormText({
   content,
   isSmall,
   isLarge,
+  isInverted,
 }: LongFormTextProps) {
   const isMobile = useIsMobile();
 
@@ -36,7 +38,11 @@ export default function LongFormText({
         } else if (isLarge) {
           return <LargeText>{children}</LargeText>;
         } else {
-          return <PrimaryText>{children}</PrimaryText>;
+          return (
+            <PrimaryText style={{ color: isInverted ? 'white' : '#888888' }}>
+              {children}
+            </PrimaryText>
+          );
         }
       },
       blockquote: ({ children }: any) => {

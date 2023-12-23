@@ -15,7 +15,7 @@ export default function CareersCTA({ description }: CareersCTAProps) {
       <ContentWrapper>
         <StackWrapper>
           <Heading style={{ color: 'white' }}>Think you're a fit?</Heading>
-          <LongFormText content={description} />
+          <LongFormText content={description} isInverted />
           <div>
             <PrimaryButton
               style={{ color: '#48dc95', backgroundColor: 'white' }}
