@@ -35,7 +35,7 @@ export default function HowItWorks({
       style={{
         display: 'flex',
         alignItems: 'center',
-        flexDirection: isMobile ? 'column-reverse' : 'row',
+        flexDirection: isMobile ? 'column' : 'row',
         gap: isMobile ? '1.5rem' : '5rem',
       }}
     >
@@ -43,11 +43,11 @@ export default function HowItWorks({
         ref={playerRef}
         onPlay={handlePlay}
         url={videoUrl}
-        height={'32rem'}
-        width={'50%'}
+        height={isMobile ? '16rem' : '32rem'}
+        width={isMobile ? '100%' : '50%'}
       />
 
-      <StackWrapper style={{ width: '50%' }}>
+      <StackWrapper style={{ width: isMobile ? '100%' : '50%' }}>
         <Heading>How it Works</Heading>
         <div>
           {tutorials?.map(({ title, description }, idx) => (

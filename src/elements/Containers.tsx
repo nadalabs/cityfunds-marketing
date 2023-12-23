@@ -8,7 +8,7 @@ export const SectionWrapper = styled.div<{ isBackground?: boolean }>`
       : 'none'};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 48px 24px;
+    padding: 3rem 1.5rem;
   }
 `;
 

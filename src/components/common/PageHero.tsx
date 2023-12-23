@@ -3,7 +3,7 @@ import HeroBanner from '@components/common/HeroBanner';
 import LongFormText from '@components/common/LongFormText';
 import LogoSoup from '@components/marketing/LogoSoup';
 import { PrimaryButton } from '@elements/Buttons';
-import { FlexWrapper, StackWrapper } from '@elements/Containers';
+import { StackWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { ICityfund } from '@utils/models';
@@ -33,38 +33,36 @@ export default function PageHero({
 
   return (
     <HeroWrapper>
-      <FlexWrapper style={{ gap: isMobile ? 0 : '4rem' }}>
-        <ContentWrapper>
-          <StackWrapper style={{ gap: '1rem' }}>
-            {bannerText && <HeroBanner primaryText={bannerText} />}
-            <Heading>{feature?.title}</Heading>
-            <LongFormText content={feature?.description} isLarge />
-            {btnText && (
-              <div>
-                <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-              </div>
-            )}
-          </StackWrapper>
-
-          {logos && (
-            <LogoSoup
-              overline={logoTitle}
-              logos={isMobile ? logos.slice(0, 4) : logos}
-              isHero
-            />
+      <ContentWrapper>
+        <StackWrapper style={{ gap: '1rem' }}>
+          {bannerText && <HeroBanner primaryText={bannerText} />}
+          <Heading>{feature?.title}</Heading>
+          <LongFormText content={feature?.description} isLarge />
+          {btnText && (
+            <div>
+              <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+            </div>
           )}
-        </ContentWrapper>
+        </StackWrapper>
 
-        {feature?.image && (
-          <ImageWrapper
-            width={isMobile ? 300 : 560}
-            height={isMobile ? 300 : 560}
-            alt={feature?.title}
-            src={urlForImage(feature?.image, 560, 560)}
+        {logos && (
+          <LogoSoup
+            overline={logoTitle}
+            logos={isMobile ? logos.slice(0, 4) : logos}
+            isHero
           />
         )}
-        {cityfunds && <CityfundSlider cityfunds={cityfunds} />}
-      </FlexWrapper>
+      </ContentWrapper>
+
+      {feature?.image && (
+        <ImageWrapper
+          width={isMobile ? 300 : 560}
+          height={isMobile ? 300 : 560}
+          alt={feature?.title}
+          src={urlForImage(feature?.image, 560, 560)}
+        />
+      )}
+      {cityfunds && <CityfundSlider cityfunds={cityfunds} />}
     </HeroWrapper>
   );
 }
@@ -80,7 +78,9 @@ export const HeroWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column-reverse;
     justify-content: center;
-    padding: 1rem;
+    padding: 8rem 1rem 0 1rem;
+    gap: 1rem;
+    height: 100%;
   }
 `;
 
@@ -94,7 +94,7 @@ const ContentWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
     margin: 0;
   }
 `;
