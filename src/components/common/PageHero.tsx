@@ -6,13 +6,16 @@ import { PrimaryButton } from '@elements/Buttons';
 import { StackWrapper } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { ICityfund } from '@utils/models';
+import { ICityfund, IFeature } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import styled from 'styled-components';
 
 interface PageHeroProps {
-  feature: any;
-  bannerText?: string;
+  feature: IFeature;
+  banner?: {
+    text: string;
+    link: string;
+  };
   btnText?: string;
   onClick?: () => void;
   logoTitle?: string;
@@ -22,7 +25,7 @@ interface PageHeroProps {
 
 export default function PageHero({
   feature,
-  bannerText,
+  banner,
   btnText,
   onClick,
   logoTitle,
@@ -35,7 +38,7 @@ export default function PageHero({
     <HeroWrapper>
       <ContentWrapper>
         <StackWrapper style={{ gap: '1rem' }}>
-          {bannerText && <HeroBanner primaryText={bannerText} />}
+          {banner && <HeroBanner primaryText={banner?.text} />}
           <Heading>{feature?.title}</Heading>
           <LongFormText content={feature?.description} isLarge />
           {btnText && (

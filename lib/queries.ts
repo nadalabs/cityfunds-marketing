@@ -164,6 +164,7 @@ export const cityfundsPageFields = `
   _id,
   logos,
   marketing_hero,
+  hero_banner,
   cityfunds_feature,
   hei_feature,
   video_url,
@@ -195,7 +196,7 @@ export const aboutPageFields = `
   teammates,
   values,
   careers,
-  press_hero
+  news_hero
 `;
 
 export const footerQuery = `

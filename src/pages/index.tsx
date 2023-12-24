@@ -40,7 +40,7 @@ export default function CityfundsPage({
       <PageHero
         cityfunds={cityfunds}
         feature={cityfundsPage?.marketing_hero}
-        bannerText="🏆 Voted Benzinga’s Best Alternative Investment Platform"
+        banner={cityfundsPage?.hero_banner}
         btnText="Explore Offerings"
         logoTitle="Featured In"
         logos={cityfundsPage?.logos}
