@@ -1,6 +1,11 @@
 import LongFormText from '@components/common/LongFormText';
-import { SectionWrapper, StackWrapper } from '@elements/Containers';
+import {
+  FadeWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import { Heading, LinkText, Overline } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -17,24 +22,28 @@ export default function FaqQuestions({
   linkText,
   isBackground,
 }: FaqQuestionsProps) {
-  const [active, setActive] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const isMobile = useIsMobile();
 
   return (
     <SectionWrapper isBackground={isBackground}>
       <StackWrapper style={{ gap: '1rem' }}>
         <Overline>Frequently Asked Questions</Overline>
 
-        {faqs.map(({ question, answer }, idx) => (
+        {faqs?.map(({ question, answer }, idx) => (
           <ContentWrapper key={idx}>
             <HoverHeading
-              onClick={() => setActive(idx)}
-              style={{ color: idx === active ? '#48DC95' : 'black' }}
+              onClick={() => setActiveIdx(idx)}
+              isActive={activeIdx === idx}
             >
               {question}
             </HoverHeading>
-            <TextWrapper style={{ display: idx === active ? 'block' : 'none' }}>
+            <FadeWrapper
+              isActive={activeIdx === idx}
+              style={{ maxWidth: isMobile ? '100%' : '45%' }}
+            >
               <LongFormText content={answer} />
-            </TextWrapper>
+            </FadeWrapper>
           </ContentWrapper>
         ))}
 
@@ -63,30 +72,22 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const HoverHeading = styled(Heading)`
+export const HoverHeading = styled(Heading)<{ isActive?: boolean }>`
   transition: ${({ theme }) => theme.transitions.ease};
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.primary : theme.colors.black};
   margin-bottom: 1rem;
   cursor: pointer;
   width: 50%;
   font-size: 3rem;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.lightGrey};
+    color: ${({ theme }) => theme.colors.secondary};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
     font-size: 3rem;
     line-height: 3.5rem;
-  }
-`;
-
-export const TextWrapper = styled.div`
-  max-width: 45%;
-  transition: ${({ theme }) => theme.transitions.ease};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    max-width: 100%;
   }
 `;

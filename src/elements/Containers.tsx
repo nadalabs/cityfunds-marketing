@@ -168,3 +168,9 @@ export const TickerWrapper = styled.div`
     gap: 0.25rem;
   }
 `;
+
+export const FadeWrapper = styled.div<{ isActive?: boolean }>`
+  transition: ${({ theme }) => theme.transitions.ease};
+  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
+  visibility: ${({ isActive }) => (isActive ? 'visible' : 'hidden')};
+`;

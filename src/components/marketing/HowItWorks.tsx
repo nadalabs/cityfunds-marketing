@@ -1,11 +1,16 @@
 import { GreenSquare } from '@components/common/ImageStepper';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
-import { SectionWrapper, StackWrapper } from '@elements/Containers';
+import {
+  FadeWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import { Heading, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
+import styled from 'styled-components';
 
 interface HowItWorksProps {
   videoUrl: string;
@@ -58,13 +63,13 @@ export default function HowItWorks({
             >
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <GreenSquare />
-                <SmallHeading
-                  style={{ color: activeIdx === idx ? '#2A8356' : '#989B9F' }}
-                >
+                <HoverHeading isActive={activeIdx === idx}>
                   {title}
-                </SmallHeading>
+                </HoverHeading>
               </div>
-              {activeIdx === idx && <LongFormText content={description} />}
+              <FadeWrapper isActive={activeIdx === idx}>
+                {activeIdx === idx && <LongFormText content={description} />}
+              </FadeWrapper>
             </div>
           ))}
         </div>
@@ -76,3 +81,16 @@ export default function HowItWorks({
     </SectionWrapper>
   );
 }
+
+const HoverHeading = styled(SmallHeading)<{ isActive?: boolean }>`
+  transition: ${({ theme }) => theme.transitions.ease};
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.primary : theme.colors.darkText};
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondary};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+  }
+`;
