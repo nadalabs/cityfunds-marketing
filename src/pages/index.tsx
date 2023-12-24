@@ -1,4 +1,4 @@
-import AccredBanner from '@components/cityfunds/AccredBanner';
+import AccreditedGrid from '@components/cityfunds/AccreditedGrid';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
 import InvestChart from '@components/cityfunds/InvestChart';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
@@ -84,7 +84,7 @@ export default function CityfundsPage({
       <InvestChart />
 
       <CityfundsGrid cityfunds={cityfunds} />
-      <AccredBanner cityfunds={cityfunds} />
+      <AccreditedGrid cityfunds={cityfunds} />
 
       <HowItWorks
         videoUrl={cityfundsPage?.video_url}

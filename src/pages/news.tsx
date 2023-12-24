@@ -1,4 +1,4 @@
-import PressArticles from '@components/PressArticles';
+import NewsArticles from '@components/about/NewsArticles';
 import PageHero from '@components/common/PageHero';
 import { trackPageView } from '@utils/helpers';
 import { getAboutPageContent, getAllPress } from 'lib/sanity';
@@ -12,7 +12,7 @@ export default function NewsPage({ allPress, aboutPage }) {
   return (
     <>
       <PageHero feature={aboutPage?.news_hero} />
-      <PressArticles articles={allPress} />
+      <NewsArticles articles={allPress} />
     </>
   );
 }

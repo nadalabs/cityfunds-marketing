@@ -11,11 +11,11 @@ import useIsMobile from '@hooks/useIsMobile';
 import { REGULATION } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 
-interface AccredBannerProps {
+interface AccreditedGridProps {
   cityfunds: ICityfund[];
 }
 
-export default function AccredBanner({ cityfunds }: AccredBannerProps) {
+export default function AccreditedGrid({ cityfunds }: AccreditedGridProps) {
   const isMobile = useIsMobile();
 
   const ALL_CARDS = cityfunds
