@@ -38,7 +38,9 @@ export default function PageHero({
     <HeroWrapper>
       <ContentWrapper>
         <StackWrapper style={{ gap: '1rem' }}>
-          {banner && <HeroBanner primaryText={banner?.text} />}
+          {banner && (
+            <HeroBanner primaryText={banner?.text} link={banner?.link} />
+          )}
           <Heading>{feature?.title}</Heading>
           <LongFormText content={feature?.description} isLarge />
           {btnText && (
