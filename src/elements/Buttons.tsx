@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 export const PrimaryButton = styled.button<{ isInverted?: boolean }>`
+  transition: ${({ theme }) => theme.transitions.ease};
   color: ${({ theme, isInverted }) =>
     isInverted ? theme.colors.primary : 'white'};
   background: ${({ theme, isInverted }) =>
@@ -22,6 +23,13 @@ export const PrimaryButton = styled.button<{ isInverted?: boolean }>`
   &:disabled {
     background-color: ${({ isInverted }) =>
       isInverted ? '#FFFFFF' : 'rgba(42, 131, 86, 0.4)'};
+  }
+
+  &:hover {
+    background-color: ${({ theme, isInverted }) =>
+      isInverted ? 'white' : theme.colors.secondary};
+    color: ${({ theme, isInverted }) =>
+      isInverted ? theme.colors.secondary : 'white'};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
