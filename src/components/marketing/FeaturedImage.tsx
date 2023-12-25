@@ -6,6 +6,7 @@ import useIsMobile from '@hooks/useIsMobile';
 import { IFeature } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface FeaturedImageProps {
@@ -13,6 +14,7 @@ interface FeaturedImageProps {
   btnText?: string;
   onClick?: () => void;
   overline?: string;
+  component?: ReactNode;
   isReversed?: boolean;
   isBackground?: boolean;
   isWide?: boolean;
@@ -23,6 +25,7 @@ export default function FeaturedImage({
   btnText,
   onClick,
   overline,
+  component,
   isReversed,
   isBackground,
   isWide,
@@ -48,13 +51,18 @@ export default function FeaturedImage({
           {overline && <Overline>{overline}</Overline>}
           <Heading>{feature?.title}</Heading>
           <LongFormText content={feature?.description} isLarge />
-          <div>
-            <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-          </div>
+          {component ? (
+            component
+          ) : (
+            <div>
+              <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
+            </div>
+          )}
         </StackWrapper>
       </ContentWrapper>
 
       <Image
+        style={{ borderRadius: '2rem' }}
         width={isMobile ? 300 : 560}
         height={isMobile ? 300 : 560}
         alt={feature?.title}

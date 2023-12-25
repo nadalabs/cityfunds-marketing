@@ -1,5 +1,6 @@
 import AccreditedGrid from '@components/cityfunds/AccreditedGrid';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
+import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import InvestChart from '@components/cityfunds/InvestChart';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import EmailCapture from '@components/common/EmailCapture';
@@ -19,18 +20,12 @@ import { useEffect } from 'react';
 interface CityfundsPageProps {
   cityfundsPage?: any;
   cityfunds: any[];
-  partner: any;
 }
 
 export default function CityfundsPage({
   cityfundsPage,
   cityfunds,
-  partner,
 }: CityfundsPageProps) {
-  const bannerText = partner?.promo?.banner
-    ? cityfundsPage?.promo?.banner
-    : cityfundsPage?.webinar?.banner;
-
   useEffect(() => {
     trackPageView('Cityfunds Page Viewed');
   });
@@ -47,7 +42,6 @@ export default function CityfundsPage({
         onClick={() =>
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
         }
-        // isBanner={!!bannerText}
       />
       <KeyMetrics
         metrics={[
@@ -78,7 +72,7 @@ export default function CityfundsPage({
       />
       <FeaturedImage
         feature={cityfundsPage?.hei_feature}
-        // ctaComponent={<EquityPayoff />}
+        component={<EquityPayoff />}
         isWide
       />
       <InvestChart />

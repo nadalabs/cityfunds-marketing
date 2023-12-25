@@ -34,8 +34,8 @@ export default function AccreditedGrid({ cityfunds }: AccreditedGridProps) {
 
   return (
     <SectionWrapper isBackground>
-      <StackWrapper style={{ justifyContent: 'center', gap: '0.5rem' }}>
-        <Heading style={{ fontSize: '2.5rem', margin: 0 }}>
+      <StackWrapper style={{ gap: 0, marginBottom: '1.5rem' }}>
+        <Heading style={{ fontSize: '2.5rem' }}>
           Are you an Accredited Investor?
         </Heading>
         <LargeText>
@@ -47,11 +47,11 @@ export default function AccreditedGrid({ cityfunds }: AccreditedGridProps) {
         {ACCRED_CARDS.map((card, idx) => (
           <div key={idx}>
             <TopWrapper>
-              <CityfundCard {...card} image={card?.images[0]} width={600} />
+              <CityfundCard {...card} image={card?.images[0]} width={800} />
             </TopWrapper>
             {!isMobile && (
               <BottomWrapper>
-                <CityfundCard {...card} image={card?.images[1]} width={600} />
+                <CityfundCard {...card} image={card?.images[1]} width={800} />
               </BottomWrapper>
             )}
           </div>
