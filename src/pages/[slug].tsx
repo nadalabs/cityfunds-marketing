@@ -33,7 +33,6 @@ export default function DynamicPage({
         <CityfundsPage
           cityfundsPage={cityfundsPage}
           cityfunds={cityfunds}
-          partner={partner}
         />
       )}
       {legal && <LegalTerms legal={legal} />}
