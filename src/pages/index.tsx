@@ -63,6 +63,12 @@ export default function CityfundsPage({
         ]}
       />
       <FeaturedImage
+        feature={cityfundsPage?.hei_feature}
+        component={<EquityPayoff />}
+        isWide
+      />
+      <InvestChart />
+      <FeaturedImage
         feature={cityfundsPage?.cityfunds_feature}
         btnText="Explore Offerings"
         onClick={() =>
@@ -70,12 +76,6 @@ export default function CityfundsPage({
         }
         isWide
       />
-      <FeaturedImage
-        feature={cityfundsPage?.hei_feature}
-        component={<EquityPayoff />}
-        isWide
-      />
-      <InvestChart />
 
       <CityfundsGrid cityfunds={cityfunds} />
       <AccreditedGrid cityfunds={cityfunds} />

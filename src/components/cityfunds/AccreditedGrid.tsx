@@ -45,7 +45,7 @@ export default function AccreditedGrid({ cityfunds }: AccreditedGridProps) {
 
       <GridWrapper>
         {ACCRED_CARDS.map((card, idx) => (
-          <div key={idx}>
+          <div key={idx} style={{ zIndex: 1 }}>
             <TopWrapper>
               <CityfundCard {...card} image={card?.images[0]} width={800} />
             </TopWrapper>
