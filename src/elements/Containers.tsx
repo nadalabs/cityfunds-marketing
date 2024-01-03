@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SectionWrapper = styled.div<{ isBackground?: boolean }>`
-  padding: 6.25rem 9.5rem;
+  padding: 6.25rem;
   background: ${({ isBackground }) =>
     isBackground
       ? 'linear-gradient(0deg, rgba(42, 131, 86, 0.05) 0%, rgba(42, 131, 86, 0.05) 100%), #FFF'
