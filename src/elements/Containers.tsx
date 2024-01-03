@@ -7,6 +7,10 @@ export const SectionWrapper = styled.div<{ isBackground?: boolean }>`
       ? 'linear-gradient(0deg, rgba(42, 131, 86, 0.05) 0%, rgba(42, 131, 86, 0.05) 100%), #FFF'
       : 'none'};
 
+  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
+    padding: 6.25rem 16rem;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 3rem 1.5rem;
   }

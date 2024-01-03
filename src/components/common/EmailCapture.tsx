@@ -174,7 +174,7 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
 }
 
 const StickyWrapper = styled.div`
-  position: sticky;
+  position: fixed;
   left: 6.5rem;
   bottom: 2rem;
   width: 40%;

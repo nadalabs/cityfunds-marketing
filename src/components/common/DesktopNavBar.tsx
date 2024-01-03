@@ -139,8 +139,12 @@ const NavbarWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-shrink: 0;
-  padding: 1.5rem 6.25rem;
   width: 100vw;
+  padding: 1.5rem 6.25rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
+    padding: 1.5rem 16rem;
+  }
 `;
 
 const NavbarContent = styled.div`
@@ -148,7 +152,6 @@ const NavbarContent = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 100rem;
 `;
 
 const DropdownMenu = styled.div`

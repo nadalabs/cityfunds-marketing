@@ -30,10 +30,7 @@ export default function DynamicPage({
   return (
     <>
       {partner && (
-        <CityfundsPage
-          cityfundsPage={cityfundsPage}
-          cityfunds={cityfunds}
-        />
+        <CityfundsPage cityfundsPage={cityfundsPage} cityfunds={cityfunds} />
       )}
       {legal && <LegalTerms legal={legal} />}
     </>

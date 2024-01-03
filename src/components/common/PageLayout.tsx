@@ -33,5 +33,5 @@ const LayoutWrapper = styled.div`
 
 const MainWrapper = styled.div`
   width: 100%;
-  max-width: 100rem;
+  /* max-width: 100rem; */
 `;

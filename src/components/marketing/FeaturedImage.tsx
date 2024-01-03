@@ -37,6 +37,7 @@ export default function FeaturedImage({
       style={{
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         flexDirection: isMobile
           ? 'column-reverse'
           : isReversed
@@ -77,7 +78,7 @@ export default function FeaturedImage({
 }
 
 export const ContentWrapper = styled.div`
-  width: 50%;
+  max-width: 40rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
