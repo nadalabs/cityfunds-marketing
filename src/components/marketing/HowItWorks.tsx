@@ -61,13 +61,22 @@ export default function HowItWorks({
               onClick={() => setActiveIdx(idx)}
               style={{ cursor: 'pointer', marginBottom: '1.5rem' }}
             >
-              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginBottom: '1.5rem',
+                }}
+              >
                 <GreenSquare />
                 <HoverHeading isActive={activeIdx === idx}>
                   {title}
                 </HoverHeading>
               </div>
-              <FadeWrapper isActive={activeIdx === idx}>
+              <FadeWrapper
+                isActive={activeIdx === idx}
+                style={{ marginLeft: '1.5rem' }}
+              >
                 {activeIdx === idx && <LongFormText content={description} />}
               </FadeWrapper>
             </div>
@@ -85,12 +94,9 @@ export default function HowItWorks({
 const HoverHeading = styled(SmallHeading)<{ isActive?: boolean }>`
   transition: ${({ theme }) => theme.transitions.ease};
   color: ${({ theme, isActive }) =>
-    isActive ? theme.colors.primary : theme.colors.darkText};
+    isActive ? theme.colors.primary : '#30303080'};
 
   &:hover {
     color: ${({ theme }) => theme.colors.secondary};
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
   }
 `;
