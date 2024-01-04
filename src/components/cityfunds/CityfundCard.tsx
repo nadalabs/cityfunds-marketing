@@ -34,7 +34,7 @@ export default function CityfundCard({
       }/cityfunds/${fund_data?.fund_name.toLowerCase().replace(/ /g, '-')}`}
       target="_blank"
     >
-      <FundWrapper style={{ margin: isSlider ? '0.5rem 0' : '0' }}>
+      <FundWrapper style={{ margin: isSlider ? '0 0.5rem' : '0' }}>
         <ImageWrapper>
           <Image
             alt={fund_data?.fund_name}
