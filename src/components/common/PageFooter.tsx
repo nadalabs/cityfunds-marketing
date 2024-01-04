@@ -83,8 +83,8 @@ export default function PageFooter({ legal }: PageFooterProps) {
         </div>
       </LinkWrapper>
 
-      <LongFormText content={showMore ? legal : legal.slice(0, 8)} isSmall />
       <div>
+        <LongFormText content={showMore ? legal : legal.slice(0, 8)} isSmall />
         <SecondaryButton
           onClick={() => setShowMore(!showMore)}
           style={{ color: '#48DC95', textDecoration: 'underline' }}
