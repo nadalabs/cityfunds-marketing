@@ -2,6 +2,7 @@ import { GreenSquare } from '@components/common/ImageStepper';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { formatPrice } from '@utils/helpers';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
@@ -13,31 +14,25 @@ interface KeyMetricsProps {
 
 export default function KeyMetrics({ metrics }: KeyMetricsProps) {
   const isMobile = useIsMobile();
-  const easingFn = function (t) {
-    // Example: easeInOutCubic
-    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-  };
 
   return (
     <SectionWrapper isBackground>
       <FlexWrapper
         style={{
           justifyContent: 'space-evenly',
-          flexWrap: metrics.length > 3 ? 'wrap' : 'nowrap',
         }}
       >
-        {metrics?.map(({ label, value, formattingFn, decimals, prefix }) => (
+        {metrics?.map(({ label, value, is_dollar }) => (
           <CounterWrapper key={label}>
             <div style={{ display: 'flex', alignItems: 'flex-end' }}>
               <CountUp
                 end={value}
                 enableScrollSpy
                 scrollSpyDelay={100}
-                formattingFn={formattingFn}
-                decimals={decimals}
-                prefix={prefix}
-                // easingFn={easingFn}
-                // duration={3}
+                formattingFn={
+                  is_dollar ? (value) => formatPrice(value, 0) : undefined
+                }
+                duration={3}
               >
                 {({ countUpRef }) => (
                   <LargeHeading

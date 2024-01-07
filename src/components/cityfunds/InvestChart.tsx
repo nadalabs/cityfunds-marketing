@@ -1,9 +1,5 @@
-import {
-  FlexWrapper,
-  SectionWrapper,
-  ShaddowWrapper,
-} from '@elements/Containers';
-import { BoldText, PrimaryText, SmallHeading } from '@elements/Typography';
+import { SectionWrapper, ShaddowWrapper } from '@elements/Containers';
+import { BoldText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { LineChart } from '@tremor/react';
 import { shortenNumber } from '@utils/helpers';
@@ -16,16 +12,16 @@ export default function InvestChart({}: InvestChartProps) {
   const isMobile = useIsMobile();
 
   const chartData = [
-    { date: 'Yr 1', 'HEI Value': 131818, 'Original Investment': 100000 },
-    { date: 'Yr 2', 'HEI Value': 142955, 'Original Investment': 100000 },
-    { date: 'Yr 3', 'HEI Value': 154648, 'Original Investment': 100000 },
-    { date: 'Yr 4', 'HEI Value': 166926, 'Original Investment': 100000 },
-    { date: 'Yr 5', 'HEI Value': 179817, 'Original Investment': 100000 },
-    { date: 'Yr 6', 'HEI Value': 193354, 'Original Investment': 100000 },
-    { date: 'Yr 7', 'HEI Value': 207567, 'Original Investment': 100000 },
-    { date: 'Yr 8', 'HEI Value': 222491, 'Original Investment': 100000 },
-    { date: 'Yr 9', 'HEI Value': 238161, 'Original Investment': 100000 },
-    { date: 'Yr 10', 'HEI Value': 254614, 'Original Investment': 100000 },
+    { date: 'Yr 1', 'HEI Market Cap': 131818 },
+    { date: 'Yr 2', 'HEI Market Cap': 142955 },
+    { date: 'Yr 3', 'HEI Market Cap': 154648 },
+    { date: 'Yr 4', 'HEI Market Cap': 166926 },
+    { date: 'Yr 5', 'HEI Market Cap': 179817 },
+    { date: 'Yr 6', 'HEI Market Cap': 193354 },
+    { date: 'Yr 7', 'HEI Market Cap': 207567 },
+    { date: 'Yr 8', 'HEI Market Cap': 222491 },
+    { date: 'Yr 9', 'HEI Market Cap': 238161 },
+    { date: 'Yr 10', 'HEI Market Cap': 254614 },
   ];
 
   return (
@@ -35,13 +31,13 @@ export default function InvestChart({}: InvestChartProps) {
     >
       <ShaddowWrapper>
         <BoldText style={{ fontSize: '1rem', textAlign: 'center' }}>
-          Home Equity Investment Lifecycle
+          Home Equity Investments Asset Growth
         </BoldText>
         <LineChart
           className="h-72 mt-4"
           data={chartData}
           index="date"
-          categories={['HEI Value', 'Original Investment']}
+          categories={['HEI Market Cap']}
           colors={['green', 'slate']}
           yAxisWidth={45}
           valueFormatter={(v) => `$${shortenNumber(v, 0)}`}
@@ -50,29 +46,6 @@ export default function InvestChart({}: InvestChartProps) {
           showAnimation
         />
       </ShaddowWrapper>
-
-      <FlexWrapper
-        style={{ gap: '2.5rem', flexDirection: isMobile ? 'column' : 'row' }}
-      >
-        <ShaddowWrapper isShort>
-          <SmallHeading style={{ marginBottom: '1rem' }}>Year 1</SmallHeading>
-          <PrimaryText>
-            The homeowner receives $100,000 in cash, and in exchange, we acquire
-            approximately 30% equity ownership in the home's future
-            appreciation. At this point, the home is valued at $700,000.
-          </PrimaryText>
-        </ShaddowWrapper>
-        <ShaddowWrapper isShort>
-          <SmallHeading style={{ marginBottom: '1rem' }}>Year 10</SmallHeading>
-          <PrimaryText>
-            The homeowner decides to sell or refinance. The home's value has
-            risen to $1,140,226. At this point, our equity share amounts to
-            $254,614, while the homeowner's share stands at $885,612. The
-            effective annual percentage rate (APR) for this investment
-            arrangement is calculated at 9.80%.
-          </PrimaryText>
-        </ShaddowWrapper>
-      </FlexWrapper>
     </SectionWrapper>
   );
 }

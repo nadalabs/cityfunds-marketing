@@ -164,7 +164,7 @@ export const cityfundsPageFields = `
   _id,
   logos,
   marketing_hero,
-  hero_banner
+  hero_banner,
   metrics,
   cityfunds_feature,
   hei_feature,
