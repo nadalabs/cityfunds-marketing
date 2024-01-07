@@ -61,10 +61,10 @@ export default function PageHero({
 
       {feature?.image && (
         <ImageWrapper
-          width={isMobile ? 300 : 560}
-          height={isMobile ? 300 : 560}
+          width={isMobile ? 300 : 512}
+          height={isMobile ? 300 : 512}
           alt={feature?.title}
-          src={urlForImage(feature?.image, 560, 560)}
+          src={urlForImage(feature?.image, 512, 512)}
         />
       )}
       {cityfunds && <CityfundSlider cityfunds={cityfunds} />}
@@ -78,7 +78,6 @@ export const HeroWrapper = styled.div`
   align-items: center;
   gap: 8rem;
   height: 100vh;
-  padding: 9.25rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column-reverse;

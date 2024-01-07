@@ -164,7 +164,8 @@ export const cityfundsPageFields = `
   _id,
   logos,
   marketing_hero,
-  hero_banner,
+  hero_banner
+  metrics,
   cityfunds_feature,
   hei_feature,
   video_url,
@@ -176,16 +177,6 @@ export const cityfundsPageFields = `
   investor_relations,
   promo,
   webinar,
-`;
-
-export const homesharesPageFields = `
-  _id,
-  hero_image,
-  homeshares_feature,
-  tutorials,
-  questions,
-  testimonials,
-  cityfunds_feature
 `;
 
 export const aboutPageFields = `

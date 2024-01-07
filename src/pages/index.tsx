@@ -43,25 +43,7 @@ export default function CityfundsPage({
           window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank')
         }
       />
-      <KeyMetrics
-        metrics={[
-          {
-            label: 'Total Investors',
-            value: 15,
-            formattingFn: (val) => `${val}K+`,
-          },
-          {
-            label: 'Home Equity Investments',
-            value: 100,
-            formattingFn: (val) => `${val}+`,
-          },
-          {
-            label: 'Gross Asset Value',
-            value: 40,
-            formattingFn: (val) => `$${val}M+`,
-          },
-        ]}
-      />
+      <KeyMetrics metrics={cityfundsPage?.metrics} />
       <FeaturedImage
         feature={cityfundsPage?.hei_feature}
         component={<EquityPayoff />}
@@ -105,9 +87,7 @@ export default function CityfundsPage({
       />
 
       {cityfundsPage?.promo && <InvestorPromo promo={cityfundsPage?.promo} />}
-      {cityfundsPage?.webinar && (
-        <Webinanars webinar={cityfundsPage?.webinar} />
-      )}
+      <Webinanars webinar={cityfundsPage?.webinar} />
       <EmailCapture formName="Cityfunds" isPopup />
     </>
   );
