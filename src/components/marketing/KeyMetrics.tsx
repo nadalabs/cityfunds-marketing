@@ -2,7 +2,7 @@ import { GreenSquare } from '@components/common/ImageStepper';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { formatPrice } from '@utils/helpers';
+import { shortenNumber } from '@utils/helpers';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
@@ -30,7 +30,9 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
                 enableScrollSpy
                 scrollSpyDelay={100}
                 formattingFn={
-                  is_dollar ? (value) => formatPrice(value, 0) : undefined
+                  is_dollar
+                    ? (value) => `$${shortenNumber(value, 0)}`
+                    : undefined
                 }
                 duration={3}
               >

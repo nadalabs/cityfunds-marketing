@@ -28,6 +28,7 @@ export const shortenNumber = (num: number, digits: number) => {
     { value: 1e3, symbol: 'K' },
     { value: 1e6, symbol: 'M' },
     { value: 1e9, symbol: 'B' },
+    { value: 1e12, symbol: 'T' },
   ];
   const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
   const item = lookup
