@@ -111,10 +111,13 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
                       {name.toUpperCase()}
                     </NavbarLink>
                     <Image
+                      src={'/icons/arrow-light.svg'}
+                      alt={'Menu'}
+                      style={{
+                        transform: dropDown ? 'rotate(-90deg)' : 'rotate(0deg)',
+                      }}
                       width={16}
                       height={16}
-                      alt={'Menu'}
-                      src={'/icons/arrow-down.svg'}
                     />
                   </FlexWrapper>
 
