@@ -175,8 +175,8 @@ export const cityfundsPageFields = `
   testimonials,
   homeowners_feature,
   investor_relations,
-  promo,
-  webinar,
+  "promo": promo->{banner, title, description, disclaimer, image},
+  "webinar": webinar->{banner, title, description, date, image, link},
 `;
 
 export const aboutPageFields = `

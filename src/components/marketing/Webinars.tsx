@@ -1,9 +1,15 @@
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
-import { FlexWrapper, StackWrapper } from '@elements/Containers';
+import {
+  FlexWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import { Caption, Heading, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { urlForImage } from 'lib/sanity';
 import moment from 'moment';
+import Image from 'next/image';
 import styled from 'styled-components';
 
 interface WebinarsProps {
@@ -26,15 +32,16 @@ export default function Webinars({ webinar }: WebinarsProps) {
           flexDirection: isMobile ? 'column' : 'row',
           alignItems: 'center',
           gap: isMobile ? '1rem' : '2.5rem',
-          padding: isMobile ? '0 1rem' : '2rem 6.25rem',
         }}
       >
-        {/* {webinar &&<Image
-          width={isMobile ? 360 : 672}
-          height={isMobile ? 240 : 352}
-          alt={webinar?.title}
-          src={urlForImage(webinar?.image)}
-        />} */}
+        {webinar && (
+          <Image
+            width={isMobile ? 360 : 672}
+            height={isMobile ? 240 : 352}
+            alt={webinar?.title}
+            src={urlForImage(webinar?.image)}
+          />
+        )}
 
         <ContentWrapper>
           <StackWrapper>
@@ -44,7 +51,7 @@ export default function Webinars({ webinar }: WebinarsProps) {
             <LongFormText content={webinar?.description} />
           </StackWrapper>
 
-          <StackWrapper>
+          <StackWrapper style={{ gap: '1rem' }}>
             <SmallHeading>{webinar?.title}</SmallHeading>
             <Caption>
               {moment(webinar?.date).format('MMMM D, YYYY [at] h:mm A [CST]')}
@@ -62,14 +69,6 @@ export default function Webinars({ webinar }: WebinarsProps) {
     </SectionWrapper>
   );
 }
-
-export const SectionWrapper = styled.div`
-  padding-bottom: 12rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 8rem 0 0 0;
-  }
-`;
 
 export const ContentWrapper = styled.div`
   display: flex;
