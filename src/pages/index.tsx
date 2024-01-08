@@ -1,7 +1,7 @@
 import AccreditedGrid from '@components/cityfunds/AccreditedGrid';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
+import EquityChart from '@components/cityfunds/EquityChart';
 import EquityPayoff from '@components/cityfunds/EquityPayoff';
-import InvestChart from '@components/cityfunds/InvestChart';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import EmailCapture from '@components/common/EmailCapture';
 import PageHero from '@components/common/PageHero';
@@ -49,7 +49,7 @@ export default function CityfundsPage({
         component={<EquityPayoff />}
         isWide
       />
-      <InvestChart />
+      <EquityChart />
       <FeaturedImage
         feature={cityfundsPage?.cityfunds_feature}
         btnText="Explore Offerings"
