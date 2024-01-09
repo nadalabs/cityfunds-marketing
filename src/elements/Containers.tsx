@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 
 export const SectionWrapper = styled.div<{ isBackground?: boolean }>`
-  padding: 6.25rem 9.5rem;
+  padding: 6.25rem;
   background: ${({ isBackground }) =>
     isBackground
       ? 'linear-gradient(0deg, rgba(42, 131, 86, 0.05) 0%, rgba(42, 131, 86, 0.05) 100%), #FFF'
       : 'none'};
 
+  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
+    padding: 6.25rem 16rem;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 48px 24px;
+    padding: 3rem 1.5rem;
   }
 `;
 
@@ -64,6 +68,7 @@ export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 2rem;
+  width: 100%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
@@ -80,6 +85,12 @@ export const TopWrapper = styled.div`
 
   &:hover {
     opacity: 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    &:hover {
+      opacity: 1;
+    }
   }
 `;
 
@@ -150,12 +161,20 @@ export const InnerWrapper = styled.div`
 `;
 
 export const TickerWrapper = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-end;
   gap: 0.5rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     gap: 0.25rem;
   }
+`;
+
+export const FadeWrapper = styled.div<{ isActive?: boolean }>`
+  transition: ${({ theme }) => theme.transitions.ease};
+  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
+  visibility: ${({ isActive }) => (isActive ? 'visible' : 'hidden')};
 `;

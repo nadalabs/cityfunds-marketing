@@ -1,32 +1,21 @@
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
-import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
-import { urlForImage } from 'lib/sanity';
+import { HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-interface HeaderProps {
-  pageImage?: ReactNode;
-  partnerImage?: string;
-  partnerName?: string;
+interface DesktopNavBarProps {
   isBanner?: boolean;
-  hideLinks?: boolean;
 }
 
-export default function DesktopNavBar({
-  pageImage,
-  partnerImage,
-  partnerName,
-  isBanner,
-  hideLinks,
-}: HeaderProps) {
+export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
+  const router = useRouter();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [dropDown, setDropdown] = useState(false);
-  const router = useRouter();
-  const isHomeshares = router.pathname.includes('homeshares');
+  const isScroll = scrollPosition > 0;
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -43,145 +32,102 @@ export default function DesktopNavBar({
 
   return (
     <NavbarWrapper
-      style={{ top: scrollPosition === 0 && isBanner ? '2.4rem' : 0 }}
+      style={{
+        zIndex: 99,
+        top: scrollPosition === 0 && isBanner ? '2.4rem' : 0,
+        backgroundColor: 'white',
+        boxShadow: isScroll ? '0px 4px 25px 0px rgba(0, 0, 0, 0.10)' : 'none',
+      }}
     >
-      <NavbarContent>
-        {partnerImage ? (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Image
-              width={184}
-              height={52}
-              alt={'Cityfunds'}
-              src={'/icons/cityfunds-dark.svg'}
-            />
-            <Divider />
-            <Image
-              width={240}
-              height={54}
-              alt={partnerName}
-              src={urlForImage(partnerImage, 54, 240).url()}
-            />
-          </div>
-        ) : (
-          <div>
-            <Link href={`/`}>
-              <Image
-                width={184}
-                height={52}
-                alt="Nada"
-                src="/icons/nada-light.svg"
-              />
-            </Link>
-            {pageImage && (
-              <>
-                <Divider />
-                {pageImage}
-              </>
-            )}
-          </div>
-        )}
+      <Link href="/">
+        <Image
+          src="/icons/cityfunds-dark.svg"
+          alt="Nada"
+          width={184}
+          height={52}
+        />
+      </Link>
 
-        <div>
-          {hideLinks ? (
-            <PrimaryButton
-              onClick={() =>
-                window.open(
-                  `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-                  '_blank'
-                )
-              }
-            >
-              Sign Up
-            </PrimaryButton>
-          ) : (
-            <div
-              style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}
-            >
-              {HEADER_LINKS.map(({ name, link, links }, idx) => (
-                <>
-                  {links ? (
-                    <StackWrapper onMouseLeave={() => setDropdown(false)}>
-                      <FlexWrapper
-                        onMouseEnter={() => setDropdown(true)}
-                        style={{ cursor: 'pointer', gap: '0.5rem' }}
-                      >
-                        <PrimaryLink
-                          key={idx}
-                          href={link}
-                          style={{
-                            color:
-                              link === router.pathname ? '#48DC95' : 'white',
-                          }}
-                        >
-                          {name}
-                        </PrimaryLink>
-                        <Image
-                          width={16}
-                          height={16}
-                          alt={'Menu'}
-                          src={'/icons/arrow-down.svg'}
-                        />
-                      </FlexWrapper>
-
-                      {links && dropDown && (
-                        <DropdownMenu style={{ marginTop: '1rem' }}>
-                          {links.map(({ name, link }, idx) => (
-                            <MenuLink
-                              key={idx}
-                              href={link}
-                              onMouseEnter={() => setDropdown(true)}
-                            >
-                              {name}
-                            </MenuLink>
-                          ))}
-                        </DropdownMenu>
-                      )}
-                    </StackWrapper>
-                  ) : (
+      <div
+        style={{ display: 'flex', justifyContent: 'flex-end', gap: '1.5rem' }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          {HEADER_LINKS.map(({ name, link, links }, idx) => (
+            <div key={idx}>
+              {links ? (
+                <StackWrapper onMouseLeave={() => setDropdown(false)}>
+                  <FlexWrapper
+                    onMouseEnter={() => setDropdown(true)}
+                    style={{ cursor: 'pointer', gap: '0.5rem' }}
+                  >
                     <PrimaryLink
-                      key={idx}
                       href={link}
                       style={{
-                        color: link === router.pathname ? '#48DC95' : 'white',
+                        color: link === router.pathname ? '#48DC95' : 'black',
                       }}
                     >
                       {name}
                     </PrimaryLink>
-                  )}
-                </>
-              ))}
+                    <Image
+                      width={16}
+                      height={16}
+                      alt={'Menu'}
+                      src={'/icons/arrow-down.svg'}
+                    />
+                  </FlexWrapper>
 
-              {!isHomeshares && (
-                <PrimaryButton
-                  onClick={() =>
-                    window.open(
-                      isHomeshares
-                        ? `${EXTERNAL_ROUTES.TYPEFORM}`
-                        : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
-                      '_blank'
-                    )
-                  }
-                  isInverted
+                  {links && dropDown && (
+                    <DropdownMenu style={{ marginTop: '1rem' }}>
+                      {links.map(({ name, link }, idx) => (
+                        <MenuLink
+                          key={idx}
+                          href={link}
+                          onMouseEnter={() => setDropdown(true)}
+                        >
+                          {name}
+                        </MenuLink>
+                      ))}
+                    </DropdownMenu>
+                  )}
+                </StackWrapper>
+              ) : (
+                <PrimaryLink
+                  href={link}
+                  style={{
+                    color: link === router.pathname ? '#48DC95' : 'black',
+                  }}
                 >
-                  Log In
-                </PrimaryButton>
+                  {name}
+                </PrimaryLink>
               )}
-              <PrimaryButton
-                onClick={() =>
-                  window.open(
-                    isHomeshares
-                      ? `${EXTERNAL_ROUTES.TYPEFORM}`
-                      : `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-                    '_blank'
-                  )
-                }
-              >
-                {isHomeshares ? 'Apply Now' : 'Sign Up'}
-              </PrimaryButton>
             </div>
-          )}
+          ))}
         </div>
-      </NavbarContent>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <PrimaryButton
+            onClick={() =>
+              window.open(
+                `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
+                '_blank'
+              )
+            }
+            isInverted
+          >
+            Log In
+          </PrimaryButton>
+          <PrimaryButton
+            onClick={() =>
+              window.open(
+                `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+                '_blank'
+              )
+            }
+          >
+            Sign Up
+          </PrimaryButton>
+        </div>
+      </div>
     </NavbarWrapper>
   );
 }
@@ -189,32 +135,13 @@ export default function DesktopNavBar({
 const NavbarWrapper = styled.div`
   position: fixed;
   display: flex;
-  justify-content: center;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.27) 42.74%,
-    rgba(0, 0, 0, 0.21) 65.57%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  backdrop-filter: blur(1.5px);
-  padding: 20px 100px 40px 100px;
-  z-index: 999;
-  width: 100vw;
-`;
-
-const NavbarContent = styled.div`
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 100rem;
-`;
+  width: 100vw;
+  padding: 1.5rem 6.25rem;
 
-const Divider = styled.div`
-  width: 1px;
-  height: 54px;
-  display: inline-block;
-  border: 1px solid black;
-  margin: 0 24px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
+    padding: 1.5rem 16rem;
+  }
 `;
 
 const DropdownMenu = styled.div`
@@ -239,6 +166,6 @@ const MenuLink = styled(NavbarLink)`
   color: #2a8356;
 
   &:hover {
-    color: #888888 !important;
+    color: #48dc95 !important;
   }
 `;

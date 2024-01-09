@@ -12,11 +12,10 @@ export default function LearnPage({ allPosts, allMedia }) {
     trackPageView('Blog Page Viewed');
   });
 
-  const postsByTag = _.groupBy(allPosts, 'tag');
+  const pagePosts = allPosts.filter(({ tag }) => tag === 'Investing');
+  const postsByTag = _.groupBy(pagePosts, 'tag');
   const mediaByTag = _.groupBy(allMedia, 'tag');
-  const heroPosts = allPosts
-    .filter(({ tag }) => tag === 'Investing' || tag === 'Home Equity')
-    .slice(0, 4);
+  const heroPosts = pagePosts.slice(0, 4);
 
   function renderBlogSliders() {
     const sliders = [];

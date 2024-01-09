@@ -1,6 +1,6 @@
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
-import { EXTERNAL_ROUTES, HEADER_LINKS } from '@utils/constants';
+import { HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -17,7 +17,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
   const [dropDown, setDropdown] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const isHomeshares = router.pathname.includes('homeshares');
+  const isScroll = scrollPosition > 0;
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -35,24 +35,26 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
   return (
     <>
       <NavbarWrapper
-        style={{ top: scrollPosition === 0 && isBanner ? '4rem' : 0 }}
+        style={{
+          top: scrollPosition === 0 && isBanner ? '4rem' : 0,
+          boxShadow: isScroll ? '0px 4px 25px 0px rgba(0, 0, 0, 0.10)' : 'none',
+        }}
       >
         <FlexWrapper>
           <Link href="/">
             <Image
-              src="/icons/nada-light.svg"
+              src="/icons/cityfunds-dark.svg"
               alt="Nada"
               height={40}
               width={160}
             />
           </Link>
           <Image
-            src="/icons/menu-light.svg"
+            src="/icons/menu-dark.svg"
             alt="Menu"
             onClick={() => setShowMenu(true)}
             height={40}
             width={40}
-            style={{ zIndex: 9999999 }}
           />
         </FlexWrapper>
       </NavbarWrapper>
@@ -72,7 +74,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
         <FlexWrapper style={{ paddingBottom: '2rem' }}>
           <Link href="/">
             <Image
-              src="/icons/nada-light.svg"
+              src="/icons/cityfunds-light.svg"
               alt="Nada"
               height={40}
               width={160}
@@ -109,10 +111,13 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
                       {name.toUpperCase()}
                     </NavbarLink>
                     <Image
+                      src={'/icons/arrow-light.svg'}
+                      alt={'Menu'}
+                      style={{
+                        transform: dropDown ? 'rotate(-90deg)' : 'rotate(0deg)',
+                      }}
                       width={16}
                       height={16}
-                      alt={'Menu'}
-                      src={'/icons/arrow-down.svg'}
                     />
                   </FlexWrapper>
 
@@ -143,43 +148,32 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
               )}
             </>
           ))}
-          {isHomeshares ? (
-            <a href={EXTERNAL_ROUTES.TYPEFORM} target="_blank">
+
+          <>
+            <a
+              href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`}
+              target="_blank"
+            >
               <PrimaryButton
                 onClick={() => setShowMenu(false)}
                 style={{ textTransform: 'uppercase' }}
                 isInverted
               >
-                Apply Now
+                Log In
               </PrimaryButton>
             </a>
-          ) : (
-            <>
-              <a
-                href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`}
-                target="_blank"
+            <a
+              href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`}
+              target="_blank"
+            >
+              <PrimaryButton
+                onClick={() => setShowMenu(false)}
+                style={{ textTransform: 'uppercase' }}
               >
-                <PrimaryButton
-                  onClick={() => setShowMenu(false)}
-                  style={{ textTransform: 'uppercase' }}
-                  isInverted
-                >
-                  Log In
-                </PrimaryButton>
-              </a>
-              <a
-                href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`}
-                target="_blank"
-              >
-                <PrimaryButton
-                  onClick={() => setShowMenu(false)}
-                  style={{ textTransform: 'uppercase' }}
-                >
-                  Sign Up
-                </PrimaryButton>
-              </a>
-            </>
-          )}
+                Sign Up
+              </PrimaryButton>
+            </a>
+          </>
         </div>
       </Drawer>
     </>
@@ -190,16 +184,10 @@ const NavbarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.27) 42.74%,
-    rgba(0, 0, 0, 0.21) 65.57%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background-color: white;
   backdrop-filter: blur(1.5px);
   position: fixed;
   width: 100vw;
   z-index: 99;
-  border-bottom-left-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
   padding: 2rem 1rem;
 `;

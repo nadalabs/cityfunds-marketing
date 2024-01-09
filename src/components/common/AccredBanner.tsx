@@ -1,4 +1,4 @@
-import { CityfundCard } from '@components/cityfunds/CityfundCard';
+import CityfundCard from '@components/cityfunds/CityfundCard';
 import {
   BottomWrapper,
   GridWrapper,
@@ -52,7 +52,6 @@ export default function AccredBanner({ cityfunds }: AccredBannerProps) {
                   {...card}
                   image={card?.images[0]}
                   width={600}
-                  isHome
                 />
               </TopWrapper>
               <BottomWrapper>
@@ -60,7 +59,6 @@ export default function AccredBanner({ cityfunds }: AccredBannerProps) {
                   {...card}
                   image={card?.images[1]}
                   width={600}
-                  isHome
                 />
               </BottomWrapper>
             </div>

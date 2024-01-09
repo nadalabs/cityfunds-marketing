@@ -6,9 +6,8 @@ import {
   aboutPageFields,
   cityfundFields,
   cityfundsPageFields,
-  homesharesPageFields,
-  investorsPageFields,
   legalFields,
+  pressIndexQuery,
 } from 'lib/queries';
 
 const sanityConfig: ClientConfig = {
@@ -21,7 +20,7 @@ const sanityConfig: ClientConfig = {
 export const sanityClient = createClient(sanityConfig);
 const imageBuilder = createImageUrlBuilder(sanityConfig as any);
 export const urlForImage = (source: string, height?: number, width?: number) =>
-  imageBuilder.image(source).fit('fill').height(height).width(width);
+  imageBuilder.image(source).fit('fill').height(height).width(width).url();
 
 export const getAllFundsContent = async (): Promise<IFundContent[]> => {
   const res = await sanityClient.fetch(`
@@ -47,14 +46,6 @@ export const getCityfundsPageContent = async (): Promise<any> => {
   return res[0];
 };
 
-export const getHomesharesPageContent = async (): Promise<any> => {
-  const res = await sanityClient.fetch(`
-    *[_type == "homesharesPage"] | order(index asc, _updatedAt desc) {
-      ${homesharesPageFields}
-    }`);
-  return res[0];
-};
-
 export const getAboutPageContent = async (): Promise<any> => {
   const res = await sanityClient.fetch(`
     *[_type == "aboutPage"] | order(index asc, _updatedAt desc) {
@@ -63,12 +54,9 @@ export const getAboutPageContent = async (): Promise<any> => {
   return res[0];
 };
 
-export const getInvestorsPageContent = async (): Promise<any> => {
-  const res = await sanityClient.fetch(`
-    *[_type == "investorsPage"] | order(index asc, _updatedAt desc) {
-      ${investorsPageFields}
-    }`);
-  return res[0];
+export const getAllPress = async (): Promise<any> => {
+  const res = await sanityClient.fetch(pressIndexQuery);
+  return res;
 };
 
 export const getFooterContent = async (): Promise<any> => {

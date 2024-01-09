@@ -4,7 +4,9 @@ export const setCookie = (name: string, value: string) => {
   date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
   expires = '; expires=' + date.toUTCString();
   const domain =
-    process.env.NEXT_PUBLIC_APP_ENV === 'localhost' ? 'localhost' : '.nada.co';
+    process.env.NEXT_PUBLIC_APP_ENV === 'localhost'
+      ? 'localhost'
+      : '.cityfunds.com';
 
   document.cookie =
     name +
@@ -26,6 +28,7 @@ export const shortenNumber = (num: number, digits: number) => {
     { value: 1e3, symbol: 'K' },
     { value: 1e6, symbol: 'M' },
     { value: 1e9, symbol: 'B' },
+    { value: 1e12, symbol: 'T' },
   ];
   const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
   const item = lookup

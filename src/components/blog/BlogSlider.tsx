@@ -1,5 +1,5 @@
 import SliderStepper from '@components/common/SliderStepper';
-import { FlexWrapper } from '@elements/Containers';
+import { FlexWrapper, SectionWrapper } from '@elements/Containers';
 import {
   BoldText,
   Overline,
@@ -63,7 +63,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
             <CardWrapper style={{ width: '500px' }}>
               <Image
                 alt={title}
-                src={urlForImage(coverImage, 200, 300).url()}
+                src={urlForImage(coverImage, 200, 300)}
                 width={300}
                 height={200}
                 style={{ borderRadius: '2rem' }}
@@ -82,14 +82,6 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
     </SectionWrapper>
   );
 }
-
-export const SectionWrapper = styled.div`
-  padding: 5rem 0 0 156px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 24px 0 24px 24px;
-  }
-`;
 
 export const CardWrapper = styled.div`
   display: flex;

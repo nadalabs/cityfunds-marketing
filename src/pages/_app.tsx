@@ -1,4 +1,4 @@
-import AlertBanner from '@components/cityfunds/AlertBanner';
+import AlertBanner from '@components/common/AlertBanner';
 import PageFooter from '@components/common/PageFooter';
 import PageLayout from '@components/common/PageLayout';
 import * as snippet from '@segment/snippet';
@@ -8,6 +8,7 @@ import { scrollToDiv, setCookie } from '@utils/helpers';
 import GlobalStyle from '@utils/styles';
 import theme from '@utils/theme';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getCityfundsPageContent, getFooterContent } from 'lib/sanity';
 import type { AppProps as NextAppProps } from 'next/app';
 import Head from 'next/head';
@@ -80,9 +81,9 @@ export default function App({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="Gain access to professionally-managed, diversified real estate portfolios in the world’s best cities - start with as little as $100."
+          content="Build wealth by owning home equity investments in the nation's top cities."
         />
-        <title>Nada</title>
+        <title>Cityfunds</title>
       </Head>
 
       <Script
@@ -118,6 +119,7 @@ export default function App({
         </PageLayout>
         <PageFooter legal={footer} />
         <Analytics />
+        <SpeedInsights />
       </ThemeProvider>
     </>
   );

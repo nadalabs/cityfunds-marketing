@@ -8,13 +8,9 @@ import styled from 'styled-components';
 
 interface TestimonialsProps {
   testimonials: { name: string; review: string; city: string }[];
-  isBackground?: boolean;
 }
 
-export default function Testimonials({
-  testimonials,
-  isBackground,
-}: TestimonialsProps) {
+export default function Testimonials({ testimonials }: TestimonialsProps) {
   const sliderRef = useRef();
   const settings = {
     dots: false,
@@ -29,7 +25,7 @@ export default function Testimonials({
   };
 
   return (
-    <SectionWrapper isBackground={isBackground}>
+    <SectionWrapper isBackground>
       <StackWrapper style={{ gap: '1rem' }}>
         <Overline>Hear it from our users...</Overline>
         <Slider {...settings} ref={sliderRef}>

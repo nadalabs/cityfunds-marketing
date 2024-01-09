@@ -34,3 +34,9 @@ export interface IFundContent {
   culture_description: string;
   culture_articles: any[];
 }
+
+export interface IFeature {
+  title: string;
+  description: string;
+  image: string;
+}

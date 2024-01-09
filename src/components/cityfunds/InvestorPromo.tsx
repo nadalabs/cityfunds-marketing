@@ -27,7 +27,7 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
           width={250}
           height={500}
           alt={'Limited time offer!'}
-          src={urlForImage(promo?.image).url()}
+          src={urlForImage(promo?.image)}
         />
       )}
 
@@ -77,7 +77,7 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
             width={250}
             height={500}
             alt={'Limited time offer!'}
-            src={urlForImage(promo?.image).url()}
+            src={urlForImage(promo?.image)}
           />
         </div>
       )}

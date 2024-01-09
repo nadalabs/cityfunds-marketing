@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="icon" href="/icons/favicon.svg" />
+          <link rel="icon" href="/icons/cityfunds-favicon.svg" />
           <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap"
             rel="stylesheet"

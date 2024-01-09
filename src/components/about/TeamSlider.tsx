@@ -56,7 +56,7 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
         {teammates
           ?.map((props) => ({
             ...props,
-            image: urlForImage(props.image).url(),
+            image: urlForImage(props.image),
           }))
           .map(({ name, image, role, linkedIn }, idx) => (
             <div key={idx}>

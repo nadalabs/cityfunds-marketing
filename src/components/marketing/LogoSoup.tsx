@@ -6,22 +6,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-interface FeaturedLogosProps {
+interface LogoSoupProps {
   overline: string;
   logos: any[];
   isHero?: boolean;
   seeMore?: boolean;
 }
 
-export default function FeaturedLogos({
+export default function LogoSoup({
   overline,
   logos,
   isHero,
   seeMore,
-}: FeaturedLogosProps) {
+}: LogoSoupProps) {
   const isMobile = useIsMobile();
 
-  function renderLogos(logos) {
+  function renderLogos(logos: any[], isMargin?: boolean) {
     return (
       <>
         {logos?.map(({ name, image, link }, idx) => (
@@ -29,13 +29,13 @@ export default function FeaturedLogos({
             key={idx}
             href={link}
             target="_blank"
-            style={{ margin: '1rem 1rem' }}
+            style={{ margin: isMargin ? '1rem 1rem' : 0 }}
           >
             <Image
-              width={isMobile ? 120 : 150}
-              height={isMobile ? 32 : 40}
+              width={isMobile ? 140 : isHero ? 200 : 150}
+              height={isMobile ? 32 : isHero ? 40 : 40}
               alt={name}
-              src={urlForImage(image).url()}
+              src={urlForImage(image)}
             />
           </Link>
         ))}
@@ -45,13 +45,17 @@ export default function FeaturedLogos({
 
   if (isHero) {
     return (
-      <div style={{ maxWidth: isMobile ? '100%' : '70%' }}>
+      <div style={{ maxWidth: '100%' }}>
         <Overline
-          style={{ color: '#989898', textAlign: isMobile ? 'center' : 'left' }}
+          style={{
+            color: '#989898',
+            textAlign: isMobile ? 'center' : 'left',
+            marginBottom: '1rem',
+          }}
         >
           {overline}
         </Overline>
-        <FlexWrapper style={{ flexWrap: 'wrap' }}>
+        <FlexWrapper style={{ flexWrap: isMobile ? 'wrap' : 'initial' }}>
           {renderLogos(logos)}
         </FlexWrapper>
       </div>
@@ -63,7 +67,7 @@ export default function FeaturedLogos({
       <Overline style={{ color: '#989898', textAlign: 'center' }}>
         {overline}
       </Overline>
-      <ContentWrapper>{renderLogos(logos)}</ContentWrapper>
+      <ContentWrapper>{renderLogos(logos, true)}</ContentWrapper>
 
       {seeMore && (
         <div style={{ paddingLeft: '1.25rem' }}>

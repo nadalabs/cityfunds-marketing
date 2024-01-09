@@ -10,7 +10,7 @@ interface PressArticlesProps {
 export default function PressArticles({ articles }: PressArticlesProps) {
   return (
     <SectionWrapper>
-      {articles.map(({ title, publisher, date, link }, idx) => (
+      {articles?.map(({ title, publisher, date, link }, idx) => (
         <Link key={idx} href={link} target="_blank">
           <Overline style={{ color: '#48DC95', marginBottom: 0 }}>
             {publisher}

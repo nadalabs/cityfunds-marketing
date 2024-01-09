@@ -5,11 +5,11 @@ import { LEGAL_LINKS } from '@utils/constants';
 import { format, parseISO } from 'date-fns';
 import { styled } from 'styled-components';
 
-interface LegalPageProps {
+interface LegalTermsProps {
   legal: any;
 }
 
-export default function LegalPage({ legal }: LegalPageProps) {
+export default function LegalTerms({ legal }: LegalTermsProps) {
   return (
     <>
       <HeadingWrapper>

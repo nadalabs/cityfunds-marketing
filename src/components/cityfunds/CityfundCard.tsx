@@ -1,6 +1,5 @@
-import AssetTicker from '@components/cityfunds/AssetTicker';
+import CityfundTicker from '@components/cityfunds/CityfundTicker';
 import NadaText from '@components/cityfunds/NadaText';
-import StatusTicker from '@components/cityfunds/StatusTicker';
 import {
   FundWrapper,
   ImageWrapper,
@@ -16,16 +15,16 @@ import Link from 'next/link';
 interface CityfundCardProps {
   fund_data: IFundData;
   image: string;
-  isHome?: boolean;
   width?: number;
+  isSlider?: boolean;
 }
 
-export const CityfundCard = ({
+export default function CityfundCard({
   fund_data,
   image,
-  isHome,
   width,
-}: CityfundCardProps) => {
+  isSlider,
+}: CityfundCardProps) {
   const isMobile = useIsMobile();
 
   return (
@@ -35,25 +34,28 @@ export const CityfundCard = ({
       }/cityfunds/${fund_data?.fund_name.toLowerCase().replace(/ /g, '-')}`}
       target="_blank"
     >
-      <FundWrapper>
+      <FundWrapper
+        style={{
+          margin: isSlider ? (isMobile ? '0 0.5rem' : '0.5rem 0') : '0',
+        }}
+      >
         <ImageWrapper>
           <Image
             alt={fund_data?.fund_name}
-            src={urlForImage(image, isMobile ? 200 : 400, width).url()}
+            src={urlForImage(image, isMobile ? 200 : 400, width)}
             fill
           />
         </ImageWrapper>
         <InnerWrapper>
-          <StatusTicker fund_data={fund_data} isHome={isHome} />
           <TickerWrapper>
             <NadaText
               name={fund_data?.fund_name}
               size={fund_data?.fund_name.length > 10 ? 'extraSmall' : 'small'}
             />
-            <AssetTicker fund_data={fund_data} isSmall />
+            <CityfundTicker fund_data={fund_data} isSmall />
           </TickerWrapper>
         </InnerWrapper>
       </FundWrapper>
     </Link>
   );
-};
+}

@@ -2,6 +2,7 @@ import { StackWrapper } from '@elements/Containers';
 import {
   Caption,
   Heading,
+  LargeText,
   LinkText,
   Overline,
   PrimaryText,
@@ -15,6 +16,8 @@ interface LongFormTextProps {
   overline?: string;
   content: any;
   isSmall?: boolean;
+  isLarge?: boolean;
+  isInverted?: boolean;
 }
 
 export default function LongFormText({
@@ -22,6 +25,8 @@ export default function LongFormText({
   overline,
   content,
   isSmall,
+  isLarge,
+  isInverted,
 }: LongFormTextProps) {
   const isMobile = useIsMobile();
 
@@ -30,8 +35,14 @@ export default function LongFormText({
       normal: ({ children }: any) => {
         if (isSmall) {
           return <Caption>{children}</Caption>;
+        } else if (isLarge) {
+          return <LargeText>{children}</LargeText>;
         } else {
-          return <PrimaryText>{children}</PrimaryText>;
+          return (
+            <PrimaryText style={{ color: isInverted ? 'white' : '#888888' }}>
+              {children}
+            </PrimaryText>
+          );
         }
       },
       blockquote: ({ children }: any) => {

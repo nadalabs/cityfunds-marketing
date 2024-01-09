@@ -15,7 +15,7 @@ import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 
 const CityfundsPage = dynamic(() => import('@pages/index'));
-const LegalPage = dynamic(() => import('@components/LegalPage'));
+const LegalTerms = dynamic(() => import('@components/marketing/LegalTerms'));
 
 export default function DynamicPage({
   cityfunds,
@@ -30,13 +30,9 @@ export default function DynamicPage({
   return (
     <>
       {partner && (
-        <CityfundsPage
-          cityfundsPage={cityfundsPage}
-          cityfunds={cityfunds}
-          partner={partner}
-        />
+        <CityfundsPage cityfundsPage={cityfundsPage} cityfunds={cityfunds} />
       )}
-      {legal && <LegalPage legal={legal} />}
+      {legal && <LegalTerms legal={legal} />}
     </>
   );
 }

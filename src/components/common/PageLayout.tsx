@@ -6,19 +6,10 @@ import styled from 'styled-components';
 
 interface PageLayoutProps {
   children: ReactNode;
-  pageImage?: ReactNode;
-  partnerImage?: string;
   isBanner?: boolean;
-  hideLinks?: boolean;
 }
 
-export default function PageLayout({
-  children,
-  partnerImage,
-  pageImage,
-  isBanner,
-  hideLinks,
-}: PageLayoutProps) {
+export default function PageLayout({ children, isBanner }: PageLayoutProps) {
   const isMobile = useIsMobile();
 
   return (
@@ -26,12 +17,7 @@ export default function PageLayout({
       {isMobile ? (
         <MobileNavBar isBanner={isBanner} />
       ) : (
-        <DesktopNavBar
-          partnerImage={partnerImage}
-          pageImage={pageImage}
-          isBanner={isBanner}
-          hideLinks={!!hideLinks}
-        />
+        <DesktopNavBar isBanner={isBanner} />
       )}
       <MainWrapper>{children}</MainWrapper>
     </LayoutWrapper>
@@ -47,5 +33,5 @@ const LayoutWrapper = styled.div`
 
 const MainWrapper = styled.div`
   width: 100%;
-  max-width: 100rem;
+  /* max-width: 100rem; */
 `;
