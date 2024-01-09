@@ -48,18 +48,10 @@ export default function AccredBanner({ cityfunds }: AccredBannerProps) {
           {ACCRED_CARDS.map((card, idx) => (
             <div key={idx}>
               <TopWrapper>
-                <CityfundCard
-                  {...card}
-                  image={card?.images[0]}
-                  width={600}
-                />
+                <CityfundCard {...card} image={card?.images[0]} width={600} />
               </TopWrapper>
               <BottomWrapper>
-                <CityfundCard
-                  {...card}
-                  image={card?.images[1]}
-                  width={600}
-                />
+                <CityfundCard {...card} image={card?.images[1]} width={600} />
               </BottomWrapper>
             </div>
           ))}

@@ -42,9 +42,9 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
       <Link href="/">
         <Image
           src="/icons/cityfunds-dark.svg"
-          alt="Nada"
-          width={184}
-          height={52}
+          alt="Cityfunds"
+          width={200}
+          height={60}
         />
       </Link>
 
