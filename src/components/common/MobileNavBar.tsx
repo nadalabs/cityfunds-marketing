@@ -44,9 +44,9 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
           <Link href="/">
             <Image
               src="/icons/cityfunds-dark.svg"
-              alt="Nada"
-              height={40}
-              width={160}
+              alt="Cityfunds"
+              width={200}
+              height={60}
             />
           </Link>
           <Image
@@ -75,9 +75,9 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
           <Link href="/">
             <Image
               src="/icons/cityfunds-light.svg"
-              alt="Nada"
-              height={40}
-              width={160}
+              alt="Cityfunds"
+              width={200}
+              height={60}
             />
           </Link>
           <Image
