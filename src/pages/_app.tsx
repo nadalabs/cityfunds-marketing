@@ -81,7 +81,7 @@ export default function App({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="Diversified Home Equity Investments in the nation's top cities."
+          content="Build wealth by owning home equity investments in the nation's top cities."
         />
         <title>Cityfunds</title>
       </Head>
