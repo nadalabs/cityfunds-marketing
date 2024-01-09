@@ -94,7 +94,7 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
                 <PrimaryLink
                   href={link}
                   style={{
-                    color: link === router.pathname ? '#48DC95' : 'black',
+                    color: link === router.pathname ? '#48DC95' : '#1A1A1A',
                   }}
                 >
                   {name}
@@ -145,6 +145,7 @@ const NavbarWrapper = styled.div`
 `;
 
 const DropdownMenu = styled.div`
+  transition: ${({ theme }) => theme.transitions.ease};
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -153,7 +154,6 @@ const DropdownMenu = styled.div`
   gap: 1rem;
   padding: 1.5rem;
   border-radius: 2rem;
-  transition: ${({ theme }) => theme.transitions.ease};
 `;
 
 const PrimaryLink = styled(NavbarLink)`
@@ -163,7 +163,7 @@ const PrimaryLink = styled(NavbarLink)`
 `;
 
 const MenuLink = styled(NavbarLink)`
-  color: #2a8356;
+  color: #1a1a1a;
 
   &:hover {
     color: #48dc95 !important;
