@@ -45,7 +45,7 @@ export default function HowItWorks({
         <div
           style={{
             height: '32rem',
-            width: '50%',
+            width: isMobile ? '100%' : '50%',
             borderRadius: '2rem',
             overflow: 'hidden',
           }}
@@ -65,8 +65,8 @@ export default function HowItWorks({
           <Image
             src={urlForImage(video?.thumbnail)}
             alt="How it Works"
-            height={isMobile ? '100' : '512'}
-            width={isMobile ? '100' : '512'}
+            height={isMobile ? '300' : '512'}
+            width={isMobile ? '300' : '512'}
           />
           <Image
             onClick={() => setIsPlaying(true)}

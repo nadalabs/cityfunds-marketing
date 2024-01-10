@@ -42,15 +42,13 @@ export default function ValueProps({
         {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
       </StackWrapper>
 
-      <GridWrapper
-        style={{ gridTemplateColumns: isMobile ? '1fr' : '4fr', gap: '1rem' }}
-      >
+      <GridWrapper style={{ gap: '1rem' }}>
         {valueProps?.map(({ title, description }, idx) => (
           <TextWrapper key={idx}>
             <StackWrapper style={{ gap: '1rem' }}>
               <GreenSquare />
               <BoldText>{title}</BoldText>
-              <LongFormText content={description} isSmall />
+              <LongFormText content={description} />
             </StackWrapper>
           </TextWrapper>
         ))}
@@ -84,8 +82,8 @@ export const GreenSquare = styled.div`
 
 const TextWrapper = styled(CardWrapper)`
   margin: 1rem 0;
-  height: 18rem;
-  /* width: 18rem; */
+  width: inherit;
+  height: inherit;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     height: 100%;

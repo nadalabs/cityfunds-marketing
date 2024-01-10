@@ -47,7 +47,7 @@ export const LargeText = styled(PrimaryText)`
   color: ${({ theme }) => theme.colors.lightText};
   font-size: 1.5rem;
   letter-spacing: -0.015rem;
-  line-height: 125%;
+  line-height: normal;
   margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -60,7 +60,7 @@ export const BoldText = styled(LargeText)`
   font-weight: 600;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 
