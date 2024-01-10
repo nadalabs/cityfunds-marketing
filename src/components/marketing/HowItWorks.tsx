@@ -8,19 +8,21 @@ import {
 } from '@elements/Containers';
 import { Heading, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { urlForImage } from 'lib/sanity';
+import Image from 'next/image';
 import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 
 interface HowItWorksProps {
-  videoUrl: string;
+  video: { video_url: string; thumbnail: string };
   tutorials: { title: string; description: string; image: string }[];
   btnText: string;
   onClick: () => void;
 }
 
 export default function HowItWorks({
-  videoUrl,
+  video,
   tutorials,
   btnText,
   onClick,
@@ -28,12 +30,7 @@ export default function HowItWorks({
   const isMobile = useIsMobile();
   const playerRef = useRef(null);
   const [activeIdx, setActiveIdx] = useState(0);
-
-  const handlePlay = () => {
-    if (playerRef.current) {
-      playerRef.current.getInternalPlayer().requestFullscreen();
-    }
-  };
+  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <SectionWrapper
@@ -44,13 +41,49 @@ export default function HowItWorks({
         gap: isMobile ? '1.5rem' : '5rem',
       }}
     >
-      <ReactPlayer
-        ref={playerRef}
-        onPlay={handlePlay}
-        url={videoUrl}
-        height={isMobile ? '16rem' : '32rem'}
-        width={isMobile ? '100%' : '50%'}
-      />
+      {isPlaying ? (
+        <div
+          style={{
+            height: '32rem',
+            width: '50%',
+            borderRadius: '2rem',
+            overflow: 'hidden',
+          }}
+        >
+          <ReactPlayer
+            ref={playerRef}
+            url={video?.video_url}
+            playing={isPlaying}
+            controls={true}
+            onEnded={() => setIsPlaying(false)}
+            height={isMobile ? '16rem' : '32rem'}
+            width={isMobile ? '100%' : '100%'}
+          />
+        </div>
+      ) : (
+        <div style={{ position: 'relative' }}>
+          <Image
+            src={urlForImage(video?.thumbnail)}
+            alt="How it Works"
+            height={isMobile ? '100' : '512'}
+            width={isMobile ? '100' : '512'}
+          />
+          <Image
+            onClick={() => setIsPlaying(true)}
+            src="/icons/play-button.svg"
+            alt="Play button"
+            width={120}
+            height={120}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              cursor: 'pointer',
+            }}
+          />
+        </div>
+      )}
 
       <StackWrapper style={{ width: isMobile ? '100%' : '50%' }}>
         <Heading>How it Works</Heading>
