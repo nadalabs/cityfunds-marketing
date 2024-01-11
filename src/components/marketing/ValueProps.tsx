@@ -1,7 +1,7 @@
 import LongFormText from '@components/common/LongFormText';
 import {
   CardWrapper,
-  FlexWrapper,
+  GridWrapper,
   SectionWrapper,
   StackWrapper,
 } from '@elements/Containers';
@@ -42,17 +42,17 @@ export default function ValueProps({
         {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
       </StackWrapper>
 
-      <FlexWrapper style={{ flexDirection: isMobile ? 'column' : 'row' }}>
+      <GridWrapper style={{ gap: '1rem' }}>
         {valueProps?.map(({ title, description }, idx) => (
           <TextWrapper key={idx}>
             <StackWrapper style={{ gap: '1rem' }}>
               <GreenSquare />
               <BoldText>{title}</BoldText>
-              <LongFormText content={description} isSmall />
+              <LongFormText content={description} />
             </StackWrapper>
           </TextWrapper>
         ))}
-      </FlexWrapper>
+      </GridWrapper>
 
       {link && (
         <LinkText
@@ -82,8 +82,8 @@ export const GreenSquare = styled.div`
 
 const TextWrapper = styled(CardWrapper)`
   margin: 1rem 0;
-  height: 18rem;
-  width: 18rem;
+  width: inherit;
+  height: inherit;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     height: 100%;

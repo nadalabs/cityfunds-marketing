@@ -63,7 +63,7 @@ export default function CityfundsPage({
       <AccreditedGrid cityfunds={cityfunds} />
 
       <HowItWorks
-        videoUrl={cityfundsPage?.video_url}
+        video={cityfundsPage?.video}
         tutorials={cityfundsPage?.tutorials}
         btnText="Sign Up"
         onClick={() =>

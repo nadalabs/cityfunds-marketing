@@ -31,35 +31,28 @@ export default function EquityChart() {
     <SectionWrapper isBackground>
       <GridWrapper
         style={{
-          gridTemplateColumns: isMobile ? '1fr' : '3fr 1fr',
+          display: isMobile ? 'flex' : 'grid',
+          flexDirection: isMobile ? 'column-reverse' : 'row',
+          gridTemplateColumns: isMobile ? '1fr' : '2.5fr 1fr',
           gap: '1rem',
         }}
       >
-        <div>
-          <ShaddowWrapper style={{ height: 'inherit' }}>
-            <AreaChart
-              className="h-72 mt-4"
-              data={chartData}
-              index="date"
-              categories={['Homeowner Equity']}
-              colors={['green']}
-              yAxisWidth={50}
-              valueFormatter={(v) => `$${shortenNumber(v * 1000000000, 1)}`}
-              onValueChange={(v) => setValue(v)}
-              connectNulls
-              showAnimation
-            />
-          </ShaddowWrapper>
-          <Caption style={{ marginTop: '1rem' }}>
-            *Souce: St. Louis Fed, Households; Owners' Equity in Real Estate,
-            Level (billions of dollars, updated quarterly) as of January 1,
-            2024.
-          </Caption>
-        </div>
+        <ShaddowWrapper>
+          <AreaChart
+            className="h-72 mt-4"
+            data={chartData}
+            index="date"
+            categories={['Homeowner Equity']}
+            colors={['green']}
+            yAxisWidth={50}
+            valueFormatter={(v) => `$${shortenNumber(v * 1000000000, 1)}`}
+            onValueChange={(v) => setValue(v)}
+            connectNulls
+            showAnimation
+          />
+        </ShaddowWrapper>
 
-        <ShaddowWrapper
-          style={{ width: '100%', height: isMobile ? 'inherit' : '' }}
-        >
+        <ShaddowWrapper>
           <SmallHeading style={{ marginBottom: '1rem' }}>
             $32.6 Trillion Home Equity Market Value
           </SmallHeading>
@@ -71,6 +64,11 @@ export default function EquityChart() {
           </PrimaryText>
         </ShaddowWrapper>
       </GridWrapper>
+
+      <Caption style={{ marginTop: '1rem' }}>
+        *Souce: St. Louis Fed, Households; Owners' Equity in Real Estate, Level
+        (billions of dollars, updated quarterly) as of January 1, 2024.
+      </Caption>
     </SectionWrapper>
   );
 }

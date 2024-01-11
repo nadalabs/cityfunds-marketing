@@ -168,7 +168,7 @@ export const cityfundsPageFields = `
   metrics,
   cityfunds_feature,
   hei_feature,
-  video_url,
+  video,
   tutorials,
   values,
   questions,
