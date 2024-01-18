@@ -6,7 +6,7 @@ export enum EXTERNAL_ROUTES {
   BUSINESS_BUREAU = 'https://www.bbb.org/us/tx/dallas/profile/investment-management/cityfunds-by-nada-0875-91340285#sealclick',
   BENZINGA_AWARD = 'https://www.benzinga.com/fintech/23/11/35922810/nada-takes-home-coveted-best-alternative-investments-platform-at-benzinga-global-fintech-awards-2023',
   HUBSPOT_MEETING = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
-  HUBSPOT_FAQS = 'https://faqs.nada.co',
+  HUBSPOT_FAQS = 'https://faqs.nada.co/cityfunds',
 }
 
 export const UTM_PARAMETERS = [
@@ -31,7 +31,7 @@ export const HEADER_LINKS = [
       { name: 'Learn', link: '/learn' },
       { name: 'About', link: '/about' },
       { name: 'News', link: '/news' },
-      { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS },
+      { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS, isNewTab: true },
     ],
   },
 ];

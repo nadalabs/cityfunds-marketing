@@ -1,6 +1,6 @@
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
-import { StackWrapper } from '@elements/Containers';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { Heading, LinkText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
@@ -21,7 +21,16 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
   const isMobile = useIsMobile();
 
   return (
-    <SectionWrapper id="promo">
+    <SectionWrapper
+      id="promo"
+      style={{
+        display: 'flex',
+        flexDirection: isMobile ? 'column' : 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '2rem',
+      }}
+    >
       {isMobile && (
         <Image
           width={250}
@@ -84,20 +93,6 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
     </SectionWrapper>
   );
 }
-
-export const SectionWrapper = styled.div`
-  padding: 76px 156px 147px 156px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 48px 24px;
-    flex-direction: column;
-    gap: 2rem;
-  }
-`;
 
 export const ContentWrapper = styled.div`
   max-width: 700px;

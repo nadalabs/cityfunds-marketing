@@ -78,10 +78,11 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
 
                   {links && dropDown && (
                     <DropdownMenu style={{ marginTop: '1rem' }}>
-                      {links.map(({ name, link }, idx) => (
+                      {links.map(({ name, link, isNewTab }, idx) => (
                         <MenuLink
                           key={idx}
                           href={link}
+                          target={isNewTab ? '_blank' : '_self'}
                           onMouseEnter={() => setDropdown(true)}
                         >
                           {name}
