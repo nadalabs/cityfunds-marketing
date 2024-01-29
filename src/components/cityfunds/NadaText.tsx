@@ -22,8 +22,8 @@ export default function NadaText({ name, isDark, size }: NadaTextProps) {
             size === 'extraSmall'
               ? '2rem'
               : size === 'small'
-              ? '2.5rem'
-              : '3.125rem',
+                ? '2.5rem'
+                : '3.125rem',
           width: 'inherit',
         }}
       >

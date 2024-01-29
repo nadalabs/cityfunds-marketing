@@ -79,8 +79,8 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
                         fontSize: isMobile
                           ? '1rem'
                           : name.length > 20
-                          ? '1.4rem'
-                          : '1.5rem',
+                            ? '1.4rem'
+                            : '1.5rem',
                         lineHeight: '2rem',
                         color: 'white',
                         marginBottom: 0,

@@ -15,11 +15,11 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@elements/*": ["src/elements/*"],
+      "@app/*": ["src/app/*"],
       "@contexts/*": ["src/contexts/*"],
+      "@elements/*": ["src/elements/*"],
       "@hooks/*": ["src/hooks/*"],
       "@components/*": ["src/components/*"],
-      "@pages/*": ["src/pages/*"],
       "@utils/*": ["src/utils/*"]
     }
   },

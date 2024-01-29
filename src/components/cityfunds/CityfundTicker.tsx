@@ -38,8 +38,8 @@ export default function CityfundTicker({
         fund_data?.fund_type === FUND_TYPE.DEBT
           ? `${formatPercent(fund_data?.target_return, 1)} APY`
           : appreciation
-          ? formatPercent(appreciation, 1)
-          : 'New',
+            ? formatPercent(appreciation, 1)
+            : 'New',
       icon: appreciation ? (
         <Image
           src="/icons/gain.svg"

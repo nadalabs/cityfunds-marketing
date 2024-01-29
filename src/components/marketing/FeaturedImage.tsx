@@ -41,8 +41,8 @@ export default function FeaturedImage({
         flexDirection: isMobile
           ? 'column-reverse'
           : isReversed
-          ? 'row-reverse'
-          : 'row',
+            ? 'row-reverse'
+            : 'row',
         gap: isMobile ? '1.5rem' : '5rem',
       }}
       isBackground={isBackground}
