@@ -1,4 +1,5 @@
 import BlogHero from '@components/blog/BlogHero';
+import VideoPlayer from '@components/blog/VideoPlayer';
 import EmailCapture from '@components/common/EmailCapture';
 import LongFormText from '@components/common/LongFormText';
 import { SectionWrapper } from '@elements/Containers';
@@ -11,7 +12,6 @@ import {
 } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
 import { useEffect } from 'react';
-import ReactPlayer from 'react-player/youtube';
 
 export default async function PostPage({ params }) {
   const postData = await sanityClient.fetch(postQuery, {
@@ -38,20 +38,7 @@ export default async function PostPage({ params }) {
             content={post?.content}
           />
         ) : (
-          <div
-            style={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <ReactPlayer
-              controls={true}
-              url={media?.link}
-              height={'32rem'}
-              width={'50rem'}
-            />
-          </div>
+          <VideoPlayer media={media} />
         )}
       </SectionWrapper>
       <EmailCapture formName="Blog" />

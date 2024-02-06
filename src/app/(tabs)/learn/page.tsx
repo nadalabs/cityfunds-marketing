@@ -11,9 +11,9 @@ export default async function LearnPage() {
   const allPosts = await sanityClient.fetch(postIndexQuery);
   const allMedia = await sanityClient.fetch(mediaIndexQuery);
 
-  useEffect(() => {
-    trackPageView('Blog Page Viewed');
-  });
+  // useEffect(() => {
+  //   trackPageView('Blog Page Viewed');
+  // });
 
   const pagePosts = allPosts.filter(({ tag }) => tag === 'Investing');
   const postsByTag = _.groupBy(pagePosts, 'tag');

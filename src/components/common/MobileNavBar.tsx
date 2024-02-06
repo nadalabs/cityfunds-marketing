@@ -1,6 +1,7 @@
 'use client';
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
+import useIsMobile from '@hooks/useIsMobile';
 import { HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,6 +20,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const isScroll = scrollPosition > 0;
   const pathname = usePathname();
+  const isMobile = useIsMobile();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -32,6 +34,10 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  if (!isMobile) {
+    return null;
+  }
 
   return (
     <>
