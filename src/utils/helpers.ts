@@ -109,5 +109,5 @@ export const isDateInRange = (targetDate) => {
 
 export const scrollToDiv = (id: string) => {
   const div = document.getElementById(id);
-  div.scrollIntoView({ behavior: 'smooth' });
+  div?.scrollIntoView({ behavior: 'smooth' });
 };

@@ -1,4 +1,5 @@
 'use client';
+import { SecondaryButton } from '@elements/Buttons';
 import { StackWrapper } from '@elements/Containers';
 import {
   Caption,
@@ -10,6 +11,7 @@ import {
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { PortableText } from '@portabletext/react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 interface LongFormTextProps {
@@ -19,6 +21,7 @@ interface LongFormTextProps {
   isSmall?: boolean;
   isLarge?: boolean;
   isInverted?: boolean;
+  isToggle?: boolean;
 }
 
 export default function LongFormText({
@@ -28,7 +31,9 @@ export default function LongFormText({
   isSmall,
   isLarge,
   isInverted,
+  isToggle,
 }: LongFormTextProps) {
+  const [showMore, setShowMore] = useState(false);
   const isMobile = useIsMobile();
 
   const components = {
@@ -124,8 +129,20 @@ export default function LongFormText({
       {title && <Heading>{title}</Heading>}
       <div style={{ width: '100%' }}>
         {/* @ts-ignore-next-line */}
-        <PortableText value={content || []} components={components} />
+        <PortableText
+          value={isToggle && !showMore ? content.slice(0, 8) : content || []}
+          components={components}
+        />
       </div>
+
+      {isToggle && (
+        <SecondaryButton
+          onClick={() => setShowMore(!showMore)}
+          style={{ color: '#48DC95', textDecoration: 'underline' }}
+        >
+          {showMore ? 'See Less' : 'See More'}
+        </SecondaryButton>
+      )}
     </StackWrapper>
   );
 }

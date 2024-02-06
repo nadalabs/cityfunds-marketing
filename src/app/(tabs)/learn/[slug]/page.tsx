@@ -13,7 +13,7 @@ import { sanityClient } from 'lib/sanity';
 import { useEffect } from 'react';
 import ReactPlayer from 'react-player/youtube';
 
-export default async function PostPage({params}) {
+export default async function PostPage({ params }) {
   const postData = await sanityClient.fetch(postQuery, {
     slug: params.slug,
   });

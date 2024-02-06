@@ -11,8 +11,9 @@ const theme = {
     lightText: '#989B9F',
   },
   fonts: {
-    main: '"Poppins", sans-serif',
-    secondary: '"Work Sans", sans-serif',
+    main: 'var(--poppins), sans-serif',
+    secondary: 'var(--work_sans), sans-serif',
+    signature: 'var(--yellowtail), cursive',
   },
   fontSizes: {
     small: '0.8rem',

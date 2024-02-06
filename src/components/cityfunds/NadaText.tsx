@@ -36,8 +36,7 @@ export default function NadaText({ name, isDark, size }: NadaTextProps) {
 }
 
 export const NadaHeading = styled.h2`
-  font-family: ${({ theme }) => theme.fonts.main};
-  font-family: Poppins;
+  font-family: var(--poppins);
   font-size: 3.125rem;
   font-style: normal;
   font-weight: 600;

@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 
 const LegalTerms = dynamic(() => import('@components/marketing/LegalTerms'));
 
-export default async function DynamicPage({params }) {
+export default async function DynamicPage({ params }) {
   const fundsData = await getAllFundsData();
   const cityfundsPage = await getCityfundsPageContent();
   const fundsContent = await getAllFundsContent();
@@ -40,11 +40,7 @@ export default async function DynamicPage({params }) {
   //   trackPageView(`${partner ? 'Publisher' : 'Legal'} Page Viewed`);
   // });
 
-  return (
-    <>
-      {legal && <LegalTerms legal={legal} />}
-    </>
-  );
+  return <>{legal && <LegalTerms legal={legal} />}</>;
 }
 
 // export async function getStaticPaths() {

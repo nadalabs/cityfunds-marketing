@@ -6,6 +6,7 @@ import theme from '@utils/theme';
 import { ReactNode } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { LayoutWrapper, MainWrapper } from '@elements/Containers';
+import PageFooter from '@components/common/PageFooter';
 
 export default function TabsLayout({ children }: { children: ReactNode }) {
   return (
@@ -15,6 +16,7 @@ export default function TabsLayout({ children }: { children: ReactNode }) {
         <MobileNavBar />
         <DesktopNavBar />
         <MainWrapper>{children}</MainWrapper>
+        <PageFooter />
       </LayoutWrapper>
     </ThemeProvider>
   );
