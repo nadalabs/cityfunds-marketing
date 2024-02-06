@@ -7,7 +7,10 @@ import { sanityClient } from 'lib/sanity';
 import _ from 'lodash';
 import { useEffect } from 'react';
 
-export default function LearnPage({ allPosts, allMedia }) {
+export default async function LearnPage() {
+  const allPosts = await sanityClient.fetch(postIndexQuery);
+  const allMedia = await sanityClient.fetch(mediaIndexQuery);
+
   useEffect(() => {
     trackPageView('Blog Page Viewed');
   });
@@ -41,14 +44,4 @@ export default function LearnPage({ allPosts, allMedia }) {
       <EmailCapture formName="Blog" />
     </>
   );
-}
-
-export async function getStaticProps() {
-  const allPosts = await sanityClient.fetch(postIndexQuery);
-  const allMedia = await sanityClient.fetch(mediaIndexQuery);
-
-  return {
-    props: { allPosts, allMedia },
-    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
-  };
 }

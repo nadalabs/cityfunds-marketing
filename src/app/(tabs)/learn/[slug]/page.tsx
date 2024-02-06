@@ -13,10 +13,19 @@ import { sanityClient } from 'lib/sanity';
 import { useEffect } from 'react';
 import ReactPlayer from 'react-player/youtube';
 
-export default function PostPage({ post, media }) {
-  useEffect(() => {
-    trackPageView('Blog Article Viewed');
+export default async function PostPage({params}) {
+  const postData = await sanityClient.fetch(postQuery, {
+    slug: params.slug,
   });
+  const post = postData?.post ?? null;
+  const mediaData = await sanityClient.fetch(mediaQuery, {
+    slug: params.slug,
+  });
+  const media = mediaData?.media ?? null;
+
+  // useEffect(() => {
+  //   trackPageView('Blog Article Viewed');
+  // });
 
   return (
     <>
@@ -50,28 +59,12 @@ export default function PostPage({ post, media }) {
   );
 }
 
-export async function getStaticProps({ params }) {
-  const postData = await sanityClient.fetch(postQuery, {
-    slug: params.slug,
-  });
-  const post = postData?.post ?? null;
-  const mediaData = await sanityClient.fetch(mediaQuery, {
-    slug: params.slug,
-  });
-  const media = mediaData?.media ?? null;
+// export async function getStaticPaths() {
+//   const postPaths = await sanityClient.fetch(postSlugsQuery);
+//   const mediaPaths = await sanityClient.fetch(mediaSlugsQuery);
 
-  return {
-    props: { post, media },
-    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
-  };
-}
-
-export async function getStaticPaths() {
-  const postPaths = await sanityClient.fetch(postSlugsQuery);
-  const mediaPaths = await sanityClient.fetch(mediaSlugsQuery);
-
-  return {
-    paths: [...postPaths, ...mediaPaths].map((slug) => ({ params: { slug } })),
-    fallback: true,
-  };
-}
+//   return {
+//     paths: [...postPaths, ...mediaPaths].map((slug) => ({ params: { slug } })),
+//     fallback: true,
+//   };
+// }

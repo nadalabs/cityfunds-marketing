@@ -4,10 +4,13 @@ import { trackPageView } from '@utils/helpers';
 import { getAboutPageContent, getAllPress } from 'lib/sanity';
 import { useEffect } from 'react';
 
-export default function NewsPage({ allPress, aboutPage }) {
-  useEffect(() => {
-    trackPageView('Press Page Viewed');
-  });
+export default async function NewsPage() {
+  const aboutPage = await getAboutPageContent();
+  const allPress = await getAllPress();
+
+  // useEffect(() => {
+  //   trackPageView('Press Page Viewed');
+  // });
 
   return (
     <>
@@ -15,14 +18,4 @@ export default function NewsPage({ allPress, aboutPage }) {
       <NewsArticles articles={allPress} />
     </>
   );
-}
-
-export async function getStaticProps() {
-  const aboutPage = await getAboutPageContent();
-  const allPress = await getAllPress();
-
-  return {
-    props: { allPress, aboutPage },
-    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
-  };
 }

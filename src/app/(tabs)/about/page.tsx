@@ -10,17 +10,18 @@ import { trackPageView } from '@utils/helpers';
 import { getAboutPageContent } from 'lib/sanity';
 import { useEffect } from 'react';
 
-export default function AboutPage({ aboutPage }) {
-  const isMobile = useIsMobile();
+export default async function AboutPage() {
+  // const isMobile = useIsMobile();
+  const aboutPage = await getAboutPageContent();
 
-  useEffect(() => {
-    trackPageView('About Page Viewed');
-  });
+  // useEffect(() => {
+  //   trackPageView('About Page Viewed');
+  // });
 
   return (
     <>
       <PageHero feature={aboutPage?.about_hero} />
-      <SectionWrapper style={{ maxWidth: isMobile ? '100%' : '75%' }}>
+      <SectionWrapper style={{ maxWidth: '75%' }}>
         <LongFormText
           title="Our Story"
           overline="We are on a Mission"
@@ -37,13 +38,4 @@ export default function AboutPage({ aboutPage }) {
       <CareersCTA description={aboutPage?.careers} />
     </>
   );
-}
-
-export async function getStaticProps() {
-  const aboutPage = await getAboutPageContent();
-
-  return {
-    props: { aboutPage },
-    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
-  };
 }

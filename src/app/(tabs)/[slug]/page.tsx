@@ -14,30 +14,9 @@ import { getAllFundsData } from 'lib/supabase';
 import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 
-const CityfundsPage = dynamic(() => import('@pages/index'));
 const LegalTerms = dynamic(() => import('@components/marketing/LegalTerms'));
 
-export default function DynamicPage({
-  cityfunds,
-  partner,
-  legal,
-  cityfundsPage,
-}) {
-  useEffect(() => {
-    trackPageView(`${partner ? 'Publisher' : 'Legal'} Page Viewed`);
-  });
-
-  return (
-    <>
-      {partner && (
-        <CityfundsPage cityfundsPage={cityfundsPage} cityfunds={cityfunds} />
-      )}
-      {legal && <LegalTerms legal={legal} />}
-    </>
-  );
-}
-
-export async function getStaticProps({ params }) {
+export default async function DynamicPage({params }) {
   const fundsData = await getAllFundsData();
   const cityfundsPage = await getCityfundsPageContent();
   const fundsContent = await getAllFundsContent();
@@ -57,21 +36,26 @@ export async function getStaticProps({ params }) {
   const partner = partnerData?.partner ?? null;
   const legal = legalData?.legal ?? null;
 
-  return {
-    props: { cityfunds, partner, legal, cityfundsPage },
-    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
-  };
+  // useEffect(() => {
+  //   trackPageView(`${partner ? 'Publisher' : 'Legal'} Page Viewed`);
+  // });
+
+  return (
+    <>
+      {legal && <LegalTerms legal={legal} />}
+    </>
+  );
 }
 
-export async function getStaticPaths() {
-  const partnerPaths = await sanityClient.fetch(partnerSlugsQuery);
-  const legal = await sanityClient.fetch(legalSlugsQuery);
-  const legalPaths = legal?.filter((legal) => legal !== 'footer') ?? null;
+// export async function getStaticPaths() {
+//   const partnerPaths = await sanityClient.fetch(partnerSlugsQuery);
+//   const legal = await sanityClient.fetch(legalSlugsQuery);
+//   const legalPaths = legal?.filter((legal) => legal !== 'footer') ?? null;
 
-  return {
-    paths: [...partnerPaths, ...legalPaths].map((slug) => ({
-      params: { slug },
-    })),
-    fallback: true,
-  };
-}
+//   return {
+//     paths: [...partnerPaths, ...legalPaths].map((slug) => ({
+//       params: { slug },
+//     })),
+//     fallback: true,
+//   };
+// }
