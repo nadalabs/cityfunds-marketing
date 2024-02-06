@@ -1,3 +1,4 @@
+'use client';
 import styled from 'styled-components';
 
 export const SectionWrapper = styled.div<{ isBackground?: boolean }>`
@@ -13,6 +14,22 @@ export const SectionWrapper = styled.div<{ isBackground?: boolean }>`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 3rem 1.5rem;
+  }
+`;
+
+export const LayoutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+`;
+
+export const MainWrapper = styled.div<{ isBanner?: boolean }>`
+  width: 100%;
+  margin-top: ${({ isBanner }) => (isBanner ? '2rem' : 0)};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: ${({ isBanner }) => (isBanner ? '8rem' : '4rem')};
   }
 `;
 

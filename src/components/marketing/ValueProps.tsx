@@ -1,3 +1,4 @@
+'use client';
 import LongFormText from '@components/common/LongFormText';
 import {
   CardWrapper,

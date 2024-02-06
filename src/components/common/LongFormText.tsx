@@ -1,3 +1,4 @@
+'use client';
 import { StackWrapper } from '@elements/Containers';
 import {
   Caption,

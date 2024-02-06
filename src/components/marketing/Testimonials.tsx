@@ -1,3 +1,4 @@
+'use client';
 import ImageStepper from '@components/common/ImageStepper';
 import LongFormText from '@components/common/LongFormText';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';

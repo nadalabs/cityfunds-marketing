@@ -1,3 +1,4 @@
+'use client';
 import LongFormText from '@components/common/LongFormText';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, LinkText } from '@elements/Typography';

@@ -1,3 +1,4 @@
+'use client';
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
 import { HEADER_LINKS } from '@utils/constants';

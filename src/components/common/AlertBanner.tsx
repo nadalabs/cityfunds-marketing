@@ -1,3 +1,4 @@
+'use client';
 import { BoldText } from '@elements/Typography';
 import styled from 'styled-components';
 

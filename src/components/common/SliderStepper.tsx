@@ -1,3 +1,4 @@
+'use client';
 import { PrimaryButton } from '@elements/Buttons';
 import { FlexWrapper } from '@elements/Containers';
 import { PrimaryText } from '@elements/Typography';

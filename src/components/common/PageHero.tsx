@@ -1,3 +1,4 @@
+'use client';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HeroBanner from '@components/common/HeroBanner';
 import LongFormText from '@components/common/LongFormText';

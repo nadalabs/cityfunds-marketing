@@ -1,19 +1,15 @@
-'use client';
-
+import { Metadata } from 'next';
+import Script from 'next/script';
+import StyledComponentsRegistry from './registry';
 import * as snippet from '@segment/snippet';
 import * as Sentry from '@sentry/react';
+import { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import Script from 'next/script';
 import 'react-modern-drawer/dist/index.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import '../../styles/globals.css';
-import { Metadata } from 'next';
-import GlobalStyles from '@utils/styles';
-import StyledJsxRegistry from '@app/registry';
-import theme from '@utils/theme';
-import { ThemeProvider } from 'styled-components';
 
 declare global {
   interface Window {
@@ -23,12 +19,12 @@ declare global {
   }
 }
 
-// export const metadata: Metadata = {
-//   title: 'Cityfunds',
-//   description: 'Own a Piece of Your Favorite City',
-// };
+export const metadata: Metadata = {
+  title: 'Cityfunds',
+  description: 'Own a Piece of Your Favorite City',
+};
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   function renderSnippet() {
     const opts = {
       apiKey: process.env.NEXT_PUBLIC_ANALYTICS_WRITE_KEY || '',
@@ -51,35 +47,34 @@ export default function RootLayout({ children }) {
   }
 
   return (
-    <html>
-      <Script
-        id="segment-script"
-        dangerouslySetInnerHTML={{ __html: renderSnippet() }}
-      />
-      <Script
-        type="text/javascript"
-        id="hs-script-loader"
-        async
-        defer
-        src="//js.hs-scripts.com/8291437.js"
-      />
-      <Script
-        defer
-        id="googlemaps"
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
-        strategy="beforeInteractive"
-        type="text/javascript"
-      />
-
+    <html lang="en">
+      <link rel="icon" href="/icons/cityfunds-favicon.svg" />
+      <head>
+        <Script
+          type="text/javascript"
+          id="hs-script-loader"
+          async
+          defer
+          src="//js.hs-scripts.com/8291437.js"
+        />
+        <Script
+          id="segment-script"
+          dangerouslySetInnerHTML={{ __html: renderSnippet() }}
+        />
+        <Script
+          defer
+          id="googlemaps"
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+          strategy="beforeInteractive"
+          type="text/javascript"
+        />
+      </head>
       <body>
-        <StyledJsxRegistry>
-          <ThemeProvider theme={theme}>
-            <GlobalStyles />
-            {children}
-            <Analytics />
-            <SpeedInsights />
-          </ThemeProvider>
-        </StyledJsxRegistry>
+        <StyledComponentsRegistry>
+          {children}
+          <Analytics />
+          <SpeedInsights />
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

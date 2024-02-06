@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useRef } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import InputMask from 'react-input-mask';

@@ -1,3 +1,4 @@
+'use client';
 import SliderStepper from '@components/common/SliderStepper';
 import { FlexWrapper, SectionWrapper } from '@elements/Containers';
 import {

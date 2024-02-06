@@ -1,3 +1,4 @@
+'use client';
 import { GreenSquare } from '@components/common/ImageStepper';
 import SliderStepper from '@components/common/SliderStepper';
 import {

@@ -1,3 +1,4 @@
+'use client';
 import CityfundCard from '@components/cityfunds/CityfundCard';
 import useIsMobile from '@hooks/useIsMobile';
 import { REGULATION } from '@utils/constants';

@@ -1,3 +1,4 @@
+'use client';
 import { SectionWrapper } from '@elements/Containers';
 import { Overline, SmallHeading } from '@elements/Typography';
 import { format, parseISO } from 'date-fns';

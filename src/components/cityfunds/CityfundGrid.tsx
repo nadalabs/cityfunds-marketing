@@ -1,3 +1,4 @@
+'use client';
 import CityfundCard from '@components/cityfunds/CityfundCard';
 import { PrimaryButton } from '@elements/Buttons';
 import {

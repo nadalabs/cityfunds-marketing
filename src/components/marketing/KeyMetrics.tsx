@@ -1,3 +1,4 @@
+'use client';
 import { GreenSquare } from '@components/common/ImageStepper';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';

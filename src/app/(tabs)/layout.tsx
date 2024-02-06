@@ -1,53 +1,21 @@
 'use client';
-
-import styled from 'styled-components';
-import AlertBanner from '@components/common/AlertBanner';
-import MobileNavBar from '@components/common/MobileNavBar';
+import GlobalStyles from '@utils/styles';
 import DesktopNavBar from '@components/common/DesktopNavBar';
-import PageFooter from '@components/common/PageFooter';
-import useIsMobile from '@hooks/useIsMobile';
-import { useEffect } from 'react';
-import { UTM_PARAMETERS } from '@utils/constants';
-import { setCookie } from '@utils/helpers';
+import MobileNavBar from '@components/common/MobileNavBar';
+import theme from '@utils/theme';
+import { ReactNode } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { LayoutWrapper, MainWrapper } from '@elements/Containers';
 
-export default function Layout({ children }) {
-  const isMobile = useIsMobile();
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    UTM_PARAMETERS.forEach((param) => {
-      if (urlParams.has(param)) {
-        const value = urlParams.get(param);
-        // setCookie(param, value);
-      }
-    });
-  }, []);
-
+export default function TabsLayout({ children }: { children: ReactNode }) {
   return (
-    <LayoutWrapper>
-      {isMobile ? (
-        <MobileNavBar isBanner={true} />
-      ) : (
-        <DesktopNavBar isBanner={true} />
-      )}
-      <MainWrapper isBanner={true}>{children}</MainWrapper>
-      {/* {!isAuth && <PageFooter legal={footer} />} */}
-    </LayoutWrapper>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <LayoutWrapper>
+        <MobileNavBar />
+        <DesktopNavBar />
+        <MainWrapper>{children}</MainWrapper>
+      </LayoutWrapper>
+    </ThemeProvider>
   );
 }
-
-const LayoutWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-`;
-
-const MainWrapper = styled.div<{ isBanner?: boolean }>`
-  width: 100%;
-  margin-top: ${({ isBanner }) => (isBanner ? '2rem' : 0)};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-top: ${({ isBanner }) => (isBanner ? '8rem' : '4rem')};
-  }
-`;

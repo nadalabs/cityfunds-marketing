@@ -1,3 +1,4 @@
+'use client';
 import { FlexWrapper } from '@elements/Containers';
 import { PrimaryText } from '@elements/Typography';
 

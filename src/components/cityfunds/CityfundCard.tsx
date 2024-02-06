@@ -1,3 +1,4 @@
+'use client';
 import CityfundTicker from '@components/cityfunds/CityfundTicker';
 import NadaText from '@components/cityfunds/NadaText';
 import {

@@ -1,3 +1,4 @@
+'use client';
 import { Caption } from '@elements/Typography';
 import { FUND_TYPE, REGULATION } from '@utils/constants';
 import { formatPercent, formatPrice } from '@utils/helpers';
