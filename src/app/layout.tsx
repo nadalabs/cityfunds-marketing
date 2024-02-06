@@ -23,10 +23,10 @@ declare global {
   }
 }
 
-export const metadata: Metadata = {
-  title: 'Cityfunds',
-  description: 'Own a Piece of Your Favorite City',
-};
+// export const metadata: Metadata = {
+//   title: 'Cityfunds',
+//   description: 'Own a Piece of Your Favorite City',
+// };
 
 export default function RootLayout({ children }) {
   function renderSnippet() {

@@ -1,15 +1,44 @@
 import { createGlobalStyle } from 'styled-components';
+import { Poppins, Work_Sans, Yellowtail } from 'next/font/google';
 
-const GlobalStyle = createGlobalStyle`
-  html,
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  style: 'normal',
+  display: 'swap',
+  variable: '--poppins',
+});
+
+const work_sans = Work_Sans({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  style: 'normal',
+  display: 'swap',
+  variable: '--work_sans',
+});
+
+const yellowtail = Yellowtail({
+  subsets: ['latin'],
+  weight: ['400'],
+  style: 'normal',
+  display: 'swap',
+  variable: '--yellowtail',
+});
+
+export default createGlobalStyle`
+  :root {
+    --poppins: ${poppins.style.fontFamily};
+    --work_sans: ${work_sans.style.fontFamily};
+    --yellowtail: ${yellowtail.style.fontFamily};
+  }
+  html: {
+    font-family: var(--poppins),  var(--work_sans),  var(--yellowtail), 'sans-serif';
+  }
   body {
-    color: ${({ theme }) => theme.colors.primary};
+    color: #2A8356;
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
-
   a {
     color: inherit;
     text-decoration: none;
@@ -19,5 +48,3 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 `;
-
-export default GlobalStyle;

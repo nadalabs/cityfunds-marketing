@@ -6,15 +6,12 @@ import MobileNavBar from '@components/common/MobileNavBar';
 import DesktopNavBar from '@components/common/DesktopNavBar';
 import PageFooter from '@components/common/PageFooter';
 import useIsMobile from '@hooks/useIsMobile';
-import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import { UTM_PARAMETERS } from '@utils/constants';
 import { setCookie } from '@utils/helpers';
 
 export default function Layout({ children }) {
   const isMobile = useIsMobile();
-  const pathname = usePathname();
-  const isAuth = pathname === '/login' || pathname === '/signup';
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);

@@ -1,3 +1,5 @@
+'use client';
+
 import AccreditedGrid from '@components/cityfunds/AccreditedGrid';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
 import EquityChart from '@components/cityfunds/EquityChart';
@@ -13,19 +15,14 @@ import ValueProps from '@components/marketing/ValueProps';
 import Webinanars from '@components/marketing/Webinars';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { trackPageView } from '@utils/helpers';
-import { getAllFundsContent, getCityfundsPageContent } from 'lib/sanity';
-import { getAllFundsData } from 'lib/supabase';
 import { useEffect } from 'react';
 
-interface CityfundsPageProps {
+interface HomePageProps {
   cityfundsPage?: any;
   cityfunds: any[];
 }
 
-export default function CityfundsPage({
-  cityfundsPage,
-  cityfunds,
-}: CityfundsPageProps) {
+export default function HomePage({ cityfundsPage, cityfunds }: HomePageProps) {
   useEffect(() => {
     trackPageView('Cityfunds Page Viewed');
   });
@@ -91,21 +88,4 @@ export default function CityfundsPage({
       <EmailCapture formName="Cityfunds" isPopup />
     </>
   );
-}
-
-export async function getStaticProps() {
-  const cityfundsPage = await getCityfundsPageContent();
-  const fundsData = await getAllFundsData();
-  const fundsContent = await getAllFundsContent();
-  const cityfunds = fundsData.map((data) => {
-    const content = fundsContent.find(
-      (content) => content.fund_name === data.fund_name
-    );
-    return { fund_data: data, fund_content: content };
-  });
-
-  return {
-    props: { cityfundsPage, cityfunds },
-    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
-  };
 }

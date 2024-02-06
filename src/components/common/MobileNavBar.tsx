@@ -3,7 +3,7 @@ import { FlexWrapper, StackWrapper } from '@elements/Containers';
 import { HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Drawer from 'react-modern-drawer';
 import styled from 'styled-components';
@@ -13,11 +13,11 @@ interface MobileNavBarProps {
 }
 
 export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
-  const router = useRouter();
   const [dropDown, setDropdown] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const isScroll = scrollPosition > 0;
+  const pathname = usePathname();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -105,7 +105,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
                       key={idx}
                       href={link}
                       style={{
-                        color: link === router.pathname ? '#48DC95' : 'white',
+                        color: link === pathname ? '#48DC95' : 'white',
                       }}
                     >
                       {name.toUpperCase()}
@@ -140,7 +140,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
                   key={idx}
                   href={link}
                   style={{
-                    color: link === router.pathname ? '#48DC95' : 'white',
+                    color: link === pathname ? '#48DC95' : 'white',
                   }}
                 >
                   {name.toUpperCase()}
