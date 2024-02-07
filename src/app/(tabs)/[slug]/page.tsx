@@ -1,57 +1,49 @@
 import { trackPageView } from '@utils/helpers';
-import {
-  legalQuery,
-  legalSlugsQuery,
-  partnerQuery,
-  partnerSlugsQuery,
-} from 'lib/queries';
-import {
-  getAllFundsContent,
-  getCityfundsPageContent,
-  sanityClient,
-} from 'lib/sanity';
-import { getAllFundsData } from 'lib/supabase';
-import dynamic from 'next/dynamic';
+import { legalQuery, legalSlugsQuery } from 'lib/queries';
+import { sanityClient } from 'lib/sanity';
 import { useEffect } from 'react';
+import LongFormText from '@components/common/LongFormText';
+import { SectionWrapper } from '@elements/Containers';
+import { format, parseISO } from 'date-fns';
+import { Heading, LinkText } from '@elements/Typography';
+import { LEGAL_LINKS } from '@utils/constants';
 
-const LegalTerms = dynamic(() => import('@components/marketing/LegalTerms'));
+export async function generateStaticParams() {
+  const legalSlugs = await sanityClient.fetch(legalSlugsQuery);
+  const filteredSlugs =
+    legalSlugs?.filter((legal) => legal !== 'footer') ?? null;
+  return filteredSlugs?.map((slug) => ({ slug }));
+}
 
-export default async function DynamicPage({ params }) {
-  const fundsData = await getAllFundsData();
-  const cityfundsPage = await getCityfundsPageContent();
-  const fundsContent = await getAllFundsContent();
-  const cityfunds = fundsData.map((data) => {
-    const content = fundsContent.find(
-      (content) => content.fund_name === data.fund_name
-    );
-    return { fund_data: data, fund_content: content };
-  });
-
-  const partnerData = await sanityClient.fetch(partnerQuery, {
-    slug: params.slug,
-  });
+export default async function LegalPage({ params }) {
   const legalData = await sanityClient.fetch(legalQuery, {
     slug: params.slug,
   });
-  const partner = partnerData?.partner ?? null;
   const legal = legalData?.legal ?? null;
 
   // useEffect(() => {
-  //   trackPageView(`${partner ? 'Publisher' : 'Legal'} Page Viewed`);
+  //   trackPageView(`Legal Page Viewed`);
   // });
 
-  return <>{legal && <LegalTerms legal={legal} />}</>;
+  return (
+    <SectionWrapper>
+      <div style={{ margin: '4rem 0' }}>
+        <Heading>Transparency</Heading>
+        {LEGAL_LINKS.map(({ name, link }, idx) => (
+          <LinkText key={idx} href={link} style={{ marginBottom: '1rem' }}>
+            {name}
+          </LinkText>
+        ))}
+      </div>
+
+      <LongFormText
+        overline={`Last updated ${format(
+          parseISO(legal?.date),
+          'LLLL	d, yyyy'
+        )}`}
+        title={legal?.title}
+        content={legal?.content}
+      />
+    </SectionWrapper>
+  );
 }
-
-// export async function getStaticPaths() {
-//   const partnerPaths = await sanityClient.fetch(partnerSlugsQuery);
-//   const legal = await sanityClient.fetch(legalSlugsQuery);
-//   const legalPaths = legal?.filter((legal) => legal !== 'footer') ?? null;
-
-//   return {
-//     paths: [...partnerPaths, ...legalPaths].map((slug) => ({
-//       params: { slug },
-//     })),
-//     fallback: true,
-//   };
-// }

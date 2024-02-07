@@ -13,6 +13,12 @@ import {
 import { sanityClient } from 'lib/sanity';
 import { useEffect } from 'react';
 
+export async function generateStaticParams() {
+  const postSlugs = await sanityClient.fetch(postSlugsQuery);
+  const mediaSlugs = await sanityClient.fetch(mediaSlugsQuery);
+  return [...postSlugs, ...mediaSlugs]?.map((slug) => ({ slug }));
+}
+
 export default async function PostPage({ params }) {
   const postData = await sanityClient.fetch(postQuery, {
     slug: params.slug,
@@ -45,13 +51,3 @@ export default async function PostPage({ params }) {
     </>
   );
 }
-
-// export async function getStaticPaths() {
-//   const postPaths = await sanityClient.fetch(postSlugsQuery);
-//   const mediaPaths = await sanityClient.fetch(mediaSlugsQuery);
-
-//   return {
-//     paths: [...postPaths, ...mediaPaths].map((slug) => ({ params: { slug } })),
-//     fallback: true,
-//   };
-// }
