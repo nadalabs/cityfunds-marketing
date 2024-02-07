@@ -2,8 +2,8 @@ import BlogHero from '@components/blog/BlogHero';
 import VideoPlayer from '@components/blog/VideoPlayer';
 import EmailCapture from '@components/common/EmailCapture';
 import LongFormText from '@components/common/LongFormText';
+import PageTracker from '@components/common/PageTracker';
 import { SectionWrapper } from '@elements/Containers';
-import { trackPageView } from '@utils/helpers';
 import {
   mediaQuery,
   mediaSlugsQuery,
@@ -11,7 +11,6 @@ import {
   postSlugsQuery,
 } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
-import { useEffect } from 'react';
 
 export async function generateStaticParams() {
   const postSlugs = await sanityClient.fetch(postSlugsQuery);
@@ -29,12 +28,8 @@ export default async function PostPage({ params }) {
   });
   const media = mediaData?.media ?? null;
 
-  // useEffect(() => {
-  //   trackPageView('Blog Article Viewed');
-  // });
-
   return (
-    <>
+    <PageTracker pageName="Blog Article">
       <BlogHero blogPosts={post ? [post] : [media]} />
       <SectionWrapper style={{ paddingBottom: 0 }}>
         {post ? (
@@ -48,6 +43,6 @@ export default async function PostPage({ params }) {
         )}
       </SectionWrapper>
       <EmailCapture formName="Blog" />
-    </>
+    </PageTracker>
   );
 }

@@ -9,6 +9,7 @@ import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { ICityfund, IFeature } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 interface PageHeroProps {
@@ -18,7 +19,7 @@ interface PageHeroProps {
     link: string;
   };
   btnText?: string;
-  onClick?: () => void;
+  link?: string;
   logoTitle?: string;
   logos?: any[];
   cityfunds?: ICityfund[];
@@ -28,7 +29,7 @@ export default function PageHero({
   feature,
   banner,
   btnText,
-  onClick,
+  link,
   logoTitle,
   logos,
   cityfunds,
@@ -45,9 +46,9 @@ export default function PageHero({
           <Heading>{feature?.title}</Heading>
           <LongFormText content={feature?.description} isLarge />
           {btnText && (
-            <div>
-              <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-            </div>
+            <Link href={link} target="_blank">
+              <PrimaryButton>{btnText}</PrimaryButton>
+            </Link>
           )}
         </StackWrapper>
 

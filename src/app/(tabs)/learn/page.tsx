@@ -1,20 +1,14 @@
 import BlogHero from '@components/blog/BlogHero';
 import BlogSlider from '@components/blog/BlogSlider';
 import EmailCapture from '@components/common/EmailCapture';
-import { trackPageView } from '@utils/helpers';
+import PageTracker from '@components/common/PageTracker';
 import { mediaIndexQuery, postIndexQuery } from 'lib/queries';
 import { sanityClient } from 'lib/sanity';
 import _ from 'lodash';
-import { useEffect } from 'react';
 
 export default async function LearnPage() {
   const allPosts = await sanityClient.fetch(postIndexQuery);
   const allMedia = await sanityClient.fetch(mediaIndexQuery);
-
-  // useEffect(() => {
-  //   trackPageView('Blog Page Viewed');
-  // });
-
   const pagePosts = allPosts.filter(({ tag }) => tag === 'Investing');
   const postsByTag = _.groupBy(pagePosts, 'tag');
   const mediaByTag = _.groupBy(allMedia, 'tag');
@@ -38,10 +32,10 @@ export default async function LearnPage() {
   }
 
   return (
-    <>
+    <PageTracker pageName="Blog">
       <BlogHero blogPosts={heroPosts} />
       {renderBlogSliders()}
       <EmailCapture formName="Blog" />
-    </>
+    </PageTracker>
   );
 }

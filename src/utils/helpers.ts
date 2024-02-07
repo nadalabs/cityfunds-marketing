@@ -96,10 +96,6 @@ export const getTimeRemaining = () => {
   return { days, hours };
 };
 
-export const trackPageView = async (event: string) => {
-  await window.analytics.track(event);
-};
-
 export const isDateInRange = (targetDate) => {
   const now = new Date();
   const tenDaysFromNow = new Date();

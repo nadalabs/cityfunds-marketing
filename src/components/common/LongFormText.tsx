@@ -22,6 +22,7 @@ interface LongFormTextProps {
   isLarge?: boolean;
   isInverted?: boolean;
   isToggle?: boolean;
+  isNotWide?: boolean;
 }
 
 export default function LongFormText({
@@ -32,6 +33,7 @@ export default function LongFormText({
   isLarge,
   isInverted,
   isToggle,
+  isNotWide,
 }: LongFormTextProps) {
   const [showMore, setShowMore] = useState(false);
   const isMobile = useIsMobile();
@@ -127,7 +129,7 @@ export default function LongFormText({
     <StackWrapper style={{ gap: '1rem' }}>
       {overline && <Overline>{overline}</Overline>}
       {title && <Heading>{title}</Heading>}
-      <div style={{ width: '100%' }}>
+      <div style={{ width: !isMobile && isNotWide ? '75%' : '100%' }}>
         {/* @ts-ignore-next-line */}
         <PortableText
           value={isToggle && !showMore ? content.slice(0, 8) : content || []}

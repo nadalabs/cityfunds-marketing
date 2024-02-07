@@ -1,5 +1,5 @@
 import LongFormText from '@components/common/LongFormText';
-import { LinkButton, SecondaryButton } from '@elements/Buttons';
+import { LinkButton } from '@elements/Buttons';
 import { BoldText, LinkText } from '@elements/Typography';
 import { FOOTER_LINKS, ICON_LINKS, SOCIAL_LINKS } from '@utils/constants';
 import { getFooterContent } from 'lib/sanity';

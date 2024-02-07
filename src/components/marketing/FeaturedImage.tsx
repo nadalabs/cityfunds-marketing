@@ -7,13 +7,14 @@ import useIsMobile from '@hooks/useIsMobile';
 import { IFeature } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface FeaturedImageProps {
   feature: IFeature;
   btnText?: string;
-  onClick?: () => void;
+  link?: string;
   overline?: string;
   component?: ReactNode;
   isReversed?: boolean;
@@ -24,7 +25,7 @@ interface FeaturedImageProps {
 export default function FeaturedImage({
   feature,
   btnText,
-  onClick,
+  link,
   overline,
   component,
   isReversed,
@@ -56,9 +57,9 @@ export default function FeaturedImage({
           {component ? (
             component
           ) : (
-            <div>
-              <PrimaryButton onClick={onClick}>{btnText}</PrimaryButton>
-            </div>
+            <Link href={link} target="_blank">
+              <PrimaryButton>{btnText}</PrimaryButton>
+            </Link>
           )}
         </StackWrapper>
       </ContentWrapper>
