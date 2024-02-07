@@ -138,16 +138,24 @@ export default function LongFormText({
       </div>
 
       {isToggle && (
-        <SecondaryButton
-          onClick={() => setShowMore(!showMore)}
-          style={{ color: '#48DC95', textDecoration: 'underline' }}
-        >
-          {showMore ? 'See Less' : 'See More'}
-        </SecondaryButton>
+        <ToggleWrapper>
+          <SecondaryButton
+            onClick={() => setShowMore(!showMore)}
+            style={{ color: '#48DC95', textDecoration: 'underline' }}
+          >
+            {showMore ? 'See Less' : 'See More'}
+          </SecondaryButton>
+        </ToggleWrapper>
       )}
     </StackWrapper>
   );
 }
+
+const ToggleWrapper = styled.div`
+  align-self: flex-start;
+  position: relative;
+  bottom: 2rem;
+`;
 
 const QuoteText = styled(Heading)`
   height: 420px;
