@@ -1,10 +1,10 @@
 'use client';
 import styled from 'styled-components';
 
-export const SectionWrapper = styled.div<{ isBackground?: boolean }>`
+export const SectionWrapper = styled.div<{ $isBackground?: boolean }>`
   padding: 6.25rem;
-  background: ${({ isBackground }) =>
-    isBackground
+  background: ${({ $isBackground }) =>
+    $isBackground
       ? 'linear-gradient(0deg, rgba(42, 131, 86, 0.05) 0%, rgba(42, 131, 86, 0.05) 100%), #FFF'
       : 'none'};
 
@@ -190,8 +190,8 @@ export const TickerWrapper = styled.div`
   }
 `;
 
-export const FadeWrapper = styled.div<{ isActive?: boolean }>`
+export const FadeWrapper = styled.div<{ $isActive?: boolean }>`
   transition: ${({ theme }) => theme.transitions.ease};
-  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
-  visibility: ${({ isActive }) => (isActive ? 'visible' : 'hidden')};
+  opacity: ${({ $isActive }) => ($isActive ? 1 : 0)};
+  visibility: ${({ $isActive }) => ($isActive ? 'visible' : 'hidden')};
 `;

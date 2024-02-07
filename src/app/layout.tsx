@@ -61,13 +61,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           id="segment-script"
           dangerouslySetInnerHTML={{ __html: renderSnippet() }}
         />
-        <Script
-          defer
-          id="googlemaps"
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
-          strategy="beforeInteractive"
-          type="text/javascript"
-        />
       </head>
       <body>
         <StyledComponentsRegistry>

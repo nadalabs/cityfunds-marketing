@@ -34,7 +34,7 @@ export default function AccreditedGrid({ cityfunds }: AccreditedGridProps) {
   );
 
   return (
-    <SectionWrapper isBackground>
+    <SectionWrapper $isBackground>
       <StackWrapper style={{ gap: 0, marginBottom: '1.5rem' }}>
         <Heading style={{ fontSize: '2.5rem' }}>
           Are you an Accredited Investor?

@@ -120,7 +120,7 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
                 '_blank'
               )
             }
-            isInverted
+            $isInverted
           >
             Log In
           </PrimaryButton>

@@ -104,7 +104,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
           }}
         >
           {HEADER_LINKS.map(({ name, link, links }, idx) => (
-            <>
+            <div key={idx}>
               {links ? (
                 <StackWrapper onClick={() => setDropdown(!dropDown)}>
                   <FlexWrapper style={{ cursor: 'pointer', gap: '0.5rem' }}>
@@ -153,7 +153,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
                   {name.toUpperCase()}
                 </NavbarLink>
               )}
-            </>
+            </div>
           ))}
 
           <>
@@ -164,7 +164,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
               <PrimaryButton
                 onClick={() => setShowMenu(false)}
                 style={{ textTransform: 'uppercase' }}
-                isInverted
+                $isInverted
               >
                 Log In
               </PrimaryButton>

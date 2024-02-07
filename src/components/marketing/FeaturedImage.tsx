@@ -46,7 +46,7 @@ export default function FeaturedImage({
             : 'row',
         gap: isMobile ? '1.5rem' : '5rem',
       }}
-      isBackground={isBackground}
+      $isBackground={isBackground}
     >
       <ContentWrapper>
         <StackWrapper style={{ gap: '1rem' }}>

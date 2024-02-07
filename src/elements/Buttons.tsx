@@ -2,12 +2,12 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export const PrimaryButton = styled.button<{ isInverted?: boolean }>`
+export const PrimaryButton = styled.button<{ $isInverted?: boolean }>`
   transition: ${({ theme }) => theme.transitions.ease};
-  color: ${({ theme, isInverted }) =>
-    isInverted ? theme.colors.primary : 'white'};
-  background: ${({ theme, isInverted }) =>
-    isInverted ? 'white' : theme.colors.primary};
+  color: ${({ theme, $isInverted }) =>
+    $isInverted ? theme.colors.primary : 'white'};
+  background: ${({ theme, $isInverted }) =>
+    $isInverted ? 'white' : theme.colors.primary};
   font-family: ${({ theme }) => theme.fonts.main};
   font-size: 1rem;
   font-style: normal;
@@ -22,15 +22,15 @@ export const PrimaryButton = styled.button<{ isInverted?: boolean }>`
   box-shadow: 2px 2px 30px 0px rgba(0, 0, 0, 0.05);
 
   &:disabled {
-    background-color: ${({ isInverted }) =>
-      isInverted ? '#FFFFFF' : 'rgba(42, 131, 86, 0.4)'};
+    background-color: ${({ $isInverted }) =>
+      $isInverted ? '#FFFFFF' : 'rgba(42, 131, 86, 0.4)'};
   }
 
   &:hover {
-    background-color: ${({ theme, isInverted }) =>
-      isInverted ? 'white' : theme.colors.secondary};
-    color: ${({ theme, isInverted }) =>
-      isInverted ? theme.colors.secondary : 'white'};
+    background-color: ${({ theme, $isInverted }) =>
+      $isInverted ? 'white' : theme.colors.secondary};
+    color: ${({ theme, $isInverted }) =>
+      $isInverted ? theme.colors.secondary : 'white'};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

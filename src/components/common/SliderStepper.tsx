@@ -52,7 +52,7 @@ export default function SliderStepper({
             onClick={() => handleBack(activeStep)}
             style={{ cursor: isBackDisabled ? 'default' : 'pointer' }}
             disabled={isBackDisabled}
-            isInverted
+            $isInverted
           >
             <Image
               src={`/icons/${isBackDisabled ? 'back-disabled' : 'back'}.svg`}
@@ -66,7 +66,7 @@ export default function SliderStepper({
             onClick={() => handleNext(activeStep)}
             style={{ cursor: isNextDisabled ? 'default' : 'pointer' }}
             disabled={isNextDisabled}
-            isInverted
+            $isInverted
           >
             <Image
               src={`/icons/${isNextDisabled ? 'next-disabled' : 'next'}.svg`}

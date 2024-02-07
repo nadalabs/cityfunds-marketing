@@ -103,12 +103,12 @@ export default function HowItWorks({
                 }}
               >
                 <GreenSquare />
-                <HoverHeading isActive={activeIdx === idx}>
+                <HoverHeading $isActive={activeIdx === idx}>
                   {title}
                 </HoverHeading>
               </div>
               <FadeWrapper
-                isActive={activeIdx === idx}
+                $isActive={activeIdx === idx}
                 style={{ marginLeft: '1.5rem' }}
               >
                 {activeIdx === idx && <LongFormText content={description} />}
@@ -125,10 +125,10 @@ export default function HowItWorks({
   );
 }
 
-const HoverHeading = styled(SmallHeading)<{ isActive?: boolean }>`
+const HoverHeading = styled(SmallHeading)<{ $isActive?: boolean }>`
   transition: ${({ theme }) => theme.transitions.ease};
-  color: ${({ theme, isActive }) =>
-    isActive ? theme.colors.primary : '#30303080'};
+  color: ${({ theme, $isActive }) =>
+    $isActive ? theme.colors.primary : '#30303080'};
 
   &:hover {
     color: ${({ theme }) => theme.colors.secondary};

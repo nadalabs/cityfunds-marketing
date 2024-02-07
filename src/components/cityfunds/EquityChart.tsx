@@ -29,7 +29,7 @@ export default function EquityChart() {
   ];
 
   return (
-    <SectionWrapper isBackground>
+    <SectionWrapper $isBackground>
       <GridWrapper
         style={{
           display: isMobile ? 'flex' : 'grid',

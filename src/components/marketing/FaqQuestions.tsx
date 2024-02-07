@@ -27,7 +27,7 @@ export default function FaqQuestions({
   const isMobile = useIsMobile();
 
   return (
-    <SectionWrapper isBackground={isBackground}>
+    <SectionWrapper $isBackground={isBackground}>
       <StackWrapper style={{ gap: '1rem' }}>
         <Overline>Frequently Asked Questions</Overline>
 
@@ -35,12 +35,12 @@ export default function FaqQuestions({
           <ContentWrapper key={idx}>
             <HoverHeading
               onClick={() => setActiveIdx(idx)}
-              isActive={activeIdx === idx}
+              $isActive={activeIdx === idx}
             >
               {question}
             </HoverHeading>
             <FadeWrapper
-              isActive={activeIdx === idx}
+              $isActive={activeIdx === idx}
               style={{ maxWidth: isMobile ? '100%' : '45%' }}
             >
               <LongFormText content={answer} />
@@ -73,10 +73,10 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const HoverHeading = styled(Heading)<{ isActive?: boolean }>`
+export const HoverHeading = styled(Heading)<{ $isActive?: boolean }>`
   transition: ${({ theme }) => theme.transitions.ease};
-  color: ${({ theme, isActive }) =>
-    isActive ? theme.colors.primary : theme.colors.black};
+  color: ${({ theme, $isActive }) =>
+    $isActive ? theme.colors.primary : theme.colors.black};
   margin-bottom: 1rem;
   cursor: pointer;
   width: 50%;

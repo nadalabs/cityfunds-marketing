@@ -17,7 +17,7 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
   const isMobile = useIsMobile();
 
   return (
-    <SectionWrapper isBackground>
+    <SectionWrapper $isBackground>
       <FlexWrapper
         style={{
           justifyContent: 'space-evenly',
