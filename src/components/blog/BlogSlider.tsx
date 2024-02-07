@@ -37,7 +37,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: isMobile ? 1.15 : 4,
+    slidesToShow: isMobile ? 1.15 : blogPosts.length < 4 ? blogPosts.length : 4,
     slidesToScroll: isMobile ? 1 : 4,
     swipeToSlide: true,
     beforeChange: (_, next) => setActiveStep(next),
