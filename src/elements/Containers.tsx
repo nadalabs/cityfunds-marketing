@@ -1,9 +1,10 @@
+'use client';
 import styled from 'styled-components';
 
-export const SectionWrapper = styled.div<{ isBackground?: boolean }>`
+export const SectionWrapper = styled.div<{ $isBackground?: boolean }>`
   padding: 6.25rem;
-  background: ${({ isBackground }) =>
-    isBackground
+  background: ${({ $isBackground }) =>
+    $isBackground
       ? 'linear-gradient(0deg, rgba(42, 131, 86, 0.05) 0%, rgba(42, 131, 86, 0.05) 100%), #FFF'
       : 'none'};
 
@@ -13,6 +14,22 @@ export const SectionWrapper = styled.div<{ isBackground?: boolean }>`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 3rem 1.5rem;
+  }
+`;
+
+export const LayoutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+`;
+
+export const MainWrapper = styled.div<{ isBanner?: boolean }>`
+  width: 100%;
+  margin-top: ${({ isBanner }) => (isBanner ? '2rem' : 0)};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: ${({ isBanner }) => (isBanner ? '8rem' : '4rem')};
   }
 `;
 
@@ -173,8 +190,8 @@ export const TickerWrapper = styled.div`
   }
 `;
 
-export const FadeWrapper = styled.div<{ isActive?: boolean }>`
+export const FadeWrapper = styled.div<{ $isActive?: boolean }>`
   transition: ${({ theme }) => theme.transitions.ease};
-  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
-  visibility: ${({ isActive }) => (isActive ? 'visible' : 'hidden')};
+  opacity: ${({ $isActive }) => ($isActive ? 1 : 0)};
+  visibility: ${({ $isActive }) => ($isActive ? 'visible' : 'hidden')};
 `;

@@ -1,3 +1,4 @@
+'use client';
 import ImageStepper from '@components/common/ImageStepper';
 import LongFormText from '@components/common/LongFormText';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';
@@ -25,7 +26,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
   };
 
   return (
-    <SectionWrapper isBackground>
+    <SectionWrapper $isBackground>
       <StackWrapper style={{ gap: '1rem' }}>
         <Overline>Hear it from our users...</Overline>
         <Slider {...settings} ref={sliderRef}>

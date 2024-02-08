@@ -1,3 +1,4 @@
+'use client';
 import ImageStepper from '@components/common/ImageStepper';
 import { SectionWrapper } from '@elements/Containers';
 import {

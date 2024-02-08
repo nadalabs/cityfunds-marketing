@@ -1,3 +1,4 @@
+'use client';
 import { Caption } from '@elements/Typography';
 import { FUND_TYPE, REGULATION } from '@utils/constants';
 import { formatPercent, formatPrice } from '@utils/helpers';
@@ -38,8 +39,8 @@ export default function CityfundTicker({
         fund_data?.fund_type === FUND_TYPE.DEBT
           ? `${formatPercent(fund_data?.target_return, 1)} APY`
           : appreciation
-          ? formatPercent(appreciation, 1)
-          : 'New',
+            ? formatPercent(appreciation, 1)
+            : 'New',
       icon: appreciation ? (
         <Image
           src="/icons/gain.svg"

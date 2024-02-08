@@ -1,3 +1,4 @@
+'use client';
 import styled from 'styled-components';
 
 interface NadaTextProps {
@@ -22,8 +23,8 @@ export default function NadaText({ name, isDark, size }: NadaTextProps) {
             size === 'extraSmall'
               ? '2rem'
               : size === 'small'
-              ? '2.5rem'
-              : '3.125rem',
+                ? '2.5rem'
+                : '3.125rem',
           width: 'inherit',
         }}
       >
@@ -35,8 +36,7 @@ export default function NadaText({ name, isDark, size }: NadaTextProps) {
 }
 
 export const NadaHeading = styled.h2`
-  font-family: ${({ theme }) => theme.fonts.main};
-  font-family: Poppins;
+  font-family: var(--poppins);
   font-size: 3.125rem;
   font-style: normal;
   font-weight: 600;

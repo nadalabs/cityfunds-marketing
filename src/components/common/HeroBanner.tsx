@@ -1,3 +1,4 @@
+'use client';
 import { PrimaryText } from '@elements/Typography';
 import Image from 'next/image';
 import Link from 'next/link';

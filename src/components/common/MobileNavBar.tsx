@@ -1,9 +1,11 @@
+'use client';
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
+import useIsMobile from '@hooks/useIsMobile';
 import { HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Drawer from 'react-modern-drawer';
 import styled from 'styled-components';
@@ -13,11 +15,12 @@ interface MobileNavBarProps {
 }
 
 export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
-  const router = useRouter();
   const [dropDown, setDropdown] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const isScroll = scrollPosition > 0;
+  const pathname = usePathname();
+  const isMobile = useIsMobile();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -31,6 +34,10 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  if (!isMobile) {
+    return null;
+  }
 
   return (
     <>
@@ -97,7 +104,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
           }}
         >
           {HEADER_LINKS.map(({ name, link, links }, idx) => (
-            <>
+            <div key={idx}>
               {links ? (
                 <StackWrapper onClick={() => setDropdown(!dropDown)}>
                   <FlexWrapper style={{ cursor: 'pointer', gap: '0.5rem' }}>
@@ -105,7 +112,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
                       key={idx}
                       href={link}
                       style={{
-                        color: link === router.pathname ? '#48DC95' : 'white',
+                        color: link === pathname ? '#48DC95' : 'white',
                       }}
                     >
                       {name.toUpperCase()}
@@ -140,13 +147,13 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
                   key={idx}
                   href={link}
                   style={{
-                    color: link === router.pathname ? '#48DC95' : 'white',
+                    color: link === pathname ? '#48DC95' : 'white',
                   }}
                 >
                   {name.toUpperCase()}
                 </NavbarLink>
               )}
-            </>
+            </div>
           ))}
 
           <>
@@ -157,7 +164,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
               <PrimaryButton
                 onClick={() => setShowMenu(false)}
                 style={{ textTransform: 'uppercase' }}
-                isInverted
+                $isInverted
               >
                 Log In
               </PrimaryButton>

@@ -1,9 +1,11 @@
+'use client';
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
+import useIsMobile from '@hooks/useIsMobile';
 import { HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -12,10 +14,11 @@ interface DesktopNavBarProps {
 }
 
 export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
-  const router = useRouter();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [dropDown, setDropdown] = useState(false);
   const isScroll = scrollPosition > 0;
+  const pathname = usePathname();
+  const isMobile = useIsMobile();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -29,6 +32,10 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <NavbarWrapper
@@ -63,7 +70,7 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
                     <PrimaryLink
                       href={link}
                       style={{
-                        color: link === router.pathname ? '#48DC95' : 'black',
+                        color: link === pathname ? '#48DC95' : 'black',
                       }}
                     >
                       {name}
@@ -95,7 +102,7 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
                 <PrimaryLink
                   href={link}
                   style={{
-                    color: link === router.pathname ? '#48DC95' : '#1A1A1A',
+                    color: link === pathname ? '#48DC95' : '#1A1A1A',
                   }}
                 >
                   {name}
@@ -113,7 +120,7 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
                 '_blank'
               )
             }
-            isInverted
+            $isInverted
           >
             Log In
           </PrimaryButton>

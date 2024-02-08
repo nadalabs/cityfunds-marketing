@@ -1,3 +1,4 @@
+'use client';
 import { GreenSquare } from '@components/common/ImageStepper';
 import { SectionWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
@@ -16,7 +17,7 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
   const isMobile = useIsMobile();
 
   return (
-    <SectionWrapper isBackground>
+    <SectionWrapper $isBackground>
       <FlexWrapper
         style={{
           justifyContent: 'space-evenly',

@@ -1,3 +1,4 @@
+'use client';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';

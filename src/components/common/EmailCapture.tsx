@@ -1,3 +1,4 @@
+'use client';
 import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper } from '@elements/Containers';
 import { FormInput, StyledForm } from '@elements/FormInput';

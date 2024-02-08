@@ -1,3 +1,4 @@
+'use client';
 import { FlexWrapper, SectionWrapper } from '@elements/Containers';
 import { LinkText, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';

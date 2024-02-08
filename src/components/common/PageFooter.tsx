@@ -1,18 +1,14 @@
 import LongFormText from '@components/common/LongFormText';
-import { LinkButton, SecondaryButton } from '@elements/Buttons';
+import { LinkButton } from '@elements/Buttons';
 import { BoldText, LinkText } from '@elements/Typography';
 import { FOOTER_LINKS, ICON_LINKS, SOCIAL_LINKS } from '@utils/constants';
+import { getFooterContent } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 import styled from 'styled-components';
 
-interface PageFooterProps {
-  legal: any[];
-}
-
-export default function PageFooter({ legal }: PageFooterProps) {
-  const [showMore, setShowMore] = useState(false);
+export default async function PageFooter() {
+  const legal = await getFooterContent();
 
   return (
     <FooterWrapper>
@@ -83,15 +79,7 @@ export default function PageFooter({ legal }: PageFooterProps) {
         </div>
       </LinkWrapper>
 
-      <div>
-        <LongFormText content={showMore ? legal : legal.slice(0, 8)} isSmall />
-        <SecondaryButton
-          onClick={() => setShowMore(!showMore)}
-          style={{ color: '#48DC95', textDecoration: 'underline' }}
-        >
-          {showMore ? 'See Less' : 'See More'}
-        </SecondaryButton>
-      </div>
+      <LongFormText content={legal} isSmall isToggle />
     </FooterWrapper>
   );
 }

@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+'use client';
+import { useEffect } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import InputMask from 'react-input-mask';
 import styled from 'styled-components';
+import { ErrorText } from '@elements/Typography';
 
 interface FormInputProps {
   name: string;
@@ -9,7 +10,6 @@ interface FormInputProps {
   type?: string;
   placeholder?: string;
   value?: string;
-  mask?: any;
 }
 
 export const FormInput: React.FC<FormInputProps> = ({
@@ -18,32 +18,12 @@ export const FormInput: React.FC<FormInputProps> = ({
   type = 'text',
   placeholder,
   value,
-  mask,
 }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const { trigger, control, setValue } = useFormContext();
-  const handleBlur = async () => {
-    await trigger(name);
-  };
+  const { control, setValue, trigger } = useFormContext();
 
   useEffect(() => {
     if (value) setValue(name, value);
   }, [name, value, setValue]);
-
-  const maskChar = '*';
-  const unmaskValue = (value: string) => {
-    if (mask) {
-      let unmaskedValue = '';
-      for (let i = 0; i < value.length; i++) {
-        const isValueChar =
-          mask[i] === '9' || mask[i] === 'a' || mask[i] === '*';
-        const isMaskChar = value[i] === maskChar;
-        if (isValueChar && !isMaskChar) unmaskedValue += value[i];
-      }
-      return unmaskedValue;
-    }
-    return value;
-  };
 
   return (
     <Controller
@@ -52,28 +32,17 @@ export const FormInput: React.FC<FormInputProps> = ({
       rules={rules}
       defaultValue={''}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <InputMask
-          id={name}
-          value={value}
-          onChange={(e: any) => {
-            const currentValue = e.target.value;
-            const unmask = unmaskValue(currentValue);
-            onChange(unmask);
-          }}
-          type={type}
-          placeholder={placeholder}
-          onBlur={() => handleBlur()}
-          mask={mask}
-          style={{ flexGrow: 1, width: '100%' }}
-        >
+        <div style={{ flexGrow: 1 }}>
           <StyledInput
-            ref={inputRef}
             id={name}
             value={value}
             type={type}
             placeholder={placeholder}
+            onChange={onChange}
+            onBlur={() => trigger(name)}
           />
-        </InputMask>
+          {error && <ErrorText>{error.message}</ErrorText>}
+        </div>
       )}
     />
   );
