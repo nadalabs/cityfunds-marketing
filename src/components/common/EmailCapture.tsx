@@ -21,9 +21,14 @@ import { styled } from 'styled-components';
 interface EmailCaptureProps {
   formName: string;
   isPopup?: boolean;
+  isHero?: boolean;
 }
 
-export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
+export default function EmailCapture({
+  formName,
+  isPopup,
+  isHero,
+}: EmailCaptureProps) {
   const isMobile = useIsMobile();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isCanceled, setIsCanceled] = useState(false);
@@ -165,6 +170,45 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
       >
         {renderContent()}
       </StickyWrapper>
+    );
+  }
+
+  if (isHero) {
+    return (
+      <div style={{ width: '100%' }}>
+        <FormProvider {...methods}>
+          <StyledForm
+            style={{
+              flexDirection: isMobile ? 'column' : 'row',
+              gap: '0.5rem',
+            }}
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <FormInput
+              name="email"
+              rules={{
+                required: 'Email address is required',
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: 'Invalid email address',
+                },
+              }}
+              type="email"
+              placeholder="Enter Your Email"
+            />
+            <BtnWrapper>
+              <PrimaryButton type="submit">Get Started</PrimaryButton>
+            </BtnWrapper>
+          </StyledForm>
+
+          {formState?.errors?.root?.message && (
+            <ErrorText>{formState?.errors?.root?.message}</ErrorText>
+          )}
+          <PrimaryText style={{ color: '#2A8356' }}>
+            Invest in minutes - start with as little as $500
+          </PrimaryText>
+        </FormProvider>
+      </div>
     );
   }
 
