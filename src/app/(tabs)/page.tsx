@@ -1,4 +1,3 @@
-import AccreditedGrid from '@components/cityfunds/AccreditedGrid';
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
 import EquityChart from '@components/cityfunds/EquityChart';
 import EquityPayoff from '@components/cityfunds/EquityPayoff';
@@ -40,21 +39,20 @@ export default async function HomePage() {
         link={process.env.NEXT_PUBLIC_WEB_APP_URL}
       />
       <KeyMetrics metrics={cityfundsPage?.metrics} />
-      <FeaturedImage
-        feature={cityfundsPage?.hei_feature}
-        component={<EquityPayoff />}
-        isWide
-      />
-      <EquityChart />
+
       <FeaturedImage
         feature={cityfundsPage?.cityfunds_feature}
         btnText="Explore Offerings"
         link={process.env.NEXT_PUBLIC_WEB_APP_URL}
         isWide
       />
-
+      <FeaturedImage
+        feature={cityfundsPage?.hei_feature}
+        component={<EquityPayoff />}
+        isWide
+      />
+      <EquityChart />
       <CityfundsGrid cityfunds={cityfunds} />
-      <AccreditedGrid cityfunds={cityfunds} />
 
       <HowItWorks
         video={cityfundsPage?.video}

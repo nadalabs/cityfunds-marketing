@@ -10,7 +10,7 @@ import {
 } from '@elements/Containers';
 import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { REGULATION } from '@utils/constants';
+import { FUND_STATUS } from '@utils/constants';
 import { ICityfund } from '@utils/models';
 import { useState } from 'react';
 
@@ -30,14 +30,22 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
     }))
     .sort((a, b) =>
       a.fund_data?.share_price < b.fund_data?.share_price ? 1 : -1
-    );
+    )
+    .sort((a, b) => {
+      if (a.fund_data.fund_status === b.fund_data.fund_status) {
+        return b.fund_data.share_price - a.fund_data.share_price;
+      }
+      if (a.fund_data.fund_status === FUND_STATUS.NEW_OFFERING) {
+        return 1;
+      }
+      if (b.fund_data.fund_status === FUND_STATUS.NEW_OFFERING) {
+        return -1;
+      }
+      return 0;
+    });
+  3;
 
-  const RETAIL_CARDS = ALL_CARDS.filter(
-    ({ fund_data }) => fund_data?.regulation === REGULATION.RETAIL
-  );
-
-  const SHOWN_CARDS =
-    showMore || !isMobile ? RETAIL_CARDS : RETAIL_CARDS.slice(0, 3);
+  const SHOWN_CARDS = showMore || !isMobile ? ALL_CARDS : ALL_CARDS.slice(0, 3);
 
   return (
     <SectionWrapper style={{ gap: '2rem' }}>
