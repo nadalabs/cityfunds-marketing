@@ -1,13 +1,13 @@
 'use client';
 import EmailCapture from '@components/common/EmailCapture';
 import HeroBanner from '@components/common/HeroBanner';
+import { ContentWrapper, HeroWrapper } from '@components/common/PageHero';
 import LogoSoup from '@components/marketing/LogoSoup';
 import { StackWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { IFeature } from '@utils/models';
 import Image from 'next/image';
-import styled from 'styled-components';
 
 interface CityfundHeroProps {
   feature: IFeature;
@@ -31,9 +31,9 @@ export default function CityfundHero({
     <HeroWrapper>
       <ContentWrapper>
         <StackWrapper style={{ gap: '1rem' }}>
-          <Heading>
-            Own <span style={{ color: '#2A8356' }}>Home Equity</span> in Top
-            Cities
+          <Heading style={{ marginBottom: 0 }}>
+            Own <span style={{ color: '#2A8356' }}>Home Equity</span> <br /> In
+            Top Cities
           </Heading>
           <PrimaryText>
             Unlock real wealth through diversified home equity portfolios.
@@ -64,34 +64,3 @@ export default function CityfundHero({
     </HeroWrapper>
   );
 }
-
-export const HeroWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8rem;
-  height: 100vh;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    flex-direction: column-reverse;
-    justify-content: center;
-    padding: 4rem 1rem;
-    gap: 1rem;
-    height: 100%;
-  }
-`;
-
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4rem;
-  width: 100%;
-  max-width: 36rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    text-align: center;
-    padding: 1rem;
-    margin: 0;
-  }
-`;

@@ -32,7 +32,7 @@ export const FormInput: React.FC<FormInputProps> = ({
       rules={rules}
       defaultValue={''}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <div style={{ flexGrow: 1 }}>
+        <div style={{ flex: 1, width: '100%', margin: '0 0.5rem 1rem 0' }}>
           <StyledInput
             id={name}
             value={value}
@@ -49,7 +49,9 @@ export const FormInput: React.FC<FormInputProps> = ({
 };
 
 const StyledInput = styled.input`
-  height: 3rem;
+  width: 100%;
+  flex: 1;
+  height: 2.75rem;
   color: black;
   background-color: transparent;
   font-family: ${({ theme }) => theme.fonts.main};
@@ -58,12 +60,16 @@ const StyledInput = styled.input`
   font-size: 1rem;
   line-height: 1.5rem;
   padding: 0.375rem 0.375rem 0.375rem 1rem;
-  border: none;
+  box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
   border-radius: 0.625rem;
 
   &:focus {
     border-color: ${({ theme }) => theme.colors.secondary};
     outline: none;
+  }
+
+  &::placeholder {
+    text-align: center;
   }
 `;
 
@@ -73,10 +79,6 @@ export const StyledForm = styled.form`
   flex-direction: column;
   align-items: center;
   justify-items: space-between;
-  background-color: rgba(152, 152, 152, 0.15);
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
-  margin-bottom: 1rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
