@@ -10,12 +10,14 @@ import 'react-modern-drawer/dist/index.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import '../../styles/globals.css';
+import FacebookPixel from '@components/marketing/FacebookPixel';
 
 declare global {
   interface Window {
     analytics: any;
     hsConversationsOnReady: any;
     HubSpotConversations: any;
+    fbq: any;
   }
 }
 
@@ -67,6 +69,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {children}
           <Analytics />
           <SpeedInsights />
+          <FacebookPixel />
         </StyledComponentsRegistry>
       </body>
     </html>
