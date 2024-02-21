@@ -1,6 +1,6 @@
 'use client';
 import { PrimaryButton } from '@elements/Buttons';
-import { SectionWrapper } from '@elements/Containers';
+import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { FormInput, StyledForm } from '@elements/FormInput';
 import {
   Caption,
@@ -21,9 +21,14 @@ import { styled } from 'styled-components';
 interface EmailCaptureProps {
   formName: string;
   isPopup?: boolean;
+  isHero?: boolean;
 }
 
-export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
+export default function EmailCapture({
+  formName,
+  isPopup,
+  isHero,
+}: EmailCaptureProps) {
   const isMobile = useIsMobile();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isCanceled, setIsCanceled] = useState(false);
@@ -59,11 +64,16 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
       await window.analytics.identify(payload);
       await window.analytics.track(formName, payload);
       setCookie('email', inputs.email);
-      setIsSubmitted(true);
-      setInterval(() => {
-        setIsCanceled(true);
-        setIsVisible(false);
-      }, 3000);
+
+      if (isHero) {
+        window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank');
+      } else {
+        setIsSubmitted(true);
+        setInterval(() => {
+          setIsCanceled(true);
+          setIsVisible(false);
+        }, 3000);
+      }
     } catch (err: any) {
       setError('email', {
         message: err.response.data.errors.message,
@@ -89,10 +99,10 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
             justifyContent: 'space-between',
           }}
         >
-          <div style={{ marginBottom: '1.5rem' }}>
-            <Overline>Be the first to know about new Cityfunds</Overline>
+          <StackWrapper style={{ marginBottom: '1.5rem', gap: 0 }}>
             <SmallHeading>Sign Up for Updates</SmallHeading>
-          </div>
+            <PrimaryText>Be the first to know about new Cityfunds</PrimaryText>
+          </StackWrapper>
 
           {isPopup && (
             <Image
@@ -100,7 +110,7 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
               height={16}
               alt={'Nada'}
               src={'/icons/cancel.svg'}
-              style={{ cursor: 'pointer' }}
+              style={{ alignSelf: 'flex-start', cursor: 'pointer' }}
               onClick={() => {
                 setIsCanceled(true);
                 setIsVisible(false);
@@ -114,7 +124,7 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
             <StyledForm
               style={{
                 flexDirection: isMobile ? 'column' : 'row',
-                gap: '0.5rem',
+                alignItems: isMobile ? 'center' : 'flex-start',
               }}
               onSubmit={handleSubmit(onSubmit)}
             >
@@ -130,14 +140,8 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
                 type="email"
                 placeholder="Enter Your Email"
               />
-              <BtnWrapper>
-                <PrimaryButton type="submit">Subscribe</PrimaryButton>
-              </BtnWrapper>
+              <PrimaryButton type="submit">Subscribe</PrimaryButton>
             </StyledForm>
-
-            {formState?.errors?.root?.message && (
-              <ErrorText>{formState?.errors?.root?.message}</ErrorText>
-            )}
             <Caption>
               By subscribing you agree with our{' '}
               <Link
@@ -165,6 +169,41 @@ export default function EmailCapture({ formName, isPopup }: EmailCaptureProps) {
       >
         {renderContent()}
       </StickyWrapper>
+    );
+  }
+
+  if (isHero) {
+    return (
+      <div style={{ width: '100%' }}>
+        <FormProvider {...methods}>
+          <StyledForm
+            style={{
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: isMobile ? 'center' : 'flex-start',
+            }}
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <FormInput
+              name="email"
+              rules={{
+                required: 'Email address is required',
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: 'Invalid email address',
+                },
+              }}
+              type="email"
+              placeholder="Enter Your Email"
+            />
+            <PrimaryButton type="submit">Get Started</PrimaryButton>
+          </StyledForm>
+          <PrimaryText
+            style={{ color: '#2A8356', marginTop: isMobile ? '1rem' : 0 }}
+          >
+            Invest in minutes - start with as little as $500
+          </PrimaryText>
+        </FormProvider>
+      </div>
     );
   }
 
@@ -204,11 +243,5 @@ const ContentWrapper = styled.div`
     flex-direction: column;
     box-shadow: none;
     padding: 0;
-  }
-`;
-
-const BtnWrapper = styled.div`
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
   }
 `;

@@ -46,7 +46,7 @@ export default function LogoSoup({
 
   if (isHero) {
     return (
-      <div style={{ maxWidth: '100%' }}>
+      <div style={{ maxWidth: '100%', marginBottom: '1rem' }}>
         <Overline
           style={{
             color: '#989898',

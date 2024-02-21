@@ -53,7 +53,7 @@ export default function EquityChart() {
           />
         </ShaddowWrapper>
 
-        <ShaddowWrapper>
+        <ShaddowWrapper isShort={isMobile}>
           <SmallHeading style={{ marginBottom: '1rem' }}>
             $32.6 Trillion Home Equity Market Value
           </SmallHeading>

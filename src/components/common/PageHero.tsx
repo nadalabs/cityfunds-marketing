@@ -78,19 +78,20 @@ export const HeroWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8rem;
+  gap: 5rem;
   height: 100vh;
+  padding: 6.25rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column-reverse;
     justify-content: center;
-    padding: 8rem 1rem 0 1rem;
-    gap: 1rem;
+    padding: 4rem 1rem;
+    gap: 1.5rem;
     height: 100%;
   }
 `;
 
-const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

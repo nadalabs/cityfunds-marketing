@@ -196,5 +196,5 @@ const NavbarWrapper = styled.div`
   position: fixed;
   width: 100vw;
   z-index: 99;
-  padding: 2rem 1rem;
+  padding: 2rem 1.5rem;
 `;
