@@ -2,13 +2,7 @@
 import { PrimaryButton } from '@elements/Buttons';
 import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { FormInput, StyledForm } from '@elements/FormInput';
-import {
-  Caption,
-  ErrorText,
-  Overline,
-  PrimaryText,
-  SmallHeading,
-} from '@elements/Typography';
+import { Caption, PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { LEGAL_LINKS, UTM_PARAMETERS } from '@utils/constants';
 import { getCookie, setCookie } from '@utils/helpers';
@@ -19,16 +13,11 @@ import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { styled } from 'styled-components';
 
 interface EmailCaptureProps {
-  formName: string;
   isPopup?: boolean;
   isHero?: boolean;
 }
 
-export default function EmailCapture({
-  formName,
-  isPopup,
-  isHero,
-}: EmailCaptureProps) {
+export default function EmailCapture({ isPopup, isHero }: EmailCaptureProps) {
   const isMobile = useIsMobile();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isCanceled, setIsCanceled] = useState(false);
@@ -39,7 +28,7 @@ export default function EmailCapture({
     },
     mode: 'onBlur',
   });
-  const { handleSubmit, formState, setError } = methods;
+  const { handleSubmit, setError } = methods;
 
   useEffect(() => {
     const checkVisibility = () => {
@@ -62,7 +51,7 @@ export default function EmailCapture({
         if (value) payload[param] = value;
       }
       await window.analytics.identify(payload);
-      await window.analytics.track(formName, payload);
+      await window.analytics.track('Cityfunds Lead', payload);
       setCookie('email', inputs.email);
 
       if (isHero) {
@@ -200,7 +189,7 @@ export default function EmailCapture({
           <PrimaryText
             style={{ color: '#2A8356', marginTop: isMobile ? '1rem' : 0 }}
           >
-            Invest in minutes - start with as little as $500
+            Invest in minutes - start with as little as $500.
           </PrimaryText>
         </FormProvider>
       </div>

@@ -35,7 +35,7 @@ export default async function LearnPage() {
     <PageTracker pageName="Blog">
       <BlogHero blogPosts={heroPosts} />
       {renderBlogSliders()}
-      <EmailCapture formName="Blog" />
+      <EmailCapture />
     </PageTracker>
   );
 }

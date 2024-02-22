@@ -17,7 +17,7 @@ export default function HeroBanner({ primaryText, link }: HeroBannerProps) {
         <Image
           src={'/icons/arrow-light.svg'}
           alt={'Learn More'}
-          style={{ transform: 'rotate(-90deg)' }}
+          style={{ transform: 'rotate(-90deg)', marginLeft: '1rem' }}
           width={16}
           height={16}
         />

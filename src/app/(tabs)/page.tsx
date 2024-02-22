@@ -78,7 +78,7 @@ export default async function HomePage() {
 
       {cityfundsPage?.promo && <InvestorPromo promo={cityfundsPage?.promo} />}
       <Webinanars webinar={cityfundsPage?.webinar} />
-      <EmailCapture formName="Cityfunds" isPopup />
+      <EmailCapture isPopup />
     </PageTracker>
   );
 }
