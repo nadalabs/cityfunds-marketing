@@ -121,6 +121,7 @@ export const CardWrapper = styled.div`
 
 const BackgroundWrapper = styled(SectionWrapper)`
   height: 100vh;
+  max-height: 50rem;
   display: flex;
   justify-content: center;
   background-color: #fbfbfb;

@@ -80,6 +80,7 @@ export const HeroWrapper = styled.div`
   align-items: center;
   gap: 5rem;
   height: 100vh;
+  max-height: 50rem;
   padding: 6.25rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

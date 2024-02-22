@@ -148,7 +148,7 @@ const NavbarWrapper = styled.div`
   padding: 1.5rem 6.25rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
-    padding: 1.5rem 16rem;
+    padding: 1.5rem 25vw;
   }
 `;
 
