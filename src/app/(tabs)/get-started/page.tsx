@@ -16,7 +16,6 @@ export default async function LandingPage() {
   return (
     <PageTracker pageName="Get Started">
       <CityfundHero
-        feature={cityfundsPage?.marketing_hero}
         logoTitle="Featured In"
         banner={cityfundsPage?.hero_banner}
         logos={cityfundsPage?.logos}
