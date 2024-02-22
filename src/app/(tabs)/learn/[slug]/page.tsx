@@ -42,7 +42,7 @@ export default async function PostPage({ params }) {
           <VideoPlayer media={media} />
         )}
       </SectionWrapper>
-      <EmailCapture formName="Blog" />
+      <EmailCapture />
     </PageTracker>
   );
 }

@@ -6,11 +6,9 @@ import LogoSoup from '@components/marketing/LogoSoup';
 import { StackWrapper } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { IFeature } from '@utils/models';
 import Image from 'next/image';
 
 interface CityfundHeroProps {
-  feature: IFeature;
   banner?: {
     text: string;
     link: string;
@@ -20,7 +18,6 @@ interface CityfundHeroProps {
 }
 
 export default function CityfundHero({
-  feature,
   banner,
   logoTitle,
   logos,
@@ -30,7 +27,12 @@ export default function CityfundHero({
   return (
     <HeroWrapper>
       <ContentWrapper>
-        <StackWrapper style={{ gap: '1rem' }}>
+        <StackWrapper
+          style={{
+            gap: '1rem',
+            alignItems: isMobile ? 'center' : 'flex-start',
+          }}
+        >
           <Heading style={{ marginBottom: 0 }}>
             Own <span style={{ color: '#2A8356' }}>Home Equity</span> <br /> In
             Top Cities
@@ -38,8 +40,17 @@ export default function CityfundHero({
           <PrimaryText>
             Unlock real wealth through diversified home equity portfolios.
           </PrimaryText>
-          <EmailCapture formName="email" isHero />
+          <EmailCapture isHero />
         </StackWrapper>
+
+        {isMobile && (
+          <Image
+            width={isMobile ? 300 : 512}
+            height={isMobile ? 300 : 512}
+            alt="Own Home Equity In Top Cities"
+            src="/images/mobile-app.png"
+          />
+        )}
 
         <div>
           {logos && (
@@ -55,12 +66,14 @@ export default function CityfundHero({
         </div>
       </ContentWrapper>
 
-      <Image
-        width={isMobile ? 300 : 512}
-        height={isMobile ? 300 : 512}
-        alt={feature?.title}
-        src="/images/mobile-app.png"
-      />
+      {!isMobile && (
+        <Image
+          width={isMobile ? 300 : 512}
+          height={isMobile ? 300 : 512}
+          alt="Own Home Equity In Top Cities"
+          src="/images/mobile-app.png"
+        />
+      )}
     </HeroWrapper>
   );
 }

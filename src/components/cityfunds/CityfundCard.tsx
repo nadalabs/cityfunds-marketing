@@ -12,6 +12,7 @@ import { IFundData } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
+import AssetStatus from '@components/cityfunds/AssetStatus';
 
 interface CityfundCardProps {
   fund_data: IFundData;
@@ -48,6 +49,7 @@ export default function CityfundCard({
           />
         </ImageWrapper>
         <InnerWrapper>
+          <AssetStatus fund_data={fund_data} />
           <TickerWrapper>
             <NadaText
               name={fund_data?.fund_name}

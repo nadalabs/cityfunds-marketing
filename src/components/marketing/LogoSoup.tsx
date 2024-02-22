@@ -51,7 +51,7 @@ export default function LogoSoup({
           style={{
             color: '#989898',
             textAlign: isMobile ? 'center' : 'left',
-            marginBottom: '1rem',
+            marginBottom: '0.5rem',
           }}
         >
           {overline}

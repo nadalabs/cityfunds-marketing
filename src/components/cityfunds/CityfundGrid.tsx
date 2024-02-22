@@ -44,7 +44,6 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
       return 0;
     });
   3;
-
   const SHOWN_CARDS = showMore || !isMobile ? ALL_CARDS : ALL_CARDS.slice(0, 3);
 
   return (

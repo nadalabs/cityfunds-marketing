@@ -69,7 +69,11 @@ const StyledInput = styled.input`
   }
 
   &::placeholder {
-    text-align: center;
+    text-align: left;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+      text-align: center;
+    }
   }
 `;
 
