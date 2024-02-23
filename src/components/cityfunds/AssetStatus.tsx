@@ -1,11 +1,8 @@
 'use client';
-import { FlexWrapper } from '@elements/Containers';
 import { Caption } from '@elements/Typography';
-import { FUND_STATUS, REGULATION } from '@utils/constants';
-import { isDateInRange } from '@utils/helpers';
+import { REGULATION } from '@utils/constants';
 import { IFundData } from '@utils/models';
 import Image from 'next/image';
-import Countdown from 'react-countdown';
 import styled from 'styled-components';
 
 interface AssetStatusProps {
@@ -23,8 +20,8 @@ export default function AssetStatus({ fund_data, isDark }: AssetStatusProps) {
           <Image
             src="/icons/lock.svg"
             alt="Lock"
-            height={16}
-            width={16}
+            height={14}
+            width={14}
             style={{ marginRight: '0.25rem' }}
           />
           <Caption style={{ color: 'white', fontWeight: 600 }}>
@@ -38,9 +35,10 @@ export default function AssetStatus({ fund_data, isDark }: AssetStatusProps) {
 
 export const LockWrapper = styled.div`
   display: flex;
-  border-radius: 0.4265rem;
+  align-items: center;
+  border-radius: 0.45rem;
   backdrop-filter: blur(1.7px);
-  padding: 0.17063rem 0.34125rem;
+  padding: 0.15rem 0.35rem;
   text-transform: uppercase;
   width: fit-content;
 `;

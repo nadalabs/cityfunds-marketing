@@ -1,11 +1,11 @@
 'use client';
 import ReactPlayer from 'react-player/youtube';
 
-interface AlertBannerProps {
+interface VideoPlayerProps {
   media: any;
 }
 
-export default function VideoPlayer({ media }: AlertBannerProps) {
+export default function VideoPlayer({ media }: VideoPlayerProps) {
   return (
     <div
       style={{
