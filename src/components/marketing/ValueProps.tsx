@@ -37,33 +37,35 @@ export default function ValueProps({
 
   return (
     <SectionWrapper>
-      <StackWrapper style={{ gap: '1rem' }}>
-        {overline && <Overline>{overline}</Overline>}
-        <Heading>{heading}</Heading>
-        {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
+      <StackWrapper>
+        <StackWrapper style={{ gap: '1rem' }}>
+          {overline && <Overline>{overline}</Overline>}
+          <Heading>{heading}</Heading>
+          {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
+        </StackWrapper>
+
+        <GridWrapper style={{ gap: '1rem' }}>
+          {valueProps?.map(({ title, description }, idx) => (
+            <TextWrapper key={idx}>
+              <StackWrapper style={{ gap: '1rem' }}>
+                <GreenSquare />
+                <BoldText>{title}</BoldText>
+                <LongFormText content={description} />
+              </StackWrapper>
+            </TextWrapper>
+          ))}
+        </GridWrapper>
+
+        {link && (
+          <LinkText
+            href={link}
+            target="_blank"
+            style={{ textDecoration: 'underline' }}
+          >
+            {linkText}
+          </LinkText>
+        )}
       </StackWrapper>
-
-      <GridWrapper style={{ gap: '1rem' }}>
-        {valueProps?.map(({ title, description }, idx) => (
-          <TextWrapper key={idx}>
-            <StackWrapper style={{ gap: '1rem' }}>
-              <GreenSquare />
-              <BoldText>{title}</BoldText>
-              <LongFormText content={description} />
-            </StackWrapper>
-          </TextWrapper>
-        ))}
-      </GridWrapper>
-
-      {link && (
-        <LinkText
-          href={link}
-          target="_blank"
-          style={{ textDecoration: 'underline' }}
-        >
-          {linkText}
-        </LinkText>
-      )}
     </SectionWrapper>
   );
 }

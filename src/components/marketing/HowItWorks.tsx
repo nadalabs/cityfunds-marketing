@@ -4,6 +4,8 @@ import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import {
   FadeWrapper,
+  FlexWrapper,
+  GridWrapper,
   SectionWrapper,
   StackWrapper,
 } from '@elements/Containers';
@@ -35,93 +37,88 @@ export default function HowItWorks({
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <SectionWrapper
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: isMobile ? 'column' : 'row',
-        gap: isMobile ? '1.5rem' : '5rem',
-      }}
-    >
-      {isPlaying ? (
-        <div
-          style={{
-            height: '32rem',
-            width: isMobile ? '100%' : '50%',
-            borderRadius: '2rem',
-            overflow: 'hidden',
-          }}
-        >
-          <ReactPlayer
-            ref={playerRef}
-            url={video?.video_url}
-            playing={isPlaying}
-            controls={true}
-            onEnded={() => setIsPlaying(false)}
-            height={isMobile ? '16rem' : '32rem'}
-            width={isMobile ? '100%' : '100%'}
-          />
-        </div>
-      ) : (
-        <div style={{ position: 'relative' }}>
-          <Image
-            src={urlForImage(video?.thumbnail)}
-            alt="How it Works"
-            height={isMobile ? '300' : '512'}
-            width={isMobile ? '300' : '512'}
-          />
-          <Image
-            onClick={() => setIsPlaying(true)}
-            src="/icons/play-button.svg"
-            alt="Play button"
-            width={120}
-            height={120}
+    <SectionWrapper>
+      <GridWrapper>
+        {isPlaying ? (
+          <div
             style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              cursor: 'pointer',
+              height: '32rem',
+              width: isMobile ? '100%' : '50%',
+              borderRadius: '2rem',
+              overflow: 'hidden',
             }}
-          />
-        </div>
-      )}
+          >
+            <ReactPlayer
+              ref={playerRef}
+              url={video?.video_url}
+              playing={isPlaying}
+              controls={true}
+              onEnded={() => setIsPlaying(false)}
+              height={isMobile ? '16rem' : '32rem'}
+              width={isMobile ? '100%' : '100%'}
+            />
+          </div>
+        ) : (
+          <div style={{ position: 'relative' }}>
+            <Image
+              src={urlForImage(video?.thumbnail)}
+              alt="How it Works"
+              height={isMobile ? '300' : '512'}
+              width={isMobile ? '300' : '512'}
+            />
+            <Image
+              onClick={() => setIsPlaying(true)}
+              src="/icons/play-button.svg"
+              alt="Play button"
+              width={120}
+              height={120}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                cursor: 'pointer',
+              }}
+            />
+          </div>
+        )}
 
-      <StackWrapper style={{ width: isMobile ? '100%' : '50%' }}>
-        <Heading>How it Works</Heading>
-        <div>
-          {tutorials?.map(({ title, description }, idx) => (
-            <div
-              key={idx}
-              onClick={() => setActiveIdx(idx)}
-              style={{ cursor: 'pointer', marginBottom: '1.5rem' }}
-            >
+        <StackWrapper>
+          <Heading>How it Works</Heading>
+          <div>
+            {tutorials?.map(({ title, description }, idx) => (
               <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  marginBottom: '1.5rem',
-                }}
+                key={idx}
+                onClick={() => setActiveIdx(idx)}
+                style={{ cursor: 'pointer', marginBottom: '1.5rem' }}
               >
-                <GreenSquare />
-                <HoverHeading $isActive={activeIdx === idx}>
-                  {title}
-                </HoverHeading>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginBottom: '1.5rem',
+                  }}
+                >
+                  <GreenSquare />
+                  <HoverHeading $isActive={activeIdx === idx}>
+                    {title}
+                  </HoverHeading>
+                </div>
+                <FadeWrapper
+                  $isActive={activeIdx === idx}
+                  style={{ marginLeft: '1.5rem' }}
+                >
+                  {activeIdx === idx && <LongFormText content={description} />}
+                </FadeWrapper>
               </div>
-              <FadeWrapper
-                $isActive={activeIdx === idx}
-                style={{ marginLeft: '1.5rem' }}
-              >
-                {activeIdx === idx && <LongFormText content={description} />}
-              </FadeWrapper>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <Link href={link} target="_blank">
-          <PrimaryButton>{btnText}</PrimaryButton>
-        </Link>
-      </StackWrapper>
+          <Link href={link} target="_blank">
+            <PrimaryButton>{btnText}</PrimaryButton>
+          </Link>
+        </StackWrapper>
+      </GridWrapper>
     </SectionWrapper>
   );
 }

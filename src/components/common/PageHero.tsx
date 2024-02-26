@@ -4,7 +4,11 @@ import HeroBanner from '@components/common/HeroBanner';
 import LongFormText from '@components/common/LongFormText';
 import LogoSoup from '@components/marketing/LogoSoup';
 import { PrimaryButton } from '@elements/Buttons';
-import { StackWrapper } from '@elements/Containers';
+import {
+  ContentWrapper,
+  HeroWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { ICityfund, IFeature } from '@utils/models';
@@ -73,39 +77,6 @@ export default function PageHero({
     </HeroWrapper>
   );
 }
-
-export const HeroWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5rem;
-  height: 100vh;
-  max-height: 50rem;
-  padding: 6.25rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    flex-direction: column-reverse;
-    justify-content: center;
-    padding: 4rem 1rem;
-    gap: 1.5rem;
-    height: 100%;
-  }
-`;
-
-export const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
-  width: 100%;
-  max-width: 36rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    text-align: center;
-    padding: 1rem;
-    margin: 0;
-  }
-`;
 
 const ImageWrapper = styled.img`
   border-radius: 2rem;

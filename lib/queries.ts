@@ -199,6 +199,8 @@ export const aboutPageFields = `
   ourStory,
   logos,
   teammates,
+  team_logos,
+  leadership,
   values,
   careers,
   news_hero

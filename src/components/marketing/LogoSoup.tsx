@@ -1,5 +1,9 @@
 'use client';
-import { FlexWrapper, SectionWrapper } from '@elements/Containers';
+import {
+  FlexWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import { LinkText, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
@@ -65,16 +69,18 @@ export default function LogoSoup({
 
   return (
     <SectionWrapper style={{ textAlign: 'center' }}>
-      <Overline style={{ color: '#989898', textAlign: 'center' }}>
-        {overline}
-      </Overline>
-      <ContentWrapper>{renderLogos(logos, true)}</ContentWrapper>
+      <StackWrapper>
+        <Overline style={{ color: '#989898', textAlign: 'center' }}>
+          {overline}
+        </Overline>
+        <ContentWrapper>{renderLogos(logos, true)}</ContentWrapper>
 
-      {seeMore && (
-        <div style={{ paddingLeft: '1.25rem' }}>
-          <LinkText href="/press">See More</LinkText>
-        </div>
-      )}
+        {seeMore && (
+          <div style={{ paddingLeft: '1.25rem' }}>
+            <LinkText href="/press">See More</LinkText>
+          </div>
+        )}
+      </StackWrapper>
     </SectionWrapper>
   );
 }

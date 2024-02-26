@@ -26,15 +26,17 @@ export default async function HomePage() {
   const fundsContent = await getAllFundsContent();
   const nada_offering = await getNadaOfferingContent();
 
-  const cityfunds = fundsData.map((data) => {
-    const content = fundsContent.find(
-      (content) => content.fund_name === data.fund_name
-    );
-    return {
-      fund_data: data,
-      fund_content: data.fund_name === 'Nada' ? nada_offering : content,
-    };
-  });
+  const cityfunds = fundsData
+    .filter((item) => item?.fund_name !== 'Nada')
+    .map((data) => {
+      const content = fundsContent.find(
+        (content) => content.fund_name === data.fund_name
+      );
+      return {
+        fund_data: data,
+        fund_content: data.fund_name === 'Nada' ? nada_offering : content,
+      };
+    });
 
   return (
     <PageTracker pageName="Cityfunds">

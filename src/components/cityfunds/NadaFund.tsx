@@ -1,8 +1,13 @@
 'use client';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
-import { SectionWrapper, StackWrapper } from '@elements/Containers';
-import { Heading, SmallHeading } from '@elements/Typography';
+import {
+  ContentWrapper,
+  GridWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
+import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -22,78 +27,75 @@ export default function NadaFund({ feature, video }: NadaFundProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <SectionWrapper
-      id="nada-fund"
-      $isBackground
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: isMobile ? 'column' : 'row',
-        gap: isMobile ? '1.5rem' : '5rem',
-      }}
-    >
-      <StackWrapper style={{ width: isMobile ? '100%' : '50%' }}>
-        <Heading>{feature?.title}</Heading>
-        <LongFormText content={feature?.description} />
+    <SectionWrapper id="nada-fund" $isBackground>
+      <GridWrapper>
+        <ContentWrapper>
+          <div>
+            <OverlinePill>Exclusive</OverlinePill>
+          </div>
+          <Heading>{feature?.title}</Heading>
+          <LongFormText content={feature?.description} />
 
-        <Link href={'/nada'}>
-          <PrimaryButton>Invest Now</PrimaryButton>
-        </Link>
-      </StackWrapper>
-      {isPlaying ? (
-        <div
-          style={{
-            height: '32rem',
-            width: isMobile ? '100%' : '50%',
-            borderRadius: '2rem',
-            overflow: 'hidden',
-          }}
-        >
-          <ReactPlayer
-            ref={playerRef}
-            url={video?.video_url}
-            playing={isPlaying}
-            controls={true}
-            onEnded={() => setIsPlaying(false)}
-            height={isMobile ? '16rem' : '32rem'}
-            width={isMobile ? '100%' : '100%'}
-          />
-        </div>
-      ) : (
-        <div style={{ position: 'relative' }}>
-          <Image
-            src={urlForImage(video?.thumbnail)}
-            alt="How it Works"
-            height={isMobile ? '300' : '512'}
-            width={isMobile ? '300' : '512'}
-            style={{ borderRadius: '5rem' }}
-          />
-          <Image
-            onClick={() => setIsPlaying(true)}
-            src="/icons/play-button.svg"
-            alt="Play button"
-            width={120}
-            height={120}
+          <Link href={'/nada'}>
+            <PrimaryButton>Invest Now</PrimaryButton>
+          </Link>
+        </ContentWrapper>
+
+        {isPlaying ? (
+          <div
             style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              cursor: 'pointer',
+              height: '32rem',
+              width: isMobile ? '100%' : '50%',
+              borderRadius: '2rem',
+              overflow: 'hidden',
             }}
-          />
-        </div>
-      )}
+          >
+            <ReactPlayer
+              ref={playerRef}
+              url={video?.video_url}
+              playing={isPlaying}
+              controls={true}
+              onEnded={() => setIsPlaying(false)}
+              height={isMobile ? '16rem' : '32rem'}
+              width={isMobile ? '100%' : '100%'}
+            />
+          </div>
+        ) : (
+          <div style={{ position: 'relative' }}>
+            <Image
+              src={urlForImage(video?.thumbnail)}
+              alt="How it Works"
+              height={isMobile ? '300' : '512'}
+              width={isMobile ? '300' : '512'}
+              style={{ borderRadius: '5rem' }}
+            />
+            <Image
+              onClick={() => setIsPlaying(true)}
+              src="/icons/play-button.svg"
+              alt="Play button"
+              width={120}
+              height={120}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                cursor: 'pointer',
+              }}
+            />
+          </div>
+        )}
+      </GridWrapper>
     </SectionWrapper>
   );
 }
 
-const HoverHeading = styled(SmallHeading)<{ $isActive?: boolean }>`
-  transition: ${({ theme }) => theme.transitions.ease};
-  color: ${({ theme, $isActive }) =>
-    $isActive ? theme.colors.primary : '#30303080'};
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.secondary};
-  }
+const OverlinePill = styled(PrimaryText)`
+  display: inline-flex;
+  color: white;
+  font-weight: 600;
+  background: black;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
 `;

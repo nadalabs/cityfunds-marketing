@@ -46,96 +46,98 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
         boxShadow: isScroll ? '0px 4px 25px 0px rgba(0, 0, 0, 0.10)' : 'none',
       }}
     >
-      <Link href="/">
-        <Image
-          src="/icons/cityfunds-dark.svg"
-          alt="Cityfunds"
-          width={200}
-          height={60}
-        />
-      </Link>
+      <FlexWrapper>
+        <Link href="/">
+          <Image
+            src="/icons/cityfunds-dark.svg"
+            alt="Cityfunds"
+            width={200}
+            height={60}
+          />
+        </Link>
 
-      <div
-        style={{ display: 'flex', justifyContent: 'flex-end', gap: '1.5rem' }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          {HEADER_LINKS.map(({ name, link, links }, idx) => (
-            <div key={idx}>
-              {links ? (
-                <StackWrapper onMouseLeave={() => setDropdown(false)}>
-                  <FlexWrapper
-                    onMouseEnter={() => setDropdown(true)}
-                    style={{ cursor: 'pointer', gap: '0.5rem' }}
-                  >
-                    <PrimaryLink
-                      href={link}
-                      style={{
-                        color: link === pathname ? '#48DC95' : 'black',
-                      }}
+        <div
+          style={{ display: 'flex', justifyContent: 'flex-end', gap: '1.5rem' }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            {HEADER_LINKS.map(({ name, link, links }, idx) => (
+              <div key={idx}>
+                {links ? (
+                  <StackWrapper onMouseLeave={() => setDropdown(false)}>
+                    <FlexWrapper
+                      onMouseEnter={() => setDropdown(true)}
+                      style={{ cursor: 'pointer', gap: '0.5rem' }}
                     >
-                      {name}
-                    </PrimaryLink>
-                    <Image
-                      width={16}
-                      height={16}
-                      alt={'Menu'}
-                      src={'/icons/arrow-down.svg'}
-                    />
-                  </FlexWrapper>
+                      <PrimaryLink
+                        href={link}
+                        style={{
+                          color: link === pathname ? '#48DC95' : 'black',
+                        }}
+                      >
+                        {name}
+                      </PrimaryLink>
+                      <Image
+                        width={16}
+                        height={16}
+                        alt={'Menu'}
+                        src={'/icons/arrow-down.svg'}
+                      />
+                    </FlexWrapper>
 
-                  {links && dropDown && (
-                    <DropdownMenu style={{ marginTop: '1rem' }}>
-                      {links.map(({ name, link, isNewTab }, idx) => (
-                        <MenuLink
-                          key={idx}
-                          href={link}
-                          target={isNewTab ? '_blank' : '_self'}
-                          onMouseEnter={() => setDropdown(true)}
-                        >
-                          {name}
-                        </MenuLink>
-                      ))}
-                    </DropdownMenu>
-                  )}
-                </StackWrapper>
-              ) : (
-                <PrimaryLink
-                  href={link}
-                  style={{
-                    color: link === pathname ? '#48DC95' : '#1A1A1A',
-                  }}
-                >
-                  {name}
-                </PrimaryLink>
-              )}
-            </div>
-          ))}
-        </div>
+                    {links && dropDown && (
+                      <DropdownMenu style={{ marginTop: '1rem' }}>
+                        {links.map(({ name, link, isNewTab }, idx) => (
+                          <MenuLink
+                            key={idx}
+                            href={link}
+                            target={isNewTab ? '_blank' : '_self'}
+                            onMouseEnter={() => setDropdown(true)}
+                          >
+                            {name}
+                          </MenuLink>
+                        ))}
+                      </DropdownMenu>
+                    )}
+                  </StackWrapper>
+                ) : (
+                  <PrimaryLink
+                    href={link}
+                    style={{
+                      color: link === pathname ? '#48DC95' : '#1A1A1A',
+                    }}
+                  >
+                    {name}
+                  </PrimaryLink>
+                )}
+              </div>
+            ))}
+          </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          <PrimaryButton
-            onClick={() =>
-              window.open(
-                `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
-                '_blank'
-              )
-            }
-            $isInverted
-          >
-            Log In
-          </PrimaryButton>
-          <PrimaryButton
-            onClick={() =>
-              window.open(
-                `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
-                '_blank'
-              )
-            }
-          >
-            Sign Up
-          </PrimaryButton>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            <PrimaryButton
+              onClick={() =>
+                window.open(
+                  `${process.env.NEXT_PUBLIC_WEB_APP_URL}/login`,
+                  '_blank'
+                )
+              }
+              $isInverted
+            >
+              Log In
+            </PrimaryButton>
+            <PrimaryButton
+              onClick={() =>
+                window.open(
+                  `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`,
+                  '_blank'
+                )
+              }
+            >
+              Sign Up
+            </PrimaryButton>
+          </div>
         </div>
-      </div>
+      </FlexWrapper>
     </NavbarWrapper>
   );
 }
@@ -143,12 +145,12 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
 const NavbarWrapper = styled.div`
   position: fixed;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100vw;
   padding: 1.5rem 6.25rem;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
-    padding: 1.5rem 25vw;
+  & > * {
+    max-width: 100rem;
   }
 `;
 

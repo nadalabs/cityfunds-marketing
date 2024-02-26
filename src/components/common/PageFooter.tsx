@@ -102,8 +102,8 @@ export const FooterWrapper = styled.div`
   background-color: #fbfbfb;
   padding: 6.25rem;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
-    padding: 6.25rem 25vw;
+  & > * {
+    max-width: 100rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

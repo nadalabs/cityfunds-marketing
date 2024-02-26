@@ -3,6 +3,7 @@ import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import {
   FlexWrapper,
+  GridWrapper,
   SectionWrapper,
   StackWrapper,
 } from '@elements/Containers';
@@ -28,13 +29,7 @@ export default function Webinars({ webinar }: WebinarsProps) {
 
   return (
     <SectionWrapper id="promo">
-      <FlexWrapper
-        style={{
-          flexDirection: isMobile ? 'column' : 'row',
-          alignItems: 'center',
-          gap: isMobile ? '1rem' : '2.5rem',
-        }}
-      >
+      <GridWrapper>
         {webinar && (
           <Image
             width={isMobile ? 360 : 672}
@@ -66,7 +61,7 @@ export default function Webinars({ webinar }: WebinarsProps) {
             </div>
           </StackWrapper>
         </ContentWrapper>
-      </FlexWrapper>
+      </GridWrapper>
     </SectionWrapper>
   );
 }
