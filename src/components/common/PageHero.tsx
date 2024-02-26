@@ -6,6 +6,7 @@ import LogoSoup from '@components/marketing/LogoSoup';
 import { PrimaryButton } from '@elements/Buttons';
 import {
   ContentWrapper,
+  GridWrapper,
   HeroWrapper,
   StackWrapper,
 } from '@elements/Containers';
@@ -42,38 +43,40 @@ export default function PageHero({
 
   return (
     <HeroWrapper>
-      <ContentWrapper>
-        <StackWrapper style={{ gap: '1rem' }}>
-          {banner && (
-            <HeroBanner primaryText={banner?.text} link={banner?.link} />
-          )}
-          <Heading>{feature?.title}</Heading>
-          <LongFormText content={feature?.description} isLarge />
-          {btnText && (
-            <Link href={link} target="_blank">
-              <PrimaryButton>{btnText}</PrimaryButton>
-            </Link>
-          )}
-        </StackWrapper>
+      <GridWrapper>
+        <ContentWrapper>
+          <StackWrapper style={{ gap: '1rem' }}>
+            {banner && (
+              <HeroBanner primaryText={banner?.text} link={banner?.link} />
+            )}
+            <Heading>{feature?.title}</Heading>
+            <LongFormText content={feature?.description} isLarge />
+            {btnText && (
+              <Link href={link} target="_blank">
+                <PrimaryButton>{btnText}</PrimaryButton>
+              </Link>
+            )}
+          </StackWrapper>
 
-        {logos && (
-          <LogoSoup
-            overline={logoTitle}
-            logos={isMobile ? logos.slice(0, 4) : logos}
-            isHero
+          {logos && (
+            <LogoSoup
+              overline={logoTitle}
+              logos={isMobile ? logos.slice(0, 4) : logos}
+              isHero
+            />
+          )}
+        </ContentWrapper>
+
+        {feature?.image && (
+          <ImageWrapper
+            width={isMobile ? 300 : 512}
+            height={isMobile ? 300 : 512}
+            alt={feature?.title}
+            src={urlForImage(feature?.image, 512, 512)}
           />
         )}
-      </ContentWrapper>
-
-      {feature?.image && (
-        <ImageWrapper
-          width={isMobile ? 300 : 512}
-          height={isMobile ? 300 : 512}
-          alt={feature?.title}
-          src={urlForImage(feature?.image, 512, 512)}
-        />
-      )}
-      {cityfunds && <CityfundSlider cityfunds={cityfunds} />}
+        {cityfunds && <CityfundSlider cityfunds={cityfunds} />}
+      </GridWrapper>
     </HeroWrapper>
   );
 }

@@ -2,6 +2,7 @@
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import {
+  ContentWrapper,
   GridWrapper,
   SectionWrapper,
   StackWrapper,
@@ -11,7 +12,6 @@ import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
-import styled from 'styled-components';
 
 interface InvestorPromoProps {
   promo?: {
@@ -91,12 +91,3 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
     </SectionWrapper>
   );
 }
-
-export const ContentWrapper = styled.div`
-  max-width: 700px;
-  margin-right: 84px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-right: 0;
-  }
-`;

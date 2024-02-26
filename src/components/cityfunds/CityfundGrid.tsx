@@ -58,7 +58,7 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
           </LargeText>
         </StackWrapper>
 
-        <GridWrapper>
+        <GridWrapper style={{ gap: '2rem', justifyItems: 'normal' }}>
           {SHOWN_CARDS.map((card, idx) => (
             <div key={idx}>
               <TopWrapper>

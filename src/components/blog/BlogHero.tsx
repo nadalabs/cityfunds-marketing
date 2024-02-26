@@ -1,6 +1,6 @@
 'use client';
 import ImageStepper from '@components/common/ImageStepper';
-import { SectionWrapper } from '@elements/Containers';
+import { HeroWrapper } from '@elements/Containers';
 import {
   LinkText,
   Overline,
@@ -42,7 +42,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
   };
 
   return (
-    <BackgroundWrapper>
+    <HeroWrapper>
       <ContentWrapper>
         {blogPosts.length === 1 && (
           <div style={{ paddingBottom: '2rem' }}>
@@ -94,7 +94,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
           ))}
         </Slider>
       </ContentWrapper>
-    </BackgroundWrapper>
+    </HeroWrapper>
   );
 }
 
@@ -116,18 +116,6 @@ export const CardWrapper = styled.div`
     padding: 0;
     box-shadow: none;
     background: #fbfbfb;
-  }
-`;
-
-const BackgroundWrapper = styled(SectionWrapper)`
-  height: 100vh;
-  max-height: 50rem;
-  display: flex;
-  justify-content: center;
-  background-color: #fbfbfb;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding-top: 2rem;
   }
 `;
 

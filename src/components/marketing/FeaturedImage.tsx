@@ -2,6 +2,7 @@
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import {
+  ContentWrapper,
   GridWrapper,
   SectionWrapper,
   StackWrapper,
@@ -57,7 +58,7 @@ export default function FeaturedImage({
         </ContentWrapper>
 
         <Image
-          style={{ borderRadius: '2rem' }}
+          style={{ borderRadius: '2rem', alignSelf: 'flex-end' }}
           width={isMobile ? 300 : 560}
           height={isMobile ? 300 : 560}
           alt={feature?.title}
@@ -71,10 +72,3 @@ export default function FeaturedImage({
     </SectionWrapper>
   );
 }
-
-export const ContentWrapper = styled.div`
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 100%;
-    margin-right: 0;
-  }
-`;

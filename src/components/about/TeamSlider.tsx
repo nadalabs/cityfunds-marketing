@@ -14,6 +14,7 @@ import { useRef, useState } from 'react';
 import Slider from 'react-slick';
 
 interface TeamSliderProps {
+  title: string;
   teammates: {
     name: string;
     image: string;
@@ -22,7 +23,7 @@ interface TeamSliderProps {
   }[];
 }
 
-export default function TeamSlider({ teammates }: TeamSliderProps) {
+export default function TeamSlider({ teammates, title }: TeamSliderProps) {
   const [activeStep, setActiveStep] = useState(0);
   const sliderRef = useRef(null);
   const isMobile = useIsMobile();
@@ -43,7 +44,7 @@ export default function TeamSlider({ teammates }: TeamSliderProps) {
         <FlexWrapper style={{ alignItems: 'flex-end', marginBottom: '1rem' }}>
           <StackWrapper style={{ gap: '1rem' }}>
             <Overline>Who We Are</Overline>
-            <Heading>Our Team</Heading>
+            <Heading>{title}</Heading>
           </StackWrapper>
           <SliderStepper
             activeStep={activeStep}

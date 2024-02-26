@@ -23,6 +23,7 @@ export const SectionWrapper = styled.div<{ $isBackground?: boolean }>`
 export const HeroWrapper = styled(SectionWrapper)`
   height: 100vh;
   max-height: 50rem;
+  background-color: #fbfbfb;
 `;
 
 export const LayoutWrapper = styled.div`
@@ -102,7 +103,8 @@ export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   align-items: center;
-  gap: 2rem;
+  justify-items: center;
+  gap: 4rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     grid-template-columns: 1fr;

@@ -2,7 +2,7 @@
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import {
-  FlexWrapper,
+  ContentWrapper,
   GridWrapper,
   SectionWrapper,
   StackWrapper,
@@ -12,7 +12,6 @@ import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import moment from 'moment';
 import Image from 'next/image';
-import styled from 'styled-components';
 
 interface WebinarsProps {
   webinar: {
@@ -65,15 +64,3 @@ export default function Webinars({ webinar }: WebinarsProps) {
     </SectionWrapper>
   );
 }
-
-export const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 600px;
-  height: 100%;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-top: 1.5rem;
-  }
-`;

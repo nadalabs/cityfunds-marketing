@@ -1,6 +1,10 @@
 'use client';
 import SliderStepper from '@components/common/SliderStepper';
-import { FlexWrapper, SectionWrapper } from '@elements/Containers';
+import {
+  FlexWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import {
   BoldText,
   Overline,
@@ -45,41 +49,43 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
 
   return (
     <SectionWrapper>
-      <FlexWrapper
-        style={{ justifyContent: 'space-between', marginBottom: '1rem' }}
-      >
-        <SmallHeading>{tag}</SmallHeading>
-        <SliderStepper
-          activeStep={activeStep}
-          setActiveStep={setActiveStep}
-          totalSteps={blogPosts?.length + 1}
-          increment={isMobile ? 1 : 4}
-          sliderRef={sliderRef}
-        />
-      </FlexWrapper>
+      <StackWrapper>
+        <FlexWrapper
+          style={{ justifyContent: 'space-between', marginBottom: '1rem' }}
+        >
+          <SmallHeading>{tag}</SmallHeading>
+          <SliderStepper
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
+            totalSteps={blogPosts?.length + 1}
+            increment={isMobile ? 1 : 4}
+            sliderRef={sliderRef}
+          />
+        </FlexWrapper>
 
-      <Slider ref={sliderRef} {...settings}>
-        {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
-          <Link key={idx} href={`/learn/${slug}`}>
-            <CardWrapper style={{ width: '500px' }}>
-              <Image
-                alt={title}
-                src={urlForImage(coverImage, 200, 300)}
-                width={300}
-                height={200}
-                style={{ borderRadius: '2rem' }}
-              />
-              <Overline>
-                <time dateTime={date}>
-                  {format(parseISO(date), 'LLLL	d, yyyy')}
-                </time>
-              </Overline>
-              <BoldText>{title}</BoldText>
-              <PrimaryText>{excerpt}</PrimaryText>
-            </CardWrapper>
-          </Link>
-        ))}
-      </Slider>
+        <Slider ref={sliderRef} {...settings}>
+          {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
+            <Link key={idx} href={`/learn/${slug}`}>
+              <CardWrapper style={{ width: '500px' }}>
+                <Image
+                  alt={title}
+                  src={urlForImage(coverImage, 200, 300)}
+                  width={300}
+                  height={200}
+                  style={{ borderRadius: '2rem' }}
+                />
+                <Overline>
+                  <time dateTime={date}>
+                    {format(parseISO(date), 'LLLL	d, yyyy')}
+                  </time>
+                </Overline>
+                <BoldText>{title}</BoldText>
+                <PrimaryText>{excerpt}</PrimaryText>
+              </CardWrapper>
+            </Link>
+          ))}
+        </Slider>
+      </StackWrapper>
     </SectionWrapper>
   );
 }

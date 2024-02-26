@@ -3,6 +3,7 @@ import { GreenSquare } from '@components/common/ImageStepper';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import {
+  ContentWrapper,
   FadeWrapper,
   FlexWrapper,
   GridWrapper,
@@ -83,7 +84,7 @@ export default function HowItWorks({
           </div>
         )}
 
-        <StackWrapper>
+        <ContentWrapper>
           <Heading>How it Works</Heading>
           <div>
             {tutorials?.map(({ title, description }, idx) => (
@@ -117,7 +118,7 @@ export default function HowItWorks({
           <Link href={link} target="_blank">
             <PrimaryButton>{btnText}</PrimaryButton>
           </Link>
-        </StackWrapper>
+        </ContentWrapper>
       </GridWrapper>
     </SectionWrapper>
   );
