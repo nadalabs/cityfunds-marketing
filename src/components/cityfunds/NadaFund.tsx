@@ -29,7 +29,7 @@ export default function NadaFund({ feature, video }: NadaFundProps) {
   return (
     <SectionWrapper id="nada-fund" $isBackground>
       <GridWrapper>
-        <ContentWrapper>
+        <StackWrapper>
           <div>
             <OverlinePill>Exclusive</OverlinePill>
           </div>
@@ -39,7 +39,7 @@ export default function NadaFund({ feature, video }: NadaFundProps) {
           <Link href={'/nada'}>
             <PrimaryButton>Invest Now</PrimaryButton>
           </Link>
-        </ContentWrapper>
+        </StackWrapper>
 
         {isPlaying ? (
           <div
