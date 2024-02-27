@@ -45,7 +45,7 @@ export default function PageHero({
     <HeroWrapper>
       <GridWrapper>
         <ContentWrapper>
-          <StackWrapper style={{ gap: '1rem' }}>
+          <StackWrapper style={{ gap: '1rem', marginBottom: '4rem' }}>
             {banner && (
               <HeroBanner primaryText={banner?.text} link={banner?.link} />
             )}

@@ -48,7 +48,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
   };
 
   return (
-    <SectionWrapper>
+    <SectionWrapper style={{ display: 'block' }}>
       <StackWrapper>
         <FlexWrapper
           style={{ justifyContent: 'space-between', marginBottom: '1rem' }}
