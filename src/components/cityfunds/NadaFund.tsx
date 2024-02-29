@@ -2,7 +2,6 @@
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import {
-  ContentWrapper,
   GridWrapper,
   SectionWrapper,
   StackWrapper,
@@ -26,26 +25,13 @@ export default function NadaFund({ feature, video }: NadaFundProps) {
   const playerRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  return (
-    <SectionWrapper id="nada-fund" $isBackground>
-      <GridWrapper>
-        <StackWrapper>
-          <div>
-            <OverlinePill>Exclusive</OverlinePill>
-          </div>
-          <Heading>{feature?.title}</Heading>
-          <LongFormText content={feature?.description} />
-
-          <Link href={'/nada'}>
-            <PrimaryButton>Invest Now</PrimaryButton>
-          </Link>
-        </StackWrapper>
-
+  function renderVideo() {
+    return (
+      <>
         {isPlaying ? (
           <div
             style={{
-              height: '32rem',
-              width: isMobile ? '100%' : '50%',
+              width: '100%',
               borderRadius: '2rem',
               overflow: 'hidden',
             }}
@@ -64,10 +50,9 @@ export default function NadaFund({ feature, video }: NadaFundProps) {
           <div style={{ position: 'relative' }}>
             <Image
               src={urlForImage(video?.thumbnail)}
-              alt="How it Works"
+              alt="Nada Offering"
               height={isMobile ? '300' : '512'}
               width={isMobile ? '300' : '512'}
-              style={{ borderRadius: '5rem' }}
             />
             <Image
               onClick={() => setIsPlaying(true)}
@@ -85,6 +70,27 @@ export default function NadaFund({ feature, video }: NadaFundProps) {
             />
           </div>
         )}
+      </>
+    );
+  }
+
+  return (
+    <SectionWrapper id="nada-fund" $isBackground>
+      <GridWrapper>
+        <StackWrapper>
+          <div>
+            <OverlinePill>Exclusive</OverlinePill>
+          </div>
+          <Heading>{feature?.title}</Heading>
+          {isMobile && renderVideo()}
+          <LongFormText content={feature?.description} />
+
+          <Link href={'/nada'}>
+            <PrimaryButton>Invest Now</PrimaryButton>
+          </Link>
+        </StackWrapper>
+
+        {!isMobile && renderVideo()}
       </GridWrapper>
     </SectionWrapper>
   );

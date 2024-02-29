@@ -14,7 +14,6 @@ import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import styled from 'styled-components';
 
 interface FeaturedImageProps {
   feature: IFeature;
@@ -39,9 +38,27 @@ export default function FeaturedImage({
 }: FeaturedImageProps) {
   const isMobile = useIsMobile();
 
+  function renderImage() {
+    return (
+      <Image
+        style={{ borderRadius: '2rem', alignSelf: 'flex-end' }}
+        width={isMobile ? 300 : 560}
+        height={isMobile ? 300 : 560}
+        alt={feature?.title}
+        src={
+          isWide
+            ? urlForImage(feature?.image)
+            : urlForImage(feature?.image, 560, 560)
+        }
+      />
+    );
+  }
+
   return (
     <SectionWrapper $isBackground={isBackground}>
       <GridWrapper>
+        {(isMobile || isReversed) && renderImage()}
+
         <ContentWrapper>
           <StackWrapper style={{ gap: '1rem' }}>
             {overline && <Overline>{overline}</Overline>}
@@ -57,17 +74,7 @@ export default function FeaturedImage({
           </StackWrapper>
         </ContentWrapper>
 
-        <Image
-          style={{ borderRadius: '2rem', alignSelf: 'flex-end' }}
-          width={isMobile ? 300 : 560}
-          height={isMobile ? 300 : 560}
-          alt={feature?.title}
-          src={
-            isWide
-              ? urlForImage(feature?.image)
-              : urlForImage(feature?.image, 560, 560)
-          }
-        />
+        {!isMobile && !isReversed && renderImage()}
       </GridWrapper>
     </SectionWrapper>
   );

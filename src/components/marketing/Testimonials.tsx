@@ -29,35 +29,38 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
     <SectionWrapper style={{ display: 'block' }} $isBackground>
       <StackWrapper style={{ gap: '1rem' }}>
         <Overline>Hear it from our users...</Overline>
-        <Slider {...settings} ref={sliderRef}>
-          {testimonials?.map(({ name, review, city }, idx) => (
-            <div key={idx}>
-              <ContentWrapper>
-                <div style={{ maxWidth: '788px', marginRight: '24px' }}>
-                  <LongFormText content={review} />
-                  <ImageStepper
-                    activeStep={idx}
-                    totalSteps={testimonials?.length}
-                    sliderRef={sliderRef}
-                  />
-                </div>
 
-                <TextWrapper>
-                  <PrimaryText
-                    style={{
-                      color: '#48DC95',
-                      fontWeight: 600,
-                      marginBottom: 0,
-                    }}
-                  >
-                    {name}
-                  </PrimaryText>
-                  <PrimaryText style={{ color: 'black' }}>{city}</PrimaryText>
-                </TextWrapper>
-              </ContentWrapper>
-            </div>
-          ))}
-        </Slider>
+        <div style={{ display: 'block' }}>
+          <Slider {...settings} ref={sliderRef}>
+            {testimonials?.map(({ name, review, city }, idx) => (
+              <div key={idx}>
+                <ContentWrapper>
+                  <div style={{ maxWidth: '788px', marginRight: '24px' }}>
+                    <LongFormText content={review} />
+                    <ImageStepper
+                      activeStep={idx}
+                      totalSteps={testimonials?.length}
+                      sliderRef={sliderRef}
+                    />
+                  </div>
+
+                  <TextWrapper>
+                    <PrimaryText
+                      style={{
+                        color: '#48DC95',
+                        fontWeight: 600,
+                        marginBottom: 0,
+                      }}
+                    >
+                      {name}
+                    </PrimaryText>
+                    <PrimaryText style={{ color: 'black' }}>{city}</PrimaryText>
+                  </TextWrapper>
+                </ContentWrapper>
+              </div>
+            ))}
+          </Slider>
+        </div>
       </StackWrapper>
     </SectionWrapper>
   );
