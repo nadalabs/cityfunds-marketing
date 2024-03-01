@@ -89,8 +89,8 @@ export default function PageHero({
 
         {feature?.image && !isMobile && (
           <ImageWrapper
-            width={isMobile ? 300 : 512}
-            height={isMobile ? 300 : 512}
+            width={512}
+            height={512}
             alt={feature?.title}
             src={urlForImage(feature?.image, 512, 512)}
           />

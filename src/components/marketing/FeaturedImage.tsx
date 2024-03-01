@@ -48,7 +48,7 @@ export default function FeaturedImage({
         src={
           isWide
             ? urlForImage(feature?.image)
-            : urlForImage(feature?.image, 560, 560)
+            : urlForImage(feature?.image, 512, 512)
         }
       />
     );
@@ -57,11 +57,8 @@ export default function FeaturedImage({
   return (
     <SectionWrapper $isBackground={isBackground}>
       <GridWrapper>
+        {(isMobile || isReversed) && <div>{renderImage()}</div>}
         <ContentWrapper>
-          <div style={{ marginBottom: '1.5rem' }}>
-            {(isMobile || isReversed) && renderImage()}
-          </div>
-
           <StackWrapper style={{ gap: '1rem' }}>
             {overline && <Overline>{overline}</Overline>}
             <Heading>{feature?.title}</Heading>

@@ -86,7 +86,10 @@ export default function NadaFund({ feature, video }: NadaFundProps) {
           {isMobile && renderVideo()}
           <LongFormText content={feature?.description} />
 
-          <Link href={'/nada'}>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/nada`}
+            target="_blank"
+          >
             <PrimaryButton>Invest Now</PrimaryButton>
           </Link>
         </StackWrapper>
