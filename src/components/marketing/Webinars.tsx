@@ -8,7 +8,6 @@ import {
   StackWrapper,
 } from '@elements/Containers';
 import { Caption, Heading, SmallHeading } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import moment from 'moment';
 import Image from 'next/image';
@@ -24,15 +23,13 @@ interface WebinarsProps {
 }
 
 export default function Webinars({ webinar }: WebinarsProps) {
-  const isMobile = useIsMobile();
-
   return (
     <SectionWrapper id="promo">
       <GridWrapper>
         {webinar && (
           <Image
-            width={isMobile ? 360 : 672}
-            height={isMobile ? 240 : 352}
+            width={512}
+            height={512}
             alt={webinar?.title}
             src={urlForImage(webinar?.image)}
           />
