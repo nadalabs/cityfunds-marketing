@@ -43,19 +43,29 @@ export default function PageHero({
   const isMobile = useIsMobile();
 
   return (
-    <HeroWrapper style={{ marginTop: isMobile ? '3rem' : 0 }}>
+    <HeroWrapper style={{ margin: isMobile && cityfunds ? '6rem 0' : 0 }}>
       <GridWrapper>
         <ContentWrapper>
-          {isMobile && (
+          {cityfunds && isMobile && (
             <Image
-              width={isMobile ? 300 : 512}
-              height={isMobile ? 300 : 512}
+              width={512}
+              height={512}
               alt="Own Home Equity In Top Cities"
               src="/images/mobile-app.png"
             />
           )}
+          {feature?.image && isMobile && (
+            <ImageWrapper
+              width={512}
+              height={512}
+              alt={feature?.title}
+              src={urlForImage(feature?.image, 512, 512)}
+            />
+          )}
 
-          <StackWrapper style={{ gap: '1rem', marginBottom: '4rem' }}>
+          <StackWrapper
+            style={{ gap: '1rem', marginBottom: '4rem', marginTop: '2rem' }}
+          >
             <Heading>{feature?.title}</Heading>
             <LongFormText content={feature?.description} isLarge />
             {btnText && (
@@ -77,7 +87,7 @@ export default function PageHero({
           )}
         </ContentWrapper>
 
-        {feature?.image && (
+        {feature?.image && !isMobile && (
           <ImageWrapper
             width={isMobile ? 300 : 512}
             height={isMobile ? 300 : 512}
@@ -91,7 +101,7 @@ export default function PageHero({
   );
 }
 
-const ImageWrapper = styled.img`
+const ImageWrapper = styled(Image)`
   border-radius: 2rem;
   box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
 `;

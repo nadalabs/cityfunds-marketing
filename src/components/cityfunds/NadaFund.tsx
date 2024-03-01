@@ -51,8 +51,9 @@ export default function NadaFund({ feature, video }: NadaFundProps) {
             <Image
               src={urlForImage(video?.thumbnail)}
               alt="Nada Offering"
-              height={isMobile ? '300' : '512'}
-              width={isMobile ? '300' : '512'}
+              height={512}
+              width={512}
+              style={{ borderRadius: '2rem' }}
             />
             <Image
               onClick={() => setIsPlaying(true)}

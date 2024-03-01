@@ -41,7 +41,7 @@ export default function HowItWorks({
         {isPlaying ? (
           <div
             style={{
-              height: '32rem',
+              height: '512px',
               width: isMobile ? '100%' : '50%',
               borderRadius: '2rem',
               overflow: 'hidden',
@@ -62,8 +62,8 @@ export default function HowItWorks({
             <Image
               src={urlForImage(video?.thumbnail)}
               alt="How it Works"
-              height={isMobile ? '300' : '512'}
-              width={isMobile ? '300' : '512'}
+              height={512}
+              width={512}
             />
             <Image
               onClick={() => setIsPlaying(true)}
@@ -83,7 +83,7 @@ export default function HowItWorks({
         )}
 
         <ContentWrapper>
-          <Heading>How it Works</Heading>
+          <Heading style={{ marginBottom: '1.5rem' }}>How it Works</Heading>
           <div>
             {tutorials?.map(({ title, description }, idx) => (
               <div
