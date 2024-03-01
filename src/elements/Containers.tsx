@@ -2,19 +2,28 @@
 import styled from 'styled-components';
 
 export const SectionWrapper = styled.div<{ $isBackground?: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 6.25rem;
   background: ${({ $isBackground }) =>
     $isBackground
       ? 'linear-gradient(0deg, rgba(42, 131, 86, 0.05) 0%, rgba(42, 131, 86, 0.05) 100%), #FFF'
       : 'none'};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
-    padding: 6.25rem 16rem;
+  & > * {
+    max-width: 100rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 3rem 1.5rem;
   }
+`;
+
+export const HeroWrapper = styled(SectionWrapper)`
+  height: 100vh;
+  max-height: 50rem;
+  background-color: #fbfbfb;
 `;
 
 export const LayoutWrapper = styled.div`
@@ -81,11 +90,21 @@ export const ShaddowWrapper = styled.div<{ isShort?: boolean }>`
   }
 `;
 
+export const ContentWrapper = styled.div`
+  max-width: 40rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+    margin-right: 0;
+  }
+`;
+
 export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  gap: 2rem;
-  width: 100%;
+  align-items: center;
+  justify-items: center;
+  gap: 4rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     grid-template-columns: 1fr;

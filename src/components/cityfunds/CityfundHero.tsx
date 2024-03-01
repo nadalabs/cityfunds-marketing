@@ -1,9 +1,12 @@
 'use client';
 import EmailCapture from '@components/common/EmailCapture';
 import HeroBanner from '@components/common/HeroBanner';
-import { ContentWrapper, HeroWrapper } from '@components/common/PageHero';
 import LogoSoup from '@components/marketing/LogoSoup';
-import { StackWrapper } from '@elements/Containers';
+import {
+  ContentWrapper,
+  HeroWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import Image from 'next/image';
@@ -25,7 +28,7 @@ export default function CityfundHero({
   const isMobile = useIsMobile();
 
   return (
-    <HeroWrapper>
+    <HeroWrapper style={{ marginTop: isMobile ? '3rem' : 0 }}>
       <ContentWrapper>
         <StackWrapper
           style={{

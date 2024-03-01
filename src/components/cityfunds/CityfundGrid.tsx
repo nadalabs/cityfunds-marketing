@@ -47,38 +47,40 @@ export default function CityfundsGrid({ cityfunds }: CityfundsGridProps) {
   const SHOWN_CARDS = showMore || !isMobile ? ALL_CARDS : ALL_CARDS.slice(0, 3);
 
   return (
-    <SectionWrapper style={{ gap: '2rem' }}>
-      <StackWrapper
-        style={{ gap: isMobile ? '0' : '0.5rem', marginBottom: '1.5rem' }}
-      >
-        <Heading>Explore Offerings</Heading>
-        <LargeText>
-          Pick your favorite fund, or invest in all of them.
-        </LargeText>
-      </StackWrapper>
+    <SectionWrapper>
+      <StackWrapper style={{ width: '100%' }}>
+        <StackWrapper
+          style={{ gap: isMobile ? '0' : '0.5rem', marginBottom: '1.5rem' }}
+        >
+          <Heading>Explore Offerings</Heading>
+          <LargeText>
+            Pick your favorite fund, or invest in all of them.
+          </LargeText>
+        </StackWrapper>
 
-      <GridWrapper>
-        {SHOWN_CARDS.map((card, idx) => (
-          <div key={idx}>
-            <TopWrapper>
-              <CityfundCard {...card} image={card?.images[0]} width={400} />
-            </TopWrapper>
-            {!isMobile && (
-              <BottomWrapper>
-                <CityfundCard {...card} image={card?.images[1]} width={400} />
-              </BottomWrapper>
-            )}
+        <GridWrapper style={{ gap: '2rem', justifyItems: 'normal' }}>
+          {SHOWN_CARDS.map((card, idx) => (
+            <div key={idx}>
+              <TopWrapper>
+                <CityfundCard {...card} image={card?.images[0]} width={400} />
+              </TopWrapper>
+              {!isMobile && (
+                <BottomWrapper>
+                  <CityfundCard {...card} image={card?.images[1]} width={400} />
+                </BottomWrapper>
+              )}
+            </div>
+          ))}
+        </GridWrapper>
+
+        {isMobile && (
+          <div style={{ marginTop: '1rem' }}>
+            <PrimaryButton onClick={() => setShowMore(!showMore)}>
+              {showMore ? 'Show Less' : 'Show More'}
+            </PrimaryButton>
           </div>
-        ))}
-      </GridWrapper>
-
-      {isMobile && (
-        <div style={{ marginTop: '1rem' }}>
-          <PrimaryButton onClick={() => setShowMore(!showMore)}>
-            {showMore ? 'Show Less' : 'Show More'}
-          </PrimaryButton>
-        </div>
-      )}
+        )}
+      </StackWrapper>
     </SectionWrapper>
   );
 }

@@ -1,5 +1,9 @@
 'use client';
-import { FlexWrapper, SectionWrapper } from '@elements/Containers';
+import {
+  FlexWrapper,
+  SectionWrapper,
+  StackWrapper,
+} from '@elements/Containers';
 import { LinkText, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
@@ -22,7 +26,7 @@ export default function LogoSoup({
 }: LogoSoupProps) {
   const isMobile = useIsMobile();
 
-  function renderLogos(logos: any[], isMargin?: boolean) {
+  function renderLogos(logos) {
     return (
       <>
         {logos?.map(({ name, image, link }, idx) => (
@@ -30,11 +34,11 @@ export default function LogoSoup({
             key={idx}
             href={link}
             target="_blank"
-            style={{ margin: isMargin ? '1rem 1rem' : 0 }}
+            style={{ margin: '1rem 1rem' }}
           >
             <Image
-              width={isMobile ? 140 : isHero ? 200 : 150}
-              height={isMobile ? 32 : isHero ? 40 : 40}
+              width={isMobile ? 100 : isHero ? 200 : 150}
+              height={isMobile ? 32 : isHero ? 60 : 40}
               alt={name}
               src={urlForImage(image)}
             />
@@ -46,13 +50,9 @@ export default function LogoSoup({
 
   if (isHero) {
     return (
-      <div style={{ maxWidth: '100%', marginBottom: '1rem' }}>
+      <div style={{ maxWidth: '100%' }}>
         <Overline
-          style={{
-            color: '#989898',
-            textAlign: isMobile ? 'center' : 'left',
-            marginBottom: '0.5rem',
-          }}
+          style={{ color: '#989898', textAlign: isMobile ? 'center' : 'left' }}
         >
           {overline}
         </Overline>
@@ -65,16 +65,18 @@ export default function LogoSoup({
 
   return (
     <SectionWrapper style={{ textAlign: 'center' }}>
-      <Overline style={{ color: '#989898', textAlign: 'center' }}>
-        {overline}
-      </Overline>
-      <ContentWrapper>{renderLogos(logos, true)}</ContentWrapper>
+      <StackWrapper>
+        <Overline style={{ color: '#989898', textAlign: 'center' }}>
+          {overline}
+        </Overline>
+        <ContentWrapper>{renderLogos(logos)}</ContentWrapper>
 
-      {seeMore && (
-        <div style={{ paddingLeft: '1.25rem' }}>
-          <LinkText href="/press">See More</LinkText>
-        </div>
-      )}
+        {seeMore && (
+          <div style={{ paddingLeft: '1.25rem' }}>
+            <LinkText href="/press">See More</LinkText>
+          </div>
+        )}
+      </StackWrapper>
     </SectionWrapper>
   );
 }

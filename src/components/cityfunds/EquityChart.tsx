@@ -1,8 +1,10 @@
 'use client';
 import {
+  FlexWrapper,
   GridWrapper,
   SectionWrapper,
   ShaddowWrapper,
+  StackWrapper,
 } from '@elements/Containers';
 import { Caption, PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
@@ -30,46 +32,48 @@ export default function EquityChart() {
 
   return (
     <SectionWrapper $isBackground>
-      <GridWrapper
-        style={{
-          display: isMobile ? 'flex' : 'grid',
-          flexDirection: isMobile ? 'column-reverse' : 'row',
-          gridTemplateColumns: isMobile ? '1fr' : '2.5fr 1fr',
-          gap: '1rem',
-        }}
-      >
-        <ShaddowWrapper>
-          <AreaChart
-            className="h-72 mt-4"
-            data={chartData}
-            index="date"
-            categories={['Homeowner Equity']}
-            colors={['green']}
-            yAxisWidth={50}
-            valueFormatter={(v) => `$${shortenNumber(v * 1000000000, 1)}`}
-            onValueChange={(v) => setValue(v)}
-            connectNulls
-            showAnimation
-          />
-        </ShaddowWrapper>
+      <StackWrapper>
+        <GridWrapper
+          style={{
+            display: isMobile ? 'flex' : 'grid',
+            flexDirection: isMobile ? 'column-reverse' : 'row',
+            gridTemplateColumns: isMobile ? '1fr' : '2.5fr 1fr',
+            gap: '1rem',
+          }}
+        >
+          <ShaddowWrapper>
+            <AreaChart
+              className="h-72 mt-4"
+              data={chartData}
+              index="date"
+              categories={['Homeowner Equity']}
+              colors={['green']}
+              yAxisWidth={50}
+              valueFormatter={(v) => `$${shortenNumber(v * 1000000000, 1)}`}
+              onValueChange={(v) => setValue(v)}
+              connectNulls
+              showAnimation
+            />
+          </ShaddowWrapper>
 
-        <ShaddowWrapper isShort={isMobile}>
-          <SmallHeading style={{ marginBottom: '1rem' }}>
-            $32.6 Trillion Home Equity Market Value
-          </SmallHeading>
-          <PrimaryText>
-            Since 2013 the Overall Homeowner Equity Market has grown by 211%,
-            growing from $10.5 Trillion in 2013 to an incredible $32.6 Trillion
-            today. For the first time ever, Cityfunds has made this asset class
-            investible for individuals.
-          </PrimaryText>
-        </ShaddowWrapper>
-      </GridWrapper>
+          <ShaddowWrapper isShort={isMobile}>
+            <SmallHeading style={{ marginBottom: '1rem' }}>
+              $32.6 Trillion Home Equity Market Value
+            </SmallHeading>
+            <PrimaryText>
+              Since 2013 the Overall Homeowner Equity Market has grown by 211%,
+              growing from $10.5 Trillion in 2013 to an incredible $32.6
+              Trillion today. For the first time ever, Cityfunds has made this
+              asset class investible for individuals.
+            </PrimaryText>
+          </ShaddowWrapper>
+        </GridWrapper>
 
-      <Caption style={{ marginTop: '1rem' }}>
-        *Souce: St. Louis Fed, Households; Owners' Equity in Real Estate, Level
-        (billions of dollars, updated quarterly) as of January 1, 2024.
-      </Caption>
+        <Caption style={{ marginTop: '1rem' }}>
+          *Souce: St. Louis Fed, Households; Owners' Equity in Real Estate,
+          Level (billions of dollars, updated quarterly) as of January 1, 2024.
+        </Caption>
+      </StackWrapper>
     </SectionWrapper>
   );
 }

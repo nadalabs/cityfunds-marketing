@@ -1,18 +1,12 @@
-'use client';
 import { BoldText } from '@elements/Typography';
 import styled from 'styled-components';
+import { scrollToDiv } from '@utils/helpers';
+import { getCityfundsPageContent, getNadaOfferingContent } from 'lib/sanity';
 
-interface AlertBannerProps {
-  primaryText: string;
-  btnText: string;
-  onClick: () => void;
-}
+export default async function AlertBanner() {
+  const nada_offering = await getNadaOfferingContent();
+  const cityfundsPage = await getCityfundsPageContent();
 
-export default function AlertBanner({
-  primaryText,
-  btnText,
-  onClick,
-}: AlertBannerProps) {
   return (
     <BannerWrapper>
       <BoldText
@@ -23,10 +17,16 @@ export default function AlertBanner({
           fontSize: '18px',
         }}
       >
-        {primaryText}
+        {nada_offering?.banner
+          ? nada_offering?.banner
+          : cityfundsPage?.promo?.banner}
       </BoldText>
       <BoldText
-        onClick={onClick}
+        onClick={() =>
+          nada_offering?.banner
+            ? scrollToDiv('nada-fund')
+            : scrollToDiv('investor-promo')
+        }
         style={{
           display: 'inline',
           color: '#48DC95',
@@ -35,7 +35,7 @@ export default function AlertBanner({
           cursor: 'pointer',
         }}
       >
-        {btnText}
+        Learn More
       </BoldText>
     </BannerWrapper>
   );

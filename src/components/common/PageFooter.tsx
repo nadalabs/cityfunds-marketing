@@ -1,3 +1,4 @@
+'use client';
 import LongFormText from '@components/common/LongFormText';
 import { LinkButton } from '@elements/Buttons';
 import { BoldText, LinkText } from '@elements/Typography';
@@ -5,10 +6,19 @@ import { FOOTER_LINKS, ICON_LINKS, SOCIAL_LINKS } from '@utils/constants';
 import { getFooterContent } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-export default async function PageFooter() {
-  const legal = await getFooterContent();
+export default function PageFooter() {
+  const [legal, setLegal] = useState('');
+
+  useEffect(() => {
+    async function fetchFooter() {
+      const legal = await getFooterContent();
+      setLegal(legal);
+    }
+    fetchFooter();
+  }, []);
 
   return (
     <FooterWrapper>
@@ -92,8 +102,8 @@ export const FooterWrapper = styled.div`
   background-color: #fbfbfb;
   padding: 6.25rem;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
-    padding: 6.25rem 16rem;
+  & > * {
+    max-width: 100rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
