@@ -28,7 +28,7 @@ export default function CityfundHero({
   const isMobile = useIsMobile();
 
   return (
-    <HeroWrapper>
+    <HeroWrapper style={{ marginTop: isMobile ? '3rem' : 0 }}>
       <ContentWrapper>
         <StackWrapper
           style={{

@@ -16,6 +16,7 @@ import { ICityfund, IFeature } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import Link from 'next/link';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 interface PageHeroProps {
   feature: IFeature;
@@ -42,13 +43,19 @@ export default function PageHero({
   const isMobile = useIsMobile();
 
   return (
-    <HeroWrapper>
+    <HeroWrapper style={{ marginTop: isMobile ? '3rem' : 0 }}>
       <GridWrapper>
         <ContentWrapper>
+          {isMobile && (
+            <Image
+              width={isMobile ? 300 : 512}
+              height={isMobile ? 300 : 512}
+              alt="Own Home Equity In Top Cities"
+              src="/images/mobile-app.png"
+            />
+          )}
+
           <StackWrapper style={{ gap: '1rem', marginBottom: '4rem' }}>
-            {banner && (
-              <HeroBanner primaryText={banner?.text} link={banner?.link} />
-            )}
             <Heading>{feature?.title}</Heading>
             <LongFormText content={feature?.description} isLarge />
             {btnText && (
@@ -65,6 +72,9 @@ export default function PageHero({
               isHero
             />
           )}
+          {banner && (
+            <HeroBanner primaryText={banner?.text} link={banner?.link} />
+          )}
         </ContentWrapper>
 
         {feature?.image && (
@@ -75,7 +85,7 @@ export default function PageHero({
             src={urlForImage(feature?.image, 512, 512)}
           />
         )}
-        {cityfunds && <CityfundSlider cityfunds={cityfunds} />}
+        {cityfunds && !isMobile && <CityfundSlider cityfunds={cityfunds} />}
       </GridWrapper>
     </HeroWrapper>
   );
