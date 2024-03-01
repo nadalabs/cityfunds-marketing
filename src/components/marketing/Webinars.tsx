@@ -28,8 +28,8 @@ export default function Webinars({ webinar }: WebinarsProps) {
       <GridWrapper>
         {webinar && (
           <Image
-            width={512}
-            height={512}
+            width={400}
+            height={400}
             alt={webinar?.title}
             src={urlForImage(webinar?.image)}
           />
