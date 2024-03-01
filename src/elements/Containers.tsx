@@ -104,7 +104,7 @@ export const GridWrapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   align-items: center;
   justify-items: center;
-  gap: 4rem;
+  gap: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
