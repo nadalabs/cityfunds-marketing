@@ -47,4 +47,11 @@ export default createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  .slick-slide > div {
+    margin: 0 8px;
+  }
+  .slick-list {
+    margin: 0 -8px;
+  }
 `;
