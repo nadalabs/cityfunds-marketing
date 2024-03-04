@@ -44,7 +44,7 @@ export default function ValueProps({
           {primaryText && <PrimaryText>{primaryText}</PrimaryText>}
         </StackWrapper>
 
-        <GridWrapper style={{ gap: '1rem' }}>
+        <GridWrapper style={{ gap: '1rem', alignItems: 'stretch' }}>
           {valueProps?.map(({ title, description }, idx) => (
             <TextWrapper key={idx}>
               <StackWrapper style={{ gap: '1rem' }}>

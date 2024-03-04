@@ -32,8 +32,8 @@ export default function TeamSlider({ teammates, title }: TeamSliderProps) {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: isMobile ? 1.25 : 3,
-    slidesToScroll: isMobile ? 1 : 3,
+    slidesToShow: isMobile ? 1.1 : 4,
+    slidesToScroll: isMobile ? 1 : 4,
     swipeToSlide: true,
     beforeChange: (_, next) => setActiveStep(next),
   };
@@ -73,6 +73,8 @@ export default function TeamSlider({ teammates, title }: TeamSliderProps) {
                     background: `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 39.06%, rgba(0, 0, 0, 0.22) 67.71%, rgba(0, 0, 0, 0.40) 95.83%), url(${image})`,
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
+                    width: 'inherit',
+                    height: '20rem',
                   }}
                 >
                   <div>

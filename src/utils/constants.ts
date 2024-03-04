@@ -24,7 +24,6 @@ export const UTM_PARAMETERS = [
 
 export const HEADER_LINKS = [
   { name: 'Cityfunds', link: '/' },
-
   {
     name: 'Resources',
     links: [
