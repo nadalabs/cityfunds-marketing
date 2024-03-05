@@ -65,7 +65,7 @@ export default function LogoSoup({
 
   return (
     <SectionWrapper style={{ textAlign: 'center' }}>
-      <StackWrapper style={{ maxWidth: '70%' }}>
+      <StackWrapper style={{ maxWidth: isMobile ? '100%' : '70%' }}>
         <Overline style={{ color: '#989898', textAlign: 'center' }}>
           {overline}
         </Overline>
