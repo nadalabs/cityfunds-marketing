@@ -37,8 +37,8 @@ export default function LogoSoup({
             style={{ margin: '1rem 1rem' }}
           >
             <Image
-              width={isMobile ? 100 : isHero ? 200 : 150}
-              height={isMobile ? 32 : isHero ? 60 : 40}
+              width={isMobile ? 100 : isHero ? 200 : 100}
+              height={isMobile ? 32 : isHero ? 60 : 30}
               alt={name}
               src={urlForImage(image)}
             />
@@ -65,7 +65,7 @@ export default function LogoSoup({
 
   return (
     <SectionWrapper style={{ textAlign: 'center' }}>
-      <StackWrapper>
+      <StackWrapper style={{ maxWidth: isMobile ? '100%' : '70%' }}>
         <Overline style={{ color: '#989898', textAlign: 'center' }}>
           {overline}
         </Overline>
