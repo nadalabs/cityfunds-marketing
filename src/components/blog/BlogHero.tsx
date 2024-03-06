@@ -122,11 +122,6 @@ export const CardWrapper = styled.div`
 const ContentWrapper = styled.div`
   width: 100%;
   max-width: 75rem;
-  padding-top: 4rem;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding-top: 6rem;
-  }
 `;
 
 const FlexWrapper = styled.div`

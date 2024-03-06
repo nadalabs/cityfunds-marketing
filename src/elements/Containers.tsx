@@ -15,6 +15,10 @@ export const SectionWrapper = styled.div<{ $isBackground?: boolean }>`
     max-width: 100rem;
   }
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    display: block;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     display: block;
     padding: 3rem 1.5rem;
@@ -23,8 +27,16 @@ export const SectionWrapper = styled.div<{ $isBackground?: boolean }>`
 
 export const HeroWrapper = styled(SectionWrapper)`
   height: 100vh;
-  max-height: 50rem;
   background-color: #fbfbfb;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    display: flex;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    min-height: 100vh;
+    height: inherit;
+  }
 `;
 
 export const LayoutWrapper = styled.div`
