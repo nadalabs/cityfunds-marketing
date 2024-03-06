@@ -43,7 +43,7 @@ export default function PageHero({
   const isMobile = useIsMobile();
 
   return (
-    <HeroWrapper style={{ margin: isMobile && cityfunds ? '6rem 0' : 0 }}>
+    <HeroWrapper>
       <GridWrapper>
         <ContentWrapper>
           {cityfunds && isMobile && (
