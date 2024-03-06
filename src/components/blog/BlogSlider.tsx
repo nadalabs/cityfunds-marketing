@@ -63,7 +63,11 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
           />
         </FlexWrapper>
 
-        <Slider ref={sliderRef} {...settings}>
+        <Slider
+          ref={sliderRef}
+          {...settings}
+          style={{ display: 'flex', justifyContent: 'flex-start' }}
+        >
           {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
             <Link key={idx} href={`/learn/${slug}`}>
               <CardWrapper style={{ width: '500px' }}>

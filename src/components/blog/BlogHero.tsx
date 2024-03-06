@@ -120,6 +120,9 @@ export const CardWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   max-width: 75rem;
 `;
