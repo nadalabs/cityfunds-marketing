@@ -16,6 +16,7 @@ export const SectionWrapper = styled.div<{ $isBackground?: boolean }>`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    display: block;
     padding: 3rem 1.5rem;
   }
 `;

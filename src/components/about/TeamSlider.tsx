@@ -39,7 +39,7 @@ export default function TeamSlider({ teammates, title }: TeamSliderProps) {
   };
 
   return (
-    <SectionWrapper style={{ display: 'block' }}>
+    <SectionWrapper>
       <StackWrapper>
         <FlexWrapper style={{ alignItems: 'flex-end', marginBottom: '1rem' }}>
           <StackWrapper style={{ gap: '1rem' }}>
