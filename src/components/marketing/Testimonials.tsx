@@ -26,7 +26,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
   };
 
   return (
-    <SectionWrapper style={{ display: 'block' }} $isBackground>
+    <SectionWrapper $isBackground>
       <StackWrapper style={{ gap: '1rem' }}>
         <Overline>Hear it from our users...</Overline>
 

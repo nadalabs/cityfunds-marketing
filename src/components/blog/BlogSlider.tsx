@@ -48,7 +48,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
   };
 
   return (
-    <SectionWrapper style={{ display: 'block' }}>
+    <SectionWrapper>
       <StackWrapper>
         <FlexWrapper
           style={{ justifyContent: 'space-between', marginBottom: '1rem' }}
@@ -63,11 +63,7 @@ export default function BlogSlider({ tag, blogPosts }: BlogSliderProps) {
           />
         </FlexWrapper>
 
-        <Slider
-          ref={sliderRef}
-          {...settings}
-          style={{ display: 'flex', justifyContent: 'flex-start' }}
-        >
+        <Slider ref={sliderRef} {...settings}>
           {blogPosts.map(({ title, date, excerpt, coverImage, slug }, idx) => (
             <Link key={idx} href={`/learn/${slug}`}>
               <CardWrapper style={{ width: '500px' }}>
