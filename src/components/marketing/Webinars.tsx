@@ -52,7 +52,7 @@ export default function Webinars({ webinar }: WebinarsProps) {
               <PrimaryButton
                 onClick={() => window.open(webinar?.link, '_blank')}
               >
-                Register here
+                Register Here
               </PrimaryButton>
             </div>
           </StackWrapper>

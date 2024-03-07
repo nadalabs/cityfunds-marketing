@@ -98,7 +98,7 @@ export default function HowItWorks({
                     marginBottom: '1.5rem',
                   }}
                 >
-                  <GreenSquare />
+                  <GreenSquare $isActive={activeIdx === idx} />
                   <HoverHeading $isActive={activeIdx === idx}>
                     {title}
                   </HoverHeading>
