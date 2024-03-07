@@ -39,19 +39,37 @@ export default function FeaturedImage({
   const isMobile = useIsMobile();
 
   function renderImage() {
-    return (
-      <Image
-        style={{ borderRadius: '2rem', alignSelf: 'flex-end' }}
-        width={512}
-        height={512}
-        alt={feature?.title}
-        src={
-          isWide
-            ? urlForImage(feature?.image)
-            : urlForImage(feature?.image, 512, 512)
-        }
-      />
-    );
+    if (!!link) {
+      return (
+        <Link href={link} target="_blank">
+          <Image
+            style={{ borderRadius: '2rem', alignSelf: 'flex-end' }}
+            width={isWide ? 700 : 512}
+            height={512}
+            alt={feature?.title}
+            src={
+              isWide
+                ? urlForImage(feature?.image)
+                : urlForImage(feature?.image, 512, 512)
+            }
+          />
+        </Link>
+      );
+    } else {
+      return (
+        <Image
+          style={{ borderRadius: '2rem', alignSelf: 'flex-end' }}
+          width={isWide ? 700 : 512}
+          height={512}
+          alt={feature?.title}
+          src={
+            isWide
+              ? urlForImage(feature?.image)
+              : urlForImage(feature?.image, 512, 512)
+          }
+        />
+      );
+    }
   }
 
   return (
