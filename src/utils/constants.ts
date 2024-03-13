@@ -5,6 +5,7 @@ export enum EXTERNAL_ROUTES {
   GOOGLE_STORE = 'https://play.google.com/store/apps/details/Nada_Finance?id=com.nada.debitapp',
   BUSINESS_BUREAU = 'https://www.bbb.org/us/tx/dallas/profile/investment-management/cityfunds-by-nada-0875-91340285#sealclick',
   BENZINGA_AWARD = 'https://www.benzinga.com/fintech/23/11/35922810/nada-takes-home-coveted-best-alternative-investments-platform-at-benzinga-global-fintech-awards-2023',
+  REWARDS_PROGRAM = 'https://www.sec.gov/Archives/edgar/data/1874979/000149315224009832/form253g2.htm',
   HUBSPOT_MEETING = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
   HUBSPOT_FAQS = 'https://faqs.cityfunds.com/cityfunds',
 }
@@ -40,16 +41,12 @@ export const LEGAL_LINKS = [
   { name: 'Privacy Policy', link: '/privacy-policy' },
   { name: 'Cookie Policy', link: '/cookie-policy' },
   {
-    name: 'Rewards Program',
-    link: '/rewards-program',
-  },
-  {
     name: 'Electronic Funds Transfer',
     link: '/electronic-funds-transfer',
   },
   {
     name: 'Consumer Complaint Policy',
-    link: 'https://irgtndauzeikqqggeniu.supabase.co/storage/v1/object/public/nada/consumer-complaint.pdf',
+    link: 'https://www.api.cityfunds.com/storage/v1/object/public/nada/consumer-complaint.pdf',
   },
   {
     name: 'Nada SEC Filings',
@@ -58,6 +55,10 @@ export const LEGAL_LINKS = [
   {
     name: 'Cityfunds SEC Filings',
     link: 'https://www.sec.gov/edgar/search/#/ciks=0001874979&entityName=Cityfunds%2520I%252C%2520LLC%2520(CIK%25200001874979)',
+  },
+  {
+    name: 'Rewards Program',
+    link: EXTERNAL_ROUTES.REWARDS_PROGRAM,
   },
 ];
 
