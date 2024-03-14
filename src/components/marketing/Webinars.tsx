@@ -36,7 +36,7 @@ export default function Webinars({ webinar }: WebinarsProps) {
         )}
 
         <ContentWrapper>
-          <StackWrapper>
+          <StackWrapper style={{ marginBottom: '2rem' }}>
             <Heading>
               Upcoming <span style={{ color: '#48DC95' }}>Webinar</span>
             </Heading>

@@ -11,10 +11,11 @@ import HowItWorks from '@components/marketing/HowItWorks';
 import KeyMetrics from '@components/marketing/KeyMetrics';
 import Testimonials from '@components/marketing/Testimonials';
 import ValueProps from '@components/marketing/ValueProps';
-import Webinanars from '@components/marketing/Webinars';
+import Webinars from '@components/marketing/Webinars';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import {
   getAllFundsContent,
+  getCityfundsAppContent,
   getCityfundsPageContent,
   getNadaOfferingContent,
 } from 'lib/sanity';
@@ -22,6 +23,7 @@ import { getAllFundsData } from 'lib/supabase';
 
 export default async function HomePage() {
   const cityfundsPage = await getCityfundsPageContent();
+  const cityfundsApp = await getCityfundsAppContent();
   const fundsData = await getAllFundsData();
   const fundsContent = await getAllFundsContent();
   const nada_offering = await getNadaOfferingContent();
@@ -94,11 +96,11 @@ export default async function HomePage() {
         isBackground
       />
 
-      {cityfundsPage?.investor_promo && (
-        <InvestorPromo promo={cityfundsPage?.investor_promo} />
+      {cityfundsApp?.investor_promo && (
+        <InvestorPromo promo={cityfundsApp?.investor_promo} />
       )}
-      {cityfundsPage?.retail_webinar && (
-        <Webinanars webinar={cityfundsPage?.retail_webinar} />
+      {cityfundsApp?.investor_webinar && (
+        <Webinars webinar={cityfundsApp?.investor_webinar} />
       )}
       <EmailCapture isPopup />
     </PageTracker>

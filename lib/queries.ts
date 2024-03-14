@@ -174,8 +174,13 @@ export const cityfundsPageFields = `
   questions,
   testimonials,
   homeowners_feature,
+`;
+
+export const cityfundsAppFields = `
+  _id,
+  hero_slider,
   investor_promo,
-  retail_webinar,
+  investor_webinar,
 `;
 
 export const nadaOfferingFields = `
