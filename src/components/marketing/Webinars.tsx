@@ -24,12 +24,12 @@ interface WebinarsProps {
 
 export default function Webinars({ webinar }: WebinarsProps) {
   return (
-    <SectionWrapper id="promo">
+    <SectionWrapper>
       <GridWrapper>
         {webinar && (
           <Image
-            width={400}
-            height={400}
+            width={500}
+            height={500}
             alt={webinar?.title}
             src={urlForImage(webinar?.image)}
           />

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import {
@@ -26,7 +26,7 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
   const isMobile = useIsMobile();
 
   return (
-    <SectionWrapper id="investor-promo">
+    <SectionWrapper>
       <FlexWrapper
         style={{
           flexDirection: isMobile ? 'column' : 'row',
