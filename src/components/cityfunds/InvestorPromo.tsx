@@ -87,7 +87,7 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
             </div>
 
             <Link
-              href={`/${promo?.fund_name?.toLowerCase().replace(/ /g, '-')}`}
+              href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/${promo?.fund_name?.toLowerCase().replace(/ /g, '-')}`}
             >
               <PrimaryButton>Invest Now</PrimaryButton>
             </Link>

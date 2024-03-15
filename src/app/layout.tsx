@@ -64,6 +64,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           id="segment-script"
           dangerouslySetInnerHTML={{ __html: renderSnippet() }}
         />
+        <Script src="https://a.mmin.io/m/v3.min.js" />
       </head>
       <body>
         <StyledComponentsRegistry>
