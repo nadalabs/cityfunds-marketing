@@ -24,19 +24,19 @@ interface WebinarsProps {
 
 export default function Webinars({ webinar }: WebinarsProps) {
   return (
-    <SectionWrapper id="promo">
+    <SectionWrapper>
       <GridWrapper>
         {webinar && (
           <Image
-            width={400}
-            height={400}
+            width={500}
+            height={500}
             alt={webinar?.title}
             src={urlForImage(webinar?.image)}
           />
         )}
 
         <ContentWrapper>
-          <StackWrapper>
+          <StackWrapper style={{ marginBottom: '2rem' }}>
             <Heading>
               Upcoming <span style={{ color: '#48DC95' }}>Webinar</span>
             </Heading>

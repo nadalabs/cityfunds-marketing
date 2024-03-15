@@ -5,6 +5,7 @@ import { IFundContent } from '@utils/models';
 import {
   aboutPageFields,
   cityfundFields,
+  cityfundsAppFields,
   cityfundsPageFields,
   legalFields,
   nadaOfferingFields,
@@ -43,6 +44,14 @@ export const getCityfundsPageContent = async (): Promise<any> => {
   const res = await sanityClient.fetch(`
     *[_type == "cityfundsPage"] | order(index asc, _updatedAt desc) {
       ${cityfundsPageFields}
+    }`);
+  return res[0];
+};
+
+export const getCityfundsAppContent = async (): Promise<any> => {
+  const res = await sanityClient.fetch(`
+    *[_type == "cityfundsApp"] | order(index asc, _updatedAt desc) {
+      ${cityfundsAppFields}
     }`);
   return res[0];
 };
