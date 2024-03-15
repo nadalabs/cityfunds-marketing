@@ -46,15 +46,7 @@ export default function PageHero({
     <HeroWrapper>
       <GridWrapper>
         <ContentWrapper>
-          {cityfunds && isMobile && (
-            <Image
-              width={512}
-              height={512}
-              alt="Own Home Equity In Top Cities"
-              src="/images/mobile-app.png"
-            />
-          )}
-          {feature?.image && isMobile && (
+          {!cityfunds?.length && isMobile && (
             <ImageWrapper
               width={512}
               height={512}
@@ -64,10 +56,24 @@ export default function PageHero({
           )}
 
           <StackWrapper
-            style={{ gap: '1rem', marginBottom: '4rem', marginTop: '2rem' }}
+            style={{
+              gap: '1rem',
+              marginBottom: '4rem',
+              marginTop: cityfunds?.length ? 0 : '2rem',
+            }}
           >
             <Heading>{feature?.title}</Heading>
             <LongFormText content={feature?.description} isLarge />
+
+            {cityfunds?.length && isMobile && (
+              <Image
+                width={512}
+                height={512}
+                alt="Own Home Equity In Top Cities"
+                src={urlForImage(feature?.image, 512, 512)}
+              />
+            )}
+
             {btnText && (
               <Link href={link} target="_blank">
                 <PrimaryButton>{btnText}</PrimaryButton>
@@ -87,7 +93,7 @@ export default function PageHero({
           )}
         </ContentWrapper>
 
-        {feature?.image && !isMobile && (
+        {!cityfunds?.length && !isMobile && (
           <ImageWrapper
             width={512}
             height={512}

@@ -47,6 +47,7 @@ export default function KeyMetrics({ metrics }: KeyMetricsProps) {
               </CountUp>
               <GreenSquare
                 style={{ position: 'relative', bottom: '0.75rem', left: '8px' }}
+                $isActive
               />
             </div>
             <PrimaryText>{label}</PrimaryText>
