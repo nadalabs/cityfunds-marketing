@@ -1,4 +1,5 @@
 'use client';
+import VideoPlayer from '@components/blog/VideoPlayer';
 import { GreenSquare } from '@components/common/ImageStepper';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
@@ -9,12 +10,8 @@ import {
   SectionWrapper,
 } from '@elements/Containers';
 import { Heading, SmallHeading } from '@elements/Typography';
-import useIsMobile from '@hooks/useIsMobile';
-import { urlForImage } from 'lib/sanity';
-import Image from 'next/image';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
-import ReactPlayer from 'react-player';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 interface HowItWorksProps {
@@ -30,57 +27,12 @@ export default function HowItWorks({
   btnText,
   link,
 }: HowItWorksProps) {
-  const isMobile = useIsMobile();
-  const playerRef = useRef(null);
   const [activeIdx, setActiveIdx] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <SectionWrapper>
       <GridWrapper>
-        {isPlaying ? (
-          <div
-            style={{
-              height: '512px',
-              width: isMobile ? '100%' : '50%',
-              borderRadius: '2rem',
-              overflow: 'hidden',
-            }}
-          >
-            <ReactPlayer
-              ref={playerRef}
-              url={video?.video_url}
-              playing={isPlaying}
-              controls={true}
-              onEnded={() => setIsPlaying(false)}
-              height={isMobile ? '16rem' : '32rem'}
-              width={isMobile ? '100%' : '100%'}
-            />
-          </div>
-        ) : (
-          <div style={{ position: 'relative' }}>
-            <Image
-              src={urlForImage(video?.thumbnail)}
-              alt="How it Works"
-              height={512}
-              width={512}
-            />
-            <Image
-              onClick={() => setIsPlaying(true)}
-              src="/icons/play-button.svg"
-              alt="Play button"
-              width={120}
-              height={120}
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                cursor: 'pointer',
-              }}
-            />
-          </div>
-        )}
+        <VideoPlayer video={video} />
 
         <ContentWrapper>
           <Heading style={{ marginBottom: '1.5rem' }}>How it Works</Heading>

@@ -39,7 +39,7 @@ export default async function PostPage({ params }) {
             content={post?.content}
           />
         ) : (
-          <VideoPlayer media={media} />
+          <VideoPlayer video={media} />
         )}
       </SectionWrapper>
       <EmailCapture />
