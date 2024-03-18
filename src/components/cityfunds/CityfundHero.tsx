@@ -9,6 +9,7 @@ import {
 } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
+import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 
 interface CityfundHeroProps {
@@ -18,24 +19,21 @@ interface CityfundHeroProps {
   };
   logoTitle?: string;
   logos?: any[];
+  feature?: any;
 }
 
 export default function CityfundHero({
   banner,
   logoTitle,
   logos,
+  feature,
 }: CityfundHeroProps) {
   const isMobile = useIsMobile();
 
   return (
-    <HeroWrapper style={{ marginTop: isMobile ? '3rem' : 0 }}>
+    <HeroWrapper style={{ marginTop: isMobile ? '2rem' : 0 }}>
       <ContentWrapper>
-        <StackWrapper
-          style={{
-            gap: '1rem',
-            alignItems: isMobile ? 'center' : 'flex-start',
-          }}
-        >
+        <StackWrapper style={{ gap: '1rem' }}>
           <Heading style={{ marginBottom: 0 }}>
             Own <span style={{ color: '#2A8356' }}>Home Equity</span> <br /> In
             Top Cities
@@ -43,19 +41,20 @@ export default function CityfundHero({
           <PrimaryText>
             Unlock real wealth through diversified home equity portfolios.
           </PrimaryText>
+
+          {isMobile && (
+            <Image
+              width={isMobile ? 300 : 512}
+              height={isMobile ? 300 : 512}
+              alt="Own Home Equity In Top Cities"
+              src={urlForImage(feature?.image, 512, 512)}
+              style={{ alignSelf: 'center' }}
+            />
+          )}
           <EmailCapture isHero />
         </StackWrapper>
 
-        {isMobile && (
-          <Image
-            width={isMobile ? 300 : 512}
-            height={isMobile ? 300 : 512}
-            alt="Own Home Equity In Top Cities"
-            src="/images/mobile-app.png"
-          />
-        )}
-
-        <div>
+        <div style={{ marginTop: '2rem' }}>
           {logos && (
             <LogoSoup
               overline={logoTitle}
@@ -74,7 +73,7 @@ export default function CityfundHero({
           width={isMobile ? 300 : 512}
           height={isMobile ? 300 : 512}
           alt="Own Home Equity In Top Cities"
-          src="/images/mobile-app.png"
+          src={urlForImage(feature?.image, 512, 512)}
         />
       )}
     </HeroWrapper>

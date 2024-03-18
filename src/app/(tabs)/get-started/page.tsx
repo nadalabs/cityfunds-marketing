@@ -18,6 +18,7 @@ export default async function LandingPage() {
       <CityfundHero
         logoTitle="Featured In"
         banner={cityfundsPage?.hero_banner}
+        feature={cityfundsPage?.marketing_hero}
         logos={cityfundsPage?.logos}
       />
       <KeyMetrics metrics={cityfundsPage?.metrics} />
