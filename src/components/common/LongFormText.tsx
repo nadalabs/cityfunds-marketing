@@ -8,6 +8,7 @@ import {
   LinkText,
   Overline,
   PrimaryText,
+  SmallHeading,
 } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { PortableText } from '@portabletext/react';
@@ -40,6 +41,12 @@ export default function LongFormText({
 
   const components = {
     block: {
+      h1: ({ children }: any) => <Heading>{children}</Heading>,
+      h2: ({ children }: any) => <SmallHeading>{children}</SmallHeading>,
+      h3: ({ children }: any) => <SmallHeading>{children}</SmallHeading>,
+      h4: ({ children }: any) => <SmallHeading>{children}</SmallHeading>,
+      h5: ({ children }: any) => <SmallHeading>{children}</SmallHeading>,
+      h6: ({ children }: any) => <SmallHeading>{children}</SmallHeading>,
       normal: ({ children }: any) => {
         if (isSmall) {
           return <Caption>{children}</Caption>;
@@ -122,6 +129,9 @@ export default function LongFormText({
           </LinkText>
         );
       },
+    },
+    types: {
+      hardBreak: () => <><br />{'\n'}</>
     },
   };
 

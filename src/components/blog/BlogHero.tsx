@@ -11,7 +11,7 @@ import { format, parseISO } from 'date-fns';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
@@ -27,6 +27,8 @@ interface BlogHeroProps {
 }
 
 export default function BlogHero({ blogPosts }: BlogHeroProps) {
+  const [activeIdx, setActiveIdx] = useState(0);
+
   const sliderRef = useRef();
   const settings = {
     dots: false,
@@ -39,7 +41,9 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
     autoplaySpeed: 4000,
     cssEase: 'linear',
     arrows: false,
+    beforeChange: (_, next) => setActiveIdx(next),
   };
+  const activeBlogSlug = blogPosts[activeIdx]?.slug;
 
   return (
     <HeroWrapper>
@@ -53,7 +57,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
         <Slider {...settings} ref={sliderRef}>
           {blogPosts.map((post, idx) => (
             <div key={idx}>
-              <Link href={`/learn/${post?.slug}`}>
+              <Link href={`/learn/${activeBlogSlug}`}>
                 <FlexWrapper>
                   <ImageWrapper>
                     <Image

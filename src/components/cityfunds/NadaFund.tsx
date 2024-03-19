@@ -1,4 +1,5 @@
 'use client';
+import VideoPlayer from '@components/blog/VideoPlayer';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import {
@@ -8,11 +9,7 @@ import {
 } from '@elements/Containers';
 import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { urlForImage } from 'lib/sanity';
-import Image from 'next/image';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
-import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 
 interface NadaFundProps {
@@ -22,58 +19,6 @@ interface NadaFundProps {
 
 export default function NadaFund({ feature, video }: NadaFundProps) {
   const isMobile = useIsMobile();
-  const playerRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  function renderVideo() {
-    return (
-      <>
-        {isPlaying ? (
-          <div
-            style={{
-              width: '100%',
-              borderRadius: '2rem',
-              overflow: 'hidden',
-            }}
-          >
-            <ReactPlayer
-              ref={playerRef}
-              url={video?.video_url}
-              playing={isPlaying}
-              controls={true}
-              onEnded={() => setIsPlaying(false)}
-              height={isMobile ? '16rem' : '32rem'}
-              width={isMobile ? '100%' : '100%'}
-            />
-          </div>
-        ) : (
-          <div style={{ position: 'relative' }}>
-            <Image
-              src={urlForImage(video?.thumbnail)}
-              alt="Nada Offering"
-              height={512}
-              width={512}
-              style={{ borderRadius: '2rem' }}
-            />
-            <Image
-              onClick={() => setIsPlaying(true)}
-              src="/icons/play-button.svg"
-              alt="Play button"
-              width={120}
-              height={120}
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                cursor: 'pointer',
-              }}
-            />
-          </div>
-        )}
-      </>
-    );
-  }
 
   return (
     <SectionWrapper id="nada-fund" $isBackground>
@@ -83,7 +28,7 @@ export default function NadaFund({ feature, video }: NadaFundProps) {
             <OverlinePill>Exclusive</OverlinePill>
           </div>
           <Heading>{feature?.title}</Heading>
-          {isMobile && renderVideo()}
+          {isMobile && <VideoPlayer video={video} />}
           <LongFormText content={feature?.description} />
 
           <Link
@@ -94,7 +39,7 @@ export default function NadaFund({ feature, video }: NadaFundProps) {
           </Link>
         </StackWrapper>
 
-        {!isMobile && renderVideo()}
+        {!isMobile && <VideoPlayer video={video} />}
       </GridWrapper>
     </SectionWrapper>
   );
