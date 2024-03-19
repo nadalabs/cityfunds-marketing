@@ -51,7 +51,7 @@ export default function EmailCapture({ isPopup, isHero }: EmailCaptureProps) {
         if (value) payload[param] = value;
       }
       await window.analytics.identify(payload);
-      await window.analytics.track('Homeshares Lead', payload);
+      await window.analytics.track('Cityfunds Lead', payload);
       setCookie('email', inputs.email);
 
       if (isHero) {
@@ -90,7 +90,7 @@ export default function EmailCapture({ isPopup, isHero }: EmailCaptureProps) {
         >
           <StackWrapper style={{ marginBottom: '1.5rem', gap: 0 }}>
             <SmallHeading>Sign Up for Updates</SmallHeading>
-            <PrimaryText>Be the first to know about Homeshare updates</PrimaryText>
+            <PrimaryText>Be the first to know about new Cityfunds</PrimaryText>
           </StackWrapper>
 
           {isPopup && (
