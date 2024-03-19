@@ -1,5 +1,5 @@
 'use client';
-import VideoPlayer from '@components/blog/VideoPlayer';
+import VideoPlayer from '@components/common/VideoPlayer';
 import { GreenSquare } from '@components/common/ImageStepper';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';

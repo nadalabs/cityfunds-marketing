@@ -1,5 +1,5 @@
 import BlogHero from '@components/blog/BlogHero';
-import VideoPlayer from '@components/blog/VideoPlayer';
+import BlogVideo from '@components/blog/BlogVideo';
 import EmailCapture from '@components/common/EmailCapture';
 import LongFormText from '@components/common/LongFormText';
 import PageTracker from '@components/common/PageTracker';
@@ -39,7 +39,7 @@ export default async function PostPage({ params }) {
             content={post?.content}
           />
         ) : (
-          <VideoPlayer video={media} />
+          <BlogVideo media={media} />
         )}
       </SectionWrapper>
       <EmailCapture />
