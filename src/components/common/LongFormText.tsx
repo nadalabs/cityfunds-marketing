@@ -131,7 +131,12 @@ export default function LongFormText({
       },
     },
     types: {
-      hardBreak: () => <><br />{'\n'}</>
+      hardBreak: () => (
+        <>
+          <br />
+          {'\n'}
+        </>
+      ),
     },
   };
 

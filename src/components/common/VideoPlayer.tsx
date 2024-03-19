@@ -27,7 +27,7 @@ export default function VideoPlayer({ video }: VideoPlayerProps) {
         >
           <ReactPlayer
             ref={playerRef}
-            url={video?.video_url || video?.slug}
+            url={video?.video_url}
             playing={isPlaying}
             controls={true}
             onEnded={() => setIsPlaying(false)}
@@ -38,7 +38,7 @@ export default function VideoPlayer({ video }: VideoPlayerProps) {
       ) : (
         <div style={{ position: 'relative' }}>
           <Image
-            src={urlForImage(video?.thumbnail || video?.coverImage)}
+            src={urlForImage(video?.thumbnail)}
             alt="Watch Video"
             height={512}
             width={512}
