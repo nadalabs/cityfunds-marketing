@@ -18,7 +18,6 @@ export default function BlogVideo({ media }: BlogVideoProps) {
         controls={true}
         url={media?.link}
         height={'32rem'}
-        a
         width={'50rem'}
       />
     </div>
