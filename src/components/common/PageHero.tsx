@@ -1,5 +1,4 @@
 'use client';
-import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import HeroBanner from '@components/common/HeroBanner';
 import LongFormText from '@components/common/LongFormText';
 import LogoSoup from '@components/marketing/LogoSoup';
@@ -12,7 +11,7 @@ import {
 } from '@elements/Containers';
 import { Heading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { ICityfund, IFeature } from '@utils/models';
+import { IFeature } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -28,7 +27,6 @@ interface PageHeroProps {
   link?: string;
   logoTitle?: string;
   logos?: any[];
-  cityfunds?: ICityfund[];
 }
 
 export default function PageHero({
@@ -38,7 +36,6 @@ export default function PageHero({
   link,
   logoTitle,
   logos,
-  cityfunds,
 }: PageHeroProps) {
   const isMobile = useIsMobile();
 
@@ -46,7 +43,7 @@ export default function PageHero({
     <HeroWrapper>
       <GridWrapper>
         <ContentWrapper>
-          {!cityfunds?.length && isMobile && (
+          {isMobile && (
             <ImageWrapper
               width={512}
               height={512}
@@ -59,13 +56,12 @@ export default function PageHero({
             style={{
               gap: '1rem',
               marginBottom: '4rem',
-              marginTop: cityfunds?.length ? 0 : '2rem',
             }}
           >
             <Heading>{feature?.title}</Heading>
             <LongFormText content={feature?.description} isLarge />
 
-            {cityfunds?.length && isMobile && (
+            {isMobile && (
               <Image
                 width={512}
                 height={512}
@@ -93,7 +89,7 @@ export default function PageHero({
           )}
         </ContentWrapper>
 
-        {!cityfunds?.length && !isMobile && (
+        {!isMobile && (
           <ImageWrapper
             width={512}
             height={512}
@@ -101,7 +97,6 @@ export default function PageHero({
             src={urlForImage(feature?.image, 512, 512)}
           />
         )}
-        {cityfunds && !isMobile && <CityfundSlider cityfunds={cityfunds} />}
       </GridWrapper>
     </HeroWrapper>
   );

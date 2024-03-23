@@ -1,4 +1,5 @@
 import CityfundsGrid from '@components/cityfunds/CityfundGrid';
+import CityfundHero from '@components/cityfunds/CityfundHero';
 import EquityChart from '@components/cityfunds/EquityChart';
 import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
@@ -42,14 +43,11 @@ export default async function HomePage() {
 
   return (
     <PageTracker pageName="Cityfunds">
-      <PageHero
+      <CityfundHero
         cityfunds={cityfunds}
         feature={cityfundsPage?.marketing_hero}
         banner={cityfundsPage?.hero_banner}
-        btnText="Explore Offerings"
-        logoTitle="Featured In"
         logos={cityfundsPage?.logos}
-        link={process.env.NEXT_PUBLIC_WEB_APP_URL}
       />
       <KeyMetrics metrics={cityfundsPage?.metrics} />
 
