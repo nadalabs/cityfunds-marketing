@@ -1,7 +1,5 @@
 'use client';
-import HeroBanner from '@components/common/HeroBanner';
 import LongFormText from '@components/common/LongFormText';
-import LogoSoup from '@components/marketing/LogoSoup';
 import { PrimaryButton } from '@elements/Buttons';
 import {
   ContentWrapper,
@@ -19,74 +17,44 @@ import Image from 'next/image';
 
 interface PageHeroProps {
   feature: IFeature;
-  banner?: {
-    text: string;
-    link: string;
-  };
   btnText?: string;
   link?: string;
-  logoTitle?: string;
-  logos?: any[];
 }
 
 export default function PageHero({
   feature,
-  banner,
   btnText,
   link,
-  logoTitle,
-  logos,
 }: PageHeroProps) {
   const isMobile = useIsMobile();
 
   return (
-    <HeroWrapper>
+    <HeroWrapper
+      style={{
+        alignItems: isMobile ? 'flex-start' : 'center',
+        marginTop: isMobile ? '1.5rem' : 0,
+      }}
+    >
       <GridWrapper>
         <ContentWrapper>
-          {isMobile && (
-            <ImageWrapper
-              width={512}
-              height={512}
-              alt={feature?.title}
-              src={urlForImage(feature?.image, 512, 512)}
-            />
-          )}
-
-          <StackWrapper
-            style={{
-              gap: '1rem',
-              marginBottom: '4rem',
-            }}
-          >
-            <Heading>{feature?.title}</Heading>
-            <LongFormText content={feature?.description} isLarge />
-
+          <StackWrapper style={{ gap: '1rem' }}>
             {isMobile && (
-              <Image
+              <ImageWrapper
                 width={512}
                 height={512}
-                alt="Own Home Equity In Top Cities"
+                alt={feature?.title}
                 src={urlForImage(feature?.image, 512, 512)}
               />
             )}
 
+            <Heading>{feature?.title}</Heading>
+            <LongFormText content={feature?.description} isLarge />
             {btnText && (
               <Link href={link} target="_blank">
                 <PrimaryButton>{btnText}</PrimaryButton>
               </Link>
             )}
           </StackWrapper>
-
-          {logos && (
-            <LogoSoup
-              overline={logoTitle}
-              logos={isMobile ? logos.slice(0, 4) : logos}
-              isHero
-            />
-          )}
-          {banner && (
-            <HeroBanner primaryText={banner?.text} link={banner?.link} />
-          )}
         </ContentWrapper>
 
         {!isMobile && (

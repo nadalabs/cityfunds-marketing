@@ -35,7 +35,7 @@ export default function CityfundHero({
   const isHome = window.location.pathname === '/';
 
   return (
-    <HeroWrapper style={{ marginTop: isMobile ? '2rem' : 0 }}>
+    <HeroWrapper style={{ marginTop: isMobile ? '1.5rem' : 0 }}>
       <ContentWrapper>
         <StackWrapper style={{ gap: '1rem' }}>
           <Heading style={{ marginBottom: 0 }}>
@@ -46,40 +46,34 @@ export default function CityfundHero({
             Unlock real wealth through diversified home equity portfolios.
           </PrimaryText>
 
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: isMobile ? 'column-reverse' : 'column',
-            }}
-          >
-            {isMobile && (
-              <Image
-                width={isMobile ? 300 : 512}
-                height={isMobile ? 300 : 512}
-                alt="Own Home Equity In Top Cities"
-                src={urlForImage(feature?.image, 512, 512)}
-                style={{ alignSelf: 'center' }}
-              />
-            )}
-            {isHome ? (
-              <div>
-                <PrimaryButton
-                  onClick={() =>
-                    window.open(process.env.NEXT_PUBLIC_WEB_APP_URL, '_tab')
-                  }
-                >
-                  Explore Offerings
-                </PrimaryButton>
-              </div>
-            ) : (
-              <EmailCapture isHero />
-            )}
-          </div>
+          {isHome ? (
+            <div>
+              <PrimaryButton
+                onClick={() =>
+                  window.open(process.env.NEXT_PUBLIC_WEB_APP_URL, '_tab')
+                }
+              >
+                Explore Offerings
+              </PrimaryButton>
+            </div>
+          ) : (
+            <EmailCapture isHero />
+          )}
           <PrimaryText
-              style={{ color: '#2A8356', marginTop: isMobile ? '1rem' : 0 }}
-            >
-              Invest in minutes - start with as little as $500.
-            </PrimaryText>
+            style={{ color: '#2A8356', marginTop: isHome ? 0 : '-1rem' }}
+          >
+            Invest in minutes - start with as little as $500.
+          </PrimaryText>
+
+          {isMobile && (
+            <Image
+              width={512}
+              height={512}
+              alt="Own Home Equity In Top Cities"
+              src={urlForImage(feature?.image, 512, 512)}
+              style={{ alignSelf: 'center' }}
+            />
+          )}
         </StackWrapper>
 
         <div style={{ marginTop: '2rem' }}>
