@@ -11,29 +11,39 @@ import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
+import CityfundSlider from '@components/cityfunds/CityfundSlider';
+import { ICityfund } from '@utils/models';
+import { PrimaryButton } from '@elements/Buttons';
+import { usePathname } from 'next/navigation';
 
 interface CityfundHeroProps {
+  cityfunds: ICityfund[];
   banner?: {
     text: string;
     link: string;
   };
-  logoTitle?: string;
   logos?: any[];
   feature?: any;
 }
 
 export default function CityfundHero({
+  cityfunds,
   banner,
-  logoTitle,
   logos,
   feature,
 }: CityfundHeroProps) {
   const isMobile = useIsMobile();
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   return (
-    <HeroWrapper style={{ marginTop: isMobile ? '2rem' : 0 }}>
-      <ContentWrapper>
-        <StackWrapper style={{ gap: '1rem' }}>
+    <HeroWrapper
+      style={{ gap: isMobile ? 0 : '8rem', marginTop: isMobile ? '1.5rem' : 0 }}
+    >
+      <ContentWrapper style={{ maxWidth: 'inherit' }}>
+        <StackWrapper
+          style={{ textAlign: isMobile ? 'center' : 'left', gap: '1rem' }}
+        >
           <Heading style={{ marginBottom: 0 }}>
             Own <span style={{ color: '#2A8356' }}>Home Equity</span> <br /> In
             Top Cities
@@ -42,22 +52,43 @@ export default function CityfundHero({
             Unlock real wealth through diversified home equity portfolios.
           </PrimaryText>
 
+          {isHome ? (
+            <div>
+              <PrimaryButton
+                onClick={() =>
+                  window.open(process.env.NEXT_PUBLIC_WEB_APP_URL, '_tab')
+                }
+              >
+                Explore Offerings
+              </PrimaryButton>
+            </div>
+          ) : (
+            <EmailCapture isHero />
+          )}
+          <PrimaryText
+            style={{
+              color: '#2A8356',
+              marginTop: isMobile || isHome ? 0 : '-1rem',
+            }}
+          >
+            Invest in minutes - start with as little as $500.
+          </PrimaryText>
+
           {isMobile && (
             <Image
-              width={isMobile ? 300 : 512}
-              height={isMobile ? 300 : 512}
+              width={512}
+              height={512}
               alt="Own Home Equity In Top Cities"
               src={urlForImage(feature?.image, 512, 512)}
               style={{ alignSelf: 'center' }}
             />
           )}
-          <EmailCapture isHero />
         </StackWrapper>
 
         <div style={{ marginTop: '2rem' }}>
           {logos && (
             <LogoSoup
-              overline={logoTitle}
+              overline="Featured In"
               logos={isMobile ? logos.slice(0, 4) : logos}
               isHero
             />
@@ -68,14 +99,7 @@ export default function CityfundHero({
         </div>
       </ContentWrapper>
 
-      {!isMobile && (
-        <Image
-          width={isMobile ? 300 : 512}
-          height={isMobile ? 300 : 512}
-          alt="Own Home Equity In Top Cities"
-          src={urlForImage(feature?.image, 512, 512)}
-        />
-      )}
+      {!isMobile && <CityfundSlider cityfunds={cityfunds} />}
     </HeroWrapper>
   );
 }

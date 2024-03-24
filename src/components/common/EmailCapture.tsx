@@ -186,11 +186,6 @@ export default function EmailCapture({ isPopup, isHero }: EmailCaptureProps) {
             />
             <PrimaryButton type="submit">Get Started</PrimaryButton>
           </StyledForm>
-          <PrimaryText
-            style={{ color: '#2A8356', marginTop: isMobile ? '1rem' : 0 }}
-          >
-            Invest in minutes - start with as little as $500.
-          </PrimaryText>
         </FormProvider>
       </div>
     );
