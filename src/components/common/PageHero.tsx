@@ -21,11 +21,7 @@ interface PageHeroProps {
   link?: string;
 }
 
-export default function PageHero({
-  feature,
-  btnText,
-  link,
-}: PageHeroProps) {
+export default function PageHero({ feature, btnText, link }: PageHeroProps) {
   const isMobile = useIsMobile();
 
   return (

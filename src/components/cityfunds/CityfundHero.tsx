@@ -11,9 +11,10 @@ import { Heading, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
-import CityfundSlider from './CityfundSlider';
+import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import { ICityfund } from '@utils/models';
 import { PrimaryButton } from '@elements/Buttons';
+import { usePathname } from 'next/navigation';
 
 interface CityfundHeroProps {
   cityfunds: ICityfund[];
@@ -32,12 +33,17 @@ export default function CityfundHero({
   feature,
 }: CityfundHeroProps) {
   const isMobile = useIsMobile();
-  const isHome = window.location.pathname === '/';
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   return (
-    <HeroWrapper style={{ marginTop: isMobile ? '1.5rem' : 0 }}>
-      <ContentWrapper>
-        <StackWrapper style={{ gap: '1rem' }}>
+    <HeroWrapper
+      style={{ gap: isMobile ? 0 : '8rem', marginTop: isMobile ? '1.5rem' : 0 }}
+    >
+      <ContentWrapper style={{ maxWidth: 'inherit' }}>
+        <StackWrapper
+          style={{ textAlign: isMobile ? 'center' : 'left', gap: '1rem' }}
+        >
           <Heading style={{ marginBottom: 0 }}>
             Own <span style={{ color: '#2A8356' }}>Home Equity</span> <br /> In
             Top Cities
@@ -60,7 +66,10 @@ export default function CityfundHero({
             <EmailCapture isHero />
           )}
           <PrimaryText
-            style={{ color: '#2A8356', marginTop: isHome ? 0 : '-1rem' }}
+            style={{
+              color: '#2A8356',
+              marginTop: isMobile || isHome ? 0 : '-1rem',
+            }}
           >
             Invest in minutes - start with as little as $500.
           </PrimaryText>
