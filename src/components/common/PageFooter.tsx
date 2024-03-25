@@ -63,10 +63,11 @@ export default function PageFooter() {
               {title}
             </BoldText>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {links.map(({ name, link }, jdx) => (
+              {links.map(({ name, link, isNewTab }, jdx) => (
                 <LinkText
                   key={jdx}
                   href={link}
+                  target={isNewTab ? '_blank' : '_self'}
                   style={{
                     fontSize: '1rem',
                     color: '#989898',

@@ -22,11 +22,16 @@ export default async function LegalPage({ params }) {
 
   return (
     <PageTracker pageName="Legal">
-      <SectionWrapper>
-        <div style={{ margin: '4rem 0' }}>
+      <SectionWrapper style={{ flexDirection: 'column' }}>
+        <div style={{ margin: '4rem 0', width: '100%' }}>
           <Heading>Transparency</Heading>
-          {LEGAL_LINKS.map(({ name, link }, idx) => (
-            <LinkText key={idx} href={link} style={{ marginBottom: '1rem' }}>
+          {LEGAL_LINKS.map(({ name, link, isNewTab }, idx) => (
+            <LinkText
+              key={idx}
+              href={link}
+              target={isNewTab ? '_blank' : '_self'}
+              style={{ marginBottom: '1rem' }}
+            >
               {name}
             </LinkText>
           ))}
