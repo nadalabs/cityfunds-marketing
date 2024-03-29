@@ -4,6 +4,8 @@ const postFields = `
   date,
   excerpt,
   coverImage,
+  author,
+  keywords,
   link,
   tag,
   "slug": slug.current,
