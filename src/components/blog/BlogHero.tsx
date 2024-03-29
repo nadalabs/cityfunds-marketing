@@ -79,7 +79,9 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                     <PrimaryText>{post?.excerpt}</PrimaryText>
 
                     <div>
-                      <PrimaryText>By {post?.author}</PrimaryText>
+                      {post?.author && (
+                        <PrimaryText>By {String(post?.author)}</PrimaryText>
+                      )}
                       {post?.date && (
                         <PrimaryText>
                           <time dateTime={post?.date}>
