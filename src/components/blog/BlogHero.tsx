@@ -19,6 +19,7 @@ interface BlogHeroProps {
   blogPosts: {
     title: string;
     coverImage: string;
+    author: string;
     date: any;
     excerpt: string;
     tag: string;
@@ -38,7 +39,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
     slidesToScroll: 1,
     autoplay: true,
     speed: 2000,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 7000,
     cssEase: 'linear',
     arrows: false,
     beforeChange: (_, next) => setActiveIdx(next),
@@ -66,7 +67,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                       style={{ borderRadius: '2rem' }}
                       src={
                         post?.coverImage
-                          ? urlForImage(post?.coverImage)
+                          ? urlForImage(post?.coverImage, 400, 500)
                           : '/images/nada-press.png'
                       }
                     />
@@ -76,13 +77,19 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
                     <Overline>{post?.tag}</Overline>
                     <SmallHeading>{post?.title}</SmallHeading>
                     <PrimaryText>{post?.excerpt}</PrimaryText>
-                    {post?.date && (
-                      <PrimaryText>
-                        <time dateTime={post?.date}>
-                          {format(parseISO(post?.date), 'LLLL	d, yyyy')}
-                        </time>
-                      </PrimaryText>
-                    )}
+
+                    <div>
+                      {post?.author && (
+                        <PrimaryText>By {String(post?.author)}</PrimaryText>
+                      )}
+                      {post?.date && (
+                        <PrimaryText>
+                          <time dateTime={post?.date}>
+                            {format(parseISO(post?.date), 'LLLL	d, yyyy')}
+                          </time>
+                        </PrimaryText>
+                      )}
+                    </div>
                   </CardWrapper>
                 </FlexWrapper>
               </Link>
