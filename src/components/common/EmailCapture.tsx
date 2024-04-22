@@ -15,9 +15,14 @@ import { styled } from 'styled-components';
 interface EmailCaptureProps {
   isPopup?: boolean;
   isHero?: boolean;
+  isLanding?: boolean;
 }
 
-export default function EmailCapture({ isPopup, isHero }: EmailCaptureProps) {
+export default function EmailCapture({
+  isPopup,
+  isHero,
+  isLanding,
+}: EmailCaptureProps) {
   const isMobile = useIsMobile();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isCanceled, setIsCanceled] = useState(false);
@@ -54,8 +59,8 @@ export default function EmailCapture({ isPopup, isHero }: EmailCaptureProps) {
       await window.analytics.track('Cityfunds Lead', payload);
       setCookie('email', inputs.email);
 
-      if (isHero) {
-        window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank');
+      if (isHero || isLanding) {
+        window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank');
       } else {
         setIsSubmitted(true);
         setInterval(() => {
@@ -129,7 +134,9 @@ export default function EmailCapture({ isPopup, isHero }: EmailCaptureProps) {
                 type="email"
                 placeholder="Enter Your Email"
               />
-              <PrimaryButton type="submit">Subscribe</PrimaryButton>
+              <PrimaryButton type="submit">
+                {isLanding ? 'Get Stared' : 'Subscribe'}
+              </PrimaryButton>
             </StyledForm>
             <Caption>
               By subscribing you agree with our{' '}

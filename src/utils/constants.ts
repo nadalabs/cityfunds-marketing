@@ -8,7 +8,7 @@ export enum EXTERNAL_ROUTES {
   CONSUMER_COMPLAINT = 'https://www.api.cityfunds.com/storage/v1/object/public/nada/consumer-complaint.pdf',
   NADA_FILING = 'https://www.sec.gov/edgar/browse/?CIK=0001801613',
   CITYFUNDS_FILING = 'https://www.sec.gov/edgar/search/#/ciks=0001874979&entityName=Cityfunds%2520I%252C%2520LLC%2520(CIK%25200001874979)',
-  REWARDS_PROGRAM = 'https://www.sec.gov/Archives/edgar/data/1874979/000149315224009832/form253g2.htm',
+  REWARDS_PROGRAM = 'https://www.sec.gov/Archives/edgar/data/1874979/000149315224015370/form253g2.htm',
   HUBSPOT_MEETING = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
   HUBSPOT_FAQS = 'https://faqs.cityfunds.com/cityfunds',
 }
