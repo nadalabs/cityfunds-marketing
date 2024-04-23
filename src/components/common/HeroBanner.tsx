@@ -47,7 +47,6 @@ const BannerWrapper = styled.div<{ $isStatic?: boolean }>`
   background-color: #48dc95;
   border-radius: 0.5rem;
   padding: 0.625rem 1.25rem;
-  margin-top: 0.5rem;
 
   &:hover {
     background-color: ${({ $isStatic }) => ($isStatic ? '#48dc95' : '#2a8356')};

@@ -61,6 +61,8 @@ export default function CityfundCard({
   }
 
   if (isStatic) {
+    return renderCard();
+  } else {
     return (
       <Link
         href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/${fund_data?.fund_name
@@ -71,7 +73,5 @@ export default function CityfundCard({
         {renderCard()}
       </Link>
     );
-  } else {
-    return renderCard();
   }
 }

@@ -36,6 +36,7 @@ export default function LogoSoup({
             <Image
               width={isMobile ? 100 : isHero ? 200 : 100}
               height={isMobile ? 32 : isHero ? 60 : 30}
+              style={{ margin: '1rem 1rem' }}
               alt={name}
               src={urlForImage(image)}
             />
@@ -47,15 +48,11 @@ export default function LogoSoup({
     return (
       <>
         {logos?.map(({ name, image, link }, idx) => (
-          <Link
-            key={idx}
-            href={link}
-            target="_blank"
-            style={{ margin: '1rem 1rem' }}
-          >
+          <Link key={idx} href={link} target="_blank">
             <Image
               width={isMobile ? 100 : isHero ? 200 : 100}
               height={isMobile ? 32 : isHero ? 60 : 30}
+              style={{ margin: '1rem 1rem' }}
               alt={name}
               src={urlForImage(image)}
             />
