@@ -90,16 +90,21 @@ export default function CityfundHero({
             <LogoSoup
               overline="Featured In"
               logos={isMobile ? logos.slice(0, 4) : logos}
+              isStatic={!isHome}
               isHero
             />
           )}
           {banner && (
-            <HeroBanner primaryText={banner?.text} link={banner?.link} />
+            <HeroBanner
+              primaryText={banner?.text}
+              link={banner?.link}
+              isStatic={!isHome}
+            />
           )}
         </div>
       </ContentWrapper>
 
-      {!isMobile && <CityfundSlider cityfunds={cityfunds} />}
+      {!isMobile && <CityfundSlider cityfunds={cityfunds} isStatic={!isHome} />}
     </HeroWrapper>
   );
 }

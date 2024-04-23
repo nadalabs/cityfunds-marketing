@@ -5,7 +5,6 @@ import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
 import NadaFund from '@components/cityfunds/NadaFund';
 import EmailCapture from '@components/common/EmailCapture';
-import PageHero from '@components/common/PageHero';
 import PageTracker from '@components/common/PageTracker';
 import FeaturedImage from '@components/marketing/FeaturedImage';
 import HowItWorks from '@components/marketing/HowItWorks';

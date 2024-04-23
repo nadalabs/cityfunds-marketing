@@ -81,9 +81,8 @@ export default function FeaturedImage({
             {overline && <Overline>{overline}</Overline>}
             <Heading>{feature?.title}</Heading>
             <LongFormText content={feature?.description} isLarge />
-            {component ? (
-              component
-            ) : (
+            {component && component}
+            {link && (
               <Link href={link} target="_blank">
                 <PrimaryButton>{btnText}</PrimaryButton>
               </Link>

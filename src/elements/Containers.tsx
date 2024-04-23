@@ -162,7 +162,6 @@ export const SliderWrapper = styled.div`
 
 export const FundWrapper = styled.div`
   box-shadow: 1.5px 1.5px 25px 0px rgba(0, 0, 0, 0.05);
-  cursor: pointer;
   border-radius: 2rem;
   height: 18rem;
   width: inherit;
