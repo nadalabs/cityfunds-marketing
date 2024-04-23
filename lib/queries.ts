@@ -76,36 +76,6 @@ export const mediaBySlugQuery = `
 }
 `;
 
-const partnerFields = `
-  _id,
-  name,
-  coverImage,
-  "slug": slug.current,
-  "promo": promo->{banner, title, description, disclaimer, image},
-`;
-
-export const partnerIndexQuery = `
-*[_type == "partner"] | order(date desc, _updatedAt desc) {
-  ${partnerFields}
-}`;
-
-export const partnerQuery = `
-{
-  "partner": *[_type == "partner" && slug.current == $slug] | order(_updatedAt desc) [0] {
-    ${partnerFields}
-  },
-}`;
-
-export const partnerSlugsQuery = `
-*[_type == "partner" && defined(slug.current)][].slug.current
-`;
-
-export const partnerBySlugQuery = `
-*[_type == "partner" && slug.current == $slug][0] {
-  ${partnerFields}
-}
-`;
-
 export const legalFields = `
   _id,
   title,

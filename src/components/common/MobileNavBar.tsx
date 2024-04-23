@@ -21,6 +21,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
   const isScroll = scrollPosition > 0;
   const pathname = usePathname();
   const isMobile = useIsMobile();
+  const isLandingPage = pathname === '/get-started';
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -47,23 +48,32 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
           boxShadow: isScroll ? '0px 4px 25px 0px rgba(0, 0, 0, 0.10)' : 'none',
         }}
       >
-        <FlexWrapper>
-          <Link href="/">
+        {!isLandingPage ? (
+          <FlexWrapper>
+            <Link href="/">
+              <Image
+                src="/icons/cityfunds-dark.svg"
+                alt="Cityfunds"
+                width={200}
+                height={60}
+              />
+            </Link>
             <Image
-              src="/icons/cityfunds-dark.svg"
-              alt="Cityfunds"
-              width={200}
-              height={60}
+              src="/icons/menu-dark.svg"
+              alt="Menu"
+              onClick={() => setShowMenu(true)}
+              height={40}
+              width={40}
             />
-          </Link>
+          </FlexWrapper>
+        ) : (
           <Image
-            src="/icons/menu-dark.svg"
-            alt="Menu"
-            onClick={() => setShowMenu(true)}
-            height={40}
-            width={40}
+            src="/icons/cityfunds-dark.svg"
+            alt="Cityfunds"
+            width={200}
+            height={60}
           />
-        </FlexWrapper>
+        )}
       </NavbarWrapper>
 
       <Drawer

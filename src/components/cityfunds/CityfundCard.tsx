@@ -19,6 +19,7 @@ interface CityfundCardProps {
   image: string;
   width?: number;
   isSlider?: boolean;
+  isStatic?: boolean;
 }
 
 export default function CityfundCard({
@@ -26,18 +27,15 @@ export default function CityfundCard({
   image,
   width,
   isSlider,
+  isStatic,
 }: CityfundCardProps) {
   const isMobile = useIsMobile();
 
-  return (
-    <Link
-      href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/${fund_data?.fund_name
-        .toLowerCase()
-        .replace(/ /g, '-')}`}
-      target="_blank"
-    >
+  function renderCard() {
+    return (
       <FundWrapper
         style={{
+          cursor: isStatic ? 'default' : 'pointer',
           margin: isSlider ? (isMobile ? '0 0.5rem' : '0.5rem 0') : '0',
         }}
       >
@@ -59,6 +57,21 @@ export default function CityfundCard({
           </TickerWrapper>
         </InnerWrapper>
       </FundWrapper>
-    </Link>
-  );
+    );
+  }
+
+  if (isStatic) {
+    return renderCard();
+  } else {
+    return (
+      <Link
+        href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/${fund_data?.fund_name
+          .toLowerCase()
+          .replace(/ /g, '-')}`}
+        target="_blank"
+      >
+        {renderCard()}
+      </Link>
+    );
+  }
 }

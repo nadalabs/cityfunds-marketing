@@ -15,9 +15,14 @@ import { styled } from 'styled-components';
 interface EmailCaptureProps {
   isPopup?: boolean;
   isHero?: boolean;
+  isLanding?: boolean;
 }
 
-export default function EmailCapture({ isPopup, isHero }: EmailCaptureProps) {
+export default function EmailCapture({
+  isPopup,
+  isHero,
+  isLanding,
+}: EmailCaptureProps) {
   const isMobile = useIsMobile();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isCanceled, setIsCanceled] = useState(false);
@@ -54,8 +59,8 @@ export default function EmailCapture({ isPopup, isHero }: EmailCaptureProps) {
       await window.analytics.track('Cityfunds Lead', payload);
       setCookie('email', inputs.email);
 
-      if (isHero) {
-        window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`, '_blank');
+      if (isHero || isLanding) {
+        window.open(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`, '_blank');
       } else {
         setIsSubmitted(true);
         setInterval(() => {
@@ -89,8 +94,16 @@ export default function EmailCapture({ isPopup, isHero }: EmailCaptureProps) {
           }}
         >
           <StackWrapper style={{ marginBottom: '1.5rem', gap: 0 }}>
-            <SmallHeading>Sign Up for Updates</SmallHeading>
-            <PrimaryText>Be the first to know about new Cityfunds</PrimaryText>
+            <SmallHeading>
+              {isLanding
+                ? 'Own Home Equity In Top Cities'
+                : 'Sign Up for Updates'}
+            </SmallHeading>
+            <PrimaryText>
+              {isLanding
+                ? 'Unlock real wealth through diversified home equity portfolios.'
+                : 'Be the first to know about new Cityfunds'}
+            </PrimaryText>
           </StackWrapper>
 
           {isPopup && (
@@ -129,18 +142,22 @@ export default function EmailCapture({ isPopup, isHero }: EmailCaptureProps) {
                 type="email"
                 placeholder="Enter Your Email"
               />
-              <PrimaryButton type="submit">Subscribe</PrimaryButton>
+              <PrimaryButton type="submit">
+                {isLanding ? 'Get Stared' : 'Subscribe'}
+              </PrimaryButton>
             </StyledForm>
-            <Caption>
-              By subscribing you agree with our{' '}
-              <Link
-                href={LEGAL_LINKS[1].link}
-                style={{ color: '#48DC95', cursor: 'pointer' }}
-              >
-                Privacy Policy
-              </Link>{' '}
-              and provide consent to receiving updates from our company.
-            </Caption>
+            {!isLanding && (
+              <Caption>
+                By subscribing you agree with our{' '}
+                <Link
+                  href={LEGAL_LINKS[1].link}
+                  style={{ color: '#48DC95', cursor: 'pointer' }}
+                >
+                  Privacy Policy
+                </Link>{' '}
+                and provide consent to receiving updates from our company.
+              </Caption>
+            )}
           </FormProvider>
         </div>
       </>
