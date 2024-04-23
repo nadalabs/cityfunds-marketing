@@ -1,5 +1,4 @@
 import CityfundHero from '@components/cityfunds/CityfundHero';
-import EquityChart from '@components/cityfunds/EquityChart';
 import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import EmailCapture from '@components/common/EmailCapture';
 import PageTracker from '@components/common/PageTracker';
@@ -48,7 +47,6 @@ export default async function LandingPage() {
         isWide
       />
 
-      <EquityChart />
       <EmailCapture isLanding />
     </PageTracker>
   );

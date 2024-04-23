@@ -16,6 +16,7 @@ interface LogoSoupProps {
   logos: any[];
   isHero?: boolean;
   seeMore?: boolean;
+  isStatic?: boolean;
 }
 
 export default function LogoSoup({
@@ -23,10 +24,26 @@ export default function LogoSoup({
   logos,
   isHero,
   seeMore,
+  isStatic,
 }: LogoSoupProps) {
   const isMobile = useIsMobile();
 
   function renderLogos(logos) {
+    if (isStatic) {
+      return (
+        <>
+          {logos?.map(({ name, image, link }, idx) => (
+            <Image
+              width={isMobile ? 100 : isHero ? 200 : 100}
+              height={isMobile ? 32 : isHero ? 60 : 30}
+              alt={name}
+              src={urlForImage(image)}
+            />
+          ))}
+        </>
+      );
+    }
+
     return (
       <>
         {logos?.map(({ name, image, link }, idx) => (

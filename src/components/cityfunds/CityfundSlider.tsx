@@ -8,9 +8,13 @@ import Slider from 'react-slick';
 
 interface CityfundSliderProps {
   cityfunds: ICityfund[];
+  isStatic?: boolean;
 }
 
-export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
+export default function CityfundSlider({
+  cityfunds,
+  isStatic,
+}: CityfundSliderProps) {
   const isMobile = useIsMobile();
   const sliderRef = useRef(null);
   const settings = {
@@ -41,7 +45,13 @@ export default function CityfundSlider({ cityfunds }: CityfundSliderProps) {
     <div style={{ maxWidth: isMobile ? '100%' : '32rem' }}>
       <Slider ref={sliderRef} {...settings}>
         {ALL_CARDS?.map((card, idx) => (
-          <CityfundCard key={idx} {...card} image={card?.images[0]} isSlider />
+          <CityfundCard
+            key={idx}
+            {...card}
+            image={card?.images[0]}
+            isStatic={isStatic}
+            isSlider
+          />
         ))}
       </Slider>
     </div>

@@ -94,8 +94,16 @@ export default function EmailCapture({
           }}
         >
           <StackWrapper style={{ marginBottom: '1.5rem', gap: 0 }}>
-            <SmallHeading>Sign Up for Updates</SmallHeading>
-            <PrimaryText>Be the first to know about new Cityfunds</PrimaryText>
+            <SmallHeading>
+              {isLanding
+                ? 'Own Home Equity In Top Cities'
+                : 'Sign Up for Updates'}
+            </SmallHeading>
+            <PrimaryText>
+              {isLanding
+                ? 'Unlock real wealth through diversified home equity portfolios.'
+                : 'Be the first to know about new Cityfunds'}
+            </PrimaryText>
           </StackWrapper>
 
           {isPopup && (
@@ -138,16 +146,18 @@ export default function EmailCapture({
                 {isLanding ? 'Get Stared' : 'Subscribe'}
               </PrimaryButton>
             </StyledForm>
-            <Caption>
-              By subscribing you agree with our{' '}
-              <Link
-                href={LEGAL_LINKS[1].link}
-                style={{ color: '#48DC95', cursor: 'pointer' }}
-              >
-                Privacy Policy
-              </Link>{' '}
-              and provide consent to receiving updates from our company.
-            </Caption>
+            {!isLanding && (
+              <Caption>
+                By subscribing you agree with our{' '}
+                <Link
+                  href={LEGAL_LINKS[1].link}
+                  style={{ color: '#48DC95', cursor: 'pointer' }}
+                >
+                  Privacy Policy
+                </Link>{' '}
+                and provide consent to receiving updates from our company.
+              </Caption>
+            )}
           </FormProvider>
         </div>
       </>

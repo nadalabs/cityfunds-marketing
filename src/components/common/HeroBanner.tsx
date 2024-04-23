@@ -7,9 +7,22 @@ import styled from 'styled-components';
 interface HeroBannerProps {
   primaryText: string;
   link: string;
+  isStatic?: boolean;
 }
 
-export default function HeroBanner({ primaryText, link }: HeroBannerProps) {
+export default function HeroBanner({
+  primaryText,
+  link,
+  isStatic,
+}: HeroBannerProps) {
+  if (isStatic) {
+    return (
+      <BannerWrapper $isStatic>
+        <PrimaryText style={{ color: 'white' }}>{primaryText}</PrimaryText>
+      </BannerWrapper>
+    );
+  }
+
   return (
     <Link href={link} target="_blank">
       <BannerWrapper>
@@ -26,7 +39,7 @@ export default function HeroBanner({ primaryText, link }: HeroBannerProps) {
   );
 }
 
-const BannerWrapper = styled.div`
+const BannerWrapper = styled.div<{ $isStatic?: boolean }>`
   transition: ${({ theme }) => theme.transitions.ease};
   display: flex;
   justify-content: space-between;
@@ -34,9 +47,10 @@ const BannerWrapper = styled.div`
   background-color: #48dc95;
   border-radius: 0.5rem;
   padding: 0.625rem 1.25rem;
+  margin-top: 0.5rem;
 
   &:hover {
-    background-color: #2a8356;
+    background-color: ${({ $isStatic }) => ($isStatic ? '#48dc95' : '#2a8356')};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

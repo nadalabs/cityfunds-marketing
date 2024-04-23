@@ -45,19 +45,19 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
         top: scrollPosition === 0 && isBanner ? '2.4rem' : 0,
         backgroundColor: 'white',
         boxShadow: isScroll ? '0px 4px 25px 0px rgba(0, 0, 0, 0.10)' : 'none',
+        justifyContent: isLandingPage ? 'flex-start' : 'space-between',
       }}
     >
-      <FlexWrapper>
-        <Link href="/">
-          <Image
-            src="/icons/cityfunds-dark.svg"
-            alt="Cityfunds"
-            width={200}
-            height={60}
-          />
-        </Link>
-
-        {!isLandingPage && (
+      {!isLandingPage ? (
+        <FlexWrapper>
+          <Link href="/">
+            <Image
+              src="/icons/cityfunds-dark.svg"
+              alt="Cityfunds"
+              width={200}
+              height={60}
+            />
+          </Link>
           <div
             style={{
               display: 'flex',
@@ -147,8 +147,15 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
               </PrimaryButton>
             </div>
           </div>
-        )}
-      </FlexWrapper>
+        </FlexWrapper>
+      ) : (
+        <Image
+          src="/icons/cityfunds-dark.svg"
+          alt="Cityfunds"
+          width={200}
+          height={60}
+        />
+      )}
     </NavbarWrapper>
   );
 }
