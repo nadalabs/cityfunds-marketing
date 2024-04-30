@@ -119,9 +119,8 @@ export const SOCIAL_LINKS = [
   { name: 'Facebook', link: 'https://www.facebook.com/HelloNadaHomes' },
   { name: 'Twitter', link: 'https://twitter.com/nada_finance' },
   { name: 'Instagram', link: 'https://www.instagram.com/nadafinance.app' },
-  { name: 'LinkedIn', link: 'https://www.linkedin.com/company/hellonada' },
-  { name: 'Discord', link: 'https://discord.com/invite/AGhPSkQjYX' },
-  { name: 'TikTok', link: 'https://www.tiktok.com/@nadafinance' },
+  { name: 'LinkedIn', link: 'https://www.linkedin.com/company/cityfund' },
+  { name: 'YouTube', link: 'https://www.youtube.com/@nadafinance/videos' },
 ];
 
 export enum FUND_STATUS {
