@@ -24,6 +24,7 @@ interface FeaturedImageProps {
   isReversed?: boolean;
   isBackground?: boolean;
   isWide?: boolean;
+  isSmall?: boolean;
 }
 
 export default function FeaturedImage({
@@ -35,6 +36,7 @@ export default function FeaturedImage({
   isReversed,
   isBackground,
   isWide,
+  isSmall,
 }: FeaturedImageProps) {
   const isMobile = useIsMobile();
 
@@ -79,8 +81,13 @@ export default function FeaturedImage({
         <ContentWrapper>
           <StackWrapper style={{ gap: '1rem' }}>
             {overline && <Overline>{overline}</Overline>}
-            <Heading>{feature?.title}</Heading>
-            <LongFormText content={feature?.description} isLarge />
+            <Heading style={{ width: isSmall ? '70%' : '100%' }}>
+              {feature?.title}
+            </Heading>
+            <LongFormText
+              content={feature?.description}
+              isLarge={!isSmall ? true : false}
+            />
             {component && component}
             {link && (
               <Link href={link} target="_blank">
