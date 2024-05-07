@@ -81,7 +81,7 @@ export default function FeaturedImage({
         <ContentWrapper>
           <StackWrapper style={{ gap: '1rem' }}>
             {overline && <Overline>{overline}</Overline>}
-            <Heading style={{ width: isSmall ? '70%' : '100%' }}>
+            <Heading style={{ width: isSmall && !isMobile ? '70%' : '100%' }}>
               {feature?.title}
             </Heading>
             <LongFormText
