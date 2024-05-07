@@ -86,6 +86,12 @@ export default async function HomePage() {
         linkText="See All FAQs"
       />
       <FeaturedImage
+        feature={cityfundsApp?.ira_401k_form}
+        btnText="Get Started"
+        link={EXTERNAL_ROUTES.IRA_FORM}
+        isSmall
+      />
+      <FeaturedImage
         overline="FOR HOMEOWNERS"
         feature={cityfundsPage?.homeowners_feature}
         btnText="Learn More"

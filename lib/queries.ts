@@ -153,6 +153,7 @@ export const cityfundsAppFields = `
   hero_slider,
   investor_promo,
   investor_webinar,
+  ira_401k_form,
 `;
 
 export const nadaOfferingFields = `

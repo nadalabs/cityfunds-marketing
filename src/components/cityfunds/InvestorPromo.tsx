@@ -8,7 +8,6 @@ import {
 } from '@elements/Containers';
 import { Heading, LinkText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { EXTERNAL_ROUTES } from '@utils/constants';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,6 +18,7 @@ interface InvestorPromoProps {
     fund_name: string;
     description: string;
     image: string;
+    legal_url: string;
   };
 }
 
@@ -74,7 +74,7 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
             <div>
               <LongFormText content={promo?.description} />
               <LinkText
-                href={EXTERNAL_ROUTES.REWARDS_PROGRAM}
+                href={promo?.legal_url}
                 target="_blank"
                 style={{
                   color: '#888888',
