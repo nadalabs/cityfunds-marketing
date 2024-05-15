@@ -10,7 +10,6 @@ import 'react-modern-drawer/dist/index.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import '../../styles/globals.css';
-import FacebookPixel from '@components/marketing/FacebookPixel';
 import AlertBanner from '@components/common/AlertBanner';
 
 declare global {
@@ -24,7 +23,7 @@ declare global {
 
 export const metadata: Metadata = {
   title: 'Cityfunds',
-  description: 'Own a Piece of Your Favorite City',
+  description: 'Own Home Equity In Top Cities',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -72,7 +71,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {children}
           <Analytics />
           <SpeedInsights />
-          <FacebookPixel />
         </StyledComponentsRegistry>
       </body>
     </html>
