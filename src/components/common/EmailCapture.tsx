@@ -60,7 +60,9 @@ export default function EmailCapture({
       setCookie('email', inputs.email);
 
       if (isHero || isLanding) {
-        window.location.replace(`${process.env.NEXT_PUBLIC_WEB_APP_URL}`);
+        window.location.replace(
+          `${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`
+        );
       } else {
         setIsSubmitted(true);
         setInterval(() => {
