@@ -11,6 +11,7 @@ export enum EXTERNAL_ROUTES {
   IRA_FORM = 'https://share.hsforms.com/1aHhmHOkSSP-rFnRsdXpQuw4xppp',
   HUBSPOT_MEETING = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
   HUBSPOT_FAQS = 'https://faqs.cityfunds.com/cityfunds',
+  REWARDS_PROGRAM = 'https://www.sec.gov/Archives/edgar/data/1874979/000149315224020184/form253g2.htm'
 }
 
 export const UTM_PARAMETERS = [
@@ -23,7 +24,6 @@ export const UTM_PARAMETERS = [
   'fbclid',
   'msclkid',
   'irclickid',
-  'sharedCredentialsUuid',
 ];
 
 export const HEADER_LINKS = [
@@ -60,6 +60,11 @@ export const LEGAL_LINKS = [
   {
     name: 'Cityfunds SEC Filings',
     link: EXTERNAL_ROUTES.CITYFUNDS_FILING,
+    isNewTab: true,
+  },
+  {
+    name: 'Rewards Program',
+    link: EXTERNAL_ROUTES.REWARDS_PROGRAM,
     isNewTab: true,
   },
 ];
