@@ -11,7 +11,7 @@ export enum EXTERNAL_ROUTES {
   IRA_FORM = 'https://share.hsforms.com/1aHhmHOkSSP-rFnRsdXpQuw4xppp',
   HUBSPOT_MEETING = 'https://meetings.hubspot.com/deyon-robertson/accredited-investors',
   HUBSPOT_FAQS = 'https://faqs.cityfunds.com/cityfunds',
-  REWARDS_PROGRAM = 'https://www.sec.gov/Archives/edgar/data/1874979/000149315224020184/form253g2.htm'
+  REWARDS_PROGRAM = 'https://www.sec.gov/Archives/edgar/data/1874979/000149315224020184/form253g2.htm',
 }
 
 export const UTM_PARAMETERS = [

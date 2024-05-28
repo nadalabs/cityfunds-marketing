@@ -42,7 +42,7 @@ export default function CityfundSlider({
     );
 
   return (
-    <div style={{ maxWidth: isMobile ? '100%' : '32rem' }}>
+    <div style={{ width: '50%', maxWidth: '32rem' }}>
       <Slider ref={sliderRef} {...settings}>
         {ALL_CARDS?.map((card, idx) => (
           <CityfundCard
