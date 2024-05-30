@@ -99,7 +99,7 @@ export default async function HomePage() {
         isBackground
       />
 
-      {cityfundsApp?.investor_promo && (
+      {cityfundsApp?.investor_promo?.show_promo && (
         <InvestorPromo promo={cityfundsApp?.investor_promo} />
       )}
       {cityfundsApp?.investor_webinar && (

@@ -13,7 +13,6 @@ import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import { ICityfund } from '@utils/models';
-import { PrimaryButton } from '@elements/Buttons';
 import { usePathname } from 'next/navigation';
 
 interface CityfundHeroProps {
@@ -52,19 +51,7 @@ export default function CityfundHero({
             Unlock real wealth through diversified home equity portfolios.
           </PrimaryText>
 
-          {isHome ? (
-            <div>
-              <PrimaryButton
-                onClick={() =>
-                  window.open(process.env.NEXT_PUBLIC_WEB_APP_URL, '_tab')
-                }
-              >
-                Explore Offerings
-              </PrimaryButton>
-            </div>
-          ) : (
-            <EmailCapture isHero />
-          )}
+          <EmailCapture isHero />
           <PrimaryText
             style={{
               color: '#2A8356',
