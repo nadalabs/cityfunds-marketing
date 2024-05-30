@@ -45,7 +45,6 @@ export default function DesktopNavBar({ isBanner }: DesktopNavBarProps) {
         top: scrollPosition === 0 && isBanner ? '2.4rem' : 0,
         backgroundColor: 'white',
         boxShadow: isScroll ? '0px 4px 25px 0px rgba(0, 0, 0, 0.10)' : 'none',
-        justifyContent: isLandingPage ? 'flex-start' : 'space-between',
       }}
     >
       {!isLandingPage ? (
