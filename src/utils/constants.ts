@@ -62,11 +62,11 @@ export const LEGAL_LINKS = [
     link: EXTERNAL_ROUTES.CITYFUNDS_FILING,
     isNewTab: true,
   },
-  {
-    name: 'Rewards Program',
-    link: EXTERNAL_ROUTES.REWARDS_PROGRAM,
-    isNewTab: true,
-  },
+  // {
+  //   name: 'Rewards Program',
+  //   link: EXTERNAL_ROUTES.REWARDS_PROGRAM,
+  //   isNewTab: true,
+  // },
 ];
 
 export const FOOTER_LINKS = [
