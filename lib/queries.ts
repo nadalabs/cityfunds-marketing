@@ -11,6 +11,20 @@ const postFields = `
   "slug": slug.current,
 `;
 
+export const howItWorksFields = `
+  _id,
+  title,
+  marketing_hero,
+  why_us,
+  tutuorials,
+  testimonials,
+  description,
+  benefits,
+  questions,
+  get_started,
+  "slug": slug.current,
+`;
+
 export const postIndexQuery = `
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
@@ -104,6 +118,16 @@ export const legalSlugsQuery = `
 export const legalBySlugQuery = `
 *[_type == "legal" && slug.current == $slug][0] {
   ${legalFields}
+}
+`;
+
+export const howItWorksSlugsQuery = `
+*[_type == "howItWorks" && defined(slug.current)][].slug.current
+`;
+
+export const howItWorksBySlugQuery = `
+*[_type == "howItWorks" && slug.current == $slug][0] {
+  ${howItWorksFields}
 }
 `;
 
