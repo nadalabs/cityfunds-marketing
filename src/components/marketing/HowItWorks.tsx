@@ -15,7 +15,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 interface HowItWorksProps {
-  video: { video_url: string; thumbnail: string };
+  video?: { video_url: string; thumbnail: string };
   tutorials: { title: string; description: string; image: string }[];
   btnText: string;
   link: string;
@@ -32,7 +32,7 @@ export default function HowItWorks({
   return (
     <SectionWrapper>
       <GridWrapper>
-        <VideoPlayer video={video} />
+        {video && <VideoPlayer video={video} />}
 
         <ContentWrapper>
           <Heading style={{ marginBottom: '1.5rem' }}>How it Works</Heading>

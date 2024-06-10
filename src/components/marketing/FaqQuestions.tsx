@@ -29,8 +29,6 @@ export default function FaqQuestions({
   return (
     <SectionWrapper $isBackground={isBackground}>
       <StackWrapper style={{ gap: '1rem' }}>
-        <Overline>Frequently Asked Questions</Overline>
-
         {faqs?.map(({ question, answer }, idx) => (
           <ContentWrapper key={idx}>
             <HoverHeading
@@ -47,15 +45,15 @@ export default function FaqQuestions({
             </FadeWrapper>
           </ContentWrapper>
         ))}
-
-        <LinkText
-          href={link}
-          target="_blank"
-          style={{ textDecoration: 'underline' }}
-        >
-          {linkText}
-        </LinkText>
       </StackWrapper>
+
+      <LinkText
+        href={link}
+        target="_blank"
+        style={{ textDecoration: 'underline', marginTop: '2rem' }}
+      >
+        {linkText}
+      </LinkText>
     </SectionWrapper>
   );
 }

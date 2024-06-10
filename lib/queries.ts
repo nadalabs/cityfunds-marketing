@@ -16,7 +16,7 @@ export const howItWorksFields = `
   title,
   marketing_hero,
   why_us,
-  tutuorials,
+  tutorials,
   testimonials,
   description,
   benefits,

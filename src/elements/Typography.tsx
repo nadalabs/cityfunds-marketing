@@ -46,7 +46,7 @@ export const PrimaryText = styled.p`
 
 export const LargeText = styled(PrimaryText)`
   color: ${({ theme }) => theme.colors.lightText};
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   letter-spacing: -0.015rem;
   line-height: normal;
   margin: 0;

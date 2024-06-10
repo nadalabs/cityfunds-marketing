@@ -7,7 +7,7 @@ import {
   HeroWrapper,
   StackWrapper,
 } from '@elements/Containers';
-import { Heading } from '@elements/Typography';
+import { Heading, LargeText, PrimaryText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { IFeature } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
@@ -45,6 +45,13 @@ export default function PageHero({ feature, btnText, link }: PageHeroProps) {
 
             <Heading>{feature?.title}</Heading>
             <LongFormText content={feature?.description} isLarge />
+            <LargeText
+              style={{
+                color: '#2A8356',
+              }}
+            >
+              Invest in minutes - start with as little as $500.
+            </LargeText>
             {btnText && (
               <Link href={link} target="_blank">
                 <PrimaryButton>{btnText}</PrimaryButton>
