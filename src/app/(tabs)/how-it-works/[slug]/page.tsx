@@ -8,7 +8,12 @@ import ValueProps from '@components/marketing/ValueProps';
 import Webinars from '@components/marketing/Webinars';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { howItWorksBySlugQuery, howItWorksSlugsQuery } from 'lib/queries';
-import { getCityfundsAppContent, sanityClient } from 'lib/sanity';
+import {
+  getAllFundsContent,
+  getCityfundsAppContent,
+  sanityClient,
+} from 'lib/sanity';
+import { getAllFundsData } from 'lib/supabase';
 
 export async function generateStaticParams() {
   const pageSlugs = await sanityClient.fetch(howItWorksSlugsQuery);
@@ -20,11 +25,23 @@ export default async function HowItWorksPage({ params }) {
   const pageData = await sanityClient.fetch(howItWorksBySlugQuery, {
     slug: params.slug,
   });
+  const fundsData = await getAllFundsData();
+  const fundsContent = await getAllFundsContent();
+
+  const cityfunds = fundsData.map((data) => {
+    const content = fundsContent.find(
+      (content) => content.fund_name === data.fund_name
+    );
+    return { fund_data: data, fund_content: content };
+  });
 
   return (
     <PageTracker pageName="How it Works">
-      <PageHero feature={pageData?.marketing_hero} />
-      <ValueProps heading="Why Cityfunds?" valueProps={pageData?.why_us} />
+      <PageHero hero={pageData?.hero} />
+      <ValueProps
+        heading={`Why Choose ${pageData?.title}?`}
+        valueProps={pageData?.why_us}
+      />
 
       <HowItWorks
         tutorials={pageData?.tutorials}
@@ -33,17 +50,20 @@ export default async function HowItWorksPage({ params }) {
       />
       <Testimonials testimonials={pageData?.testimonials} />
       <FeaturedImage feature={pageData?.description} isWide />
-      <ValueProps heading="Why Cityfunds?" valueProps={pageData?.benefits} />
+      <ValueProps
+        heading={`The Benefits of ${pageData?.title}`}
+        valueProps={pageData?.benefits}
+      />
       <FaqQuestions
         faqs={pageData?.questions}
         link={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/recur-earn`}
-        linkText="See All FAQs"
+        linkText={`See All ${pageData?.title} FAQs`}
       />
       <FeaturedImage
         feature={pageData?.get_started}
         btnText="Get Started"
         link={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`}
-        isWide
+        cityfunds={cityfunds}
       />
       {cityfundsApp?.investor_webinar && (
         <Webinars webinar={cityfundsApp?.investor_webinar} />

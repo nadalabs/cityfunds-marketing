@@ -40,3 +40,10 @@ export interface IFeature {
   description: string;
   image: string;
 }
+
+export interface IHero {
+  title: string[];
+  description: string[];
+  call_to_action?: string;
+  image: string;
+}

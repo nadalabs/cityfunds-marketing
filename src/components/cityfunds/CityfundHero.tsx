@@ -7,7 +7,7 @@ import {
   HeroWrapper,
   StackWrapper,
 } from '@elements/Containers';
-import { Heading, PrimaryText } from '@elements/Typography';
+import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
@@ -47,19 +47,19 @@ export default function CityfundHero({
             Own <span style={{ color: '#2A8356' }}>Home Equity</span> <br /> In
             Top Cities
           </Heading>
-          <PrimaryText>
+          <LargeText>
             Unlock real wealth through diversified home equity portfolios.
-          </PrimaryText>
+          </LargeText>
 
           <EmailCapture isHero />
-          <PrimaryText
+          <LargeText
             style={{
               color: '#2A8356',
               marginTop: isMobile || isHome ? 0 : '-1rem',
             }}
           >
             Invest in minutes - start with as little as $500.
-          </PrimaryText>
+          </LargeText>
 
           {isMobile && (
             <Image

@@ -1,4 +1,5 @@
 'use client';
+import CityfundSlider from '@components/cityfunds/CityfundSlider';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import {
@@ -9,7 +10,7 @@ import {
 } from '@elements/Containers';
 import { Heading, Overline } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { IFeature } from '@utils/models';
+import { ICityfund, IFeature } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,6 +26,7 @@ interface FeaturedImageProps {
   isBackground?: boolean;
   isWide?: boolean;
   isSmall?: boolean;
+  cityfunds?: ICityfund[];
 }
 
 export default function FeaturedImage({
@@ -37,6 +39,7 @@ export default function FeaturedImage({
   isBackground,
   isWide,
   isSmall,
+  cityfunds,
 }: FeaturedImageProps) {
   const isMobile = useIsMobile();
 
@@ -77,7 +80,7 @@ export default function FeaturedImage({
   return (
     <SectionWrapper $isBackground={isBackground}>
       <GridWrapper>
-        {(isMobile || isReversed) && <div>{renderImage()}</div>}
+        {(isMobile || isReversed) && !cityfunds && <div>{renderImage()}</div>}
         <ContentWrapper>
           <StackWrapper style={{ gap: '1rem' }}>
             {overline && <Overline>{overline}</Overline>}
@@ -97,7 +100,10 @@ export default function FeaturedImage({
           </StackWrapper>
         </ContentWrapper>
 
-        {!isMobile && !isReversed && renderImage()}
+        {!isMobile && !isReversed && !cityfunds && renderImage()}
+        {!isMobile && cityfunds && (
+          <CityfundSlider cityfunds={cityfunds} isStatic={false} />
+        )}
       </GridWrapper>
     </SectionWrapper>
   );

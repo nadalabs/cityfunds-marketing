@@ -14,7 +14,7 @@ const postFields = `
 export const howItWorksFields = `
   _id,
   title,
-  marketing_hero,
+  hero,
   why_us,
   tutorials,
   testimonials,

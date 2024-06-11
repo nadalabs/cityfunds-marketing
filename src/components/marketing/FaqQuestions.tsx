@@ -28,7 +28,7 @@ export default function FaqQuestions({
 
   return (
     <SectionWrapper $isBackground={isBackground}>
-      <StackWrapper style={{ gap: '1rem' }}>
+      <StackWrapper style={{ gap: '1rem', marginBottom: '4rem' }}>
         {faqs?.map(({ question, answer }, idx) => (
           <ContentWrapper key={idx}>
             <HoverHeading
