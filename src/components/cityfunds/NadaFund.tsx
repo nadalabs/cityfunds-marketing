@@ -29,7 +29,7 @@ export default function NadaFund({ feature, video }: NadaFundProps) {
           </div>
           <Heading>{feature?.title}</Heading>
           {isMobile && <VideoPlayer video={video} />}
-          <LongFormText content={feature?.description} />
+          <LongFormText content={feature?.description} isLarge />
 
           <Link
             href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/nada`}

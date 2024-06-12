@@ -45,11 +45,10 @@ export default function PageHero({ hero, btnText, link }: PageHeroProps) {
 
             <LongFormText content={hero?.title} />
             <LongFormText content={hero?.description} isLarge />
-            {hero && (
-              <LargeText style={{ color: '#2A8356' }}>
-                {hero?.call_to_action}
-              </LargeText>
-            )}
+            <LargeText style={{ color: '#2A8356' }}>
+              {hero?.call_to_action}
+            </LargeText>
+
             {btnText && (
               <Link href={link} target="_blank">
                 <PrimaryButton>{btnText}</PrimaryButton>
