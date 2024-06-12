@@ -11,6 +11,20 @@ const postFields = `
   "slug": slug.current,
 `;
 
+export const howItWorksFields = `
+  _id,
+  title,
+  hero,
+  why_us,
+  tutorials,
+  testimonials,
+  description,
+  benefits,
+  questions,
+  get_started,
+  "slug": slug.current,
+`;
+
 export const postIndexQuery = `
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
@@ -107,6 +121,16 @@ export const legalBySlugQuery = `
 }
 `;
 
+export const howItWorksSlugsQuery = `
+*[_type == "howItWorks" && defined(slug.current)][].slug.current
+`;
+
+export const howItWorksBySlugQuery = `
+*[_type == "howItWorks" && slug.current == $slug][0] {
+  ${howItWorksFields}
+}
+`;
+
 const pressFields = `
   _id,
   title,
@@ -176,9 +200,9 @@ export const aboutPageFields = `
   about_hero,
   ourStory,
   logos,
-  teammates,
-  team_logos,
   leadership,
+  board_members,
+  team_logos,
   values,
   careers,
   news_hero

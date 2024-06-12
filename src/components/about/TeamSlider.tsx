@@ -42,15 +42,15 @@ export default function TeamSlider({ teammates, title }: TeamSliderProps) {
     <SectionWrapper>
       <StackWrapper>
         <FlexWrapper style={{ alignItems: 'flex-end', marginBottom: '1rem' }}>
-          <StackWrapper style={{ gap: '1rem' }}>
+          <StackWrapper style={{ gap: isMobile ? '0' : '0.5rem' }}>
             <Overline>Who We Are</Overline>
-            <Heading>{title}</Heading>
+            <Heading style={{ marginBottom: 0 }}>{title}</Heading>
           </StackWrapper>
           <SliderStepper
             activeStep={activeStep}
             setActiveStep={setActiveStep}
-            totalSteps={teammates?.length + 1}
-            increment={isMobile ? 1 : 3}
+            totalSteps={isMobile ? teammates?.length : teammates?.length + 1}
+            increment={isMobile ? 1 : 4}
             sliderRef={sliderRef}
           />
         </FlexWrapper>

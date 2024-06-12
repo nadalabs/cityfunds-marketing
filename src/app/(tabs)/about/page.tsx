@@ -13,7 +13,7 @@ export default async function AboutPage() {
 
   return (
     <PageTracker pageName="About">
-      <PageHero feature={aboutPage?.about_hero} />
+      <PageHero hero={aboutPage?.about_hero} />
       <SectionWrapper>
         <LongFormText
           title="Our Story"
@@ -24,7 +24,7 @@ export default async function AboutPage() {
       </SectionWrapper>
       <LogoSoup overline="World Class Backing" logos={aboutPage?.logos} />
       <TeamSlider title="Leadership" teammates={aboutPage?.leadership} />
-      <TeamSlider title="Our Team" teammates={aboutPage?.teammates} />
+      <TeamSlider title="Board" teammates={aboutPage?.board_members} />
       <LogoSoup overline="Highly Experienced" logos={aboutPage?.team_logos} />
       <ValueProps
         overline="How We Think"
