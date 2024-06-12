@@ -23,7 +23,7 @@ export default function SliderStepper({
 }: SliderStepperProps) {
   const isBackDisabled = !activeStep;
   const isNextDisabled =
-    Math.round(activeStep / increment) + 1 ===
+    Math.ceil(activeStep / increment) + 1 ===
     Math.round(totalSteps / increment);
 
   const handleBack = (activeStep: number) => {
