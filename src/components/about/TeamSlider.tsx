@@ -49,7 +49,7 @@ export default function TeamSlider({ teammates, title }: TeamSliderProps) {
           <SliderStepper
             activeStep={activeStep}
             setActiveStep={setActiveStep}
-            totalSteps={teammates?.length + 1}
+            totalSteps={isMobile ? teammates?.length : teammates?.length + 1}
             increment={isMobile ? 1 : 4}
             sliderRef={sliderRef}
           />
