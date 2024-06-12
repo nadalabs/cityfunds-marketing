@@ -102,7 +102,11 @@ export default function FeaturedImage({
 
         {!isMobile && !isReversed && !cityfunds && renderImage()}
         {!isMobile && cityfunds && (
-          <CityfundSlider cityfunds={cityfunds} isStatic={false} />
+          <CityfundSlider
+            cityfunds={cityfunds}
+            isStatic={false}
+            isWide={true}
+          />
         )}
       </GridWrapper>
     </SectionWrapper>

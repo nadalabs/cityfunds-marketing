@@ -200,9 +200,9 @@ export const aboutPageFields = `
   about_hero,
   ourStory,
   logos,
-  teammates,
-  team_logos,
   leadership,
+  board_members,
+  team_logos,
   values,
   careers,
   news_hero
