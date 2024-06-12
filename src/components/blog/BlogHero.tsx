@@ -58,7 +58,7 @@ export default function BlogHero({ blogPosts }: BlogHeroProps) {
         <Slider {...settings} ref={sliderRef}>
           {blogPosts.map((post, idx) => (
             <div key={idx}>
-              <Link href={`/learn/${activeBlogSlug}`}>
+              <Link href={`/learn/${activeBlogSlug}/#read`}>
                 <FlexWrapper>
                   <ImageWrapper>
                     <Image

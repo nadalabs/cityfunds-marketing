@@ -32,7 +32,7 @@ export default function HowItWorks({
   const [activeIdx, setActiveIdx] = useState(0);
 
   return (
-    <SectionWrapper>
+    <SectionWrapper id="how-it-works">
       <GridWrapper>
         {video ? (
           <VideoPlayer video={video} />

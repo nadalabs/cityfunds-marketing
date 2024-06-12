@@ -27,7 +27,7 @@ export const UTM_PARAMETERS = [
 ];
 
 export const HEADER_LINKS = [
-  { name: 'How it Works', link: '/#' },
+  { name: 'How it Works', link: '/#how-it-works' },
   {
     name: 'Resources',
     links: [
