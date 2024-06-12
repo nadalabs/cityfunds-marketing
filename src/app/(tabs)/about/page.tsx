@@ -24,7 +24,7 @@ export default async function AboutPage() {
       </SectionWrapper>
       <LogoSoup overline="World Class Backing" logos={aboutPage?.logos} />
       <TeamSlider title="Leadership" teammates={aboutPage?.leadership} />
-      <TeamSlider title="Board Members" teammates={aboutPage?.board_members} />
+      <TeamSlider title="Board" teammates={aboutPage?.board_members} />
       <LogoSoup overline="Highly Experienced" logos={aboutPage?.team_logos} />
       <ValueProps
         overline="How We Think"
