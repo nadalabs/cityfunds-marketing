@@ -27,7 +27,7 @@ export const UTM_PARAMETERS = [
 ];
 
 export const HEADER_LINKS = [
-  { name: 'Cityfunds', link: '/' },
+  { name: 'How it Works', link: '/#how-it-works' },
   {
     name: 'Resources',
     links: [
@@ -122,6 +122,16 @@ export const SOCIAL_LINKS = [
   { name: 'LinkedIn', link: 'https://www.linkedin.com/company/cityfund' },
   { name: 'YouTube', link: 'https://www.youtube.com/@nadafinance/videos' },
 ];
+
+export enum LIFECYCLE_STAGES {
+  SUBSCRIBER = 'subscriber',
+  LEAD = 'lead',
+  MARKERTING_QUALIFIED = 'marketingqualifiedlead',
+  SALES_QUAALIFIED = 'salesqualifiedlead',
+  OPPORTUNITY = 'opportunity',
+  CUSTOMER = 'customer',
+  EVANGELIST = 'evangelist',
+}
 
 export enum FUND_STATUS {
   NEW_OFFERING = 'New Offering',

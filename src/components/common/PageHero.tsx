@@ -7,21 +7,21 @@ import {
   HeroWrapper,
   StackWrapper,
 } from '@elements/Containers';
-import { Heading } from '@elements/Typography';
+import { LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { IFeature } from '@utils/models';
+import { IHero } from '@utils/models';
 import { urlForImage } from 'lib/sanity';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 
 interface PageHeroProps {
-  feature: IFeature;
+  hero: IHero;
   btnText?: string;
   link?: string;
 }
 
-export default function PageHero({ feature, btnText, link }: PageHeroProps) {
+export default function PageHero({ hero, btnText, link }: PageHeroProps) {
   const isMobile = useIsMobile();
 
   return (
@@ -38,13 +38,17 @@ export default function PageHero({ feature, btnText, link }: PageHeroProps) {
               <ImageWrapper
                 width={512}
                 height={512}
-                alt={feature?.title}
-                src={urlForImage(feature?.image, 512, 512)}
+                alt="Cityfunds"
+                src={urlForImage(hero?.image, 512, 512)}
               />
             )}
 
-            <Heading>{feature?.title}</Heading>
-            <LongFormText content={feature?.description} isLarge />
+            <LongFormText content={hero?.title} />
+            <LongFormText content={hero?.description} isLarge />
+            <LargeText style={{ color: '#2A8356' }}>
+              {hero?.call_to_action}
+            </LargeText>
+
             {btnText && (
               <Link href={link} target="_blank">
                 <PrimaryButton>{btnText}</PrimaryButton>
@@ -57,8 +61,8 @@ export default function PageHero({ feature, btnText, link }: PageHeroProps) {
           <ImageWrapper
             width={512}
             height={512}
-            alt={feature?.title}
-            src={urlForImage(feature?.image, 512, 512)}
+            alt="Cityfunds"
+            src={urlForImage(hero?.image, 512, 512)}
           />
         )}
       </GridWrapper>

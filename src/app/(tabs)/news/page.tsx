@@ -9,7 +9,7 @@ export default async function NewsPage() {
 
   return (
     <PageTracker pageName="Press">
-      <PageHero feature={aboutPage?.news_hero} />
+      <PageHero hero={aboutPage?.news_hero} />
       <NewsArticles articles={allPress} />
     </PageTracker>
   );

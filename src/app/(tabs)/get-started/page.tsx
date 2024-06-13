@@ -33,7 +33,7 @@ export default async function LandingPage() {
     <PageTracker pageName="Get Started">
       <CityfundHero
         banner={cityfundsPage?.hero_banner}
-        feature={cityfundsPage?.marketing_hero}
+        hero={cityfundsPage?.marketing_hero}
         logos={cityfundsPage?.logos}
         cityfunds={cityfunds}
       />

@@ -7,29 +7,30 @@ import {
   HeroWrapper,
   StackWrapper,
 } from '@elements/Containers';
-import { Heading, PrimaryText } from '@elements/Typography';
+import { Heading, LargeText } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
 import { urlForImage } from 'lib/sanity';
 import Image from 'next/image';
 import CityfundSlider from '@components/cityfunds/CityfundSlider';
-import { ICityfund } from '@utils/models';
+import { ICityfund, IHero } from '@utils/models';
 import { usePathname } from 'next/navigation';
+import LongFormText from '@components/common/LongFormText';
 
 interface CityfundHeroProps {
   cityfunds: ICityfund[];
+  hero: IHero;
   banner?: {
     text: string;
     link: string;
   };
   logos?: any[];
-  feature?: any;
 }
 
 export default function CityfundHero({
   cityfunds,
   banner,
   logos,
-  feature,
+  hero,
 }: CityfundHeroProps) {
   const isMobile = useIsMobile();
   const pathname = usePathname();
@@ -47,26 +48,19 @@ export default function CityfundHero({
             Own <span style={{ color: '#2A8356' }}>Home Equity</span> <br /> In
             Top Cities
           </Heading>
-          <PrimaryText>
-            Unlock real wealth through diversified home equity portfolios.
-          </PrimaryText>
+          <LongFormText content={hero?.description} isLarge />
 
           <EmailCapture isHero />
-          <PrimaryText
-            style={{
-              color: '#2A8356',
-              marginTop: isMobile || isHome ? 0 : '-1rem',
-            }}
-          >
-            Invest in minutes - start with as little as $500.
-          </PrimaryText>
+          <LargeText style={{ color: '#2A8356' }}>
+            {hero?.call_to_action}
+          </LargeText>
 
           {isMobile && (
             <Image
               width={512}
               height={512}
               alt="Own Home Equity In Top Cities"
-              src={urlForImage(feature?.image, 512, 512)}
+              src={urlForImage(hero?.image, 512, 512)}
               style={{ alignSelf: 'center' }}
             />
           )}
@@ -77,7 +71,6 @@ export default function CityfundHero({
             <LogoSoup
               overline="Featured In"
               logos={isMobile ? logos.slice(0, 4) : logos}
-              isStatic={!isHome}
               isHero
             />
           )}

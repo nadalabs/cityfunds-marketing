@@ -16,7 +16,6 @@ interface LogoSoupProps {
   logos: any[];
   isHero?: boolean;
   seeMore?: boolean;
-  isStatic?: boolean;
 }
 
 export default function LogoSoup({
@@ -24,35 +23,22 @@ export default function LogoSoup({
   logos,
   isHero,
   seeMore,
-  isStatic,
 }: LogoSoupProps) {
   const isMobile = useIsMobile();
 
   function renderLogos(logos) {
-    if (isStatic) {
-      return (
-        <>
-          {logos?.map(({ name, image, link }, idx) => (
-            <Image
-              width={isMobile ? 100 : isHero ? 200 : 100}
-              height={isMobile ? 32 : isHero ? 60 : 30}
-              style={{ margin: '1rem 1rem' }}
-              alt={name}
-              src={urlForImage(image)}
-            />
-          ))}
-        </>
-      );
-    }
-
     return (
       <>
         {logos?.map(({ name, image, link }, idx) => (
-          <Link key={idx} href={link} target="_blank">
+          <Link
+            key={idx}
+            href={link}
+            target="_blank"
+            style={{ margin: '1rem 1rem' }}
+          >
             <Image
-              width={isMobile ? 100 : isHero ? 200 : 100}
-              height={isMobile ? 32 : isHero ? 60 : 30}
-              style={{ margin: '1rem 1rem' }}
+              width={isMobile ? 100 : isHero ? 200 : 160}
+              height={isMobile ? 32 : isHero ? 60 : 40}
               alt={name}
               src={urlForImage(image)}
             />
@@ -79,7 +65,7 @@ export default function LogoSoup({
 
   return (
     <SectionWrapper style={{ textAlign: 'center', display: 'flex' }}>
-      <StackWrapper style={{ maxWidth: isMobile ? '100%' : '70%' }}>
+      <StackWrapper>
         <Overline style={{ color: '#989898', textAlign: 'center' }}>
           {overline}
         </Overline>

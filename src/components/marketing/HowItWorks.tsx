@@ -13,10 +13,12 @@ import { Heading, SmallHeading } from '@elements/Typography';
 import Link from 'next/link';
 import { useState } from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
+import { urlForImage } from 'lib/sanity';
 
 interface HowItWorksProps {
-  video: { video_url: string; thumbnail: string };
-  tutorials: { title: string; description: string; image: string }[];
+  video?: { video_url: string; thumbnail: string };
+  tutorials: { title: string; description: string; image?: string }[];
   btnText: string;
   link: string;
 }
@@ -30,12 +32,23 @@ export default function HowItWorks({
   const [activeIdx, setActiveIdx] = useState(0);
 
   return (
-    <SectionWrapper>
+    <SectionWrapper id="how-it-works">
       <GridWrapper>
-        <VideoPlayer video={video} />
+        {video ? (
+          <VideoPlayer video={video} />
+        ) : (
+          <Image
+            width={512}
+            height={512}
+            src={urlForImage(tutorials?.[activeIdx]?.image)}
+            alt={tutorials?.[activeIdx]?.title}
+            style={{ borderRadius: '2rem' }}
+          />
+        )}
 
         <ContentWrapper>
           <Heading style={{ marginBottom: '1.5rem' }}>How it Works</Heading>
+
           <div>
             {tutorials?.map(({ title, description }, idx) => (
               <div

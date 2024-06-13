@@ -44,7 +44,7 @@ export default async function HomePage() {
     <PageTracker pageName="Cityfunds">
       <CityfundHero
         cityfunds={cityfunds}
-        feature={cityfundsPage?.marketing_hero}
+        hero={cityfundsPage?.marketing_hero}
         banner={cityfundsPage?.hero_banner}
         logos={cityfundsPage?.logos}
       />
@@ -89,7 +89,6 @@ export default async function HomePage() {
         feature={cityfundsApp?.ira_401k_form}
         btnText="Get Started"
         link={EXTERNAL_ROUTES.IRA_FORM}
-        isSmall
       />
       <FeaturedImage
         overline="FOR HOMEOWNERS"

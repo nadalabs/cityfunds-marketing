@@ -4,7 +4,11 @@ import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { FormInput, StyledForm } from '@elements/FormInput';
 import { Caption, PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import { LEGAL_LINKS, UTM_PARAMETERS } from '@utils/constants';
+import {
+  LEGAL_LINKS,
+  LIFECYCLE_STAGES,
+  UTM_PARAMETERS,
+} from '@utils/constants';
 import { getCookie, setCookie } from '@utils/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -50,7 +54,10 @@ export default function EmailCapture({
 
   const onSubmit = async (inputs: FieldValues) => {
     try {
-      let payload: any = { ...inputs };
+      let payload: any = {
+        ...inputs,
+        lifecycle_stage: LIFECYCLE_STAGES.SUBSCRIBER,
+      };
       for (let param of UTM_PARAMETERS) {
         const value = getCookie(param);
         if (value) payload[param] = value;
