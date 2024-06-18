@@ -8,7 +8,6 @@ import {
   cityfundsAppFields,
   cityfundsPageFields,
   legalFields,
-  nadaOfferingFields,
   pressIndexQuery,
 } from 'lib/queries';
 
@@ -53,14 +52,6 @@ export const getCityfundsAppContent = async (): Promise<any> => {
     *[_type == "cityfundsApp"] | order(index asc, _updatedAt desc) {
       ${cityfundsAppFields}
     }`);
-  return res[0];
-};
-
-export const getNadaOfferingContent = async (): Promise<any> => {
-  const res = await sanityClient.fetch(`
-  *[_type == "nadaOffering"] {
-    ${nadaOfferingFields}
-  }`);
   return res[0];
 };
 

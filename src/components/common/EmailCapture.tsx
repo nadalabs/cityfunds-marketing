@@ -119,7 +119,7 @@ export default function EmailCapture({
             <Image
               width={16}
               height={16}
-              alt={'Nada'}
+              alt={'Close'}
               src={'/icons/cancel.svg'}
               style={{ alignSelf: 'flex-start', cursor: 'pointer' }}
               onClick={() => {

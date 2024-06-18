@@ -3,7 +3,6 @@ import CityfundHero from '@components/cityfunds/CityfundHero';
 import EquityChart from '@components/cityfunds/EquityChart';
 import EquityPayoff from '@components/cityfunds/EquityPayoff';
 import InvestorPromo from '@components/cityfunds/InvestorPromo';
-import NadaFund from '@components/cityfunds/NadaFund';
 import EmailCapture from '@components/common/EmailCapture';
 import PageTracker from '@components/common/PageTracker';
 import FeaturedImage from '@components/marketing/FeaturedImage';
@@ -17,7 +16,6 @@ import {
   getAllFundsContent,
   getCityfundsAppContent,
   getCityfundsPageContent,
-  getNadaOfferingContent,
 } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 
@@ -26,19 +24,13 @@ export default async function HomePage() {
   const cityfundsApp = await getCityfundsAppContent();
   const fundsData = await getAllFundsData();
   const fundsContent = await getAllFundsContent();
-  const nada_offering = await getNadaOfferingContent();
 
-  const cityfunds = fundsData
-    .filter((item) => item?.fund_name !== 'Nada')
-    .map((data) => {
-      const content = fundsContent.find(
-        (content) => content.fund_name === data.fund_name
-      );
-      return {
-        fund_data: data,
-        fund_content: data.fund_name === 'Nada' ? nada_offering : content,
-      };
-    });
+  const cityfunds = fundsData.map((data) => {
+    const content = fundsContent.find(
+      (content) => content.fund_name === data.fund_name
+    );
+    return { fund_data: data, fund_content: content };
+  });
 
   return (
     <PageTracker pageName="Cityfunds">
@@ -64,12 +56,6 @@ export default async function HomePage() {
       />
       <EquityChart />
       <CityfundsGrid cityfunds={cityfunds} />
-      {nada_offering?.video && (
-        <NadaFund
-          video={nada_offering?.video}
-          feature={nada_offering?.feature}
-        />
-      )}
 
       <HowItWorks
         video={cityfundsPage?.video}
