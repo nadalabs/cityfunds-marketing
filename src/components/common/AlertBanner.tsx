@@ -1,11 +1,18 @@
 import { BoldText } from '@elements/Typography';
 import styled from 'styled-components';
 import { scrollToDiv } from '@utils/helpers';
-import { getCityfundsPageContent, getNadaOfferingContent } from 'lib/sanity';
+import { getCityfundsAppContent } from 'lib/sanity';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default async function AlertBanner() {
-  const nada_offering = await getNadaOfferingContent();
-  const cityfundsPage = await getCityfundsPageContent();
+  const cityfundsApp = await getCityfundsAppContent();
+  const router = useRouter();
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
+  if (!cityfundsApp?.investor_promo?.show_promo) {
+    return null;
+  }
 
   return (
     <BannerWrapper>
@@ -17,15 +24,13 @@ export default async function AlertBanner() {
           fontSize: '18px',
         }}
       >
-        {nada_offering?.banner
-          ? nada_offering?.banner
-          : cityfundsPage?.promo?.banner}
+        {cityfundsApp?.investor_promo?.banner}
       </BoldText>
       <BoldText
         onClick={() =>
-          nada_offering?.banner
-            ? scrollToDiv('nada-fund')
-            : scrollToDiv('investor-promo')
+          isHome
+            ? scrollToDiv('investor-promo')
+            : router.push('/#investor-promo')
         }
         style={{
           display: 'inline',

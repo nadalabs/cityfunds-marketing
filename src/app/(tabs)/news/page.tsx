@@ -8,7 +8,7 @@ export default async function NewsPage() {
   const allPress = await getAllPress();
 
   return (
-    <PageTracker pageName="Press">
+    <PageTracker pageName="News">
       <PageHero hero={aboutPage?.news_hero} />
       <NewsArticles articles={allPress} />
     </PageTracker>

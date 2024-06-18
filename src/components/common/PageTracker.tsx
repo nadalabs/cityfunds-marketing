@@ -4,14 +4,19 @@ import { ReactNode, useEffect } from 'react';
 interface PageTrackerProps {
   children: ReactNode;
   pageName: string;
+  payload?: any;
 }
 
-export default function PageTracker({ children, pageName }: PageTrackerProps) {
+export default function PageTracker({
+  children,
+  pageName,
+  payload,
+}: PageTrackerProps) {
   useEffect(() => {
-    async function trackPageView(event: string) {
-      await window.analytics.track(event);
+    async function trackPageView() {
+      await window.analytics.page(pageName, payload);
     }
-    trackPageView(`${pageName} Page Viewed`);
+    trackPageView();
   }, []);
 
   return <>{children}</>;

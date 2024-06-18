@@ -26,7 +26,7 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
   const isMobile = useIsMobile();
 
   return (
-    <SectionWrapper>
+    <SectionWrapper id="#investor-promo">
       <FlexWrapper
         style={{
           flexDirection: isMobile ? 'column' : 'row',

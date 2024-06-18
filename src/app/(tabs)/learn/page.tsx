@@ -32,7 +32,7 @@ export default async function LearnPage() {
   }
 
   return (
-    <PageTracker pageName="Blog">
+    <PageTracker pageName="Learn">
       <BlogHero blogPosts={heroPosts} />
       {renderBlogSliders()}
       <EmailCapture />

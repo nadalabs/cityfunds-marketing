@@ -29,7 +29,7 @@ export default async function PostPage({ params }) {
   const media = mediaData?.media ?? null;
 
   return (
-    <PageTracker pageName="Blog Article">
+    <PageTracker pageName="Article" payload={{ article: post?.title }}>
       <BlogHero blogPosts={post ? [post] : [media]} />
       <SectionWrapper style={{ paddingBottom: 0 }} id="read">
         {post ? (

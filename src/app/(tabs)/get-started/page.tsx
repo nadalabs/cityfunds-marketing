@@ -4,30 +4,20 @@ import EmailCapture from '@components/common/EmailCapture';
 import PageTracker from '@components/common/PageTracker';
 import FeaturedImage from '@components/marketing/FeaturedImage';
 import KeyMetrics from '@components/marketing/KeyMetrics';
-import {
-  getAllFundsContent,
-  getCityfundsPageContent,
-  getNadaOfferingContent,
-} from 'lib/sanity';
+import { getAllFundsContent, getCityfundsPageContent } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 
 export default async function LandingPage() {
   const cityfundsPage = await getCityfundsPageContent();
   const fundsData = await getAllFundsData();
   const fundsContent = await getAllFundsContent();
-  const nada_offering = await getNadaOfferingContent();
 
-  const cityfunds = fundsData
-    .filter((item) => item?.fund_name !== 'Nada')
-    .map((data) => {
-      const content = fundsContent.find(
-        (content) => content.fund_name === data.fund_name
-      );
-      return {
-        fund_data: data,
-        fund_content: data.fund_name === 'Nada' ? nada_offering : content,
-      };
-    });
+  const cityfunds = fundsData.map((data) => {
+    const content = fundsContent.find(
+      (content) => content.fund_name === data.fund_name
+    );
+    return { fund_data: data, fund_content: content };
+  });
 
   return (
     <PageTracker pageName="Get Started">

@@ -180,21 +180,6 @@ export const cityfundsAppFields = `
   ira_401k_form,
 `;
 
-export const nadaOfferingFields = `
-  _id,
-  fund_name,
-  call_to_action,
-  image_gallery,
-  card_back,
-  highlights,
-  description,
-  sections,
-  banner,
-  feature,
-  video,
-  webinar
-`;
-
 export const aboutPageFields = `
   _id,
   about_hero,
