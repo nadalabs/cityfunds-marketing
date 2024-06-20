@@ -1,5 +1,5 @@
 import { legalQuery, legalSlugsQuery } from 'lib/queries';
-import { sanityClient } from 'lib/sanity';
+import { getCityfundsAppContent, sanityClient } from 'lib/sanity';
 import LongFormText from '@components/common/LongFormText';
 import { SectionWrapper } from '@elements/Containers';
 import { format, parseISO } from 'date-fns';
@@ -15,10 +15,19 @@ export async function generateStaticParams() {
 }
 
 export default async function LegalPage({ params }) {
+  const cityfundsApp = await getCityfundsAppContent();
   const legalData = await sanityClient.fetch(legalQuery, {
     slug: params.slug,
   });
   const legal = legalData?.legal ?? null;
+
+  if (cityfundsApp?.investor_promo?.show_promo) {
+    LEGAL_LINKS.push({
+      name: 'Rewards Program',
+      link: cityfundsApp?.investor_promo?.legal_url,
+      isNewTab: true,
+    });
+  }
 
   return (
     <PageTracker pageName="Legal">
