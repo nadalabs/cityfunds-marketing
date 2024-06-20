@@ -63,7 +63,9 @@ export default function EmailCapture({
         if (value) payload[param] = value;
       }
       await window.analytics.identify(payload);
-      await window.analytics.track('Cityfunds Lead', payload);
+      await window.analytics.track('Subscriber Captured', {
+        product: 'Cityfunds',
+      });
       setCookie('email', inputs.email);
 
       if (isHero || isLanding) {
