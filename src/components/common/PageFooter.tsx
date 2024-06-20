@@ -3,7 +3,7 @@ import LongFormText from '@components/common/LongFormText';
 import { LinkButton } from '@elements/Buttons';
 import { BoldText, LinkText } from '@elements/Typography';
 import { FOOTER_LINKS, ICON_LINKS, SOCIAL_LINKS } from '@utils/constants';
-import { getFooterContent } from 'lib/sanity';
+import { getCityfundsAppContent, getFooterContent } from 'lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 export default function PageFooter() {
   const [legal, setLegal] = useState('');
+  const [cityfundsApp, setCityfundsApp] = useState<any>({});
 
   useEffect(() => {
     async function fetchFooter() {
@@ -19,6 +20,23 @@ export default function PageFooter() {
     }
     fetchFooter();
   }, []);
+
+  useEffect(() => {
+    async function fetchCityfundsApp() {
+      const cityfundsApp = await getCityfundsAppContent();
+      setCityfundsApp(cityfundsApp);
+    }
+    fetchCityfundsApp();
+  }, []);
+
+  if (cityfundsApp?.investor_promo?.show_promo) {
+    console.log(FOOTER_LINKS[2].links);
+    FOOTER_LINKS[2]?.links?.push({
+      name: 'Rewards Program',
+      link: cityfundsApp?.investor_promo?.legal_url,
+      isNewTab: true,
+    });
+  }
 
   return (
     <FooterWrapper>
