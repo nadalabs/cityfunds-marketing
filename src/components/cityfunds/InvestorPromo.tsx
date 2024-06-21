@@ -86,10 +86,8 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
               </LinkText>
             </div>
 
-            <Link
-              href={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/${promo?.fund_name?.toLowerCase().replace(/ /g, '-')}`}
-            >
-              <PrimaryButton>Invest Now</PrimaryButton>
+            <Link href={process.env.NEXT_PUBLIC_WEB_APP_URL}>
+              <PrimaryButton>Explore Offerings</PrimaryButton>
             </Link>
           </StackWrapper>
         </ContentWrapper>
