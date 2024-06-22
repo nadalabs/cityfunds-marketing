@@ -9,6 +9,7 @@ import { LayoutWrapper, MainWrapper } from '@elements/Containers';
 import PageFooter from '@components/common/PageFooter';
 import { UTM_PARAMETERS } from '@utils/constants';
 import { setCookie } from '@utils/helpers';
+import AlertBanner from '@components/common/AlertBanner';
 
 export default function TabsLayout({ children }: { children: ReactNode }) {
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function TabsLayout({ children }: { children: ReactNode }) {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <LayoutWrapper>
+        <AlertBanner />
         <MobileNavBar />
         <DesktopNavBar />
         <MainWrapper>{children}</MainWrapper>
