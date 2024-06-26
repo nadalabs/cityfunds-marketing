@@ -26,7 +26,7 @@ export default function TabsLayout({ children }: { children: ReactNode }) {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <LayoutWrapper>
-        <AlertBanner />
+        {/* <AlertBanner /> */}
         <MobileNavBar />
         <DesktopNavBar />
         <MainWrapper>{children}</MainWrapper>
