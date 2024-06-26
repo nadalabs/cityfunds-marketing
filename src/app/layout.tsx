@@ -10,7 +10,6 @@ import 'react-modern-drawer/dist/index.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import '../../styles/globals.css';
-import AlertBanner from '@components/common/AlertBanner';
 
 declare global {
   interface Window {
@@ -67,7 +66,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <StyledComponentsRegistry>
-          {/* <AlertBanner /> */}
           {children}
           <Analytics />
           <SpeedInsights />

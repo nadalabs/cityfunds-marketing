@@ -56,14 +56,14 @@ export default function EmailCapture({
     try {
       let payload: any = {
         ...inputs,
-        lifecycle_stage: LIFECYCLE_STAGES.SUBSCRIBER,
+        lifecycle_stage: LIFECYCLE_STAGES.LEAD,
       };
       for (let param of UTM_PARAMETERS) {
         const value = getCookie(param);
         if (value) payload[param] = value;
       }
       await window.analytics.identify(payload);
-      await window.analytics.track('Subscriber Captured', {
+      await window.analytics.track('Lead Captured', {
         product: 'Cityfunds',
       });
       setCookie('email', inputs.email);

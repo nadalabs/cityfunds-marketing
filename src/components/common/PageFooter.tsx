@@ -11,7 +11,7 @@ import styled from 'styled-components';
 
 export default function PageFooter() {
   const [legal, setLegal] = useState('');
-  const [cityfundsApp, setCityfundsApp] = useState<any>({});
+  const [footerLinks, setFooterLinks] = useState<any[]>([]);
 
   useEffect(() => {
     async function fetchFooter() {
@@ -24,19 +24,24 @@ export default function PageFooter() {
   useEffect(() => {
     async function fetchCityfundsApp() {
       const cityfundsApp = await getCityfundsAppContent();
-      setCityfundsApp(cityfundsApp);
+
+      if (cityfundsApp?.investor_promo?.show_promo) {
+        const updatedLinks = [...FOOTER_LINKS];
+        updatedLinks[2].links = updatedLinks[2].links.filter(
+          (link) => link.name !== 'Rewards Program'
+        );
+        updatedLinks[2].links.push({
+          name: 'Rewards Program',
+          link: cityfundsApp?.investor_promo?.legal_url,
+          isNewTab: true,
+        });
+        setFooterLinks(updatedLinks);
+      } else {
+        setFooterLinks(FOOTER_LINKS);
+      }
     }
     fetchCityfundsApp();
   }, []);
-
-  if (cityfundsApp?.investor_promo?.show_promo) {
-    console.log(FOOTER_LINKS[2].links);
-    FOOTER_LINKS[2]?.links?.push({
-      name: 'Rewards Program',
-      link: cityfundsApp?.investor_promo?.legal_url,
-      isNewTab: true,
-    });
-  }
 
   return (
     <FooterWrapper>
@@ -69,7 +74,7 @@ export default function PageFooter() {
           </div>
         </div>
 
-        {FOOTER_LINKS.map(({ title, links }, idx) => (
+        {footerLinks.map(({ title, links }, idx) => (
           <div key={idx} style={{ marginBottom: '1rem' }}>
             <BoldText
               style={{

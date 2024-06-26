@@ -1,8 +1,8 @@
 import { BoldText } from '@elements/Typography';
 import styled from 'styled-components';
 import { scrollToDiv } from '@utils/helpers';
-import { getCityfundsAppContent } from 'lib/sanity';
 import { usePathname, useRouter } from 'next/navigation';
+import { getCityfundsAppContent } from 'lib/sanity';
 
 export default async function AlertBanner() {
   const cityfundsApp = await getCityfundsAppContent();

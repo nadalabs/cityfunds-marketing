@@ -118,9 +118,10 @@ export const SOCIAL_LINKS = [
 ];
 
 export enum LIFECYCLE_STAGES {
-  SUBSCRIBER = 'subscriber',
   LEAD = 'lead',
+  REGISTERED_USER = '201949319',
   MARKERTING_QUALIFIED = 'marketingqualifiedlead',
+  VERIFIED_USER = '201624694',
   SALES_QUAALIFIED = 'salesqualifiedlead',
   OPPORTUNITY = 'opportunity',
   CUSTOMER = 'customer',
