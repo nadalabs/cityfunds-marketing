@@ -1,21 +1,22 @@
 import { BoldText } from '@elements/Typography';
+import Link from 'next/link';
 import styled from 'styled-components';
-import { scrollToDiv } from '@utils/helpers';
-import { getCityfundsAppContent } from 'lib/sanity';
-import { usePathname, useRouter } from 'next/navigation';
 
-export default async function AlertBanner() {
-  const cityfundsApp = await getCityfundsAppContent();
-  const router = useRouter();
-  const pathname = usePathname();
-  const isHome = pathname === '/';
+interface AlertBannerProps {
+  banner?: {
+    show_banner: boolean;
+    text: string;
+    button_text: string;
+    button_link: string;
+  };
+  isWarning?: boolean;
+}
 
-  if (!cityfundsApp?.investor_promo?.show_promo) {
-    return null;
-  }
-
+export default function AlertBanner({ banner, isWarning }: AlertBannerProps) {
   return (
-    <BannerWrapper>
+    <BannerWrapper
+      style={{ backgroundColor: isWarning ? '#E14942' : '#303030' }}
+    >
       <BoldText
         style={{
           display: 'inline',
@@ -24,36 +25,31 @@ export default async function AlertBanner() {
           fontSize: '18px',
         }}
       >
-        {cityfundsApp?.investor_promo?.banner}
+        {banner?.text}
       </BoldText>
-      <BoldText
-        onClick={() =>
-          isHome
-            ? scrollToDiv('investor-promo')
-            : router.push('/#investor-promo')
-        }
-        style={{
-          display: 'inline',
-          color: '#48DC95',
-          margin: '0 1rem 0 0',
-          fontSize: '18px',
-          cursor: 'pointer',
-        }}
-      >
-        Learn More
-      </BoldText>
+      <Link href={banner?.button_link || ''}>
+        <BoldText
+          style={{
+            display: 'inline',
+            color: '#48DC95',
+            margin: '0 1rem 0 0',
+            fontSize: '18px',
+            cursor: 'pointer',
+          }}
+        >
+          {banner?.button_text}
+        </BoldText>
+      </Link>
     </BannerWrapper>
   );
 }
 
 const BannerWrapper = styled.div`
   width: 100vw;
-  background-color: #303030;
   text-align: center;
   padding: 0.5rem 0;
   position: absolute;
   top: 0;
-  z-index: 999999999;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
