@@ -1,4 +1,3 @@
-'use client';
 import LongFormText from '@components/common/LongFormText';
 import { PrimaryButton } from '@elements/Buttons';
 import {
@@ -15,10 +14,12 @@ import styled from 'styled-components';
 
 interface InvestorPromoProps {
   promo?: {
-    fund_name: string;
+    title: string;
     description: string;
     image: string;
     legal_url: string;
+    button_text: string;
+    button_link: string;
   };
 }
 
@@ -26,7 +27,7 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
   const isMobile = useIsMobile();
 
   return (
-    <SectionWrapper id="#investor-promo">
+    <SectionWrapper id="investor-promo">
       <FlexWrapper
         style={{
           flexDirection: isMobile ? 'column' : 'row',
@@ -57,6 +58,7 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
             width={250}
             height={500}
             alt={'Limited time offer!'}
+            /* @ts-ignore-next-line */
             src={urlForImage(promo?.image)}
             style={{ position: 'relative', bottom: '15rem' }}
           />
@@ -64,17 +66,12 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
 
         <ContentWrapper>
           <StackWrapper style={{ marginBottom: '1rem' }}>
-            <div>
-              <Heading style={{ color: '#48DC95', marginBottom: 0 }}>
-                Limited Time
-              </Heading>
-              <Heading>{promo?.fund_name} Bonus</Heading>
-            </div>
+            <Heading>{promo?.title}</Heading>
 
             <div>
               <LongFormText content={promo?.description} />
               <LinkText
-                href={promo?.legal_url}
+                href={promo?.legal_url || ''}
                 target="_blank"
                 style={{
                   color: '#888888',
@@ -86,8 +83,8 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
               </LinkText>
             </div>
 
-            <Link href={process.env.NEXT_PUBLIC_WEB_APP_URL}>
-              <PrimaryButton>Explore Offerings</PrimaryButton>
+            <Link href={promo?.button_link || ''}>
+              <PrimaryButton>{promo?.button_text}</PrimaryButton>
             </Link>
           </StackWrapper>
         </ContentWrapper>

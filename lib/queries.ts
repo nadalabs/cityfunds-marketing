@@ -174,6 +174,7 @@ export const cityfundsPageFields = `
 
 export const cityfundsAppFields = `
   _id,
+  banner,
   hero_slider,
   investor_promo,
   investor_webinar,
