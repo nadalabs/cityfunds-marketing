@@ -54,15 +54,17 @@ export default function EmailCapture({
 
   const onSubmit = async (inputs: FieldValues) => {
     try {
-      let payload: any = {
-        ...inputs,
-        lifecycle_stage: LIFECYCLE_STAGES.LEAD,
-      };
+      const utm: any = {};
       for (let param of UTM_PARAMETERS) {
         const value = getCookie(param);
-        if (value) payload[param] = value;
+        if (value) utm[param] = value;
       }
-      await window.analytics.identify(payload);
+
+      await window.analytics.identify({
+        ...utm,
+        ...inputs,
+        lifecycle_stage: LIFECYCLE_STAGES.LEAD,
+      });
       await window.analytics.track('Lead Captured', {
         product: 'Cityfunds',
       });
