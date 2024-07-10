@@ -122,17 +122,6 @@ export const SOCIAL_LINKS = [
   { name: 'YouTube', link: 'https://www.youtube.com/@nadafinance/videos' },
 ];
 
-export enum LIFECYCLE_STAGES {
-  LEAD = 'lead',
-  REGISTERED_USER = '201949319',
-  MARKERTING_QUALIFIED = 'marketingqualifiedlead',
-  VERIFIED_USER = '201624694',
-  SALES_QUAALIFIED = 'salesqualifiedlead',
-  OPPORTUNITY = 'opportunity',
-  CUSTOMER = 'customer',
-  EVANGELIST = 'evangelist',
-}
-
 export enum FUND_STATUS {
   NEW_OFFERING = 'New Offering',
   RAMPING_UP = 'Ramping Up',

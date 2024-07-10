@@ -4,11 +4,7 @@ import { SectionWrapper, StackWrapper } from '@elements/Containers';
 import { FormInput, StyledForm } from '@elements/FormInput';
 import { Caption, PrimaryText, SmallHeading } from '@elements/Typography';
 import useIsMobile from '@hooks/useIsMobile';
-import {
-  LEGAL_LINKS,
-  LIFECYCLE_STAGES,
-  UTM_PARAMETERS,
-} from '@utils/constants';
+import { LEGAL_LINKS, UTM_PARAMETERS } from '@utils/constants';
 import { getCookie, setCookie } from '@utils/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -60,11 +56,7 @@ export default function EmailCapture({
         if (value) utm[param] = value;
       }
 
-      await window.analytics.identify({
-        ...utm,
-        ...inputs,
-        lifecycle_stage: LIFECYCLE_STAGES.LEAD,
-      });
+      await window.analytics.identify({ ...utm, ...inputs });
       await window.analytics.track('Lead Captured', {
         product: 'Cityfunds',
       });
