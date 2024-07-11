@@ -37,7 +37,10 @@ export default function EmailCapture({
 
   useEffect(() => {
     const checkVisibility = () => {
-      if (!isCanceled && window.scrollY > window.innerHeight * 2) {
+      const value = getCookie('email');
+      if (!!value) {
+        setIsVisible(false);
+      } else if (!isCanceled && window.scrollY > window.innerHeight * 2) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
