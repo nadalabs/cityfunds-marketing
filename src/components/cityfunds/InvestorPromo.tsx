@@ -22,13 +22,50 @@ interface InvestorPromoProps {
     button_text: string;
     button_link: string;
   };
+  isReversed?: boolean;
 }
 
-export default function InvestorPromo({ promo }: InvestorPromoProps) {
+export default function InvestorPromo({
+  promo,
+  isReversed,
+}: InvestorPromoProps) {
   const isMobile = useIsMobile();
 
+  function renderImage() {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          margin: '-8rem 0',
+        }}
+      >
+        <div
+          style={{
+            height: isMobile ? '400px' : '400px',
+            minWidth: isMobile ? '90vw' : '400px',
+            backgroundColor: '#48DC95',
+            borderRadius: '5rem',
+            zIndex: -1,
+            position: 'relative',
+            top: '20rem',
+          }}
+        />
+        <Image
+          width={250}
+          height={500}
+          alt={'Limited time offer!'}
+          /* @ts-ignore-next-line */
+          src={urlForImage(promo?.image)}
+          style={{ position: 'relative', bottom: '15rem' }}
+        />
+      </div>
+    );
+  }
+
   return (
-    <SectionWrapper id="investor-promo">
+    <SectionWrapper id={isReversed ? 'investor-promo-two' : 'investor-promo'}>
       <FlexWrapper
         style={{
           flexDirection: isMobile ? 'column' : 'row',
@@ -36,34 +73,7 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
           gap: isMobile ? 0 : '4rem',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            margin: '-8rem 0',
-          }}
-        >
-          <div
-            style={{
-              height: isMobile ? '400px' : '400px',
-              minWidth: isMobile ? '90vw' : '400px',
-              backgroundColor: '#48DC95',
-              borderRadius: '5rem',
-              zIndex: -1,
-              position: 'relative',
-              top: '20rem',
-            }}
-          />
-          <Image
-            width={250}
-            height={500}
-            alt={'Limited time offer!'}
-            /* @ts-ignore-next-line */
-            src={urlForImage(promo?.image)}
-            style={{ position: 'relative', bottom: '15rem' }}
-          />
-        </div>
+        {(!isReversed || isMobile) && renderImage()}
 
         <ContentWrapper>
           <StackWrapper style={{ marginBottom: '1rem' }}>
@@ -89,6 +99,8 @@ export default function InvestorPromo({ promo }: InvestorPromoProps) {
             </Link>
           </StackWrapper>
         </ContentWrapper>
+
+        {isReversed && !isMobile && renderImage()}
       </FlexWrapper>
     </SectionWrapper>
   );

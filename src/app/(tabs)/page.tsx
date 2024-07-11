@@ -87,6 +87,9 @@ export default async function HomePage() {
       {cityfundsApp?.investor_promo?.show_promo && (
         <InvestorPromo promo={cityfundsApp?.investor_promo} />
       )}
+      {cityfundsApp?.investor_promo_two?.show_promo && (
+        <InvestorPromo promo={cityfundsApp?.investor_promo_two} isReversed />
+      )}
       {cityfundsApp?.investor_webinar && (
         <Webinars webinar={cityfundsApp?.investor_webinar} />
       )}
