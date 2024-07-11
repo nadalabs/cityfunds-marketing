@@ -34,10 +34,15 @@ export default function EmailCapture({
     mode: 'onBlur',
   });
   const { handleSubmit, setError } = methods;
+  const emailCapture = 'email_catcher';
 
   useEffect(() => {
     const checkVisibility = () => {
-      if (!isCanceled && window.scrollY > window.innerHeight * 2) {
+      const value = getCookie(emailCapture);
+      if(value && value === 'true'){
+        setIsVisible(false);
+      }
+      else if (!isCanceled && window.scrollY > window.innerHeight * 2) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -61,6 +66,7 @@ export default function EmailCapture({
         product: 'Cityfunds',
       });
       setCookie('email', inputs.email);
+      setCookie(emailCapture, 'true');
 
       if (isHero || isLanding) {
         window.location.replace(
