@@ -7,7 +7,7 @@ interface AlertBannerProps {
     show_banner: boolean;
     text: string;
     button_text: string;
-    button_link: string;
+    link: string;
   };
   isWarning?: boolean;
 }
@@ -27,7 +27,7 @@ export default function AlertBanner({ banner, isWarning }: AlertBannerProps) {
       >
         {banner?.text}
       </BoldText>
-      <Link href={banner?.button_link || ''}>
+      <Link href={banner?.link || ''}>
         <BoldText
           style={{
             display: 'inline',
@@ -48,8 +48,9 @@ const BannerWrapper = styled.div`
   width: 100vw;
   text-align: center;
   padding: 0.5rem 0;
-  position: absolute;
+  position: fixed;
   top: 0;
+  z-index: 99;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
