@@ -81,22 +81,26 @@ export default function InvestorPromo({
 
             <div>
               <LongFormText content={promo?.description} />
-              <LinkText
-                href={promo?.legal_url || ''}
-                target="_blank"
-                style={{
-                  color: '#888888',
-                  fontSize: '0.875rem',
-                  lineHeight: '1rem',
-                }}
-              >
-                *Terms and conditions apply
-              </LinkText>
+              {promo?.legal_url && (
+                <LinkText
+                  href={promo?.legal_url || ''}
+                  target="_blank"
+                  style={{
+                    color: '#888888',
+                    fontSize: '0.875rem',
+                    lineHeight: '1rem',
+                  }}
+                >
+                  *Terms and conditions apply
+                </LinkText>
+              )}
             </div>
 
-            <Link href={promo?.button_link || ''}>
-              <PrimaryButton>{promo?.button_text}</PrimaryButton>
-            </Link>
+            {promo?.button_text && (
+              <Link href={promo?.button_link || ''}>
+                <PrimaryButton>{promo?.button_text}</PrimaryButton>
+              </Link>
+            )}
           </StackWrapper>
         </ContentWrapper>
 
