@@ -48,8 +48,9 @@ const BannerWrapper = styled.div`
   width: 100vw;
   text-align: center;
   padding: 0.5rem 0;
-  position: absolute;
+  position: fixed;
   top: 0;
+  z-index: 99;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
