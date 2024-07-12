@@ -40,17 +40,17 @@ export default function PageFooter() {
             isNewTab: true,
           });
         }
-        if (cityfundsApp?.investor_promo_two?.show_promo) {
-          const updatedLinks = [...FOOTER_LINKS];
-          updatedLinks[2].links = updatedLinks[2].links.filter(
-            (link) => link.name !== 'Rewards Program II'
-          );
-          updatedLinks[2].links.push({
-            name: 'Rewards Program II',
-            link: cityfundsApp?.investor_promo_two?.legal_url,
-            isNewTab: true,
-          });
-        }
+        // if (cityfundsApp?.investor_promo_two?.show_promo) {
+        //   const updatedLinks = [...FOOTER_LINKS];
+        //   updatedLinks[2].links = updatedLinks[2].links.filter(
+        //     (link) => link.name !== 'Rewards Program II'
+        //   );
+        //   updatedLinks[2].links.push({
+        //     name: 'Rewards Program II',
+        //     link: cityfundsApp?.investor_promo_two?.legal_url,
+        //     isNewTab: true,
+        //   });
+        // }
         setFooterLinks(updatedLinks);
       } else {
         setFooterLinks(FOOTER_LINKS);
