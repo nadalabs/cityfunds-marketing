@@ -7,7 +7,7 @@ interface AlertBannerProps {
     show_banner: boolean;
     text: string;
     button_text: string;
-    button_link: string;
+    link: string;
   };
   isWarning?: boolean;
 }
@@ -27,7 +27,7 @@ export default function AlertBanner({ banner, isWarning }: AlertBannerProps) {
       >
         {banner?.text}
       </BoldText>
-      <Link href={banner?.button_link || ''}>
+      <Link href={banner?.link || ''}>
         <BoldText
           style={{
             display: 'inline',

@@ -14,9 +14,9 @@ import { getCityfundsAppContent } from 'lib/sanity';
 
 interface AlertBannerProps {
   show_banner: boolean;
-    text: string;
-    button_text: string;
-    button_link: string;
+  text: string;
+  button_text: string;
+  link: string;
 }
 
 export default function TabsLayout({ children }: { children: ReactNode }) {
@@ -24,11 +24,11 @@ export default function TabsLayout({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     getCityfundsAppContent().then((result) => {
-      if(result && result.banner){
-        setBanner(result.banner)
+      if (result && result.banner) {
+        setBanner(result.banner);
       }
     });
-  }, [])
+  }, []);
 
   useEffect(() => {
     const utm: string[] = [];
@@ -59,9 +59,9 @@ export default function TabsLayout({ children }: { children: ReactNode }) {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <LayoutWrapper>
-        <AlertBanner  banner={banner}/>
-        <MobileNavBar isBanner={banner?.show_banner}/>
-        <DesktopNavBar isBanner={banner?.show_banner}/>
+        <AlertBanner banner={banner} />
+        <MobileNavBar isBanner={banner?.show_banner} />
+        <DesktopNavBar isBanner={banner?.show_banner} />
         <MainWrapper isBanner={banner?.show_banner}>{children}</MainWrapper>
         <PageFooter />
       </LayoutWrapper>
