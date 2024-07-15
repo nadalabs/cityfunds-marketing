@@ -1,4 +1,5 @@
 import { BoldText } from '@elements/Typography';
+import useIsMobile from '@hooks/useIsMobile';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -13,6 +14,8 @@ interface AlertBannerProps {
 }
 
 export default function AlertBanner({ banner, isWarning }: AlertBannerProps) {
+  const isMobileAgent = useIsMobile();
+
   return (
     <BannerWrapper
       style={{ backgroundColor: isWarning ? '#E14942' : '#303030' }}
@@ -22,7 +25,7 @@ export default function AlertBanner({ banner, isWarning }: AlertBannerProps) {
           display: 'inline',
           color: 'white',
           margin: '0 0.5rem 0 0',
-          fontSize: '18px',
+          fontSize: isMobileAgent ? '14px': '18px',
         }}
       >
         {banner?.text}
@@ -33,7 +36,7 @@ export default function AlertBanner({ banner, isWarning }: AlertBannerProps) {
             display: 'inline',
             color: '#48DC95',
             margin: '0 1rem 0 0',
-            fontSize: '18px',
+            fontSize: isMobileAgent ? '14px': '18px',
             cursor: 'pointer',
           }}
         >
