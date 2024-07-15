@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 
 export default function useIsBreakPoint (breakpoint = 768) {
-  const checkForDevice = () => window.outerWidth <= breakpoint;
+  const checkForDevice = () => {
+    if (typeof window !== 'undefined') {
+      return window.outerWidth <= breakpoint;
+    }
+    else return false;
+  }
 
   const [isBreakPoint, setIsBreakPoint] = useState(checkForDevice());
 
