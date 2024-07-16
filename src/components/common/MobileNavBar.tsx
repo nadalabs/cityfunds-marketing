@@ -1,6 +1,7 @@
 'use client';
 import { NavbarLink, PrimaryButton } from '@elements/Buttons';
 import { FlexWrapper, StackWrapper } from '@elements/Containers';
+import useIsBreakPoint from '@hooks/useIsBreakPoint';
 import useIsMobile from '@hooks/useIsMobile';
 import { HEADER_LINKS } from '@utils/constants';
 import Image from 'next/image';
@@ -20,7 +21,8 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const isScroll = scrollPosition > 0;
   const pathname = usePathname();
-  const isMobile = useIsMobile();
+  const isMobileAgent = useIsMobile();
+  const isMobile = useIsBreakPoint(576);
   const isLandingPage = pathname === '/get-started';
 
   const handleScroll = () => {
@@ -36,7 +38,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
     };
   }, []);
 
-  if (!isMobile) {
+  if (!isMobileAgent) {
     return null;
   }
 
@@ -44,7 +46,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
     <>
       <NavbarWrapper
         style={{
-          top: scrollPosition === 0 && isBanner ? '4rem' : 0,
+          top: isBanner && isMobile? '4rem' : '2.5rem',
           boxShadow: isScroll ? '0px 4px 25px 0px rgba(0, 0, 0, 0.10)' : 'none',
         }}
       >
