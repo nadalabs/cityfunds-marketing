@@ -33,7 +33,6 @@ export default function CityfundSlider({
   };
 
   const ALL_CARDS = cityfunds
-    .filter(({ fund_data }) => fund_data?.regulation === REGULATION.RETAIL)
     .map(({ fund_data, fund_content }) => ({
       fund_data,
       fund_content,
