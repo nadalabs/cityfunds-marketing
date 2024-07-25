@@ -25,7 +25,7 @@ export default function AlertBanner({ banner, isWarning }: AlertBannerProps) {
           display: 'inline',
           color: 'white',
           margin: '0 0.5rem 0 0',
-          fontSize: isMobileAgent ? '14px': '18px',
+          fontSize: isMobileAgent ? '14px' : '18px',
         }}
       >
         {banner?.text}
@@ -36,7 +36,7 @@ export default function AlertBanner({ banner, isWarning }: AlertBannerProps) {
             display: 'inline',
             color: '#48DC95',
             margin: '0 1rem 0 0',
-            fontSize: isMobileAgent ? '14px': '18px',
+            fontSize: isMobileAgent ? '14px' : '18px',
             cursor: 'pointer',
           }}
         >

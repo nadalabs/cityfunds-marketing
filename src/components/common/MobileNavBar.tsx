@@ -46,7 +46,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
     <>
       <NavbarWrapper
         style={{
-          top: isBanner && isMobile? '4rem' : '2.5rem',
+          top: isBanner && isMobile ? '4rem' : '2.5rem',
           boxShadow: isScroll ? '0px 4px 25px 0px rgba(0, 0, 0, 0.10)' : 'none',
         }}
       >
