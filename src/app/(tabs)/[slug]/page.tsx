@@ -28,13 +28,6 @@ export default async function LegalPage({ params }) {
       isNewTab: true,
     });
   }
-  // if (cityfundsApp?.investor_promo_two?.show_promo) {
-  //   LEGAL_LINKS.push({
-  //     name: 'Rewards Program II',
-  //     link: cityfundsApp?.investor_promo_two?.legal_url,
-  //     isNewTab: true,
-  //   });
-  // }
 
   return (
     <PageTracker pageName="Legal">

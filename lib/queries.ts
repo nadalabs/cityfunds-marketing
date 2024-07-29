@@ -148,6 +148,7 @@ export const cityfundFields = `
   _id,
   fund_name,
   call_to_action,
+  investor_promo,
   description,
   image_gallery,
   card_back,
@@ -177,7 +178,6 @@ export const cityfundsAppFields = `
   banner,
   hero_slider,
   investor_promo,
-  investor_promo_two,
   investor_webinar,
   ira_401k_form,
 `;

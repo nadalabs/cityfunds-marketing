@@ -87,9 +87,16 @@ export default async function HomePage() {
       {cityfundsApp?.investor_promo?.show_promo && (
         <InvestorPromo promo={cityfundsApp?.investor_promo} />
       )}
-      {cityfundsApp?.investor_promo_two?.show_promo && (
-        <InvestorPromo promo={cityfundsApp?.investor_promo_two} isReversed />
-      )}
+      {cityfunds
+        .filter(({ fund_content }) => fund_content?.investor_promo?.show_promo)
+        .map(({ fund_content }, idx) => (
+          <InvestorPromo
+            key={idx}
+            promo={fund_content.investor_promo}
+            isReversed={idx % 2 !== 1}
+          />
+        ))}
+
       {cityfundsApp?.investor_webinar && (
         <Webinars webinar={cityfundsApp?.investor_webinar} />
       )}
