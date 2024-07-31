@@ -10,22 +10,38 @@ import {
   postQuery,
   postSlugsQuery,
 } from 'lib/queries';
-import { sanityClient } from 'lib/sanity';
+import { revalidateQuery, sanityClient } from 'lib/sanity';
 
 export async function generateStaticParams() {
-  const postSlugs = await sanityClient.fetch(postSlugsQuery);
-  const mediaSlugs = await sanityClient.fetch(mediaSlugsQuery);
+  const postSlugs = await sanityClient.fetch(
+    postSlugsQuery,
+    {},
+    revalidateQuery
+  );
+  const mediaSlugs = await sanityClient.fetch(
+    mediaSlugsQuery,
+    {},
+    revalidateQuery
+  );
   return [...postSlugs, ...mediaSlugs]?.map((slug) => ({ slug }));
 }
 
 export default async function PostPage({ params }) {
-  const postData = await sanityClient.fetch(postQuery, {
-    slug: params.slug,
-  });
+  const postData = await sanityClient.fetch(
+    postQuery,
+    {
+      slug: params.slug,
+    },
+    revalidateQuery
+  );
   const post = postData?.post ?? null;
-  const mediaData = await sanityClient.fetch(mediaQuery, {
-    slug: params.slug,
-  });
+  const mediaData = await sanityClient.fetch(
+    mediaQuery,
+    {
+      slug: params.slug,
+    },
+    revalidateQuery
+  );
   const media = mediaData?.media ?? null;
 
   return (

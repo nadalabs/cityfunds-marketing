@@ -19,6 +19,7 @@ const sanityConfig: ClientConfig = {
 };
 
 export const sanityClient = createClient(sanityConfig);
+export const revalidateQuery = { next: { revalidate: 3600 } };
 const imageBuilder = createImageUrlBuilder(sanityConfig as any);
 export const urlForImage = (source: string, height?: number, width?: number) =>
   imageBuilder.image(source).fit('fill').height(height).width(width).url();
@@ -30,7 +31,7 @@ export const getAllFundsContent = async (): Promise<IFundContent[]> => {
         ${cityfundFields}
       }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res;
 };
@@ -42,7 +43,7 @@ export const getFundContentById = async (id: string): Promise<IFundContent> => {
         ${cityfundFields}
       }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res[0];
 };
@@ -54,7 +55,7 @@ export const getCityfundsPageContent = async (): Promise<any> => {
       ${cityfundsPageFields}
     }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res[0];
 };
@@ -66,7 +67,7 @@ export const getCityfundsAppContent = async (): Promise<any> => {
       ${cityfundsAppFields}
     }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res[0];
 };
@@ -78,17 +79,13 @@ export const getAboutPageContent = async (): Promise<any> => {
       ${aboutPageFields}
     }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res[0];
 };
 
 export const getAllPress = async (): Promise<any> => {
-  const res = await sanityClient.fetch(
-    pressIndexQuery,
-    {},
-    { next: { revalidate: 3600 } }
-  );
+  const res = await sanityClient.fetch(pressIndexQuery, {}, revalidateQuery);
   return res;
 };
 
@@ -99,7 +96,7 @@ export const getFooterContent = async (): Promise<any> => {
     ${legalFields}
   }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res?.content;
 };
