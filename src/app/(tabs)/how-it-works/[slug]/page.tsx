@@ -11,20 +11,29 @@ import { howItWorksBySlugQuery, howItWorksSlugsQuery } from 'lib/queries';
 import {
   getAllFundsContent,
   getCityfundsAppContent,
+  revalidateQuery,
   sanityClient,
 } from 'lib/sanity';
 import { getAllFundsData } from 'lib/supabase';
 
 export async function generateStaticParams() {
-  const pageSlugs = await sanityClient.fetch(howItWorksSlugsQuery);
+  const pageSlugs = await sanityClient.fetch(
+    howItWorksSlugsQuery,
+    {},
+    revalidateQuery
+  );
   return pageSlugs?.map((slug) => ({ slug }));
 }
 
 export default async function HowItWorksPage({ params }) {
   const cityfundsApp = await getCityfundsAppContent();
-  const pageData = await sanityClient.fetch(howItWorksBySlugQuery, {
-    slug: params.slug,
-  });
+  const pageData = await sanityClient.fetch(
+    howItWorksBySlugQuery,
+    {
+      slug: params.slug,
+    },
+    revalidateQuery
+  );
   const fundsData = await getAllFundsData();
   const fundsContent = await getAllFundsContent();
 

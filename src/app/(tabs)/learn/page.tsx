@@ -3,12 +3,20 @@ import BlogSlider from '@components/blog/BlogSlider';
 import EmailCapture from '@components/common/EmailCapture';
 import PageTracker from '@components/common/PageTracker';
 import { mediaIndexQuery, postIndexQuery } from 'lib/queries';
-import { sanityClient } from 'lib/sanity';
+import { revalidateQuery, sanityClient } from 'lib/sanity';
 import _ from 'lodash';
 
 export default async function LearnPage() {
-  const allPosts = await sanityClient.fetch(postIndexQuery);
-  const allMedia = await sanityClient.fetch(mediaIndexQuery);
+  const allPosts = await sanityClient.fetch(
+    postIndexQuery,
+    {},
+    revalidateQuery
+  );
+  const allMedia = await sanityClient.fetch(
+    mediaIndexQuery,
+    {},
+    revalidateQuery
+  );
   const pagePosts = allPosts.filter(({ tag }) => tag === 'Investing');
   const postsByTag = _.groupBy(pagePosts, 'tag');
   const mediaByTag = _.groupBy(allMedia, 'tag');
