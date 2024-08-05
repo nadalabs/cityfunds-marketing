@@ -1,15 +1,16 @@
+import RewardsChart from '@components/cityfunds/RewardsChart';
 import PageHero from '@components/common/PageHero';
 import PageTracker from '@components/common/PageTracker';
 import FaqQuestions from '@components/marketing/FaqQuestions';
 import FeaturedImage from '@components/marketing/FeaturedImage';
 import HowItWorks from '@components/marketing/HowItWorks';
-import Testimonials from '@components/marketing/Testimonials';
 import ValueProps from '@components/marketing/ValueProps';
 import Webinars from '@components/marketing/Webinars';
 import { EXTERNAL_ROUTES } from '@utils/constants';
 import { howItWorksBySlugQuery, howItWorksSlugsQuery } from 'lib/queries';
 import {
   getAllFundsContent,
+  getAllTooltips,
   getCityfundsAppContent,
   revalidateQuery,
   sanityClient,
@@ -36,6 +37,7 @@ export default async function HowItWorksPage({ params }) {
   );
   const fundsData = await getAllFundsData();
   const fundsContent = await getAllFundsContent();
+  const tooltips = await getAllTooltips();
 
   const cityfunds = fundsData.map((data) => {
     const content = fundsContent.find(
@@ -48,21 +50,17 @@ export default async function HowItWorksPage({ params }) {
     <PageTracker pageName="How it Works">
       <PageHero hero={pageData?.hero} />
       <ValueProps
-        heading={`Why Choose ${pageData?.title}?`}
-        valueProps={pageData?.why_us}
+        heading={`The Benefits of ${pageData?.title}`}
+        valueProps={pageData?.benefits}
       />
 
       <HowItWorks
         tutorials={pageData?.tutorials}
-        btnText="Sign Up"
-        link={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`}
+        btnText="Explore Offerings"
+        link={`${process.env.NEXT_PUBLIC_WEB_APP_URL}`}
       />
-      <Testimonials testimonials={pageData?.testimonials} />
-      <FeaturedImage feature={pageData?.description} isWide />
-      <ValueProps
-        heading={`The Benefits of ${pageData?.title}`}
-        valueProps={pageData?.benefits}
-      />
+      <RewardsChart feature={pageData?.description} tooltips={tooltips} />
+
       <FaqQuestions
         faqs={pageData?.questions}
         link={`${EXTERNAL_ROUTES.HUBSPOT_FAQS}/recur-earn`}

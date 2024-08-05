@@ -9,11 +9,12 @@ import {
   cityfundsPageFields,
   legalFields,
   pressIndexQuery,
+  tooltipFields,
 } from 'lib/queries';
 
 const sanityConfig: ClientConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: 'production',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   apiVersion: '2022-03-13',
   useCdn: true,
 };
@@ -99,4 +100,16 @@ export const getFooterContent = async (): Promise<any> => {
     revalidateQuery
   );
   return res?.content;
+};
+
+export const getAllTooltips = async (): Promise<any> => {
+  const res = await sanityClient.fetch(
+    `
+    *[_type == "tooltips"] | order(index asc, _updatedAt desc) {
+      ${tooltipFields}
+      }`,
+    {},
+    { next: { revalidate: 3600 } }
+  );
+  return res;
 };
