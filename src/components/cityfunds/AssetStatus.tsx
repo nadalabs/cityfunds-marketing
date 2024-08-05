@@ -121,7 +121,7 @@ export const LockWrapper = styled.div`
   display: flex;
   border-radius: 0.4265rem;
   backdrop-filter: blur(1.7px);
-  padding: 0.17063rem 0.34125rem;
+  padding: 0.25rem 0.5rem;
   text-transform: uppercase;
   width: fit-content;
 `;

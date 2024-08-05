@@ -15,6 +15,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { urlForImage } from 'lib/sanity';
+import useIsMobile from '@hooks/useIsMobile';
 
 interface HowItWorksProps {
   title?: string;
@@ -23,6 +24,7 @@ interface HowItWorksProps {
   btnText: string;
   link: string;
   isReversed?: boolean;
+  scrollId?: string;
 }
 
 export default function HowItWorks({
@@ -32,11 +34,13 @@ export default function HowItWorks({
   btnText,
   link,
   isReversed,
+  scrollId,
 }: HowItWorksProps) {
   const [activeIdx, setActiveIdx] = useState(0);
+  const isMobile = useIsMobile();
 
   return (
-    <SectionWrapper id="how-it-works">
+    <SectionWrapper id={scrollId}>
       <GridWrapper>
         {!isReversed && (
           <>
@@ -54,7 +58,7 @@ export default function HowItWorks({
           </>
         )}
 
-        <ContentWrapper>
+        <ContentWrapper style={{ width: isMobile ? '100%' : '36rem' }}>
           <Heading style={{ marginBottom: '1.5rem' }}>
             {title ? title : 'How it Works'}
           </Heading>

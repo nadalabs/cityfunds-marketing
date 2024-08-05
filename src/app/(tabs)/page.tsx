@@ -69,6 +69,7 @@ export default async function HomePage() {
         tutorials={cityfundsPage?.tutorials}
         btnText="Sign Up"
         link={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`}
+        scrollId="how-it-works"
       />
       <Testimonials testimonials={cityfundsPage?.testimonials} />
       <ValueProps
