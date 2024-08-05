@@ -17,37 +17,47 @@ import Image from 'next/image';
 import { urlForImage } from 'lib/sanity';
 
 interface HowItWorksProps {
+  title?: string;
   video?: { video_url: string; thumbnail: string };
   tutorials: { title: string; description: string; image?: string }[];
   btnText: string;
   link: string;
+  isReversed?: boolean;
 }
 
 export default function HowItWorks({
+  title,
   video,
   tutorials,
   btnText,
   link,
+  isReversed,
 }: HowItWorksProps) {
   const [activeIdx, setActiveIdx] = useState(0);
 
   return (
     <SectionWrapper id="how-it-works">
       <GridWrapper>
-        {video ? (
-          <VideoPlayer video={video} />
-        ) : (
-          <Image
-            width={512}
-            height={512}
-            src={urlForImage(tutorials?.[activeIdx]?.image)}
-            alt={tutorials?.[activeIdx]?.title}
-            style={{ borderRadius: '2rem' }}
-          />
+        {!isReversed && (
+          <>
+            {video ? (
+              <VideoPlayer video={video} />
+            ) : (
+              <Image
+                width={512}
+                height={512}
+                src={urlForImage(tutorials?.[activeIdx]?.image)}
+                alt={tutorials?.[activeIdx]?.title}
+                style={{ borderRadius: '2rem' }}
+              />
+            )}
+          </>
         )}
 
         <ContentWrapper>
-          <Heading style={{ marginBottom: '1.5rem' }}>How it Works</Heading>
+          <Heading style={{ marginBottom: '1.5rem' }}>
+            {title ? title : 'How it Works'}
+          </Heading>
 
           <div>
             {tutorials?.map(({ title, description }, idx) => (
@@ -82,6 +92,22 @@ export default function HowItWorks({
             <PrimaryButton>{btnText}</PrimaryButton>
           </Link>
         </ContentWrapper>
+
+        {isReversed && (
+          <>
+            {video ? (
+              <VideoPlayer video={video} />
+            ) : (
+              <Image
+                width={512}
+                height={512}
+                src={urlForImage(tutorials?.[activeIdx]?.image)}
+                alt={tutorials?.[activeIdx]?.title}
+                style={{ borderRadius: '2rem' }}
+              />
+            )}
+          </>
+        )}
       </GridWrapper>
     </SectionWrapper>
   );
