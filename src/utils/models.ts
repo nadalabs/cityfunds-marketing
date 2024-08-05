@@ -26,6 +26,7 @@ export interface IFundData {
 export interface IFundContent {
   fund_name: string;
   call_to_action: string;
+  investor_promo: any;
   highlights: string[];
   description: string;
   image_gallery: string[];
