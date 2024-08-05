@@ -15,11 +15,9 @@ export const howItWorksFields = `
   _id,
   title,
   hero,
-  why_us,
-  tutorials,
-  testimonials,
-  description,
   benefits,
+  tutorials,
+  description,
   questions,
   get_started,
   "slug": slug.current,
@@ -165,6 +163,7 @@ export const cityfundsPageFields = `
   metrics,
   cityfunds_feature,
   hei_feature,
+  invest_options,
   video,
   tutorials,
   values,
@@ -201,3 +200,10 @@ export const footerQuery = `
     ${legalFields}
   },
 }`;
+
+export const tooltipFields = `
+  _id,
+  title,
+  description,
+  attribute,
+`;

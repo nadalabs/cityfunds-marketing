@@ -58,6 +58,13 @@ export default async function HomePage() {
       <CityfundsGrid cityfunds={cityfunds} />
 
       <HowItWorks
+        title="Ways to Invest"
+        tutorials={cityfundsPage?.invest_options}
+        btnText="Explore Offerings"
+        link={`${process.env.NEXT_PUBLIC_WEB_APP_URL}`}
+        isReversed
+      />
+      <HowItWorks
         video={cityfundsPage?.video}
         tutorials={cityfundsPage?.tutorials}
         btnText="Sign Up"
