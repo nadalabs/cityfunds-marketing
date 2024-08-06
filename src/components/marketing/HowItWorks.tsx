@@ -20,9 +20,15 @@ import useIsMobile from '@hooks/useIsMobile';
 interface HowItWorksProps {
   title?: string;
   video?: { video_url: string; thumbnail: string };
-  tutorials: { title: string; description: string; image?: string }[];
-  btnText: string;
-  link: string;
+  tutorials: {
+    title: string;
+    description: string;
+    image?: string;
+    button_text: string;
+    button_link?: string;
+  }[];
+  btnText?: string;
+  link?: string;
   isReversed?: boolean;
   scrollId?: string;
 }
@@ -64,36 +70,51 @@ export default function HowItWorks({
           </Heading>
 
           <div>
-            {tutorials?.map(({ title, description }, idx) => (
-              <div
-                key={idx}
-                onClick={() => setActiveIdx(idx)}
-                style={{ cursor: 'pointer', marginBottom: '1.5rem' }}
-              >
+            {tutorials?.map(
+              ({ title, description, button_text, button_link }, idx) => (
                 <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '1.5rem',
-                  }}
+                  key={idx}
+                  onClick={() => setActiveIdx(idx)}
+                  style={{ cursor: 'pointer', marginBottom: '1.5rem' }}
                 >
-                  <GreenSquare $isActive={activeIdx === idx} />
-                  <HoverHeading $isActive={activeIdx === idx}>
-                    {title}
-                  </HoverHeading>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      marginBottom: '1.5rem',
+                    }}
+                  >
+                    <GreenSquare $isActive={activeIdx === idx} />
+                    <HoverHeading $isActive={activeIdx === idx}>
+                      {title}
+                    </HoverHeading>
+                  </div>
+                  <FadeWrapper
+                    $isActive={activeIdx === idx}
+                    style={{ marginLeft: '1.5rem' }}
+                  >
+                    {activeIdx === idx && (
+                      <LongFormText content={description} />
+                    )}
+                  </FadeWrapper>
                 </div>
-                <FadeWrapper
-                  $isActive={activeIdx === idx}
-                  style={{ marginLeft: '1.5rem' }}
-                >
-                  {activeIdx === idx && <LongFormText content={description} />}
-                </FadeWrapper>
-              </div>
-            ))}
+              )
+            )}
           </div>
 
-          <Link href={link} target="_blank">
-            <PrimaryButton>{btnText}</PrimaryButton>
+          <Link
+            href={
+              tutorials?.[activeIdx]?.button_link
+                ? tutorials?.[activeIdx]?.button_link
+                : link
+            }
+            target="_blank"
+          >
+            <PrimaryButton>
+              {tutorials?.[activeIdx]?.button_text
+                ? tutorials?.[activeIdx]?.button_text
+                : btnText}
+            </PrimaryButton>
           </Link>
         </ContentWrapper>
 
