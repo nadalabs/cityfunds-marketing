@@ -62,6 +62,7 @@ export default async function HomePage() {
         tutorials={cityfundsPage?.invest_options}
         btnText="Explore Offerings"
         link={`${process.env.NEXT_PUBLIC_WEB_APP_URL}`}
+        scrollId="ways-to-invest"
         isReversed
       />
       <HowItWorks

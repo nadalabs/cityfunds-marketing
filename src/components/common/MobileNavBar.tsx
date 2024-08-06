@@ -158,6 +158,7 @@ export default function MobileNavBar({ isBanner }: MobileNavBarProps) {
                 <NavbarLink
                   key={idx}
                   href={link}
+                  onClick={() => setShowMenu(false)}
                   style={{
                     color: link === pathname ? '#48DC95' : 'white',
                   }}
