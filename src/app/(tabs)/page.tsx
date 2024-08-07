@@ -57,12 +57,12 @@ export default async function HomePage() {
       <EquityChart />
       <CityfundsGrid cityfunds={cityfunds} />
 
-      <HowItWorks
+      {/* <HowItWorks
         title="Ways to Invest"
         tutorials={cityfundsPage?.invest_options}
         scrollId="ways-to-invest"
         isReversed
-      />
+      /> */}
       <HowItWorks
         video={cityfundsPage?.video}
         tutorials={cityfundsPage?.tutorials}

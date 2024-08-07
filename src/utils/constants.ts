@@ -32,7 +32,7 @@ export const UTM_PARAMETERS = [
 
 export const HEADER_LINKS = [
   { name: 'How it Works', link: '/#how-it-works' },
-  { name: 'Ways to Invest', link: '/#ways-to-invest' },
+  // { name: 'Ways to Invest', link: '/#ways-to-invest' },
   {
     name: 'Resources',
     links: [
@@ -82,10 +82,10 @@ export const FOOTER_LINKS: any[] = [
   {
     title: 'Resources',
     links: [
-      {
-        name: 'Recurring Investments',
-        link: '/how-it-works/recurring-investments',
-      },
+      // {
+      //   name: 'Recurring Investments',
+      //   link: '/how-it-works/recurring-investments',
+      // },
       { name: 'Nada', link: process.env.NEXT_PUBLIC_NADA_URL, isNewTab: true },
       { name: 'News', link: '/news' },
       { name: 'FAQs', link: EXTERNAL_ROUTES.HUBSPOT_FAQS, isNewTab: true },
