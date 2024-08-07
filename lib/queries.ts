@@ -15,11 +15,9 @@ export const howItWorksFields = `
   _id,
   title,
   hero,
-  why_us,
-  tutorials,
-  testimonials,
-  description,
   benefits,
+  tutorials,
+  description,
   questions,
   get_started,
   "slug": slug.current,
@@ -148,6 +146,7 @@ export const cityfundFields = `
   _id,
   fund_name,
   call_to_action,
+  investor_promo,
   description,
   image_gallery,
   card_back,
@@ -164,6 +163,7 @@ export const cityfundsPageFields = `
   metrics,
   cityfunds_feature,
   hei_feature,
+  invest_options,
   video,
   tutorials,
   values,
@@ -177,7 +177,6 @@ export const cityfundsAppFields = `
   banner,
   hero_slider,
   investor_promo,
-  investor_promo_two,
   investor_webinar,
   ira_401k_form,
 `;
@@ -201,3 +200,10 @@ export const footerQuery = `
     ${legalFields}
   },
 }`;
+
+export const tooltipFields = `
+  _id,
+  title,
+  description,
+  attribute,
+`;

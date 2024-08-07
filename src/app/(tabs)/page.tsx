@@ -57,11 +57,18 @@ export default async function HomePage() {
       <EquityChart />
       <CityfundsGrid cityfunds={cityfunds} />
 
+      {/* <HowItWorks
+        title="Ways to Invest"
+        tutorials={cityfundsPage?.invest_options}
+        scrollId="ways-to-invest"
+        isReversed
+      /> */}
       <HowItWorks
         video={cityfundsPage?.video}
         tutorials={cityfundsPage?.tutorials}
         btnText="Sign Up"
         link={`${process.env.NEXT_PUBLIC_WEB_APP_URL}/signup`}
+        scrollId="how-it-works"
       />
       <Testimonials testimonials={cityfundsPage?.testimonials} />
       <ValueProps
@@ -87,9 +94,16 @@ export default async function HomePage() {
       {cityfundsApp?.investor_promo?.show_promo && (
         <InvestorPromo promo={cityfundsApp?.investor_promo} />
       )}
-      {cityfundsApp?.investor_promo_two?.show_promo && (
-        <InvestorPromo promo={cityfundsApp?.investor_promo_two} isReversed />
-      )}
+      {cityfunds
+        .filter(({ fund_content }) => fund_content?.investor_promo?.show_promo)
+        .map(({ fund_content }, idx) => (
+          <InvestorPromo
+            key={idx}
+            promo={fund_content.investor_promo}
+            isReversed={idx % 2 !== 1}
+          />
+        ))}
+
       {cityfundsApp?.investor_webinar && (
         <Webinars webinar={cityfundsApp?.investor_webinar} />
       )}

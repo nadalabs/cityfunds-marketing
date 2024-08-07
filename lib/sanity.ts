@@ -9,16 +9,18 @@ import {
   cityfundsPageFields,
   legalFields,
   pressIndexQuery,
+  tooltipFields,
 } from 'lib/queries';
 
 const sanityConfig: ClientConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: 'production',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   apiVersion: '2022-03-13',
   useCdn: true,
 };
 
 export const sanityClient = createClient(sanityConfig);
+export const revalidateQuery = { next: { revalidate: 3600 } };
 const imageBuilder = createImageUrlBuilder(sanityConfig as any);
 export const urlForImage = (source: string, height?: number, width?: number) =>
   imageBuilder.image(source).fit('fill').height(height).width(width).url();
@@ -30,7 +32,7 @@ export const getAllFundsContent = async (): Promise<IFundContent[]> => {
         ${cityfundFields}
       }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res;
 };
@@ -42,7 +44,7 @@ export const getFundContentById = async (id: string): Promise<IFundContent> => {
         ${cityfundFields}
       }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res[0];
 };
@@ -54,7 +56,7 @@ export const getCityfundsPageContent = async (): Promise<any> => {
       ${cityfundsPageFields}
     }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res[0];
 };
@@ -66,7 +68,7 @@ export const getCityfundsAppContent = async (): Promise<any> => {
       ${cityfundsAppFields}
     }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res[0];
 };
@@ -78,17 +80,13 @@ export const getAboutPageContent = async (): Promise<any> => {
       ${aboutPageFields}
     }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res[0];
 };
 
 export const getAllPress = async (): Promise<any> => {
-  const res = await sanityClient.fetch(
-    pressIndexQuery,
-    {},
-    { next: { revalidate: 3600 } }
-  );
+  const res = await sanityClient.fetch(pressIndexQuery, {}, revalidateQuery);
   return res;
 };
 
@@ -99,7 +97,19 @@ export const getFooterContent = async (): Promise<any> => {
     ${legalFields}
   }`,
     {},
-    { next: { revalidate: 3600 } }
+    revalidateQuery
   );
   return res?.content;
+};
+
+export const getAllTooltips = async (): Promise<any> => {
+  const res = await sanityClient.fetch(
+    `
+    *[_type == "tooltips"] | order(index asc, _updatedAt desc) {
+      ${tooltipFields}
+      }`,
+    {},
+    { next: { revalidate: 3600 } }
+  );
+  return res;
 };

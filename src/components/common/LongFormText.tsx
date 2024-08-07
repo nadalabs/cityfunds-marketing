@@ -49,7 +49,11 @@ export default function LongFormText({
       h6: ({ children }: any) => <SmallHeading>{children}</SmallHeading>,
       normal: ({ children }: any) => {
         if (isSmall) {
-          return <Caption>{children}</Caption>;
+          return (
+            <Caption style={{ color: isInverted ? 'white' : '#888888' }}>
+              {children}
+            </Caption>
+          );
         } else if (isLarge) {
           return <LargeText>{children}</LargeText>;
         } else {

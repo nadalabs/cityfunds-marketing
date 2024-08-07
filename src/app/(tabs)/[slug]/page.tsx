@@ -1,5 +1,9 @@
 import { legalQuery, legalSlugsQuery } from 'lib/queries';
-import { getCityfundsAppContent, sanityClient } from 'lib/sanity';
+import {
+  getCityfundsAppContent,
+  revalidateQuery,
+  sanityClient,
+} from 'lib/sanity';
 import LongFormText from '@components/common/LongFormText';
 import { SectionWrapper } from '@elements/Containers';
 import { format, parseISO } from 'date-fns';
@@ -8,7 +12,11 @@ import { LEGAL_LINKS } from '@utils/constants';
 import PageTracker from '@components/common/PageTracker';
 
 export async function generateStaticParams() {
-  const legalSlugs = await sanityClient.fetch(legalSlugsQuery);
+  const legalSlugs = await sanityClient.fetch(
+    legalSlugsQuery,
+    {},
+    revalidateQuery
+  );
   const filteredSlugs =
     legalSlugs?.filter((legal) => legal !== 'footer') ?? null;
   return filteredSlugs?.map((slug) => ({ slug }));
@@ -16,9 +24,13 @@ export async function generateStaticParams() {
 
 export default async function LegalPage({ params }) {
   const cityfundsApp = await getCityfundsAppContent();
-  const legalData = await sanityClient.fetch(legalQuery, {
-    slug: params.slug,
-  });
+  const legalData = await sanityClient.fetch(
+    legalQuery,
+    {
+      slug: params.slug,
+    },
+    revalidateQuery
+  );
   const legal = legalData?.legal ?? null;
 
   if (cityfundsApp?.investor_promo?.show_promo) {
@@ -28,13 +40,6 @@ export default async function LegalPage({ params }) {
       isNewTab: true,
     });
   }
-  // if (cityfundsApp?.investor_promo_two?.show_promo) {
-  //   LEGAL_LINKS.push({
-  //     name: 'Rewards Program II',
-  //     link: cityfundsApp?.investor_promo_two?.legal_url,
-  //     isNewTab: true,
-  //   });
-  // }
 
   return (
     <PageTracker pageName="Legal">
